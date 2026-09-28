@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Operation Macro</title>
+  <meta name="theme-color" content="#0f1115">
+  <meta name="color-scheme" content="dark">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png">
+  <!-- iOS home-screen support -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Op Macro">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="brand">OPERATION MACRO</div>
+      <div class="date" id="today-label"></div>
+    </div>
+    <div class="streak" id="streak" title="Consecutive days hitting protein + calories"></div>
+  </header>
+
+  <main>
+    <!-- TODAY -->
+    <section class="view" id="view-today">
+      <div class="rings" id="rings"></div>
+      <div id="status"></div>
+      <div id="quick-wrap">
+        <h2 class="section-title">Quick log</h2>
+        <div class="chips" id="quick"></div>
+      </div>
+      <h2 class="section-title">Today's log</h2>
+      <div class="list" id="log"></div>
+    </section>
+
+    <!-- FAVORITES -->
+    <section class="view" id="view-favs" hidden>
+      <h2 class="section-title">Favorites <span class="muted">— tap to log, ✎ to edit</span></h2>
+      <div class="list" id="favs"></div>
+    </section>
+
+    <!-- HISTORY -->
+    <section class="view" id="view-history" hidden>
+      <div class="card">
+        <div class="card-head"><h3>Weight</h3><span class="muted" id="w-goal"></span></div>
+        <div class="stats" id="w-stats"></div>
+        <div class="progress"><div class="progress-fill" id="w-progress"></div></div>
+        <div class="chart" id="w-chart"></div>
+        <form id="weight-form" class="weight-form">
+          <input id="in-weight" type="number" inputmode="decimal" step="0.1" min="0" placeholder="lbs" required>
+          <input id="in-weight-date" type="date" required>
+          <button class="btn primary" type="submit">Log weigh-in</button>
+        </form>
+        <div class="w-list" id="w-list"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h3>Mission record</h3></div>
+        <div class="stats" id="h-stats"></div>
+      </div>
+      <div id="days"></div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section class="view" id="view-settings" hidden>
+      <form id="settings-form" class="card">
+        <div class="card-head"><h3>Daily targets</h3></div>
+        <div class="grid2">
+          <label class="field"><span>Calories</span><input id="s-cal" type="number" inputmode="numeric" min="1" required></label>
+          <label class="field"><span>Protein (g)</span><input id="s-protein" type="number" inputmode="numeric" min="0" required></label>
+          <label class="field"><span>Carbs (g)</span><input id="s-carbs" type="number" inputmode="numeric" min="0" required></label>
+          <label class="field"><span>Fat (g)</span><input id="s-fat" type="number" inputmode="numeric" min="0" required></label>
+        </div>
+        <div class="card-head"><h3>Weight</h3></div>
+        <div class="grid2">
+          <label class="field"><span>Current (lbs)</span><input id="s-weight" type="number" inputmode="decimal" step="0.1" min="0" required></label>
+          <label class="field"><span>Goal (lbs)</span><input id="s-goal" type="number" inputmode="decimal" step="0.1" min="0" required></label>
+        </div>
+        <button class="btn primary block" type="submit">Save settings</button>
+      </form>
+
+      <div class="card">
+        <div class="card-head"><h3>Your data</h3></div>
+        <p class="muted small">Everything lives only on this phone. Export a backup now and then.</p>
+        <div class="btn-row">
+          <button class="btn" id="export-btn" type="button">Export backup</button>
+          <label class="btn" for="import-file">Import backup</label>
+          <input id="import-file" type="file" accept="application/json,.json" hidden>
+        </div>
+        <button class="btn danger block" id="reset-btn" type="button">Erase all data</button>
+      </div>
+      <p class="muted small center">Operation Macro · works offline</p>
+    </section>
+  </main>
+
+  <button class="fab" id="fab" aria-label="Add food">+</button>
+
+  <nav class="tabs">
+    <button data-view="today" class="active"><span>🎯</span>Today</button>
+    <button data-view="favs"><span>⭐</span>Favorites</button>
+    <button data-view="history"><span>📈</span>History</button>
+    <button data-view="settings"><span>⚙️</span>Settings</button>
+  </nav>
+
+  <!-- Add / edit sheet -->
+  <div class="backdrop" id="backdrop" hidden>
+    <form class="sheet" id="entry-form" autocomplete="off">
+      <div class="grab"></div>
+      <h2 id="sheet-title">Log food</h2>
+      <label class="field"><span>Food</span><input id="in-name" type="text" placeholder="e.g. Chicken thighs" enterkeyhint="next"></label>
+      <div class="grid2">
+        <label class="field cal"><span>Calories</span><input id="in-cal" type="number" inputmode="decimal" step="any" min="0" placeholder="auto"></label>
+        <label class="field pro"><span>Protein g</span><input id="in-p" type="number" inputmode="decimal" step="any" min="0" placeholder="0"></label>
+        <label class="field carb"><span>Carbs g</span><input id="in-c" type="number" inputmode="decimal" step="any" min="0" placeholder="0"></label>
+        <label class="field fat"><span>Fat g</span><input id="in-f" type="number" inputmode="decimal" step="any" min="0" placeholder="0"></label>
+      </div>
+      <p class="muted small">Leave calories blank to auto-calculate from macros (4/4/9).</p>
+      <label class="check" id="fav-row"><input type="checkbox" id="in-fav"> <span>Save as favorite</span></label>
+      <button class="btn primary block big" type="submit" id="sheet-save">Log it</button>
+      <div class="btn-row">
+        <button class="btn danger" type="button" id="sheet-delete">Delete</button>
+        <button class="btn" type="button" id="sheet-cancel">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Celebration -->
+  <canvas id="confetti" hidden></canvas>
+  <div class="hoorah" id="hoorah" hidden>
+    <div class="hoorah-text">HOORAH!</div>
+    <div class="hoorah-sub" id="hoorah-sub"></div>
+  </div>
+
+  <div class="toast" id="toast" hidden><span id="toast-msg"></span><button id="toast-btn" type="button"></button></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

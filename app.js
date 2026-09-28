@@ -1,0 +1,594 @@
+'use strict';
+
+/* ================= Data ================= */
+
+const STORE_KEY = 'opmacro_v1';
+const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225 };
+// Ring order on the home screen. k = key on an entry, t = key in settings.
+const MACROS = [
+  { k: 'cal', t: 'cal',     label: 'Calories', short: 'Cal',  unit: '',  cls: 'cal',  color: 'var(--cal)' },
+  { k: 'p',   t: 'protein', label: 'Protein',  short: 'Pro',  unit: 'g', cls: 'pro',  color: 'var(--pro)' },
+  { k: 'c',   t: 'carbs',   label: 'Carbs',    short: 'Carb', unit: 'g', cls: 'carb', color: 'var(--carb)' },
+  { k: 'f',   t: 'fat',     label: 'Fat',      short: 'Fat',  unit: 'g', cls: 'fat',  color: 'var(--fat)' },
+];
+
+const $ = sel => document.querySelector(sel);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const fmt = n => Math.round(n).toLocaleString();
+const fmt1 = n => (Math.round(n * 10) / 10).toLocaleString();
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+
+function dayKey(d = new Date()) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+function parseKey(k) { const [y, m, d] = k.split('-').map(Number); return new Date(y, m - 1, d); }
+function shiftKey(k, n) { const d = parseKey(k); d.setDate(d.getDate() + n); return dayKey(d); }
+function dayLabel(k) {
+  if (k === today) return 'Today';
+  if (k === shiftKey(today, -1)) return 'Yesterday';
+  return parseKey(k).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+}
+
+let today = dayKey();
+let state = load();
+
+function load() {
+  let s = null;
+  try { s = JSON.parse(localStorage.getItem(STORE_KEY)); } catch (e) { /* corrupt or blocked */ }
+  const fresh = !s;
+  s = s || {};
+  const st = {
+    settings: { ...DEFAULT_SETTINGS, ...(s.settings || {}) },
+    days: s.days || {},
+    favorites: s.favorites || [],
+    weights: s.weights || {},
+  };
+  // First run: record the starting weight so the trend has a starting point.
+  if (fresh) st.weights[today] = st.settings.weight;
+  return st;
+}
+function save() {
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
+  catch (e) { toast('⚠️ Could not save to device storage'); }
+}
+
+const pickTargets = s => ({ cal: s.cal, protein: s.protein, carbs: s.carbs, fat: s.fat });
+// Today always uses current settings; past days use the targets they were logged against.
+function targetsFor(k) {
+  const d = state.days[k];
+  return k === today || !d || !d.targets ? state.settings : d.targets;
+}
+function todayDay() {
+  if (!state.days[today]) state.days[today] = { entries: [], hoorah: false };
+  state.days[today].targets = pickTargets(state.settings);
+  return state.days[today];
+}
+function totals(k) {
+  const t = { cal: 0, p: 0, c: 0, f: 0 };
+  const d = state.days[k];
+  if (d) for (const e of d.entries) for (const m in t) t[m] += +e[m] || 0;
+  return t;
+}
+function isHit(k) {
+  const d = state.days[k];
+  if (!d || !d.entries.length) return false;
+  const t = totals(k), g = targetsFor(k);
+  return t.p >= g.protein && t.cal <= g.cal;
+}
+// Counts back from today (or yesterday, if today isn't hit yet — today is still in play).
+function currentStreak() {
+  let k = isHit(today) ? today : shiftKey(today, -1), n = 0;
+  while (isHit(k)) { n++; k = shiftKey(k, -1); }
+  return n;
+}
+function bestStreak() {
+  const keys = Object.keys(state.days).filter(isHit).sort();
+  let best = 0, run = 0, prev = null;
+  for (const k of keys) {
+    run = prev && shiftKey(prev, 1) === k ? run + 1 : 1;
+    best = Math.max(best, run);
+    prev = k;
+  }
+  return best;
+}
+function sortedWeights() {
+  return Object.entries(state.weights).map(([k, w]) => ({ k, w })).sort((a, b) => a.k.localeCompare(b.k));
+}
+function syncCurrentWeight() {
+  const ws = sortedWeights();
+  if (ws.length) state.settings.weight = ws[ws.length - 1].w;
+}
+
+/* ================= Actions ================= */
+
+function addEntry(data) {
+  const e = { id: uid(), name: data.name, cal: data.cal, p: data.p, c: data.c, f: data.f, t: Date.now() };
+  todayDay().entries.push(e);
+  save();
+  render();
+  checkHoorah();
+  return e;
+}
+function deleteEntry(id) {
+  const d = todayDay();
+  const i = d.entries.findIndex(e => e.id === id);
+  if (i < 0) return;
+  const [removed] = d.entries.splice(i, 1);
+  save();
+  render();
+  toast(`Deleted ${removed.name}`, 'Undo', () => {
+    todayDay().entries.splice(i, 0, removed);
+    save(); render(); checkHoorah();
+  });
+}
+function upsertFavorite(data, id) {
+  let fav = id ? state.favorites.find(f => f.id === id)
+               : state.favorites.find(f => f.name.toLowerCase() === data.name.toLowerCase());
+  if (!fav) { fav = { id: uid(), uses: 0 }; state.favorites.push(fav); }
+  Object.assign(fav, { name: data.name, cal: data.cal, p: data.p, c: data.c, f: data.f });
+  save();
+}
+function logFavorite(id) {
+  const fav = state.favorites.find(f => f.id === id);
+  if (!fav) return;
+  fav.uses = (fav.uses || 0) + 1;
+  const e = addEntry(fav);
+  toast(`Logged ${fav.name}`, 'Undo', () => {
+    fav.uses = Math.max(0, fav.uses - 1);
+    const d = todayDay();
+    d.entries = d.entries.filter(x => x.id !== e.id);
+    save(); render();
+  });
+  if (navigator.vibrate) navigator.vibrate(15);
+}
+
+/* ================= Rendering ================= */
+
+let view = 'today';
+
+function render() {
+  $('#today-label').textContent = new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' });
+  const s = currentStreak();
+  $('#streak').textContent = `🔥 ${s}`;
+  $('#streak').classList.toggle('hot', s > 0);
+  if (view === 'today') renderToday();
+  if (view === 'favs') renderFavs();
+  if (view === 'history') renderHistory();
+  if (view === 'settings') renderSettings();
+}
+
+function ringHTML(m, eaten, target) {
+  const left = target - eaten, over = left < 0;
+  const R = 43, C = 2 * Math.PI * R;
+  // The arc shows what's LEFT, so it shrinks as you eat. Full red when over.
+  const frac = over ? 1 : target > 0 ? Math.max(0, left / target) : 0;
+  const n = fmt(Math.abs(left));
+  return `
+    <div class="ring ${m.cls} ${over ? 'over' : ''}">
+      <div class="ring-box">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <circle class="track" cx="50" cy="50" r="${R}"/>
+          <circle class="arc" cx="50" cy="50" r="${R}" stroke-dasharray="${C}" stroke-dashoffset="${C * (1 - frac)}"/>
+        </svg>
+        <div class="ring-center">
+          <div class="ring-num">${over ? '+' : ''}${n}<small>${m.unit}</small></div>
+          <div class="ring-sub">${over ? 'over' : 'left'}</div>
+        </div>
+      </div>
+      <div class="ring-label">${m.label}</div>
+      <div class="ring-foot">${fmt(eaten)} / ${fmt(target)}${m.unit}</div>
+    </div>`;
+}
+
+function entryHTML(e, attrs) {
+  const time = e.t ? new Date(e.t).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }) : '';
+  return `
+    <button class="entry" ${attrs}>
+      <div class="entry-top"><span class="entry-name">${esc(e.name)}</span><span class="entry-time">${time}</span></div>
+      <div class="entry-macros"><b>${fmt(e.cal)}</b> cal · P ${fmt1(e.p)} · C ${fmt1(e.c)} · F ${fmt1(e.f)}</div>
+    </button>`;
+}
+
+function renderToday() {
+  const t = totals(today), g = state.settings;
+  $('#rings').innerHTML = MACROS.map(m => ringHTML(m, t[m.k], g[m.t])).join('');
+
+  const d = state.days[today];
+  const has = d && d.entries.length;
+  const proLeft = g.protein - t.p, calLeft = g.cal - t.cal;
+  let status;
+  if (isHit(today)) status = '<div class="status good">🎖️ Mission accomplished — protein hit, calories in check.</div>';
+  else if (calLeft < 0) status = `<div class="status bad">🚨 ${fmt(-calLeft)} calories over target.</div>`;
+  else if (has) status = `<div class="status">Need <b>${fmt(proLeft)} g protein</b> in <b>${fmt(calLeft)} cal</b>.</div>`;
+  else status = '<div class="status">Log your first meal to start today\'s mission.</div>';
+  $('#status').innerHTML = status;
+
+  const favs = [...state.favorites].sort((a, b) => (b.uses || 0) - (a.uses || 0));
+  $('#quick-wrap').hidden = !favs.length;
+  $('#quick').innerHTML = favs.map(f => `<button class="chip" data-fav="${f.id}">+ ${esc(f.name)}</button>`).join('');
+
+  const entries = has ? [...d.entries].reverse() : [];
+  $('#log').innerHTML = entries.length
+    ? entries.map(e => entryHTML(e, `data-entry="${e.id}"`)).join('')
+    : '<div class="empty">Nothing logged yet. Tap <b>+</b> to add food.</div>';
+}
+
+function renderFavs() {
+  const favs = [...state.favorites].sort((a, b) => a.name.localeCompare(b.name));
+  $('#favs').innerHTML = favs.length
+    ? favs.map(f => `
+        <div class="fav-row">
+          ${entryHTML({ ...f, t: 0 }, `data-fav="${f.id}"`)}
+          <button class="icon-btn" data-edit-fav="${f.id}" aria-label="Edit ${esc(f.name)}">✎</button>
+        </div>`).join('')
+    : '<div class="empty">No favorites yet.<br>Tick <b>Save as favorite</b> when logging food, or tap <b>+</b> to create one.</div>';
+}
+
+function statHTML(value, label) { return `<div class="stat"><b>${value}</b><span>${label}</span></div>`; }
+
+function renderHistory() {
+  // ---- Weight ----
+  const s = state.settings, ws = sortedWeights();
+  const start = ws.length ? ws[0].w : s.weight;
+  const current = ws.length ? ws[ws.length - 1].w : s.weight;
+  const toGo = current - s.goalWeight;
+  const change = current - start;
+  $('#w-goal').textContent = `Goal ${fmt1(s.goalWeight)} lbs`;
+  $('#w-stats').innerHTML =
+    statHTML(fmt1(current), 'Current') +
+    statHTML(toGo > 0 ? fmt1(toGo) : '🎯', toGo > 0 ? 'To go' : 'Goal hit') +
+    statHTML((change > 0 ? '+' : '') + fmt1(change), 'Change');
+  const span = start - s.goalWeight;
+  const pct = span > 0 ? Math.max(0, Math.min(100, ((start - current) / span) * 100)) : (toGo <= 0 ? 100 : 0);
+  $('#w-progress').style.width = pct + '%';
+  $('#w-progress').title = `${Math.round(pct)}% of the way`;
+  renderWeightChart(ws, s.goalWeight);
+  $('#w-list').innerHTML = ws.slice(-5).reverse().map(({ k, w }) =>
+    `<div class="w-item"><span>${dayLabel(k)}</span><span><b>${fmt1(w)}</b> lbs <button data-del-weight="${k}" aria-label="Delete">×</button></span></div>`
+  ).join('');
+  if (!$('#in-weight-date').value) $('#in-weight-date').value = today;
+
+  // ---- Days ----
+  const keys = Object.keys(state.days).filter(k => state.days[k].entries.length).sort().reverse();
+  const past = keys.filter(k => k !== today);
+  const hits = past.filter(isHit).length;
+  $('#h-stats').innerHTML =
+    statHTML('🔥 ' + currentStreak(), 'Streak') +
+    statHTML(bestStreak(), 'Best streak') +
+    statHTML(past.length ? `${hits}/${past.length}` : '—', 'Days hit');
+
+  $('#days').innerHTML = keys.length ? keys.map(dayHTML).join('') : '<div class="empty">Your logged days will show up here.</div>';
+}
+
+function dayHTML(k) {
+  const d = state.days[k], t = totals(k), g = targetsFor(k), hit = isHit(k);
+  const badge = hit ? '<span class="badge hit">🎖️ HIT</span>'
+    : k === today ? '<span class="badge">IN PROGRESS</span>'
+    : '<span class="badge miss">✗ MISSED</span>';
+  const bars = MACROS.map(m => {
+    const eaten = t[m.k], target = g[m.t], over = eaten > target;
+    const w = target > 0 ? Math.min(100, (eaten / target) * 100) : 0;
+    const cls = over ? (m.k === 'p' ? 'good' : 'over') : '';
+    return `<span>${m.short}</span><div class="bar"><i style="width:${w}%;background:${over && m.k !== 'p' ? 'var(--over)' : m.color}"></i></div>` +
+      `<span class="v ${cls}">${fmt(eaten)} / ${fmt(target)}${m.unit}</span>`;
+  }).join('');
+  const entries = d.entries.map(e =>
+    `<div><span>${esc(e.name)}</span><span>${fmt(e.cal)} cal · P${fmt(e.p)} C${fmt(e.c)} F${fmt(e.f)}</span></div>`).join('');
+  return `
+    <details class="day">
+      <summary><div class="day-head"><span>${dayLabel(k)}</span>${badge}</div><div class="bars">${bars}</div></summary>
+      <div class="day-entries">${entries}</div>
+    </details>`;
+}
+
+function renderWeightChart(ws, goal) {
+  const box = $('#w-chart');
+  if (!ws.length) { box.innerHTML = ''; return; }
+  const W = 320, H = 170, L = 34, Rm = 40, T = 12, B = 22;
+  const times = ws.map(p => parseKey(p.k).getTime());
+  const t0 = times[0], t1 = Math.max(times[times.length - 1], t0 + 86400000);
+  const vals = ws.map(p => p.w).concat(goal);
+  let lo = Math.floor(Math.min(...vals) - 2), hi = Math.ceil(Math.max(...vals) + 2);
+  const x = t => L + ((t - t0) / (t1 - t0)) * (W - L - Rm);
+  const y = v => T + ((hi - v) / (hi - lo)) * (H - T - B);
+
+  // 3 horizontal gridlines with labels
+  let grid = '';
+  for (let i = 0; i <= 2; i++) {
+    const v = lo + ((hi - lo) * i) / 2;
+    grid += `<line class="grid" x1="${L}" x2="${W - Rm}" y1="${y(v)}" y2="${y(v)}"/><text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${Math.round(v)}</text>`;
+  }
+  const pts = ws.map((p, i) => [x(times[i]), y(p.w)]);
+  const last = pts[pts.length - 1];
+  const fmtD = t => new Date(t).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+  box.innerHTML = `
+    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Weight trend">
+      ${grid}
+      <line class="goal" x1="${L}" x2="${W - Rm}" y1="${y(goal)}" y2="${y(goal)}"/>
+      <text x="${W - Rm + 4}" y="${y(goal) + 4}" style="fill:var(--good)">Goal</text>
+      ${pts.length > 1 ? `<polyline class="line" points="${pts.map(p => p.join(',')).join(' ')}"/>` : ''}
+      ${pts.length <= 40 ? pts.map(p => `<circle class="pt" cx="${p[0]}" cy="${p[1]}" r="4"/>`).join('') : ''}
+      <text class="lbl-strong" x="${last[0] + 7}" y="${last[1] - 6}">${fmt1(ws[ws.length - 1].w)}</text>
+      <text x="${L}" y="${H - 4}">${fmtD(t0)}</text>
+      <text x="${W - Rm}" y="${H - 4}" text-anchor="end">${fmtD(times[times.length - 1])}</text>
+      <line class="xhair" id="xhair" y1="${T}" y2="${H - B}" visibility="hidden"/>
+      <rect x="${L}" y="0" width="${W - L - Rm}" height="${H}" fill="transparent" id="hit"/>
+    </svg>
+    <div class="tip" id="tip" hidden></div>`;
+
+  // Crosshair + tooltip: nearest weigh-in to the finger/cursor.
+  const svg = box.querySelector('svg'), tip = $('#tip'), xh = $('#xhair');
+  const show = ev => {
+    const r = svg.getBoundingClientRect();
+    const sx = ((ev.clientX - r.left) / r.width) * W;
+    let best = 0;
+    pts.forEach((p, i) => { if (Math.abs(p[0] - sx) < Math.abs(pts[best][0] - sx)) best = i; });
+    const [px] = pts[best];
+    xh.setAttribute('x1', px); xh.setAttribute('x2', px); xh.setAttribute('visibility', 'visible');
+    tip.hidden = false;
+    tip.style.left = Math.max(50, Math.min(r.width - 50, (px / W) * r.width)) + 'px';
+    tip.textContent = `${fmtD(times[best])}: ${fmt1(ws[best].w)} lbs`;
+  };
+  const hide = () => { tip.hidden = true; xh.setAttribute('visibility', 'hidden'); };
+  svg.addEventListener('pointermove', show);
+  svg.addEventListener('pointerdown', show);
+  svg.addEventListener('pointerleave', hide);
+}
+
+function renderSettings() {
+  const s = state.settings;
+  $('#s-cal').value = s.cal; $('#s-protein').value = s.protein;
+  $('#s-carbs').value = s.carbs; $('#s-fat').value = s.fat;
+  $('#s-weight').value = s.weight; $('#s-goal').value = s.goalWeight;
+}
+
+function setView(v) {
+  view = v;
+  document.querySelectorAll('.view').forEach(el => { el.hidden = el.id !== 'view-' + v; });
+  document.querySelectorAll('.tabs button').forEach(b => b.classList.toggle('active', b.dataset.view === v));
+  $('#fab').hidden = !(v === 'today' || v === 'favs');
+  $('#fab').setAttribute('aria-label', v === 'favs' ? 'New favorite' : 'Add food');
+  window.scrollTo(0, 0);
+  render();
+}
+
+/* ================= Add / edit sheet ================= */
+
+let sheet = null; // { mode: 'add' | 'entry' | 'fav', id }
+const IN = ['cal', 'p', 'c', 'f'];
+
+function openSheet(mode, item) {
+  sheet = { mode, id: item && item.id };
+  $('#sheet-title').textContent =
+    mode === 'add' ? 'Log food' : mode === 'entry' ? 'Edit entry' : item ? 'Edit favorite' : 'New favorite';
+  $('#sheet-save').textContent = mode === 'add' ? 'Log it' : 'Save';
+  $('#in-name').value = item ? item.name : '';
+  IN.forEach(k => { $('#in-' + k).value = item ? +(+item[k]).toFixed(1) : ''; });
+  $('#fav-row').hidden = mode === 'fav';
+  $('#in-fav').checked = false;
+  $('#sheet-delete').hidden = !item;
+  $('#backdrop').hidden = false;
+  if (!item) $('#in-name').focus();
+}
+function closeSheet() { $('#backdrop').hidden = true; sheet = null; document.activeElement.blur(); }
+
+function readForm() {
+  const num = id => Math.max(0, parseFloat($('#in-' + id).value) || 0);
+  const data = { name: $('#in-name').value.trim(), p: num('p'), c: num('c'), f: num('f') };
+  const calRaw = $('#in-cal').value.trim();
+  data.cal = calRaw === '' ? Math.round(data.p * 4 + data.c * 4 + data.f * 9) : num('cal');
+  if (!data.name && !data.cal && !data.p && !data.c && !data.f) return null;
+  if (!data.name) data.name = 'Quick add';
+  return data;
+}
+
+$('#entry-form').addEventListener('submit', ev => {
+  ev.preventDefault();
+  const data = readForm();
+  if (!data) { $('#in-name').focus(); return; }
+  const { mode, id } = sheet;
+  const asFav = $('#in-fav').checked;
+  closeSheet();
+  if (mode === 'add') {
+    addEntry(data);
+    if (asFav) upsertFavorite(data);
+    toast(`Logged ${data.name}${asFav ? ' ★' : ''}`);
+  } else if (mode === 'entry') {
+    const e = todayDay().entries.find(x => x.id === id);
+    if (e) Object.assign(e, data);
+    if (asFav) upsertFavorite(data);
+    save(); render(); checkHoorah();
+    toast('Entry updated');
+  } else {
+    upsertFavorite(data, id);
+    render();
+    toast(id ? 'Favorite updated' : 'Favorite saved');
+  }
+});
+$('#sheet-cancel').addEventListener('click', closeSheet);
+$('#backdrop').addEventListener('click', ev => { if (ev.target.id === 'backdrop') closeSheet(); });
+$('#sheet-delete').addEventListener('click', () => {
+  const { mode, id } = sheet;
+  closeSheet();
+  if (mode === 'entry') deleteEntry(id);
+  if (mode === 'fav') {
+    const i = state.favorites.findIndex(f => f.id === id);
+    const [removed] = state.favorites.splice(i, 1);
+    save(); render();
+    toast(`Deleted ${removed.name}`, 'Undo', () => { state.favorites.splice(i, 0, removed); save(); render(); });
+  }
+});
+// Enter on the name field jumps to calories rather than submitting.
+$('#in-name').addEventListener('keydown', ev => {
+  if (ev.key === 'Enter') { ev.preventDefault(); $('#in-cal').focus(); }
+});
+
+/* ================= HOORAH ================= */
+
+function checkHoorah() {
+  const d = state.days[today];
+  if (d && !d.hoorah && isHit(today)) {
+    d.hoorah = true; // once per day, even if you edit later
+    save();
+    render();
+    celebrate();
+  }
+}
+
+let hoorahTimer;
+function celebrate() {
+  const s = currentStreak();
+  $('#hoorah-sub').innerHTML = `Protein ✔ Calories ✔<br>🔥 ${s}-day streak`;
+  $('#hoorah').hidden = false;
+  clearTimeout(hoorahTimer);
+  hoorahTimer = setTimeout(() => { $('#hoorah').hidden = true; }, 4500);
+  if (navigator.vibrate) navigator.vibrate([200, 80, 200, 80, 500]);
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) confetti();
+}
+$('#hoorah').addEventListener('click', () => { $('#hoorah').hidden = true; });
+
+function confetti() {
+  const cv = $('#confetti'), ctx = cv.getContext('2d');
+  const dpr = window.devicePixelRatio || 1, W = innerWidth, H = innerHeight;
+  cv.width = W * dpr; cv.height = H * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  cv.hidden = false;
+  const colors = ['#ff8a3d', '#4da6ff', '#b388ff', '#ffd23d', '#3ddc97', '#ff4d5e', '#ffffff'];
+  const parts = [];
+  // Two cannons from the bottom corners, plus a sprinkle from the top.
+  for (let i = 0; i < 220; i++) {
+    const side = i % 3; // 0 left, 1 right, 2 top
+    const burst = side === 2
+      ? { x: Math.random() * W, y: -20, vx: (Math.random() - 0.5) * 4, vy: Math.random() * 3 }
+      : { x: side ? W + 10 : -10, y: H * 0.95, vx: (side ? -1 : 1) * (4 + Math.random() * 10), vy: -(14 + Math.random() * 14) };
+    parts.push({ ...burst, w: 6 + Math.random() * 6, h: 10 + Math.random() * 8, r: Math.random() * 6, vr: (Math.random() - 0.5) * 0.4,
+      c: colors[i % colors.length], delay: side === 2 ? Math.random() * 600 : 0 });
+  }
+  const DUR = 4200, t0 = performance.now();
+  (function frame(now) {
+    const el = now - t0;
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalAlpha = Math.max(0, Math.min(1, (DUR - el) / 800));
+    for (const p of parts) {
+      if (el < p.delay) continue;
+      p.vy = Math.min(p.vy + 0.4, 7); p.vx *= 0.985;
+      p.x += p.vx; p.y += p.vy; p.r += p.vr;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r);
+      ctx.fillStyle = p.c; ctx.fillRect(-p.w / 2, -p.h / 2 * Math.abs(Math.cos(p.r * 1.7)), p.w, p.h * Math.abs(Math.cos(p.r * 1.7)) + 1);
+      ctx.restore();
+    }
+    if (el < DUR) requestAnimationFrame(frame); else { ctx.clearRect(0, 0, W, H); cv.hidden = true; }
+  })(t0);
+}
+
+/* ================= Toast ================= */
+
+let toastTimer;
+function toast(msg, action, fn) {
+  $('#toast-msg').textContent = msg;
+  const btn = $('#toast-btn');
+  btn.textContent = action || '';
+  btn.onclick = () => { $('#toast').hidden = true; if (fn) fn(); };
+  $('#toast').hidden = false;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { $('#toast').hidden = true; }, action ? 5000 : 2200);
+}
+
+/* ================= Events ================= */
+
+document.querySelector('.tabs').addEventListener('click', ev => {
+  const b = ev.target.closest('button[data-view]');
+  if (b) setView(b.dataset.view);
+});
+$('#fab').addEventListener('click', () => openSheet(view === 'favs' ? 'fav' : 'add'));
+
+document.addEventListener('click', ev => {
+  const t = ev.target.closest('[data-fav],[data-entry],[data-edit-fav],[data-del-weight]');
+  if (!t) return;
+  if (t.dataset.fav) logFavorite(t.dataset.fav);
+  else if (t.dataset.entry) openSheet('entry', todayDay().entries.find(e => e.id === t.dataset.entry));
+  else if (t.dataset.editFav) openSheet('fav', state.favorites.find(f => f.id === t.dataset.editFav));
+  else if (t.dataset.delWeight) {
+    const k = t.dataset.delWeight, w = state.weights[k];
+    delete state.weights[k];
+    syncCurrentWeight(); save(); render();
+    toast('Weigh-in deleted', 'Undo', () => { state.weights[k] = w; syncCurrentWeight(); save(); render(); });
+  }
+});
+
+$('#weight-form').addEventListener('submit', ev => {
+  ev.preventDefault();
+  const w = parseFloat($('#in-weight').value), k = $('#in-weight-date').value || today;
+  if (!(w > 0)) return;
+  state.weights[k] = Math.round(w * 10) / 10;
+  syncCurrentWeight(); save();
+  $('#in-weight').value = ''; $('#in-weight').blur();
+  render();
+  const toGo = state.settings.weight - state.settings.goalWeight;
+  toast(toGo > 0 ? `Logged ${fmt1(w)} lbs — ${fmt1(toGo)} to go` : `Logged ${fmt1(w)} lbs — GOAL REACHED 🎯`);
+});
+
+$('#settings-form').addEventListener('submit', ev => {
+  ev.preventDefault();
+  const v = id => parseFloat($(id).value);
+  const s = state.settings;
+  Object.assign(s, { cal: v('#s-cal'), protein: v('#s-protein'), carbs: v('#s-carbs'), fat: v('#s-fat'), goalWeight: v('#s-goal') });
+  const w = v('#s-weight');
+  if (w > 0 && w !== s.weight) { state.weights[today] = w; syncCurrentWeight(); }
+  if (state.days[today]) todayDay();
+  save(); render();
+  toast('Settings saved');
+  checkHoorah();
+});
+
+$('#export-btn').addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `operation-macro-${today}.json`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+});
+$('#import-file').addEventListener('change', async ev => {
+  const file = ev.target.files[0];
+  ev.target.value = '';
+  if (!file) return;
+  try {
+    const data = JSON.parse(await file.text());
+    if (!data || typeof data.days !== 'object') throw new Error('bad file');
+    if (!confirm('Replace everything on this phone with this backup?')) return;
+    localStorage.setItem(STORE_KEY, JSON.stringify(data));
+    state = load(); render();
+    toast('Backup restored');
+  } catch (e) { toast('That file is not an Operation Macro backup'); }
+});
+$('#reset-btn').addEventListener('click', () => {
+  if (!confirm('Erase ALL food logs, favorites, weigh-ins and settings?')) return;
+  if (!confirm('Really? This cannot be undone.')) return;
+  localStorage.removeItem(STORE_KEY);
+  state = load(); save(); render();
+  toast('All data erased');
+});
+
+/* ================= Midnight rollover ================= */
+
+function checkRollover() {
+  const k = dayKey();
+  if (k !== today) {
+    today = k;
+    $('#in-weight-date').value = today;
+    render();
+  }
+}
+setInterval(checkRollover, 15000);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) checkRollover(); });
+window.addEventListener('focus', checkRollover);
+
+/* ================= Boot ================= */
+
+save();
+setView('today');
+if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
+if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}

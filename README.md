@@ -20,3 +20,9 @@ Then open the URL on your phone:
 ## Updating
 After changing any file, bump `VERSION` in `sw.js` so installed copies refresh.
 `node make-icons.js` regenerates the icons.
+
+## Barcode scanning
+Scanning uses the phone camera and looks products up in Open Food Facts
+(https://world.openfoodfacts.org), a free public database. Anything you scan or
+type in from a label is saved on the phone, so repeat scans work offline.
+The barcode reader is bundled in `vendor/` (barcode-detector + zxing-wasm, MIT).

@@ -43,6 +43,7 @@ function load() {
     favorites: s.favorites || [],
     weights: s.weights || {},
     shopping: (s.shopping || []).map(i => ({ qty: '', ...i })),
+    barcodes: s.barcodes || {}, // barcode -> per-serving nutrition you've scanned or entered
   };
   // First run: record the starting weight so the trend has a starting point.
   if (fresh) st.weights[today] = st.settings.weight;
@@ -377,7 +378,7 @@ const SECTIONS = [
 // Checked in this order, so "frozen berries" lands in Frozen and "peanut butter" in Pantry.
 const SECTION_WORDS = [
   ['frozen', 'frozen|ice'],
-  ['pantry', 'peanut butter|almond butter|protein|powder|canned|broth|stock'],
+  ['pantry', 'peanut butter|almond butter|protein|powder|canned|broth|stock|chips|crisps|crackers|cookies|snacks?|pretzels|popcorn'],
   ['drinks', 'water|soda|coffee|tea|juice|drink|seltzer|gatorade|electrolyte|kombucha|beer|wine'],
   ['meat', 'chicken|beef|steak|turkey|pork|bacon|sausage|fish|salmon|tuna|shrimp|ground|ham|lamb|jerky|thigh|breast|tilapia|cod|ribs?|brisket|meat|deli'],
   ['dairy', 'milk|eggs?|cheese|yogurt|butter|cream|cottage|kefir|whites?'],
@@ -398,18 +399,23 @@ function parseItem(text) {
   return m ? { qty: m[1].replace(/\s*x$/i, '').trim(), name: cap(m[2].trim()) } : { qty: '', name: cap(text.trim()) };
 }
 
-function addShopItems(text) {
+function addShopItem(name, qty, code) {
+  const existing = state.shopping.find(i => i.name.toLowerCase() === name.toLowerCase());
+  if (existing) {
+    if (qty) existing.qty = qty;
+    if (code) existing.code = code;
+    if (!existing.done && !qty) return false;
+    existing.done = false;
+    return true;
+  }
+  state.shopping.push({ id: uid(), name, qty, section: guessSection(name), done: false, ...(code ? { code } : {}) });
+  return true;
+}
+function addShopItems(text, code) {
   let added = 0;
   for (const part of text.split(',').map(s => s.trim()).filter(Boolean)) {
     const { qty, name } = parseItem(part);
-    const existing = state.shopping.find(i => i.name.toLowerCase() === name.toLowerCase());
-    if (existing) {
-      if (qty) existing.qty = qty;
-      if (existing.done || qty) { existing.done = false; added++; }
-      continue;
-    }
-    state.shopping.push({ id: uid(), name, qty, section: guessSection(name), done: false });
-    added++;
+    if (addShopItem(name, qty, code)) added++;
   }
   save(); render();
   return added;
@@ -453,7 +459,9 @@ $('#it-delete').addEventListener('click', () => {
 // Opens the normal Log food form, pre-filled from a matching favorite if there is one.
 $('#it-log').addEventListener('click', () => {
   const name = $('#it-name').value.trim();
+  const item = state.shopping.find(i => i.id === itemId);
   closeItemSheet();
+  if (item && item.code) { openSheet('add', null, { name }); fillFromBarcode(item.code); return; }
   const fav = state.favorites.find(f => f.name.toLowerCase() === name.toLowerCase());
   openSheet('add', null, fav || { name });
 }); 
@@ -493,6 +501,8 @@ function openSheet(mode, item, prefill) {
   $('#in-fav').checked = false;
   $('#sheet-delete').hidden = !item;
   $('#backdrop').hidden = false;
+  resetScanState();
+  $('#scan-food').hidden = mode === 'entry';
   if (!item) (prefill ? $('#in-cal') : $('#in-name')).focus();
 }
 function closeSheet() { $('#backdrop').hidden = true; sheet = null; document.activeElement.blur(); }
@@ -511,8 +521,12 @@ $('#entry-form').addEventListener('submit', ev => {
   ev.preventDefault();
   const data = readForm();
   if (!data) { $('#in-name').focus(); return; }
-  const { mode, id } = sheet;
+  const { mode, id, code } = sheet;
   const asFav = $('#in-fav').checked;
+  if (code) {
+    rememberBarcode(code, data);
+    if (servings !== 1) data.name = `${data.name} ×${servings}`;
+  }
   closeSheet();
   if (mode === 'add') {
     addEntry(data);
@@ -546,6 +560,232 @@ $('#sheet-delete').addEventListener('click', () => {
 // Enter on the name field jumps to calories rather than submitting.
 $('#in-name').addEventListener('keydown', ev => {
   if (ev.key === 'Enter') { ev.preventDefault(); $('#in-cal').focus(); }
+});
+
+/* ================= Barcode scanning ================= */
+
+const OFF_URL = 'https://world.openfoodfacts.org/api/v2/product/';
+const FORMATS = ['ean_13', 'ean_8', 'upc_a', 'upc_e'];
+let detectorPromise = null;
+
+function loadScript(src) {
+  return new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = src; s.onload = resolve; s.onerror = () => reject(new Error('Could not load ' + src));
+    document.head.appendChild(s);
+  });
+}
+// Android Chrome has a built-in barcode reader; iPhone uses the bundled one in vendor/.
+function getDetector() {
+  if (!detectorPromise) detectorPromise = (async () => {
+    if ('BarcodeDetector' in window) {
+      try {
+        const ok = await window.BarcodeDetector.getSupportedFormats();
+        if (FORMATS.some(f => ok.includes(f))) return new window.BarcodeDetector({ formats: FORMATS });
+      } catch (e) { /* fall through to the bundled reader */ }
+    }
+    await loadScript('vendor/barcode-detector.js');
+    const api = window.BarcodeDetectionAPI;
+    api.prepareZXingModule({
+      overrides: { locateFile: (path, prefix) => path.endsWith('.wasm') ? new URL('vendor/' + path, location.href).href : prefix + path },
+    });
+    return new api.BarcodeDetector({ formats: FORMATS });
+  })().catch(e => { detectorPromise = null; throw e; });
+  return detectorPromise;
+}
+
+let scanStream = null, scanResolve = null, scanRAF = 0;
+
+// Opens the camera; resolves with the barcode digits, or null if cancelled.
+function scanBarcode() {
+  return new Promise(resolve => {
+    scanResolve = resolve;
+    $('#scan-code').value = '';
+    $('#scan-msg').textContent = 'Starting camera…';
+    $('#scanner').hidden = false;
+    startCamera();
+  });
+}
+async function startCamera() {
+  let stream;
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment', width: { ideal: 1280 }, height: { ideal: 720 } }, audio: false });
+  } catch (e) {
+    $('#scan-msg').textContent = e && e.name === 'NotAllowedError'
+      ? 'Camera access is off. Allow it, or type the number below.'
+      : 'Camera not available. Type the barcode number below.';
+    return;
+  }
+  if (!scanResolve) { stream.getTracks().forEach(t => t.stop()); return; } // cancelled while starting
+  scanStream = stream;
+  const video = $('#scan-video');
+  video.srcObject = stream;
+  try { await video.play(); } catch (e) { /* autoplay attribute covers it */ }
+  let detector;
+  try { detector = await getDetector(); }
+  catch (e) { $('#scan-msg').textContent = 'Scanner failed to load. Type the barcode number below.'; return; }
+  if (!scanStream) return;
+  $('#scan-msg').textContent = 'Point at a barcode';
+  let busy = false, last = 0;
+  const tick = async now => {
+    if (!scanStream) return;
+    if (!busy && now - last > 150 && video.readyState >= 2) {
+      busy = true; last = now;
+      try {
+        const found = await detector.detect(video);
+        if (found.length && scanStream) { finishScan(found[0].rawValue); return; }
+      } catch (e) { /* keep trying */ }
+      busy = false;
+    }
+    scanRAF = requestAnimationFrame(tick);
+  };
+  scanRAF = requestAnimationFrame(tick);
+}
+function stopCamera() {
+  cancelAnimationFrame(scanRAF);
+  if (scanStream) scanStream.getTracks().forEach(t => t.stop());
+  scanStream = null;
+  $('#scan-video').srcObject = null;
+}
+function finishScan(code) {
+  stopCamera();
+  $('#scanner').hidden = true;
+  const resolve = scanResolve;
+  scanResolve = null;
+  if (code && navigator.vibrate) navigator.vibrate(60);
+  if (resolve) resolve(code ? String(code).replace(/\D/g, '') : null);
+}
+$('#scan-cancel').addEventListener('click', () => finishScan(null));
+$('#scan-manual').addEventListener('submit', ev => {
+  ev.preventDefault();
+  const code = $('#scan-code').value.replace(/\D/g, '');
+  if (code.length >= 6) finishScan(code);
+});
+
+// Your own saved barcodes first, then Open Food Facts.
+// Returns product info, null if not found, or throws if offline.
+async function lookupBarcode(code) {
+  if (state.barcodes[code]) return { ...state.barcodes[code], code, source: 'saved' };
+  const res = await fetch(`${OFF_URL}${code}.json?fields=product_name,product_name_en,brands,serving_size,serving_quantity,nutriments`);
+  const json = await res.json().catch(() => null);
+  if (!json || json.status !== 1 || !json.product) return null;
+  return fromOpenFoodFacts(json.product, code);
+}
+function fromOpenFoodFacts(p, code) {
+  const n = p.nutriments || {};
+  const num = key => { const v = parseFloat(n[key]); return isFinite(v) ? v : null; };
+  const pick = suffix => {
+    let cal = num('energy-kcal' + suffix);
+    if (cal == null) { const kj = num('energy-kj' + suffix) ?? num('energy' + suffix); if (kj != null) cal = kj / 4.184; }
+    return { cal, p: num('proteins' + suffix), c: num('carbohydrates' + suffix), f: num('fat' + suffix) };
+  };
+  let per = pick('_serving'), serving = (p.serving_size || '').trim();
+  if (per.cal == null && per.p == null) {
+    // No per-serving numbers: scale from per-100 g using the serving weight, or fall back to 100 g.
+    const h = pick('_100g'), grams = parseFloat(p.serving_quantity);
+    const m = grams > 0 ? grams / 100 : 1;
+    if (!(grams > 0)) serving = '100 g';
+    else if (!serving) serving = `${grams} g`;
+    per = Object.fromEntries(Object.entries(h).map(([k, v]) => [k, v == null ? null : v * m]));
+  }
+  const brand = (p.brands || '').split(',')[0].trim();
+  let name = (p.product_name_en || p.product_name || '').trim();
+  if (brand && !name.toLowerCase().includes(brand.toLowerCase())) name = `${brand} ${name}`.trim();
+  const r = (v, d) => v == null ? null : Math.round(v * d) / d;
+  return {
+    code, source: 'off', name: name || 'Scanned item', serving,
+    cal: r(per.cal, 1), p: r(per.p, 10), c: r(per.c, 10), f: r(per.f, 10),
+    hasNutrition: [per.cal, per.p, per.c, per.f].some(v => v != null),
+  };
+}
+function rememberBarcode(code, data) {
+  const prev = state.barcodes[code] || {};
+  const per = k => Math.round(((+data[k] || 0) / servings) * 10) / 10;
+  state.barcodes[code] = { name: data.name, serving: (sheet && sheet.serving) || prev.serving || '', cal: per('cal'), p: per('p'), c: per('c'), f: per('f') };
+  save();
+}
+
+/* ---- Servings stepper in the Log food form ---- */
+let servings = 1, perServing = null; // macros for ONE serving while a barcode is in play
+
+function resetScanState() {
+  servings = 1; perServing = null;
+  $('#serving-row').hidden = true;
+  $('#scan-note').hidden = true;
+  $('#in-servings').value = 1;
+}
+function setServings(v, fromInput) {
+  if (!(v > 0) || !perServing) return;
+  servings = Math.round(v * 100) / 100;
+  if (!fromInput) $('#in-servings').value = servings;
+  IN.forEach(k => {
+    const base = perServing[k];
+    $('#in-' + k).value = base == null ? '' : +(base * servings).toFixed(k === 'cal' ? 0 : 1);
+  });
+}
+function scanNote(text) { $('#scan-note').textContent = text; $('#scan-note').hidden = !text; }
+
+async function fillFromBarcode(code) {
+  if (!sheet) return;
+  sheet.code = code;
+  $('#serving-row').hidden = false;
+  $('#serving-info').textContent = '';
+  perServing = { cal: null, p: null, c: null, f: null };
+  scanNote('Looking up ' + code + '…');
+  let info;
+  try { info = await lookupBarcode(code); } catch (e) { info = undefined; }
+  if (!sheet || sheet.code !== code) return; // form was closed or rescanned meanwhile
+  if (info && info.hasNutrition !== false) {
+    $('#in-name').value = info.name;
+    perServing = { cal: info.cal, p: info.p, c: info.c, f: info.f };
+    sheet.serving = info.serving;
+    setServings(1);
+    $('#serving-info').textContent = info.serving ? `1 serving = ${info.serving}` : 'Per serving';
+    scanNote(info.source === 'saved' ? '✓ From your saved barcodes' : '✓ Found in Open Food Facts. Check it against the label.');
+  } else {
+    if (info && info.name) $('#in-name').value = info.name;
+    IN.forEach(k => { $('#in-' + k).value = ''; });
+    $('#serving-info').textContent = 'Enter 1 serving from the label';
+    scanNote(info === undefined
+      ? "Couldn't reach the food database. Enter it from the label and it'll be saved for next time."
+      : "No nutrition info for this one. Enter it from the label and it'll be saved for next time.");
+  }
+}
+
+$('#scan-food').addEventListener('click', async () => {
+  const code = await scanBarcode();
+  if (code) fillFromBarcode(code);
+});
+// Typing in a macro box updates the per-serving numbers, so the stepper scales what you typed.
+IN.forEach(k => $('#in-' + k).addEventListener('input', () => {
+  if (!perServing) return;
+  const v = parseFloat($('#in-' + k).value);
+  perServing[k] = isFinite(v) ? v / servings : null;
+}));
+$('#in-servings').addEventListener('input', () => setServings(parseFloat($('#in-servings').value), true));
+$('#srv-minus').addEventListener('click', () => setServings(Math.max(0.5, servings - 0.5)));
+$('#srv-plus').addEventListener('click', () => setServings(servings + 0.5));
+
+/* ---- Scan into the shopping list ---- */
+let pendingListCode = null;
+$('#scan-list').addEventListener('click', async () => {
+  const code = await scanBarcode();
+  if (!code) return;
+  toast('Looking up…');
+  let info;
+  try { info = await lookupBarcode(code); } catch (e) { info = undefined; }
+  if (info && info.name && info.name !== 'Scanned item') {
+    if (info.source === 'off' && info.hasNutrition) {
+      state.barcodes[code] = { name: info.name, serving: info.serving, cal: info.cal ?? 0, p: info.p ?? 0, c: info.c ?? 0, f: info.f ?? 0 };
+    }
+    addShopItem(info.name, '', code);
+    save(); render();
+    toast(`Added ${info.name}`);
+  } else {
+    pendingListCode = code;
+    $('#in-item').focus();
+    toast(info === undefined ? "Couldn't reach the food database. Type the name and tap Add." : 'Not found. Type the name and tap Add.');
+  }
 });
 
 /* ================= HOORAH ================= */
@@ -708,7 +948,8 @@ $('#reset-btn').addEventListener('click', () => {
 $('#list-form').addEventListener('submit', ev => {
   ev.preventDefault();
   const input = $('#in-item');
-  if (addShopItems(input.value)) input.value = '';
+  const code = pendingListCode && !input.value.includes(',') ? pendingListCode : undefined;
+  if (addShopItems(input.value, code)) { input.value = ''; pendingListCode = null; }
   input.focus(); // stay ready for the next item
 });
 $('#list-clear').addEventListener('click', () => {

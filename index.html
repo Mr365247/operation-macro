@@ -69,7 +69,8 @@
     <!-- SHOPPING LIST -->
     <section class="view" id="view-list" hidden>
       <form id="list-form" class="list-add" autocomplete="off">
-        <input id="in-item" type="text" placeholder="e.g. 3 lb chicken, eggs" enterkeyhint="done">
+        <input id="in-item" type="text" placeholder="e.g. 3 lb chicken" enterkeyhint="done">
+        <button class="btn" type="button" id="scan-list" aria-label="Scan barcode">📷</button>
         <button class="btn primary" type="submit">Add</button>
       </form>
       <div id="list-fav-wrap">
@@ -155,7 +156,17 @@
     <form class="sheet" id="entry-form" autocomplete="off">
       <div class="grab"></div>
       <h2 id="sheet-title">Log food</h2>
+      <button class="btn block scan-btn" type="button" id="scan-food">📷 Scan barcode</button>
+      <p class="scan-note" id="scan-note" hidden></p>
       <label class="field"><span>Food</span><input id="in-name" type="text" placeholder="e.g. Chicken thighs" enterkeyhint="next"></label>
+      <div class="serving-row" id="serving-row" hidden>
+        <div><div class="serving-label">Servings</div><div class="muted small" id="serving-info"></div></div>
+        <div class="stepper">
+          <button type="button" id="srv-minus" aria-label="Fewer servings">−</button>
+          <input id="in-servings" type="number" inputmode="decimal" step="any" min="0" value="1">
+          <button type="button" id="srv-plus" aria-label="More servings">+</button>
+        </div>
+      </div>
       <div class="grid2">
         <label class="field cal"><span>Calories</span><input id="in-cal" type="number" inputmode="decimal" step="any" min="0" placeholder="auto"></label>
         <label class="field pro"><span>Protein g</span><input id="in-p" type="number" inputmode="decimal" step="any" min="0" placeholder="0"></label>
@@ -169,6 +180,18 @@
         <button class="btn danger" type="button" id="sheet-delete">Delete</button>
         <button class="btn" type="button" id="sheet-cancel">Cancel</button>
       </div>
+    </form>
+  </div>
+
+  <!-- Barcode scanner -->
+  <div class="scanner" id="scanner" hidden>
+    <video id="scan-video" playsinline muted autoplay></video>
+    <div class="scan-frame"></div>
+    <div class="scan-top" id="scan-msg">Point at a barcode</div>
+    <form class="scan-bottom" id="scan-manual" autocomplete="off">
+      <input id="scan-code" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="Or type the barcode number">
+      <button class="btn primary" type="submit">Look up</button>
+      <button class="btn block" type="button" id="scan-cancel">Cancel</button>
     </form>
   </div>
 

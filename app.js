@@ -42,7 +42,7 @@ function load() {
     days: s.days || {},
     favorites: s.favorites || [],
     weights: s.weights || {},
-    shopping: s.shopping || [],
+    shopping: (s.shopping || []).map(i => ({ qty: '', ...i })),
   };
   // First run: record the starting weight so the trend has a starting point.
   if (fresh) st.weights[today] = st.settings.weight;
@@ -338,15 +338,21 @@ function renderWeightChart(ws, goal) {
 }
 
 function renderList() {
+  state.shopping.forEach(i => { if (!i.section) i.section = guessSection(i.name); });
   const need = state.shopping.filter(i => !i.done);
   const done = state.shopping.filter(i => i.done).sort((a, b) => (b.doneAt || 0) - (a.doneAt || 0));
   const row = i => `
     <div class="shop-row ${i.done ? 'done' : ''}">
-      <button class="shop-item" data-shop="${i.id}"><span class="box">✓</span><span class="shop-name">${esc(i.name)}</span></button>
-      <button class="icon-btn" data-del-shop="${i.id}" aria-label="Remove ${esc(i.name)}">×</button>
+      <button class="shop-item" data-shop="${i.id}"><span class="box">✓</span><span class="shop-name">${esc(i.name)}</span>${i.qty ? `<span class="shop-qty">${esc(i.qty)}</span>` : ''}</button>
+      <button class="icon-btn" data-edit-shop="${i.id}" aria-label="Edit ${esc(i.name)}">✎</button>
     </div>`;
+  // "To get" is grouped by store section, in the order you'd walk the store.
+  const grouped = SECTIONS.map(sec => {
+    const items = need.filter(i => (i.section || 'other') === sec.id);
+    return items.length ? `<div class="shop-sec">${sec.icon} ${sec.label}</div>` + items.map(row).join('') : '';
+  }).join('');
   $('#list-need-title').textContent = need.length ? `To get (${need.length})` : 'To get';
-  $('#list-need').innerHTML = need.length ? need.map(row).join('')
+  $('#list-need').innerHTML = need.length ? grouped
     : `<div class="empty">${done.length ? '🎉 Got everything on the list!' : 'List is empty. Add what you need above.'}</div>`;
   $('#list-done-wrap').hidden = !done.length;
   $('#list-done').innerHTML = done.map(row).join('');
@@ -357,17 +363,100 @@ function renderList() {
   $('#list-favs').innerHTML = favs.map(f => `<button class="chip" data-shop-fav="${f.id}">+ ${esc(f.name)}</button>`).join('');
 }
 
+// Store walk order.
+const SECTIONS = [
+  { id: 'produce', icon: '🥬', label: 'Produce' },
+  { id: 'meat',    icon: '🥩', label: 'Meat & Seafood' },
+  { id: 'dairy',   icon: '🥚', label: 'Dairy & Eggs' },
+  { id: 'bakery',  icon: '🍞', label: 'Bakery' },
+  { id: 'pantry',  icon: '🥫', label: 'Pantry' },
+  { id: 'frozen',  icon: '🧊', label: 'Frozen' },
+  { id: 'drinks',  icon: '🥤', label: 'Drinks' },
+  { id: 'other',   icon: '🛒', label: 'Other' },
+];
+// Checked in this order, so "frozen berries" lands in Frozen and "peanut butter" in Pantry.
+const SECTION_WORDS = [
+  ['frozen', 'frozen|ice'],
+  ['pantry', 'peanut butter|almond butter|protein|powder|canned|broth|stock'],
+  ['drinks', 'water|soda|coffee|tea|juice|drink|seltzer|gatorade|electrolyte|kombucha|beer|wine'],
+  ['meat', 'chicken|beef|steak|turkey|pork|bacon|sausage|fish|salmon|tuna|shrimp|ground|ham|lamb|jerky|thigh|breast|tilapia|cod|ribs?|brisket|meat|deli'],
+  ['dairy', 'milk|eggs?|cheese|yogurt|butter|cream|cottage|kefir|whites?'],
+  ['bakery', 'bread|bagels?|tortillas?|buns?|rolls?|wraps?|pita|muffins?'],
+  ['produce', 'apples?|bananas?|berry|berries|spinach|lettuce|kale|broccoli|avocados?|tomato(es)?|onions?|garlic|peppers?|potato(es)?|carrots?|cucumbers?|lemons?|limes?|fruit|veg(gie|etable)s?|salad|celery|mushrooms?|zucchini|cauliflower|asparagus|grapes?|oranges?|herbs?|cilantro|parsley|greens|cabbage|squash|corn|beans? sprouts?'],
+  ['pantry', 'rice|oats?|oatmeal|pasta|beans?|oil|sauce|spices?|seasoning|nuts?|almonds?|peanuts?|cereal|flour|sugar|salt|honey|soup|bars?|chips|salsa|vinegar|mustard|ketchup|mayo|jerky'],
+];
+function guessSection(name) {
+  const n = String(name || '').toLowerCase();
+  for (const [sec, words] of SECTION_WORDS) if (new RegExp(`\\b(${words})\\b`).test(n)) return sec;
+  return 'other';
+}
+// "3 lb chicken" -> qty "3 lb", name "chicken". "2x eggs" -> qty "2".
+const QTY_RE = /^(\d+(?:[.\/]\d+)?\s*(?:x|lbs?|oz|kg|g|dozen|doz|packs?|bags?|cans?|bottles?|box(?:es)?|ct|cartons?|jars?|bunch(?:es)?|heads?)?)\s+(.+)$/i;
+function parseItem(text) {
+  const m = text.match(QTY_RE);
+  const cap = n => n.charAt(0).toUpperCase() + n.slice(1);
+  return m ? { qty: m[1].replace(/\s*x$/i, '').trim(), name: cap(m[2].trim()) } : { qty: '', name: cap(text.trim()) };
+}
+
 function addShopItems(text) {
   let added = 0;
-  for (const name of text.split(',').map(s => s.trim()).filter(Boolean)) {
+  for (const part of text.split(',').map(s => s.trim()).filter(Boolean)) {
+    const { qty, name } = parseItem(part);
     const existing = state.shopping.find(i => i.name.toLowerCase() === name.toLowerCase());
-    if (existing) { if (existing.done) { existing.done = false; added++; } continue; }
-    state.shopping.push({ id: uid(), name, done: false });
+    if (existing) {
+      if (qty) existing.qty = qty;
+      if (existing.done || qty) { existing.done = false; added++; }
+      continue;
+    }
+    state.shopping.push({ id: uid(), name, qty, section: guessSection(name), done: false });
     added++;
   }
   save(); render();
   return added;
 }
+
+/* ---- Shopping item sheet ---- */
+let itemId = null, itemSection = 'other';
+function paintSections() {
+  $('#it-sections').innerHTML = SECTIONS.map(s =>
+    `<button type="button" data-sec="${s.id}" class="${s.id === itemSection ? 'on' : ''}">${s.icon} ${s.label}</button>`).join('');
+}
+function openItemSheet(id) {
+  const it = state.shopping.find(i => i.id === id);
+  if (!it) return;
+  itemId = id; itemSection = it.section || 'other';
+  $('#it-name').value = it.name; $('#it-qty').value = it.qty || '';
+  paintSections();
+  $('#item-backdrop').hidden = false;
+}
+function closeItemSheet() { $('#item-backdrop').hidden = true; itemId = null; document.activeElement.blur(); }
+$('#it-sections').addEventListener('click', ev => {
+  const b = ev.target.closest('[data-sec]');
+  if (b) { itemSection = b.dataset.sec; paintSections(); }
+});
+$('#item-form').addEventListener('submit', ev => {
+  ev.preventDefault();
+  const it = state.shopping.find(i => i.id === itemId);
+  if (it) Object.assign(it, { name: $('#it-name').value.trim() || it.name, qty: $('#it-qty').value.trim(), section: itemSection });
+  closeItemSheet(); save(); render();
+});
+$('#it-cancel').addEventListener('click', closeItemSheet);
+$('#item-backdrop').addEventListener('click', ev => { if (ev.target.id === 'item-backdrop') closeItemSheet(); });
+$('#it-delete').addEventListener('click', () => {
+  const i = state.shopping.findIndex(x => x.id === itemId);
+  closeItemSheet();
+  if (i < 0) return;
+  const [removed] = state.shopping.splice(i, 1);
+  save(); render();
+  toast(`Removed ${removed.name}`, 'Undo', () => { state.shopping.splice(i, 0, removed); save(); render(); });
+});
+// Opens the normal Log food form, pre-filled from a matching favorite if there is one.
+$('#it-log').addEventListener('click', () => {
+  const name = $('#it-name').value.trim();
+  closeItemSheet();
+  const fav = state.favorites.find(f => f.name.toLowerCase() === name.toLowerCase());
+  openSheet('add', null, fav || { name });
+}); 
 
 function renderSettings() {
   const s = state.settings;
@@ -392,18 +481,19 @@ function setView(v) {
 let sheet = null; // { mode: 'add' | 'entry' | 'fav', id }
 const IN = ['cal', 'p', 'c', 'f'];
 
-function openSheet(mode, item) {
+function openSheet(mode, item, prefill) {
   sheet = { mode, id: item && item.id };
+  const src = item || prefill;
   $('#sheet-title').textContent =
     mode === 'add' ? 'Log food' : mode === 'entry' ? 'Edit entry' : item ? 'Edit favorite' : 'New favorite';
   $('#sheet-save').textContent = mode === 'add' ? 'Log it' : 'Save';
-  $('#in-name').value = item ? item.name : '';
-  IN.forEach(k => { $('#in-' + k).value = item ? +(+item[k]).toFixed(1) : ''; });
+  $('#in-name').value = src ? src.name : '';
+  IN.forEach(k => { $('#in-' + k).value = src && src[k] != null ? +(+src[k]).toFixed(1) : ''; });
   $('#fav-row').hidden = mode === 'fav';
   $('#in-fav').checked = false;
   $('#sheet-delete').hidden = !item;
   $('#backdrop').hidden = false;
-  if (!item) $('#in-name').focus();
+  if (!item) (prefill ? $('#in-cal') : $('#in-name')).focus();
 }
 function closeSheet() { $('#backdrop').hidden = true; sheet = null; document.activeElement.blur(); }
 
@@ -538,7 +628,7 @@ document.querySelector('.tabs').addEventListener('click', ev => {
 $('#fab').addEventListener('click', () => openSheet(view === 'favs' ? 'fav' : 'add'));
 
 document.addEventListener('click', ev => {
-  const t = ev.target.closest('[data-fav],[data-entry],[data-edit-fav],[data-del-weight],[data-shop],[data-del-shop],[data-shop-fav]');
+  const t = ev.target.closest('[data-fav],[data-entry],[data-edit-fav],[data-del-weight],[data-shop],[data-edit-shop],[data-shop-fav]');
   if (!t) return;
   if (t.dataset.fav) logFavorite(t.dataset.fav);
   else if (t.dataset.entry) openSheet('entry', todayDay().entries.find(e => e.id === t.dataset.entry));
@@ -548,12 +638,7 @@ document.addEventListener('click', ev => {
     if (item) { item.done = !item.done; item.doneAt = Date.now(); save(); render(); }
     if (navigator.vibrate) navigator.vibrate(10);
   }
-  else if (t.dataset.delShop) {
-    const i = state.shopping.findIndex(x => x.id === t.dataset.delShop);
-    const [removed] = state.shopping.splice(i, 1);
-    save(); render();
-    toast(`Removed ${removed.name}`, 'Undo', () => { state.shopping.splice(i, 0, removed); save(); render(); });
-  }
+  else if (t.dataset.editShop) openItemSheet(t.dataset.editShop);
   else if (t.dataset.shopFav) {
     const fav = state.favorites.find(f => f.id === t.dataset.shopFav);
     if (fav) { addShopItems(fav.name); toast(`Added ${fav.name} to list`); }

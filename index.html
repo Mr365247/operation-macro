@@ -69,7 +69,7 @@
     <!-- SHOPPING LIST -->
     <section class="view" id="view-list" hidden>
       <form id="list-form" class="list-add" autocomplete="off">
-        <input id="in-item" type="text" placeholder="Add item…" enterkeyhint="done">
+        <input id="in-item" type="text" placeholder="e.g. 3 lb chicken, eggs" enterkeyhint="done">
         <button class="btn primary" type="submit">Add</button>
       </form>
       <div id="list-fav-wrap">
@@ -129,6 +129,26 @@
     <button data-view="history"><span>📈</span>History</button>
     <button data-view="settings"><span>⚙️</span>Settings</button>
   </nav>
+
+  <!-- Shopping item sheet -->
+  <div class="backdrop" id="item-backdrop" hidden>
+    <form class="sheet" id="item-form" autocomplete="off">
+      <div class="grab"></div>
+      <h2>Edit item</h2>
+      <div class="grid2 item-grid">
+        <label class="field"><span>Item</span><input id="it-name" type="text"></label>
+        <label class="field"><span>Quantity</span><input id="it-qty" type="text" placeholder="e.g. 3 lb"></label>
+      </div>
+      <div class="field"><span>Store section</span></div>
+      <div class="sec-pick" id="it-sections"></div>
+      <button class="btn primary block big" type="submit">Save</button>
+      <button class="btn block" type="button" id="it-log">🍽️ Log as food</button>
+      <div class="btn-row">
+        <button class="btn danger" type="button" id="it-delete">Delete</button>
+        <button class="btn" type="button" id="it-cancel">Cancel</button>
+      </div>
+    </form>
+  </div>
 
   <!-- Add / edit sheet -->
   <div class="backdrop" id="backdrop" hidden>

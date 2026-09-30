@@ -211,7 +211,7 @@ input:focus { border-color: var(--pro); }
 .fab:active { transform: scale(0.94); }
 .tabs {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 6;
-  display: grid; grid-template-columns: repeat(4, 1fr);
+  display: grid; grid-template-columns: repeat(5, 1fr);
   height: calc(var(--tabs-h) + var(--safe-b)); padding-bottom: var(--safe-b);
   background: rgba(24, 27, 34, 0.96); border-top: 1px solid var(--line);
   backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
@@ -263,3 +263,23 @@ input:focus { border-color: var(--pro); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+/* ---------- Shopping list ---------- */
+.list-add { display: flex; gap: 8px; }
+.list-add input { flex: 1; min-width: 0; }
+.shop-row { display: flex; gap: 8px; }
+.shop-item {
+  flex: 1; min-width: 0; display: flex; align-items: center; gap: 14px; min-height: 60px;
+  text-align: left; background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  padding: 10px 14px; font-size: 19px; font-weight: 700;
+}
+.shop-item:active { background: var(--card2); }
+.shop-name { overflow-wrap: anywhere; }
+.box {
+  flex: 0 0 30px; height: 30px; border-radius: 50%; border: 2px solid var(--muted);
+  display: flex; align-items: center; justify-content: center;
+  color: transparent; font-size: 17px; font-weight: 900;
+}
+.shop-row.done .shop-item { background: transparent; }
+.shop-row.done .box { background: var(--good); border-color: var(--good); color: #06170f; }
+.shop-row.done .shop-name { text-decoration: line-through; color: var(--muted); font-weight: 600; }

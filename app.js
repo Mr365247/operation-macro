@@ -42,6 +42,7 @@ function load() {
     days: s.days || {},
     favorites: s.favorites || [],
     weights: s.weights || {},
+    shopping: s.shopping || [],
   };
   // First run: record the starting weight so the trend has a starting point.
   if (fresh) st.weights[today] = st.settings.weight;
@@ -154,6 +155,7 @@ function render() {
   if (view === 'today') renderToday();
   if (view === 'favs') renderFavs();
   if (view === 'history') renderHistory();
+  if (view === 'list') renderList();
   if (view === 'settings') renderSettings();
 }
 
@@ -335,6 +337,38 @@ function renderWeightChart(ws, goal) {
   svg.addEventListener('pointerleave', hide);
 }
 
+function renderList() {
+  const need = state.shopping.filter(i => !i.done);
+  const done = state.shopping.filter(i => i.done).sort((a, b) => (b.doneAt || 0) - (a.doneAt || 0));
+  const row = i => `
+    <div class="shop-row ${i.done ? 'done' : ''}">
+      <button class="shop-item" data-shop="${i.id}"><span class="box">✓</span><span class="shop-name">${esc(i.name)}</span></button>
+      <button class="icon-btn" data-del-shop="${i.id}" aria-label="Remove ${esc(i.name)}">×</button>
+    </div>`;
+  $('#list-need-title').textContent = need.length ? `To get (${need.length})` : 'To get';
+  $('#list-need').innerHTML = need.length ? need.map(row).join('')
+    : `<div class="empty">${done.length ? '🎉 Got everything on the list!' : 'List is empty. Add what you need above.'}</div>`;
+  $('#list-done-wrap').hidden = !done.length;
+  $('#list-done').innerHTML = done.map(row).join('');
+
+  const onList = new Set(need.map(i => i.name.toLowerCase()));
+  const favs = state.favorites.filter(f => !onList.has(f.name.toLowerCase())).sort((a, b) => a.name.localeCompare(b.name));
+  $('#list-fav-wrap').hidden = !favs.length;
+  $('#list-favs').innerHTML = favs.map(f => `<button class="chip" data-shop-fav="${f.id}">+ ${esc(f.name)}</button>`).join('');
+}
+
+function addShopItems(text) {
+  let added = 0;
+  for (const name of text.split(',').map(s => s.trim()).filter(Boolean)) {
+    const existing = state.shopping.find(i => i.name.toLowerCase() === name.toLowerCase());
+    if (existing) { if (existing.done) { existing.done = false; added++; } continue; }
+    state.shopping.push({ id: uid(), name, done: false });
+    added++;
+  }
+  save(); render();
+  return added;
+}
+
 function renderSettings() {
   const s = state.settings;
   $('#s-cal').value = s.cal; $('#s-protein').value = s.protein;
@@ -350,6 +384,7 @@ function setView(v) {
   $('#fab').setAttribute('aria-label', v === 'favs' ? 'New favorite' : 'Add food');
   window.scrollTo(0, 0);
   render();
+  updateWakeLock();
 }
 
 /* ================= Add / edit sheet ================= */
@@ -503,11 +538,26 @@ document.querySelector('.tabs').addEventListener('click', ev => {
 $('#fab').addEventListener('click', () => openSheet(view === 'favs' ? 'fav' : 'add'));
 
 document.addEventListener('click', ev => {
-  const t = ev.target.closest('[data-fav],[data-entry],[data-edit-fav],[data-del-weight]');
+  const t = ev.target.closest('[data-fav],[data-entry],[data-edit-fav],[data-del-weight],[data-shop],[data-del-shop],[data-shop-fav]');
   if (!t) return;
   if (t.dataset.fav) logFavorite(t.dataset.fav);
   else if (t.dataset.entry) openSheet('entry', todayDay().entries.find(e => e.id === t.dataset.entry));
   else if (t.dataset.editFav) openSheet('fav', state.favorites.find(f => f.id === t.dataset.editFav));
+  else if (t.dataset.shop) {
+    const item = state.shopping.find(i => i.id === t.dataset.shop);
+    if (item) { item.done = !item.done; item.doneAt = Date.now(); save(); render(); }
+    if (navigator.vibrate) navigator.vibrate(10);
+  }
+  else if (t.dataset.delShop) {
+    const i = state.shopping.findIndex(x => x.id === t.dataset.delShop);
+    const [removed] = state.shopping.splice(i, 1);
+    save(); render();
+    toast(`Removed ${removed.name}`, 'Undo', () => { state.shopping.splice(i, 0, removed); save(); render(); });
+  }
+  else if (t.dataset.shopFav) {
+    const fav = state.favorites.find(f => f.id === t.dataset.shopFav);
+    if (fav) { addShopItems(fav.name); toast(`Added ${fav.name} to list`); }
+  }
   else if (t.dataset.delWeight) {
     const k = t.dataset.delWeight, w = state.weights[k];
     delete state.weights[k];
@@ -569,6 +619,37 @@ $('#reset-btn').addEventListener('click', () => {
   state = load(); save(); render();
   toast('All data erased');
 });
+
+$('#list-form').addEventListener('submit', ev => {
+  ev.preventDefault();
+  const input = $('#in-item');
+  if (addShopItems(input.value)) input.value = '';
+  input.focus(); // stay ready for the next item
+});
+$('#list-clear').addEventListener('click', () => {
+  const before = state.shopping;
+  const n = before.filter(i => i.done).length;
+  state.shopping = before.filter(i => !i.done);
+  save(); render();
+  toast(`Cleared ${n} item${n === 1 ? '' : 's'}`, 'Undo', () => { state.shopping = before; save(); render(); });
+});
+$('#list-uncheck').addEventListener('click', () => {
+  const before = state.shopping.map(i => ({ ...i }));
+  state.shopping.forEach(i => { i.done = false; });
+  save(); render();
+  toast('Everything unchecked', 'Undo', () => { state.shopping = before; save(); render(); });
+});
+
+// Keep the screen on while the shopping list is open (so it doesn't lock mid-aisle).
+let wakeLock = null;
+async function updateWakeLock() {
+  try {
+    if (view === 'list' && !document.hidden && 'wakeLock' in navigator) {
+      if (!wakeLock) { wakeLock = await navigator.wakeLock.request('screen'); wakeLock.addEventListener('release', () => { wakeLock = null; }); }
+    } else if (wakeLock) { await wakeLock.release(); wakeLock = null; }
+  } catch (e) { wakeLock = null; }
+}
+document.addEventListener('visibilitychange', updateWakeLock);
 
 /* ================= Midnight rollover ================= */
 

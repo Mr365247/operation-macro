@@ -28,6 +28,13 @@
   <main>
     <!-- TODAY -->
     <section class="view" id="view-today">
+      <div class="backup-banner" id="backup-banner" hidden>
+        <div><b>💾 Weekly backup</b><div class="muted small" id="backup-when"></div></div>
+        <div class="backup-actions">
+          <button class="btn" type="button" id="backup-later">Later</button>
+          <button class="btn primary" type="button" id="backup-now">Back up</button>
+        </div>
+      </div>
       <div class="rings" id="rings"></div>
       <div id="status"></div>
       <div id="quick-wrap">
@@ -109,9 +116,10 @@
 
       <div class="card">
         <div class="card-head"><h3>Your data</h3></div>
-        <p class="muted small">Everything lives only on this phone. Export a backup now and then.</p>
+        <p class="muted small">Everything lives only on this phone. The app reminds you to back up once a week. Save the file to iCloud Drive.</p>
+        <p class="small" id="last-backup"></p>
         <div class="btn-row">
-          <button class="btn" id="export-btn" type="button">Export backup</button>
+          <button class="btn" id="export-btn" type="button">Back up now</button>
           <label class="btn" for="import-file">Import backup</label>
           <input id="import-file" type="file" accept="application/json,.json" hidden>
         </div>

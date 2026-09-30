@@ -325,3 +325,11 @@ input:focus { border-color: var(--pro); }
   display: grid; grid-template-columns: 1fr auto; gap: 8px;
 }
 .scan-bottom .btn.block { grid-column: 1 / -1; margin: 0; }
+
+/* ---------- Weekly backup reminder ---------- */
+.backup-banner {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+  background: var(--card); border: 1px solid var(--pro); border-radius: 14px; padding: 12px 14px; margin-bottom: 12px;
+}
+.backup-actions { display: flex; gap: 8px; }
+.backup-actions .btn { min-height: 48px; }

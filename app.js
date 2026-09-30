@@ -44,6 +44,8 @@ function load() {
     weights: s.weights || {},
     shopping: (s.shopping || []).map(i => ({ qty: '', ...i })),
     barcodes: s.barcodes || {}, // barcode -> per-serving nutrition you've scanned or entered
+    lastBackup: s.lastBackup || null,     // when you last saved a backup file
+    backupSnooze: s.backupSnooze || null, // "Later" hides the reminder until this time
   };
   // First run: record the starting weight so the trend has a starting point.
   if (fresh) st.weights[today] = st.settings.weight;
@@ -192,7 +194,22 @@ function entryHTML(e, attrs) {
     </button>`;
 }
 
+const WEEK = 7 * 86400000;
+function backupDue() {
+  const now = Date.now();
+  if (state.backupSnooze && now < state.backupSnooze) return false;
+  if (!state.lastBackup) return Object.keys(state.days).length > 0; // never backed up, and there's something to save
+  return now - state.lastBackup >= WEEK;
+}
+function lastBackupText() {
+  if (!state.lastBackup) return 'Never backed up';
+  const days = Math.floor((Date.now() - state.lastBackup) / 86400000);
+  return 'Last backup: ' + (days === 0 ? 'today' : days === 1 ? 'yesterday' : `${days} days ago`);
+}
+
 function renderToday() {
+  $('#backup-banner').hidden = !backupDue();
+  $('#backup-when').textContent = lastBackupText();
   const t = totals(today), g = state.settings;
   $('#rings').innerHTML = MACROS.map(m => ringHTML(m, t[m.k], g[m.t])).join('');
 
@@ -471,6 +488,7 @@ function renderSettings() {
   $('#s-cal').value = s.cal; $('#s-protein').value = s.protein;
   $('#s-carbs').value = s.carbs; $('#s-fat').value = s.fat;
   $('#s-weight').value = s.weight; $('#s-goal').value = s.goalWeight;
+  $('#last-backup').textContent = lastBackupText();
 }
 
 function setView(v) {
@@ -916,13 +934,37 @@ $('#settings-form').addEventListener('submit', ev => {
   checkHoorah();
 });
 
-$('#export-btn').addEventListener('click', () => {
-  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+// On iPhone this opens the Share sheet, so you can pick "Save to Files" -> iCloud Drive.
+async function backupNow() {
+  const name = `operation-macro-${today}.json`;
+  const json = JSON.stringify({ ...state, lastBackup: Date.now(), backupSnooze: null }, null, 2);
+  const file = new File([json], name, { type: 'application/json' });
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    try { await navigator.share({ files: [file], title: 'Operation Macro backup' }); }
+    catch (e) {
+      if (e.name === 'AbortError') { toast('Backup not saved'); return; } // closed the Share sheet
+      downloadFile(file);
+    }
+  } else {
+    downloadFile(file);
+  }
+  state.lastBackup = Date.now();
+  state.backupSnooze = null;
+  save(); render();
+  toast('Backup saved 💾');
+}
+function downloadFile(file) {
   const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `operation-macro-${today}.json`;
+  a.href = URL.createObjectURL(file);
+  a.download = file.name;
   document.body.appendChild(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+}
+$('#export-btn').addEventListener('click', backupNow);
+$('#backup-now').addEventListener('click', backupNow);
+$('#backup-later').addEventListener('click', () => {
+  state.backupSnooze = Date.now() + 86400000; // ask again tomorrow
+  save(); render();
 });
 $('#import-file').addEventListener('change', async ev => {
   const file = ev.target.files[0];

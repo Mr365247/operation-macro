@@ -887,7 +887,8 @@ async function loadRestaurants() {
       .filter(i => i.cal != null || i.p != null)
       .map(i => {
         const full = norm(i.name).startsWith(norm(ch.name)) ? i.name : `${ch.name} ${i.name}`;
-        return { ...i, name: full, short: i.name, chain: ch.name, hay: norm(`${full} ${(ch.aliases || []).join(' ')}`) };
+        const chainHay = norm(`${ch.name} ${(ch.aliases || []).join(' ')}`);
+        return { ...i, name: full, short: i.name, chain: ch.name, chainHay, hay: norm(`${full} ${chainHay}`) };
       }));
   } catch (e) { /* no restaurant suggestions */ }
 }
@@ -910,8 +911,12 @@ function suggestions(query) {
     const hay = it.hay || norm(it.name);
     if (!name || seen.has(name) || !nwords.every(w => hay.includes(w))) continue;
     seen.add(name);
-    const where = name.startsWith(q) ? 0 : new RegExp('\\b' + escRe(words[0])).test(name) ? 1 : 2;
-    out.push({ it, score: where + { fav: 0, scan: 0.1, school: 0.2, rest: 0.3 }[it.src] });
+    // Rank on the item's own name; words that only name the chain ("cfa", "dunkin") just filter.
+    const target = norm(it.short || it.name);
+    const qw = it.chainHay ? nwords.filter(w => !it.chainHay.includes(w) || target.includes(w)) : nwords;
+    const qs = qw.join(' ');
+    const where = !qs ? 1 : target.startsWith(qs) ? 0 : new RegExp('\\b' + escRe(qw[0])).test(target) ? 1 : 2;
+    out.push({ it, score: where + { fav: 0, scan: 0.1, school: 0.2, rest: 0.3 }[it.src] + target.length / 200 + (nwords.length - qw.length) * 0.15 });
   }
   return out.sort((a, b) => a.score - b.score || a.it.name.localeCompare(b.it.name)).slice(0, 6).map(x => x.it);
 }

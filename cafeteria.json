@@ -1,0 +1,2967 @@
+{
+ "school": "North Providence High School",
+ "source": "https://npsd.nutrislice.com/menu/north-providence-high",
+ "updated": "2026-10-04",
+ "items": [
+  {
+   "name": "Aloha Pizza",
+   "cal": 350,
+   "p": 21,
+   "c": 42,
+   "f": 11,
+   "serving": "1 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-09-28"
+  },
+  {
+   "name": "American Cheese",
+   "cal": 50,
+   "p": 2,
+   "c": 1,
+   "f": 4,
+   "serving": "0.5 oz",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Apple Cinnamon Cheerios",
+   "cal": 110,
+   "p": 3,
+   "c": 22,
+   "f": 2,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Apple Crisp",
+   "cal": 190,
+   "p": 2,
+   "c": 28,
+   "f": 8,
+   "serving": "1 piece",
+   "meal": "Lunch",
+   "lastServed": "2026-10-22"
+  },
+  {
+   "name": "Apple Juice",
+   "cal": 60,
+   "p": 0,
+   "c": 14,
+   "f": 0,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Apple Pie Overnight Oatmeal",
+   "cal": 260,
+   "p": 9,
+   "c": 52,
+   "f": 2.5,
+   "serving": "1.25 cups",
+   "meal": "Breakfast",
+   "lastServed": "2026-09-25"
+  },
+  {
+   "name": "Apple ShriBark Round Bar",
+   "cal": 320,
+   "p": 6,
+   "c": 43,
+   "f": 12,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Applesauce",
+   "cal": 50,
+   "p": 0,
+   "c": 14,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-02"
+  },
+  {
+   "name": "Apricot Applesauce",
+   "cal": 50,
+   "p": 0,
+   "c": 14,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Breakfast",
+   "lastServed": "2026-09-25"
+  },
+  {
+   "name": "Asian Pinto Bean Salad",
+   "cal": 150,
+   "p": 7,
+   "c": 20,
+   "f": 5,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-09-23"
+  },
+  {
+   "name": "Assorted Chilled Fruit",
+   "cal": 60,
+   "p": 0,
+   "c": 15,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Bacon",
+   "cal": 20,
+   "p": 1,
+   "c": 0,
+   "f": 1.5,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-09-22"
+  },
+  {
+   "name": "Bacon, Egg & Cheese Sandwich",
+   "cal": 250,
+   "p": 13,
+   "c": 23,
+   "f": 11,
+   "serving": "1 sandwich",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-26"
+  },
+  {
+   "name": "Baja Beans",
+   "cal": 110,
+   "p": 6,
+   "c": 20,
+   "f": 1,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-09-24"
+  },
+  {
+   "name": "Baked Chicken",
+   "cal": 120,
+   "p": 16,
+   "c": 0,
+   "f": 5,
+   "serving": "1 serving",
+   "meal": "Lunch",
+   "lastServed": "2026-10-22"
+  },
+  {
+   "name": "Baked Oatmeal with Apple",
+   "cal": 320,
+   "p": 6,
+   "c": 45,
+   "f": 14,
+   "serving": "1 piece",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-01"
+  },
+  {
+   "name": "Banana Peppers",
+   "cal": 0,
+   "p": 0,
+   "c": 0,
+   "f": 0,
+   "serving": "1 Tbsp",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Banana ShriBark Round Bar",
+   "cal": 330,
+   "p": 7,
+   "c": 46,
+   "f": 10,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-02"
+  },
+  {
+   "name": "Banana with Cinnamon and Sugar",
+   "cal": 100,
+   "p": 1,
+   "c": 25,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-09-30"
+  },
+  {
+   "name": "BBQ Baked Beans",
+   "cal": 170,
+   "p": 11,
+   "c": 31,
+   "f": 0.5,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-28"
+  },
+  {
+   "name": "BBQ Cheddar Chicken Sandwich",
+   "cal": 420,
+   "p": 24,
+   "c": 45,
+   "f": 17,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-10-02"
+  },
+  {
+   "name": "BBQ Chicken Flatbread",
+   "cal": 530,
+   "p": 25,
+   "c": 45,
+   "f": 26,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-23"
+  },
+  {
+   "name": "BBQ Chicken Pizza",
+   "cal": 360,
+   "p": 19,
+   "c": 38,
+   "f": 14,
+   "serving": "1 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-10-29"
+  },
+  {
+   "name": "BBQ Chicken Thigh",
+   "cal": 150,
+   "p": 16,
+   "c": 7,
+   "f": 5,
+   "serving": "1 serving",
+   "meal": "Lunch",
+   "lastServed": "2026-10-27"
+  },
+  {
+   "name": "BBQ Chicken w/ Peppers & Mushrooms Pizza",
+   "cal": 360,
+   "p": 23,
+   "c": 40,
+   "f": 11,
+   "serving": "1 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-10-22"
+  },
+  {
+   "name": "BBQ Pulled Pork",
+   "cal": 120,
+   "p": 10,
+   "c": 1,
+   "f": 8,
+   "serving": "1 serving",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "BBQ Rib-B-Q Sandwich",
+   "cal": 340,
+   "p": 18,
+   "c": 40,
+   "f": 13,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-09-25"
+  },
+  {
+   "name": "BBQ Sauce",
+   "cal": 30,
+   "p": 0,
+   "c": 7,
+   "f": 0,
+   "serving": "1 Tbsp",
+   "meal": "Lunch",
+   "lastServed": "2026-10-02"
+  },
+  {
+   "name": "Berry Parfait with Granola",
+   "cal": 530,
+   "p": 17,
+   "c": 96,
+   "f": 10,
+   "serving": "1 serving",
+   "meal": "Lunch, Breakfast",
+   "lastServed": "2026-10-01"
+  },
+  {
+   "name": "Blueberry Parfait with Granola",
+   "cal": 280,
+   "p": 9,
+   "c": 52,
+   "f": 5,
+   "serving": "1 each",
+   "meal": "Lunch, Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Blueberry ShriBark Muffin",
+   "cal": 270,
+   "p": 5,
+   "c": 38,
+   "f": 9,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-02"
+  },
+  {
+   "name": "Breakfast Syrup",
+   "cal": 110,
+   "p": 0,
+   "c": 29,
+   "f": 0,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Broccoli Raisin Salad",
+   "cal": 210,
+   "p": 2,
+   "c": 23,
+   "f": 13,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-23"
+  },
+  {
+   "name": "Brown Rice",
+   "cal": 220,
+   "p": 4,
+   "c": 45,
+   "f": 2,
+   "serving": "1 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Brussel Sprouts \"Cacio e Pepe\"",
+   "cal": 100,
+   "p": 3,
+   "c": 7,
+   "f": 7,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-16"
+  },
+  {
+   "name": "Buffalo Chicken Dip",
+   "cal": 300,
+   "p": 17,
+   "c": 4,
+   "f": 23,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-15"
+  },
+  {
+   "name": "Buffalo Chicken Pizza",
+   "cal": 320,
+   "p": 19,
+   "c": 32,
+   "f": 12,
+   "serving": "1 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Buffalo Chicken Wings",
+   "cal": 290,
+   "p": 18,
+   "c": 2,
+   "f": 22,
+   "serving": "4 each",
+   "meal": "Lunch",
+   "lastServed": "2026-09-21"
+  },
+  {
+   "name": "Buffalo Diced Chicken",
+   "cal": 110,
+   "p": 14,
+   "c": 2,
+   "f": 4.5,
+   "serving": "2.5 oz",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Buffalo Ranch Chicken Quesadilla",
+   "cal": 390,
+   "p": 17,
+   "c": 37,
+   "f": 20,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-09-23"
+  },
+  {
+   "name": "Buffalo Roasted Broccoli",
+   "cal": 45,
+   "p": 3,
+   "c": 6,
+   "f": 2,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-09-28"
+  },
+  {
+   "name": "Buttermilk Coleslaw",
+   "cal": 100,
+   "p": 1,
+   "c": 4,
+   "f": 9,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-02"
+  },
+  {
+   "name": "Buttermilk Pancakes",
+   "cal": 180,
+   "p": 4,
+   "c": 30,
+   "f": 4,
+   "serving": "2 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Butternut Squash & Onion Pizza",
+   "cal": 450,
+   "p": 22,
+   "c": 60,
+   "f": 14,
+   "serving": "1 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-10-08"
+  },
+  {
+   "name": "Campbell's Tomato Soup",
+   "cal": 70,
+   "p": 2,
+   "c": 15,
+   "f": 1,
+   "serving": "6 fl oz",
+   "meal": "Lunch",
+   "lastServed": "2026-10-13"
+  },
+  {
+   "name": "Caribbean Sweet Potato Salad",
+   "cal": 90,
+   "p": 2,
+   "c": 16,
+   "f": 2.5,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-09"
+  },
+  {
+   "name": "Carrot & Celery Sticks",
+   "cal": 25,
+   "p": 1,
+   "c": 5,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-15"
+  },
+  {
+   "name": "Cheddar Cheese",
+   "cal": 60,
+   "p": 3,
+   "c": 0,
+   "f": 4.5,
+   "serving": "0.5 oz",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Cheerios",
+   "cal": 100,
+   "p": 4,
+   "c": 21,
+   "f": 2,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-02"
+  },
+  {
+   "name": "Cheeseburger Flatbread",
+   "cal": 410,
+   "p": 21,
+   "c": 35,
+   "f": 20,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-23"
+  },
+  {
+   "name": "Chicken & Vegetable Dumplings",
+   "cal": 240,
+   "p": 17,
+   "c": 31,
+   "f": 7,
+   "serving": "6 each",
+   "meal": "Lunch",
+   "lastServed": "2026-09-28"
+  },
+  {
+   "name": "Chicken Alfredo and Broccoli Pizza",
+   "cal": 340,
+   "p": 21,
+   "c": 32,
+   "f": 13,
+   "serving": "1 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-09-29"
+  },
+  {
+   "name": "Chicken Bacon Ranch Pizza",
+   "cal": 390,
+   "p": 20,
+   "c": 30,
+   "f": 20,
+   "serving": "1 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-10-26"
+  },
+  {
+   "name": "Chicken Caesar Salad",
+   "cal": 130,
+   "p": 16,
+   "c": 4,
+   "f": 5,
+   "serving": "1 serving",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Chicken Cordon Bleu Sandwich",
+   "cal": 450,
+   "p": 24,
+   "c": 39,
+   "f": 23,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-09-29"
+  },
+  {
+   "name": "Chicken Enchiladas",
+   "cal": 390,
+   "p": 22,
+   "c": 44,
+   "f": 15,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-05"
+  },
+  {
+   "name": "Chicken Gravy",
+   "cal": 25,
+   "p": 0,
+   "c": 2,
+   "f": 1.5,
+   "serving": "2 Tbsp",
+   "meal": "Lunch",
+   "lastServed": "2026-10-06"
+  },
+  {
+   "name": "Chicken Gyro",
+   "cal": 310,
+   "p": 21,
+   "c": 33,
+   "f": 10,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-01"
+  },
+  {
+   "name": "Chicken Meatballs",
+   "cal": 190,
+   "p": 15,
+   "c": 7,
+   "f": 11,
+   "serving": "3 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-16"
+  },
+  {
+   "name": "Chicken Parmesan Pizza",
+   "cal": 360,
+   "p": 19,
+   "c": 35,
+   "f": 15,
+   "serving": "1 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-09-23"
+  },
+  {
+   "name": "Chicken Ranch Wrap",
+   "cal": 400,
+   "p": 18,
+   "c": 38,
+   "f": 21,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-10-02"
+  },
+  {
+   "name": "Chicken Salad",
+   "cal": 230,
+   "p": 17,
+   "c": 2,
+   "f": 16,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Chicken Salsa Wrap",
+   "cal": 350,
+   "p": 21,
+   "c": 40,
+   "f": 11,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-09-25"
+  },
+  {
+   "name": "Chicken Sausage Patty",
+   "cal": 100,
+   "p": 11,
+   "c": 1,
+   "f": 6,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-09-28"
+  },
+  {
+   "name": "Chicken Taco Meat",
+   "cal": 120,
+   "p": 14,
+   "c": 4,
+   "f": 4,
+   "serving": "3.12 oz",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Chicken Wings",
+   "cal": 280,
+   "p": 18,
+   "c": 1,
+   "f": 22,
+   "serving": "4 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-19"
+  },
+  {
+   "name": "Chilled Apricots",
+   "cal": 60,
+   "p": 1,
+   "c": 15,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-02"
+  },
+  {
+   "name": "Chilled Blueberries",
+   "cal": 20,
+   "p": 0,
+   "c": 5,
+   "f": 0,
+   "serving": "0.25 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-21"
+  },
+  {
+   "name": "Chilled Diced Pears",
+   "cal": 60,
+   "p": 0,
+   "c": 16,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Breakfast",
+   "lastServed": "2026-09-29"
+  },
+  {
+   "name": "Chilled Mixed Fruit",
+   "cal": 60,
+   "p": 1,
+   "c": 15,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-01"
+  },
+  {
+   "name": "Chilled Peaches",
+   "cal": 60,
+   "p": 0,
+   "c": 15,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Breakfast",
+   "lastServed": "2026-09-21"
+  },
+  {
+   "name": "Chilled Sliced Peaches",
+   "cal": 35,
+   "p": 1,
+   "c": 9,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Breakfast",
+   "lastServed": "2026-09-23"
+  },
+  {
+   "name": "Chilled Strawberries",
+   "cal": 15,
+   "p": 0,
+   "c": 4,
+   "f": 0,
+   "serving": "0.25 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-21"
+  },
+  {
+   "name": "Chimichurri Ranch",
+   "cal": 30,
+   "p": 0,
+   "c": 1,
+   "f": 3,
+   "serving": "2 Tbsp",
+   "meal": "Lunch",
+   "lastServed": "2026-10-19"
+  },
+  {
+   "name": "Chocolate & Vanilla Smoothie",
+   "cal": 140,
+   "p": 4,
+   "c": 30,
+   "f": 1,
+   "serving": "8 fl oz",
+   "meal": "Breakfast",
+   "lastServed": "2026-09-23"
+  },
+  {
+   "name": "Chocolate Fat Free Milk",
+   "cal": 110,
+   "p": 8,
+   "c": 19,
+   "f": 0,
+   "serving": "1 each",
+   "meal": "Lunch, Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Cilantro Lime Brown Rice",
+   "cal": 250,
+   "p": 5,
+   "c": 48,
+   "f": 4.5,
+   "serving": "1 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-09-25"
+  },
+  {
+   "name": "Cilantro Slaw",
+   "cal": 15,
+   "p": 1,
+   "c": 4,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-08"
+  },
+  {
+   "name": "Cinnamon Applesauce",
+   "cal": 50,
+   "p": 0,
+   "c": 14,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-09-25"
+  },
+  {
+   "name": "Cinnamon Roasted Sweet Potato",
+   "cal": 150,
+   "p": 2,
+   "c": 26,
+   "f": 4.5,
+   "serving": "0.5 cups",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-27"
+  },
+  {
+   "name": "Cinnamon Toast Crunch",
+   "cal": 100,
+   "p": 1,
+   "c": 22,
+   "f": 2.5,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Citrus Aioli",
+   "cal": 140,
+   "p": 0,
+   "c": 1,
+   "f": 15,
+   "serving": "1.5 Tbsp",
+   "meal": "Lunch",
+   "lastServed": "2026-10-08"
+  },
+  {
+   "name": "Classic American Burger",
+   "cal": 320,
+   "p": 20,
+   "c": 25,
+   "f": 15,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Classic American Cheeseburger",
+   "cal": 370,
+   "p": 23,
+   "c": 26,
+   "f": 19,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Classic Cheese Pizza",
+   "cal": 340,
+   "p": 17,
+   "c": 33,
+   "f": 15,
+   "serving": "1 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Classic Guacamole",
+   "cal": 25,
+   "p": 0,
+   "c": 2,
+   "f": 2.5,
+   "serving": "2 Tbsp",
+   "meal": "Lunch",
+   "lastServed": "2026-10-08"
+  },
+  {
+   "name": "Classic Hamburger",
+   "cal": 390,
+   "p": 29,
+   "c": 25,
+   "f": 20,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-10-02"
+  },
+  {
+   "name": "Corn",
+   "cal": 70,
+   "p": 2,
+   "c": 16,
+   "f": 0.5,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-06"
+  },
+  {
+   "name": "Corn & Pepper Salad",
+   "cal": 70,
+   "p": 2,
+   "c": 12,
+   "f": 2,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-23"
+  },
+  {
+   "name": "Cowpoke Burger",
+   "cal": 450,
+   "p": 29,
+   "c": 30,
+   "f": 23,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-09-30"
+  },
+  {
+   "name": "Cran-Apple Chicken Salad",
+   "cal": 330,
+   "p": 11,
+   "c": 23,
+   "f": 22,
+   "serving": "1 serving",
+   "meal": "Lunch",
+   "lastServed": "2026-09-24"
+  },
+  {
+   "name": "Cranberry Apple Relish",
+   "cal": 80,
+   "p": 0,
+   "c": 20,
+   "f": 0,
+   "serving": "0.25 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-22"
+  },
+  {
+   "name": "Cranberry Orange ShriBark Muffin",
+   "cal": 270,
+   "p": 5,
+   "c": 38,
+   "f": 9,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Creamy Alfredo Sauce",
+   "cal": 190,
+   "p": 12,
+   "c": 10,
+   "f": 10,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-16"
+  },
+  {
+   "name": "Creamy Cheddar Cheese Sauce",
+   "cal": 60,
+   "p": 4,
+   "c": 1,
+   "f": 5,
+   "serving": "1 oz",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Creamy Ranch Dressing",
+   "cal": 100,
+   "p": 0,
+   "c": 1,
+   "f": 11,
+   "serving": "1 fl oz",
+   "meal": "Lunch",
+   "lastServed": "2026-10-27"
+  },
+  {
+   "name": "Crinkle Cut French Fries",
+   "cal": 60,
+   "p": 0,
+   "c": 12,
+   "f": 2,
+   "serving": "2 oz",
+   "meal": "Lunch",
+   "lastServed": "2026-09-30"
+  },
+  {
+   "name": "Crispy Chicken Patty Sandwich",
+   "cal": 340,
+   "p": 20,
+   "c": 38,
+   "f": 12,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Crispy Chicken Tenders",
+   "cal": 260,
+   "p": 24,
+   "c": 15,
+   "f": 11,
+   "serving": "3 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-28"
+  },
+  {
+   "name": "Cuban Pork, Ham, & Swiss Sub",
+   "cal": 340,
+   "p": 28,
+   "c": 27,
+   "f": 14,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-10-29"
+  },
+  {
+   "name": "Cucumber Apple Salad",
+   "cal": 50,
+   "p": 1,
+   "c": 7,
+   "f": 3,
+   "serving": "0.75 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-02"
+  },
+  {
+   "name": "Curly Fries",
+   "cal": 90,
+   "p": 1,
+   "c": 15,
+   "f": 3.5,
+   "serving": "2.12 oz",
+   "meal": "Lunch",
+   "lastServed": "2026-10-29"
+  },
+  {
+   "name": "Deli Turkey",
+   "cal": 110,
+   "p": 17,
+   "c": 0,
+   "f": 4.5,
+   "serving": "3 oz portion",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Diced Chicken",
+   "cal": 100,
+   "p": 14,
+   "c": 1,
+   "f": 4,
+   "serving": "2.33 oz",
+   "meal": "Lunch",
+   "lastServed": "2026-10-16"
+  },
+  {
+   "name": "Egg & Cheese Bagel Sandwich",
+   "cal": 270,
+   "p": 12,
+   "c": 38,
+   "f": 8,
+   "serving": "1 sandwich",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Egg & Cheese Sandwich",
+   "cal": 250,
+   "p": 11,
+   "c": 26,
+   "f": 11,
+   "serving": "1 sandwich",
+   "meal": "Breakfast",
+   "lastServed": "2026-09-21"
+  },
+  {
+   "name": "Egg, & Cheese Biscuit",
+   "cal": 290,
+   "p": 9,
+   "c": 25,
+   "f": 16,
+   "serving": "1 sandwich",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-28"
+  },
+  {
+   "name": "Egg, Chicken Sausage & Cheese Breakfast Taco",
+   "cal": 200,
+   "p": 10,
+   "c": 15,
+   "f": 10,
+   "serving": "1 serving",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-27"
+  },
+  {
+   "name": "Egg, Turkey Bacon & Cheese Sandwich",
+   "cal": 270,
+   "p": 13,
+   "c": 27,
+   "f": 12,
+   "serving": "1 sandwich",
+   "meal": "Breakfast",
+   "lastServed": "2026-09-25"
+  },
+  {
+   "name": "Elotes Style Corn with Chili",
+   "cal": 90,
+   "p": 2,
+   "c": 17,
+   "f": 3,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-09-23"
+  },
+  {
+   "name": "French Dressing",
+   "cal": 240,
+   "p": 0,
+   "c": 10,
+   "f": 22,
+   "serving": "2 fl oz",
+   "meal": "Lunch",
+   "lastServed": "2026-09-28"
+  },
+  {
+   "name": "Fresh Apple Slices",
+   "cal": 20,
+   "p": 0,
+   "c": 5,
+   "f": 0,
+   "serving": "0.25 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-21"
+  },
+  {
+   "name": "Fresh Baked Whole Grain Biscuit",
+   "cal": 190,
+   "p": 4,
+   "c": 24,
+   "f": 9,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-09"
+  },
+  {
+   "name": "Fresh Banana",
+   "cal": 90,
+   "p": 1,
+   "c": 23,
+   "f": 0,
+   "serving": "1 each",
+   "meal": "Lunch, Breakfast",
+   "lastServed": "2026-10-02"
+  },
+  {
+   "name": "Fresh Basil",
+   "cal": 0,
+   "p": 0,
+   "c": 0,
+   "f": 0,
+   "serving": "1 tsp",
+   "meal": "Lunch",
+   "lastServed": "2026-10-13"
+  },
+  {
+   "name": "Fresh Caesar Salad",
+   "cal": 130,
+   "p": 2,
+   "c": 2,
+   "f": 13,
+   "serving": "1 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-23"
+  },
+  {
+   "name": "Fresh Carrot Sticks",
+   "cal": 35,
+   "p": 1,
+   "c": 8,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-09-28"
+  },
+  {
+   "name": "Fresh Carrots",
+   "cal": 25,
+   "p": 0,
+   "c": 6,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-23"
+  },
+  {
+   "name": "Fresh Cilantro",
+   "cal": 0,
+   "p": 0,
+   "c": 0,
+   "f": 0,
+   "serving": "1 Tbsp",
+   "meal": "Lunch",
+   "lastServed": "2026-10-14"
+  },
+  {
+   "name": "Fresh Diced Red Onion",
+   "cal": 25,
+   "p": 1,
+   "c": 5,
+   "f": 0,
+   "serving": "0.25 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-09-28"
+  },
+  {
+   "name": "Fresh Diced Tomatoes",
+   "cal": 10,
+   "p": 0,
+   "c": 2,
+   "f": 0,
+   "serving": "0.25 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-14"
+  },
+  {
+   "name": "Fresh Fuji Apple",
+   "cal": 80,
+   "p": 0,
+   "c": 20,
+   "f": 0,
+   "serving": "1 each",
+   "meal": "Lunch, Breakfast",
+   "lastServed": "2026-09-22"
+  },
+  {
+   "name": "Fresh Golden Delicious Apple",
+   "cal": 100,
+   "p": 0,
+   "c": 23,
+   "f": 0,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Fresh Grape Tomatoes",
+   "cal": 10,
+   "p": 1,
+   "c": 3,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-16"
+  },
+  {
+   "name": "Fresh Green Peppers Strips",
+   "cal": 10,
+   "p": 0,
+   "c": 2,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-09-28"
+  },
+  {
+   "name": "Fresh Nectarine",
+   "cal": 60,
+   "p": 2,
+   "c": 15,
+   "f": 0,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-02"
+  },
+  {
+   "name": "Fresh Orange",
+   "cal": 45,
+   "p": 1,
+   "c": 11,
+   "f": 0,
+   "serving": "1 each",
+   "meal": "Lunch, Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Fresh Orange Wedges",
+   "cal": 45,
+   "p": 1,
+   "c": 11,
+   "f": 0,
+   "serving": "4 wedge",
+   "meal": "Breakfast",
+   "lastServed": "2026-09-29"
+  },
+  {
+   "name": "Fresh Peach",
+   "cal": 60,
+   "p": 1,
+   "c": 14,
+   "f": 0,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-09-28"
+  },
+  {
+   "name": "Fresh Pear",
+   "cal": 90,
+   "p": 1,
+   "c": 25,
+   "f": 0,
+   "serving": "1 each",
+   "meal": "Lunch, Breakfast",
+   "lastServed": "2026-10-01"
+  },
+  {
+   "name": "Fresh Red and Green Seedless Grapes",
+   "cal": 50,
+   "p": 1,
+   "c": 14,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Breakfast",
+   "lastServed": "2026-09-23"
+  },
+  {
+   "name": "Fresh Red Delicious Apple",
+   "cal": 60,
+   "p": 0,
+   "c": 16,
+   "f": 0,
+   "serving": "1 each",
+   "meal": "Lunch, Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Fresh Red Seedless Grapes",
+   "cal": 50,
+   "p": 1,
+   "c": 14,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Breakfast",
+   "lastServed": "2026-09-30"
+  },
+  {
+   "name": "Fresh Sliced Red Onion",
+   "cal": 5,
+   "p": 0,
+   "c": 1,
+   "f": 0,
+   "serving": "0.12 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Fresh Whole Apple Gala",
+   "cal": 110,
+   "p": 1,
+   "c": 30,
+   "f": 0,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-09-21"
+  },
+  {
+   "name": "Fresh Whole Fruit",
+   "cal": 70,
+   "p": 1,
+   "c": 19,
+   "f": 0,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Freshly Baked Potato",
+   "cal": 210,
+   "p": 4,
+   "c": 49,
+   "f": 0,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-09"
+  },
+  {
+   "name": "Garlic & Herb Spice Blend",
+   "cal": 5,
+   "p": 0,
+   "c": 1,
+   "f": 0,
+   "serving": "1 tsp",
+   "meal": "Lunch",
+   "lastServed": "2026-10-22"
+  },
+  {
+   "name": "General Tso's Chicken",
+   "cal": 360,
+   "p": 19,
+   "c": 39,
+   "f": 13,
+   "serving": "10 piece",
+   "meal": "Lunch",
+   "lastServed": "2026-10-20"
+  },
+  {
+   "name": "Graham Crackers",
+   "cal": 90,
+   "p": 1,
+   "c": 17,
+   "f": 2.5,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-09-23"
+  },
+  {
+   "name": "Grape Juice",
+   "cal": 80,
+   "p": 0,
+   "c": 21,
+   "f": 0,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Green Beans",
+   "cal": 20,
+   "p": 1,
+   "c": 5,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-09-24"
+  },
+  {
+   "name": "Grilled Chicken Cobb Wrap",
+   "cal": 480,
+   "p": 27,
+   "c": 38,
+   "f": 23,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-10-01"
+  },
+  {
+   "name": "Ham and Cheese Wrap",
+   "cal": 360,
+   "p": 18,
+   "c": 37,
+   "f": 15,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-09-28"
+  },
+  {
+   "name": "Ham, Egg & Cheese on English Muffin",
+   "cal": 250,
+   "p": 16,
+   "c": 23,
+   "f": 9,
+   "serving": "1 sandwich",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-29"
+  },
+  {
+   "name": "Hamburger Pizza",
+   "cal": 350,
+   "p": 19,
+   "c": 32,
+   "f": 15,
+   "serving": "1 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-10-27"
+  },
+  {
+   "name": "Hard Boiled Egg",
+   "cal": 70,
+   "p": 6,
+   "c": 0,
+   "f": 4.5,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-01"
+  },
+  {
+   "name": "Hawaiian Pizza",
+   "cal": 320,
+   "p": 19,
+   "c": 36,
+   "f": 11,
+   "serving": "1 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-10-21"
+  },
+  {
+   "name": "Herb Roasted Potatoes",
+   "cal": 90,
+   "p": 2,
+   "c": 19,
+   "f": 1.5,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-28"
+  },
+  {
+   "name": "Home Fried Potatoes",
+   "cal": 130,
+   "p": 2,
+   "c": 14,
+   "f": 8,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-09-22"
+  },
+  {
+   "name": "Homemade Cornbread",
+   "cal": 380,
+   "p": 10,
+   "c": 63,
+   "f": 11,
+   "serving": "1 piece",
+   "meal": "Lunch",
+   "lastServed": "2026-10-27"
+  },
+  {
+   "name": "Homemade French Toast Casserole",
+   "cal": 190,
+   "p": 11,
+   "c": 23,
+   "f": 7,
+   "serving": "1 slice",
+   "meal": "Lunch, Breakfast",
+   "lastServed": "2026-09-23"
+  },
+  {
+   "name": "Homemade Granola",
+   "cal": 300,
+   "p": 8,
+   "c": 52,
+   "f": 8,
+   "serving": "0.75 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Homemade Mediterranean Vinaigrette",
+   "cal": 120,
+   "p": 0,
+   "c": 0,
+   "f": 14,
+   "serving": "1 fl oz",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Homemade Pesto Sauce",
+   "cal": 60,
+   "p": 1,
+   "c": 1,
+   "f": 6,
+   "serving": "1 Tbsp",
+   "meal": "Lunch",
+   "lastServed": "2026-10-08"
+  },
+  {
+   "name": "Homemade Signature Sauce",
+   "cal": 250,
+   "p": 1,
+   "c": 16,
+   "f": 21,
+   "serving": "2 fl oz",
+   "meal": "Lunch",
+   "lastServed": "2026-10-19"
+  },
+  {
+   "name": "Honey",
+   "cal": 130,
+   "p": 0,
+   "c": 35,
+   "f": 0,
+   "serving": "1 serving",
+   "meal": "Lunch",
+   "lastServed": "2026-10-21"
+  },
+  {
+   "name": "Honey Apple Vinaigrette",
+   "cal": 140,
+   "p": 0,
+   "c": 8,
+   "f": 13,
+   "serving": "1 fl oz",
+   "meal": "Lunch",
+   "lastServed": "2026-10-02"
+  },
+  {
+   "name": "Honey Graham Crackers",
+   "cal": 90,
+   "p": 1,
+   "c": 17,
+   "f": 2.5,
+   "serving": "1 packet",
+   "meal": "Lunch",
+   "lastServed": "2026-10-28"
+  },
+  {
+   "name": "Honey Mustard",
+   "cal": 60,
+   "p": 0,
+   "c": 3,
+   "f": 5,
+   "serving": "1 Tbsp",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Honey Mustard Barbecue Chicken Sandwich",
+   "cal": 490,
+   "p": 26,
+   "c": 44,
+   "f": 24,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-09-24"
+  },
+  {
+   "name": "Honey Roasted Root Vegetables",
+   "cal": 110,
+   "p": 1,
+   "c": 22,
+   "f": 2.5,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-22"
+  },
+  {
+   "name": "Honeydew Cubes",
+   "cal": 30,
+   "p": 0,
+   "c": 8,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Breakfast",
+   "lastServed": "2026-09-22"
+  },
+  {
+   "name": "Hot Turkey & Cheese Bagel",
+   "cal": 320,
+   "p": 20,
+   "c": 39,
+   "f": 11,
+   "serving": "1 serving",
+   "meal": "Lunch",
+   "lastServed": "2026-09-22"
+  },
+  {
+   "name": "Italian Chicken Parm Sandwich",
+   "cal": 400,
+   "p": 24,
+   "c": 42,
+   "f": 16,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-10-26"
+  },
+  {
+   "name": "Italian Hero on Whole Grain",
+   "cal": 360,
+   "p": 23,
+   "c": 28,
+   "f": 18,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Jalapeno Cheese Burger",
+   "cal": 450,
+   "p": 32,
+   "c": 26,
+   "f": 24,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-09-23"
+  },
+  {
+   "name": "Jerk Chicken",
+   "cal": 260,
+   "p": 27,
+   "c": 2,
+   "f": 16,
+   "serving": "1 serving",
+   "meal": "Lunch",
+   "lastServed": "2026-09-25"
+  },
+  {
+   "name": "Kale Salad with Apples",
+   "cal": 50,
+   "p": 2,
+   "c": 8,
+   "f": 2.5,
+   "serving": "1 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-09-28"
+  },
+  {
+   "name": "Ketchup Packet",
+   "cal": 10,
+   "p": 0,
+   "c": 2,
+   "f": 0,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Loaded Buffalo Ranch Chicken Pizza",
+   "cal": 380,
+   "p": 25,
+   "c": 31,
+   "f": 17,
+   "serving": "1 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-10-19"
+  },
+  {
+   "name": "Low Fat Chipotle Sour Cream",
+   "cal": 110,
+   "p": 2,
+   "c": 2,
+   "f": 9,
+   "serving": "2 Tbsp",
+   "meal": "Lunch",
+   "lastServed": "2026-10-05"
+  },
+  {
+   "name": "Low Fat Milk",
+   "cal": 100,
+   "p": 8,
+   "c": 11,
+   "f": 2,
+   "serving": "1 each",
+   "meal": "Lunch, Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Low Fat Mozzarella String Cheese",
+   "cal": 80,
+   "p": 6,
+   "c": 2,
+   "f": 6,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Macaroni and Cheese",
+   "cal": 330,
+   "p": 15,
+   "c": 29,
+   "f": 16,
+   "serving": "6 oz portion",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Made From Scratch Marinara",
+   "cal": 70,
+   "p": 2,
+   "c": 13,
+   "f": 2,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-08"
+  },
+  {
+   "name": "Mango Chunks",
+   "cal": 25,
+   "p": 0,
+   "c": 6,
+   "f": 0,
+   "serving": "0.25 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-21"
+  },
+  {
+   "name": "Mango Chutney",
+   "cal": 130,
+   "p": 1,
+   "c": 33,
+   "f": 0,
+   "serving": "2 fl oz",
+   "meal": "Lunch",
+   "lastServed": "2026-09-25"
+  },
+  {
+   "name": "Maple Cinnamon Roasted Garbanzo Beans",
+   "cal": 150,
+   "p": 6,
+   "c": 25,
+   "f": 3,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-14"
+  },
+  {
+   "name": "Marinara Sauce",
+   "cal": 70,
+   "p": 2,
+   "c": 10,
+   "f": 2.5,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-16"
+  },
+  {
+   "name": "Marinated Tomato & Cucumber Salad",
+   "cal": 70,
+   "p": 1,
+   "c": 5,
+   "f": 6,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-09-29"
+  },
+  {
+   "name": "Mashed Potatoes",
+   "cal": 70,
+   "p": 2,
+   "c": 16,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-06"
+  },
+  {
+   "name": "Mayonnaise",
+   "cal": 90,
+   "p": 0,
+   "c": 0,
+   "f": 9,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Mexican Pepper Tomato & Olive Pizza",
+   "cal": 370,
+   "p": 17,
+   "c": 29,
+   "f": 19,
+   "serving": "1 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-09-21"
+  },
+  {
+   "name": "Monkfish Patty",
+   "cal": 100,
+   "p": 14,
+   "c": 8,
+   "f": 2,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-08"
+  },
+  {
+   "name": "Moroccan Kale Chips",
+   "cal": 90,
+   "p": 3,
+   "c": 6,
+   "f": 7,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-02"
+  },
+  {
+   "name": "Mozzarella & Roasted Vegetable Panini",
+   "cal": 360,
+   "p": 19,
+   "c": 31,
+   "f": 17,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-09-28"
+  },
+  {
+   "name": "Mustard Packet",
+   "cal": 0,
+   "p": 0,
+   "c": 0,
+   "f": 0,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Nashville Hot Chicken Sandwich",
+   "cal": 470,
+   "p": 21,
+   "c": 41,
+   "f": 27,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-10-02"
+  },
+  {
+   "name": "Orange Juice",
+   "cal": 60,
+   "p": 1,
+   "c": 13,
+   "f": 0,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Orange Sauce",
+   "cal": 45,
+   "p": 1,
+   "c": 10,
+   "f": 0,
+   "serving": "0.25 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-09-28"
+  },
+  {
+   "name": "Oven Fried Russet Fries",
+   "cal": 130,
+   "p": 3,
+   "c": 21,
+   "f": 4,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-29"
+  },
+  {
+   "name": "Peaches and Cream Overnight Oatmeal",
+   "cal": 270,
+   "p": 9,
+   "c": 51,
+   "f": 2.5,
+   "serving": "1.25 cups",
+   "meal": "Breakfast",
+   "lastServed": "2026-09-21"
+  },
+  {
+   "name": "Peachy Summer Salad",
+   "cal": 45,
+   "p": 1,
+   "c": 11,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Breakfast",
+   "lastServed": "2026-09-25"
+  },
+  {
+   "name": "Penne Pasta",
+   "cal": 160,
+   "p": 6,
+   "c": 31,
+   "f": 2,
+   "serving": "1 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-16"
+  },
+  {
+   "name": "Pepperoni",
+   "cal": 30,
+   "p": 1,
+   "c": 0,
+   "f": 2.5,
+   "serving": "3 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Pepperoni Flatbread",
+   "cal": 420,
+   "p": 21,
+   "c": 39,
+   "f": 19,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-23"
+  },
+  {
+   "name": "Pesto Feta Cheese Pizza",
+   "cal": 500,
+   "p": 23,
+   "c": 32,
+   "f": 29,
+   "serving": "1 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-09-22"
+  },
+  {
+   "name": "Philly Cheese Steak",
+   "cal": 410,
+   "p": 23,
+   "c": 26,
+   "f": 23,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-09-24"
+  },
+  {
+   "name": "Pickles",
+   "cal": 0,
+   "p": 0,
+   "c": 0,
+   "f": 0,
+   "serving": "4 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Pico de Gallo",
+   "cal": 5,
+   "p": 0,
+   "c": 1,
+   "f": 0,
+   "serving": "2 Tbsp",
+   "meal": "Lunch",
+   "lastServed": "2026-10-09"
+  },
+  {
+   "name": "Pineapple Tidbits",
+   "cal": 70,
+   "p": 1,
+   "c": 19,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Lunch, Breakfast",
+   "lastServed": "2026-09-30"
+  },
+  {
+   "name": "Pizza Burger",
+   "cal": 450,
+   "p": 32,
+   "c": 29,
+   "f": 22,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-09-21"
+  },
+  {
+   "name": "Popcorn Chicken",
+   "cal": 270,
+   "p": 19,
+   "c": 19,
+   "f": 13,
+   "serving": "10 piece",
+   "meal": "Lunch",
+   "lastServed": "2026-10-06"
+  },
+  {
+   "name": "Provolone Cheese",
+   "cal": 50,
+   "p": 4,
+   "c": 0,
+   "f": 4,
+   "serving": "0.5 oz",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Pulled Pork",
+   "cal": 130,
+   "p": 14,
+   "c": 0,
+   "f": 8,
+   "serving": "2 oz meat",
+   "meal": "Lunch",
+   "lastServed": "2026-10-02"
+  },
+  {
+   "name": "Raspberry Dressing",
+   "cal": 140,
+   "p": 0,
+   "c": 4,
+   "f": 14,
+   "serving": "1 ladle1oz",
+   "meal": "Lunch",
+   "lastServed": "2026-10-23"
+  },
+  {
+   "name": "Reduced Sugar Lucky Charms",
+   "cal": 110,
+   "p": 3,
+   "c": 22,
+   "f": 2,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Reduced Sugar Trix",
+   "cal": 110,
+   "p": 2,
+   "c": 23,
+   "f": 1.5,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Reduced Sugar Vanilla Yogurt",
+   "cal": 180,
+   "p": 9,
+   "c": 33,
+   "f": 1.5,
+   "serving": "1 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-21"
+  },
+  {
+   "name": "Roasted Broccoli",
+   "cal": 45,
+   "p": 2,
+   "c": 5,
+   "f": 2.5,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Roasted Butternut Squash",
+   "cal": 90,
+   "p": 1,
+   "c": 15,
+   "f": 4.5,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Roasted Eggplant",
+   "cal": 80,
+   "p": 1,
+   "c": 10,
+   "f": 4.5,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-08"
+  },
+  {
+   "name": "Roasted Ginger Orange Cauliflower",
+   "cal": 90,
+   "p": 2,
+   "c": 12,
+   "f": 5,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-09-28"
+  },
+  {
+   "name": "Roasted Green Beans",
+   "cal": 25,
+   "p": 1,
+   "c": 6,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-19"
+  },
+  {
+   "name": "Roasted Jerk Chicken Wings",
+   "cal": 290,
+   "p": 19,
+   "c": 3,
+   "f": 22,
+   "serving": "4 each",
+   "meal": "Lunch",
+   "lastServed": "2026-09-21"
+  },
+  {
+   "name": "Roasted Oyster Mushrooms",
+   "cal": 110,
+   "p": 3,
+   "c": 5,
+   "f": 10,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-08"
+  },
+  {
+   "name": "Roasted Pineapple",
+   "cal": 35,
+   "p": 0,
+   "c": 9,
+   "f": 0,
+   "serving": "1 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-09-25"
+  },
+  {
+   "name": "Roasted Red & Green Bell Peppers",
+   "cal": 70,
+   "p": 1,
+   "c": 6,
+   "f": 4.5,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Roasted Sweet Potatoes",
+   "cal": 130,
+   "p": 2,
+   "c": 25,
+   "f": 3,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-07"
+  },
+  {
+   "name": "Roasted Tomatoes with Rosemary",
+   "cal": 90,
+   "p": 1,
+   "c": 6,
+   "f": 7,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Roasted Turnips",
+   "cal": 50,
+   "p": 1,
+   "c": 6,
+   "f": 2.5,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Roasted Vegetable Pizza",
+   "cal": 370,
+   "p": 18,
+   "c": 36,
+   "f": 16,
+   "serving": "1 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-09-25"
+  },
+  {
+   "name": "Roasted Whole Chicken",
+   "cal": 160,
+   "p": 17,
+   "c": 3,
+   "f": 9,
+   "serving": "1 serving",
+   "meal": "Lunch",
+   "lastServed": "2026-10-08"
+  },
+  {
+   "name": "Salsa",
+   "cal": 10,
+   "p": 0,
+   "c": 2,
+   "f": 0,
+   "serving": "1 fl oz",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Sassy Kidney Beans",
+   "cal": 180,
+   "p": 7,
+   "c": 23,
+   "f": 7,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-21"
+  },
+  {
+   "name": "Sauteed Bell Peppers and Onions",
+   "cal": 30,
+   "p": 1,
+   "c": 5,
+   "f": 1,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-09-24"
+  },
+  {
+   "name": "Sauteed Onions",
+   "cal": 20,
+   "p": 0,
+   "c": 3,
+   "f": 0.5,
+   "serving": "0.25 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-08"
+  },
+  {
+   "name": "Sauteed Peppers",
+   "cal": 10,
+   "p": 0,
+   "c": 2,
+   "f": 0,
+   "serving": "0.25 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-16"
+  },
+  {
+   "name": "Sauteed Peppers & Onions",
+   "cal": 15,
+   "p": 0,
+   "c": 2,
+   "f": 0,
+   "serving": "0.25 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-09-22"
+  },
+  {
+   "name": "Scrambled Egg & Cheese Breakfast Pizza",
+   "cal": 310,
+   "p": 15,
+   "c": 28,
+   "f": 14,
+   "serving": "1 slice",
+   "meal": "Breakfast",
+   "lastServed": "2026-09-29"
+  },
+  {
+   "name": "Scrambled Eggs",
+   "cal": 80,
+   "p": 6,
+   "c": 1,
+   "f": 5,
+   "serving": "0.25 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-09-22"
+  },
+  {
+   "name": "Seasoned Beef Taco Meat",
+   "cal": 170,
+   "p": 15,
+   "c": 3,
+   "f": 9,
+   "serving": "0.33 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Seasoned Black Beans",
+   "cal": 100,
+   "p": 6,
+   "c": 17,
+   "f": 1,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Seasoned Corn",
+   "cal": 90,
+   "p": 2,
+   "c": 16,
+   "f": 2.5,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Seasoned Crinkle Cut Fries",
+   "cal": 90,
+   "p": 0,
+   "c": 12,
+   "f": 5,
+   "serving": "2 oz",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Shredded Cheddar Cheese",
+   "cal": 110,
+   "p": 6,
+   "c": 0,
+   "f": 9,
+   "serving": "1 oz",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Shredded Lettuce",
+   "cal": 5,
+   "p": 0,
+   "c": 1,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Shredded Mozzarella Cheese",
+   "cal": 80,
+   "p": 6,
+   "c": 2,
+   "f": 5,
+   "serving": "1 oz",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Shredded Romaine Lettuce",
+   "cal": 0,
+   "p": 0,
+   "c": 0,
+   "f": 0,
+   "serving": "0.25 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Sliced Banana",
+   "cal": 60,
+   "p": 1,
+   "c": 15,
+   "f": 0,
+   "serving": "0.25 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-21"
+  },
+  {
+   "name": "Sliced Black Olives",
+   "cal": 10,
+   "p": 0,
+   "c": 1,
+   "f": 1,
+   "serving": "1 Tbsp",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Sliced Cucumbers",
+   "cal": 10,
+   "p": 0,
+   "c": 2,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Sliced Deli Ham",
+   "cal": 90,
+   "p": 16,
+   "c": 1,
+   "f": 2,
+   "serving": "3 oz portion",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Sliced Jalapenos",
+   "cal": 0,
+   "p": 0,
+   "c": 1,
+   "f": 0,
+   "serving": "1 Tbsp",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Sliced Tomatoes",
+   "cal": 10,
+   "p": 0,
+   "c": 2,
+   "f": 0,
+   "serving": "3 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Soft Flour Tortilla",
+   "cal": 210,
+   "p": 5,
+   "c": 34,
+   "f": 6,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Sour Cream",
+   "cal": 60,
+   "p": 1,
+   "c": 1,
+   "f": 4.5,
+   "serving": "2 Tbsp",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Southwestern Ranch Dipping Sauce",
+   "cal": 160,
+   "p": 0,
+   "c": 2,
+   "f": 18,
+   "serving": "2 Tbsp",
+   "meal": "Lunch",
+   "lastServed": "2026-10-19"
+  },
+  {
+   "name": "Spicy Chicken Sandwich",
+   "cal": 340,
+   "p": 21,
+   "c": 37,
+   "f": 11,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Spicy Curry Potatoes",
+   "cal": 400,
+   "p": 4,
+   "c": 31,
+   "f": 30,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-02"
+  },
+  {
+   "name": "Spicy Roasted Garbanzo Beans",
+   "cal": 110,
+   "p": 6,
+   "c": 16,
+   "f": 3,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-07"
+  },
+  {
+   "name": "Spinach & Romaine Salad",
+   "cal": 10,
+   "p": 1,
+   "c": 2,
+   "f": 0,
+   "serving": "1 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Spring Mix Salad",
+   "cal": 5,
+   "p": 1,
+   "c": 1,
+   "f": 0,
+   "serving": "1 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-09-25"
+  },
+  {
+   "name": "Sriracha Turkey Burger",
+   "cal": 350,
+   "p": 24,
+   "c": 33,
+   "f": 15,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-10-01"
+  },
+  {
+   "name": "Steamed Broccoli Florets",
+   "cal": 50,
+   "p": 2,
+   "c": 5,
+   "f": 2.5,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-05"
+  },
+  {
+   "name": "Strawberry Banana Bash Yogurt",
+   "cal": 80,
+   "p": 4,
+   "c": 15,
+   "f": 0.5,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Strawberry Banana Smoothie",
+   "cal": 260,
+   "p": 12,
+   "c": 51,
+   "f": 1.5,
+   "serving": "14 fl oz",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Strawberry Cream Cheese Stuffed Bagel",
+   "cal": 240,
+   "p": 6,
+   "c": 42,
+   "f": 6,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-09-22"
+  },
+  {
+   "name": "Strawberry Parfait with Granola",
+   "cal": 280,
+   "p": 9,
+   "c": 53,
+   "f": 5,
+   "serving": "1 each",
+   "meal": "Lunch, Breakfast",
+   "lastServed": "2026-09-24"
+  },
+  {
+   "name": "Strawberry Smoothie",
+   "cal": 240,
+   "p": 10,
+   "c": 48,
+   "f": 1.5,
+   "serving": "12 fl oz",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Sunbutter & Grape Jelly Sandwich",
+   "cal": 610,
+   "p": 22,
+   "c": 53,
+   "f": 36,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Supreme Pizza",
+   "cal": 380,
+   "p": 18,
+   "c": 33,
+   "f": 18,
+   "serving": "1 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-10-20"
+  },
+  {
+   "name": "Sweet Potato Salad",
+   "cal": 160,
+   "p": 2,
+   "c": 26,
+   "f": 6,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-23"
+  },
+  {
+   "name": "Syrup",
+   "cal": 110,
+   "p": 0,
+   "c": 28,
+   "f": 0,
+   "serving": "1 fl oz",
+   "meal": "Lunch, Breakfast",
+   "lastServed": "2026-10-01"
+  },
+  {
+   "name": "Tater Tots",
+   "cal": 110,
+   "p": 1,
+   "c": 14,
+   "f": 6,
+   "serving": "2.5 oz",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Teriyaki Chicken Wings",
+   "cal": 340,
+   "p": 19,
+   "c": 13,
+   "f": 22,
+   "serving": "4 each",
+   "meal": "Lunch",
+   "lastServed": "2026-09-21"
+  },
+  {
+   "name": "Toasted Flatbread",
+   "cal": 230,
+   "p": 6,
+   "c": 29,
+   "f": 10,
+   "serving": "6 piece",
+   "meal": "Lunch",
+   "lastServed": "2026-10-02"
+  },
+  {
+   "name": "Toasty Cheese Sandwich",
+   "cal": 360,
+   "p": 20,
+   "c": 29,
+   "f": 18,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-10-13"
+  },
+  {
+   "name": "Toasty Three Cheese Sandwich",
+   "cal": 390,
+   "p": 20,
+   "c": 27,
+   "f": 22,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Tomato Vinaigrette",
+   "cal": 70,
+   "p": 0,
+   "c": 1,
+   "f": 7,
+   "serving": "2 Tbsp",
+   "meal": "Lunch",
+   "lastServed": "2026-10-29"
+  },
+  {
+   "name": "Tortilla Chips",
+   "cal": 280,
+   "p": 4,
+   "c": 38,
+   "f": 12,
+   "serving": "2 oz portion",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Tossed Side Salad",
+   "cal": 20,
+   "p": 1,
+   "c": 4,
+   "f": 0,
+   "serving": "1 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-26"
+  },
+  {
+   "name": "Traditional Pepperoni Pizza",
+   "cal": 370,
+   "p": 19,
+   "c": 33,
+   "f": 17,
+   "serving": "1 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Tropical Fruit Cocktail",
+   "cal": 70,
+   "p": 1,
+   "c": 17,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-01"
+  },
+  {
+   "name": "Tuna Salad, Flatbread & Cucumber Bento Box",
+   "cal": 440,
+   "p": 20,
+   "c": 31,
+   "f": 27,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-09-25"
+  },
+  {
+   "name": "Turkey Chef Salad",
+   "cal": 190,
+   "p": 16,
+   "c": 4,
+   "f": 12,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-02"
+  },
+  {
+   "name": "Turkey Hot Dog",
+   "cal": 280,
+   "p": 15,
+   "c": 33,
+   "f": 11,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-09-30"
+  },
+  {
+   "name": "Turkey, Bacon & Cheese Club Croissant",
+   "cal": 330,
+   "p": 23,
+   "c": 30,
+   "f": 14,
+   "serving": "1 sandwich",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Turkey, Cheese, Flatbread & Cucumber Bento Box",
+   "cal": 340,
+   "p": 20,
+   "c": 32,
+   "f": 15,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-09-24"
+  },
+  {
+   "name": "Vegan Mediterranean Salad",
+   "cal": 250,
+   "p": 7,
+   "c": 20,
+   "f": 16,
+   "serving": "1 serving",
+   "meal": "Lunch",
+   "lastServed": "2026-10-01"
+  },
+  {
+   "name": "Vegetarian Baked Beans",
+   "cal": 150,
+   "p": 5,
+   "c": 30,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-14"
+  },
+  {
+   "name": "Veggie Lover's Pizza w/ Olives",
+   "cal": 360,
+   "p": 18,
+   "c": 35,
+   "f": 16,
+   "serving": "1 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-10-28"
+  },
+  {
+   "name": "Veggie Pizza",
+   "cal": 420,
+   "p": 20,
+   "c": 41,
+   "f": 19,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-23"
+  },
+  {
+   "name": "Walking Taco Nacho Cheese Doritos Tortilla Chips",
+   "cal": 190,
+   "p": 3,
+   "c": 27,
+   "f": 7,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-09-28"
+  },
+  {
+   "name": "WG Banana Muffin",
+   "cal": 190,
+   "p": 3,
+   "c": 30,
+   "f": 6,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Whole Grain Apple Cinnamon Muffin",
+   "cal": 180,
+   "p": 3,
+   "c": 31,
+   "f": 6,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Whole Grain Blueberry Muffin",
+   "cal": 190,
+   "p": 3,
+   "c": 30,
+   "f": 6,
+   "serving": "1 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Whole Grain Dinner Roll",
+   "cal": 180,
+   "p": 6,
+   "c": 35,
+   "f": 3,
+   "serving": "2 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Whole Grain Hoagie",
+   "cal": 150,
+   "p": 5,
+   "c": 25,
+   "f": 3.5,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Whole Grain Pancake Bites",
+   "cal": 380,
+   "p": 5,
+   "c": 38,
+   "f": 23,
+   "serving": "6 each",
+   "meal": "Breakfast",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Whole Grain Sliced Bread",
+   "cal": 160,
+   "p": 8,
+   "c": 26,
+   "f": 2,
+   "serving": "2 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Whole Grain Toasted Garlic Bread",
+   "cal": 160,
+   "p": 6,
+   "c": 26,
+   "f": 4.5,
+   "serving": "2 piece",
+   "meal": "Lunch",
+   "lastServed": "2026-10-02"
+  },
+  {
+   "name": "Whole Grain Waffle",
+   "cal": 90,
+   "p": 2,
+   "c": 14,
+   "f": 3,
+   "serving": "1 each",
+   "meal": "Lunch",
+   "lastServed": "2026-10-28"
+  },
+  {
+   "name": "Yellow Mustard",
+   "cal": 10,
+   "p": 1,
+   "c": 1,
+   "f": 0.5,
+   "serving": "1 Tbsp",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
+  },
+  {
+   "name": "Zucchini Sticks",
+   "cal": 10,
+   "p": 1,
+   "c": 2,
+   "f": 0,
+   "serving": "0.5 cups",
+   "meal": "Lunch",
+   "lastServed": "2026-10-09"
+  }
+ ]
+}

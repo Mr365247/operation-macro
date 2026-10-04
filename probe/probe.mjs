@@ -1,40 +1,51 @@
-// Scout round 4.
+// Scout round 5.
 import { writeFile, mkdir } from 'node:fs/promises';
 const H = {
   'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
   'Accept': 'application/json, text/plain, */*', 'Accept-Language': 'en-US,en;q=0.9',
-  'sec-ch-ua': '"Chromium";v="126", "Google Chrome";v="126", "Not-A.Brand";v="99"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"macOS"',
 };
-await mkdir('probe/out4', { recursive: true });
+await mkdir('probe/out5', { recursive: true });
 const report = [];
-async function get(name, url, { headers = {}, grep = [], save = true, ctx = 300, uniq } = {}) {
+async function get(name, url, { headers = {}, grep = [], save = true, ctx = 400 } = {}) {
   const r = { name, url };
   try {
     const res = await fetch(url, { headers: { ...H, ...headers }, redirect: 'follow' });
     r.status = res.status; r.type = res.headers.get('content-type');
-    const text = await res.text(); r.bytes = text.length; r.head = text.slice(0, 600);
-    if (save) await writeFile(`probe/out4/${name}.txt`, text.slice(0, 2_500_000));
+    const text = await res.text(); r.bytes = text.length; r.head = text.slice(0, 800); r.text = text;
+    if (save) await writeFile(`probe/out5/${name}.txt`, text.slice(0, 3_000_000));
     r.hits = {};
-    for (const g of grep) {
-      const re = new RegExp(g, 'g'); const hits = []; let m;
-      while ((m = re.exec(text)) && hits.length < 25) hits.push(uniq ? m[0] : text.slice(Math.max(0, m.index - ctx), m.index + ctx));
-      r.hits[g] = uniq ? [...new Set(hits)] : hits;
-    }
+    for (const g of grep) { const re = new RegExp(g, 'g'); const hits = []; let m; while ((m = re.exec(text)) && hits.length < 10) hits.push(text.slice(Math.max(0, m.index - ctx), m.index + ctx)); r.hits[g] = hits; }
   } catch (e) { r.error = e.message; r.cause = e.cause && (e.cause.code || e.cause.message); }
-  report.push(r);
   console.log(name, r.status || r.error, r.bytes || '');
+  const { text, ...rest } = r; report.push(rest);
   return r;
 }
-// Wendy's national menu
+const json = r => { try { return JSON.parse(r.text); } catch { return null; } };
+// Wendy's
 const wb = 'https://api.app.prd.wendys.digital/web-client-gateway';
 const wh = { Origin: 'https://order.wendys.com', Referer: 'https://order.wendys.com/' };
-for (const site of ['0', '1', 'national']) await get('wendys-menu-' + site, `${wb}/menu/getSiteMenu?siteNum=${site}&freeStyleMenu=true&menuChannel=WEB_GUEST&lang=en&cntry=US`, { headers: wh });
-await get('wendys-chunk-k2', 'https://order.wendys.com/_next/static/chunks/2336-435cb938336ca8d4.js', { save: false, ctx: 200, grep: ['k2=\\{', 'NATIONAL', 'national[A-Za-z]*:"?\\d+'] });
-// Panera: default cafe + menu version
-await get('panera-js', 'https://www.panerabread.com/content/dam/panerabread/static/www-ui/2.97.1-3ed67cfe/js/www-ui.min.js', { save: false, ctx: 200, grep: ['defaultCafe', 'DEFAULT_CAFE', 'nationalCafe', 'cafeId:\\s*\\d{3,}', 'cafeId=\\d{3,}', '"\\d{6}"\\s*[,}]'] });
+let n = 0;
+outer: for (const sc of ['ORDER.WENDYS', 'WEB', 'WENDYS.WEB', 'ORDER_WENDYS', 'NEXTGEN']) for (const v of ['2.21.2', '22.1.2']) {
+  const r = await get(`wendys-${n++}`, `${wb}/menu/getSiteMenu?siteNum=0&freeStyleMenu=true&menuChannel=WEB_GUEST&lang=en&cntry=US&sourceCode=${sc}&version=${v}`, { headers: wh, save: false });
+  if (r.status === 200) { await writeFile('probe/out5/wendys-menu.txt', r.text); break outer; }
+}
+// Chipotle universal menu
+const ch = { 'Ocp-Apim-Subscription-Key': 'b4d9f36380184a3788857063bce25d6a', Origin: 'https://www.chipotle.com', Referer: 'https://www.chipotle.com/' };
+await get('chipotle-appjs', 'https://orderweb-cdn.chipotle.com/js/app.js', { save: false, grep: ['universalmenus/online', 'universalmeals/online'] });
+for (const q of ['country=US', 'country=US&channelId=web', 'country=US&channelId=web&includeUnavailableItems=true']) await get('chipotle-umenu-' + q.replace(/[^a-z]/gi, ''), `https://services.chipotle.com/menuinnovation/v1/universalmenus/online?${q}`, { headers: ch });
+await get('chipotle-umeals', 'https://services.chipotle.com/menuinnovation/v1/universalmeals/online?country=US', { headers: ch });
+// Panera: default cafe 500000
 const ph = { Origin: 'https://www.panerabread.com', Referer: 'https://www.panerabread.com/' };
-for (const cafe of ['203301', '600000', '203156']) await get('panera-version-' + cafe, `https://www-api.panerabread.com/www-api/public/menu/version/${cafe}`, { headers: ph });
-await get('panera-cafe-search', 'https://www-api.panerabread.com/www-api/public/cafe/search?zip=02904&radius=25', { headers: ph });
-// Chipotle: where the gateway url/key come from
-await get('chipotle-appjs', 'https://orderweb-cdn.chipotle.com/js/app.js', { save: false, grep: ['gatewaySubscriptionKey[^,;]{0,120}', 'gatewayUrl[^,;]{0,120}', '[a-zA-Z0-9_./-]*config[a-zA-Z0-9_./-]*\\.json', 'menuinnovation/v1/[A-Za-z/${}.]+', 'https://[a-z0-9.-]*chipotle\\.com[^"\'`\\s]*'], uniq: true });
-await writeFile('probe/report4.json', JSON.stringify(report, null, 1));
+const pb = 'https://www-api.panerabread.com/www-api';
+const ver = await get('panera-version', `${pb}/public/menu/version/500000`, { headers: ph });
+const vj = json(ver);
+const versionId = vj && (vj.aggregateVersion || vj.versionId || vj.menuVersion || vj.version || (Array.isArray(vj) && vj[0]));
+console.log('panera versionId guess', JSON.stringify(versionId).slice(0, 100));
+if (versionId) {
+  const hs = await get('panera-hashes', `${pb}/public/menu/placard/hashes/v2/500000/version/${typeof versionId === 'object' ? JSON.stringify(versionId) : versionId}/en-US`, { headers: ph });
+  const hj = json(hs);
+  const hashes = hj ? JSON.stringify(hj).match(/[a-f0-9]{24,}/g) || [] : [];
+  for (const h of [...new Set(hashes)].slice(0, 3)) await get('panera-placard-' + h.slice(0, 8), `${pb}/public/menu/placard/hash/${h}`, { headers: ph });
+}
+await get('panera-js', 'https://www.panerabread.com/content/dam/panerabread/static/www-ui/2.97.1-3ed67cfe/js/www-ui.min.js', { save: false, ctx: 300, grep: ['placard/hashes/v2', 'menu/version/', 'item/price/nutrition'] });
+await writeFile('probe/report5.json', JSON.stringify(report, null, 1));

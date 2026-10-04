@@ -363,3 +363,19 @@ input:focus { border-color: var(--pro); }
 .teen-note { background: #2a2410; border: 1px solid var(--fat); border-radius: 12px; padding: 10px 12px; font-size: 14px; font-weight: 600; }
 .setup-missing { text-align: center; margin: 4px 0 12px; }
 .btn:disabled { opacity: 0.4; }
+
+/* ---------- Swipe actions on Today's log ---------- */
+.swipe { position: relative; border-radius: 14px; overflow: hidden; }
+.swipe .entry { position: relative; touch-action: pan-y; will-change: transform; }
+.swipe .entry.snap { transition: transform 0.18s ease-out; }
+.swipe-bg {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 20px; font-weight: 800; background: var(--card2); color: var(--muted);
+}
+.swipe-bg span { visibility: hidden; }
+.swipe[data-dir=right] .swipe-fav, .swipe[data-dir=left] .swipe-del { visibility: visible; }
+.swipe[data-dir=right] .swipe-bg { background: #2a2410; color: var(--fat); }
+.swipe[data-dir=left] .swipe-bg { background: #2a1519; color: var(--over); }
+.swipe.armed[data-dir=right] .swipe-bg { background: var(--fat); color: #1d1600; }
+.swipe.armed[data-dir=left] .swipe-bg { background: var(--over); color: #fff; }
+#swipe-hint { font-size: 12px; }

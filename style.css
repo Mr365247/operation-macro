@@ -382,3 +382,6 @@ input:focus { border-color: var(--pro); }
 .swipe.armed[data-dir=left] .swipe-bg { background: var(--over); color: #fff; }
 #swipe-hint { font-size: 12px; }
 .swipe-tip { font-size: 12px; }
+.swipe .fav-row { background: var(--bg); }
+.swipe-tolist[data-dir=right] .swipe-bg { background: #12261e; color: var(--good); }
+.swipe-tolist.armed[data-dir=right] .swipe-bg { background: var(--good); color: #06170f; }

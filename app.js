@@ -253,9 +253,12 @@ function renderFavs() {
   const favs = [...state.favorites].sort((a, b) => a.name.localeCompare(b.name));
   $('#favs').innerHTML = favs.length
     ? favs.map(f => `
-        <div class="fav-row">
-          ${entryHTML({ ...f, t: 0 }, `data-fav="${f.id}"`)}
-          <button class="icon-btn" data-edit-fav="${f.id}" aria-label="Edit ${esc(f.name)}">✎</button>
+        <div class="swipe swipe-tolist" data-swipe="${f.id}">
+          <div class="swipe-bg"><span class="swipe-fav">🛒 Add to list</span><span class="swipe-del">Delete 🗑</span></div>
+          <div class="fav-row swipe-move">
+            ${entryHTML({ ...f, t: 0 }, `data-fav="${f.id}"`)}
+            <button class="icon-btn" data-edit-fav="${f.id}" aria-label="Edit ${esc(f.name)}">✎</button>
+          </div>
         </div>`).join('')
     : '<div class="empty">No favorites yet.<br>Tick <b>Save as favorite</b> when logging food, or tap <b>+</b> to create one.</div>';
 }
@@ -607,13 +610,22 @@ $('#sheet-delete').addEventListener('click', () => {
   const { mode, id } = sheet;
   closeSheet();
   if (mode === 'entry') deleteEntry(id);
-  if (mode === 'fav') {
-    const i = state.favorites.findIndex(f => f.id === id);
-    const [removed] = state.favorites.splice(i, 1);
-    save(); render();
-    toast(`Deleted ${removed.name}`, 'Undo', () => { state.favorites.splice(i, 0, removed); save(); render(); });
-  }
+  if (mode === 'fav') deleteFavorite(id);
 });
+function deleteFavorite(id) {
+  const i = state.favorites.findIndex(f => f.id === id);
+  if (i < 0) return;
+  const [removed] = state.favorites.splice(i, 1);
+  save(); render();
+  toast(`Deleted ${removed.name}`, 'Undo', () => { state.favorites.splice(i, 0, removed); save(); render(); });
+}
+function favoriteToList(id) {
+  const fav = state.favorites.find(f => f.id === id);
+  if (!fav) return;
+  const added = addShopItem(fav.name, '');
+  save(); render();
+  toast(added ? `🛒 Added ${fav.name} to your list` : `🛒 ${fav.name} is already on your list`);
+}
 // Enter on the name field jumps to calories rather than submitting.
 $('#in-name').addEventListener('keydown', ev => {
   if (ev.key === 'Enter') { ev.preventDefault(); $('#in-cal').focus(); }
@@ -1088,6 +1100,7 @@ function makeSwipeable(container, { onLeft, onRight }) {
 }
 makeSwipeable($('#log'), { onLeft: deleteEntry, onRight: favoriteEntry });
 makeSwipeable($('#view-list'), { onLeft: deleteShopItem, onRight: favoriteShopItem });
+makeSwipeable($('#favs'), { onLeft: deleteFavorite, onRight: favoriteToList });
 
 /* ================= HOORAH ================= */
 

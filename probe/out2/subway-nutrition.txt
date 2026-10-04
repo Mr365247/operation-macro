@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Nutrition</title>
+    <link rel="canonical" href="https://subway.com/en-us/menunutrition/nutrition">
+    <meta name="description" content="Let us fuel you. And your taste buds. Learn more about our ingredients, allergy information and nutrition facts.">
+    <meta name="keywords" content="Subway">
+    <meta property="og:title" content="Nutrition">
+    <meta property="og:description" content="Let us fuel you. And your taste buds. Learn more about our ingredients, allergy information and nutrition facts.">
+    <meta property="og:url" content="https://subway.com/en-us/menunutrition/nutrition">
+    <meta property="og:image" content="https://subway.com/en-us/menunutrition/media_186470a51a549f881732257e18b01bba076cea216.jpg?width=1200&#x26;format=pjpg&#x26;optimize=medium">
+    <meta property="og:image:secure_url" content="https://subway.com/en-us/menunutrition/media_186470a51a549f881732257e18b01bba076cea216.jpg?width=1200&#x26;format=pjpg&#x26;optimize=medium">
+    <meta property="og:image:alt" content="Sustainability">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nutrition">
+    <meta name="twitter:description" content="Let us fuel you. And your taste buds. Learn more about our ingredients, allergy information and nutrition facts.">
+    <meta name="twitter:image" content="https://subway.com/en-us/menunutrition/media_186470a51a549f881732257e18b01bba076cea216.jpg?width=1200&#x26;format=pjpg&#x26;optimize=medium">
+    <meta name="nav" content="/en-us/nav">
+    <meta name="footer" content="/en-us/footer">
+    <meta name="external-links-modal" content="/en-us/modals/leave-site">
+    <meta name="one-trust-guid" content="492c2b58-f4c3-4868-ad5d-eba99ed0d053">
+    <meta name="one-trust-cachebreaker" content="20230814-2">
+    <meta name="dynatrace-script" content="https://js-cdn.dynatrace.com/jstag/15c157a40ab/bf69157qdp/6a071ec2854c113f_complete.js">
+    <meta name="quantum-metrics-script" content="https://cdn.quantummetric.com/qscripts/quantum-subway.js">
+    <meta name="adobe-launch-env" content="prod">
+    <meta name="data-stream-id" content="5124f876-c4a2-4d6d-abb7-9cd7518bc598">
+    <meta name="org-id" content="D793BF115757EDD37F000101@AdobeOrg">
+    <meta name="published-time" content="2026-10-02T19:01:54.740Z">
+    <meta name="modified-time" content="2026-10-02T14:33:49.609Z">
+    <meta name="content-page-ref" content="mFK-u6KFv5gYNKrU6Sup4wbJ0L0B-P4aAP5-KSnpX6kJ2AbeRxma9_gyDGfp8WuO4G5UV88ZdmZABB31X28zPlH0fLS1nzTXT522pRACyUlNVkc5Ib7hx_vQ9bIlm58q">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="target" content="true">
+    <script nonce="Bms0j/MLDS3i68uaUYSyT5pq" src="/scripts/aem.js" type="module"></script>
+    <script nonce="Bms0j/MLDS3i68uaUYSyT5pq" src="/scripts/scripts.js" type="module"></script>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/tailwind.css">
+    <link rel="preload" nonce="Bms0j/MLDS3i68uaUYSyT5pq" as="script" crossorigin="anonymous" href="/plugins/martech/src/index.js">
+    <link rel="preload" nonce="Bms0j/MLDS3i68uaUYSyT5pq" as="script" crossorigin="anonymous" href="/plugins/martech/src/alloy.min.js">
+    <link rel="preconnect" href="https://edge.adobedc.net"><!-- AB#1855207 — the hero is the LCP element and its bytes come from a THIRD-PARTY
+         origin, so without this the LCP image pays a full DNS + TCP + TLS round trip
+         before its first byte. `media.subway.com` is the Akamai-fronted host every
+         production image resolves to (scripts.js rewrites the prod Assets delivery
+         host to it; see ASSETS_PROD_DELIVERY_HOST). Deliberately NO `crossorigin`:
+         these are plain `<img>` requests, which are not CORS, and a `crossorigin`
+         preconnect would warm a separate connection the images never use.
+    
+         Non-prod environments each keep their own delivery-p*.adobeaemcloud.com
+         host, and this head is shared by every environment, so there is no single
+         correct value to hint for them — deliberately not attempted rather than
+         hinting the wrong host. (An earlier revision dns-prefetched
+         ASSETS_PROD_DELIVERY_HOST here, which is the PROD host and so was both
+         redundant with the preconnect above and misleading.)
+    
+         NOTE this does not cover the home-page hero, which is a Helix `media_*`
+         asset served from this same origin and needs no hint at all. -->
+    <link rel="preconnect" href="https://media.subway.com">
+  <script nonce="177a63f136d55068eba556cc5cde3d20">bazadebezolkohpepadr="1411697480"</script><script type="text/javascript" src="https://www.subway.com/akam/13/5424cb14" nonce="177a63f136d55068eba556cc5cde3d20" defer></script></head>
+  <body>
+    <header></header>
+    <main>
+      <div>
+        <div class="hero">
+          <div>
+            <div>
+              <picture>
+                <source type="image/webp" srcset="./media_186470a51a549f881732257e18b01bba076cea216.jpg?width=2000&#x26;format=webply&#x26;optimize=medium" media="(min-width: 600px)">
+                <source type="image/webp" srcset="./media_186470a51a549f881732257e18b01bba076cea216.jpg?width=750&#x26;format=webply&#x26;optimize=medium">
+                <source type="image/jpeg" srcset="./media_186470a51a549f881732257e18b01bba076cea216.jpg?width=2000&#x26;format=jpg&#x26;optimize=medium" media="(min-width: 600px)">
+                <img loading="lazy" alt="Sustainability" src="./media_186470a51a549f881732257e18b01bba076cea216.jpg?width=750&#x26;format=jpg&#x26;optimize=medium" width="1280" height="490">
+              </picture>
+            </div>
+          </div>
+          <div>
+            <div>
+              <h1 id="nutrition--allergies"><strong>Nutrition &#x26; Allergies</strong></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2 id="nutrition-details"><strong>Nutrition details</strong></h2>
+        <p>Let us fuel you. And your taste buds. Learn more about our ingredients, allergy information and nutrition facts.</p>
+        <div class="section-metadata">
+          <div>
+            <div>style</div>
+            <div>contained, equal-padding</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="disclaimers">
+          <div>
+            <div>
+              <picture>
+                <source type="image/webp" srcset="./media_1660d7ee02d003dd9db33fb4da6a3b991ef036c4b.avif?width=2000&#x26;format=webply&#x26;optimize=medium" media="(min-width: 600px)">
+                <source type="image/webp" srcset="./media_1660d7ee02d003dd9db33fb4da6a3b991ef036c4b.avif?width=750&#x26;format=webply&#x26;optimize=medium">
+                <source type="image/avif" srcset="./media_1660d7ee02d003dd9db33fb4da6a3b991ef036c4b.avif?width=2000&#x26;format=avif&#x26;optimize=medium" media="(min-width: 600px)">
+                <img loading="lazy" alt="" src="./media_1660d7ee02d003dd9db33fb4da6a3b991ef036c4b.avif?width=750&#x26;format=avif&#x26;optimize=medium" width="24" height="24">
+              </picture>
+            </div>
+          </div>
+          <div>
+            <div>Nutrition Data Tables (USA)</div>
+          </div>
+          <div>
+            <div><a href="https://media.subway.com/dam/urn:aaid:aem:f20a4541-8c88-496b-940d-4aa8318cae26/original/as/us-nutrition-en.pdf">https://media.subway.com/dam/urn:aaid:aem:f20a4541-8c88-496b-940d-4aa8318cae26/original/as/us-nutrition-en.pdf</a></div>
+          </div>
+        </div>
+        <div class="disclaimers">
+          <div>
+            <div>
+              <picture>
+                <source type="image/webp" srcset="./media_1660d7ee02d003dd9db33fb4da6a3b991ef036c4b.avif?width=2000&#x26;format=webply&#x26;optimize=medium" media="(min-width: 600px)">
+                <source type="image/webp" srcset="./media_1660d7ee02d003dd9db33fb4da6a3b991ef036c4b.avif?width=750&#x26;format=webply&#x26;optimize=medium">
+                <source type="image/avif" srcset="./media_1660d7ee02d003dd9db33fb4da6a3b991ef036c4b.avif?width=2000&#x26;format=avif&#x26;optimize=medium" media="(min-width: 600px)">
+                <img loading="lazy" alt="Allergy &#x26;amp; Ingredient Info (USA)" src="./media_1660d7ee02d003dd9db33fb4da6a3b991ef036c4b.avif?width=750&#x26;format=avif&#x26;optimize=medium" width="24" height="24">
+              </picture>
+            </div>
+          </div>
+          <div>
+            <div>Allergy &#x26; Ingredient Info (USA)</div>
+          </div>
+          <div>
+            <div><a href="https://media.subway.com/dam/urn:aaid:aem:359a9f3d-2719-453b-9395-030f54968cbe/original/as/us-allergens-en.pdf">https://media.subway.com/dam/urn:aaid:aem:359a9f3d-2719-453b-9395-030f54968cbe/original/as/us-allergens-en.pdf</a></div>
+          </div>
+        </div>
+        <div class="disclaimers">
+          <div>
+            <div>
+              <picture>
+                <source type="image/webp" srcset="./media_1660d7ee02d003dd9db33fb4da6a3b991ef036c4b.avif?width=2000&#x26;format=webply&#x26;optimize=medium" media="(min-width: 600px)">
+                <source type="image/webp" srcset="./media_1660d7ee02d003dd9db33fb4da6a3b991ef036c4b.avif?width=750&#x26;format=webply&#x26;optimize=medium">
+                <source type="image/avif" srcset="./media_1660d7ee02d003dd9db33fb4da6a3b991ef036c4b.avif?width=2000&#x26;format=avif&#x26;optimize=medium" media="(min-width: 600px)">
+                <img loading="lazy" alt="Ingredient Guide (USA)" src="./media_1660d7ee02d003dd9db33fb4da6a3b991ef036c4b.avif?width=750&#x26;format=avif&#x26;optimize=medium" width="24" height="24">
+              </picture>
+            </div>
+          </div>
+          <div>
+            <div>Ingredient Guide (USA)</div>
+          </div>
+          <div>
+            <div><a href="https://media.subway.com/dam/urn:aaid:aem:eae61d17-af8c-4ca8-b2f8-38308dcaad91/original/as/us-ingredients-en.pdf">https://media.subway.com/dam/urn:aaid:aem:eae61d17-af8c-4ca8-b2f8-38308dcaad91/original/as/us-ingredients-en.pdf</a></div>
+          </div>
+        </div>
+        <div class="section-metadata">
+          <div>
+            <div>style</div>
+            <div>equal-padding, contained</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="teaser text-bottom default">
+          <div>
+            <div></div>
+          </div>
+          <div>
+            <div></div>
+          </div>
+          <div>
+            <div>
+              <picture>
+                <source type="image/webp" srcset="./media_1452ec4c6b3a6c0bb009790fc31de1befa2590902.jpg?width=2000&#x26;format=webply&#x26;optimize=medium" media="(min-width: 600px)">
+                <source type="image/webp" srcset="./media_1452ec4c6b3a6c0bb009790fc31de1befa2590902.jpg?width=750&#x26;format=webply&#x26;optimize=medium">
+                <source type="image/jpeg" srcset="./media_1452ec4c6b3a6c0bb009790fc31de1befa2590902.jpg?width=2000&#x26;format=jpg&#x26;optimize=medium" media="(min-width: 600px)">
+                <img loading="lazy" alt="Nutrition" src="./media_1452ec4c6b3a6c0bb009790fc31de1befa2590902.jpg?width=750&#x26;format=jpg&#x26;optimize=medium" width="1160" height="640">
+              </picture>
+            </div>
+          </div>
+          <div>
+            <div></div>
+          </div>
+          <div>
+            <div>
+              <h2 id="craving-more">Craving more?</h2>
+            </div>
+          </div>
+          <div>
+            <div>Find answers to your nutrition and ingredient questions.</div>
+          </div>
+          <div>
+            <div>FAQS</div>
+          </div>
+          <div>
+            <div><a href="https://subway.service-now.com/guest_csp?lang=en&#x26;country=US">https://subway.service-now.com/guest_csp?lang=en&#x26;country=US</a></div>
+          </div>
+          <div>
+            <div>Read More</div>
+          </div>
+          <div>
+            <div>btn-secondary btn-light</div>
+          </div>
+          <div>
+            <div></div>
+          </div>
+          <div>
+            <div></div>
+          </div>
+          <div>
+            <div></div>
+          </div>
+          <div>
+            <div></div>
+          </div>
+        </div>
+        <div class="section-metadata">
+          <div>
+            <div>style</div>
+            <div>full-bleed</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="order-now">
+          <div>
+            <div>
+              <h2 id="order-how-you-want-when-you-want"><strong>Order how you want, when you want</strong></h2>
+              <p>Getting Subway® has never been easier!</p>
+            </div>
+          </div>
+          <div>
+            <div>
+              <picture>
+                <source type="image/webp" srcset="./media_1de3dc37b83b469df93678e0a762d47ee1ac631f7.png?width=2000&#x26;format=webply&#x26;optimize=medium" media="(min-width: 600px)">
+                <source type="image/webp" srcset="./media_1de3dc37b83b469df93678e0a762d47ee1ac631f7.png?width=750&#x26;format=webply&#x26;optimize=medium">
+                <source type="image/png" srcset="./media_1de3dc37b83b469df93678e0a762d47ee1ac631f7.png?width=2000&#x26;format=png&#x26;optimize=medium" media="(min-width: 600px)">
+                <img loading="lazy" alt="Order pickup, delivery, or curbside." src="./media_1de3dc37b83b469df93678e0a762d47ee1ac631f7.png?width=750&#x26;format=png&#x26;optimize=medium" width="580" height="325">
+              </picture>
+            </div>
+          </div>
+          <div>
+            <div>
+              <picture>
+                <source type="image/webp" srcset="./media_1f29d5970e8592ac635c8068882a0a2c05784e78a.png?width=2000&#x26;format=webply&#x26;optimize=medium" media="(min-width: 600px)">
+                <source type="image/webp" srcset="./media_1f29d5970e8592ac635c8068882a0a2c05784e78a.png?width=750&#x26;format=webply&#x26;optimize=medium">
+                <source type="image/png" srcset="./media_1f29d5970e8592ac635c8068882a0a2c05784e78a.png?width=2000&#x26;format=png&#x26;optimize=medium" media="(min-width: 600px)">
+                <img loading="lazy" alt="Order pickup, delivery, or curbside." src="./media_1f29d5970e8592ac635c8068882a0a2c05784e78a.png?width=750&#x26;format=png&#x26;optimize=medium" width="335" height="188">
+              </picture>
+            </div>
+          </div>
+          <div>
+            <div><a href="https://www.subway.com/en-us/locator">ORDER NOW</a></div>
+          </div>
+          <div>
+            <div></div>
+          </div>
+          <div>
+            <div></div>
+          </div>
+          <div>
+            <div>
+              <picture>
+                <source type="image/webp" srcset="./media_1bd7a5b56fc41efb68f5f1da5cbb7c1975bc69274.png?width=2000&#x26;format=webply&#x26;optimize=medium" media="(min-width: 600px)">
+                <source type="image/webp" srcset="./media_1bd7a5b56fc41efb68f5f1da5cbb7c1975bc69274.png?width=750&#x26;format=webply&#x26;optimize=medium">
+                <source type="image/png" srcset="./media_1bd7a5b56fc41efb68f5f1da5cbb7c1975bc69274.png?width=2000&#x26;format=png&#x26;optimize=medium" media="(min-width: 600px)">
+                <img loading="lazy" alt="App Store" src="./media_1bd7a5b56fc41efb68f5f1da5cbb7c1975bc69274.png?width=750&#x26;format=png&#x26;optimize=medium" width="135" height="40">
+              </picture>
+            </div>
+          </div>
+          <div>
+            <div><a href="https://apps.apple.com/us/app/subway/id901941015">https://apps.apple.com/us/app/subway/id901941015</a></div>
+          </div>
+          <div>
+            <div></div>
+          </div>
+          <div>
+            <div>
+              <picture>
+                <source type="image/webp" srcset="./media_15c5f28b32af083ba018d6b530098a96f80e809a1.png?width=2000&#x26;format=webply&#x26;optimize=medium" media="(min-width: 600px)">
+                <source type="image/webp" srcset="./media_15c5f28b32af083ba018d6b530098a96f80e809a1.png?width=750&#x26;format=webply&#x26;optimize=medium">
+                <source type="image/png" srcset="./media_15c5f28b32af083ba018d6b530098a96f80e809a1.png?width=2000&#x26;format=png&#x26;optimize=medium" media="(min-width: 600px)">
+                <img loading="lazy" alt="Play Store" src="./media_15c5f28b32af083ba018d6b530098a96f80e809a1.png?width=750&#x26;format=png&#x26;optimize=medium" width="135" height="40">
+              </picture>
+            </div>
+          </div>
+          <div>
+            <div><a href="https://play.google.com/store/apps/details?id=com.subway.mobile.subwayapp03&#x26;hl=en">https://play.google.com/store/apps/details?id=com.subway.mobile.subwayapp03&#x26;hl=en</a></div>
+          </div>
+          <div>
+            <div></div>
+          </div>
+          <div>
+            <div>true</div>
+          </div>
+        </div>
+      </div>
+      <div></div>
+    </main>
+    <footer></footer>
+  <script type="text/javascript" nonce="177a63f136d55068eba556cc5cde3d20" src="/ocs_ATUe3KDgeTwfWP0EIEAF/m9zahNwL3Xcfwz9S/DFxcZFd6PAI/R2NWM00/EP1w"></script><link rel="stylesheet" type="text/css" nonce="177a63f136d55068eba556cc5cde3d20" href="/ocs_ATUe3KDgeTwfWP0EIEAF/rbza/cWtHZFd6PAI/U2gTIGw/rYkdX"><script nonce="177a63f136d55068eba556cc5cde3d20" src="/ocs_ATUe3KDgeTwfWP0EIEAF/rbza/cWtHZFd6PAI/CCwsLQ5/qKkEp" async defer></script><div id="sec-overlay" style="display:none;"><div id="sec-container"></div></div><noscript><img src="https://www.subway.com/akam/13/pixel_5424cb14?a=dD1mNzljYTE4OTcwMjViYmExNTg5ZjFlYzBjNTkyYzlhM2EyNzU3YWJmJmpzPW9mZg==" style="visibility: hidden; position: absolute; left: -999px; top: -999px;" /></noscript></body>
+</html>

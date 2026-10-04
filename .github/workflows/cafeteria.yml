@@ -1,0 +1,30 @@
+name: Update cafeteria menu
+
+on:
+  schedule:
+    - cron: '17 10 * * 0'   # Sundays, early morning Eastern
+  workflow_dispatch:         # "Run workflow" button on the Actions tab
+  push:
+    branches: [main]
+    paths:
+      - scripts/update-cafeteria.mjs
+      - .github/workflows/cafeteria.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/update-cafeteria.mjs
+      - name: Commit updated library
+        run: |
+          git config user.name "cafeteria-menu-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cafeteria.json
+          git diff --cached --quiet || (git commit -m "Update cafeteria menu library" && git push)

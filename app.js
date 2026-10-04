@@ -46,9 +46,9 @@ function load() {
     barcodes: s.barcodes || {}, // barcode -> per-serving nutrition you've scanned or entered
     lastBackup: s.lastBackup || null,     // when you last saved a backup file
     backupSnooze: s.backupSnooze || null, // "Later" hides the reminder until this time
+    profile: s.profile || null,           // age, sex, height, activity, goal from the setup
+    needsSetup: fresh || !!s.needsSetup,  // brand-new phone: ask for their info before anything else
   };
-  // First run: record the starting weight so the trend has a starting point.
-  if (fresh) st.weights[today] = st.settings.weight;
   return st;
 }
 function save() {
@@ -872,6 +872,126 @@ $('#suggest').addEventListener('click', ev => {
   scanNote(it.src === 'school' ? '🏫 From the NPHS cafeteria menu' : '');
 });
 
+/* ================= Setup / macro calculator ================= */
+
+const ACTIVITY = [
+  { id: 'sedentary', f: 1.2,   label: 'Mostly sitting',  sub: 'Little or no exercise' },
+  { id: 'light',     f: 1.375, label: 'Lightly active',  sub: 'Exercise 1–3 days a week' },
+  { id: 'moderate',  f: 1.55,  label: 'Active',          sub: 'Workouts or practice 3–5 days a week' },
+  { id: 'very',      f: 1.725, label: 'Very active',     sub: 'Hard training 6–7 days, or a sport in season' },
+];
+$('#su-activity').innerHTML = ACTIVITY.map(a => `<button type="button" data-v="${a.id}">${a.label}<small>${a.sub}</small></button>`).join('');
+
+// Mifflin-St Jeor estimate of daily burn, then adjusted for the goal.
+// Under 18 the cut is kept small and calories have a higher floor.
+function calcTargets(pr) {
+  const teen = pr.age < 18;
+  const kg = pr.weight * 0.4536, cm = pr.heightIn * 2.54;
+  const bmr = 10 * kg + 6.25 * cm - 5 * pr.age + (pr.sex === 'm' ? 5 : -161);
+  const tdee = bmr * ACTIVITY.find(a => a.id === pr.activity).f;
+  const adj = pr.goal === 'lose' ? (teen ? -0.10 : -0.20) : pr.goal === 'gain' ? 0.10 : 0;
+  let cal = tdee * (1 + adj);
+  if (pr.goal === 'lose') {
+    const floor = teen ? (pr.sex === 'm' ? 2000 : 1800) : (pr.sex === 'm' ? 1500 : 1200);
+    cal = Math.max(cal, Math.min(floor, tdee));
+  }
+  cal = Math.round(cal / 10) * 10;
+  const r5 = v => Math.round(v / 5) * 5;
+  // Protein: ~1 g per lb of goal weight for adults cutting or building, 0.8 g per lb otherwise.
+  const perLb = !teen && pr.goal !== 'maintain' ? 1.0 : 0.8;
+  const basis = !teen && pr.goal === 'lose' ? Math.min(pr.weight, pr.goalWeight || pr.weight) : pr.weight;
+  const protein = Math.min(r5(perLb * basis), r5(cal * 0.35 / 4));
+  const fat = r5(cal * (teen ? 0.30 : 0.25) / 9);
+  const carbs = Math.max(0, r5((cal - protein * 4 - fat * 9) / 4));
+  return { cal, protein, carbs, fat, tdee: Math.round(tdee / 10) * 10, adj, teen };
+}
+
+let setupPick = {}, goalTouched = false, setupFirstRun = false;
+function paintSeg(id, value) {
+  setupPick[id] = value;
+  document.querySelectorAll(`#${id} button`).forEach(b => b.classList.toggle('on', b.dataset.v === value));
+}
+['su-sex', 'su-activity', 'su-goal'].forEach(id => $('#' + id).addEventListener('click', ev => {
+  const b = ev.target.closest('button[data-v]');
+  if (!b) return;
+  if (id === 'su-goal') goalTouched = true;
+  paintSeg(id, b.dataset.v);
+  updateSetup();
+}));
+
+function readProfile() {
+  const n = id => parseFloat($('#' + id).value);
+  const pr = {
+    age: n('su-age'), sex: setupPick['su-sex'], heightIn: (n('su-ft') || 0) * 12 + (n('su-in') || 0),
+    weight: n('su-weight'), goalWeight: n('su-goalw'), activity: setupPick['su-activity'], goal: setupPick['su-goal'],
+  };
+  const ok = pr.age >= 13 && pr.age <= 100 && pr.sex && pr.heightIn >= 48 && pr.weight >= 60 && pr.goalWeight >= 60 && pr.activity && pr.goal;
+  return ok ? pr : null;
+}
+function updateSetup() {
+  // Pick the goal from the two weights until they choose one themselves.
+  const w = parseFloat($('#su-weight').value), g = parseFloat($('#su-goalw').value);
+  if (!goalTouched && w > 0 && g > 0) paintSeg('su-goal', g < w - 1 ? 'lose' : g > w + 1 ? 'gain' : 'maintain');
+  const pr = readProfile();
+  $('#su-results').hidden = !pr;
+  $('#su-missing').hidden = !!pr;
+  $('#su-save').disabled = !pr;
+  if (!pr) return;
+  const t = calcTargets(pr);
+  $('#su-cal').value = t.cal; $('#su-p').value = t.protein; $('#su-c').value = t.carbs; $('#su-f').value = t.fat;
+  const pct = Math.round(Math.abs(t.adj) * 100);
+  $('#su-explain').textContent = `You burn about ${fmt(t.tdee)} calories a day. ` + (
+    pr.goal === 'lose' ? `This target is about ${pct}% under that${t.teen ? ', a gentle cut' : ''}, to lose fat while keeping muscle.`
+    : pr.goal === 'gain' ? `This target is about ${pct}% over that, to build muscle without much fat gain.`
+    : 'This target matches it, to hold your weight steady.');
+  $('#su-teen').hidden = !t.teen;
+}
+// Typing in the top section recalculates; editing a result box keeps your number.
+['su-age', 'su-ft', 'su-in', 'su-weight', 'su-goalw'].forEach(id => $('#' + id).addEventListener('input', updateSetup));
+
+function openSetup(firstRun) {
+  setupFirstRun = firstRun;
+  const pr = state.profile || {}, s = state.settings;
+  $('#setup-title').textContent = firstRun ? "Welcome! Let's set your targets." : 'Calculate my targets';
+  $('#su-cancel').hidden = firstRun;
+  $('#su-age').value = pr.age || '';
+  $('#su-ft').value = pr.heightIn ? Math.floor(pr.heightIn / 12) : '';
+  $('#su-in').value = pr.heightIn ? Math.round(pr.heightIn % 12) : '';
+  $('#su-weight').value = firstRun ? '' : s.weight;
+  $('#su-goalw').value = firstRun ? '' : s.goalWeight;
+  setupPick = {};
+  paintSeg('su-sex', pr.sex); paintSeg('su-activity', pr.activity); paintSeg('su-goal', pr.goal);
+  goalTouched = !!pr.goal;
+  updateSetup();
+  $('#setup').hidden = false;
+  $('#setup').scrollTop = 0;
+}
+$('#su-cancel').addEventListener('click', () => { $('#setup').hidden = true; });
+$('#recalc-btn').addEventListener('click', () => openSetup(false));
+
+$('#setup-form').addEventListener('submit', ev => {
+  ev.preventDefault();
+  const pr = readProfile();
+  if (!pr) return;
+  const v = id => Math.max(0, Math.round(parseFloat($('#' + id).value) || 0));
+  const t = calcTargets(pr);
+  Object.assign(state.settings, {
+    cal: v('su-cal') || t.cal, protein: v('su-p'), carbs: v('su-c'), fat: v('su-f'),
+    goalWeight: pr.goalWeight,
+  });
+  // Record the weight as today's weigh-in if it's new.
+  const latest = sortedWeights().pop();
+  if (!latest || latest.w !== pr.weight) state.weights[today] = Math.round(pr.weight * 10) / 10;
+  syncCurrentWeight();
+  state.profile = { age: pr.age, sex: pr.sex, heightIn: pr.heightIn, activity: pr.activity, goal: pr.goal };
+  state.needsSetup = false;
+  if (state.days[today]) todayDay();
+  save();
+  $('#setup').hidden = true;
+  render();
+  toast(setupFirstRun ? 'Targets set. Mission start! 🎯' : 'Targets updated');
+});
+
 /* ================= HOORAH ================= */
 
 function checkHoorah() {
@@ -1050,7 +1170,7 @@ $('#reset-btn').addEventListener('click', () => {
   if (!confirm('Really? This cannot be undone.')) return;
   localStorage.removeItem(STORE_KEY);
   state = load(); save(); render();
-  toast('All data erased');
+  openSetup(true);
 });
 
 $('#list-form').addEventListener('submit', ev => {
@@ -1105,6 +1225,7 @@ window.addEventListener('focus', checkRollover);
 save();
 loadCafeteria();
 setView('today');
+if (state.needsSetup) openSetup(true);
 if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {
   navigator.serviceWorker.register('sw.js').catch(() => {});

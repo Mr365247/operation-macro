@@ -341,3 +341,25 @@ input:focus { border-color: var(--pro); }
 .sug:active { background: var(--card2); }
 .sug-name { display: block; font-weight: 700; font-size: 16px; }
 .sug-meta { display: block; font-size: 13px; color: var(--muted); margin-top: 1px; }
+
+/* ---------- Setup / macro calculator ---------- */
+.calc-btn { margin: 0 0 12px; border-color: var(--good); color: var(--good); }
+.setup { position: fixed; inset: 0; z-index: 45; background: var(--bg); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.setup-inner { max-width: 560px; margin: 0 auto; padding: calc(env(safe-area-inset-top, 0px) + 20px) 16px calc(var(--safe-b) + 24px); }
+.setup h2 { font-size: 24px; margin: 8px 0 6px; }
+.field.unit { position: relative; }
+.field.unit em { position: absolute; right: 14px; bottom: 15px; font-style: normal; color: var(--muted); font-weight: 700; pointer-events: none; }
+.seg { display: grid; gap: 8px; margin-bottom: 12px; }
+.seg2 { grid-template-columns: 1fr 1fr; margin-bottom: 0; }
+.seg3 { grid-template-columns: repeat(3, 1fr); }
+.seg button {
+  min-height: 52px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--card);
+  font-weight: 700; font-size: 15px; padding: 6px 8px;
+}
+.seg button.on { border-color: var(--pro); background: #13263b; }
+.seg-col button { text-align: left; padding: 10px 14px; }
+.seg-col small { display: block; color: var(--muted); font-weight: 500; font-size: 13px; }
+.setup-results { background: var(--card); border: 1px solid var(--good); border-radius: var(--radius); padding: 14px; margin: 6px 0 12px; }
+.teen-note { background: #2a2410; border: 1px solid var(--fat); border-radius: 12px; padding: 10px 12px; font-size: 14px; font-weight: 600; }
+.setup-missing { text-align: center; margin: 4px 0 12px; }
+.btn:disabled { opacity: 0.4; }

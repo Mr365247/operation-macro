@@ -100,6 +100,7 @@
     <section class="view" id="view-settings" hidden>
       <form id="settings-form" class="card">
         <div class="card-head"><h3>Daily targets</h3></div>
+        <button class="btn block calc-btn" type="button" id="recalc-btn">🧮 Calculate my targets</button>
         <div class="grid2">
           <label class="field"><span>Calories</span><input id="s-cal" type="number" inputmode="numeric" min="1" required></label>
           <label class="field"><span>Protein (g)</span><input id="s-protein" type="number" inputmode="numeric" min="0" required></label>
@@ -189,6 +190,58 @@
         <button class="btn danger" type="button" id="sheet-delete">Delete</button>
         <button class="btn" type="button" id="sheet-cancel">Cancel</button>
       </div>
+    </form>
+  </div>
+
+  <!-- Setup / macro calculator -->
+  <div class="setup" id="setup" hidden>
+    <form class="setup-inner" id="setup-form" autocomplete="off" novalidate>
+      <div class="brand">OPERATION MACRO</div>
+      <h2 id="setup-title">Welcome! Let's set your targets.</h2>
+      <p class="muted small">Your info stays on this phone. It's only used to work out your daily calories and macros.</p>
+
+      <div class="grid2">
+        <label class="field"><span>Age</span><input id="su-age" type="number" inputmode="numeric" min="13" max="100"></label>
+        <div class="field"><span>Sex</span>
+          <div class="seg seg2" id="su-sex">
+            <button type="button" data-v="m">Male</button><button type="button" data-v="f">Female</button>
+          </div>
+        </div>
+      </div>
+      <div class="field"><span>Height</span></div>
+      <div class="grid2">
+        <label class="field unit"><input id="su-ft" type="number" inputmode="numeric" min="3" max="8"><em>ft</em></label>
+        <label class="field unit"><input id="su-in" type="number" inputmode="numeric" min="0" max="11"><em>in</em></label>
+      </div>
+      <div class="grid2">
+        <label class="field unit"><span>Current weight</span><input id="su-weight" type="number" inputmode="decimal" step="0.1"><em>lbs</em></label>
+        <label class="field unit"><span>Goal weight</span><input id="su-goalw" type="number" inputmode="decimal" step="0.1"><em>lbs</em></label>
+      </div>
+
+      <div class="field"><span>How active are you?</span></div>
+      <div class="seg seg-col" id="su-activity"></div>
+
+      <div class="field"><span>Your goal</span></div>
+      <div class="seg seg3" id="su-goal">
+        <button type="button" data-v="lose">Lose fat</button><button type="button" data-v="maintain">Maintain</button><button type="button" data-v="gain">Build muscle</button>
+      </div>
+
+      <div class="setup-results" id="su-results" hidden>
+        <div class="card-head"><h3>Your daily targets</h3></div>
+        <p class="muted small" id="su-explain"></p>
+        <div class="grid2">
+          <label class="field cal"><span>Calories</span><input id="su-cal" type="number" inputmode="numeric"></label>
+          <label class="field pro"><span>Protein g</span><input id="su-p" type="number" inputmode="numeric"></label>
+          <label class="field carb"><span>Carbs g</span><input id="su-c" type="number" inputmode="numeric"></label>
+          <label class="field fat"><span>Fat g</span><input id="su-f" type="number" inputmode="numeric"></label>
+        </div>
+        <p class="teen-note" id="su-teen" hidden>Under 18: this plan keeps any calorie cut small, because a growing body needs enough fuel. These are estimates. Check them with your doctor or coach.</p>
+        <p class="muted small">You can tweak any number, and change them later in Settings.</p>
+      </div>
+      <p class="setup-missing muted small" id="su-missing">Fill in everything above to see your targets.</p>
+
+      <button class="btn primary block big" type="submit" id="su-save" disabled>Start tracking</button>
+      <button class="btn block" type="button" id="su-cancel" hidden>Cancel</button>
     </form>
   </div>
 

@@ -333,3 +333,11 @@ input:focus { border-color: var(--pro); }
 }
 .backup-actions { display: flex; gap: 8px; }
 .backup-actions .btn { min-height: 48px; }
+
+/* ---------- Food autocomplete ---------- */
+.suggest { margin: -4px 0 10px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--bg); }
+.sug { display: block; width: 100%; text-align: left; padding: 10px 14px; min-height: 54px; background: none; border: 0; border-top: 1px solid var(--line); }
+.sug:first-child { border-top: 0; }
+.sug:active { background: var(--card2); }
+.sug-name { display: block; font-weight: 700; font-size: 16px; }
+.sug-meta { display: block; font-size: 13px; color: var(--muted); margin-top: 1px; }

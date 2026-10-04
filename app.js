@@ -541,10 +541,8 @@ $('#entry-form').addEventListener('submit', ev => {
   if (!data) { $('#in-name').focus(); return; }
   const { mode, id, code } = sheet;
   const asFav = $('#in-fav').checked;
-  if (code) {
-    rememberBarcode(code, data);
-    if (servings !== 1) data.name = `${data.name} ×${servings}`;
-  }
+  if (code) rememberBarcode(code, data);
+  if (perServing && servings !== 1) data.name = `${data.name} ×${servings}`;
   closeSheet();
   if (mode === 'add') {
     addEntry(data);
@@ -728,6 +726,7 @@ let servings = 1, perServing = null; // macros for ONE serving while a barcode i
 
 function resetScanState() {
   servings = 1; perServing = null;
+  $('#suggest').hidden = true;
   $('#serving-row').hidden = true;
   $('#scan-note').hidden = true;
   $('#in-servings').value = 1;
@@ -804,6 +803,73 @@ $('#scan-list').addEventListener('click', async () => {
     $('#in-item').focus();
     toast(info === undefined ? "Couldn't reach the food database. Type the name and tap Add." : 'Not found. Type the name and tap Add.');
   }
+});
+
+/* ================= Food autocomplete ================= */
+
+// cafeteria.json is refreshed weekly from the school's Nutrislice menu by a GitHub Action.
+let cafeteria = [];
+async function loadCafeteria() {
+  try {
+    const res = await fetch('cafeteria.json', { cache: 'no-cache' });
+    if (!res.ok) return;
+    const data = await res.json();
+    cafeteria = (data.items || []).filter(i => i.cal != null || i.p != null);
+  } catch (e) { /* offline and never loaded: just no school suggestions */ }
+}
+
+const escRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+// Favorites first, then your scanned barcodes, then the school menu. Every typed word must match.
+function suggestions(query) {
+  const q = query.trim().toLowerCase();
+  if (q.length < 2) return [];
+  const words = q.split(/\s+/);
+  const pool = [
+    ...state.favorites.map(f => ({ ...f, src: 'fav' })),
+    ...Object.entries(state.barcodes).map(([code, b]) => ({ ...b, code, src: 'scan' })),
+    ...cafeteria.map(i => ({ ...i, src: 'school' })),
+  ];
+  const seen = new Set(), out = [];
+  for (const it of pool) {
+    const name = (it.name || '').toLowerCase();
+    if (!name || seen.has(name) || !words.every(w => name.includes(w))) continue;
+    seen.add(name);
+    const where = name.startsWith(q) ? 0 : new RegExp('\\b' + escRe(words[0])).test(name) ? 1 : 2;
+    out.push({ it, score: where + { fav: 0, scan: 0.1, school: 0.2 }[it.src] });
+  }
+  return out.sort((a, b) => a.score - b.score || a.it.name.localeCompare(b.it.name)).slice(0, 6).map(x => x.it);
+}
+
+let suggestList = [];
+function showSuggest() {
+  suggestList = suggestions($('#in-name').value);
+  const icon = { fav: '⭐', scan: '📷', school: '🏫' };
+  $('#suggest').innerHTML = suggestList.map((it, i) => {
+    const meta = [it.cal != null ? `${fmt(it.cal)} cal` : '', it.p != null ? `P ${fmt1(it.p)}` : '', it.serving ? esc(it.serving) : '']
+      .filter(Boolean).join(' · ');
+    return `<button type="button" class="sug" data-sug="${i}"><span class="sug-name">${esc(it.name)}</span><span class="sug-meta">${icon[it.src]} ${meta}</span></button>`;
+  }).join('');
+  $('#suggest').hidden = !suggestList.length;
+}
+$('#in-name').addEventListener('input', showSuggest);
+// Hide the list once you move on to another box.
+$('#entry-form').addEventListener('focusin', ev => {
+  if (ev.target.id !== 'in-name' && !ev.target.closest('#suggest')) $('#suggest').hidden = true;
+});
+$('#suggest').addEventListener('click', ev => {
+  const b = ev.target.closest('[data-sug]');
+  if (!b || !sheet) return;
+  const it = suggestList[+b.dataset.sug];
+  $('#in-name').value = it.name;
+  $('#suggest').hidden = true;
+  $('#in-name').blur();
+  if (it.code) { fillFromBarcode(it.code); return; } // saved barcode: same as scanning it
+  sheet.code = null;
+  perServing = { cal: it.cal ?? null, p: it.p ?? null, c: it.c ?? null, f: it.f ?? null };
+  setServings(1);
+  $('#serving-row').hidden = false;
+  $('#serving-info').textContent = it.serving ? `1 serving = ${it.serving}` : 'Per serving';
+  scanNote(it.src === 'school' ? '🏫 From the NPHS cafeteria menu' : '');
 });
 
 /* ================= HOORAH ================= */
@@ -1018,6 +1084,7 @@ async function updateWakeLock() {
   } catch (e) { wakeLock = null; }
 }
 document.addEventListener('visibilitychange', updateWakeLock);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) loadCafeteria(); });
 
 /* ================= Midnight rollover ================= */
 
@@ -1036,6 +1103,7 @@ window.addEventListener('focus', checkRollover);
 /* ================= Boot ================= */
 
 save();
+loadCafeteria();
 setView('today');
 if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {

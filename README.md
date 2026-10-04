@@ -26,3 +26,9 @@ Scanning uses the phone camera and looks products up in Open Food Facts
 (https://world.openfoodfacts.org), a free public database. Anything you scan or
 type in from a label is saved on the phone, so repeat scans work offline.
 The barcode reader is bundled in `vendor/` (barcode-detector + zxing-wasm, MIT).
+
+## Cafeteria menu library
+`.github/workflows/cafeteria.yml` runs `scripts/update-cafeteria.mjs` every Sunday (or via
+Actions → Update cafeteria menu → Run workflow). It pulls North Providence High School's
+breakfast and lunch menus with nutrition from Nutrislice and merges them into
+`cafeteria.json`. The Log food form autocompletes from favorites, saved barcodes and this library.

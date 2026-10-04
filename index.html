@@ -166,7 +166,8 @@
       <h2 id="sheet-title">Log food</h2>
       <button class="btn block scan-btn" type="button" id="scan-food">📷 Scan barcode</button>
       <p class="scan-note" id="scan-note" hidden></p>
-      <label class="field"><span>Food</span><input id="in-name" type="text" placeholder="e.g. Chicken thighs" enterkeyhint="next"></label>
+      <label class="field"><span>Food</span><input id="in-name" type="text" placeholder="Start typing, e.g. fajita" enterkeyhint="next" autocomplete="off" autocorrect="off"></label>
+      <div class="suggest" id="suggest" hidden></div>
       <div class="serving-row" id="serving-row" hidden>
         <div><div class="serving-label">Servings</div><div class="muted small" id="serving-info"></div></div>
         <div class="stepper">

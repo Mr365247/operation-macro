@@ -872,6 +872,24 @@ async function loadCafeteria() {
     const data = await res.json();
     cafeteria = (data.items || []).filter(i => i.cal != null || i.p != null);
   } catch (e) { /* offline and never loaded: just no school suggestions */ }
+  loadRestaurants();
+}
+
+// restaurants.json is refreshed weekly from each chain's official nutrition info by a GitHub Action.
+let restaurants = [];
+const norm = s => String(s || '').toLowerCase().replace(/[’'`.-]/g, '').replace(/\s+/g, ' ');
+async function loadRestaurants() {
+  try {
+    const res = await fetch('restaurants.json', { cache: 'no-cache' });
+    if (!res.ok) return;
+    const data = await res.json();
+    restaurants = Object.values(data.chains || {}).flatMap(ch => (ch.items || [])
+      .filter(i => i.cal != null || i.p != null)
+      .map(i => {
+        const full = norm(i.name).startsWith(norm(ch.name)) ? i.name : `${ch.name} ${i.name}`;
+        return { ...i, name: full, short: i.name, chain: ch.name, hay: norm(`${full} ${(ch.aliases || []).join(' ')}`) };
+      }));
+  } catch (e) { /* no restaurant suggestions */ }
 }
 
 const escRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -879,19 +897,21 @@ const escRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 function suggestions(query) {
   const q = query.trim().toLowerCase();
   if (q.length < 2) return [];
-  const words = q.split(/\s+/);
+  const words = q.split(/\s+/), nwords = norm(q).split(' ').filter(Boolean);
   const pool = [
     ...state.favorites.map(f => ({ ...f, src: 'fav' })),
     ...Object.entries(state.barcodes).map(([code, b]) => ({ ...b, code, src: 'scan' })),
     ...cafeteria.map(i => ({ ...i, src: 'school' })),
+    ...restaurants.map(i => ({ ...i, src: 'rest' })),
   ];
   const seen = new Set(), out = [];
   for (const it of pool) {
     const name = (it.name || '').toLowerCase();
-    if (!name || seen.has(name) || !words.every(w => name.includes(w))) continue;
+    const hay = it.hay || norm(it.name);
+    if (!name || seen.has(name) || !nwords.every(w => hay.includes(w))) continue;
     seen.add(name);
     const where = name.startsWith(q) ? 0 : new RegExp('\\b' + escRe(words[0])).test(name) ? 1 : 2;
-    out.push({ it, score: where + { fav: 0, scan: 0.1, school: 0.2 }[it.src] });
+    out.push({ it, score: where + { fav: 0, scan: 0.1, school: 0.2, rest: 0.3 }[it.src] });
   }
   return out.sort((a, b) => a.score - b.score || a.it.name.localeCompare(b.it.name)).slice(0, 6).map(x => x.it);
 }
@@ -899,11 +919,11 @@ function suggestions(query) {
 let suggestList = [];
 function showSuggest() {
   suggestList = suggestions($('#in-name').value);
-  const icon = { fav: '⭐', scan: '📷', school: '🏫' };
+  const icon = { fav: '⭐', scan: '📷', school: '🏫', rest: '🍔' };
   $('#suggest').innerHTML = suggestList.map((it, i) => {
     const meta = [it.cal != null ? `${fmt(it.cal)} cal` : '', it.p != null ? `P ${fmt1(it.p)}` : '', it.serving ? esc(it.serving) : '']
       .filter(Boolean).join(' · ');
-    return `<button type="button" class="sug" data-sug="${i}"><span class="sug-name">${esc(it.name)}</span><span class="sug-meta">${icon[it.src]} ${meta}</span></button>`;
+    return `<button type="button" class="sug" data-sug="${i}"><span class="sug-name">${esc(it.short || it.name)}</span><span class="sug-meta">${icon[it.src]} ${it.chain ? esc(it.chain) + ' · ' : ''}${meta}</span></button>`;
   }).join('');
   $('#suggest').hidden = !suggestList.length;
 }
@@ -925,7 +945,7 @@ $('#suggest').addEventListener('click', ev => {
   setServings(1);
   $('#serving-row').hidden = false;
   $('#serving-info').textContent = it.serving ? `1 serving = ${it.serving}` : 'Per serving';
-  scanNote(it.src === 'school' ? '🏫 From the NPHS cafeteria menu' : '');
+  scanNote(it.src === 'school' ? '🏫 From the NPHS cafeteria menu' : it.src === 'rest' ? `🍔 From ${it.chain}'s official nutrition info` : '');
 });
 
 /* ================= Setup / macro calculator ================= */

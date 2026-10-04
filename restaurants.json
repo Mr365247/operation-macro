@@ -1,0 +1,9593 @@
+{
+ "updated": "2026-10-04",
+ "chains": {
+  "chickfila": {
+   "name": "Chick-fil-A",
+   "aliases": [
+    "chickfila",
+    "chick fil a",
+    "cfa"
+   ],
+   "source": "https://www.chick-fil-a.com/nutrition-allergens",
+   "updated": "2026-10-04",
+   "items": [
+    {
+     "name": "Waffle",
+     "serving": "83g",
+     "cal": 380,
+     "f": 18,
+     "c": 52,
+     "p": 5
+    },
+    {
+     "name": "Breakfast Breads",
+     "serving": "81g",
+     "cal": 350,
+     "f": 15,
+     "c": 53,
+     "p": 4
+    },
+    {
+     "name": "4 ct Mini Yeast Rolls",
+     "serving": "70g",
+     "cal": 300,
+     "f": 8,
+     "c": 52,
+     "p": 6
+    },
+    {
+     "name": "English Muffin",
+     "serving": "58g",
+     "cal": 200,
+     "f": 1,
+     "c": 43,
+     "p": 5
+    },
+    {
+     "name": "Buttery Biscuit",
+     "serving": "81g",
+     "cal": 350,
+     "f": 15,
+     "c": 53,
+     "p": 4
+    },
+    {
+     "name": "Breakfast Waffle",
+     "serving": "68g",
+     "cal": 320,
+     "f": 15,
+     "c": 46,
+     "p": 4
+    },
+    {
+     "name": "Fruit Cup",
+     "serving": "125g",
+     "cal": 70,
+     "f": 0,
+     "c": 16,
+     "p": 1
+    },
+    {
+     "name": "Large Fruit Cup",
+     "serving": "215g",
+     "cal": 120,
+     "f": 0,
+     "c": 28,
+     "p": 1
+    },
+    {
+     "name": "Small Fruit Cup",
+     "serving": "107g",
+     "cal": 60,
+     "f": 0,
+     "c": 14,
+     "p": 1
+    },
+    {
+     "name": "Medium Fruit Cup",
+     "serving": "125g",
+     "cal": 70,
+     "f": 0,
+     "c": 16,
+     "p": 1
+    },
+    {
+     "name": "Hash Brown Scramble Bowl",
+     "serving": "233g",
+     "cal": 470,
+     "f": 30,
+     "c": 19,
+     "p": 29
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ No Meat - no hash browns",
+     "serving": "137g",
+     "cal": 200,
+     "f": 14,
+     "c": 3,
+     "p": 16
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ Bacon - no hash browns",
+     "serving": "158g",
+     "cal": 300,
+     "f": 22,
+     "c": 2,
+     "p": 22
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ Spicy Chicken - no hash browns",
+     "serving": "208g",
+     "cal": 350,
+     "f": 22,
+     "c": 9,
+     "p": 31
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ Grilled Filet - no hash browns",
+     "serving": "187g",
+     "cal": 270,
+     "f": 16,
+     "c": 2,
+     "p": 29
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ Sausage - no hash browns",
+     "serving": "169g",
+     "cal": 340,
+     "f": 27,
+     "c": 2,
+     "p": 21
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ Nuggets - no hash browns",
+     "serving": "190g",
+     "cal": 320,
+     "f": 20,
+     "c": 7,
+     "p": 28
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ No Meat",
+     "serving": "180g",
+     "cal": 350,
+     "f": 24,
+     "c": 16,
+     "p": 17
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ Bacon",
+     "serving": "200g",
+     "cal": 450,
+     "f": 32,
+     "c": 15,
+     "p": 23
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ Spicy Chicken",
+     "serving": "251g",
+     "cal": 500,
+     "f": 32,
+     "c": 21,
+     "p": 32
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ Grilled Filet",
+     "serving": "230g",
+     "cal": 410,
+     "f": 26,
+     "c": 15,
+     "p": 30
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ Sausage",
+     "serving": "212g",
+     "cal": 480,
+     "f": 37,
+     "c": 15,
+     "p": 23
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ Nuggets",
+     "serving": "233g",
+     "cal": 470,
+     "f": 30,
+     "c": 19,
+     "p": 29
+    },
+    {
+     "name": "Hash Brown Scramble Burrito",
+     "serving": "304g",
+     "cal": 700,
+     "f": 40,
+     "c": 51,
+     "p": 34
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ No Meat - no hash browns",
+     "serving": "208g",
+     "cal": 440,
+     "f": 24,
+     "c": 35,
+     "p": 21
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ Bacon - no hash browns",
+     "serving": "228g",
+     "cal": 540,
+     "f": 32,
+     "c": 34,
+     "p": 27
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ Spicy Chicken - no hash browns",
+     "serving": "279g",
+     "cal": 590,
+     "f": 32,
+     "c": 40,
+     "p": 36
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ Grilled Filet - no hash brown",
+     "serving": "258g",
+     "cal": 500,
+     "f": 26,
+     "c": 34,
+     "p": 34
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ Sausage - no hash browns",
+     "serving": "240g",
+     "cal": 570,
+     "f": 37,
+     "c": 34,
+     "p": 26
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ Nuggets - no hash browns",
+     "serving": "261g",
+     "cal": 550,
+     "f": 30,
+     "c": 38,
+     "p": 33
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ No Meat",
+     "serving": "251g",
+     "cal": 580,
+     "f": 34,
+     "c": 47,
+     "p": 22
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ Bacon",
+     "serving": "271g",
+     "cal": 680,
+     "f": 42,
+     "c": 46,
+     "p": 30
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ Spicy Chicken",
+     "serving": "322g",
+     "cal": 740,
+     "f": 42,
+     "c": 53,
+     "p": 37
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ Grilled Filet",
+     "serving": "301g",
+     "cal": 650,
+     "f": 36,
+     "c": 46,
+     "p": 35
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ Sausage",
+     "serving": "283g",
+     "cal": 720,
+     "f": 47,
+     "c": 46,
+     "p": 28
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ Nuggets",
+     "serving": "304g",
+     "cal": 700,
+     "f": 40,
+     "c": 51,
+     "p": 34
+    },
+    {
+     "name": "Chick-fil-A Chick-n-Minis",
+     "serving": "127g",
+     "cal": 360,
+     "f": 13,
+     "c": 41,
+     "p": 20
+    },
+    {
+     "name": "10 ct Chick-fil-A Chick-n-Minis",
+     "serving": "318g",
+     "cal": 910,
+     "f": 34,
+     "c": 103,
+     "p": 49
+    },
+    {
+     "name": "4 ct Chick-fil-A Chick-n-Minis",
+     "serving": "127g",
+     "cal": 360,
+     "f": 13,
+     "c": 41,
+     "p": 20
+    },
+    {
+     "name": "Sausage, Egg & Cheese Muffin",
+     "serving": "173g",
+     "cal": 490,
+     "f": 32,
+     "c": 29,
+     "p": 23
+    },
+    {
+     "name": "Bacon, Egg & Cheese Muffin",
+     "serving": "126g",
+     "cal": 300,
+     "f": 13,
+     "c": 28,
+     "p": 16
+    },
+    {
+     "name": "Chicken, Egg & Cheese Muffin",
+     "serving": "187g",
+     "cal": 410,
+     "f": 18,
+     "c": 36,
+     "p": 27
+    },
+    {
+     "name": "Sausage, Egg & Cheese Biscuit",
+     "serving": "192g",
+     "cal": 620,
+     "f": 42,
+     "c": 38,
+     "p": 22
+    },
+    {
+     "name": "Bacon, Egg & Cheese Biscuit",
+     "serving": "145g",
+     "cal": 420,
+     "f": 23,
+     "c": 38,
+     "p": 15
+    },
+    {
+     "name": "Chicken, Egg & Cheese Biscuit",
+     "serving": "211g",
+     "cal": 550,
+     "f": 28,
+     "c": 48,
+     "p": 27
+    },
+    {
+     "name": "Egg White Grill",
+     "serving": "172g",
+     "cal": 300,
+     "f": 8,
+     "c": 29,
+     "p": 27
+    },
+    {
+     "name": "Spicy Chicken Biscuit",
+     "serving": "153g",
+     "cal": 450,
+     "f": 22,
+     "c": 44,
+     "p": 19
+    },
+    {
+     "name": "Chick-fil-A Chicken Biscuit",
+     "serving": "153g",
+     "cal": 460,
+     "f": 23,
+     "c": 45,
+     "p": 19
+    },
+    {
+     "name": "Chicken & Waffles Breakfast Sandwich w/ Grilled Filet",
+     "serving": "129g",
+     "cal": 440,
+     "f": 19,
+     "c": 47,
+     "p": 20
+    },
+    {
+     "name": "Chicken & Waffles Breakfast Sandwich w/ Spicy Filet",
+     "serving": "150g",
+     "cal": 530,
+     "f": 25,
+     "c": 54,
+     "p": 23
+    },
+    {
+     "name": "Berry Parfait",
+     "serving": "206g",
+     "cal": 270,
+     "f": 9,
+     "c": 35,
+     "p": 13
+    },
+    {
+     "name": "Berry Parfait w/ Cookie Crumbs",
+     "serving": "195g",
+     "cal": 240,
+     "f": 8,
+     "c": 31,
+     "p": 12
+    },
+    {
+     "name": "Berry Parfait w/ Granola",
+     "serving": "206g",
+     "cal": 270,
+     "f": 9,
+     "c": 35,
+     "p": 13
+    },
+    {
+     "name": "Hash Browns",
+     "serving": "77g",
+     "cal": 270,
+     "f": 18,
+     "c": 23,
+     "p": 3
+    },
+    {
+     "name": "Large Hash Browns",
+     "serving": "121g",
+     "cal": 420,
+     "f": 29,
+     "c": 35,
+     "p": 4
+    },
+    {
+     "name": "Small Hash Browns",
+     "serving": "77g",
+     "cal": 270,
+     "f": 18,
+     "c": 23,
+     "p": 3
+    },
+    {
+     "name": "Chicken & Waffles Breakfast Sandwich w/ Chick-fil-A Filet",
+     "serving": "150g",
+     "cal": 530,
+     "f": 26,
+     "c": 55,
+     "p": 22
+    },
+    {
+     "name": "Chick-fil-A Chick-n-Strips",
+     "serving": "136g",
+     "cal": 310,
+     "f": 14,
+     "c": 16,
+     "p": 29
+    },
+    {
+     "name": "2 ct Chick-fil-A Chick-n-Strips",
+     "serving": "91g",
+     "cal": 200,
+     "f": 9,
+     "c": 11,
+     "p": 19
+    },
+    {
+     "name": "10 ct Chick-fil-A Chick-n-Strips",
+     "serving": "452g",
+     "cal": 1020,
+     "f": 46,
+     "c": 54,
+     "p": 96
+    },
+    {
+     "name": "4 ct Chick-fil-A Chick-n-Strips",
+     "serving": "181g",
+     "cal": 410,
+     "f": 19,
+     "c": 22,
+     "p": 39
+    },
+    {
+     "name": "3 ct Chick-fil-A Chick-n-Strips",
+     "serving": "136g",
+     "cal": 310,
+     "f": 14,
+     "c": 16,
+     "p": 29
+    },
+    {
+     "name": "Grilled Nuggets",
+     "serving": "95g",
+     "cal": 130,
+     "f": 3,
+     "c": 1,
+     "p": 25
+    },
+    {
+     "name": "30 ct Grilled Nuggets",
+     "serving": "369g",
+     "cal": 510,
+     "f": 11,
+     "c": 4,
+     "p": 98
+    },
+    {
+     "name": "12 ct Grilled Nuggets",
+     "serving": "142g",
+     "cal": 200,
+     "f": 4.5,
+     "c": 2,
+     "p": 38
+    },
+    {
+     "name": "8 ct Grilled Nuggets",
+     "serving": "95g",
+     "cal": 130,
+     "f": 3,
+     "c": 1,
+     "p": 25
+    },
+    {
+     "name": "Chick-fil-A Nuggets",
+     "serving": "113g",
+     "cal": 250,
+     "f": 11,
+     "c": 11,
+     "p": 27
+    },
+    {
+     "name": "30 ct Chick-fil-A Nuggets",
+     "serving": "425g",
+     "cal": 950,
+     "f": 43,
+     "c": 41,
+     "p": 100
+    },
+    {
+     "name": "12 ct Chick-fil-A Nuggets",
+     "serving": "170g",
+     "cal": 380,
+     "f": 17,
+     "c": 16,
+     "p": 40
+    },
+    {
+     "name": "8 ct Chick-fil-A Nuggets",
+     "serving": "113g",
+     "cal": 250,
+     "f": 11,
+     "c": 11,
+     "p": 27
+    },
+    {
+     "name": "Chick-fil-A Grilled Chicken Club Sandwich",
+     "serving": "237g",
+     "cal": 520,
+     "f": 22,
+     "c": 45,
+     "p": 37
+    },
+    {
+     "name": "Grilled Chicken Club w/ No Cheese",
+     "serving": "216g",
+     "cal": 440,
+     "f": 15,
+     "c": 45,
+     "p": 31
+    },
+    {
+     "name": "Grilled Chicken Club w/ American",
+     "serving": "230g",
+     "cal": 490,
+     "f": 19,
+     "c": 45,
+     "p": 34
+    },
+    {
+     "name": "Grilled Chicken Club w/ Pepper Jack",
+     "serving": "237g",
+     "cal": 520,
+     "f": 22,
+     "c": 45,
+     "p": 37
+    },
+    {
+     "name": "Grilled Chicken Club w/ Colby Jack",
+     "serving": "237g",
+     "cal": 520,
+     "f": 22,
+     "c": 45,
+     "p": 37
+    },
+    {
+     "name": "Spicy Deluxe Sandwich",
+     "serving": "259g",
+     "cal": 540,
+     "f": 24,
+     "c": 46,
+     "p": 34
+    },
+    {
+     "name": "Spicy Deluxe Sandwich w/ No Cheese",
+     "serving": "238g",
+     "cal": 460,
+     "f": 18,
+     "c": 46,
+     "p": 28
+    },
+    {
+     "name": "Spicy Deluxe Sandwich w/ American",
+     "serving": "252g",
+     "cal": 510,
+     "f": 22,
+     "c": 47,
+     "p": 31
+    },
+    {
+     "name": "Spicy Deluxe Sandwich w/ Colby Jack",
+     "serving": "259g",
+     "cal": 540,
+     "f": 24,
+     "c": 46,
+     "p": 33
+    },
+    {
+     "name": "Spicy Deluxe Sandwich w/ Pepper Jack",
+     "serving": "259g",
+     "cal": 540,
+     "f": 24,
+     "c": 46,
+     "p": 34
+    },
+    {
+     "name": "Chick-fil-A Deluxe Sandwich",
+     "serving": "247g",
+     "cal": 490,
+     "f": 21,
+     "c": 43,
+     "p": 32
+    },
+    {
+     "name": "Chick-fil-A Deluxe Sandwich w/ No Cheese",
+     "serving": "233g",
+     "cal": 430,
+     "f": 16,
+     "c": 42,
+     "p": 29
+    },
+    {
+     "name": "Chick-fil-A Deluxe Sandwich w/ Pepper Jack",
+     "serving": "254g",
+     "cal": 510,
+     "f": 23,
+     "c": 43,
+     "p": 34
+    },
+    {
+     "name": "Chick-fil-A Deluxe Sandwich w/ Colby Jack",
+     "serving": "254g",
+     "cal": 510,
+     "f": 23,
+     "c": 43,
+     "p": 34
+    },
+    {
+     "name": "Chick-fil-A Deluxe Sandwich w/ American",
+     "serving": "247g",
+     "cal": 490,
+     "f": 21,
+     "c": 43,
+     "p": 32
+    },
+    {
+     "name": "Chick-fil-A Cool Wrap",
+     "serving": "231g",
+     "cal": 660,
+     "f": 45,
+     "c": 32,
+     "p": 43
+    },
+    {
+     "name": "Grilled Chicken Sandwich",
+     "serving": "206g",
+     "cal": 390,
+     "f": 11,
+     "c": 45,
+     "p": 28
+    },
+    {
+     "name": "Spicy Chicken Sandwich",
+     "serving": "188g",
+     "cal": 450,
+     "f": 18,
+     "c": 44,
+     "p": 28
+    },
+    {
+     "name": "Chick-fil-A Chicken Sandwich",
+     "serving": "183g",
+     "cal": 420,
+     "f": 16,
+     "c": 41,
+     "p": 29
+    },
+    {
+     "name": "Chicken & Waffles Sandwich w/ Grilled Filet",
+     "serving": "179g",
+     "cal": 540,
+     "f": 24,
+     "c": 55,
+     "p": 29
+    },
+    {
+     "name": "Chicken & Waffles Sandwich w/ Spicy Filet",
+     "serving": "215g",
+     "cal": 710,
+     "f": 35,
+     "c": 70,
+     "p": 31
+    },
+    {
+     "name": "Chicken & Waffles Sandwich w/ Chick-fil-A Filet",
+     "serving": "210g",
+     "cal": 690,
+     "f": 34,
+     "c": 66,
+     "p": 32
+    },
+    {
+     "name": "Market Salad",
+     "serving": "326g",
+     "cal": 550,
+     "f": 31,
+     "c": 42,
+     "p": 28
+    },
+    {
+     "name": "Market Salad w/ No Chicken",
+     "serving": "241g",
+     "cal": 440,
+     "f": 29,
+     "c": 40,
+     "p": 7
+    },
+    {
+     "name": "Market Salad w/ Grilled Filet (Warm)",
+     "serving": "325g",
+     "cal": 550,
+     "f": 31,
+     "c": 42,
+     "p": 28
+    },
+    {
+     "name": "Market Salad w/ Grilled Nuggets",
+     "serving": "335g",
+     "cal": 570,
+     "f": 32,
+     "c": 41,
+     "p": 32
+    },
+    {
+     "name": "Market Salad w/ Nuggets",
+     "serving": "354g",
+     "cal": 700,
+     "f": 40,
+     "c": 51,
+     "p": 34
+    },
+    {
+     "name": "Market Salad w/ Chick-fil-A Chick-n-Strips",
+     "serving": "377g",
+     "cal": 750,
+     "f": 43,
+     "c": 57,
+     "p": 36
+    },
+    {
+     "name": "Market Salad w/ Spicy Grilled Filet (Cold)",
+     "serving": "326g",
+     "cal": 540,
+     "f": 31,
+     "c": 42,
+     "p": 26
+    },
+    {
+     "name": "Market Salad w/ Grilled Filet (Cold)",
+     "serving": "326g",
+     "cal": 550,
+     "f": 31,
+     "c": 42,
+     "p": 28
+    },
+    {
+     "name": "Spicy Southwest Salad",
+     "serving": "424g",
+     "cal": 680,
+     "f": 49,
+     "c": 27,
+     "p": 33
+    },
+    {
+     "name": "Spicy Southwest Salad w/ No Chicken",
+     "serving": "339g",
+     "cal": 570,
+     "f": 47,
+     "c": 25,
+     "p": 14
+    },
+    {
+     "name": "Spicy Southwest Salad w/ Grilled Filet (Warm)",
+     "serving": "423g",
+     "cal": 680,
+     "f": 48,
+     "c": 26,
+     "p": 35
+    },
+    {
+     "name": "Spicy Southwest Salad w/ Chick-fil-A Chick-n-Strips",
+     "serving": "475g",
+     "cal": 880,
+     "f": 60,
+     "c": 41,
+     "p": 43
+    },
+    {
+     "name": "Spicy Southwest Salad w/ Grilled Nuggets",
+     "serving": "434g",
+     "cal": 700,
+     "f": 49,
+     "c": 26,
+     "p": 39
+    },
+    {
+     "name": "Spicy Southwest Salad w/ Nuggets",
+     "serving": "448g",
+     "cal": 800,
+     "f": 56,
+     "c": 35,
+     "p": 39
+    },
+    {
+     "name": "Spicy Southwest Salad w/ Grilled Filet (Cold)",
+     "serving": "424g",
+     "cal": 680,
+     "f": 48,
+     "c": 26,
+     "p": 35
+    },
+    {
+     "name": "Spicy Southwest Salad w/ Spicy Grilled Filet (Cold)",
+     "serving": "424g",
+     "cal": 680,
+     "f": 49,
+     "c": 27,
+     "p": 33
+    },
+    {
+     "name": "Cobb Salad",
+     "serving": "411g",
+     "cal": 830,
+     "f": 60,
+     "c": 31,
+     "p": 41
+    },
+    {
+     "name": "Cobb Salad w/ No Chicken",
+     "serving": "284g",
+     "cal": 500,
+     "f": 42,
+     "c": 15,
+     "p": 14
+    },
+    {
+     "name": "Cobb Salad w/ Grilled Filet (Warm)",
+     "serving": "368g",
+     "cal": 600,
+     "f": 44,
+     "c": 16,
+     "p": 35
+    },
+    {
+     "name": "Cobb Salad w/ Grilled Filet (Cold)",
+     "serving": "369g",
+     "cal": 610,
+     "f": 44,
+     "c": 16,
+     "p": 35
+    },
+    {
+     "name": "Cobb Salad w/ Chick-fil-A Chick-n-Strips",
+     "serving": "420g",
+     "cal": 810,
+     "f": 56,
+     "c": 31,
+     "p": 43
+    },
+    {
+     "name": "Cobb Salad w/ Grilled Nuggets",
+     "serving": "378g",
+     "cal": 630,
+     "f": 45,
+     "c": 16,
+     "p": 39
+    },
+    {
+     "name": "Cobb Salad w/ Spicy Grilled Filet (Cold)",
+     "serving": "369g",
+     "cal": 600,
+     "f": 45,
+     "c": 16,
+     "p": 33
+    },
+    {
+     "name": "Cobb Salad w/ Nuggets",
+     "serving": "411g",
+     "cal": 830,
+     "f": 60,
+     "c": 31,
+     "p": 41
+    },
+    {
+     "name": "Mac & Cheese",
+     "serving": "227g",
+     "cal": 450,
+     "f": 29,
+     "c": 28,
+     "p": 20
+    },
+    {
+     "name": "Small Mac & Cheese",
+     "serving": "136g",
+     "cal": 270,
+     "f": 17,
+     "c": 17,
+     "p": 12
+    },
+    {
+     "name": "Medium Mac & Cheese",
+     "serving": "227g",
+     "cal": 450,
+     "f": 29,
+     "c": 28,
+     "p": 20
+    },
+    {
+     "name": "Chick-fil-A Waffle Potato Fries",
+     "serving": "125g",
+     "cal": 420,
+     "f": 24,
+     "c": 45,
+     "p": 5
+    },
+    {
+     "name": "Small Chick-fil-A Waffle Potato Fries",
+     "serving": "96g",
+     "cal": 320,
+     "f": 19,
+     "c": 35,
+     "p": 4
+    },
+    {
+     "name": "Large Chick-fil-A Waffle Potato Fries",
+     "serving": "179g",
+     "cal": 600,
+     "f": 35,
+     "c": 65,
+     "p": 7
+    },
+    {
+     "name": "Medium Chick-fil-A Waffle Potato Fries",
+     "serving": "125g",
+     "cal": 420,
+     "f": 24,
+     "c": 45,
+     "p": 5
+    },
+    {
+     "name": "Side Salad",
+     "serving": "166g",
+     "cal": 470,
+     "f": 42,
+     "c": 14,
+     "p": 6
+    },
+    {
+     "name": "Chicken Noodle Soup",
+     "serving": "252g",
+     "cal": 190,
+     "f": 4.5,
+     "c": 27,
+     "p": 11
+    },
+    {
+     "name": "Bowl of Chicken Noodle Soup",
+     "serving": "476g",
+     "cal": 320,
+     "f": 8,
+     "c": 42,
+     "p": 20
+    },
+    {
+     "name": "Cup of Chicken Noodle Soup",
+     "serving": "252g",
+     "cal": 190,
+     "f": 4.5,
+     "c": 27,
+     "p": 11
+    },
+    {
+     "name": "Kale Crunch Side",
+     "serving": "112g",
+     "cal": 170,
+     "f": 12,
+     "c": 13,
+     "p": 4
+    },
+    {
+     "name": "Chicken Tortilla Soup",
+     "serving": "265g",
+     "cal": 280,
+     "f": 7,
+     "c": 31,
+     "p": 24
+    },
+    {
+     "name": "Buddy Fruits Apple Sauce",
+     "serving": "90g",
+     "cal": 45,
+     "f": 0,
+     "c": 12,
+     "p": 0
+    },
+    {
+     "name": "Chick-fil-A Sauce Flavored Waffle Potato Chips",
+     "serving": "43g",
+     "cal": 210,
+     "f": 12,
+     "c": 26,
+     "p": 3
+    },
+    {
+     "name": "Original Flavor Waffle Potato Chips",
+     "serving": "43g",
+     "cal": 220,
+     "f": 13,
+     "c": 25,
+     "p": 3
+    },
+    {
+     "name": "Mac & Cheese Kid's Meal",
+     "serving": "227g",
+     "cal": 450,
+     "f": 29,
+     "c": 28,
+     "p": 20
+    },
+    {
+     "name": "5 Ct Grilled Nuggets Kid's Meal",
+     "serving": "59g",
+     "cal": 80,
+     "f": 2,
+     "c": 1,
+     "p": 16
+    },
+    {
+     "name": "2 Ct Chick-n-Strips Kid's Meal",
+     "serving": "91g",
+     "cal": 200,
+     "f": 9,
+     "c": 11,
+     "p": 19
+    },
+    {
+     "name": "5 Ct Nuggets Kid's Meal",
+     "serving": "71g",
+     "cal": 160,
+     "f": 7,
+     "c": 7,
+     "p": 17
+    },
+    {
+     "name": "Chocolate Fudge Brownie",
+     "serving": "85g",
+     "cal": 370,
+     "f": 21,
+     "c": 47,
+     "p": 4
+    },
+    {
+     "name": "Chocolate Chunk Cookie",
+     "serving": "78g",
+     "cal": 370,
+     "f": 17,
+     "c": 49,
+     "p": 5
+    },
+    {
+     "name": "6 pack Chocolate Chunk Cookie",
+     "serving": "78g",
+     "cal": 370,
+     "f": 17,
+     "c": 49,
+     "p": 5
+    },
+    {
+     "name": "Frosted Sodas",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 60,
+     "p": 7
+    },
+    {
+     "name": "Frosted Powerade Mountain Berry Blast",
+     "serving": "369g",
+     "cal": 290,
+     "f": 7,
+     "c": 53,
+     "p": 7
+    },
+    {
+     "name": "Frosted Barq's Red Flash",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 61,
+     "p": 7
+    },
+    {
+     "name": "Frosted Fanta Strawberry",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 61,
+     "p": 7
+    },
+    {
+     "name": "Frosted Fanta Orange",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 60,
+     "p": 7
+    },
+    {
+     "name": "Frosted Mello Yello",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 62,
+     "p": 7
+    },
+    {
+     "name": "Frosted Caffeine Free Barq's Root Beer",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 62,
+     "p": 7
+    },
+    {
+     "name": "Frosted Sprite",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 59,
+     "p": 7
+    },
+    {
+     "name": "Frosted Hi-C Orange",
+     "serving": "369g",
+     "cal": 310,
+     "f": 7,
+     "c": 58,
+     "p": 7
+    },
+    {
+     "name": "Frosted Hi-C Fruit Punch",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 61,
+     "p": 7
+    },
+    {
+     "name": "Frosted Coca-Cola Cherry",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 61,
+     "p": 7
+    },
+    {
+     "name": "Frosted Caffeine Free Diet Coke",
+     "serving": "369g",
+     "cal": 260,
+     "f": 7,
+     "c": 45,
+     "p": 7
+    },
+    {
+     "name": "Frosted Coke Zero Sugar",
+     "serving": "369g",
+     "cal": 260,
+     "f": 7,
+     "c": 45,
+     "p": 7
+    },
+    {
+     "name": "Frosted Diet Coke",
+     "serving": "369g",
+     "cal": 260,
+     "f": 7,
+     "c": 45,
+     "p": 7
+    },
+    {
+     "name": "Frosted Coke",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 60,
+     "p": 7
+    },
+    {
+     "name": "Frosted Barq's Root Beer",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 61,
+     "p": 7
+    },
+    {
+     "name": "Frosted Diet Dr Pepper",
+     "serving": "369g",
+     "cal": 260,
+     "f": 7,
+     "c": 45,
+     "p": 7
+    },
+    {
+     "name": "Frosted Dr Pepper",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 60,
+     "p": 7
+    },
+    {
+     "name": "Frosted Lemonade",
+     "serving": "383g",
+     "cal": 350,
+     "f": 7,
+     "c": 67,
+     "p": 7
+    },
+    {
+     "name": "Frosted Lemonade w/ Diet Lemonade",
+     "serving": "383g",
+     "cal": 280,
+     "f": 7,
+     "c": 50,
+     "p": 7
+    },
+    {
+     "name": "Pineapple Dragonfruit Frosted Lemonade",
+     "serving": "375g",
+     "cal": 360,
+     "f": 7,
+     "c": 70,
+     "p": 7
+    },
+    {
+     "name": "Pineapple Dragonfruit Frosted Lemonade w/ Diet Lemonade",
+     "serving": "375g",
+     "cal": 300,
+     "f": 7,
+     "c": 54,
+     "p": 7
+    },
+    {
+     "name": "S'mores Frosted Coffee",
+     "serving": "382g",
+     "cal": 400,
+     "f": 8,
+     "c": 77,
+     "p": 7
+    },
+    {
+     "name": "S'mores Milkshake",
+     "serving": "411g",
+     "cal": 650,
+     "f": 19,
+     "c": 109,
+     "p": 12
+    },
+    {
+     "name": "Toasted Marshmallow Whipped Topping",
+     "serving": "23g",
+     "cal": 60,
+     "f": 3,
+     "c": 7,
+     "p": 1
+    },
+    {
+     "name": "Chick-fil-A Icedream Cone",
+     "serving": "135g",
+     "cal": 180,
+     "f": 4,
+     "c": 32,
+     "p": 4
+    },
+    {
+     "name": "Chick-fil-A Icedream Cup",
+     "serving": "122g",
+     "cal": 140,
+     "f": 3.5,
+     "c": 24,
+     "p": 4
+    },
+    {
+     "name": "Vanilla Milkshake",
+     "serving": "409g",
+     "cal": 580,
+     "f": 23,
+     "c": 82,
+     "p": 13
+    },
+    {
+     "name": "Strawberry Milkshake",
+     "serving": "409g",
+     "cal": 560,
+     "f": 18,
+     "c": 92,
+     "p": 10
+    },
+    {
+     "name": "Chocolate Milkshake",
+     "serving": "409g",
+     "cal": 600,
+     "f": 22,
+     "c": 93,
+     "p": 12
+    },
+    {
+     "name": "Cookies & Cream Milkshake",
+     "serving": "409g",
+     "cal": 630,
+     "f": 25,
+     "c": 91,
+     "p": 13
+    },
+    {
+     "name": "Vanilla Frosted Coffee",
+     "serving": "400g",
+     "cal": 330,
+     "f": 7,
+     "c": 62,
+     "p": 7
+    },
+    {
+     "name": "Mocha Frosted Coffee",
+     "serving": "400g",
+     "cal": 330,
+     "f": 7,
+     "c": 61,
+     "p": 7
+    },
+    {
+     "name": "Caramel Frosted Coffee",
+     "serving": "406g",
+     "cal": 370,
+     "f": 10,
+     "c": 63,
+     "p": 7
+    },
+    {
+     "name": "Frosted Coffee",
+     "serving": "374g",
+     "cal": 260,
+     "f": 7,
+     "c": 45,
+     "p": 7
+    },
+    {
+     "name": "Dr Pepper Float",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 60,
+     "p": 7
+    },
+    {
+     "name": "Seasonal Gallon Beverages",
+     "serving": "340g",
+     "cal": 210,
+     "f": 0,
+     "c": 53,
+     "p": 0
+    },
+    {
+     "name": "Gallon Pineapple Dragonfruit Unsweet Tea",
+     "serving": "340g",
+     "cal": 25,
+     "f": 0,
+     "c": 5,
+     "p": 0
+    },
+    {
+     "name": "Gallon Pineapple Dragonfruit Sweet Tea",
+     "serving": "340g",
+     "cal": 150,
+     "f": 0,
+     "c": 37,
+     "p": 0
+    },
+    {
+     "name": "Gallon Pineapple Dragonfruit Sunjoy (1/2 Unsweet Tea, 1/2 Diet Lemonade)",
+     "serving": "340g",
+     "cal": 45,
+     "f": 0,
+     "c": 10,
+     "p": 0
+    },
+    {
+     "name": "Gallon Pineapple Dragonfruit Sunjoy (1/2 Sweet Tea, 1/2 Diet Lemonade)",
+     "serving": "340g",
+     "cal": 110,
+     "f": 0,
+     "c": 28,
+     "p": 0
+    },
+    {
+     "name": "Gallon Pineapple Dragonfruit Sunjoy (1/2 Unsweet Tea, 1/2 Lemonade)",
+     "serving": "340g",
+     "cal": 110,
+     "f": 0,
+     "c": 27,
+     "p": 0
+    },
+    {
+     "name": "Gallon Pineapple Dragonfruit Sunjoy (1/2 Sweet Tea, 1/2 Lemonade)",
+     "serving": "340g",
+     "cal": 180,
+     "f": 0,
+     "c": 44,
+     "p": 0
+    },
+    {
+     "name": "Gallon Pineapple Dragonfruit Diet Lemonade",
+     "serving": "340g",
+     "cal": 70,
+     "f": 0,
+     "c": 16,
+     "p": 0
+    },
+    {
+     "name": "Gallon Pineapple Dragonfruit Lemonade",
+     "serving": "340g",
+     "cal": 210,
+     "f": 0,
+     "c": 53,
+     "p": 0
+    },
+    {
+     "name": "Gallon Beverages",
+     "serving": "340g",
+     "cal": 190,
+     "f": 0,
+     "c": 49,
+     "p": 0
+    },
+    {
+     "name": "Bag of Ice",
+     "serving": "28g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Gallon Sunjoy (1/2 Unsweet Tea, 1/2 Diet Lemonade)",
+     "serving": "340g",
+     "cal": 20,
+     "f": 0,
+     "c": 6,
+     "p": 0
+    },
+    {
+     "name": "Gallon Sunjoy (1/2 Unsweet Tea, 1/2 Lemonade)",
+     "serving": "340g",
+     "cal": 100,
+     "f": 0,
+     "c": 26,
+     "p": 0
+    },
+    {
+     "name": "Gallon Sunjoy (1/2 Sweet Tea, 1/2 Diet Lemonade)",
+     "serving": "340g",
+     "cal": 90,
+     "f": 0,
+     "c": 23,
+     "p": 0
+    },
+    {
+     "name": "Gallon Sunjoy (1/2 Sweet Tea, 1/2 Lemonade)",
+     "serving": "340g",
+     "cal": 160,
+     "f": 0,
+     "c": 41,
+     "p": 0
+    },
+    {
+     "name": "Gallon Chick-fil-A Iced Tea (1/2 Sweet Tea, 1/2 Unsweet Tea)",
+     "serving": "340g",
+     "cal": 70,
+     "f": 0,
+     "c": 18,
+     "p": 0
+    },
+    {
+     "name": "Gallon Freshly-Brewed Iced Tea Unsweetened",
+     "serving": "340g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Gallon Freshly-Brewed Iced Tea Sweetened",
+     "serving": "340g",
+     "cal": 130,
+     "f": 0,
+     "c": 33,
+     "p": 0
+    },
+    {
+     "name": "Gallon Chick-fil-A Lemonade (1/2 Lemonade, 1/2 Diet Lemonade)",
+     "serving": "340g",
+     "cal": 120,
+     "f": 0,
+     "c": 33,
+     "p": 0
+    },
+    {
+     "name": "Gallon Chick-fil-A Diet Lemonade",
+     "serving": "340g",
+     "cal": 40,
+     "f": 0,
+     "c": 12,
+     "p": 0
+    },
+    {
+     "name": "Gallon Chick-fil-A Lemonade",
+     "serving": "340g",
+     "cal": 190,
+     "f": 0,
+     "c": 49,
+     "p": 0
+    },
+    {
+     "name": "Freshly-Brewed Sweetened Iced Tea",
+     "serving": "604g",
+     "cal": 120,
+     "f": 0,
+     "c": 31,
+     "p": 0
+    },
+    {
+     "name": "Large Freshly-Brewed Sweetened Iced Tea",
+     "serving": "893g",
+     "cal": 170,
+     "f": 0,
+     "c": 44,
+     "p": 0
+    },
+    {
+     "name": "Medium Freshly-Brewed Sweetened Iced Tea",
+     "serving": "604g",
+     "cal": 120,
+     "f": 0,
+     "c": 31,
+     "p": 0
+    },
+    {
+     "name": "Small Freshly-Brewed Sweetened Iced Tea",
+     "serving": "451g",
+     "cal": 90,
+     "f": 0,
+     "c": 22,
+     "p": 0
+    },
+    {
+     "name": "Toasted Marshmallow Hot Coffee",
+     "serving": "380g",
+     "cal": 110,
+     "f": 0,
+     "c": 26,
+     "p": 0
+    },
+    {
+     "name": "Dr Pepper",
+     "serving": "584g",
+     "cal": 170,
+     "f": 0,
+     "c": 44,
+     "p": 0
+    },
+    {
+     "name": "Large Dr Pepper",
+     "serving": "859g",
+     "cal": 250,
+     "f": 0,
+     "c": 64,
+     "p": 0
+    },
+    {
+     "name": "Medium Dr Pepper",
+     "serving": "584g",
+     "cal": 170,
+     "f": 0,
+     "c": 44,
+     "p": 0
+    },
+    {
+     "name": "Small Dr Pepper",
+     "serving": "451g",
+     "cal": 130,
+     "f": 0,
+     "c": 34,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola",
+     "serving": "584g",
+     "cal": 170,
+     "f": 0,
+     "c": 46,
+     "p": 0
+    },
+    {
+     "name": "Large Coca-Cola",
+     "serving": "859g",
+     "cal": 250,
+     "f": 0,
+     "c": 68,
+     "p": 0
+    },
+    {
+     "name": "Medium Coca-Cola",
+     "serving": "584g",
+     "cal": 170,
+     "f": 0,
+     "c": 46,
+     "p": 0
+    },
+    {
+     "name": "Small Coca-Cola",
+     "serving": "451g",
+     "cal": 130,
+     "f": 0,
+     "c": 35,
+     "p": 0
+    },
+    {
+     "name": "Sunjoy (1/2 Sweet Tea, 1/2 Diet Lemonade)",
+     "serving": "641g",
+     "cal": 110,
+     "f": 0,
+     "c": 29,
+     "p": 0
+    },
+    {
+     "name": "Large Sunjoy (1/2 Sweet Tea, 1/2 Diet Lemonade)",
+     "serving": "944g",
+     "cal": 150,
+     "f": 0,
+     "c": 40,
+     "p": 0
+    },
+    {
+     "name": "Medium Sunjoy (1/2 Sweet Tea, 1/2 Diet Lemonade)",
+     "serving": "641g",
+     "cal": 110,
+     "f": 0,
+     "c": 29,
+     "p": 0
+    },
+    {
+     "name": "Small Sunjoy (1/2 Sweet Tea, 1/2 Diet Lemonade)",
+     "serving": "479g",
+     "cal": 80,
+     "f": 0,
+     "c": 20,
+     "p": 0
+    },
+    {
+     "name": "Sunjoy (1/2 Unsweet Tea, 1/2 Lemonade)",
+     "serving": "641g",
+     "cal": 160,
+     "f": 0,
+     "c": 41,
+     "p": 0
+    },
+    {
+     "name": "Large Sunjoy (1/2 Unsweet Tea, 1/2 Lemonade)",
+     "serving": "944g",
+     "cal": 260,
+     "f": 0,
+     "c": 66,
+     "p": 0
+    },
+    {
+     "name": "Medium Sunjoy (1/2 Unsweet Tea, 1/2 Lemonade)",
+     "serving": "641g",
+     "cal": 160,
+     "f": 0,
+     "c": 41,
+     "p": 0
+    },
+    {
+     "name": "Small Sunjoy (1/2 Unsweet Tea, 1/2 Lemonade)",
+     "serving": "479g",
+     "cal": 130,
+     "f": 0,
+     "c": 33,
+     "p": 0
+    },
+    {
+     "name": "Sunjoy (1/2 Unsweet Tea, 1/2 Diet Lemonade)",
+     "serving": "641g",
+     "cal": 35,
+     "f": 0,
+     "c": 10,
+     "p": 0
+    },
+    {
+     "name": "Large Sunjoy (1/2 Unsweet Tea, 1/2 Diet Lemonade)",
+     "serving": "944g",
+     "cal": 60,
+     "f": 0,
+     "c": 15,
+     "p": 0
+    },
+    {
+     "name": "Medium Sunjoy (1/2 Unsweet Tea, 1/2 Diet Lemonade)",
+     "serving": "641g",
+     "cal": 35,
+     "f": 0,
+     "c": 10,
+     "p": 0
+    },
+    {
+     "name": "Small Sunjoy (1/2 Unsweet Tea, 1/2 Diet Lemonade)",
+     "serving": "479g",
+     "cal": 30,
+     "f": 0,
+     "c": 8,
+     "p": 0
+    },
+    {
+     "name": "Sunjoy (1/2 Sweet Tea, 1/2 Lemonade)",
+     "serving": "641g",
+     "cal": 240,
+     "f": 0,
+     "c": 60,
+     "p": 0
+    },
+    {
+     "name": "Large Sunjoy (1/2 Sweet Tea, 1/2 Lemonade)",
+     "serving": "944g",
+     "cal": 350,
+     "f": 0,
+     "c": 91,
+     "p": 0
+    },
+    {
+     "name": "Medium Sunjoy (1/2 Sweet Tea, 1/2 Lemonade)",
+     "serving": "641g",
+     "cal": 240,
+     "f": 0,
+     "c": 60,
+     "p": 0
+    },
+    {
+     "name": "Small Sunjoy (1/2 Sweet Tea, 1/2 Lemonade)",
+     "serving": "479g",
+     "cal": 180,
+     "f": 0,
+     "c": 45,
+     "p": 0
+    },
+    {
+     "name": "Chick-fil-A Diet Lemonade",
+     "serving": "612g",
+     "cal": 60,
+     "f": 0,
+     "c": 15,
+     "p": 0
+    },
+    {
+     "name": "Large Chick-fil-A Diet Lemonade",
+     "serving": "916g",
+     "cal": 80,
+     "f": 0,
+     "c": 23,
+     "p": 0
+    },
+    {
+     "name": "Medium Chick-fil-A Diet Lemonade",
+     "serving": "612g",
+     "cal": 60,
+     "f": 0,
+     "c": 15,
+     "p": 0
+    },
+    {
+     "name": "Small Chick-fil-A Diet Lemonade",
+     "serving": "465g",
+     "cal": 40,
+     "f": 0,
+     "c": 12,
+     "p": 0
+    },
+    {
+     "name": "Chick-fil-A Lemonade",
+     "serving": "612g",
+     "cal": 260,
+     "f": 0,
+     "c": 66,
+     "p": 0
+    },
+    {
+     "name": "Large Chick-fil-A Lemonade",
+     "serving": "916g",
+     "cal": 380,
+     "f": 0,
+     "c": 98,
+     "p": 1
+    },
+    {
+     "name": "Medium Chick-fil-A Lemonade",
+     "serving": "612g",
+     "cal": 260,
+     "f": 0,
+     "c": 66,
+     "p": 0
+    },
+    {
+     "name": "Small Chick-fil-A Lemonade",
+     "serving": "465g",
+     "cal": 190,
+     "f": 0,
+     "c": 49,
+     "p": 0
+    },
+    {
+     "name": "Freshly-Brewed Unsweetened Iced Tea",
+     "serving": "604g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Large Freshly-Brewed Unsweetened Iced Tea",
+     "serving": "893g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Medium Freshly-Brewed Unsweetened Iced Tea",
+     "serving": "604g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Small Freshly-Brewed Unsweetened Iced Tea",
+     "serving": "451g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Pineapple Dragonfruit Lemonade",
+     "serving": "691g",
+     "cal": 290,
+     "f": 0,
+     "c": 72,
+     "p": 0
+    },
+    {
+     "name": "Pineapple Dragonfruit Diet Lemonade",
+     "serving": "662g",
+     "cal": 90,
+     "f": 0,
+     "c": 21,
+     "p": 0
+    },
+    {
+     "name": "Iced Coffee",
+     "serving": "661g",
+     "cal": 200,
+     "f": 4,
+     "c": 34,
+     "p": 7
+    },
+    {
+     "name": "Honest Kids Apple Juice",
+     "serving": "170g",
+     "cal": 35,
+     "f": 0,
+     "c": 9,
+     "p": 0
+    },
+    {
+     "name": "1% Chocolate Milk",
+     "serving": "198g",
+     "cal": 140,
+     "f": 2,
+     "c": 23,
+     "p": 7
+    },
+    {
+     "name": "1% Milk",
+     "serving": "213g",
+     "cal": 90,
+     "f": 2,
+     "c": 10,
+     "p": 7
+    },
+    {
+     "name": "Simply Orange",
+     "serving": "326g",
+     "cal": 160,
+     "f": 0,
+     "c": 34,
+     "p": 2
+    },
+    {
+     "name": "DASANI Bottled Water",
+     "serving": "479g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Toasted Marshmallow Cream Cold Brew",
+     "serving": "712g",
+     "cal": 530,
+     "f": 17,
+     "c": 87,
+     "p": 8
+    },
+    {
+     "name": "Toasted Marshmallow Iced Coffee",
+     "serving": "683g",
+     "cal": 270,
+     "f": 4,
+     "c": 50,
+     "p": 7
+    },
+    {
+     "name": "Pineapple Dragonfruit Unsweet Tea",
+     "serving": "662g",
+     "cal": 35,
+     "f": 0,
+     "c": 7,
+     "p": 0
+    },
+    {
+     "name": "Pineapple Dragonfruit Sweet Tea",
+     "serving": "662g",
+     "cal": 150,
+     "f": 0,
+     "c": 37,
+     "p": 0
+    },
+    {
+     "name": "Pineapple Dragonfruit Sunjoy (Unsweet Tea, Diet Lemonade)",
+     "serving": "662g",
+     "cal": 60,
+     "f": 0,
+     "c": 14,
+     "p": 0
+    },
+    {
+     "name": "Pineapple Dragonfruit Sunjoy (Unsweet Tea, Lemonade)",
+     "serving": "662g",
+     "cal": 160,
+     "f": 0,
+     "c": 39,
+     "p": 0
+    },
+    {
+     "name": "Pineapple Dragonfruit Sunjoy (Sweet Tea, Diet Lemonade)",
+     "serving": "662g",
+     "cal": 140,
+     "f": 0,
+     "c": 34,
+     "p": 0
+    },
+    {
+     "name": "Pineapple Dragonfruit Sunjoy (Sweet Tea, Lemonade)",
+     "serving": "662g",
+     "cal": 240,
+     "f": 0,
+     "c": 59,
+     "p": 0
+    },
+    {
+     "name": "Pineapple Dragonfruit & Sprite",
+     "serving": "662g",
+     "cal": 190,
+     "f": 0,
+     "c": 50,
+     "p": 0
+    },
+    {
+     "name": "Hot Coffee",
+     "serving": "340g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Cream Cold Brew",
+     "serving": "700g",
+     "cal": 520,
+     "f": 22,
+     "c": 75,
+     "p": 9
+    },
+    {
+     "name": "Vanilla Cream Cold Brew",
+     "serving": "689g",
+     "cal": 470,
+     "f": 17,
+     "c": 72,
+     "p": 8
+    },
+    {
+     "name": "Mocha Cream Cold Brew",
+     "serving": "689g",
+     "cal": 460,
+     "f": 17,
+     "c": 71,
+     "p": 9
+    },
+    {
+     "name": "Caramel Cream Cold Brew",
+     "serving": "700g",
+     "cal": 520,
+     "f": 22,
+     "c": 75,
+     "p": 9
+    },
+    {
+     "name": "Vanilla Iced Coffee",
+     "serving": "661g",
+     "cal": 210,
+     "f": 4,
+     "c": 35,
+     "p": 7
+    },
+    {
+     "name": "Mocha Iced Coffee",
+     "serving": "661g",
+     "cal": 200,
+     "f": 4.5,
+     "c": 34,
+     "p": 8
+    },
+    {
+     "name": "Caramel Iced Coffee",
+     "serving": "672g",
+     "cal": 260,
+     "f": 9,
+     "c": 38,
+     "p": 8
+    },
+    {
+     "name": "Honey Roasted BBQ Sauce",
+     "serving": "12g",
+     "cal": 60,
+     "f": 5,
+     "c": 3,
+     "p": 0
+    },
+    {
+     "name": "Zesty Buffalo Sauce",
+     "serving": "21g",
+     "cal": 25,
+     "f": 2.5,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Sweet & Spicy Sriracha Sauce",
+     "serving": "28g",
+     "cal": 45,
+     "f": 0,
+     "c": 11,
+     "p": 0
+    },
+    {
+     "name": "Polynesian Sauce",
+     "serving": "28g",
+     "cal": 110,
+     "f": 6,
+     "c": 14,
+     "p": 0
+    },
+    {
+     "name": "Honey Mustard Sauce",
+     "serving": "28g",
+     "cal": 50,
+     "f": 0,
+     "c": 11,
+     "p": 0
+    },
+    {
+     "name": "Garden Herb Ranch Sauce",
+     "serving": "21g",
+     "cal": 100,
+     "f": 11,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Chick-fil-A Sauce",
+     "serving": "28g",
+     "cal": 140,
+     "f": 13,
+     "c": 6,
+     "p": 0
+    },
+    {
+     "name": "Barbeque Sauce",
+     "serving": "28g",
+     "cal": 45,
+     "f": 0,
+     "c": 11,
+     "p": 0
+    },
+    {
+     "name": "Classic Syrup",
+     "serving": "23g",
+     "cal": 60,
+     "f": 0,
+     "c": 16,
+     "p": 0
+    },
+    {
+     "name": "Zesty Apple Cider Vinaigrette Dressing",
+     "serving": "56g",
+     "cal": 230,
+     "f": 19,
+     "c": 16,
+     "p": 0
+    },
+    {
+     "name": "Light Italian Dressing",
+     "serving": "57g",
+     "cal": 25,
+     "f": 1,
+     "c": 3,
+     "p": 0
+    },
+    {
+     "name": "Light Balsamic Vinaigrette Dressing",
+     "serving": "57g",
+     "cal": 80,
+     "f": 4,
+     "c": 10,
+     "p": 0
+    },
+    {
+     "name": "Garden Herb Ranch Dressing",
+     "serving": "57g",
+     "cal": 280,
+     "f": 29,
+     "c": 2,
+     "p": 1
+    },
+    {
+     "name": "Fat-Free Honey Mustard Dressing",
+     "serving": "57g",
+     "cal": 90,
+     "f": 0,
+     "c": 22,
+     "p": 0
+    },
+    {
+     "name": "Creamy Salsa Dressing",
+     "serving": "57g",
+     "cal": 290,
+     "f": 31,
+     "c": 2,
+     "p": 1
+    },
+    {
+     "name": "Avocado Lime Ranch Dressing",
+     "serving": "57g",
+     "cal": 310,
+     "f": 32,
+     "c": 3,
+     "p": 1
+    },
+    {
+     "name": "Multigrain Brioche Bun",
+     "serving": "71g",
+     "cal": 210,
+     "f": 4.5,
+     "c": 38,
+     "p": 7
+    },
+    {
+     "name": "Buttery White Bun",
+     "serving": "60g",
+     "cal": 180,
+     "f": 6,
+     "c": 29,
+     "p": 5
+    },
+    {
+     "name": "Gluten Free Bun",
+     "serving": "79g",
+     "cal": 180,
+     "f": 3.5,
+     "c": 37,
+     "p": 3
+    },
+    {
+     "name": "White Bun (Unbuttered)",
+     "serving": "54g",
+     "cal": 150,
+     "f": 1,
+     "c": 28,
+     "p": 5
+    },
+    {
+     "name": "Chick-fil-A Filet",
+     "serving": "115g",
+     "cal": 250,
+     "f": 12,
+     "c": 12,
+     "p": 24
+    },
+    {
+     "name": "Spicy Filet",
+     "serving": "120g",
+     "cal": 280,
+     "f": 13,
+     "c": 16,
+     "p": 23
+    },
+    {
+     "name": "Grilled Filet",
+     "serving": "84g",
+     "cal": 110,
+     "f": 2,
+     "c": 1,
+     "p": 21
+    },
+    {
+     "name": "Spicy Breakfast Filet",
+     "serving": "71g",
+     "cal": 150,
+     "f": 7,
+     "c": 7,
+     "p": 15
+    },
+    {
+     "name": "Chick-fil-A Breakfast Filet",
+     "serving": "71g",
+     "cal": 160,
+     "f": 8,
+     "c": 8,
+     "p": 15
+    },
+    {
+     "name": "Grilled Breakfast Filet",
+     "serving": "50g",
+     "cal": 60,
+     "f": 1,
+     "c": 0,
+     "p": 13
+    },
+    {
+     "name": "Sausage",
+     "serving": "57g",
+     "cal": 240,
+     "f": 22,
+     "c": 1,
+     "p": 11
+    },
+    {
+     "name": "Bacon",
+     "serving": "10g",
+     "cal": 50,
+     "f": 3.5,
+     "c": 0,
+     "p": 4
+    },
+    {
+     "name": "Roasted Nut Blend",
+     "serving": "10g",
+     "cal": 70,
+     "f": 6,
+     "c": 2,
+     "p": 1
+    },
+    {
+     "name": "Seasoned Tortilla Strips",
+     "serving": "14g",
+     "cal": 70,
+     "f": 4,
+     "c": 8,
+     "p": 1
+    },
+    {
+     "name": "Harvest Nut Granola",
+     "serving": "14g",
+     "cal": 70,
+     "f": 2,
+     "c": 10,
+     "p": 1
+    },
+    {
+     "name": "Crispy Bell Peppers",
+     "serving": "14g",
+     "cal": 80,
+     "f": 6,
+     "c": 6,
+     "p": 1
+    },
+    {
+     "name": "Chili Lime Pepitas",
+     "serving": "14g",
+     "cal": 80,
+     "f": 7,
+     "c": 2,
+     "p": 4
+    },
+    {
+     "name": "Blue Cheese Crumbles",
+     "serving": "9g",
+     "cal": 30,
+     "f": 2.5,
+     "c": 0,
+     "p": 2
+    },
+    {
+     "name": "Pepper Jack Cheese",
+     "serving": "21g",
+     "cal": 80,
+     "f": 6,
+     "c": 0,
+     "p": 4
+    },
+    {
+     "name": "Colby Jack Cheese",
+     "serving": "21g",
+     "cal": 80,
+     "f": 7,
+     "c": 0,
+     "p": 5
+    },
+    {
+     "name": "American Cheese",
+     "serving": "14g",
+     "cal": 50,
+     "f": 4.5,
+     "c": 1,
+     "p": 3
+    },
+    {
+     "name": "Tomato",
+     "serving": "30g",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Lettuce",
+     "serving": "20g",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Saltines",
+     "serving": "12g",
+     "cal": 50,
+     "f": 1,
+     "c": 9,
+     "p": 1
+    },
+    {
+     "name": "Chick-n-Strips Trays",
+     "serving": "47g",
+     "cal": 110,
+     "f": 5,
+     "c": 6,
+     "p": 10
+    },
+    {
+     "name": "Large Chick-n-Strips Tray",
+     "serving": "47g",
+     "cal": 110,
+     "f": 5,
+     "c": 6,
+     "p": 10
+    },
+    {
+     "name": "Medium Chick-n-Strips Tray",
+     "serving": "47g",
+     "cal": 110,
+     "f": 5,
+     "c": 6,
+     "p": 10
+    },
+    {
+     "name": "Small Chick-n-Strips Tray",
+     "serving": "47g",
+     "cal": 110,
+     "f": 5,
+     "c": 6,
+     "p": 10
+    },
+    {
+     "name": "Chick-fil-A Nugget Trays",
+     "serving": "14g",
+     "cal": 30,
+     "f": 1.5,
+     "c": 1,
+     "p": 3
+    },
+    {
+     "name": "Large Chick-fil-A Nuggets Tray",
+     "serving": "14g",
+     "cal": 30,
+     "f": 1.5,
+     "c": 1,
+     "p": 3
+    },
+    {
+     "name": "Medium Chick-fil-ANuggets Tray",
+     "serving": "14g",
+     "cal": 30,
+     "f": 1.5,
+     "c": 1,
+     "p": 3
+    },
+    {
+     "name": "Small Chick-fil-A Nuggets Tray",
+     "serving": "14g",
+     "cal": 30,
+     "f": 1.5,
+     "c": 1,
+     "p": 3
+    },
+    {
+     "name": "30 ct Chick-fil-A Nuggets Football-Shaped Tray",
+     "serving": "425g",
+     "cal": 950,
+     "f": 43,
+     "c": 41,
+     "p": 100
+    },
+    {
+     "name": "10 ct Chick-fil-A Chick-n-Minis Football-Shaped Tray",
+     "serving": "318g",
+     "cal": 910,
+     "f": 34,
+     "c": 103,
+     "p": 49
+    },
+    {
+     "name": "Cookie & Brownie Tray",
+     "serving": "60g",
+     "cal": 280,
+     "f": 14,
+     "c": 36,
+     "p": 3
+    },
+    {
+     "name": "Large Chocolate Chunk Cookie and Chocolate Fudge Brownie Tray",
+     "serving": "60g",
+     "cal": 280,
+     "f": 14,
+     "c": 36,
+     "p": 3
+    },
+    {
+     "name": "Small Chocolate Chunk Cookie and Chocolate Fudge Brownie Tray",
+     "serving": "60g",
+     "cal": 280,
+     "f": 14,
+     "c": 36,
+     "p": 3
+    },
+    {
+     "name": "Chocolate Fudge Brownie Tray",
+     "serving": "43g",
+     "cal": 190,
+     "f": 10,
+     "c": 23,
+     "p": 2
+    },
+    {
+     "name": "Large Chocolate Fudge Brownie Tray",
+     "serving": "43g",
+     "cal": 190,
+     "f": 10,
+     "c": 23,
+     "p": 2
+    },
+    {
+     "name": "Small Chocolate Fudge Brownie Tray",
+     "serving": "43g",
+     "cal": 190,
+     "f": 10,
+     "c": 23,
+     "p": 2
+    },
+    {
+     "name": "Chocolate Chunk Cookie Tray",
+     "serving": "78g",
+     "cal": 370,
+     "f": 17,
+     "c": 49,
+     "p": 5
+    },
+    {
+     "name": "Large Chocolate Chunk Cookie Tray",
+     "serving": "78g",
+     "cal": 370,
+     "f": 17,
+     "c": 49,
+     "p": 5
+    },
+    {
+     "name": "Small Chocolate Chunk Cookie Tray",
+     "serving": "78g",
+     "cal": 370,
+     "f": 17,
+     "c": 49,
+     "p": 5
+    },
+    {
+     "name": "Kale Crunch Side Tray",
+     "serving": "610g",
+     "cal": 1160,
+     "f": 87,
+     "c": 77,
+     "p": 30
+    },
+    {
+     "name": "Large Kale Crunch Side Tray",
+     "serving": "1332g",
+     "cal": 2440,
+     "f": 182,
+     "c": 166,
+     "p": 63
+    },
+    {
+     "name": "Small Kale Crunch Side Tray",
+     "serving": "610g",
+     "cal": 1160,
+     "f": 87,
+     "c": 77,
+     "p": 30
+    },
+    {
+     "name": "Garden Salad Tray",
+     "serving": "595g",
+     "cal": 310,
+     "f": 18,
+     "c": 20,
+     "p": 19
+    },
+    {
+     "name": "Large Garden Salad Tray",
+     "serving": "1191g",
+     "cal": 630,
+     "f": 36,
+     "c": 41,
+     "p": 38
+    },
+    {
+     "name": "Small Garden Salad Tray",
+     "serving": "595g",
+     "cal": 310,
+     "f": 18,
+     "c": 20,
+     "p": 19
+    },
+    {
+     "name": "Mac & Cheese Tray",
+     "serving": "2482g",
+     "cal": 4930,
+     "f": 312,
+     "c": 308,
+     "p": 221
+    },
+    {
+     "name": "Large Mac & Cheese Tray",
+     "serving": "4964g",
+     "cal": 9850,
+     "f": 625,
+     "c": 616,
+     "p": 442
+    },
+    {
+     "name": "Small Mac & Cheese Tray",
+     "serving": "2482g",
+     "cal": 4930,
+     "f": 312,
+     "c": 308,
+     "p": 221
+    },
+    {
+     "name": "Spicy Chilled Grilled Chicken Sub Sandwich Tray",
+     "serving": "115g",
+     "cal": 220,
+     "f": 6,
+     "c": 25,
+     "p": 16
+    },
+    {
+     "name": "Large Spicy Chilled Grilled Chicken Sub Sandwich Tray",
+     "serving": "115g",
+     "cal": 220,
+     "f": 6,
+     "c": 25,
+     "p": 16
+    },
+    {
+     "name": "Medium Spicy Chilled Grilled Chicken Sub Sandwich Tray",
+     "serving": "115g",
+     "cal": 220,
+     "f": 6,
+     "c": 25,
+     "p": 16
+    },
+    {
+     "name": "Small Spicy Chilled Grilled Chicken Sub Sandwich Tray",
+     "serving": "115g",
+     "cal": 220,
+     "f": 6,
+     "c": 25,
+     "p": 16
+    },
+    {
+     "name": "Chilled Grilled Chicken Sub Sandwich Tray",
+     "serving": "115g",
+     "cal": 220,
+     "f": 6,
+     "c": 25,
+     "p": 18
+    },
+    {
+     "name": "Large Chilled Grilled Chicken Sub Sandwich Tray",
+     "serving": "115g",
+     "cal": 220,
+     "f": 6,
+     "c": 25,
+     "p": 18
+    },
+    {
+     "name": "Medium Chilled Grilled Chicken Sub Sandwich Tray",
+     "serving": "115g",
+     "cal": 220,
+     "f": 6,
+     "c": 25,
+     "p": 18
+    },
+    {
+     "name": "Small Chilled Grilled Chicken Sub Sandwich Tray",
+     "serving": "115g",
+     "cal": 220,
+     "f": 6,
+     "c": 25,
+     "p": 18
+    },
+    {
+     "name": "Grilled Chicken Bundle",
+     "serving": "224g",
+     "cal": 460,
+     "f": 19,
+     "c": 35,
+     "p": 37
+    },
+    {
+     "name": "Southwest Veggie Wrap Trays",
+     "serving": "128g",
+     "cal": 460,
+     "f": 39,
+     "c": 19,
+     "p": 14
+    },
+    {
+     "name": "Large Southwest Veggie Wrap Tray",
+     "serving": "128g",
+     "cal": 460,
+     "f": 39,
+     "c": 19,
+     "p": 14
+    },
+    {
+     "name": "Medium Southwest Veggie Wrap Tray",
+     "serving": "128g",
+     "cal": 460,
+     "f": 39,
+     "c": 19,
+     "p": 14
+    },
+    {
+     "name": "Small Southwest Veggie Wrap Tray",
+     "serving": "128g",
+     "cal": 460,
+     "f": 39,
+     "c": 19,
+     "p": 14
+    },
+    {
+     "name": "Spicy Cool Wrap Trays",
+     "serving": "116g",
+     "cal": 480,
+     "f": 39,
+     "c": 18,
+     "p": 21
+    },
+    {
+     "name": "Large Spicy Cool Wrap Tray",
+     "serving": "116g",
+     "cal": 480,
+     "f": 39,
+     "c": 18,
+     "p": 21
+    },
+    {
+     "name": "Medium Spicy Cool Wrap Tray",
+     "serving": "116g",
+     "cal": 480,
+     "f": 39,
+     "c": 18,
+     "p": 21
+    },
+    {
+     "name": "Small Spicy Cool Wrap Tray",
+     "serving": "116g",
+     "cal": 480,
+     "f": 39,
+     "c": 18,
+     "p": 21
+    },
+    {
+     "name": "Chick-fil-A Cool Wrap Trays",
+     "serving": "116g",
+     "cal": 480,
+     "f": 39,
+     "c": 18,
+     "p": 22
+    },
+    {
+     "name": "Large Chick-fil-A Cool Wrap Tray",
+     "serving": "116g",
+     "cal": 480,
+     "f": 39,
+     "c": 18,
+     "p": 22
+    },
+    {
+     "name": "Medium Chick-fil-A Cool Wrap Tray",
+     "serving": "116g",
+     "cal": 480,
+     "f": 39,
+     "c": 18,
+     "p": 22
+    },
+    {
+     "name": "Small Chick-fil-A Cool Wrap Tray",
+     "serving": "116g",
+     "cal": 480,
+     "f": 39,
+     "c": 18,
+     "p": 22
+    },
+    {
+     "name": "Chilled Chick-n-Strips Trays",
+     "serving": "47g",
+     "cal": 110,
+     "f": 5,
+     "c": 6,
+     "p": 10
+    },
+    {
+     "name": "Large Chilled Chick-n-Strips (Cooked & Chilled for Later) Tray",
+     "serving": "47g",
+     "cal": 110,
+     "f": 5,
+     "c": 6,
+     "p": 10
+    },
+    {
+     "name": "Medium Chilled Chick-n-Strips (Cooked & Chilled for Later) Tray",
+     "serving": "47g",
+     "cal": 110,
+     "f": 5,
+     "c": 6,
+     "p": 10
+    },
+    {
+     "name": "Small Chilled Chick-n-Strips (Cooked & Chilled for Later) Tray",
+     "serving": "47g",
+     "cal": 110,
+     "f": 5,
+     "c": 6,
+     "p": 10
+    },
+    {
+     "name": "Chilled Chick-fil-A Nugget Trays",
+     "serving": "14g",
+     "cal": 30,
+     "f": 1.5,
+     "c": 1,
+     "p": 3
+    },
+    {
+     "name": "Large Chilled Chick-fil-A Nuggets Tray",
+     "serving": "14g",
+     "cal": 30,
+     "f": 1.5,
+     "c": 1,
+     "p": 3
+    },
+    {
+     "name": "Medium Chilled Chick-fil-A Nuggets Tray",
+     "serving": "14g",
+     "cal": 30,
+     "f": 1.5,
+     "c": 1,
+     "p": 3
+    },
+    {
+     "name": "Small Chilled Chick-fil-A Nuggets Tray",
+     "serving": "14g",
+     "cal": 30,
+     "f": 1.5,
+     "c": 1,
+     "p": 3
+    },
+    {
+     "name": "Fruit Tray",
+     "serving": "1446g",
+     "cal": 780,
+     "f": 0,
+     "c": 182,
+     "p": 8
+    },
+    {
+     "name": "Large Fruit Tray",
+     "serving": "2948g",
+     "cal": 1580,
+     "f": 0,
+     "c": 369,
+     "p": 16
+    },
+    {
+     "name": "Small Fruit Tray",
+     "serving": "1446g",
+     "cal": 780,
+     "f": 0,
+     "c": 182,
+     "p": 8
+    },
+    {
+     "name": "Spicy Chilled Grilled Chicken Sub Sandwich",
+     "serving": "230g",
+     "cal": 500,
+     "f": 17,
+     "c": 53,
+     "p": 34
+    },
+    {
+     "name": "Chilled Grilled Chicken Sub Sandwich",
+     "serving": "230g",
+     "cal": 500,
+     "f": 17,
+     "c": 52,
+     "p": 36
+    },
+    {
+     "name": "Bottled Diet Lemonade",
+     "serving": "492g",
+     "cal": 60,
+     "f": 0,
+     "c": 17,
+     "p": 0
+    },
+    {
+     "name": "Bottled Lemonade",
+     "serving": "520g",
+     "cal": 280,
+     "f": 0,
+     "c": 73,
+     "p": 0
+    },
+    {
+     "name": "Bottled Unsweet Tea",
+     "serving": "486g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Bottled Sweet Tea",
+     "serving": "506g",
+     "cal": 190,
+     "f": 0,
+     "c": 50,
+     "p": 0
+    },
+    {
+     "name": "Catering Coffee",
+     "serving": "2722g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    }
+   ]
+  },
+  "dunkin": {
+   "name": "Dunkin'",
+   "aliases": [
+    "dunkin",
+    "dunkin donuts",
+    "dd"
+   ],
+   "source": "https://www.dunkindonuts.com/en/menu/nutrition",
+   "updated": "2026-10-04",
+   "items": [
+    {
+     "name": "Creepy Crawler Coffee Chiller - Large",
+     "serving": "Large",
+     "cal": 1140,
+     "f": 48,
+     "c": 164,
+     "p": 11
+    },
+    {
+     "name": "Creepy Crawler Coffee Chiller - Medium",
+     "serving": "Medium",
+     "cal": 860,
+     "f": 37,
+     "c": 124,
+     "p": 8
+    },
+    {
+     "name": "Creepy Crawler Coffee Chiller - Small",
+     "serving": "Small",
+     "cal": 600,
+     "f": 26,
+     "c": 85,
+     "p": 6
+    },
+    {
+     "name": "Vanilla Creme Cold Brew - Large",
+     "serving": "Large",
+     "cal": 280,
+     "f": 5,
+     "c": 55,
+     "p": 2
+    },
+    {
+     "name": "Vanilla Creme Cold Brew - Medium",
+     "serving": "Medium",
+     "cal": 190,
+     "f": 3,
+     "c": 38,
+     "p": 2
+    },
+    {
+     "name": "Vanilla Creme Cold Brew - Small",
+     "serving": "Small",
+     "cal": 150,
+     "f": 3,
+     "c": 29,
+     "p": 1
+    },
+    {
+     "name": "Ham & Cheese Croissant Stuffer",
+     "serving": "1 Croissant",
+     "cal": 330,
+     "f": 17,
+     "c": 30,
+     "p": 14
+    },
+    {
+     "name": "Chocolate Frosted with Halloween",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 12,
+     "c": 36,
+     "p": 5
+    },
+    {
+     "name": "Pumpkin Donut",
+     "serving": "1 Donut",
+     "cal": 380,
+     "f": 22,
+     "c": 41,
+     "p": 3
+    },
+    {
+     "name": "Spider Donut",
+     "serving": "1 Donut",
+     "cal": 320,
+     "f": 14,
+     "c": 44,
+     "p": 5
+    },
+    {
+     "name": "Strawberry Frosted with Halloween Sprinkles Donut",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 12,
+     "c": 37,
+     "p": 4
+    },
+    {
+     "name": "Vanilla Frosted with Halloween",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 12,
+     "c": 37,
+     "p": 4
+    },
+    {
+     "name": "Birdland Donut",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 11,
+     "c": 37,
+     "p": 4
+    },
+    {
+     "name": "Chocolate Frosted with Chocolate",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 12,
+     "c": 36,
+     "p": 5
+    },
+    {
+     "name": "Cleveland Guardians Donut",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 12,
+     "c": 37,
+     "p": 4
+    },
+    {
+     "name": "Dodgers Donut",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 12,
+     "c": 37,
+     "p": 4
+    },
+    {
+     "name": "Fenway Faithful Donut",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 12,
+     "c": 37,
+     "p": 4
+    },
+    {
+     "name": "Guava Donut",
+     "serving": "1 Donut",
+     "cal": 240,
+     "f": 10,
+     "c": 32,
+     "p": 4
+    },
+    {
+     "name": "Inter Miami Donut",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 11,
+     "c": 37,
+     "p": 4
+    },
+    {
+     "name": "Orioles Magic Donut",
+     "serving": "1 Donut",
+     "cal": 350,
+     "f": 15,
+     "c": 47,
+     "p": 4
+    },
+    {
+     "name": "Padres Donut",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 12,
+     "c": 36,
+     "p": 4
+    },
+    {
+     "name": "Pittsburgh Crème Donut",
+     "serving": "1 Donut",
+     "cal": 350,
+     "f": 16,
+     "c": 47,
+     "p": 5
+    },
+    {
+     "name": "Pittsburgh Penguins Donut",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 12,
+     "c": 36,
+     "p": 4
+    },
+    {
+     "name": "Poe's Purple Donut",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 11,
+     "c": 37,
+     "p": 4
+    },
+    {
+     "name": "Raven's Flock Donut",
+     "serving": "1 Donut",
+     "cal": 350,
+     "f": 16,
+     "c": 47,
+     "p": 5
+    },
+    {
+     "name": "Redland Donut",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 11,
+     "c": 37,
+     "p": 4
+    },
+    {
+     "name": "Reds Donut",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 12,
+     "c": 37,
+     "p": 4
+    },
+    {
+     "name": "The GOAT Donut",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 11,
+     "c": 37,
+     "p": 4
+    },
+    {
+     "name": "Berry Battie Daydream Refresher",
+     "serving": "Large",
+     "cal": 710,
+     "f": 29,
+     "c": 110,
+     "p": 3
+    },
+    {
+     "name": "Dark Spell Daydream Refresher - Large",
+     "serving": "Large",
+     "cal": 700,
+     "f": 28,
+     "c": 109,
+     "p": 3
+    },
+    {
+     "name": "Dark Spell Daydream Refresher - Medium",
+     "serving": "Medium",
+     "cal": 500,
+     "f": 19,
+     "c": 79,
+     "p": 2
+    },
+    {
+     "name": "Dark Spell Daydream Refresher - Small",
+     "serving": "Small",
+     "cal": 410,
+     "f": 19,
+     "c": 60,
+     "p": 2
+    },
+    {
+     "name": "Mango Pineapple Daydream",
+     "serving": "Large",
+     "cal": 410,
+     "f": 8,
+     "c": 81,
+     "p": 4
+    },
+    {
+     "name": "Sangria Daydream Refresher - Large",
+     "serving": "Large",
+     "cal": 400,
+     "f": 8,
+     "c": 79,
+     "p": 4
+    },
+    {
+     "name": "Sangria Daydream Refresher - Medium",
+     "serving": "Medium",
+     "cal": 280,
+     "f": 5,
+     "c": 57,
+     "p": 3
+    },
+    {
+     "name": "Sangria Daydream Refresher - Small",
+     "serving": "Small",
+     "cal": 210,
+     "f": 4.5,
+     "c": 41,
+     "p": 2
+    },
+    {
+     "name": "Strawberry Daydream Refresher - Large",
+     "serving": "Large",
+     "cal": 400,
+     "f": 8,
+     "c": 77,
+     "p": 4
+    },
+    {
+     "name": "Strawberry Daydream Refresher - Medium",
+     "serving": "Medium",
+     "cal": 280,
+     "f": 5,
+     "c": 55,
+     "p": 2
+    },
+    {
+     "name": "Strawberry Daydream Refresher - Small",
+     "serving": "Small",
+     "cal": 210,
+     "f": 4.5,
+     "c": 40,
+     "p": 2
+    },
+    {
+     "name": "Sour Apple Energy - Large",
+     "serving": "Large",
+     "cal": 530,
+     "f": 25,
+     "c": 80,
+     "p": 1
+    },
+    {
+     "name": "Sour Apple Energy - Medium",
+     "serving": "Medium",
+     "cal": 380,
+     "f": 17,
+     "c": 58,
+     "p": 1
+    },
+    {
+     "name": "Sour Apple Energy - Small",
+     "serving": "Small",
+     "cal": 330,
+     "f": 17,
+     "c": 46,
+     "p": 1
+    },
+    {
+     "name": "Almond Protein Matcha Hot Latte",
+     "serving": "Large",
+     "cal": 340,
+     "f": 8,
+     "c": 45,
+     "p": 21
+    },
+    {
+     "name": "Almond Protein Matcha Iced Latte",
+     "serving": "Large",
+     "cal": 340,
+     "f": 8,
+     "c": 45,
+     "p": 21
+    },
+    {
+     "name": "Mango Protein Daydream",
+     "serving": "Large",
+     "cal": 440,
+     "f": 10,
+     "c": 73,
+     "p": 15
+    },
+    {
+     "name": "Mango Protein Refresher - Large",
+     "serving": "Large",
+     "cal": 390,
+     "f": 8,
+     "c": 60,
+     "p": 19
+    },
+    {
+     "name": "Mango Protein Refresher - Medium",
+     "serving": "Medium",
+     "cal": 300,
+     "f": 6,
+     "c": 45,
+     "p": 15
+    },
+    {
+     "name": "Mango Protein Refresher - Small",
+     "serving": "Small",
+     "cal": 200,
+     "f": 4,
+     "c": 30,
+     "p": 10
+    },
+    {
+     "name": "Nutty Pumpkin Protein Iced Latte",
+     "serving": "Large",
+     "cal": 460,
+     "f": 8,
+     "c": 71,
+     "p": 23
+    },
+    {
+     "name": "Protein Hot Latte - Large",
+     "serving": "Large",
+     "cal": 230,
+     "f": 8,
+     "c": 19,
+     "p": 20
+    },
+    {
+     "name": "Protein Hot Latte - Medium",
+     "serving": "Medium",
+     "cal": 170,
+     "f": 6,
+     "c": 14,
+     "p": 15
+    },
+    {
+     "name": "Protein Hot Latte - Small",
+     "serving": "Small",
+     "cal": 110,
+     "f": 4,
+     "c": 10,
+     "p": 10
+    },
+    {
+     "name": "Protein Hot Latte with Sugar Free",
+     "serving": "Large",
+     "cal": 230,
+     "f": 8,
+     "c": 25,
+     "p": 20
+    },
+    {
+     "name": "Protein Iced Latte - Large",
+     "serving": "Large",
+     "cal": 230,
+     "f": 8,
+     "c": 19,
+     "p": 20
+    },
+    {
+     "name": "Protein Iced Latte - Medium",
+     "serving": "Medium",
+     "cal": 170,
+     "f": 6,
+     "c": 14,
+     "p": 15
+    },
+    {
+     "name": "Protein Iced Latte - Small",
+     "serving": "Small",
+     "cal": 110,
+     "f": 4,
+     "c": 10,
+     "p": 10
+    },
+    {
+     "name": "Protein Iced Latte with Sugar Free",
+     "serving": "Large",
+     "cal": 230,
+     "f": 8,
+     "c": 25,
+     "p": 20
+    },
+    {
+     "name": "Protein Matcha Hot Latte - Large",
+     "serving": "Large",
+     "cal": 330,
+     "f": 8,
+     "c": 45,
+     "p": 21
+    },
+    {
+     "name": "Protein Matcha Hot Latte - Medium",
+     "serving": "Medium",
+     "cal": 250,
+     "f": 6,
+     "c": 33,
+     "p": 15
+    },
+    {
+     "name": "Protein Matcha Hot Latte - Small",
+     "serving": "Small",
+     "cal": 170,
+     "f": 4,
+     "c": 22,
+     "p": 10
+    },
+    {
+     "name": "Protein Matcha Iced Latte - Large",
+     "serving": "Large",
+     "cal": 330,
+     "f": 8,
+     "c": 45,
+     "p": 21
+    },
+    {
+     "name": "Protein Matcha Iced Latte - Medium",
+     "serving": "Medium",
+     "cal": 250,
+     "f": 6,
+     "c": 33,
+     "p": 15
+    },
+    {
+     "name": "Protein Matcha Iced Latte - Small",
+     "serving": "Small",
+     "cal": 170,
+     "f": 4,
+     "c": 22,
+     "p": 10
+    },
+    {
+     "name": "Strawberry Protein Daydream",
+     "serving": "Large",
+     "cal": 440,
+     "f": 10,
+     "c": 69,
+     "p": 15
+    },
+    {
+     "name": "Strawberry Protein Refresher - Large",
+     "serving": "Large",
+     "cal": 390,
+     "f": 8,
+     "c": 57,
+     "p": 19
+    },
+    {
+     "name": "Strawberry Protein Refresher - Medium",
+     "serving": "Medium",
+     "cal": 290,
+     "f": 6,
+     "c": 42,
+     "p": 15
+    },
+    {
+     "name": "Strawberry Protein Refresher - Small",
+     "serving": "Small",
+     "cal": 190,
+     "f": 4,
+     "c": 28,
+     "p": 10
+    },
+    {
+     "name": "Tiramisu Protein Iced Latte - Large",
+     "serving": "Large",
+     "cal": 450,
+     "f": 8,
+     "c": 70,
+     "p": 23
+    },
+    {
+     "name": "Tiramisu Protein Iced Latte - Medium",
+     "serving": "Medium",
+     "cal": 330,
+     "f": 6,
+     "c": 52,
+     "p": 17
+    },
+    {
+     "name": "Tiramisu Protein Iced Latte - Small",
+     "serving": "Small",
+     "cal": 220,
+     "f": 4,
+     "c": 35,
+     "p": 12
+    },
+    {
+     "name": "Berry Clementine Refresher - Large",
+     "serving": "Large",
+     "cal": 230,
+     "f": 0,
+     "c": 57,
+     "p": 1
+    },
+    {
+     "name": "Berry Clementine Refresher - Medium",
+     "serving": "Medium",
+     "cal": 170,
+     "f": 0,
+     "c": 43,
+     "p": 1
+    },
+    {
+     "name": "Berry Clementine Refresher - Small",
+     "serving": "Small",
+     "cal": 120,
+     "f": 0,
+     "c": 28,
+     "p": 0
+    },
+    {
+     "name": "Berry Daydream Refresher - Large",
+     "serving": "Large",
+     "cal": 470,
+     "f": 8,
+     "c": 96,
+     "p": 4
+    },
+    {
+     "name": "Berry Daydream Refresher - Medium",
+     "serving": "Medium",
+     "cal": 330,
+     "f": 5,
+     "c": 69,
+     "p": 3
+    },
+    {
+     "name": "Berry Daydream Refresher - Small",
+     "serving": "Small",
+     "cal": 250,
+     "f": 4.5,
+     "c": 50,
+     "p": 2
+    },
+    {
+     "name": "Berry Sangria Black Tea Refresher",
+     "serving": "Large",
+     "cal": 170,
+     "f": 0,
+     "c": 41,
+     "p": 0
+    },
+    {
+     "name": "Berry Sangria Refresher - Large",
+     "serving": "Large",
+     "cal": 160,
+     "f": 0,
+     "c": 40,
+     "p": 1
+    },
+    {
+     "name": "Berry Sangria Refresher - Medium",
+     "serving": "Medium",
+     "cal": 120,
+     "f": 0,
+     "c": 30,
+     "p": 1
+    },
+    {
+     "name": "Berry Sangria Refresher - Small",
+     "serving": "Small",
+     "cal": 80,
+     "f": 0,
+     "c": 20,
+     "p": 0
+    },
+    {
+     "name": "Midnight Potion Refresher - Large",
+     "serving": "Large",
+     "cal": 240,
+     "f": 0,
+     "c": 57,
+     "p": 1
+    },
+    {
+     "name": "Midnight Potion Refresher - Medium",
+     "serving": "Medium",
+     "cal": 180,
+     "f": 0,
+     "c": 43,
+     "p": 1
+    },
+    {
+     "name": "Midnight Potion Refresher - Small",
+     "serving": "Small",
+     "cal": 120,
+     "f": 0,
+     "c": 29,
+     "p": 0
+    },
+    {
+     "name": "Werewolf Punch Refresher - Large",
+     "serving": "Large",
+     "cal": 350,
+     "f": 0,
+     "c": 87,
+     "p": 0
+    },
+    {
+     "name": "Werewolf Punch Refresher - Medium",
+     "serving": "Medium",
+     "cal": 260,
+     "f": 0,
+     "c": 65,
+     "p": 0
+    },
+    {
+     "name": "Werewolf Punch Refresher - Small",
+     "serving": "Small",
+     "cal": 180,
+     "f": 0,
+     "c": 44,
+     "p": 0
+    },
+    {
+     "name": "Mango Pineapple Sparkling",
+     "serving": "Large",
+     "cal": 170,
+     "f": 0,
+     "c": 42,
+     "p": 0
+    },
+    {
+     "name": "Strawberry Dragonfruit Sparkling",
+     "serving": "Large",
+     "cal": 170,
+     "f": 0,
+     "c": 39,
+     "p": 0
+    },
+    {
+     "name": "Blackberry Tangerine Dunkin'",
+     "serving": "Large",
+     "cal": 25,
+     "f": 0,
+     "c": 12,
+     "p": 0
+    },
+    {
+     "name": "Blushpop Dunkin' Zero - Large",
+     "serving": "Large",
+     "cal": 25,
+     "f": 0,
+     "c": 12,
+     "p": 0
+    },
+    {
+     "name": "Blushpop Dunkin' Zero - Medium",
+     "serving": "Medium",
+     "cal": 20,
+     "f": 0,
+     "c": 9,
+     "p": 0
+    },
+    {
+     "name": "Blushpop Dunkin' Zero - Small",
+     "serving": "Small",
+     "cal": 15,
+     "f": 0,
+     "c": 6,
+     "p": 0
+    },
+    {
+     "name": "Candy Kiss Dunkin' Zero - Large",
+     "serving": "Large",
+     "cal": 30,
+     "f": 0,
+     "c": 12,
+     "p": 0
+    },
+    {
+     "name": "Candy Kiss Dunkin' Zero - Medium",
+     "serving": "Medium",
+     "cal": 20,
+     "f": 0,
+     "c": 9,
+     "p": 0
+    },
+    {
+     "name": "Candy Kiss Dunkin' Zero - Small",
+     "serving": "Small",
+     "cal": 15,
+     "f": 0,
+     "c": 6,
+     "p": 0
+    },
+    {
+     "name": "Glamberry Dunkin' Zero - Large",
+     "serving": "Large",
+     "cal": 25,
+     "f": 0,
+     "c": 12,
+     "p": 0
+    },
+    {
+     "name": "Glamberry Dunkin' Zero - Medium",
+     "serving": "Medium",
+     "cal": 20,
+     "f": 0,
+     "c": 9,
+     "p": 0
+    },
+    {
+     "name": "Glamberry Dunkin' Zero - Small",
+     "serving": "Small",
+     "cal": 10,
+     "f": 0,
+     "c": 6,
+     "p": 0
+    },
+    {
+     "name": "Green Apple Dunkin' Zero - Large",
+     "serving": "Large",
+     "cal": 30,
+     "f": 0,
+     "c": 12,
+     "p": 0
+    },
+    {
+     "name": "Green Apple Dunkin' Zero - Medium",
+     "serving": "Medium",
+     "cal": 25,
+     "f": 0,
+     "c": 9,
+     "p": 0
+    },
+    {
+     "name": "Green Apple Dunkin' Zero - Small",
+     "serving": "Small",
+     "cal": 15,
+     "f": 0,
+     "c": 6,
+     "p": 0
+    },
+    {
+     "name": "Juicy Peach Dunkin' Zero - Large",
+     "serving": "Large",
+     "cal": 25,
+     "f": 0,
+     "c": 11,
+     "p": 0
+    },
+    {
+     "name": "Juicy Peach Dunkin' Zero - Medium",
+     "serving": "Medium",
+     "cal": 20,
+     "f": 0,
+     "c": 8,
+     "p": 0
+    },
+    {
+     "name": "Juicy Peach Dunkin' Zero - Small",
+     "serving": "Small",
+     "cal": 10,
+     "f": 0,
+     "c": 6,
+     "p": 0
+    },
+    {
+     "name": "Midnight Apple Dunkin' Zero - Large",
+     "serving": "Large",
+     "cal": 25,
+     "f": 0,
+     "c": 12,
+     "p": 0
+    },
+    {
+     "name": "Midnight Apple Dunkin' Zero - Medium",
+     "serving": "Medium",
+     "cal": 20,
+     "f": 0,
+     "c": 9,
+     "p": 0
+    },
+    {
+     "name": "Midnight Apple Dunkin' Zero - Small",
+     "serving": "Small",
+     "cal": 15,
+     "f": 0,
+     "c": 6,
+     "p": 0
+    },
+    {
+     "name": "Orchard Twist Dunkin' Zero - Large",
+     "serving": "Large",
+     "cal": 30,
+     "f": 0,
+     "c": 11,
+     "p": 0
+    },
+    {
+     "name": "Orchard Twist Dunkin' Zero - Medium",
+     "serving": "Medium",
+     "cal": 20,
+     "f": 0,
+     "c": 9,
+     "p": 0
+    },
+    {
+     "name": "Orchard Twist Dunkin' Zero - Small",
+     "serving": "Small",
+     "cal": 15,
+     "f": 0,
+     "c": 6,
+     "p": 0
+    },
+    {
+     "name": "Sunzest Dunkin' Zero - Large",
+     "serving": "Large",
+     "cal": 25,
+     "f": 0,
+     "c": 11,
+     "p": 0
+    },
+    {
+     "name": "Sunzest Dunkin' Zero - Medium",
+     "serving": "Medium",
+     "cal": 20,
+     "f": 0,
+     "c": 9,
+     "p": 0
+    },
+    {
+     "name": "Sunzest Dunkin' Zero - Small",
+     "serving": "Small",
+     "cal": 15,
+     "f": 0,
+     "c": 6,
+     "p": 0
+    },
+    {
+     "name": "Tropical Mango Dunkin' Zero - Large",
+     "serving": "Large",
+     "cal": 30,
+     "f": 0,
+     "c": 12,
+     "p": 0
+    },
+    {
+     "name": "Tropical Mango Dunkin' Zero - Medium",
+     "serving": "Medium",
+     "cal": 20,
+     "f": 0,
+     "c": 9,
+     "p": 0
+    },
+    {
+     "name": "Tropical Mango Dunkin' Zero - Small",
+     "serving": "Small",
+     "cal": 15,
+     "f": 0,
+     "c": 6,
+     "p": 0
+    },
+    {
+     "name": "Chipotle Loaded Hash Browns",
+     "serving": "1 Bowl",
+     "cal": 380,
+     "f": 30,
+     "c": 22,
+     "p": 7
+    },
+    {
+     "name": "Loaded Hash Browns",
+     "serving": "1 Bowl",
+     "cal": 320,
+     "f": 22,
+     "c": 24,
+     "p": 9
+    },
+    {
+     "name": "Nutty Pumpkin Hot Coffee - Large",
+     "serving": "Large",
+     "cal": 350,
+     "f": 12,
+     "c": 52,
+     "p": 5
+    },
+    {
+     "name": "Nutty Pumpkin Hot Coffee - Medium",
+     "serving": "Medium",
+     "cal": 260,
+     "f": 9,
+     "c": 39,
+     "p": 4
+    },
+    {
+     "name": "Nutty Pumpkin Hot Coffee - Small",
+     "serving": "Small",
+     "cal": 170,
+     "f": 6,
+     "c": 26,
+     "p": 3
+    },
+    {
+     "name": "Hot Dunkalatte - Large",
+     "serving": "Large",
+     "cal": 410,
+     "f": 13,
+     "c": 60,
+     "p": 15
+    },
+    {
+     "name": "Hot Dunkalatte - Medium",
+     "serving": "Medium",
+     "cal": 310,
+     "f": 10,
+     "c": 45,
+     "p": 11
+    },
+    {
+     "name": "Hot Dunkalatte - Small",
+     "serving": "Small",
+     "cal": 210,
+     "f": 6,
+     "c": 30,
+     "p": 8
+    },
+    {
+     "name": "Pumpkin Spice Hot Signature Latte",
+     "serving": "Large",
+     "cal": 540,
+     "f": 17,
+     "c": 77,
+     "p": 16
+    },
+    {
+     "name": "Blueberry Cobbler Iced Coffee - Large",
+     "serving": "Large",
+     "cal": 340,
+     "f": 12,
+     "c": 53,
+     "p": 5
+    },
+    {
+     "name": "Blueberry Cobbler Iced Coffee - Medium",
+     "serving": "Medium",
+     "cal": 260,
+     "f": 9,
+     "c": 39,
+     "p": 4
+    },
+    {
+     "name": "Blueberry Cobbler Iced Coffee - Small",
+     "serving": "Small",
+     "cal": 170,
+     "f": 6,
+     "c": 26,
+     "p": 3
+    },
+    {
+     "name": "Chocolate Hazelnut Truffle Iced Coffee - Large",
+     "serving": "Large",
+     "cal": 340,
+     "f": 12,
+     "c": 53,
+     "p": 4
+    },
+    {
+     "name": "Chocolate Hazelnut Truffle Iced Coffee - Medium",
+     "serving": "Medium",
+     "cal": 250,
+     "f": 9,
+     "c": 40,
+     "p": 3
+    },
+    {
+     "name": "Chocolate Hazelnut Truffle Iced Coffee - Small",
+     "serving": "Small",
+     "cal": 170,
+     "f": 6,
+     "c": 26,
+     "p": 2
+    },
+    {
+     "name": "Nutty Nightmare Iced Coffee - Large",
+     "serving": "Large",
+     "cal": 350,
+     "f": 12,
+     "c": 53,
+     "p": 6
+    },
+    {
+     "name": "Nutty Nightmare Iced Coffee - Medium",
+     "serving": "Medium",
+     "cal": 260,
+     "f": 9,
+     "c": 40,
+     "p": 4
+    },
+    {
+     "name": "Nutty Nightmare Iced Coffee - Small",
+     "serving": "Small",
+     "cal": 170,
+     "f": 6,
+     "c": 26,
+     "p": 3
+    },
+    {
+     "name": "Nutty Pumpkin Iced Coffee - Large",
+     "serving": "Large",
+     "cal": 350,
+     "f": 12,
+     "c": 52,
+     "p": 6
+    },
+    {
+     "name": "Nutty Pumpkin Iced Coffee - Medium",
+     "serving": "Medium",
+     "cal": 260,
+     "f": 9,
+     "c": 39,
+     "p": 4
+    },
+    {
+     "name": "Nutty Pumpkin Iced Coffee - Small",
+     "serving": "Small",
+     "cal": 170,
+     "f": 6,
+     "c": 26,
+     "p": 3
+    },
+    {
+     "name": "Toffee Nut Iced Coffee - Large",
+     "serving": "Large",
+     "cal": 350,
+     "f": 12,
+     "c": 54,
+     "p": 5
+    },
+    {
+     "name": "Toffee Nut Iced Coffee - Medium",
+     "serving": "Medium",
+     "cal": 260,
+     "f": 9,
+     "c": 40,
+     "p": 4
+    },
+    {
+     "name": "Toffee Nut Iced Coffee - Small",
+     "serving": "Small",
+     "cal": 170,
+     "f": 6,
+     "c": 27,
+     "p": 3
+    },
+    {
+     "name": "Brown Sugar Shakin' Espresso - Large",
+     "serving": "Large",
+     "cal": 230,
+     "f": 2.5,
+     "c": 51,
+     "p": 2
+    },
+    {
+     "name": "Brown Sugar Shakin' Espresso - Medium",
+     "serving": "Medium",
+     "cal": 180,
+     "f": 2,
+     "c": 40,
+     "p": 1
+    },
+    {
+     "name": "Brown Sugar Shakin' Espresso - Small",
+     "serving": "Small",
+     "cal": 120,
+     "f": 1.5,
+     "c": 26,
+     "p": 1
+    },
+    {
+     "name": "Shakin' Espresso - Large",
+     "serving": "Large",
+     "cal": 120,
+     "f": 6,
+     "c": 11,
+     "p": 6
+    },
+    {
+     "name": "Shakin' Espresso - Medium",
+     "serving": "Medium",
+     "cal": 90,
+     "f": 4.5,
+     "c": 8,
+     "p": 4
+    },
+    {
+     "name": "Shakin' Espresso - Small",
+     "serving": "Small",
+     "cal": 60,
+     "f": 3,
+     "c": 6,
+     "p": 3
+    },
+    {
+     "name": "Brown Sugar Hazelnut Oat Iced Latte - Large",
+     "serving": "Large",
+     "cal": 330,
+     "f": 5,
+     "c": 70,
+     "p": 3
+    },
+    {
+     "name": "Brown Sugar Hazelnut Oat Iced Latte - Medium",
+     "serving": "Medium",
+     "cal": 250,
+     "f": 4,
+     "c": 53,
+     "p": 2
+    },
+    {
+     "name": "Brown Sugar Hazelnut Oat Iced Latte - Small",
+     "serving": "Small",
+     "cal": 160,
+     "f": 2.5,
+     "c": 35,
+     "p": 1
+    },
+    {
+     "name": "Harvest Spiced Chai Latte - Large",
+     "serving": "Large",
+     "cal": 770,
+     "f": 39,
+     "c": 89,
+     "p": 13
+    },
+    {
+     "name": "Harvest Spiced Chai Latte - Medium",
+     "serving": "Medium",
+     "cal": 550,
+     "f": 27,
+     "c": 65,
+     "p": 10
+    },
+    {
+     "name": "Harvest Spiced Chai Latte - Small",
+     "serving": "Small",
+     "cal": 450,
+     "f": 24,
+     "c": 51,
+     "p": 7
+    },
+    {
+     "name": "Iced Dunkalatte - Large",
+     "serving": "Large",
+     "cal": 410,
+     "f": 13,
+     "c": 60,
+     "p": 15
+    },
+    {
+     "name": "Iced Dunkalatte - Medium",
+     "serving": "Medium",
+     "cal": 310,
+     "f": 10,
+     "c": 45,
+     "p": 11
+    },
+    {
+     "name": "Iced Dunkalatte - Small",
+     "serving": "Small",
+     "cal": 210,
+     "f": 6,
+     "c": 30,
+     "p": 8
+    },
+    {
+     "name": "Marshmallow Cloud Dunkalatte - Large",
+     "serving": "Large",
+     "cal": 780,
+     "f": 40,
+     "c": 91,
+     "p": 16
+    },
+    {
+     "name": "Marshmallow Cloud Dunkalatte - Medium",
+     "serving": "Medium",
+     "cal": 560,
+     "f": 28,
+     "c": 66,
+     "p": 12
+    },
+    {
+     "name": "Marshmallow Cloud Dunkalatte - Small",
+     "serving": "Small",
+     "cal": 450,
+     "f": 25,
+     "c": 51,
+     "p": 8
+    },
+    {
+     "name": "Pumpkin Cloud Dunkalatte - Large",
+     "serving": "Large",
+     "cal": 750,
+     "f": 18,
+     "c": 129,
+     "p": 20
+    },
+    {
+     "name": "Pumpkin Cloud Dunkalatte - Medium",
+     "serving": "Medium",
+     "cal": 550,
+     "f": 13,
+     "c": 94,
+     "p": 15
+    },
+    {
+     "name": "Pumpkin Cloud Dunkalatte - Small",
+     "serving": "Small",
+     "cal": 390,
+     "f": 9,
+     "c": 66,
+     "p": 10
+    },
+    {
+     "name": "Pumpkin Patch Cloud Latte - Large",
+     "serving": "Large",
+     "cal": 580,
+     "f": 17,
+     "c": 88,
+     "p": 17
+    },
+    {
+     "name": "Pumpkin Patch Cloud Latte - Medium",
+     "serving": "Medium",
+     "cal": 420,
+     "f": 12,
+     "c": 63,
+     "p": 12
+    },
+    {
+     "name": "Pumpkin Patch Cloud Latte - Small",
+     "serving": "Small",
+     "cal": 310,
+     "f": 9,
+     "c": 46,
+     "p": 9
+    },
+    {
+     "name": "Pumpkin Spice Iced Signature",
+     "serving": "Large",
+     "cal": 540,
+     "f": 17,
+     "c": 77,
+     "p": 16
+    },
+    {
+     "name": "Terror-Misu Cloud Latte - Large",
+     "serving": "Large",
+     "cal": 800,
+     "f": 37,
+     "c": 100,
+     "p": 16
+    },
+    {
+     "name": "Terror-Misu Cloud Latte - Medium",
+     "serving": "Medium",
+     "cal": 580,
+     "f": 26,
+     "c": 73,
+     "p": 12
+    },
+    {
+     "name": "Terror-Misu Cloud Latte - Small",
+     "serving": "Small",
+     "cal": 470,
+     "f": 23,
+     "c": 56,
+     "p": 8
+    },
+    {
+     "name": "Toasted Almond Iced Dunkalatte - Large",
+     "serving": "Large",
+     "cal": 420,
+     "f": 13,
+     "c": 61,
+     "p": 15
+    },
+    {
+     "name": "Toasted Almond Iced Dunkalatte - Medium",
+     "serving": "Medium",
+     "cal": 310,
+     "f": 10,
+     "c": 46,
+     "p": 11
+    },
+    {
+     "name": "Toasted Almond Iced Dunkalatte - Small",
+     "serving": "Small",
+     "cal": 210,
+     "f": 6,
+     "c": 30,
+     "p": 8
+    },
+    {
+     "name": "Shakin' Espresso with Sugar Free",
+     "serving": "Large",
+     "cal": 90,
+     "f": 2.5,
+     "c": 21,
+     "p": 1
+    },
+    {
+     "name": "Tiramisu Shakin' Espresso - Large",
+     "serving": "Large",
+     "cal": 310,
+     "f": 2.5,
+     "c": 68,
+     "p": 5
+    },
+    {
+     "name": "Tiramisu Shakin' Espresso - Medium",
+     "serving": "Medium",
+     "cal": 240,
+     "f": 2,
+     "c": 51,
+     "p": 4
+    },
+    {
+     "name": "Tiramisu Shakin' Espresso - Small",
+     "serving": "Small",
+     "cal": 160,
+     "f": 1.5,
+     "c": 34,
+     "p": 3
+    },
+    {
+     "name": "Maple Brown Sugar Snackin'",
+     "serving": "8 Pieces",
+     "cal": 190,
+     "f": 12,
+     "c": 10,
+     "p": 10
+    },
+    {
+     "name": "Stuffed Bagel Minis - Everything",
+     "serving": "2 Bagel Minis",
+     "cal": 260,
+     "f": 12,
+     "c": 34,
+     "p": 8
+    },
+    {
+     "name": "Stuffed Bagel Minis - Plain",
+     "serving": "2 Bagel Minis",
+     "cal": 240,
+     "f": 10,
+     "c": 32,
+     "p": 7
+    },
+    {
+     "name": "Avocado Spread",
+     "serving": "1 Unit",
+     "cal": 80,
+     "f": 7,
+     "c": 4,
+     "p": 1
+    },
+    {
+     "name": "Avocado Toast",
+     "serving": "1 Piece",
+     "cal": 240,
+     "f": 11,
+     "c": 34,
+     "p": 6
+    },
+    {
+     "name": "Bacon Topped Avocado Toast",
+     "serving": "1 Piece",
+     "cal": 290,
+     "f": 14,
+     "c": 32,
+     "p": 10
+    },
+    {
+     "name": "Cinnamon Raisin Bagel",
+     "serving": "1 Bagel",
+     "cal": 320,
+     "f": 1,
+     "c": 67,
+     "p": 11
+    },
+    {
+     "name": "Everything Bagel",
+     "serving": "1 Bagel",
+     "cal": 340,
+     "f": 3,
+     "c": 67,
+     "p": 12
+    },
+    {
+     "name": "Multigrain Bagel",
+     "serving": "1 Bagel",
+     "cal": 380,
+     "f": 8,
+     "c": 63,
+     "p": 15
+    },
+    {
+     "name": "Plain Bagel",
+     "serving": "1 Bagel",
+     "cal": 300,
+     "f": 1,
+     "c": 64,
+     "p": 11
+    },
+    {
+     "name": "Sesame Seed Bagel",
+     "serving": "1 Bagel",
+     "cal": 350,
+     "f": 5,
+     "c": 64,
+     "p": 12
+    },
+    {
+     "name": "White Cheddar Bagel Twist",
+     "serving": "1 Bagel Twist",
+     "cal": 390,
+     "f": 8,
+     "c": 64,
+     "p": 16
+    },
+    {
+     "name": "Butter Pecan Swirl Coffee Chiller with Cream - Large",
+     "serving": "Large",
+     "cal": 940,
+     "f": 35,
+     "c": 145,
+     "p": 9
+    },
+    {
+     "name": "Butter Pecan Swirl Coffee Chiller with Cream - Medium",
+     "serving": "Medium",
+     "cal": 700,
+     "f": 26,
+     "c": 109,
+     "p": 7
+    },
+    {
+     "name": "Butter Pecan Swirl Coffee Chiller with Cream - Small",
+     "serving": "Small",
+     "cal": 470,
+     "f": 17,
+     "c": 73,
+     "p": 5
+    },
+    {
+     "name": "Butter Pecan Swirl Coffee Chiller with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 650,
+     "f": 0,
+     "c": 149,
+     "p": 10
+    },
+    {
+     "name": "Butter Pecan Swirl Coffee Chiller with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 490,
+     "f": 0,
+     "c": 112,
+     "p": 8
+    },
+    {
+     "name": "Butter Pecan Swirl Coffee Chiller with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 330,
+     "f": 0,
+     "c": 75,
+     "p": 5
+    },
+    {
+     "name": "Butter Pecan Swirl Coffee Chiller with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 700,
+     "f": 6,
+     "c": 149,
+     "p": 10
+    },
+    {
+     "name": "Butter Pecan Swirl Coffee Chiller with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 530,
+     "f": 4.5,
+     "c": 112,
+     "p": 7
+    },
+    {
+     "name": "Butter Pecan Swirl Coffee Chiller with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 350,
+     "f": 3,
+     "c": 75,
+     "p": 5
+    },
+    {
+     "name": "Caramel Creme Coffee Chiller - Large",
+     "serving": "Large",
+     "cal": 1020,
+     "f": 39,
+     "c": 155,
+     "p": 10
+    },
+    {
+     "name": "Caramel Creme Coffee Chiller - Medium",
+     "serving": "Medium",
+     "cal": 770,
+     "f": 30,
+     "c": 117,
+     "p": 7
+    },
+    {
+     "name": "Caramel Creme Coffee Chiller - Small",
+     "serving": "Small",
+     "cal": 540,
+     "f": 21,
+     "c": 80,
+     "p": 5
+    },
+    {
+     "name": "Coffee Chiller - Large",
+     "serving": "Large",
+     "cal": 720,
+     "f": 35,
+     "c": 95,
+     "p": 6
+    },
+    {
+     "name": "Coffee Chiller - Medium",
+     "serving": "Medium",
+     "cal": 540,
+     "f": 26,
+     "c": 71,
+     "p": 5
+    },
+    {
+     "name": "Coffee Chiller - Small",
+     "serving": "Small",
+     "cal": 360,
+     "f": 17,
+     "c": 48,
+     "p": 3
+    },
+    {
+     "name": "Coffee Chiller with Almondmilk - Large",
+     "serving": "Large",
+     "cal": 430,
+     "f": 2,
+     "c": 99,
+     "p": 2
+    },
+    {
+     "name": "Coffee Chiller with Almondmilk - Medium",
+     "serving": "Medium",
+     "cal": 330,
+     "f": 1.5,
+     "c": 74,
+     "p": 1
+    },
+    {
+     "name": "Coffee Chiller with Almondmilk - Small",
+     "serving": "Small",
+     "cal": 220,
+     "f": 1,
+     "c": 50,
+     "p": 1
+    },
+    {
+     "name": "Coffee Chiller with Cream - Large",
+     "serving": "Large",
+     "cal": 720,
+     "f": 35,
+     "c": 95,
+     "p": 6
+    },
+    {
+     "name": "Coffee Chiller with Cream - Medium",
+     "serving": "Medium",
+     "cal": 540,
+     "f": 26,
+     "c": 71,
+     "p": 5
+    },
+    {
+     "name": "Coffee Chiller with Cream - Small",
+     "serving": "Small",
+     "cal": 390,
+     "f": 17,
+     "c": 57,
+     "p": 3
+    },
+    {
+     "name": "Coffee Chiller with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 500,
+     "f": 0,
+     "c": 117,
+     "p": 8
+    },
+    {
+     "name": "Coffee Chiller with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 370,
+     "f": 0,
+     "c": 88,
+     "p": 6
+    },
+    {
+     "name": "Coffee Chiller with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 250,
+     "f": 0,
+     "c": 59,
+     "p": 4
+    },
+    {
+     "name": "Coffee Chiller with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 550,
+     "f": 6,
+     "c": 117,
+     "p": 7
+    },
+    {
+     "name": "Coffee Chiller with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 410,
+     "f": 4.5,
+     "c": 88,
+     "p": 5
+    },
+    {
+     "name": "Coffee Chiller with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 270,
+     "f": 3,
+     "c": 58,
+     "p": 4
+    },
+    {
+     "name": "French Vanilla Swirl Coffee Chiller with Cream - Large",
+     "serving": "Large",
+     "cal": 1000,
+     "f": 35,
+     "c": 163,
+     "p": 9
+    },
+    {
+     "name": "French Vanilla Swirl Coffee Chiller with Cream - Medium",
+     "serving": "Medium",
+     "cal": 750,
+     "f": 26,
+     "c": 123,
+     "p": 7
+    },
+    {
+     "name": "French Vanilla Swirl Coffee Chiller with Cream - Small",
+     "serving": "Small",
+     "cal": 500,
+     "f": 17,
+     "c": 82,
+     "p": 5
+    },
+    {
+     "name": "French Vanilla Swirl Coffee Chiller with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 710,
+     "f": 0,
+     "c": 167,
+     "p": 10
+    },
+    {
+     "name": "French Vanilla Swirl Coffee Chiller with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 540,
+     "f": 0,
+     "c": 126,
+     "p": 8
+    },
+    {
+     "name": "French Vanilla Swirl Coffee Chiller with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 360,
+     "f": 0,
+     "c": 84,
+     "p": 5
+    },
+    {
+     "name": "French Vanilla Swirl Coffee Chiller with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 760,
+     "f": 6,
+     "c": 167,
+     "p": 10
+    },
+    {
+     "name": "French Vanilla Swirl Coffee Chiller with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 570,
+     "f": 4.5,
+     "c": 125,
+     "p": 7
+    },
+    {
+     "name": "French Vanilla Swirl Coffee Chiller with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 380,
+     "f": 3,
+     "c": 84,
+     "p": 5
+    },
+    {
+     "name": "Mocha Swirl Coffee Chiller with Cream - Large",
+     "serving": "Large",
+     "cal": 990,
+     "f": 35,
+     "c": 163,
+     "p": 8
+    },
+    {
+     "name": "Mocha Swirl Coffee Chiller with Cream - Medium",
+     "serving": "Medium",
+     "cal": 740,
+     "f": 27,
+     "c": 122,
+     "p": 6
+    },
+    {
+     "name": "Mocha Swirl Coffee Chiller with Cream - Small",
+     "serving": "Small",
+     "cal": 490,
+     "f": 18,
+     "c": 81,
+     "p": 4
+    },
+    {
+     "name": "Mocha Swirl Coffee Chiller with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 700,
+     "f": 1,
+     "c": 167,
+     "p": 9
+    },
+    {
+     "name": "Mocha Swirl Coffee Chiller with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 530,
+     "f": 0.5,
+     "c": 125,
+     "p": 7
+    },
+    {
+     "name": "Mocha Swirl Coffee Chiller with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 350,
+     "f": 0,
+     "c": 83,
+     "p": 5
+    },
+    {
+     "name": "Mocha Swirl Coffee Chiller with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 750,
+     "f": 7,
+     "c": 167,
+     "p": 9
+    },
+    {
+     "name": "Mocha Swirl Coffee Chiller with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 570,
+     "f": 5,
+     "c": 125,
+     "p": 6
+    },
+    {
+     "name": "Mocha Swirl Coffee Chiller with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 380,
+     "f": 3.5,
+     "c": 83,
+     "p": 4
+    },
+    {
+     "name": "Triple Mocha Coffee Chiller - Large",
+     "serving": "Large",
+     "cal": 1000,
+     "f": 40,
+     "c": 153,
+     "p": 8
+    },
+    {
+     "name": "Triple Mocha Coffee Chiller - Medium",
+     "serving": "Medium",
+     "cal": 770,
+     "f": 31,
+     "c": 116,
+     "p": 6
+    },
+    {
+     "name": "Triple Mocha Coffee Chiller - Small",
+     "serving": "Small",
+     "cal": 530,
+     "f": 22,
+     "c": 80,
+     "p": 5
+    },
+    {
+     "name": "Caramel Cold Brew with Dunkin'",
+     "serving": "Large",
+     "cal": 350,
+     "f": 4,
+     "c": 70,
+     "p": 4
+    },
+    {
+     "name": "Cold Brew Coffee - Large",
+     "serving": "Large",
+     "cal": 5,
+     "f": 0,
+     "c": 0,
+     "p": 1
+    },
+    {
+     "name": "Cold Brew Coffee - Medium",
+     "serving": "Medium",
+     "cal": 5,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Cold Brew Coffee - Small",
+     "serving": "Small",
+     "cal": 5,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Cold Brew Coffee with Cream - Large",
+     "serving": "Large",
+     "cal": 120,
+     "f": 12,
+     "c": 2,
+     "p": 2
+    },
+    {
+     "name": "Cold Brew Coffee with Cream - Medium",
+     "serving": "Medium",
+     "cal": 90,
+     "f": 9,
+     "c": 1,
+     "p": 2
+    },
+    {
+     "name": "Cold Brew Coffee with Cream - Small",
+     "serving": "Small",
+     "cal": 60,
+     "f": 6,
+     "c": 1,
+     "p": 1
+    },
+    {
+     "name": "Cold Brew Coffee with Cream and Sugar - Large",
+     "serving": "Large",
+     "cal": 260,
+     "f": 12,
+     "c": 37,
+     "p": 2
+    },
+    {
+     "name": "Cold Brew Coffee with Cream and Sugar - Medium",
+     "serving": "Medium",
+     "cal": 190,
+     "f": 9,
+     "c": 27,
+     "p": 2
+    },
+    {
+     "name": "Cold Brew Coffee with Cream and Sugar - Small",
+     "serving": "Small",
+     "cal": 130,
+     "f": 6,
+     "c": 18,
+     "p": 1
+    },
+    {
+     "name": "Cold Brew Coffee with Oatmilk - Large",
+     "serving": "Large",
+     "cal": 50,
+     "f": 1.5,
+     "c": 8,
+     "p": 1
+    },
+    {
+     "name": "Cold Brew Coffee with Oatmilk - Medium",
+     "serving": "Medium",
+     "cal": 30,
+     "f": 1,
+     "c": 5,
+     "p": 1
+    },
+    {
+     "name": "Cold Brew Coffee with Oatmilk - Small",
+     "serving": "Small",
+     "cal": 15,
+     "f": 0,
+     "c": 3,
+     "p": 1
+    },
+    {
+     "name": "Cold Brew with Dunkin' Cold",
+     "serving": "Large",
+     "cal": 240,
+     "f": 16,
+     "c": 20,
+     "p": 4
+    },
+    {
+     "name": "Nitro Cold Brew Coffee - Small",
+     "serving": "Small",
+     "cal": 5,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Nitro Cold Brew with Dunkin'",
+     "serving": "Small",
+     "cal": 90,
+     "f": 3.5,
+     "c": 13,
+     "p": 2
+    },
+    {
+     "name": "The Caramel Cold Foam - Large",
+     "serving": "Large",
+     "cal": 340,
+     "f": 4,
+     "c": 70,
+     "p": 4
+    },
+    {
+     "name": "The Caramel Cold Foam - Medium",
+     "serving": "Medium",
+     "cal": 250,
+     "f": 3,
+     "c": 52,
+     "p": 3
+    },
+    {
+     "name": "The Caramel Cold Foam - Small",
+     "serving": "Small",
+     "cal": 190,
+     "f": 2.5,
+     "c": 39,
+     "p": 2
+    },
+    {
+     "name": "Vanilla Cream Cold Brew - Large",
+     "serving": "Large",
+     "cal": 130,
+     "f": 12,
+     "c": 2,
+     "p": 2
+    },
+    {
+     "name": "Vanilla Cream Cold Brew - Medium",
+     "serving": "Medium",
+     "cal": 100,
+     "f": 9,
+     "c": 2,
+     "p": 2
+    },
+    {
+     "name": "Vanilla Cream Cold Brew - Small",
+     "serving": "Small",
+     "cal": 60,
+     "f": 6,
+     "c": 1,
+     "p": 1
+    },
+    {
+     "name": "Butter Packet",
+     "serving": "1 Packet",
+     "cal": 35,
+     "f": 4,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Butter Spread with Canola Oil",
+     "serving": "1 Portion",
+     "cal": 100,
+     "f": 11,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Blue Raspberry Coolatta - Large",
+     "serving": "Large",
+     "cal": 460,
+     "f": 0,
+     "c": 112,
+     "p": 0
+    },
+    {
+     "name": "Blue Raspberry Coolatta - Medium",
+     "serving": "Medium",
+     "cal": 350,
+     "f": 0,
+     "c": 84,
+     "p": 0
+    },
+    {
+     "name": "Blue Raspberry Coolatta - Small",
+     "serving": "Small",
+     "cal": 230,
+     "f": 0,
+     "c": 56,
+     "p": 0
+    },
+    {
+     "name": "Strawberry Coolatta - Large",
+     "serving": "Large",
+     "cal": 470,
+     "f": 0,
+     "c": 115,
+     "p": 0
+    },
+    {
+     "name": "Strawberry Coolatta - Medium",
+     "serving": "Medium",
+     "cal": 350,
+     "f": 0,
+     "c": 86,
+     "p": 0
+    },
+    {
+     "name": "Strawberry Coolatta - Small",
+     "serving": "Small",
+     "cal": 240,
+     "f": 0,
+     "c": 57,
+     "p": 0
+    },
+    {
+     "name": "Vanilla Bean Coolatta - Large",
+     "serving": "Large",
+     "cal": 790,
+     "f": 6,
+     "c": 172,
+     "p": 10
+    },
+    {
+     "name": "Vanilla Bean Coolatta - Medium",
+     "serving": "Medium",
+     "cal": 590,
+     "f": 4.5,
+     "c": 129,
+     "p": 7
+    },
+    {
+     "name": "Vanilla Bean Coolatta - Small",
+     "serving": "Small",
+     "cal": 390,
+     "f": 3,
+     "c": 86,
+     "p": 5
+    },
+    {
+     "name": "Classic Plain Cream Cheese Spread",
+     "serving": "1 Unit",
+     "cal": 120,
+     "f": 12,
+     "c": 3,
+     "p": 2
+    },
+    {
+     "name": "Garden Veggie Cream Cheese",
+     "serving": "1 Unit",
+     "cal": 100,
+     "f": 10,
+     "c": 2,
+     "p": 2
+    },
+    {
+     "name": "Strawberry Cream Cheese Spread",
+     "serving": "1 Unit",
+     "cal": 130,
+     "f": 10,
+     "c": 9,
+     "p": 2
+    },
+    {
+     "name": "Apple 'n Spice Donut",
+     "serving": "1 Donut",
+     "cal": 230,
+     "f": 10,
+     "c": 31,
+     "p": 4
+    },
+    {
+     "name": "Apple Crumb Donut",
+     "serving": "1 Donut",
+     "cal": 290,
+     "f": 11,
+     "c": 44,
+     "p": 5
+    },
+    {
+     "name": "Apple Fritter",
+     "serving": "1 Fritter",
+     "cal": 470,
+     "f": 28,
+     "c": 47,
+     "p": 6
+    },
+    {
+     "name": "Apple Stick",
+     "serving": "1 Stick",
+     "cal": 470,
+     "f": 30,
+     "c": 50,
+     "p": 4
+    },
+    {
+     "name": "Bavarian Kreme Donut",
+     "serving": "1 Donut",
+     "cal": 240,
+     "f": 11,
+     "c": 31,
+     "p": 4
+    },
+    {
+     "name": "Bismark",
+     "serving": "1 Bismark",
+     "cal": 480,
+     "f": 22,
+     "c": 63,
+     "p": 6
+    },
+    {
+     "name": "Boston Kreme Donut",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 11,
+     "c": 39,
+     "p": 5
+    },
+    {
+     "name": "Butternut Donut",
+     "serving": "1 Donut",
+     "cal": 430,
+     "f": 21,
+     "c": 57,
+     "p": 4
+    },
+    {
+     "name": "Chocolate Butternut Donut",
+     "serving": "1 Donut",
+     "cal": 450,
+     "f": 24,
+     "c": 57,
+     "p": 4
+    },
+    {
+     "name": "Chocolate Crème Donut",
+     "serving": "1 Donut",
+     "cal": 290,
+     "f": 14,
+     "c": 36,
+     "p": 5
+    },
+    {
+     "name": "Chocolate Dipped French Cruller",
+     "serving": "1 Donut",
+     "cal": 280,
+     "f": 15,
+     "c": 33,
+     "p": 3
+    },
+    {
+     "name": "Chocolate Frosted Cake Donut",
+     "serving": "1 Donut",
+     "cal": 360,
+     "f": 20,
+     "c": 41,
+     "p": 4
+    },
+    {
+     "name": "Chocolate Frosted Donut",
+     "serving": "1 Donut",
+     "cal": 260,
+     "f": 11,
+     "c": 34,
+     "p": 4
+    },
+    {
+     "name": "Chocolate Frosted with Sprinkles",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 12,
+     "c": 36,
+     "p": 4
+    },
+    {
+     "name": "Chocolate Headlight Donut",
+     "serving": "1 Donut",
+     "cal": 310,
+     "f": 14,
+     "c": 41,
+     "p": 5
+    },
+    {
+     "name": "Chocolate Long John",
+     "serving": "1 Long John",
+     "cal": 320,
+     "f": 15,
+     "c": 41,
+     "p": 6
+    },
+    {
+     "name": "Cinnamon Donut",
+     "serving": "1 Donut",
+     "cal": 330,
+     "f": 20,
+     "c": 34,
+     "p": 4
+    },
+    {
+     "name": "Cinnamon Stick",
+     "serving": "1 Stick",
+     "cal": 430,
+     "f": 30,
+     "c": 39,
+     "p": 4
+    },
+    {
+     "name": "Coconut Donut",
+     "serving": "1 Donut",
+     "cal": 410,
+     "f": 21,
+     "c": 50,
+     "p": 4
+    },
+    {
+     "name": "Coffee Roll",
+     "serving": "1 Coffee Roll",
+     "cal": 390,
+     "f": 19,
+     "c": 48,
+     "p": 7
+    },
+    {
+     "name": "Double Chocolate Donut",
+     "serving": "1 Donut",
+     "cal": 380,
+     "f": 23,
+     "c": 41,
+     "p": 4
+    },
+    {
+     "name": "French Cruller",
+     "serving": "1 Donut",
+     "cal": 230,
+     "f": 14,
+     "c": 21,
+     "p": 3
+    },
+    {
+     "name": "Frosted Vanilla Crème Donut",
+     "serving": "1 Donut",
+     "cal": 330,
+     "f": 16,
+     "c": 44,
+     "p": 5
+    },
+    {
+     "name": "Glazed Blueberry Donut",
+     "serving": "1 Donut",
+     "cal": 350,
+     "f": 18,
+     "c": 44,
+     "p": 4
+    },
+    {
+     "name": "Glazed Chocolate Donut",
+     "serving": "1 Donut",
+     "cal": 370,
+     "f": 23,
+     "c": 41,
+     "p": 4
+    },
+    {
+     "name": "Glazed Chocolate Stick",
+     "serving": "1 Stick",
+     "cal": 410,
+     "f": 25,
+     "c": 42,
+     "p": 4
+    },
+    {
+     "name": "Glazed Donut",
+     "serving": "1 Donut",
+     "cal": 240,
+     "f": 11,
+     "c": 33,
+     "p": 4
+    },
+    {
+     "name": "Glazed Jelly Donut",
+     "serving": "1 Donut",
+     "cal": 280,
+     "f": 10,
+     "c": 44,
+     "p": 4
+    },
+    {
+     "name": "Glazed Jelly Stick",
+     "serving": "1 Stick",
+     "cal": 540,
+     "f": 30,
+     "c": 66,
+     "p": 4
+    },
+    {
+     "name": "Glazed Stick",
+     "serving": "1 Stick",
+     "cal": 470,
+     "f": 30,
+     "c": 48,
+     "p": 4
+    },
+    {
+     "name": "Glazed Strawberry Donut",
+     "serving": "1 Donut",
+     "cal": 280,
+     "f": 10,
+     "c": 44,
+     "p": 4
+    },
+    {
+     "name": "Jelly Donut",
+     "serving": "1 Donut",
+     "cal": 250,
+     "f": 10,
+     "c": 36,
+     "p": 4
+    },
+    {
+     "name": "Jelly Stick",
+     "serving": "1 Stick",
+     "cal": 500,
+     "f": 30,
+     "c": 57,
+     "p": 4
+    },
+    {
+     "name": "Lemon Donut",
+     "serving": "1 Donut",
+     "cal": 230,
+     "f": 10,
+     "c": 31,
+     "p": 4
+    },
+    {
+     "name": "Lemon Stick",
+     "serving": "1 Stick",
+     "cal": 480,
+     "f": 30,
+     "c": 50,
+     "p": 4
+    },
+    {
+     "name": "Maple Crème Donut",
+     "serving": "1 Donut",
+     "cal": 290,
+     "f": 14,
+     "c": 38,
+     "p": 4
+    },
+    {
+     "name": "Maple Crème Stick",
+     "serving": "1 Stick",
+     "cal": 460,
+     "f": 22,
+     "c": 59,
+     "p": 5
+    },
+    {
+     "name": "Maple Frosted Donut",
+     "serving": "1 Donut",
+     "cal": 260,
+     "f": 11,
+     "c": 35,
+     "p": 4
+    },
+    {
+     "name": "Maple Vanilla Crème Donut",
+     "serving": "1 Donut",
+     "cal": 330,
+     "f": 15,
+     "c": 45,
+     "p": 4
+    },
+    {
+     "name": "Old Fashioned Donut",
+     "serving": "1 Donut",
+     "cal": 310,
+     "f": 19,
+     "c": 30,
+     "p": 4
+    },
+    {
+     "name": "Peanut Donut",
+     "serving": "1 Donut",
+     "cal": 470,
+     "f": 27,
+     "c": 50,
+     "p": 8
+    },
+    {
+     "name": "Plain Stick",
+     "serving": "1 Stick",
+     "cal": 420,
+     "f": 30,
+     "c": 36,
+     "p": 4
+    },
+    {
+     "name": "Powdered Donut",
+     "serving": "1 Donut",
+     "cal": 330,
+     "f": 20,
+     "c": 34,
+     "p": 4
+    },
+    {
+     "name": "Powdered Stick",
+     "serving": "1 Stick",
+     "cal": 440,
+     "f": 30,
+     "c": 42,
+     "p": 4
+    },
+    {
+     "name": "Sour Cream Donut",
+     "serving": "1 Donut",
+     "cal": 360,
+     "f": 17,
+     "c": 49,
+     "p": 4
+    },
+    {
+     "name": "Strawberry Frosted Donut",
+     "serving": "1 Donut",
+     "cal": 260,
+     "f": 11,
+     "c": 35,
+     "p": 4
+    },
+    {
+     "name": "Strawberry Frosted with Sprinkles",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 12,
+     "c": 37,
+     "p": 4
+    },
+    {
+     "name": "Sugared Donut",
+     "serving": "1 Donut",
+     "cal": 210,
+     "f": 11,
+     "c": 24,
+     "p": 4
+    },
+    {
+     "name": "Sugared Stick",
+     "serving": "1 Stick",
+     "cal": 430,
+     "f": 30,
+     "c": 39,
+     "p": 4
+    },
+    {
+     "name": "Taillight Donut",
+     "serving": "1 Donut",
+     "cal": 320,
+     "f": 15,
+     "c": 41,
+     "p": 4
+    },
+    {
+     "name": "Toasted Coconut Donut",
+     "serving": "1 Donut",
+     "cal": 430,
+     "f": 22,
+     "c": 52,
+     "p": 5
+    },
+    {
+     "name": "Vanilla Crème Donut",
+     "serving": "1 Donut",
+     "cal": 300,
+     "f": 15,
+     "c": 37,
+     "p": 4
+    },
+    {
+     "name": "Vanilla Frosted Donut",
+     "serving": "1 Donut",
+     "cal": 260,
+     "f": 11,
+     "c": 34,
+     "p": 4
+    },
+    {
+     "name": "Vanilla Frosted Sprinkles Donut",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 11,
+     "c": 37,
+     "p": 4
+    },
+    {
+     "name": "Vanilla Headlight Donut",
+     "serving": "1 Donut",
+     "cal": 310,
+     "f": 15,
+     "c": 41,
+     "p": 4
+    },
+    {
+     "name": "Vanilla Long John",
+     "serving": "1 Long John",
+     "cal": 320,
+     "f": 15,
+     "c": 42,
+     "p": 5
+    },
+    {
+     "name": "Éclair",
+     "serving": "1 Éclair",
+     "cal": 360,
+     "f": 16,
+     "c": 50,
+     "p": 6
+    },
+    {
+     "name": "Apple Streusel Donut",
+     "serving": "1 Donut",
+     "cal": 310,
+     "f": 12,
+     "c": 46,
+     "p": 5
+    },
+    {
+     "name": "Chocolate Coconut Donut",
+     "serving": "1 Donut",
+     "cal": 430,
+     "f": 25,
+     "c": 50,
+     "p": 4
+    },
+    {
+     "name": "Chocolate Crème Stick",
+     "serving": "1 Stick",
+     "cal": 460,
+     "f": 23,
+     "c": 58,
+     "p": 6
+    },
+    {
+     "name": "Crème Delight Donut",
+     "serving": "1 Donut",
+     "cal": 330,
+     "f": 16,
+     "c": 44,
+     "p": 5
+    },
+    {
+     "name": "French Apple Donut",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 10,
+     "c": 40,
+     "p": 4
+    },
+    {
+     "name": "Glazed Lemon Donut",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 10,
+     "c": 40,
+     "p": 4
+    },
+    {
+     "name": "Indy Crème Donut",
+     "serving": "1 Donut",
+     "cal": 330,
+     "f": 16,
+     "c": 44,
+     "p": 5
+    },
+    {
+     "name": "Maple Long John Donut",
+     "serving": "1 Donut",
+     "cal": 320,
+     "f": 15,
+     "c": 42,
+     "p": 5
+    },
+    {
+     "name": "Marble Frosted Donut",
+     "serving": "1 Donut",
+     "cal": 270,
+     "f": 11,
+     "c": 37,
+     "p": 4
+    },
+    {
+     "name": "New Yorker Donut",
+     "serving": "1 Donut",
+     "cal": 330,
+     "f": 16,
+     "c": 44,
+     "p": 5
+    },
+    {
+     "name": "Mango Pineapple Dunkin'",
+     "serving": "Large",
+     "cal": 320,
+     "f": 0,
+     "c": 80,
+     "p": 0
+    },
+    {
+     "name": "Strawberry Dragonfruit Dunkin'",
+     "serving": "Large",
+     "cal": 310,
+     "f": 0,
+     "c": 75,
+     "p": 0
+    },
+    {
+     "name": "Butter Pecan Swirl Frozen Chocolate - Large",
+     "serving": "Large",
+     "cal": 900,
+     "f": 17,
+     "c": 175,
+     "p": 12
+    },
+    {
+     "name": "Butter Pecan Swirl Frozen Chocolate - Medium",
+     "serving": "Medium",
+     "cal": 700,
+     "f": 14,
+     "c": 134,
+     "p": 9
+    },
+    {
+     "name": "Butter Pecan Swirl Frozen Chocolate - Small",
+     "serving": "Small",
+     "cal": 500,
+     "f": 11,
+     "c": 95,
+     "p": 6
+    },
+    {
+     "name": "Caramel Swirl Frozen Chocolate - Large",
+     "serving": "Large",
+     "cal": 900,
+     "f": 17,
+     "c": 176,
+     "p": 11
+    },
+    {
+     "name": "Caramel Swirl Frozen Chocolate - Medium",
+     "serving": "Medium",
+     "cal": 700,
+     "f": 14,
+     "c": 135,
+     "p": 9
+    },
+    {
+     "name": "Caramel Swirl Frozen Chocolate - Small",
+     "serving": "Small",
+     "cal": 500,
+     "f": 11,
+     "c": 95,
+     "p": 6
+    },
+    {
+     "name": "French Vanilla Swirl Frozen Chocolate - Large",
+     "serving": "Large",
+     "cal": 900,
+     "f": 17,
+     "c": 175,
+     "p": 11
+    },
+    {
+     "name": "French Vanilla Swirl Frozen Chocolate - Medium",
+     "serving": "Medium",
+     "cal": 700,
+     "f": 14,
+     "c": 135,
+     "p": 9
+    },
+    {
+     "name": "French Vanilla Swirl Frozen Chocolate - Small",
+     "serving": "Small",
+     "cal": 500,
+     "f": 11,
+     "c": 95,
+     "p": 6
+    },
+    {
+     "name": "Frozen Chocolate - Large",
+     "serving": "Large",
+     "cal": 890,
+     "f": 18,
+     "c": 175,
+     "p": 10
+    },
+    {
+     "name": "Frozen Chocolate - Medium",
+     "serving": "Medium",
+     "cal": 690,
+     "f": 15,
+     "c": 134,
+     "p": 7
+    },
+    {
+     "name": "Frozen Chocolate - Small",
+     "serving": "Small",
+     "cal": 490,
+     "f": 11,
+     "c": 94,
+     "p": 5
+    },
+    {
+     "name": "Frozen Chai Latte - Large",
+     "serving": "Large",
+     "cal": 690,
+     "f": 12,
+     "c": 132,
+     "p": 12
+    },
+    {
+     "name": "Frozen Chai Latte - Medium",
+     "serving": "Medium",
+     "cal": 520,
+     "f": 9,
+     "c": 99,
+     "p": 9
+    },
+    {
+     "name": "Frozen Chai Latte - Small",
+     "serving": "Small",
+     "cal": 350,
+     "f": 6,
+     "c": 66,
+     "p": 6
+    },
+    {
+     "name": "Frozen Matcha Latte with Almondmilk - Large",
+     "serving": "Large",
+     "cal": 470,
+     "f": 2,
+     "c": 111,
+     "p": 3
+    },
+    {
+     "name": "Frozen Matcha Latte with Almondmilk - Medium",
+     "serving": "Medium",
+     "cal": 350,
+     "f": 1.5,
+     "c": 84,
+     "p": 2
+    },
+    {
+     "name": "Frozen Matcha Latte with Almondmilk - Small",
+     "serving": "Small",
+     "cal": 240,
+     "f": 1,
+     "c": 56,
+     "p": 1
+    },
+    {
+     "name": "Frozen Matcha Latte with Whole",
+     "serving": "Large",
+     "cal": 530,
+     "f": 6,
+     "c": 110,
+     "p": 8
+    },
+    {
+     "name": "Hash Browns",
+     "serving": "6 Pieces",
+     "cal": 110,
+     "f": 6,
+     "c": 13,
+     "p": 1
+    },
+    {
+     "name": "Americano - Large",
+     "serving": "Large",
+     "cal": 10,
+     "f": 0,
+     "c": 2,
+     "p": 0
+    },
+    {
+     "name": "Americano - Medium",
+     "serving": "Medium",
+     "cal": 10,
+     "f": 0,
+     "c": 2,
+     "p": 0
+    },
+    {
+     "name": "Americano - Small",
+     "serving": "Small",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Cappuccino with Skim Milk -",
+     "serving": "Large",
+     "cal": 310,
+     "f": 0,
+     "c": 64,
+     "p": 11
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Cappuccino with Whole Milk -",
+     "serving": "Large",
+     "cal": 370,
+     "f": 8,
+     "c": 63,
+     "p": 11
+    },
+    {
+     "name": "Cappuccino with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 90,
+     "f": 0,
+     "c": 13,
+     "p": 8
+    },
+    {
+     "name": "Cappuccino with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 70,
+     "f": 0,
+     "c": 10,
+     "p": 6
+    },
+    {
+     "name": "Cappuccino with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 45,
+     "f": 0,
+     "c": 7,
+     "p": 4
+    },
+    {
+     "name": "Cappuccino with Skim Milk and Sugar - Large",
+     "serving": "Large",
+     "cal": 230,
+     "f": 0,
+     "c": 48,
+     "p": 8
+    },
+    {
+     "name": "Cappuccino with Skim Milk and Sugar - Medium",
+     "serving": "Medium",
+     "cal": 170,
+     "f": 0,
+     "c": 36,
+     "p": 6
+    },
+    {
+     "name": "Cappuccino with Skim Milk and Sugar - Small",
+     "serving": "Small",
+     "cal": 110,
+     "f": 0,
+     "c": 24,
+     "p": 4
+    },
+    {
+     "name": "Cappuccino with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 160,
+     "f": 8,
+     "c": 13,
+     "p": 8
+    },
+    {
+     "name": "Cappuccino with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 120,
+     "f": 6,
+     "c": 10,
+     "p": 6
+    },
+    {
+     "name": "Cappuccino with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 80,
+     "f": 4,
+     "c": 7,
+     "p": 4
+    },
+    {
+     "name": "Cappuccino with Whole Milk and Sugar - Large",
+     "serving": "Large",
+     "cal": 290,
+     "f": 8,
+     "c": 48,
+     "p": 8
+    },
+    {
+     "name": "Cappuccino with Whole Milk and Sugar - Medium",
+     "serving": "Medium",
+     "cal": 220,
+     "f": 6,
+     "c": 36,
+     "p": 6
+    },
+    {
+     "name": "Cappuccino with Whole Milk and Sugar - Small",
+     "serving": "Small",
+     "cal": 150,
+     "f": 4,
+     "c": 24,
+     "p": 4
+    },
+    {
+     "name": "Caramel Swirl Hot Cappuccino with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 310,
+     "f": 0,
+     "c": 65,
+     "p": 11
+    },
+    {
+     "name": "Caramel Swirl Hot Cappuccino with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 230,
+     "f": 0,
+     "c": 49,
+     "p": 8
+    },
+    {
+     "name": "Caramel Swirl Hot Cappuccino with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 160,
+     "f": 0,
+     "c": 33,
+     "p": 6
+    },
+    {
+     "name": "Caramel Swirl Hot Cappuccino with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 380,
+     "f": 8,
+     "c": 65,
+     "p": 11
+    },
+    {
+     "name": "Caramel Swirl Hot Cappuccino with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 280,
+     "f": 6,
+     "c": 48,
+     "p": 8
+    },
+    {
+     "name": "Caramel Swirl Hot Cappuccino with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 190,
+     "f": 4,
+     "c": 32,
+     "p": 5
+    },
+    {
+     "name": "French Vanilla Swirl Hot Cappuccino with Skim Milk -",
+     "serving": "Large",
+     "cal": 310,
+     "f": 0,
+     "c": 65,
+     "p": 11
+    },
+    {
+     "name": "French Vanilla Swirl Hot Cappuccino with Whole Milk -",
+     "serving": "Large",
+     "cal": 370,
+     "f": 8,
+     "c": 64,
+     "p": 10
+    },
+    {
+     "name": "Mocha Swirl Hot Cappuccino with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 300,
+     "f": 1,
+     "c": 64,
+     "p": 10
+    },
+    {
+     "name": "Mocha Swirl Hot Cappuccino with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 220,
+     "f": 1,
+     "c": 48,
+     "p": 7
+    },
+    {
+     "name": "Mocha Swirl Hot Cappuccino with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 150,
+     "f": 0.5,
+     "c": 32,
+     "p": 5
+    },
+    {
+     "name": "Mocha Swirl Hot Cappuccino with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 360,
+     "f": 9,
+     "c": 63,
+     "p": 9
+    },
+    {
+     "name": "Mocha Swirl Hot Cappuccino with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 270,
+     "f": 7,
+     "c": 48,
+     "p": 7
+    },
+    {
+     "name": "Mocha Swirl Hot Cappuccino with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 180,
+     "f": 4.5,
+     "c": 32,
+     "p": 5
+    },
+    {
+     "name": "Box 'O Joe(R) Hot Chocolate",
+     "serving": "1 Small Cup",
+     "cal": 220,
+     "f": 7,
+     "c": 40,
+     "p": 2
+    },
+    {
+     "name": "Hot Chocolate with Espresso Shot",
+     "serving": "Large",
+     "cal": 400,
+     "f": 12,
+     "c": 71,
+     "p": 3
+    },
+    {
+     "name": "Original Hot Chocolate - Extra",
+     "serving": "XLarge",
+     "cal": 500,
+     "f": 15,
+     "c": 89,
+     "p": 4
+    },
+    {
+     "name": "Original Hot Chocolate - Large",
+     "serving": "Large",
+     "cal": 460,
+     "f": 14,
+     "c": 82,
+     "p": 4
+    },
+    {
+     "name": "Original Hot Chocolate - Medium",
+     "serving": "Medium",
+     "cal": 330,
+     "f": 10,
+     "c": 59,
+     "p": 3
+    },
+    {
+     "name": "Original Hot Chocolate - Small",
+     "serving": "Small",
+     "cal": 220,
+     "f": 7,
+     "c": 40,
+     "p": 2
+    },
+    {
+     "name": "Box 'O Joe",
+     "serving": "1 Small Cup",
+     "cal": 5,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Coffee with Black - Extra Large",
+     "serving": "XLarge",
+     "cal": 270,
+     "f": 0,
+     "c": 63,
+     "p": 5
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Coffee with Black - Large",
+     "serving": "Large",
+     "cal": 220,
+     "f": 0,
+     "c": 50,
+     "p": 4
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Coffee with Black - Medium",
+     "serving": "Medium",
+     "cal": 170,
+     "f": 0,
+     "c": 38,
+     "p": 3
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Coffee with Black - Small",
+     "serving": "Small",
+     "cal": 110,
+     "f": 0,
+     "c": 25,
+     "p": 2
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Coffee with Cream - Extra Large",
+     "serving": "XLarge",
+     "cal": 420,
+     "f": 15,
+     "c": 65,
+     "p": 7
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Coffee with Cream - Large",
+     "serving": "Large",
+     "cal": 330,
+     "f": 12,
+     "c": 52,
+     "p": 5
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Coffee with Cream - Medium",
+     "serving": "Medium",
+     "cal": 250,
+     "f": 9,
+     "c": 39,
+     "p": 4
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Coffee with Cream - Small",
+     "serving": "Small",
+     "cal": 170,
+     "f": 6,
+     "c": 26,
+     "p": 3
+    },
+    {
+     "name": "Caramel Swirl Hot Coffee with Black - Extra Large",
+     "serving": "XLarge",
+     "cal": 280,
+     "f": 0,
+     "c": 64,
+     "p": 4
+    },
+    {
+     "name": "Caramel Swirl Hot Coffee with Black - Large",
+     "serving": "Large",
+     "cal": 230,
+     "f": 0,
+     "c": 52,
+     "p": 3
+    },
+    {
+     "name": "Caramel Swirl Hot Coffee with Black - Medium",
+     "serving": "Medium",
+     "cal": 170,
+     "f": 0,
+     "c": 39,
+     "p": 3
+    },
+    {
+     "name": "Caramel Swirl Hot Coffee with Black - Small",
+     "serving": "Small",
+     "cal": 110,
+     "f": 0,
+     "c": 26,
+     "p": 2
+    },
+    {
+     "name": "Caramel Swirl Hot Coffee with Cream - Extra Large",
+     "serving": "XLarge",
+     "cal": 420,
+     "f": 15,
+     "c": 67,
+     "p": 6
+    },
+    {
+     "name": "Caramel Swirl Hot Coffee with Cream - Large",
+     "serving": "Large",
+     "cal": 340,
+     "f": 12,
+     "c": 53,
+     "p": 5
+    },
+    {
+     "name": "Caramel Swirl Hot Coffee with Cream - Medium",
+     "serving": "Medium",
+     "cal": 260,
+     "f": 9,
+     "c": 40,
+     "p": 4
+    },
+    {
+     "name": "Caramel Swirl Hot Coffee with Cream - Small",
+     "serving": "Small",
+     "cal": 170,
+     "f": 6,
+     "c": 27,
+     "p": 3
+    },
+    {
+     "name": "French Vanilla Swirl Hot Coffee - Extra Large",
+     "serving": "XLarge",
+     "cal": 280,
+     "f": 0,
+     "c": 64,
+     "p": 4
+    },
+    {
+     "name": "French Vanilla Swirl Hot Coffee - Large",
+     "serving": "Large",
+     "cal": 220,
+     "f": 0,
+     "c": 51,
+     "p": 3
+    },
+    {
+     "name": "French Vanilla Swirl Hot Coffee - Medium",
+     "serving": "Medium",
+     "cal": 170,
+     "f": 0,
+     "c": 38,
+     "p": 2
+    },
+    {
+     "name": "French Vanilla Swirl Hot Coffee - Small",
+     "serving": "Small",
+     "cal": 110,
+     "f": 0,
+     "c": 26,
+     "p": 2
+    },
+    {
+     "name": "French Vanilla Swirl Hot Coffee with Cream - Extra Large",
+     "serving": "XLarge",
+     "cal": 420,
+     "f": 15,
+     "c": 66,
+     "p": 6
+    },
+    {
+     "name": "French Vanilla Swirl Hot Coffee with Cream - Large",
+     "serving": "Large",
+     "cal": 340,
+     "f": 12,
+     "c": 53,
+     "p": 5
+    },
+    {
+     "name": "French Vanilla Swirl Hot Coffee with Cream - Medium",
+     "serving": "Medium",
+     "cal": 250,
+     "f": 9,
+     "c": 40,
+     "p": 4
+    },
+    {
+     "name": "French Vanilla Swirl Hot Coffee with Cream - Small",
+     "serving": "Small",
+     "cal": 170,
+     "f": 6,
+     "c": 26,
+     "p": 2
+    },
+    {
+     "name": "Hot Coffee - Extra Large",
+     "serving": "XLarge",
+     "cal": 5,
+     "f": 0,
+     "c": 0,
+     "p": 1
+    },
+    {
+     "name": "Hot Coffee - Large",
+     "serving": "Large",
+     "cal": 5,
+     "f": 0,
+     "c": 0,
+     "p": 1
+    },
+    {
+     "name": "Hot Coffee - Medium",
+     "serving": "Medium",
+     "cal": 5,
+     "f": 0,
+     "c": 0,
+     "p": 1
+    },
+    {
+     "name": "Hot Coffee - Small",
+     "serving": "Small",
+     "cal": 5,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Hot Coffee with AlmondMilk - Extra Large",
+     "serving": "XLarge",
+     "cal": 45,
+     "f": 1.5,
+     "c": 7,
+     "p": 1
+    },
+    {
+     "name": "Hot Coffee with AlmondMilk - Large",
+     "serving": "Large",
+     "cal": 35,
+     "f": 1,
+     "c": 5,
+     "p": 1
+    },
+    {
+     "name": "Hot Coffee with AlmondMilk - Medium",
+     "serving": "Medium",
+     "cal": 25,
+     "f": 0.5,
+     "c": 4,
+     "p": 1
+    },
+    {
+     "name": "Hot Coffee with AlmondMilk - Small",
+     "serving": "Small",
+     "cal": 15,
+     "f": 0,
+     "c": 2,
+     "p": 0
+    },
+    {
+     "name": "Hot Coffee with Cream - Extra",
+     "serving": "XLarge",
+     "cal": 150,
+     "f": 15,
+     "c": 2,
+     "p": 3
+    },
+    {
+     "name": "Hot Coffee with Cream - Large",
+     "serving": "Large",
+     "cal": 120,
+     "f": 12,
+     "c": 2,
+     "p": 2
+    },
+    {
+     "name": "Hot Coffee with Cream - Medium",
+     "serving": "Medium",
+     "cal": 90,
+     "f": 9,
+     "c": 1,
+     "p": 2
+    },
+    {
+     "name": "Hot Coffee with Cream - Small",
+     "serving": "Small",
+     "cal": 60,
+     "f": 6,
+     "c": 1,
+     "p": 1
+    },
+    {
+     "name": "Hot Coffee with Cream and Sugar",
+     "serving": "XLarge",
+     "cal": 320,
+     "f": 15,
+     "c": 46,
+     "p": 3
+    },
+    {
+     "name": "Hot Coffee with Oatmilk - Extra",
+     "serving": "XLarge",
+     "cal": 60,
+     "f": 1.5,
+     "c": 10,
+     "p": 1
+    },
+    {
+     "name": "Hot Coffee with Oatmilk - Large",
+     "serving": "Large",
+     "cal": 45,
+     "f": 1.5,
+     "c": 8,
+     "p": 1
+    },
+    {
+     "name": "Hot Coffee with Oatmilk - Medium",
+     "serving": "Medium",
+     "cal": 30,
+     "f": 1,
+     "c": 5,
+     "p": 1
+    },
+    {
+     "name": "Hot Coffee with Oatmilk - Small",
+     "serving": "Small",
+     "cal": 15,
+     "f": 0,
+     "c": 3,
+     "p": 1
+    },
+    {
+     "name": "Hot Coffee with Skim Milk - Extra",
+     "serving": "XLarge",
+     "cal": 30,
+     "f": 0,
+     "c": 4,
+     "p": 3
+    },
+    {
+     "name": "Hot Coffee with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 25,
+     "f": 0,
+     "c": 3,
+     "p": 3
+    },
+    {
+     "name": "Hot Coffee with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 20,
+     "f": 0,
+     "c": 2,
+     "p": 2
+    },
+    {
+     "name": "Hot Coffee with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 15,
+     "f": 0,
+     "c": 2,
+     "p": 1
+    },
+    {
+     "name": "Hot Coffee with Skim Milk and Sugar - Extra Large",
+     "serving": "XLarge",
+     "cal": 200,
+     "f": 0,
+     "c": 47,
+     "p": 3
+    },
+    {
+     "name": "Hot Coffee with Skim Milk and Sugar - Large",
+     "serving": "Large",
+     "cal": 160,
+     "f": 0,
+     "c": 38,
+     "p": 3
+    },
+    {
+     "name": "Hot Coffee with Skim Milk and Sugar - Medium",
+     "serving": "Medium",
+     "cal": 120,
+     "f": 0,
+     "c": 28,
+     "p": 2
+    },
+    {
+     "name": "Hot Coffee with Skim Milk and Sugar - Small",
+     "serving": "Small",
+     "cal": 80,
+     "f": 0,
+     "c": 19,
+     "p": 1
+    },
+    {
+     "name": "Hot Coffee with Sugar - Extra",
+     "serving": "XLarge",
+     "cal": 170,
+     "f": 0,
+     "c": 44,
+     "p": 1
+    },
+    {
+     "name": "Hot Coffee with Sugar - Large",
+     "serving": "Large",
+     "cal": 140,
+     "f": 0,
+     "c": 35,
+     "p": 1
+    },
+    {
+     "name": "Hot Coffee with Sugar - Medium",
+     "serving": "Medium",
+     "cal": 110,
+     "f": 0,
+     "c": 26,
+     "p": 1
+    },
+    {
+     "name": "Hot Coffee with Sugar - Small",
+     "serving": "Small",
+     "cal": 70,
+     "f": 0,
+     "c": 17,
+     "p": 0
+    },
+    {
+     "name": "Hot Coffee with Whole Milk - Extra Large",
+     "serving": "XLarge",
+     "cal": 50,
+     "f": 2.5,
+     "c": 4,
+     "p": 3
+    },
+    {
+     "name": "Hot Coffee with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 40,
+     "f": 2,
+     "c": 3,
+     "p": 2
+    },
+    {
+     "name": "Hot Coffee with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 30,
+     "f": 1.5,
+     "c": 2,
+     "p": 2
+    },
+    {
+     "name": "Hot Coffee with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 20,
+     "f": 1,
+     "c": 1,
+     "p": 1
+    },
+    {
+     "name": "Hot Coffee with Whole Milk and Sugar - Extra Large",
+     "serving": "XLarge",
+     "cal": 220,
+     "f": 2.5,
+     "c": 47,
+     "p": 3
+    },
+    {
+     "name": "Hot Coffee with Whole Milk and Sugar - Large",
+     "serving": "Large",
+     "cal": 190,
+     "f": 2,
+     "c": 42,
+     "p": 2
+    },
+    {
+     "name": "Hot Coffee with Whole Milk and Sugar - Medium",
+     "serving": "Medium",
+     "cal": 130,
+     "f": 1.5,
+     "c": 28,
+     "p": 2
+    },
+    {
+     "name": "Hot Coffee with Whole Milk and Sugar - Small",
+     "serving": "Small",
+     "cal": 90,
+     "f": 1,
+     "c": 19,
+     "p": 1
+    },
+    {
+     "name": "Mocha Swirl Hot Coffee - Extra",
+     "serving": "XLarge",
+     "cal": 260,
+     "f": 1,
+     "c": 63,
+     "p": 3
+    },
+    {
+     "name": "Mocha Swirl Hot Coffee - Large",
+     "serving": "Large",
+     "cal": 210,
+     "f": 1,
+     "c": 50,
+     "p": 2
+    },
+    {
+     "name": "Mocha Swirl Hot Coffee - Medium",
+     "serving": "Medium",
+     "cal": 160,
+     "f": 0.5,
+     "c": 38,
+     "p": 2
+    },
+    {
+     "name": "Mocha Swirl Hot Coffee - Small",
+     "serving": "Small",
+     "cal": 110,
+     "f": 0,
+     "c": 25,
+     "p": 1
+    },
+    {
+     "name": "Mocha Swirl Hot Coffee with Cream - Extra Large",
+     "serving": "XLarge",
+     "cal": 410,
+     "f": 15,
+     "c": 65,
+     "p": 5
+    },
+    {
+     "name": "Mocha Swirl Hot Coffee with Cream - Large",
+     "serving": "Large",
+     "cal": 330,
+     "f": 12,
+     "c": 52,
+     "p": 4
+    },
+    {
+     "name": "Mocha Swirl Hot Coffee with Cream - Medium",
+     "serving": "Medium",
+     "cal": 240,
+     "f": 9,
+     "c": 39,
+     "p": 3
+    },
+    {
+     "name": "Mocha Swirl Hot Coffee with Cream - Small",
+     "serving": "Small",
+     "cal": 160,
+     "f": 6,
+     "c": 26,
+     "p": 2
+    },
+    {
+     "name": "Café con Leche - Large",
+     "serving": "Large",
+     "cal": 340,
+     "f": 12,
+     "c": 47,
+     "p": 12
+    },
+    {
+     "name": "Café con Leche - Medium",
+     "serving": "Medium",
+     "cal": 250,
+     "f": 9,
+     "c": 35,
+     "p": 9
+    },
+    {
+     "name": "Café con Leche - Small",
+     "serving": "Small",
+     "cal": 170,
+     "f": 6,
+     "c": 23,
+     "p": 6
+    },
+    {
+     "name": "Espresso with Sugar",
+     "serving": "Single Shot",
+     "cal": 60,
+     "f": 0,
+     "c": 15,
+     "p": 0
+    },
+    {
+     "name": "Hot Espresso",
+     "serving": "Single Shot",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Latte with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 350,
+     "f": 0.5,
+     "c": 70,
+     "p": 16
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Latte with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 260,
+     "f": 0,
+     "c": 52,
+     "p": 12
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Latte with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 170,
+     "f": 0,
+     "c": 35,
+     "p": 8
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Latte with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 450,
+     "f": 12,
+     "c": 69,
+     "p": 15
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Latte with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 330,
+     "f": 9,
+     "c": 52,
+     "p": 11
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Latte with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 220,
+     "f": 6,
+     "c": 35,
+     "p": 7
+    },
+    {
+     "name": "Caramel Craze Signature Hot Latte with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 440,
+     "f": 6,
+     "c": 80,
+     "p": 16
+    },
+    {
+     "name": "Caramel Craze Signature Hot Latte with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 340,
+     "f": 5,
+     "c": 61,
+     "p": 12
+    },
+    {
+     "name": "Caramel Craze Signature Hot Latte with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 250,
+     "f": 5,
+     "c": 43,
+     "p": 8
+    },
+    {
+     "name": "Caramel Craze Signature Hot Latte with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 530,
+     "f": 17,
+     "c": 79,
+     "p": 15
+    },
+    {
+     "name": "Caramel Craze Signature Hot Latte with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 410,
+     "f": 14,
+     "c": 61,
+     "p": 11
+    },
+    {
+     "name": "Caramel Craze Signature Hot Latte with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 300,
+     "f": 11,
+     "c": 43,
+     "p": 8
+    },
+    {
+     "name": "Caramel Swirl Hot Latte with Skim",
+     "serving": "Large",
+     "cal": 350,
+     "f": 0,
+     "c": 71,
+     "p": 15
+    },
+    {
+     "name": "Caramel Swirl Hot Latte with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 450,
+     "f": 12,
+     "c": 70,
+     "p": 14
+    },
+    {
+     "name": "Caramel Swirl Hot Latte with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 340,
+     "f": 9,
+     "c": 53,
+     "p": 11
+    },
+    {
+     "name": "Caramel Swirl Hot Latte with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 230,
+     "f": 6,
+     "c": 35,
+     "p": 7
+    },
+    {
+     "name": "Chai Hot Latte with Skim Milk- Large",
+     "serving": "Large",
+     "cal": 290,
+     "f": 0.5,
+     "c": 58,
+     "p": 13
+    },
+    {
+     "name": "Chai Hot Latte with Skim Milk- Medium",
+     "serving": "Medium",
+     "cal": 220,
+     "f": 0,
+     "c": 44,
+     "p": 10
+    },
+    {
+     "name": "Chai Hot Latte with Skim Milk- Small",
+     "serving": "Small",
+     "cal": 150,
+     "f": 0,
+     "c": 29,
+     "p": 7
+    },
+    {
+     "name": "Chai Hot Latte with Whole Milk- Large",
+     "serving": "Large",
+     "cal": 390,
+     "f": 12,
+     "c": 57,
+     "p": 12
+    },
+    {
+     "name": "Chai Hot Latte with Whole Milk- Medium",
+     "serving": "Medium",
+     "cal": 290,
+     "f": 9,
+     "c": 43,
+     "p": 9
+    },
+    {
+     "name": "Chai Hot Latte with Whole Milk- Small",
+     "serving": "Small",
+     "cal": 200,
+     "f": 6,
+     "c": 29,
+     "p": 6
+    },
+    {
+     "name": "Cocoa Mocha Signature Hot Latte with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 420,
+     "f": 6,
+     "c": 79,
+     "p": 15
+    },
+    {
+     "name": "Cocoa Mocha Signature Hot Latte with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 330,
+     "f": 6,
+     "c": 61,
+     "p": 11
+    },
+    {
+     "name": "Cocoa Mocha Signature Hot Latte with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 250,
+     "f": 5,
+     "c": 43,
+     "p": 8
+    },
+    {
+     "name": "Cocoa Mocha Signature Hot Latte with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 520,
+     "f": 18,
+     "c": 78,
+     "p": 14
+    },
+    {
+     "name": "Cocoa Mocha Signature Hot Latte with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 400,
+     "f": 14,
+     "c": 60,
+     "p": 10
+    },
+    {
+     "name": "Cocoa Mocha Signature Hot Latte with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 300,
+     "f": 11,
+     "c": 43,
+     "p": 7
+    },
+    {
+     "name": "French Vanilla Swirl Hot Latte with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 350,
+     "f": 0,
+     "c": 71,
+     "p": 15
+    },
+    {
+     "name": "French Vanilla Swirl Hot Latte with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 260,
+     "f": 0,
+     "c": 53,
+     "p": 11
+    },
+    {
+     "name": "French Vanilla Swirl Hot Latte with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 170,
+     "f": 0,
+     "c": 35,
+     "p": 7
+    },
+    {
+     "name": "French Vanilla Swirl Hot Latte with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 450,
+     "f": 12,
+     "c": 70,
+     "p": 14
+    },
+    {
+     "name": "French Vanilla Swirl Hot Latte with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 330,
+     "f": 9,
+     "c": 52,
+     "p": 11
+    },
+    {
+     "name": "French Vanilla Swirl Hot Latte with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 220,
+     "f": 6,
+     "c": 35,
+     "p": 7
+    },
+    {
+     "name": "Hot Latte with AlmondMilk - Large",
+     "serving": "Large",
+     "cal": 130,
+     "f": 3.5,
+     "c": 23,
+     "p": 2
+    },
+    {
+     "name": "Hot Latte with AlmondMilk - Medium",
+     "serving": "Medium",
+     "cal": 100,
+     "f": 3,
+     "c": 17,
+     "p": 1
+    },
+    {
+     "name": "Hot Latte with AlmondMilk - Small",
+     "serving": "Small",
+     "cal": 70,
+     "f": 2,
+     "c": 11,
+     "p": 1
+    },
+    {
+     "name": "Hot Latte with Oatmilk - Large",
+     "serving": "Large",
+     "cal": 180,
+     "f": 5,
+     "c": 32,
+     "p": 3
+    },
+    {
+     "name": "Hot Latte with Oatmilk - Medium",
+     "serving": "Medium",
+     "cal": 130,
+     "f": 4,
+     "c": 24,
+     "p": 2
+    },
+    {
+     "name": "Hot Latte with Oatmilk - Small",
+     "serving": "Small",
+     "cal": 90,
+     "f": 2.5,
+     "c": 16,
+     "p": 1
+    },
+    {
+     "name": "Hot Latte with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 130,
+     "f": 0,
+     "c": 20,
+     "p": 12
+    },
+    {
+     "name": "Hot Latte with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 100,
+     "f": 0,
+     "c": 15,
+     "p": 9
+    },
+    {
+     "name": "Hot Latte with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 70,
+     "f": 0,
+     "c": 10,
+     "p": 6
+    },
+    {
+     "name": "Hot Latte with Skim Milk and Sugar - Large",
+     "serving": "Large",
+     "cal": 270,
+     "f": 0,
+     "c": 54,
+     "p": 12
+    },
+    {
+     "name": "Hot Latte with Skim Milk and Sugar - Medium",
+     "serving": "Medium",
+     "cal": 200,
+     "f": 0,
+     "c": 41,
+     "p": 9
+    },
+    {
+     "name": "Hot Latte with Skim Milk and Sugar - Small",
+     "serving": "Small",
+     "cal": 130,
+     "f": 0,
+     "c": 27,
+     "p": 6
+    },
+    {
+     "name": "Hot Latte with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 230,
+     "f": 12,
+     "c": 19,
+     "p": 12
+    },
+    {
+     "name": "Hot Latte with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 170,
+     "f": 9,
+     "c": 14,
+     "p": 9
+    },
+    {
+     "name": "Hot Latte with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 120,
+     "f": 6,
+     "c": 9,
+     "p": 6
+    },
+    {
+     "name": "Hot Latte with Whole Milk and Sugar - Large",
+     "serving": "Large",
+     "cal": 370,
+     "f": 12,
+     "c": 54,
+     "p": 12
+    },
+    {
+     "name": "Hot Latte with Whole Milk and Sugar - Medium",
+     "serving": "Medium",
+     "cal": 270,
+     "f": 9,
+     "c": 40,
+     "p": 9
+    },
+    {
+     "name": "Hot Latte with Whole Milk and Sugar - Small",
+     "serving": "Small",
+     "cal": 180,
+     "f": 6,
+     "c": 27,
+     "p": 6
+    },
+    {
+     "name": "Matcha Hot Latte with Skim Milk",
+     "serving": "Large",
+     "cal": 240,
+     "f": 0,
+     "c": 45,
+     "p": 14
+    },
+    {
+     "name": "Matcha Hot Latte with Whole Milk",
+     "serving": "Large",
+     "cal": 340,
+     "f": 12,
+     "c": 44,
+     "p": 13
+    },
+    {
+     "name": "Mocha Swirl Hot Latte with Skim",
+     "serving": "Large",
+     "cal": 340,
+     "f": 1,
+     "c": 70,
+     "p": 14
+    },
+    {
+     "name": "Mocha Swirl Hot Latte with Whole",
+     "serving": "Large",
+     "cal": 440,
+     "f": 13,
+     "c": 69,
+     "p": 13
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Macchiato with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 310,
+     "f": 0,
+     "c": 64,
+     "p": 12
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Macchiato with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 230,
+     "f": 0,
+     "c": 48,
+     "p": 9
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Macchiato with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 160,
+     "f": 0,
+     "c": 33,
+     "p": 6
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Macchiato with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 380,
+     "f": 8,
+     "c": 64,
+     "p": 11
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Macchiato with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 280,
+     "f": 6,
+     "c": 48,
+     "p": 8
+    },
+    {
+     "name": "Butter Pecan Swirl Hot Macchiato with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 190,
+     "f": 4,
+     "c": 32,
+     "p": 6
+    },
+    {
+     "name": "Caramel Swirl Hot Macchiato with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 310,
+     "f": 0,
+     "c": 66,
+     "p": 11
+    },
+    {
+     "name": "Caramel Swirl Hot Macchiato with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 240,
+     "f": 0,
+     "c": 49,
+     "p": 8
+    },
+    {
+     "name": "Caramel Swirl Hot Macchiato with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 160,
+     "f": 0,
+     "c": 33,
+     "p": 6
+    },
+    {
+     "name": "Caramel Swirl Hot Macchiato with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 380,
+     "f": 8,
+     "c": 65,
+     "p": 11
+    },
+    {
+     "name": "Caramel Swirl Hot Macchiato with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 290,
+     "f": 6,
+     "c": 49,
+     "p": 8
+    },
+    {
+     "name": "Caramel Swirl Hot Macchiato with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 190,
+     "f": 4,
+     "c": 33,
+     "p": 5
+    },
+    {
+     "name": "French Vanilla Swirl Hot Macchiato with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 310,
+     "f": 0,
+     "c": 65,
+     "p": 11
+    },
+    {
+     "name": "French Vanilla Swirl Hot Macchiato with Skim Milk -",
+     "serving": "Medium",
+     "cal": 230,
+     "f": 0,
+     "c": 49,
+     "p": 8
+    },
+    {
+     "name": "French Vanilla Swirl Hot Macchiato with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 160,
+     "f": 0,
+     "c": 33,
+     "p": 5
+    },
+    {
+     "name": "French Vanilla Swirl Hot Macchiato with Whole Milk -",
+     "serving": "Large",
+     "cal": 380,
+     "f": 8,
+     "c": 65,
+     "p": 10
+    },
+    {
+     "name": "French Vanilla Swirl Hot Macchiato with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 190,
+     "f": 4,
+     "c": 33,
+     "p": 5
+    },
+    {
+     "name": "Hot Macchiato with Oatmilk - Large",
+     "serving": "Large",
+     "cal": 120,
+     "f": 3.5,
+     "c": 23,
+     "p": 2
+    },
+    {
+     "name": "Hot Macchiato with Oatmilk - Medium",
+     "serving": "Medium",
+     "cal": 90,
+     "f": 2.5,
+     "c": 17,
+     "p": 2
+    },
+    {
+     "name": "Hot Macchiato with Oatmilk - Small",
+     "serving": "Small",
+     "cal": 60,
+     "f": 2,
+     "c": 12,
+     "p": 1
+    },
+    {
+     "name": "Hot Macchiato with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 90,
+     "f": 0,
+     "c": 14,
+     "p": 8
+    },
+    {
+     "name": "Hot Macchiato with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 70,
+     "f": 0,
+     "c": 11,
+     "p": 6
+    },
+    {
+     "name": "Hot Macchiato with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 50,
+     "f": 0,
+     "c": 7,
+     "p": 4
+    },
+    {
+     "name": "Hot Macchiato with Skim Milk and Sugar - Large",
+     "serving": "Large",
+     "cal": 230,
+     "f": 0,
+     "c": 49,
+     "p": 8
+    },
+    {
+     "name": "Hot Macchiato with Skim Milk and Sugar - Medium",
+     "serving": "Medium",
+     "cal": 170,
+     "f": 0,
+     "c": 37,
+     "p": 6
+    },
+    {
+     "name": "Hot Macchiato with Skim Milk and Sugar - Small",
+     "serving": "Small",
+     "cal": 120,
+     "f": 0,
+     "c": 25,
+     "p": 4
+    },
+    {
+     "name": "Hot Macchiato with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 160,
+     "f": 8,
+     "c": 14,
+     "p": 8
+    },
+    {
+     "name": "Hot Macchiato with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 120,
+     "f": 6,
+     "c": 10,
+     "p": 6
+    },
+    {
+     "name": "Hot Macchiato with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 80,
+     "f": 4,
+     "c": 7,
+     "p": 4
+    },
+    {
+     "name": "Hot Macchiato with Whole Milk and Sugar - Large",
+     "serving": "Large",
+     "cal": 290,
+     "f": 8,
+     "c": 49,
+     "p": 8
+    },
+    {
+     "name": "Hot Macchiato with Whole Milk and Sugar - Medium",
+     "serving": "Medium",
+     "cal": 220,
+     "f": 6,
+     "c": 37,
+     "p": 6
+    },
+    {
+     "name": "Hot Macchiato with Whole Milk and Sugar - Small",
+     "serving": "Small",
+     "cal": 150,
+     "f": 4,
+     "c": 25,
+     "p": 4
+    },
+    {
+     "name": "Mocha Swirl Hot Macchiato with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 300,
+     "f": 1,
+     "c": 65,
+     "p": 10
+    },
+    {
+     "name": "Mocha Swirl Hot Macchiato with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 230,
+     "f": 1,
+     "c": 49,
+     "p": 7
+    },
+    {
+     "name": "Mocha Swirl Hot Macchiato with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 150,
+     "f": 0.5,
+     "c": 33,
+     "p": 5
+    },
+    {
+     "name": "Mocha Swirl Hot Macchiato with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 370,
+     "f": 9,
+     "c": 64,
+     "p": 9
+    },
+    {
+     "name": "Mocha Swirl Hot Macchiato with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 280,
+     "f": 7,
+     "c": 48,
+     "p": 7
+    },
+    {
+     "name": "Mocha Swirl Hot Macchiato with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 180,
+     "f": 4.5,
+     "c": 32,
+     "p": 5
+    },
+    {
+     "name": "Iced Americano - Large",
+     "serving": "Large",
+     "cal": 10,
+     "f": 0,
+     "c": 2,
+     "p": 0
+    },
+    {
+     "name": "Iced Americano - Medium",
+     "serving": "Medium",
+     "cal": 10,
+     "f": 0,
+     "c": 2,
+     "p": 0
+    },
+    {
+     "name": "Iced Americano - Small",
+     "serving": "Small",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Butter Pecan Swirl Iced Cappuccino with Skim Milk -",
+     "serving": "Large",
+     "cal": 310,
+     "f": 0,
+     "c": 64,
+     "p": 11
+    },
+    {
+     "name": "Butter Pecan Swirl Iced Cappuccino with Whole Milk -",
+     "serving": "Large",
+     "cal": 370,
+     "f": 8,
+     "c": 63,
+     "p": 11
+    },
+    {
+     "name": "Caramel Swirl Iced Cappuccino with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 310,
+     "f": 0,
+     "c": 65,
+     "p": 11
+    },
+    {
+     "name": "Caramel Swirl Iced Cappuccino with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 230,
+     "f": 0,
+     "c": 49,
+     "p": 8
+    },
+    {
+     "name": "Caramel Swirl Iced Cappuccino with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 160,
+     "f": 0,
+     "c": 33,
+     "p": 6
+    },
+    {
+     "name": "Caramel Swirl Iced Cappuccino with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 380,
+     "f": 8,
+     "c": 65,
+     "p": 11
+    },
+    {
+     "name": "Caramel Swirl Iced Cappuccino with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 280,
+     "f": 6,
+     "c": 48,
+     "p": 8
+    },
+    {
+     "name": "Caramel Swirl Iced Cappuccino with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 190,
+     "f": 4,
+     "c": 32,
+     "p": 5
+    },
+    {
+     "name": "French Vanilla Swirl Iced Cappuccino with Skim Milk -",
+     "serving": "Large",
+     "cal": 310,
+     "f": 0,
+     "c": 65,
+     "p": 11
+    },
+    {
+     "name": "French Vanilla Swirl Iced Cappuccino with Whole Milk -",
+     "serving": "Large",
+     "cal": 370,
+     "f": 8,
+     "c": 64,
+     "p": 10
+    },
+    {
+     "name": "Iced Cappuccino with Almondmilk",
+     "serving": "Large",
+     "cal": 90,
+     "f": 2.5,
+     "c": 15,
+     "p": 1
+    },
+    {
+     "name": "Iced Cappuccino with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 90,
+     "f": 0,
+     "c": 13,
+     "p": 8
+    },
+    {
+     "name": "Iced Cappuccino with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 70,
+     "f": 0,
+     "c": 10,
+     "p": 6
+    },
+    {
+     "name": "Iced Cappuccino with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 45,
+     "f": 0,
+     "c": 7,
+     "p": 4
+    },
+    {
+     "name": "Iced Cappuccino with Skim Milk and Sugar - Large",
+     "serving": "Large",
+     "cal": 230,
+     "f": 0,
+     "c": 48,
+     "p": 8
+    },
+    {
+     "name": "Iced Cappuccino with Skim Milk and Sugar - Medium",
+     "serving": "Medium",
+     "cal": 170,
+     "f": 0,
+     "c": 36,
+     "p": 6
+    },
+    {
+     "name": "Iced Cappuccino with Skim Milk and Sugar - Small",
+     "serving": "Small",
+     "cal": 110,
+     "f": 0,
+     "c": 24,
+     "p": 4
+    },
+    {
+     "name": "Iced Cappuccino with Whole Milk",
+     "serving": "Large",
+     "cal": 160,
+     "f": 8,
+     "c": 13,
+     "p": 8
+    },
+    {
+     "name": "Iced Cappuccino with Whole Milk and Sugar - Large",
+     "serving": "Large",
+     "cal": 290,
+     "f": 8,
+     "c": 48,
+     "p": 8
+    },
+    {
+     "name": "Iced Cappuccino with Whole Milk and Sugar - Medium",
+     "serving": "Medium",
+     "cal": 220,
+     "f": 6,
+     "c": 36,
+     "p": 6
+    },
+    {
+     "name": "Iced Cappuccino with Whole Milk and Sugar - Small",
+     "serving": "Small",
+     "cal": 150,
+     "f": 4,
+     "c": 24,
+     "p": 4
+    },
+    {
+     "name": "Mocha Swirl Iced Cappuccino with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 300,
+     "f": 1,
+     "c": 64,
+     "p": 10
+    },
+    {
+     "name": "Mocha Swirl Iced Cappuccino with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 220,
+     "f": 1,
+     "c": 48,
+     "p": 7
+    },
+    {
+     "name": "Mocha Swirl Iced Cappuccino with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 150,
+     "f": 0.5,
+     "c": 32,
+     "p": 5
+    },
+    {
+     "name": "Mocha Swirl Iced Cappuccino with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 360,
+     "f": 9,
+     "c": 63,
+     "p": 9
+    },
+    {
+     "name": "Mocha Swirl Iced Cappuccino with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 270,
+     "f": 7,
+     "c": 48,
+     "p": 7
+    },
+    {
+     "name": "Mocha Swirl Iced Cappuccino with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 180,
+     "f": 4.5,
+     "c": 32,
+     "p": 5
+    },
+    {
+     "name": "Butter Pecan Swirl Iced Coffee with Black - Large",
+     "serving": "Large",
+     "cal": 220,
+     "f": 0,
+     "c": 50,
+     "p": 4
+    },
+    {
+     "name": "Butter Pecan Swirl Iced Coffee with Black - Medium",
+     "serving": "Medium",
+     "cal": 170,
+     "f": 0,
+     "c": 38,
+     "p": 3
+    },
+    {
+     "name": "Butter Pecan Swirl Iced Coffee with Black - Small",
+     "serving": "Small",
+     "cal": 110,
+     "f": 0,
+     "c": 25,
+     "p": 2
+    },
+    {
+     "name": "Butter Pecan Swirl Iced Coffee with Cream - Large",
+     "serving": "Large",
+     "cal": 340,
+     "f": 12,
+     "c": 52,
+     "p": 5
+    },
+    {
+     "name": "Butter Pecan Swirl Iced Coffee with Cream - Medium",
+     "serving": "Medium",
+     "cal": 250,
+     "f": 9,
+     "c": 39,
+     "p": 4
+    },
+    {
+     "name": "Butter Pecan Swirl Iced Coffee with Cream - Small",
+     "serving": "Small",
+     "cal": 170,
+     "f": 6,
+     "c": 26,
+     "p": 3
+    },
+    {
+     "name": "Caramel Swirl Iced Coffee - Large",
+     "serving": "Large",
+     "cal": 230,
+     "f": 0,
+     "c": 52,
+     "p": 3
+    },
+    {
+     "name": "Caramel Swirl Iced Coffee - Medium",
+     "serving": "Medium",
+     "cal": 170,
+     "f": 0,
+     "c": 39,
+     "p": 3
+    },
+    {
+     "name": "Caramel Swirl Iced Coffee - Small",
+     "serving": "Small",
+     "cal": 110,
+     "f": 0,
+     "c": 26,
+     "p": 2
+    },
+    {
+     "name": "Caramel Swirl Iced Coffee with Cream - Large",
+     "serving": "Large",
+     "cal": 340,
+     "f": 12,
+     "c": 53,
+     "p": 5
+    },
+    {
+     "name": "Caramel Swirl Iced Coffee with Cream - Medium",
+     "serving": "Medium",
+     "cal": 260,
+     "f": 9,
+     "c": 40,
+     "p": 4
+    },
+    {
+     "name": "Caramel Swirl Iced Coffee with Cream - Small",
+     "serving": "Small",
+     "cal": 170,
+     "f": 6,
+     "c": 27,
+     "p": 3
+    },
+    {
+     "name": "French Vanilla Swirl Iced Coffee - Large",
+     "serving": "Large",
+     "cal": 220,
+     "f": 0,
+     "c": 51,
+     "p": 3
+    },
+    {
+     "name": "French Vanilla Swirl Iced Coffee - Medium",
+     "serving": "Medium",
+     "cal": 170,
+     "f": 0,
+     "c": 38,
+     "p": 2
+    },
+    {
+     "name": "French Vanilla Swirl Iced Coffee - Small",
+     "serving": "Small",
+     "cal": 110,
+     "f": 0,
+     "c": 26,
+     "p": 2
+    },
+    {
+     "name": "French Vanilla Swirl Iced Coffee with Cream - Large",
+     "serving": "Large",
+     "cal": 340,
+     "f": 12,
+     "c": 53,
+     "p": 5
+    },
+    {
+     "name": "French Vanilla Swirl Iced Coffee with Cream - Medium",
+     "serving": "Medium",
+     "cal": 250,
+     "f": 9,
+     "c": 40,
+     "p": 4
+    },
+    {
+     "name": "French Vanilla Swirl Iced Coffee with Cream - Small",
+     "serving": "Small",
+     "cal": 170,
+     "f": 6,
+     "c": 26,
+     "p": 2
+    },
+    {
+     "name": "Iced Café Au Lait with Skim Milk",
+     "serving": "Large",
+     "cal": 90,
+     "f": 0,
+     "c": 12,
+     "p": 9
+    },
+    {
+     "name": "Iced Café Au Lait with Whole Milk",
+     "serving": "Large",
+     "cal": 150,
+     "f": 8,
+     "c": 12,
+     "p": 8
+    },
+    {
+     "name": "Iced Coffee - Large",
+     "serving": "Large",
+     "cal": 5,
+     "f": 0,
+     "c": 0,
+     "p": 1
+    },
+    {
+     "name": "Iced Coffee - Medium",
+     "serving": "Medium",
+     "cal": 5,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Iced Coffee - Small",
+     "serving": "Small",
+     "cal": 5,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Iced Coffee with AlmondMilk - Large",
+     "serving": "Large",
+     "cal": 35,
+     "f": 1,
+     "c": 5,
+     "p": 1
+    },
+    {
+     "name": "Iced Coffee with AlmondMilk - Medium",
+     "serving": "Medium",
+     "cal": 25,
+     "f": 0.5,
+     "c": 4,
+     "p": 1
+    },
+    {
+     "name": "Iced Coffee with AlmondMilk - Small",
+     "serving": "Small",
+     "cal": 15,
+     "f": 0,
+     "c": 2,
+     "p": 0
+    },
+    {
+     "name": "Iced Coffee with Cream - Large",
+     "serving": "Large",
+     "cal": 120,
+     "f": 12,
+     "c": 2,
+     "p": 2
+    },
+    {
+     "name": "Iced Coffee with Cream - Medium",
+     "serving": "Medium",
+     "cal": 90,
+     "f": 9,
+     "c": 1,
+     "p": 2
+    },
+    {
+     "name": "Iced Coffee with Cream - Small",
+     "serving": "Small",
+     "cal": 60,
+     "f": 6,
+     "c": 1,
+     "p": 1
+    },
+    {
+     "name": "Iced Coffee with Cream and Sugar",
+     "serving": "Large",
+     "cal": 260,
+     "f": 12,
+     "c": 37,
+     "p": 2
+    },
+    {
+     "name": "Iced Coffee with Oatmilk - Large",
+     "serving": "Large",
+     "cal": 45,
+     "f": 1.5,
+     "c": 8,
+     "p": 1
+    },
+    {
+     "name": "Iced Coffee with Oatmilk - Medium",
+     "serving": "Medium",
+     "cal": 30,
+     "f": 1,
+     "c": 5,
+     "p": 1
+    },
+    {
+     "name": "Iced Coffee with Oatmilk - Small",
+     "serving": "Small",
+     "cal": 15,
+     "f": 0,
+     "c": 3,
+     "p": 1
+    },
+    {
+     "name": "Iced Coffee with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 25,
+     "f": 0,
+     "c": 3,
+     "p": 3
+    },
+    {
+     "name": "Iced Coffee with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 20,
+     "f": 0,
+     "c": 2,
+     "p": 2
+    },
+    {
+     "name": "Iced Coffee with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 15,
+     "f": 0,
+     "c": 2,
+     "p": 1
+    },
+    {
+     "name": "Iced Coffee with Skim Milk and Sugar - Large",
+     "serving": "Large",
+     "cal": 160,
+     "f": 0,
+     "c": 38,
+     "p": 3
+    },
+    {
+     "name": "Iced Coffee with Skim Milk and Sugar - Medium",
+     "serving": "Medium",
+     "cal": 120,
+     "f": 0,
+     "c": 28,
+     "p": 2
+    },
+    {
+     "name": "Iced Coffee with Skim Milk and Sugar - Small",
+     "serving": "Small",
+     "cal": 80,
+     "f": 0,
+     "c": 19,
+     "p": 1
+    },
+    {
+     "name": "Iced Coffee with Sugar - Large",
+     "serving": "Large",
+     "cal": 140,
+     "f": 0,
+     "c": 35,
+     "p": 1
+    },
+    {
+     "name": "Iced Coffee with Sugar - Medium",
+     "serving": "Medium",
+     "cal": 110,
+     "f": 0,
+     "c": 26,
+     "p": 0
+    },
+    {
+     "name": "Iced Coffee with Sugar - Small",
+     "serving": "Small",
+     "cal": 70,
+     "f": 0,
+     "c": 17,
+     "p": 0
+    },
+    {
+     "name": "Iced Coffee with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 40,
+     "f": 2,
+     "c": 3,
+     "p": 3
+    },
+    {
+     "name": "Iced Coffee with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 30,
+     "f": 1.5,
+     "c": 2,
+     "p": 2
+    },
+    {
+     "name": "Iced Coffee with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 20,
+     "f": 1,
+     "c": 1,
+     "p": 1
+    },
+    {
+     "name": "Iced Coffee with Whole Milk and Sugar - Large",
+     "serving": "Large",
+     "cal": 180,
+     "f": 2,
+     "c": 38,
+     "p": 3
+    },
+    {
+     "name": "Iced Coffee with Whole Milk and Sugar - Medium",
+     "serving": "Medium",
+     "cal": 130,
+     "f": 1.5,
+     "c": 28,
+     "p": 2
+    },
+    {
+     "name": "Iced Coffee with Whole Milk and Sugar - Small",
+     "serving": "Small",
+     "cal": 90,
+     "f": 1,
+     "c": 19,
+     "p": 1
+    },
+    {
+     "name": "Mocha Swirl Iced Coffee Large",
+     "serving": "Large",
+     "cal": 210,
+     "f": 1,
+     "c": 50,
+     "p": 2
+    },
+    {
+     "name": "Mocha Swirl Iced Coffee Medium",
+     "serving": "Medium",
+     "cal": 160,
+     "f": 0.5,
+     "c": 38,
+     "p": 2
+    },
+    {
+     "name": "Mocha Swirl Iced Coffee Small",
+     "serving": "Small",
+     "cal": 110,
+     "f": 0,
+     "c": 25,
+     "p": 1
+    },
+    {
+     "name": "Mocha Swirl Iced Coffee with Cream - Large",
+     "serving": "Large",
+     "cal": 330,
+     "f": 12,
+     "c": 52,
+     "p": 4
+    },
+    {
+     "name": "Mocha Swirl Iced Coffee with Cream - Medium",
+     "serving": "Medium",
+     "cal": 240,
+     "f": 9,
+     "c": 39,
+     "p": 3
+    },
+    {
+     "name": "Mocha Swirl Iced Coffee with Cream - Small",
+     "serving": "Small",
+     "cal": 160,
+     "f": 6,
+     "c": 26,
+     "p": 2
+    },
+    {
+     "name": "Almondmilk Iced Matcha Latte - Large",
+     "serving": "Large",
+     "cal": 230,
+     "f": 3.5,
+     "c": 48,
+     "p": 3
+    },
+    {
+     "name": "Almondmilk Iced Matcha Latte - Medium",
+     "serving": "Medium",
+     "cal": 180,
+     "f": 2.5,
+     "c": 36,
+     "p": 3
+    },
+    {
+     "name": "Almondmilk Iced Matcha Latte - Small",
+     "serving": "Small",
+     "cal": 120,
+     "f": 2,
+     "c": 24,
+     "p": 2
+    },
+    {
+     "name": "Butter Pecan Swirl Iced Latte with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 350,
+     "f": 0.5,
+     "c": 70,
+     "p": 16
+    },
+    {
+     "name": "Butter Pecan Swirl Iced Latte with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 260,
+     "f": 0,
+     "c": 52,
+     "p": 12
+    },
+    {
+     "name": "Butter Pecan Swirl Iced Latte with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 170,
+     "f": 0,
+     "c": 35,
+     "p": 8
+    },
+    {
+     "name": "Butter Pecan Swirl Iced Latte with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 450,
+     "f": 12,
+     "c": 69,
+     "p": 15
+    },
+    {
+     "name": "Butter Pecan Swirl Iced Latte with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 330,
+     "f": 9,
+     "c": 52,
+     "p": 11
+    },
+    {
+     "name": "Butter Pecan Swirl Iced Latte with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 220,
+     "f": 6,
+     "c": 35,
+     "p": 7
+    },
+    {
+     "name": "Caramel Craze Signature Iced Latte with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 430,
+     "f": 6,
+     "c": 79,
+     "p": 16
+    },
+    {
+     "name": "Caramel Craze Signature Iced Latte with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 340,
+     "f": 5,
+     "c": 61,
+     "p": 12
+    },
+    {
+     "name": "Caramel Craze Signature Iced Latte with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 250,
+     "f": 5,
+     "c": 43,
+     "p": 8
+    },
+    {
+     "name": "Caramel Craze Signature Iced Latte with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 530,
+     "f": 17,
+     "c": 79,
+     "p": 15
+    },
+    {
+     "name": "Caramel Craze Signature Iced Latte with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 410,
+     "f": 14,
+     "c": 61,
+     "p": 11
+    },
+    {
+     "name": "Caramel Craze Signature Iced Latte with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 300,
+     "f": 11,
+     "c": 43,
+     "p": 8
+    },
+    {
+     "name": "Caramel Swirl Iced Latte with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 350,
+     "f": 0,
+     "c": 71,
+     "p": 15
+    },
+    {
+     "name": "Caramel Swirl Iced Latte with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 260,
+     "f": 0,
+     "c": 53,
+     "p": 11
+    },
+    {
+     "name": "Caramel Swirl Iced Latte with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 180,
+     "f": 0,
+     "c": 36,
+     "p": 8
+    },
+    {
+     "name": "Caramel Swirl Iced Latte with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 450,
+     "f": 12,
+     "c": 70,
+     "p": 14
+    },
+    {
+     "name": "Caramel Swirl Iced Latte with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 340,
+     "f": 9,
+     "c": 53,
+     "p": 11
+    },
+    {
+     "name": "Caramel Swirl Iced Latte with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 230,
+     "f": 6,
+     "c": 35,
+     "p": 7
+    },
+    {
+     "name": "Chai Iced Latte with Skim Milk- Large",
+     "serving": "Large",
+     "cal": 290,
+     "f": 0.5,
+     "c": 58,
+     "p": 13
+    },
+    {
+     "name": "Chai Iced Latte with Skim Milk- Medium",
+     "serving": "Medium",
+     "cal": 220,
+     "f": 0,
+     "c": 44,
+     "p": 10
+    },
+    {
+     "name": "Chai Iced Latte with Skim Milk- Small",
+     "serving": "Small",
+     "cal": 150,
+     "f": 0,
+     "c": 29,
+     "p": 7
+    },
+    {
+     "name": "Chai Iced Latte with Whole Milk- Large",
+     "serving": "Large",
+     "cal": 390,
+     "f": 12,
+     "c": 57,
+     "p": 12
+    },
+    {
+     "name": "Chai Iced Latte with Whole Milk- Medium",
+     "serving": "Medium",
+     "cal": 290,
+     "f": 9,
+     "c": 43,
+     "p": 9
+    },
+    {
+     "name": "Chai Iced Latte with Whole Milk- Small",
+     "serving": "Small",
+     "cal": 200,
+     "f": 6,
+     "c": 29,
+     "p": 6
+    },
+    {
+     "name": "Cocoa Mocha Signature Iced Latte with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 420,
+     "f": 6,
+     "c": 78,
+     "p": 15
+    },
+    {
+     "name": "Cocoa Mocha Signature Iced Latte with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 330,
+     "f": 6,
+     "c": 60,
+     "p": 11
+    },
+    {
+     "name": "Cocoa Mocha Signature Iced Latte with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 250,
+     "f": 5,
+     "c": 43,
+     "p": 8
+    },
+    {
+     "name": "Cocoa Mocha Signature Iced Latte with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 520,
+     "f": 18,
+     "c": 77,
+     "p": 14
+    },
+    {
+     "name": "Cocoa Mocha Signature Iced Latte with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 400,
+     "f": 14,
+     "c": 60,
+     "p": 10
+    },
+    {
+     "name": "Cocoa Mocha Signature Iced Latte with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 300,
+     "f": 11,
+     "c": 42,
+     "p": 7
+    },
+    {
+     "name": "French Vanilla Swirl Iced Latte with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 350,
+     "f": 0,
+     "c": 71,
+     "p": 15
+    },
+    {
+     "name": "French Vanilla Swirl Iced Latte with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 260,
+     "f": 0,
+     "c": 53,
+     "p": 11
+    },
+    {
+     "name": "French Vanilla Swirl Iced Latte with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 170,
+     "f": 0,
+     "c": 35,
+     "p": 7
+    },
+    {
+     "name": "French Vanilla Swirl Iced Latte with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 450,
+     "f": 12,
+     "c": 70,
+     "p": 14
+    },
+    {
+     "name": "French Vanilla Swirl Iced Latte with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 330,
+     "f": 9,
+     "c": 52,
+     "p": 11
+    },
+    {
+     "name": "French Vanilla Swirl Iced Latte with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 220,
+     "f": 6,
+     "c": 35,
+     "p": 7
+    },
+    {
+     "name": "Iced Latte with AlmondMilk - Large",
+     "serving": "Large",
+     "cal": 130,
+     "f": 3.5,
+     "c": 23,
+     "p": 2
+    },
+    {
+     "name": "Iced Latte with AlmondMilk - Medium",
+     "serving": "Medium",
+     "cal": 100,
+     "f": 3,
+     "c": 17,
+     "p": 1
+    },
+    {
+     "name": "Iced Latte with AlmondMilk - Small",
+     "serving": "Small",
+     "cal": 70,
+     "f": 2,
+     "c": 11,
+     "p": 1
+    },
+    {
+     "name": "Iced Latte with Oatmilk - Large",
+     "serving": "Large",
+     "cal": 180,
+     "f": 5,
+     "c": 32,
+     "p": 3
+    },
+    {
+     "name": "Iced Latte with Oatmilk - Medium",
+     "serving": "Medium",
+     "cal": 130,
+     "f": 4,
+     "c": 24,
+     "p": 2
+    },
+    {
+     "name": "Iced Latte with Oatmilk - Small",
+     "serving": "Small",
+     "cal": 90,
+     "f": 2.5,
+     "c": 16,
+     "p": 1
+    },
+    {
+     "name": "Iced Latte with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 130,
+     "f": 0,
+     "c": 20,
+     "p": 12
+    },
+    {
+     "name": "Iced Latte with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 100,
+     "f": 0,
+     "c": 15,
+     "p": 9
+    },
+    {
+     "name": "Iced Latte with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 70,
+     "f": 0,
+     "c": 10,
+     "p": 6
+    },
+    {
+     "name": "Iced Latte with Skim Milk and Sugar - Large",
+     "serving": "Large",
+     "cal": 270,
+     "f": 0,
+     "c": 54,
+     "p": 12
+    },
+    {
+     "name": "Iced Latte with Skim Milk and Sugar - Medium",
+     "serving": "Medium",
+     "cal": 200,
+     "f": 0,
+     "c": 41,
+     "p": 9
+    },
+    {
+     "name": "Iced Latte with Skim Milk and Sugar - Small",
+     "serving": "Small",
+     "cal": 130,
+     "f": 0,
+     "c": 27,
+     "p": 6
+    },
+    {
+     "name": "Iced Latte with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 230,
+     "f": 12,
+     "c": 19,
+     "p": 12
+    },
+    {
+     "name": "Iced Latte with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 170,
+     "f": 9,
+     "c": 14,
+     "p": 9
+    },
+    {
+     "name": "Iced Latte with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 120,
+     "f": 6,
+     "c": 9,
+     "p": 6
+    },
+    {
+     "name": "Iced Latte with Whole Milk and Sugar - Large",
+     "serving": "Large",
+     "cal": 370,
+     "f": 12,
+     "c": 54,
+     "p": 12
+    },
+    {
+     "name": "Iced Latte with Whole Milk and Sugar - Medium",
+     "serving": "Medium",
+     "cal": 270,
+     "f": 9,
+     "c": 40,
+     "p": 9
+    },
+    {
+     "name": "Iced Latte with Whole Milk and Sugar - Small",
+     "serving": "Small",
+     "cal": 180,
+     "f": 6,
+     "c": 27,
+     "p": 6
+    },
+    {
+     "name": "Iced Vanilla Chai Latte with Sweet",
+     "serving": "Large",
+     "cal": 520,
+     "f": 16,
+     "c": 77,
+     "p": 14
+    },
+    {
+     "name": "Iced Vanilla Matcha with Sweet",
+     "serving": "Large",
+     "cal": 460,
+     "f": 16,
+     "c": 63,
+     "p": 14
+    },
+    {
+     "name": "Matcha Iced Latte with Skim",
+     "serving": "Medium",
+     "cal": 180,
+     "f": 0,
+     "c": 34,
+     "p": 11
+    },
+    {
+     "name": "Matcha Iced Latte with Skim Milk",
+     "serving": "Large",
+     "cal": 240,
+     "f": 0,
+     "c": 45,
+     "p": 14
+    },
+    {
+     "name": "Matcha Iced Latte with Whole",
+     "serving": "Large",
+     "cal": 340,
+     "f": 12,
+     "c": 44,
+     "p": 13
+    },
+    {
+     "name": "Mocha Swirl Iced Latte with Skim",
+     "serving": "Large",
+     "cal": 340,
+     "f": 1,
+     "c": 70,
+     "p": 14
+    },
+    {
+     "name": "Mocha Swirl Iced Latte with Whole",
+     "serving": "Large",
+     "cal": 440,
+     "f": 13,
+     "c": 69,
+     "p": 13
+    },
+    {
+     "name": "Butter Pecan Swirl Iced Macchiato with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 310,
+     "f": 0,
+     "c": 64,
+     "p": 12
+    },
+    {
+     "name": "Butter Pecan Swirl Iced Macchiato with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 230,
+     "f": 0,
+     "c": 48,
+     "p": 9
+    },
+    {
+     "name": "Butter Pecan Swirl Iced Macchiato with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 160,
+     "f": 0,
+     "c": 33,
+     "p": 6
+    },
+    {
+     "name": "Butter Pecan Swirl Iced Macchiato with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 380,
+     "f": 8,
+     "c": 64,
+     "p": 11
+    },
+    {
+     "name": "Butter Pecan Swirl Iced Macchiato with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 280,
+     "f": 6,
+     "c": 48,
+     "p": 8
+    },
+    {
+     "name": "Butter Pecan Swirl Iced Macchiato with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 190,
+     "f": 4,
+     "c": 32,
+     "p": 6
+    },
+    {
+     "name": "Caramel Swirl Iced Macchiato with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 310,
+     "f": 0,
+     "c": 66,
+     "p": 11
+    },
+    {
+     "name": "Caramel Swirl Iced Macchiato with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 240,
+     "f": 0,
+     "c": 49,
+     "p": 8
+    },
+    {
+     "name": "Caramel Swirl Iced Macchiato with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 160,
+     "f": 0,
+     "c": 33,
+     "p": 6
+    },
+    {
+     "name": "Caramel Swirl Iced Macchiato with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 380,
+     "f": 8,
+     "c": 65,
+     "p": 11
+    },
+    {
+     "name": "Caramel Swirl Iced Macchiato with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 290,
+     "f": 6,
+     "c": 49,
+     "p": 8
+    },
+    {
+     "name": "Caramel Swirl Iced Macchiato with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 190,
+     "f": 4,
+     "c": 33,
+     "p": 5
+    },
+    {
+     "name": "French Vanilla Swirl Iced Macchiato with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 310,
+     "f": 0,
+     "c": 65,
+     "p": 11
+    },
+    {
+     "name": "French Vanilla Swirl Iced Macchiato with Skim Milk -",
+     "serving": "Medium",
+     "cal": 230,
+     "f": 0,
+     "c": 49,
+     "p": 8
+    },
+    {
+     "name": "French Vanilla Swirl Iced Macchiato with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 160,
+     "f": 0,
+     "c": 33,
+     "p": 5
+    },
+    {
+     "name": "French Vanilla Swirl Iced Macchiato with Whole Milk -",
+     "serving": "Large",
+     "cal": 380,
+     "f": 8,
+     "c": 65,
+     "p": 10
+    },
+    {
+     "name": "French Vanilla Swirl Iced Macchiato with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 190,
+     "f": 4,
+     "c": 33,
+     "p": 5
+    },
+    {
+     "name": "Iced Macchiato with Oatmilk - Large",
+     "serving": "Large",
+     "cal": 120,
+     "f": 3.5,
+     "c": 23,
+     "p": 2
+    },
+    {
+     "name": "Iced Macchiato with Oatmilk - Medium",
+     "serving": "Medium",
+     "cal": 90,
+     "f": 2.5,
+     "c": 17,
+     "p": 2
+    },
+    {
+     "name": "Iced Macchiato with Oatmilk - Small",
+     "serving": "Small",
+     "cal": 60,
+     "f": 2,
+     "c": 12,
+     "p": 1
+    },
+    {
+     "name": "Iced Macchiato with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 90,
+     "f": 0,
+     "c": 14,
+     "p": 8
+    },
+    {
+     "name": "Iced Macchiato with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 70,
+     "f": 0,
+     "c": 11,
+     "p": 6
+    },
+    {
+     "name": "Iced Macchiato with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 50,
+     "f": 0,
+     "c": 7,
+     "p": 4
+    },
+    {
+     "name": "Iced Macchiato with Skim Milk and Sugar - Large",
+     "serving": "Large",
+     "cal": 230,
+     "f": 0,
+     "c": 49,
+     "p": 8
+    },
+    {
+     "name": "Iced Macchiato with Skim Milk and Sugar - Medium",
+     "serving": "Medium",
+     "cal": 170,
+     "f": 0,
+     "c": 37,
+     "p": 6
+    },
+    {
+     "name": "Iced Macchiato with Skim Milk and Sugar - Small",
+     "serving": "Small",
+     "cal": 120,
+     "f": 0,
+     "c": 25,
+     "p": 4
+    },
+    {
+     "name": "Iced Macchiato with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 160,
+     "f": 8,
+     "c": 14,
+     "p": 8
+    },
+    {
+     "name": "Iced Macchiato with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 120,
+     "f": 6,
+     "c": 10,
+     "p": 6
+    },
+    {
+     "name": "Iced Macchiato with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 80,
+     "f": 4,
+     "c": 7,
+     "p": 4
+    },
+    {
+     "name": "Iced Macchiato with Whole Milk and Sugar - Large",
+     "serving": "Large",
+     "cal": 290,
+     "f": 8,
+     "c": 49,
+     "p": 8
+    },
+    {
+     "name": "Iced Macchiato with Whole Milk and Sugar - Small",
+     "serving": "Small",
+     "cal": 150,
+     "f": 4,
+     "c": 25,
+     "p": 4
+    },
+    {
+     "name": "Iced Macchiato with Whole Milk and Sugar- Medium",
+     "serving": "Medium",
+     "cal": 220,
+     "f": 6,
+     "c": 37,
+     "p": 6
+    },
+    {
+     "name": "Mocha Swirl Iced Macchiato with Skim Milk - Large",
+     "serving": "Large",
+     "cal": 300,
+     "f": 1,
+     "c": 65,
+     "p": 10
+    },
+    {
+     "name": "Mocha Swirl Iced Macchiato with Skim Milk - Medium",
+     "serving": "Medium",
+     "cal": 230,
+     "f": 1,
+     "c": 49,
+     "p": 7
+    },
+    {
+     "name": "Mocha Swirl Iced Macchiato with Skim Milk - Small",
+     "serving": "Small",
+     "cal": 150,
+     "f": 0.5,
+     "c": 33,
+     "p": 5
+    },
+    {
+     "name": "Mocha Swirl Iced Macchiato with Whole Milk - Large",
+     "serving": "Large",
+     "cal": 370,
+     "f": 9,
+     "c": 64,
+     "p": 9
+    },
+    {
+     "name": "Mocha Swirl Iced Macchiato with Whole Milk - Medium",
+     "serving": "Medium",
+     "cal": 280,
+     "f": 7,
+     "c": 48,
+     "p": 7
+    },
+    {
+     "name": "Mocha Swirl Iced Macchiato with Whole Milk - Small",
+     "serving": "Small",
+     "cal": 180,
+     "f": 4.5,
+     "c": 32,
+     "p": 5
+    },
+    {
+     "name": "Iced Green Tea Sweetened - Large",
+     "serving": "Large",
+     "cal": 140,
+     "f": 0,
+     "c": 33,
+     "p": 1
+    },
+    {
+     "name": "Iced Green Tea Sweetened - Medium",
+     "serving": "Medium",
+     "cal": 100,
+     "f": 0,
+     "c": 25,
+     "p": 1
+    },
+    {
+     "name": "Iced Green Tea Sweetened - Small",
+     "serving": "Small",
+     "cal": 70,
+     "f": 0,
+     "c": 16,
+     "p": 1
+    },
+    {
+     "name": "Iced Green Tea Unsweetened - Large",
+     "serving": "Large",
+     "cal": 5,
+     "f": 0,
+     "c": 0,
+     "p": 1
+    },
+    {
+     "name": "Iced Green Tea Unsweetened - Medium",
+     "serving": "Medium",
+     "cal": 5,
+     "f": 0,
+     "c": 0,
+     "p": 1
+    },
+    {
+     "name": "Iced Green Tea Unsweetened - Small",
+     "serving": "Small",
+     "cal": 5,
+     "f": 0,
+     "c": 0,
+     "p": 1
+    },
+    {
+     "name": "Iced Tea Sweetened - Large",
+     "serving": "Large",
+     "cal": 140,
+     "f": 0,
+     "c": 35,
+     "p": 0
+    },
+    {
+     "name": "Iced Tea Sweetened - Medium",
+     "serving": "Medium",
+     "cal": 100,
+     "f": 0,
+     "c": 26,
+     "p": 0
+    },
+    {
+     "name": "Iced Tea Sweetened - Small",
+     "serving": "Small",
+     "cal": 70,
+     "f": 0,
+     "c": 17,
+     "p": 0
+    },
+    {
+     "name": "Iced Tea Sweetened Blueberry",
+     "serving": "Medium",
+     "cal": 110,
+     "f": 0,
+     "c": 27,
+     "p": 0
+    },
+    {
+     "name": "Iced Tea Sweetened Raspberry",
+     "serving": "Large",
+     "cal": 150,
+     "f": 0,
+     "c": 38,
+     "p": 0
+    },
+    {
+     "name": "Iced Tea Unsweetened - Large",
+     "serving": "Large",
+     "cal": 5,
+     "f": 0,
+     "c": 2,
+     "p": 0
+    },
+    {
+     "name": "Iced Tea Unsweetened - Medium",
+     "serving": "Medium",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Iced Tea Unsweetened - Small",
+     "serving": "Small",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Iced Tea Unsweetened Blueberry",
+     "serving": "Large",
+     "cal": 15,
+     "f": 0,
+     "c": 2,
+     "p": 0
+    },
+    {
+     "name": "Iced Tea Unsweetened Raspberry",
+     "serving": "Large",
+     "cal": 20,
+     "f": 0,
+     "c": 5,
+     "p": 0
+    },
+    {
+     "name": "Sweet Tea - Large",
+     "serving": "Large",
+     "cal": 310,
+     "f": 0,
+     "c": 79,
+     "p": 0
+    },
+    {
+     "name": "Sweet Tea - Medium",
+     "serving": "Medium",
+     "cal": 230,
+     "f": 0,
+     "c": 60,
+     "p": 0
+    },
+    {
+     "name": "Sweet Tea - Small",
+     "serving": "Small",
+     "cal": 150,
+     "f": 0,
+     "c": 40,
+     "p": 0
+    },
+    {
+     "name": "Sweet Tea Blueberry Flavored - Large",
+     "serving": "Large",
+     "cal": 330,
+     "f": 0,
+     "c": 86,
+     "p": 0
+    },
+    {
+     "name": "Sweet Tea Blueberry Flavored - Medium",
+     "serving": "Medium",
+     "cal": 250,
+     "f": 0,
+     "c": 64,
+     "p": 0
+    },
+    {
+     "name": "Sweet Tea Blueberry Flavored - Small",
+     "serving": "Small",
+     "cal": 170,
+     "f": 0,
+     "c": 43,
+     "p": 0
+    },
+    {
+     "name": "Sweet Tea Raspberry Flavored - Large",
+     "serving": "Large",
+     "cal": 330,
+     "f": 0,
+     "c": 86,
+     "p": 0
+    },
+    {
+     "name": "Sweet Tea Raspberry Flavored - Medium",
+     "serving": "Medium",
+     "cal": 250,
+     "f": 0,
+     "c": 65,
+     "p": 0
+    },
+    {
+     "name": "Sweet Tea Raspberry Flavored - Small",
+     "serving": "Small",
+     "cal": 170,
+     "f": 0,
+     "c": 43,
+     "p": 0
+    },
+    {
+     "name": "Kolache",
+     "serving": "1 Kolache",
+     "cal": 390,
+     "f": 23,
+     "c": 31,
+     "p": 15
+    },
+    {
+     "name": "Kosher Dunkin' Double Veggie",
+     "serving": "1 Sandwich",
+     "cal": 600,
+     "f": 18,
+     "c": 74,
+     "p": 37
+    },
+    {
+     "name": "Kosher Egg and Cheese Wake Up",
+     "serving": "1 Wrap",
+     "cal": 170,
+     "f": 10,
+     "c": 14,
+     "p": 7
+    },
+    {
+     "name": "Kosher Egg and Cheese on an",
+     "serving": "1 Sandwich",
+     "cal": 340,
+     "f": 14,
+     "c": 38,
+     "p": 14
+    },
+    {
+     "name": "Kosher Sourdough Breakfast",
+     "serving": "1 Sandwich",
+     "cal": 660,
+     "f": 34,
+     "c": 61,
+     "p": 29
+    },
+    {
+     "name": "Kosher Tuna Melt on a Croissant",
+     "serving": "1 Sandwich",
+     "cal": 570,
+     "f": 38,
+     "c": 32,
+     "p": 24
+    },
+    {
+     "name": "Kosher Tuna Salad on a Plain",
+     "serving": "1 Sandwich",
+     "cal": 510,
+     "f": 17,
+     "c": 64,
+     "p": 24
+    },
+    {
+     "name": "Kosher Veggie Bacon Egg and Cheese on a Plain Bagel",
+     "serving": "1 Sandwich",
+     "cal": 510,
+     "f": 17,
+     "c": 68,
+     "p": 21
+    },
+    {
+     "name": "Kosher Veggie Bacon Wake-Up Wrap",
+     "serving": "1 Wrap",
+     "cal": 200,
+     "f": 12,
+     "c": 15,
+     "p": 8
+    },
+    {
+     "name": "Kosher Veggie Sausage Egg and Cheese on a Croissant",
+     "serving": "1 Sandwich",
+     "cal": 500,
+     "f": 30,
+     "c": 37,
+     "p": 23
+    },
+    {
+     "name": "Kosher Veggie Sausage Wake-Up Wrap",
+     "serving": "1 Wrap",
+     "cal": 210,
+     "f": 11,
+     "c": 16,
+     "p": 11
+    },
+    {
+     "name": "Kosher Grilled Cheese",
+     "serving": "1 Sandwich",
+     "cal": 420,
+     "f": 23,
+     "c": 36,
+     "p": 17
+    },
+    {
+     "name": "Kosher Grilled Cheese with Veggie",
+     "serving": "1 Sandwich",
+     "cal": 480,
+     "f": 27,
+     "c": 38,
+     "p": 19
+    },
+    {
+     "name": "Lemonade - Large",
+     "serving": "Large",
+     "cal": 240,
+     "f": 0,
+     "c": 60,
+     "p": 0
+    },
+    {
+     "name": "Lemonade - Medium",
+     "serving": "Medium",
+     "cal": 180,
+     "f": 0,
+     "c": 45,
+     "p": 0
+    },
+    {
+     "name": "Lemonade - Small",
+     "serving": "Small",
+     "cal": 120,
+     "f": 0,
+     "c": 30,
+     "p": 0
+    },
+    {
+     "name": "Matcha Lemonade - Large",
+     "serving": "Large",
+     "cal": 340,
+     "f": 0,
+     "c": 83,
+     "p": 1
+    },
+    {
+     "name": "Matcha Lemonade - Medium",
+     "serving": "Medium",
+     "cal": 270,
+     "f": 0,
+     "c": 65,
+     "p": 1
+    },
+    {
+     "name": "Matcha Lemonade - Small",
+     "serving": "Small",
+     "cal": 180,
+     "f": 0,
+     "c": 43,
+     "p": 1
+    },
+    {
+     "name": "Blueberry Muffin",
+     "serving": "1 Muffin",
+     "cal": 460,
+     "f": 15,
+     "c": 77,
+     "p": 6
+    },
+    {
+     "name": "Chocolate Chip Muffin",
+     "serving": "1 Muffin",
+     "cal": 550,
+     "f": 21,
+     "c": 85,
+     "p": 7
+    },
+    {
+     "name": "Coffee Cake Muffin",
+     "serving": "1 Muffin",
+     "cal": 590,
+     "f": 24,
+     "c": 88,
+     "p": 7
+    },
+    {
+     "name": "Corn Muffin",
+     "serving": "1 Muffin",
+     "cal": 460,
+     "f": 16,
+     "c": 73,
+     "p": 7
+    },
+    {
+     "name": "Cinnamon Munchkins",
+     "serving": "1 Donut Hole",
+     "cal": 60,
+     "f": 3.5,
+     "c": 6,
+     "p": 1
+    },
+    {
+     "name": "Glazed Blueberry Munchkins",
+     "serving": "1 Donut Hole",
+     "cal": 60,
+     "f": 2.5,
+     "c": 9,
+     "p": 1
+    },
+    {
+     "name": "Glazed Chocolate Munchkins",
+     "serving": "1 Donut Hole",
+     "cal": 60,
+     "f": 3.5,
+     "c": 8,
+     "p": 1
+    },
+    {
+     "name": "Glazed Munchkins",
+     "serving": "1 Donut Hole",
+     "cal": 60,
+     "f": 3,
+     "c": 7,
+     "p": 1
+    },
+    {
+     "name": "Glazed Old Fashioned Munchkins",
+     "serving": "1 Donut Hole",
+     "cal": 70,
+     "f": 3,
+     "c": 8,
+     "p": 1
+    },
+    {
+     "name": "Jelly Munchkins",
+     "serving": "1 Donut Hole",
+     "cal": 60,
+     "f": 3,
+     "c": 8,
+     "p": 1
+    },
+    {
+     "name": "Old Fashioned Munchkins",
+     "serving": "1 Donut Hole",
+     "cal": 50,
+     "f": 3,
+     "c": 6,
+     "p": 1
+    },
+    {
+     "name": "Powdered Munchkins",
+     "serving": "1 Donut Hole",
+     "cal": 60,
+     "f": 3.5,
+     "c": 7,
+     "p": 1
+    },
+    {
+     "name": "Bacon, Egg and Cheese Wake-Up Wrap",
+     "serving": "1 Wrap",
+     "cal": 220,
+     "f": 13,
+     "c": 15,
+     "p": 10
+    },
+    {
+     "name": "Bacon, Egg and Cheese on Croissant",
+     "serving": "1 Sandwich",
+     "cal": 520,
+     "f": 34,
+     "c": 34,
+     "p": 19
+    },
+    {
+     "name": "Bacon, Egg and Cheese on English Muffin",
+     "serving": "1 Sandwich",
+     "cal": 420,
+     "f": 21,
+     "c": 39,
+     "p": 19
+    },
+    {
+     "name": "Double Sausage Breakfast",
+     "serving": "1 Sandwich",
+     "cal": 900,
+     "f": 54,
+     "c": 70,
+     "p": 33
+    },
+    {
+     "name": "Egg and Cheese Wake-Up Wrap",
+     "serving": "1 Wrap",
+     "cal": 180,
+     "f": 10,
+     "c": 14,
+     "p": 7
+    },
+    {
+     "name": "Egg and Cheese on Croissant",
+     "serving": "1 Sandwich",
+     "cal": 440,
+     "f": 28,
+     "c": 33,
+     "p": 14
+    },
+    {
+     "name": "Egg and Cheese on English Muffin",
+     "serving": "1 Sandwich",
+     "cal": 340,
+     "f": 15,
+     "c": 38,
+     "p": 14
+    },
+    {
+     "name": "Egg and Cheese on a Plain Bagel",
+     "serving": "1 Sandwich",
+     "cal": 460,
+     "f": 13,
+     "c": 66,
+     "p": 19
+    },
+    {
+     "name": "Grilled Cheese",
+     "serving": "1 Sandwich",
+     "cal": 480,
+     "f": 20,
+     "c": 54,
+     "p": 21
+    },
+    {
+     "name": "Sausage, Egg and Cheese Wake-Up Wrap",
+     "serving": "1 Wrap",
+     "cal": 280,
+     "f": 20,
+     "c": 15,
+     "p": 10
+    },
+    {
+     "name": "Sourdough Breakfast Sandwich",
+     "serving": "1 Sandwich",
+     "cal": 630,
+     "f": 31,
+     "c": 58,
+     "p": 30
+    },
+    {
+     "name": "Spam Breakfast Sandwich",
+     "serving": "1 Sandwich",
+     "cal": 630,
+     "f": 42,
+     "c": 41,
+     "p": 20
+    },
+    {
+     "name": "Turkey Sausage Sandwich on English Muffin",
+     "serving": "1 Sandwich",
+     "cal": 460,
+     "f": 24,
+     "c": 39,
+     "p": 22
+    },
+    {
+     "name": "Turkey Sausage Wake Up Wrap",
+     "serving": "1 Wrap",
+     "cal": 230,
+     "f": 15,
+     "c": 15,
+     "p": 11
+    },
+    {
+     "name": "Biscuit, Bacon, Egg and Cheese",
+     "serving": "1 Sandwich",
+     "cal": 490,
+     "f": 31,
+     "c": 35,
+     "p": 17
+    },
+    {
+     "name": "Chicken Biscuit",
+     "serving": "1 Sandwich",
+     "cal": 460,
+     "f": 22,
+     "c": 46,
+     "p": 21
+    },
+    {
+     "name": "Chicken Croissant Sandwich",
+     "serving": "1 Sandwich",
+     "cal": 590,
+     "f": 33,
+     "c": 47,
+     "p": 28
+    },
+    {
+     "name": "Sausage Biscuit",
+     "serving": "1 Sandwich",
+     "cal": 470,
+     "f": 33,
+     "c": 33,
+     "p": 11
+    }
+   ]
+  }
+ },
+ "status": {
+  "chickfila": "ok: 369 items",
+  "dunkin": "ok: 826 items"
+ }
+}

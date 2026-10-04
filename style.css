@@ -385,3 +385,7 @@ input:focus { border-color: var(--pro); }
 .swipe .fav-row { background: var(--bg); }
 .swipe-tolist[data-dir=right] .swipe-bg { background: #12261e; color: var(--good); }
 .swipe-tolist.armed[data-dir=right] .swipe-bg { background: var(--good); color: #06170f; }
+.day-wrap { margin-bottom: 8px; }
+.day-wrap .day { margin-bottom: 0; }
+.swipe-copy[data-dir=right] .swipe-bg { background: #13263b; color: var(--pro); }
+.swipe-copy.armed[data-dir=right] .swipe-bg { background: var(--pro); color: #06121f; }

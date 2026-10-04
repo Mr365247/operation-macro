@@ -314,10 +314,13 @@ function dayHTML(k) {
   const entries = d.entries.map(e =>
     `<div><span>${esc(e.name)}</span><span>${fmt(e.cal)} cal · P${fmt(e.p)} C${fmt(e.c)} F${fmt(e.f)}</span></div>`).join('');
   return `
-    <details class="day">
-      <summary><div class="day-head"><span>${dayLabel(k)}</span>${badge}</div><div class="bars">${bars}</div></summary>
-      <div class="day-entries">${entries}</div>
-    </details>`;
+    <div class="swipe swipe-copy day-wrap" data-swipe="${k}">
+      <div class="swipe-bg"><span class="swipe-fav">📋 Copy to today</span><span class="swipe-del">Delete day 🗑</span></div>
+      <details class="day swipe-move">
+        <summary><div class="day-head"><span>${dayLabel(k)}</span>${badge}</div><div class="bars">${bars}</div></summary>
+        <div class="day-entries">${entries}</div>
+      </details>
+    </div>`;
 }
 
 function renderWeightChart(ws, goal) {
@@ -1101,6 +1104,32 @@ function makeSwipeable(container, { onLeft, onRight }) {
 makeSwipeable($('#log'), { onLeft: deleteEntry, onRight: favoriteEntry });
 makeSwipeable($('#view-list'), { onLeft: deleteShopItem, onRight: favoriteShopItem });
 makeSwipeable($('#favs'), { onLeft: deleteFavorite, onRight: favoriteToList });
+makeSwipeable($('#days'), { onLeft: deleteDay, onRight: copyDayToToday });
+
+function deleteDay(k) {
+  const removed = state.days[k];
+  if (!removed) return;
+  const label = dayLabel(k);
+  delete state.days[k];
+  save(); render();
+  toast(`Deleted ${label}`, 'Undo', () => { state.days[k] = removed; save(); render(); });
+}
+// Re-logs everything from a past day into today (handy for repeat meal-prep days).
+function copyDayToToday(k) {
+  if (k === today) { toast("That's today's log"); return; }
+  const src = state.days[k];
+  if (!src || !src.entries.length) return;
+  const now = Date.now();
+  const copies = src.entries.map((e, i) => ({ ...e, id: uid(), t: now + i }));
+  todayDay().entries.push(...copies);
+  save(); render(); checkHoorah();
+  const ids = new Set(copies.map(c => c.id));
+  toast(`📋 Copied ${copies.length} item${copies.length === 1 ? '' : 's'} to today`, 'Undo', () => {
+    const d = todayDay();
+    d.entries = d.entries.filter(e => !ids.has(e.id));
+    save(); render();
+  });
+}
 
 /* ================= HOORAH ================= */
 

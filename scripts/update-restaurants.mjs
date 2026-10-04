@@ -72,9 +72,97 @@ async function dunkin() {
   return items;
 }
 
+/* ---------------- McDonald's: nutrition calculator data ---------------- */
+// Some sites only answer requests that look like a full browser visit.
+const BROWSER = {
+  'sec-ch-ua': '"Chromium";v="126", "Google Chrome";v="126", "Not-A.Brand";v="99"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"macOS"',
+  'Sec-Fetch-Dest': 'document', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-Site': 'none', 'Upgrade-Insecure-Requests': '1',
+};
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+async function mcdonalds() {
+  const calc = 'https://www.mcdonalds.com/us/en-us/about-our-food/nutrition-calculator.html';
+  const page = await fetchText(calc, BROWSER);
+  const m = page.match(/data-product-data='([^']*)'/);
+  if (!m) throw new Error('product list not found on calculator page');
+  const data = JSON.parse(m[1].replace(/&#34;/g, '"').replace(/&quot;/g, '"').replace(/&amp;/g, '&').replace(/&#39;/g, "'"));
+  const ids = new Set();
+  for (const [id, prod] of Object.entries(data.products || {})) {
+    ids.add(id);
+    for (const sz of prod.sizes || []) if (sz.itemId) ids.add(sz.itemId);
+  }
+  const items = [];
+  for (const id of ids) {
+    try {
+      const j = JSON.parse(await fetchText(`https://www.mcdonalds.com/dnaapp/itemDetails?country=US&language=en&showLiveData=true&item=${id}`,
+        { Accept: 'application/json, text/plain, */*', Referer: calc }));
+      const it = j.item;
+      const nut = {};
+      for (const n of (it.nutrient_facts && it.nutrient_facts.nutrient) || []) nut[n.nutrient_name_id] = num(n.value);
+      const serving = typeof it.serving_size_imperial === 'string' ? it.serving_size_imperial : '';
+      items.push({ name: clean(it.item_name || it.item_marketing_name), serving, cal: nut.calories, f: nut.fat, c: nut.carbohydrate, p: nut.protein });
+    } catch (e) { /* skip one bad item */ }
+    await sleep(120); // be polite
+  }
+  return items;
+}
+
+/* ---------------- Subway: official U.S. Nutrition Information PDF ---------------- */
+async function subway() {
+  const page = await fetchText('https://www.subway.com/en-us/menunutrition/nutrition', BROWSER);
+  const pdf = (page.match(/https:\/\/media\.subway\.com\/[^"'\s]+us-nutrition-en\.pdf/i) || [])[0];
+  if (!pdf) throw new Error('nutrition PDF link not found');
+  const text = await pdfText(pdf);
+  const isNum = t => /^<?\d+(\.\d+)?$/.test(t);
+  // Sections print each item again as a wrap, salad, bowl or pocket; tag the name so they stay distinct.
+  const SUFFIX = { WRAPS: ' Wrap', SALADS: ' Salad', 'PROTEIN BOWLS': ' Protein Bowl' };
+  let suffix = '';
+  const items = [];
+  for (const raw of text.split('\n')) {
+    const line = raw.trim();
+    if (/^[A-Z][A-Z &]{3,}$/.test(line)) { suffix = SUFFIX[line] || ''; continue; }
+    if (/^Protein Pockets/.test(line)) { suffix = ' Protein Pocket'; continue; }
+    const toks = line.split(/\s+/);
+    const i = toks.findIndex((t, j) => j > 0 && toks.slice(j, j + 12).length === 12 && toks.slice(j, j + 12).every(isNum));
+    if (i < 1) continue;
+    let name = clean(toks.slice(0, i).filter(t => !/^\*+$/.test(t)).join(' ').replace(/\*+/g, ''));
+    if (suffix && !/^\d+"/.test(name)) name += suffix;
+    const v = toks.slice(i, i + 12).map(num);
+    // Serving (g), Calories, Fat, Sat Fat, Trans Fat, Cholesterol, Sodium, Carbs, Fiber, Sugars, Added Sugars, Protein
+    items.push({ name, serving: `${v[0]} g`, cal: v[1], f: v[2], c: v[7], p: v[11] });
+  }
+  return items;
+}
+
+/* ---------------- Wendy's: national menu from the ordering site's service ---------------- */
+async function wendys() {
+  // The service wants the ordering app's current version number; read it from the site, with a fallback.
+  let version = '2.21.2';
+  try {
+    const page = await fetchText('https://order.wendys.com/us/en/national/menu?site=menu&lang=en_US', BROWSER);
+    version = (page.match(/APP_PUBLIC_VERSION(?:\\?"|&quot;)\s*:\s*(?:\\?"|&quot;)([\d.]+)/) || [])[1] || version;
+  } catch { /* use fallback */ }
+  const url = 'https://api.app.prd.wendys.digital/web-client-gateway/menu/getSiteMenu?siteNum=0&freeStyleMenu=true&menuChannel=WEB_GUEST' +
+    `&lang=en&cntry=US&sourceCode=ORDER.WENDYS&version=${version}`;
+  const data = JSON.parse(await fetchText(url, { Accept: 'application/json', Origin: 'https://order.wendys.com', Referer: 'https://order.wendys.com/' }));
+  return (data.menuLists.salesItems || []).filter(i => i.nutrition && i.nutrition.calories != null).map(i => {
+    const n = i.nutrition;
+    let name = clean(i.displayName || String(i.name).replace(/\s+MRI$/, ''));
+    let size = clean(i.shortDescription || '');
+    if (/^[A-Z .]+$/.test(size)) size = size.charAt(0) + size.slice(1).toLowerCase();   // "SMALL" -> "Small"
+    if (/^junior$/i.test(size) && /\bjr\b/i.test(name)) size = '';
+    if (size && !name.toLowerCase().includes(size.toLowerCase())) name = `${size} ${name}`;
+    // Wendy's doesn't publish carbs in this data, so estimate them from calories, protein and fat.
+    const c = Math.max(0, Math.round((n.calories - 4 * n.protein - 9 * n.totalFat) / 4));
+    return { name, serving: '', cal: n.calories, f: n.totalFat, c, p: n.protein, carbsEstimated: true };
+  });
+}
+
 const CHAINS = {
   chickfila: { name: 'Chick-fil-A', aliases: ['chickfila', 'chick fil a', 'cfa'], source: 'https://www.chick-fil-a.com/nutrition-allergens', run: chickfila },
   dunkin:    { name: "Dunkin'", aliases: ['dunkin', 'dunkin donuts', 'dd'], source: 'https://www.dunkindonuts.com/en/menu/nutrition', run: dunkin },
+  mcdonalds: { name: "McDonald's", aliases: ['mcdonalds', 'mcd', 'mickey ds'], source: 'https://www.mcdonalds.com/us/en-us/about-our-food/nutrition-calculator.html', run: mcdonalds },
+  subway:    { name: 'Subway', aliases: ['subway'], source: 'https://www.subway.com/en-us/menunutrition/nutrition', run: subway },
+  wendys:    { name: "Wendy's", aliases: ['wendys', 'wendy'], source: 'https://order.wendys.com/us/en/national/menu', run: wendys },
 };
 
 async function main() {

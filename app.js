@@ -950,7 +950,7 @@ $('#suggest').addEventListener('click', ev => {
   setServings(1);
   $('#serving-row').hidden = false;
   $('#serving-info').textContent = it.serving ? `1 serving = ${it.serving}` : 'Per serving';
-  scanNote(it.src === 'school' ? '🏫 From the NPHS cafeteria menu' : it.src === 'rest' ? `🍔 From ${it.chain}'s official nutrition info` : '');
+  scanNote(it.src === 'school' ? '🏫 From the NPHS cafeteria menu' : it.src === 'rest' ? `🍔 From ${it.chain}'s official nutrition info${it.carbsEstimated ? ' (carbs estimated)' : ''}` : '');
 });
 
 /* ================= Setup / macro calculator ================= */

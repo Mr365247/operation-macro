@@ -366,8 +366,10 @@ input:focus { border-color: var(--pro); }
 
 /* ---------- Swipe actions on Today's log ---------- */
 .swipe { position: relative; border-radius: 14px; overflow: hidden; }
-.swipe .entry { position: relative; touch-action: pan-y; will-change: transform; }
-.swipe .entry.snap { transition: transform 0.18s ease-out; }
+.swipe .swipe-move { position: relative; touch-action: pan-y; will-change: transform; }
+.swipe .swipe-move.snap { transition: transform 0.18s ease-out; }
+.swipe:not([data-dir]) .swipe-bg { visibility: hidden; }
+.swipe .shop-row { background: var(--bg); }
 .swipe-bg {
   position: absolute; inset: 0; display: flex; align-items: center; justify-content: space-between;
   padding: 0 20px; font-weight: 800; background: var(--card2); color: var(--muted);
@@ -379,3 +381,4 @@ input:focus { border-color: var(--pro); }
 .swipe.armed[data-dir=right] .swipe-bg { background: var(--fat); color: #1d1600; }
 .swipe.armed[data-dir=left] .swipe-bg { background: var(--over); color: #fff; }
 #swipe-hint { font-size: 12px; }
+.swipe-tip { font-size: 12px; }

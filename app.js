@@ -243,7 +243,7 @@ function renderToday() {
         const isFav = favNames.has(e.name.toLowerCase());
         return `<div class="swipe" data-swipe="${e.id}">
           <div class="swipe-bg"><span class="swipe-fav">⭐ Favorite</span><span class="swipe-del">Delete 🗑</span></div>
-          ${entryHTML(isFav ? { ...e, name: '⭐ ' + e.name } : e, `data-entry="${e.id}"`)}
+          ${entryHTML(isFav ? { ...e, name: '⭐ ' + e.name } : e, `data-entry="${e.id}"`).replace('class="entry"', 'class="entry swipe-move"')}
         </div>`;
       }).join('')
     : '<div class="empty">Nothing logged yet. Tap <b>+</b> to add food.</div>';
@@ -375,10 +375,14 @@ function renderList() {
   state.shopping.forEach(i => { if (!i.section) i.section = guessSection(i.name); });
   const need = state.shopping.filter(i => !i.done);
   const done = state.shopping.filter(i => i.done).sort((a, b) => (b.doneAt || 0) - (a.doneAt || 0));
+  const favNames = new Set(state.favorites.map(f => f.name.toLowerCase()));
   const row = i => `
-    <div class="shop-row ${i.done ? 'done' : ''}">
-      <button class="shop-item" data-shop="${i.id}"><span class="box">✓</span><span class="shop-name">${esc(i.name)}</span>${i.qty ? `<span class="shop-qty">${esc(i.qty)}</span>` : ''}</button>
-      <button class="icon-btn" data-edit-shop="${i.id}" aria-label="Edit ${esc(i.name)}">✎</button>
+    <div class="swipe" data-swipe="${i.id}">
+      <div class="swipe-bg"><span class="swipe-fav">⭐ Favorite</span><span class="swipe-del">Delete 🗑</span></div>
+      <div class="shop-row swipe-move ${i.done ? 'done' : ''}">
+        <button class="shop-item" data-shop="${i.id}"><span class="box">✓</span><span class="shop-name">${favNames.has(i.name.toLowerCase()) ? '⭐ ' : ''}${esc(i.name)}</span>${i.qty ? `<span class="shop-qty">${esc(i.qty)}</span>` : ''}</button>
+        <button class="icon-btn" data-edit-shop="${i.id}" aria-label="Edit ${esc(i.name)}">✎</button>
+      </div>
     </div>`;
   // "To get" is grouped by store section, in the order you'd walk the store.
   const grouped = SECTIONS.map(sec => {
@@ -481,13 +485,34 @@ $('#item-form').addEventListener('submit', ev => {
 });
 $('#it-cancel').addEventListener('click', closeItemSheet);
 $('#item-backdrop').addEventListener('click', ev => { if (ev.target.id === 'item-backdrop') closeItemSheet(); });
-$('#it-delete').addEventListener('click', () => {
-  const i = state.shopping.findIndex(x => x.id === itemId);
-  closeItemSheet();
+function deleteShopItem(id) {
+  const i = state.shopping.findIndex(x => x.id === id);
   if (i < 0) return;
   const [removed] = state.shopping.splice(i, 1);
   save(); render();
   toast(`Removed ${removed.name}`, 'Undo', () => { state.shopping.splice(i, 0, removed); save(); render(); });
+}
+// Saves a list item as a favorite. Uses nutrition we already know (scanned barcode or the
+// school menu); otherwise opens the New favorite form with the name filled in.
+function favoriteShopItem(id) {
+  const it = state.shopping.find(x => x.id === id);
+  if (!it) return;
+  const name = it.name.toLowerCase();
+  if (state.favorites.some(f => f.name.toLowerCase() === name)) { toast(`⭐ ${it.name} is already a favorite`); return; }
+  const known = (it.code && state.barcodes[it.code]) || cafeteria.find(c => c.name.toLowerCase() === name);
+  if (known && (known.cal != null || known.p != null)) {
+    upsertFavorite({ name: it.name, cal: known.cal || 0, p: known.p || 0, c: known.c || 0, f: known.f || 0 });
+    render();
+    toast(`⭐ Added ${it.name} to favorites`);
+    return;
+  }
+  openSheet('fav', null, { name: it.name });
+  scanNote('Enter the nutrition for 1 serving to save it as a favorite.');
+}
+$('#it-delete').addEventListener('click', () => {
+  const id = itemId;
+  closeItemSheet();
+  deleteShopItem(id);
 });
 // Opens the normal Log food form, pre-filled from a matching favorite if there is one.
 $('#it-log').addEventListener('click', () => {
@@ -1008,56 +1033,61 @@ $('#setup-form').addEventListener('submit', ev => {
   toast(setupFirstRun ? 'Targets set. Mission start! 🎯' : 'Targets updated');
 });
 
-/* ================= Swipe actions on Today's log ================= */
-// Swipe left = delete (with Undo), swipe right = save as favorite, tap = edit.
-let sw = null, swallowClick = false;
-$('#log').addEventListener('pointerdown', ev => {
-  const row = ev.target.closest('.swipe');
-  if (!row || ev.button > 0) return;
-  sw = { row, el: row.querySelector('.entry'), x: ev.clientX, y: ev.clientY, dx: 0, active: false, armed: false, pid: ev.pointerId };
-});
-$('#log').addEventListener('pointermove', ev => {
-  if (!sw || ev.pointerId !== sw.pid) return;
-  const dx = ev.clientX - sw.x, dy = ev.clientY - sw.y;
-  if (!sw.active) {
-    if (Math.abs(dy) > 10 && Math.abs(dy) > Math.abs(dx)) { sw = null; return; } // it's a scroll
-    if (Math.abs(dx) < 10) return;
-    sw.active = true;
-    try { sw.el.setPointerCapture(ev.pointerId); } catch (e) { /* fine without */ }
-    sw.el.classList.remove('snap');
-  }
-  sw.dx = dx;
-  sw.el.style.transform = `translateX(${dx}px)`;
-  sw.row.dataset.dir = dx < 0 ? 'left' : 'right';
-  const armed = Math.abs(dx) > Math.min(110, sw.row.offsetWidth * 0.3);
-  if (armed !== sw.armed) {
-    sw.armed = armed;
-    sw.row.classList.toggle('armed', armed);
-    if (armed && navigator.vibrate) navigator.vibrate(10);
-  }
-});
-function endSwipe(ev) {
-  if (!sw) return;
-  const s = sw;
-  sw = null;
-  if (!s.active) return;
-  swallowClick = true;
-  setTimeout(() => { swallowClick = false; }, 60);
-  const id = s.row.dataset.swipe, go = s.armed && ev.type !== 'pointercancel';
-  s.el.classList.add('snap');
-  if (go && s.dx < 0) {
-    s.el.style.transform = 'translateX(-110%)';
-    setTimeout(() => deleteEntry(id), 180);
-    return;
-  }
-  s.el.style.transform = '';
-  s.row.classList.remove('armed');
-  if (go) favoriteEntry(id);
+/* ================= Swipe actions ================= */
+// Swipe left = delete (with Undo), swipe right = save as favorite. Taps keep their normal action.
+function makeSwipeable(container, { onLeft, onRight }) {
+  let sw = null, swallowClick = false;
+  container.addEventListener('pointerdown', ev => {
+    const row = ev.target.closest('.swipe');
+    if (!row || ev.button > 0) return;
+    sw = { row, el: row.querySelector('.swipe-move'), x: ev.clientX, y: ev.clientY, dx: 0, active: false, armed: false, pid: ev.pointerId };
+  });
+  container.addEventListener('pointermove', ev => {
+    if (!sw || ev.pointerId !== sw.pid) return;
+    const dx = ev.clientX - sw.x, dy = ev.clientY - sw.y;
+    if (!sw.active) {
+      if (Math.abs(dy) > 10 && Math.abs(dy) > Math.abs(dx)) { sw = null; return; } // it's a scroll
+      if (Math.abs(dx) < 10) return;
+      sw.active = true;
+      try { sw.el.setPointerCapture(ev.pointerId); } catch (e) { /* fine without */ }
+      sw.el.classList.remove('snap');
+    }
+    sw.dx = dx;
+    sw.el.style.transform = `translateX(${dx}px)`;
+    sw.row.dataset.dir = dx < 0 ? 'left' : 'right';
+    const armed = Math.abs(dx) > Math.min(110, sw.row.offsetWidth * 0.3);
+    if (armed !== sw.armed) {
+      sw.armed = armed;
+      sw.row.classList.toggle('armed', armed);
+      if (armed && navigator.vibrate) navigator.vibrate(10);
+    }
+  });
+  const end = ev => {
+    if (!sw) return;
+    const s = sw;
+    sw = null;
+    if (!s.active) return;
+    swallowClick = true;
+    setTimeout(() => { swallowClick = false; }, 60);
+    const id = s.row.dataset.swipe, go = s.armed && ev.type !== 'pointercancel';
+    s.el.classList.add('snap');
+    if (go && s.dx < 0) {
+      s.el.style.transform = 'translateX(-110%)';
+      setTimeout(() => onLeft(id), 180);
+      return;
+    }
+    s.el.style.transform = '';
+    s.row.classList.remove('armed');
+    setTimeout(() => { delete s.row.dataset.dir; }, 200);
+    if (go) onRight(id);
+  };
+  container.addEventListener('pointerup', end);
+  container.addEventListener('pointercancel', end);
+  // A swipe shouldn't also count as a tap.
+  container.addEventListener('click', ev => { if (swallowClick) { ev.stopPropagation(); ev.preventDefault(); } }, true);
 }
-$('#log').addEventListener('pointerup', endSwipe);
-$('#log').addEventListener('pointercancel', endSwipe);
-// A swipe shouldn't also count as a tap (which opens the editor).
-$('#log').addEventListener('click', ev => { if (swallowClick) { ev.stopPropagation(); ev.preventDefault(); } }, true);
+makeSwipeable($('#log'), { onLeft: deleteEntry, onRight: favoriteEntry });
+makeSwipeable($('#view-list'), { onLeft: deleteShopItem, onRight: favoriteShopItem });
 
 /* ================= HOORAH ================= */
 

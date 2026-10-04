@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 20 }
       - run: sudo apt-get install -y -qq poppler-utils >/dev/null
-      - run: node probe/probe.mjs
+      - run: node probe/probe.mjs || true
       - run: |
           git config user.name "probe-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

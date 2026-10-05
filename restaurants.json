@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-04",
+ "updated": "2026-10-05",
  "chains": {
   "chickfila": {
    "name": "Chick-fil-A",
@@ -9,7 +9,7 @@
     "cfa"
    ],
    "source": "https://www.chick-fil-a.com/nutrition-allergens",
-   "updated": "2026-10-04",
+   "updated": "2026-10-05",
    "items": [
     {
      "name": "Waffle",
@@ -2973,7 +2973,7 @@
     "dd"
    ],
    "source": "https://www.dunkindonuts.com/en/menu/nutrition",
-   "updated": "2026-10-04",
+   "updated": "2026-10-05",
    "items": [
     {
      "name": "Creepy Crawler Coffee Chiller - Large",
@@ -9592,7 +9592,7 @@
     "wendy"
    ],
    "source": "https://order.wendys.com/us/en/national/menu",
-   "updated": "2026-10-04",
+   "updated": "2026-10-05",
    "items": [
     {
      "name": "Dave's Single",
@@ -9784,12 +9784,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Small Chili",
+     "name": "Large Natural-Cut Fries",
      "serving": "",
-     "cal": 280,
-     "f": 12,
-     "c": 24,
-     "p": 19,
+     "cal": 470,
+     "f": 21,
+     "c": 63,
+     "p": 7,
      "carbsEstimated": true
     },
     {
@@ -9802,12 +9802,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Natural-Cut Fries",
+     "name": "Baconator Fries",
      "serving": "",
-     "cal": 470,
-     "f": 21,
-     "c": 63,
-     "p": 7,
+     "cal": 450,
+     "f": 25,
+     "c": 42,
+     "p": 14,
      "carbsEstimated": true
     },
     {
@@ -9856,21 +9856,21 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Classic Chocolate Frosty",
-     "serving": "",
-     "cal": 510,
-     "f": 15,
-     "c": 79,
-     "p": 15,
-     "carbsEstimated": true
-    },
-    {
      "name": "Jr. Vanilla Frosty",
      "serving": "",
      "cal": 190,
      "f": 6,
      "c": 28,
      "p": 6,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Small Vanilla Frosty",
+     "serving": "",
+     "cal": 310,
+     "f": 9,
+     "c": 48,
+     "p": 9,
      "carbsEstimated": true
     },
     {
@@ -9928,11 +9928,11 @@
      "carbsEstimated": true
     },
     {
-     "name": "Cheese Baked Potato",
+     "name": "Large Classic Chocolate Frosty",
      "serving": "",
-     "cal": 440,
-     "f": 14,
-     "c": 64,
+     "cal": 510,
+     "f": 15,
+     "c": 79,
      "p": 15,
      "carbsEstimated": true
     },
@@ -9946,21 +9946,21 @@
      "carbsEstimated": true
     },
     {
-     "name": "Small Vanilla Frosty",
+     "name": "Sour Cream and Chive Baked Potato",
      "serving": "",
-     "cal": 310,
-     "f": 9,
-     "c": 48,
-     "p": 9,
+     "cal": 300,
+     "f": 2.5,
+     "c": 61,
+     "p": 8,
      "carbsEstimated": true
     },
     {
-     "name": "Kids' Meal Toy (Age 3+)",
+     "name": "Small Chili",
      "serving": "",
-     "cal": 0,
-     "f": 0,
-     "c": 0,
-     "p": 0,
+     "cal": 280,
+     "f": 12,
+     "c": 24,
+     "p": 19,
      "carbsEstimated": true
     },
     {
@@ -10009,16 +10009,16 @@
      "carbsEstimated": true
     },
     {
-     "name": "Sour Cream and Chive Baked Potato",
+     "name": "Medium Diet Coke",
      "serving": "",
-     "cal": 300,
-     "f": 2.5,
-     "c": 61,
-     "p": 8,
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0,
      "carbsEstimated": true
     },
     {
-     "name": "Large Diet Coke",
+     "name": "Kids' Meal Toy (Age 3+)",
      "serving": "",
      "cal": 0,
      "f": 0,
@@ -10081,20 +10081,20 @@
      "carbsEstimated": true
     },
     {
-     "name": "Medium Diet Coke",
+     "name": "Small Fanta Orange",
      "serving": "",
-     "cal": 0,
+     "cal": 180,
      "f": 0,
-     "c": 0,
+     "c": 45,
      "p": 0,
      "carbsEstimated": true
     },
     {
-     "name": "Medium Fanta Orange",
+     "name": "Large Diet Coke",
      "serving": "",
-     "cal": 260,
+     "cal": 0,
      "f": 0,
-     "c": 65,
+     "c": 0,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10108,11 +10108,11 @@
      "carbsEstimated": true
     },
     {
-     "name": "Small Fanta Orange",
+     "name": "Small Hi-C Flashin' Fruit Punch",
      "serving": "",
-     "cal": 180,
+     "cal": 200,
      "f": 0,
-     "c": 45,
+     "c": 50,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10180,15 +10180,6 @@
      "carbsEstimated": true
     },
     {
-     "name": "Small Hi-C Flashin' Fruit Punch",
-     "serving": "",
-     "cal": 200,
-     "f": 0,
-     "c": 50,
-     "p": 0,
-     "carbsEstimated": true
-    },
-    {
      "name": "Small Strawberry Lemonade",
      "serving": "",
      "cal": 230,
@@ -10252,20 +10243,20 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Minute Maid Light Lemonade",
+     "name": "Crispy Chicken BLT",
      "serving": "",
-     "cal": 15,
-     "f": 0,
-     "c": 4,
-     "p": 0,
+     "cal": 420,
+     "f": 23,
+     "c": 33,
+     "p": 20,
      "carbsEstimated": true
     },
     {
-     "name": "$0.01",
+     "name": "Medium Fanta Orange",
      "serving": "",
-     "cal": 0,
+     "cal": 260,
      "f": 0,
-     "c": 0,
+     "c": 65,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10324,12 +10315,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Crispy Chicken BLT",
+     "name": "Large Barq's Root Beer",
      "serving": "",
-     "cal": 420,
-     "f": 23,
-     "c": 33,
-     "p": 20,
+     "cal": 330,
+     "f": 0,
+     "c": 83,
+     "p": 0,
      "carbsEstimated": true
     },
     {
@@ -10348,15 +10339,6 @@
      "f": 27,
      "c": 49,
      "p": 18,
-     "carbsEstimated": true
-    },
-    {
-     "name": "6 PC. Chicken Nuggets",
-     "serving": "",
-     "cal": 260,
-     "f": 16,
-     "c": 15,
-     "p": 14,
      "carbsEstimated": true
     },
     {
@@ -10387,12 +10369,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Barq's Root Beer",
+     "name": "Small Seasoned Potatoes",
      "serving": "",
-     "cal": 330,
-     "f": 0,
-     "c": 83,
-     "p": 0,
+     "cal": 280,
+     "f": 13,
+     "c": 38,
+     "p": 3,
      "carbsEstimated": true
     },
     {
@@ -10405,21 +10387,21 @@
      "carbsEstimated": true
     },
     {
-     "name": "Small Seasoned Potatoes",
+     "name": "Large Seasoned Potatoes",
      "serving": "",
-     "cal": 280,
-     "f": 13,
-     "c": 38,
-     "p": 3,
+     "cal": 510,
+     "f": 23,
+     "c": 70,
+     "p": 6,
      "carbsEstimated": true
     },
     {
-     "name": "Sausage Biscuit",
+     "name": "Large Minute Maid Light Lemonade",
      "serving": "",
-     "cal": 470,
-     "f": 31,
-     "c": 36,
-     "p": 12,
+     "cal": 15,
+     "f": 0,
+     "c": 4,
+     "p": 0,
      "carbsEstimated": true
     },
     {
@@ -10432,12 +10414,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Baconator Fries",
+     "name": "Bacon Double Stack",
      "serving": "",
-     "cal": 450,
-     "f": 25,
-     "c": 42,
-     "p": 14,
+     "cal": 420,
+     "f": 24,
+     "c": 25,
+     "p": 26,
      "carbsEstimated": true
     },
     {
@@ -10459,12 +10441,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Breakfast Baconator",
+     "name": "$0.01",
      "serving": "",
-     "cal": 630,
-     "f": 42,
-     "c": 33,
-     "p": 30,
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0,
      "carbsEstimated": true
     },
     {
@@ -10495,6 +10477,15 @@
      "carbsEstimated": true
     },
     {
+     "name": "Kid Coca-Cola",
+     "serving": "",
+     "cal": 100,
+     "f": 0,
+     "c": 25,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
      "name": "Kid Diet Coke",
      "serving": "",
      "cal": 0,
@@ -10513,12 +10504,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Kid Coca-Cola Zero Sugar",
+     "name": "Cheese Baked Potato",
      "serving": "",
-     "cal": 0,
-     "f": 0,
-     "c": 0,
-     "p": 0,
+     "cal": 440,
+     "f": 14,
+     "c": 64,
+     "p": 15,
      "carbsEstimated": true
     },
     {
@@ -10576,15 +10567,6 @@
      "carbsEstimated": true
     },
     {
-     "name": "Crispy Nuggs Party Pack",
-     "serving": "",
-     "cal": 2260,
-     "f": 145,
-     "c": 116,
-     "p": 123,
-     "carbsEstimated": true
-    },
-    {
      "name": "Single Big Bacon Classic",
      "serving": "",
      "cal": 610,
@@ -10603,12 +10585,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Kid Coca-Cola",
+     "name": "Big Bacon Classic Triple",
      "serving": "",
-     "cal": 100,
-     "f": 0,
-     "c": 25,
-     "p": 0,
+     "cal": 1140,
+     "f": 77,
+     "c": 35,
+     "p": 77,
      "carbsEstimated": true
     },
     {
@@ -10618,6 +10600,15 @@
      "f": 0,
      "c": 35,
      "p": 0,
+     "carbsEstimated": true
+    },
+    {
+     "name": "6 PC. Chicken Nuggets",
+     "serving": "",
+     "cal": 260,
+     "f": 16,
+     "c": 15,
+     "p": 14,
      "carbsEstimated": true
     },
     {
@@ -10639,15 +10630,6 @@
      "carbsEstimated": true
     },
     {
-     "name": "Big Bacon Classic Triple",
-     "serving": "",
-     "cal": 1140,
-     "f": 77,
-     "c": 35,
-     "p": 77,
-     "carbsEstimated": true
-    },
-    {
      "name": "Value Coca-Cola Zero Sugar",
      "serving": "",
      "cal": 0,
@@ -10657,12 +10639,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Value Dr Pepper &#174;",
+     "name": "Sausage Biscuit",
      "serving": "",
-     "cal": 140,
-     "f": 0,
-     "c": 35,
-     "p": 0,
+     "cal": 470,
+     "f": 31,
+     "c": 36,
+     "p": 12,
      "carbsEstimated": true
     },
     {
@@ -10675,12 +10657,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Seasoned Potatoes",
+     "name": "Breakfast Baconator",
      "serving": "",
-     "cal": 510,
-     "f": 23,
-     "c": 70,
-     "p": 6,
+     "cal": 630,
+     "f": 42,
+     "c": 33,
+     "p": 30,
      "carbsEstimated": true
     },
     {
@@ -10707,6 +10689,15 @@
      "cal": 5,
      "f": 0,
      "c": 1,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Value Dr Pepper &#174;",
+     "serving": "",
+     "cal": 140,
+     "f": 0,
+     "c": 35,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10747,21 +10738,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Bacon Double Stack",
+     "name": "Parmesan Caesar Salad",
      "serving": "",
-     "cal": 420,
-     "f": 24,
-     "c": 25,
-     "p": 26,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Apple Pecan Salad",
-     "serving": "",
-     "cal": 510,
-     "f": 25,
-     "c": 40,
-     "p": 31,
+     "cal": 520,
+     "f": 36,
+     "c": 15,
+     "p": 34,
      "carbsEstimated": true
     },
     {
@@ -10792,12 +10774,30 @@
      "carbsEstimated": true
     },
     {
+     "name": "Small Regular Hot Coffee",
+     "serving": "",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
      "name": "Medium Regular Hot Coffee",
      "serving": "",
      "cal": 5,
      "f": 0,
      "c": 1,
      "p": 0,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Large Regular Hot Coffee",
+     "serving": "",
+     "cal": 5,
+     "f": 0,
+     "c": 0,
+     "p": 1,
      "carbsEstimated": true
     },
     {
@@ -10855,12 +10855,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Parmesan Caesar Salad",
+     "name": "Kid Coca-Cola Zero Sugar",
      "serving": "",
-     "cal": 520,
-     "f": 36,
-     "c": 15,
-     "p": 34,
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0,
      "carbsEstimated": true
     },
     {
@@ -10918,15 +10918,6 @@
      "carbsEstimated": true
     },
     {
-     "name": "Breakfast Burrito, Sausage",
-     "serving": "",
-     "cal": 820,
-     "f": 53,
-     "c": 55,
-     "p": 31,
-     "carbsEstimated": true
-    },
-    {
      "name": "Taco Salad",
      "serving": "",
      "cal": 610,
@@ -10981,12 +10972,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Medium Caramel Crunch Chocolate Frosty Fusion",
+     "name": "Breakfast Burrito, Sausage",
      "serving": "",
-     "cal": 580,
-     "f": 14,
-     "c": 102,
-     "p": 12,
+     "cal": 820,
+     "f": 53,
+     "c": 55,
+     "p": 31,
      "carbsEstimated": true
     },
     {
@@ -10999,12 +10990,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Breakfast Burrito, Bacon",
+     "name": "Medium OREO Brownie Vanilla Frosty Fusion",
      "serving": "",
-     "cal": 700,
-     "f": 39,
-     "c": 55,
-     "p": 32,
+     "cal": 680,
+     "f": 29,
+     "c": 91,
+     "p": 14,
      "carbsEstimated": true
     },
     {
@@ -11053,6 +11044,15 @@
      "carbsEstimated": true
     },
     {
+     "name": "Crispy Nuggs Party Pack",
+     "serving": "",
+     "cal": 2260,
+     "f": 145,
+     "c": 116,
+     "p": 123,
+     "carbsEstimated": true
+    },
+    {
      "name": "Medium Brownie Batter Vanilla Frosty Swirl",
      "serving": "",
      "cal": 600,
@@ -11068,6 +11068,15 @@
      "f": 31,
      "c": 92,
      "p": 16,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Small Strawberry Vanilla Frosty Swirl",
+     "serving": "",
+     "cal": 330,
+     "f": 8,
+     "c": 57,
+     "p": 8,
      "carbsEstimated": true
     },
     {
@@ -11098,15 +11107,6 @@
      "carbsEstimated": true
     },
     {
-     "name": "Medium Caramel Vanilla Frosty Swirl",
-     "serving": "",
-     "cal": 470,
-     "f": 12,
-     "c": 79,
-     "p": 12,
-     "carbsEstimated": true
-    },
-    {
      "name": "Large Caramel Vanilla Frosty Swirl",
      "serving": "",
      "cal": 570,
@@ -11125,12 +11125,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Medium OREO Brownie Vanilla Frosty Fusion",
+     "name": "Medium Brownie Batter Chocolate Frosty Swirl",
      "serving": "",
-     "cal": 680,
-     "f": 29,
-     "c": 91,
-     "p": 14,
+     "cal": 600,
+     "f": 28,
+     "c": 74,
+     "p": 13,
      "carbsEstimated": true
     },
     {
@@ -11170,12 +11170,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Small Caramel Chocolate Frosty Swirl",
+     "name": "Breakfast Burrito, Bacon",
      "serving": "",
-     "cal": 380,
-     "f": 10,
-     "c": 63,
-     "p": 10,
+     "cal": 700,
+     "f": 39,
+     "c": 55,
+     "p": 32,
      "carbsEstimated": true
     },
     {
@@ -11188,12 +11188,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Medium Brownie Batter Chocolate Frosty Swirl",
+     "name": "Large Caramel Chocolate Frosty Swirl",
      "serving": "",
-     "cal": 600,
-     "f": 28,
-     "c": 74,
-     "p": 13,
+     "cal": 570,
+     "f": 15,
+     "c": 94,
+     "p": 15,
      "carbsEstimated": true
     },
     {
@@ -11215,12 +11215,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Small Strawberry Vanilla Frosty Swirl",
+     "name": "Large Cold Brew",
      "serving": "",
-     "cal": 330,
-     "f": 8,
-     "c": 57,
-     "p": 8,
+     "cal": 40,
+     "f": 0,
+     "c": 8,
+     "p": 2,
      "carbsEstimated": true
     },
     {
@@ -11238,15 +11238,6 @@
      "cal": 190,
      "f": 8,
      "c": 29,
-     "p": 1,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Large Vanilla Cold Brew with Cream",
-     "serving": "",
-     "cal": 270,
-     "f": 12,
-     "c": 40,
      "p": 1,
      "carbsEstimated": true
     },
@@ -11278,12 +11269,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Cold Brew",
+     "name": "Small Chocolate Cold Brew with Cream",
      "serving": "",
-     "cal": 40,
-     "f": 0,
-     "c": 8,
-     "p": 2,
+     "cal": 120,
+     "f": 4,
+     "c": 20,
+     "p": 1,
      "carbsEstimated": true
     },
     {
@@ -11314,12 +11305,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Medium Cold Brew with Cream and Sugar",
+     "name": "Apple Pecan Salad",
      "serving": "",
-     "cal": 190,
-     "f": 8,
-     "c": 29,
-     "p": 1,
+     "cal": 510,
+     "f": 25,
+     "c": 40,
+     "p": 31,
      "carbsEstimated": true
     },
     {
@@ -11332,12 +11323,30 @@
      "carbsEstimated": true
     },
     {
-     "name": "Small Chocolate Cold Brew with Cream",
+     "name": "Medium Caramel Vanilla Frosty Swirl",
      "serving": "",
-     "cal": 120,
-     "f": 4,
-     "c": 20,
+     "cal": 470,
+     "f": 12,
+     "c": 79,
+     "p": 12,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Medium Cold Brew with Cream and Sugar",
+     "serving": "",
+     "cal": 190,
+     "f": 8,
+     "c": 29,
      "p": 1,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Small Caramel Chocolate Frosty Swirl",
+     "serving": "",
+     "cal": 380,
+     "f": 10,
+     "c": 63,
+     "p": 10,
      "carbsEstimated": true
     },
     {
@@ -11359,21 +11368,21 @@
      "carbsEstimated": true
     },
     {
+     "name": "Medium Caramel Crunch Chocolate Frosty Fusion",
+     "serving": "",
+     "cal": 580,
+     "f": 14,
+     "c": 102,
+     "p": 12,
+     "carbsEstimated": true
+    },
+    {
      "name": "2 PC. Tenders",
      "serving": "",
      "cal": 280,
      "f": 15,
      "c": 14,
      "p": 22,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Small Regular Hot Coffee",
-     "serving": "",
-     "cal": 5,
-     "f": 0,
-     "c": 1,
-     "p": 0,
      "carbsEstimated": true
     },
     {
@@ -11386,12 +11395,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Medium Cookie Dough Frosty Fusion, Vanilla",
+     "name": "Large Vanilla Cold Brew with Cream",
      "serving": "",
-     "cal": 740,
-     "f": 31,
-     "c": 101,
-     "p": 14,
+     "cal": 270,
+     "f": 12,
+     "c": 40,
+     "p": 1,
      "carbsEstimated": true
     },
     {
@@ -11410,6 +11419,15 @@
      "f": 25,
      "c": 69,
      "p": 10,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Medium Cookie Dough Frosty Fusion, Chocolate",
+     "serving": "",
+     "cal": 740,
+     "f": 31,
+     "c": 101,
+     "p": 14,
      "carbsEstimated": true
     },
     {
@@ -11449,15 +11467,6 @@
      "carbsEstimated": true
     },
     {
-     "name": "Kids' Watermelon Lemonade",
-     "serving": "",
-     "cal": 160,
-     "f": 0,
-     "c": 40,
-     "p": 0,
-     "carbsEstimated": true
-    },
-    {
      "name": "Kid Cookie Dough Frosty Fusion, Vanilla",
      "serving": "",
      "cal": 540,
@@ -11482,15 +11491,6 @@
      "f": 0,
      "c": 43,
      "p": 0,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Large Regular Hot Coffee",
-     "serving": "",
-     "cal": 5,
-     "f": 0,
-     "c": 0,
-     "p": 1,
      "carbsEstimated": true
     },
     {
@@ -11530,22 +11530,1842 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Caramel Chocolate Frosty Swirl",
-     "serving": "",
-     "cal": 570,
-     "f": 15,
-     "c": 94,
-     "p": 15,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Medium Cookie Dough Frosty Fusion, Chocolate",
+     "name": "Medium Cookie Dough Frosty Fusion, Vanilla",
      "serving": "",
      "cal": 740,
      "f": 31,
      "c": 101,
      "p": 14,
      "carbsEstimated": true
+    },
+    {
+     "name": "Kids' Watermelon Lemonade",
+     "serving": "",
+     "cal": 160,
+     "f": 0,
+     "c": 40,
+     "p": 0,
+     "carbsEstimated": true
+    }
+   ]
+  },
+  "mcdonalds": {
+   "name": "McDonald's",
+   "aliases": [
+    "mcdonalds",
+    "mcd",
+    "mickey ds"
+   ],
+   "source": "https://www.mcdonalds.com/us/en-us/about-our-food/nutrition-calculator.html",
+   "updated": "2026-10-05",
+   "items": [
+    {
+     "name": "Baked Hot Apple Pie",
+     "serving": "",
+     "cal": 230,
+     "f": 11,
+     "c": 33,
+     "p": 2
+    },
+    {
+     "name": "Chocolate Chip Cookie",
+     "serving": "",
+     "cal": 170,
+     "f": 8,
+     "c": 22,
+     "p": 2
+    },
+    {
+     "name": "Coffee (Small)",
+     "serving": "",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Coffee (Medium)",
+     "serving": "",
+     "cal": 10,
+     "f": 0,
+     "c": 1,
+     "p": 1
+    },
+    {
+     "name": "Coffee (Large)",
+     "serving": "",
+     "cal": 10,
+     "f": 0,
+     "c": 2,
+     "p": 1
+    },
+    {
+     "name": "Chocolate Shake (Medium)",
+     "serving": "",
+     "cal": 650,
+     "f": 17,
+     "c": 107,
+     "p": 15
+    },
+    {
+     "name": "Chocolate Shake (Small)",
+     "serving": "",
+     "cal": 520,
+     "f": 14,
+     "c": 85,
+     "p": 12
+    },
+    {
+     "name": "Chocolate Shake (Large)",
+     "serving": "",
+     "cal": 800,
+     "f": 20,
+     "c": 134,
+     "p": 18
+    },
+    {
+     "name": "Vanilla Cone",
+     "serving": "",
+     "cal": 200,
+     "f": 5,
+     "c": 33,
+     "p": 5
+    },
+    {
+     "name": "Small French Fries",
+     "serving": "",
+     "cal": 230,
+     "f": 11,
+     "c": 31,
+     "p": 3
+    },
+    {
+     "name": "Kids Fries",
+     "serving": "",
+     "cal": 110,
+     "f": 5,
+     "c": 14,
+     "p": 2
+    },
+    {
+     "name": "Medium French Fries",
+     "serving": "",
+     "cal": 320,
+     "f": 15,
+     "c": 43,
+     "p": 5
+    },
+    {
+     "name": "Large French Fries",
+     "serving": "",
+     "cal": 480,
+     "f": 23,
+     "c": 65,
+     "p": 7
+    },
+    {
+     "name": "Apple Slices",
+     "serving": "",
+     "cal": 15,
+     "f": 0,
+     "c": 4,
+     "p": 0
+    },
+    {
+     "name": "Hot Fudge Sundae",
+     "serving": "",
+     "cal": 330,
+     "f": 10,
+     "c": 51,
+     "p": 8
+    },
+    {
+     "name": "Hot Caramel Sundae",
+     "serving": "",
+     "cal": 330,
+     "f": 7,
+     "c": 58,
+     "p": 7
+    },
+    {
+     "name": "McFlurry with M&M'S Chocolate Candies",
+     "serving": "",
+     "cal": 570,
+     "f": 19,
+     "c": 85,
+     "p": 11
+    },
+    {
+     "name": "McFlurry with M&M'S Chocolate Candies (mini)",
+     "serving": "",
+     "cal": 340,
+     "f": 12,
+     "c": 51,
+     "p": 7
+    },
+    {
+     "name": "McFlurry with Oreo Cookies",
+     "serving": "",
+     "cal": 410,
+     "f": 13,
+     "c": 64,
+     "p": 10
+    },
+    {
+     "name": "McFlurry with Oreo Cookies (mini)",
+     "serving": "",
+     "cal": 240,
+     "f": 8,
+     "c": 38,
+     "p": 5
+    },
+    {
+     "name": "Vanilla Shake (Small)",
+     "serving": "",
+     "cal": 480,
+     "f": 13,
+     "c": 80,
+     "p": 10
+    },
+    {
+     "name": "Vanilla Shake (Medium)",
+     "serving": "",
+     "cal": 570,
+     "f": 15,
+     "c": 97,
+     "p": 12
+    },
+    {
+     "name": "Vanilla Shake (Large)",
+     "serving": "",
+     "cal": 780,
+     "f": 19,
+     "c": 133,
+     "p": 17
+    },
+    {
+     "name": "Strawberry Shake (Small)",
+     "serving": "",
+     "cal": 470,
+     "f": 13,
+     "c": 77,
+     "p": 10
+    },
+    {
+     "name": "Strawberry Shake (Medium)",
+     "serving": "",
+     "cal": 600,
+     "f": 16,
+     "c": 99,
+     "p": 13
+    },
+    {
+     "name": "Strawberry Shake (Large)",
+     "serving": "",
+     "cal": 850,
+     "f": 21,
+     "c": 143,
+     "p": 19
+    },
+    {
+     "name": "Iced Latte (Medium)",
+     "serving": "",
+     "cal": 120,
+     "f": 6,
+     "c": 11,
+     "p": 6
+    },
+    {
+     "name": "Latte Iced (small)",
+     "serving": "",
+     "cal": 80,
+     "f": 4,
+     "c": 8,
+     "p": 5
+    },
+    {
+     "name": "Iced Latte (Large)",
+     "serving": "",
+     "cal": 170,
+     "f": 8,
+     "c": 15,
+     "p": 9
+    },
+    {
+     "name": "Steak, Egg & Cheese Bagel",
+     "serving": "",
+     "cal": 680,
+     "f": 35,
+     "c": 57,
+     "p": 34
+    },
+    {
+     "name": "Frappe Mocha (Small)",
+     "serving": "",
+     "cal": 430,
+     "f": 17,
+     "c": 61,
+     "p": 7
+    },
+    {
+     "name": "Frappe Mocha (Medium)",
+     "serving": "",
+     "cal": 490,
+     "f": 20,
+     "c": 72,
+     "p": 8
+    },
+    {
+     "name": "Frappe Mocha (Large)",
+     "serving": "",
+     "cal": 660,
+     "f": 26,
+     "c": 97,
+     "p": 11
+    },
+    {
+     "name": "Frappe Caramel (Small)",
+     "serving": "",
+     "cal": 420,
+     "f": 17,
+     "c": 60,
+     "p": 7
+    },
+    {
+     "name": "Frappe Caramel (Medium)",
+     "serving": "",
+     "cal": 490,
+     "f": 20,
+     "c": 70,
+     "p": 8
+    },
+    {
+     "name": "Frappe Caramel (Large)",
+     "serving": "",
+     "cal": 650,
+     "f": 26,
+     "c": 94,
+     "p": 11
+    },
+    {
+     "name": "Strawberry Banana Smoothie (Small)",
+     "serving": "",
+     "cal": 190,
+     "f": 0.5,
+     "c": 44,
+     "p": 2
+    },
+    {
+     "name": "Strawberry Banana Smoothie (Medium)",
+     "serving": "",
+     "cal": 240,
+     "f": 1,
+     "c": 55,
+     "p": 3
+    },
+    {
+     "name": "Strawberry Banana Smoothie (Large)",
+     "serving": "",
+     "cal": 330,
+     "f": 1,
+     "c": 76,
+     "p": 4
+    },
+    {
+     "name": "Mango Pineapple Smoothie (Small)",
+     "serving": "",
+     "cal": 200,
+     "f": 0.5,
+     "c": 45,
+     "p": 2
+    },
+    {
+     "name": "Mango Pineapple Smoothie (Medium)",
+     "serving": "",
+     "cal": 250,
+     "f": 1,
+     "c": 57,
+     "p": 3
+    },
+    {
+     "name": "Mango Pineapple Smoothie (Large)",
+     "serving": "",
+     "cal": 340,
+     "f": 1,
+     "c": 78,
+     "p": 4
+    },
+    {
+     "name": "Sausage McMuffin with Egg",
+     "serving": "",
+     "cal": 480,
+     "f": 31,
+     "c": 30,
+     "p": 20
+    },
+    {
+     "name": "Caramel Cappuccino (Small)",
+     "serving": "",
+     "cal": 210,
+     "f": 4.5,
+     "c": 35,
+     "p": 7
+    },
+    {
+     "name": "Caramel Cappuccino (Medium)",
+     "serving": "",
+     "cal": 260,
+     "f": 6,
+     "c": 44,
+     "p": 8
+    },
+    {
+     "name": "Caramel Cappuccino (Large)",
+     "serving": "",
+     "cal": 340,
+     "f": 8,
+     "c": 55,
+     "p": 11
+    },
+    {
+     "name": "French Vanilla Cappuccino (Large)",
+     "serving": "",
+     "cal": 340,
+     "f": 8,
+     "c": 58,
+     "p": 9
+    },
+    {
+     "name": "Vanilla Cappuccino (Small)",
+     "serving": "",
+     "cal": 210,
+     "f": 4.5,
+     "c": 37,
+     "p": 5
+    },
+    {
+     "name": "Vanilla Cappuccino (Medium)",
+     "serving": "",
+     "cal": 260,
+     "f": 6,
+     "c": 47,
+     "p": 7
+    },
+    {
+     "name": "Hotcakes and Sausage",
+     "serving": "",
+     "cal": 770,
+     "f": 33,
+     "c": 102,
+     "p": 15
+    },
+    {
+     "name": "Sausage Burrito",
+     "serving": "",
+     "cal": 310,
+     "f": 17,
+     "c": 25,
+     "p": 13
+    },
+    {
+     "name": "Fruit & Maple Oatmeal",
+     "serving": "",
+     "cal": 320,
+     "f": 4.5,
+     "c": 64,
+     "p": 6
+    },
+    {
+     "name": "Egg McMuffin",
+     "serving": "",
+     "cal": 310,
+     "f": 13,
+     "c": 30,
+     "p": 17
+    },
+    {
+     "name": "Bacon, Egg & Cheese Biscuit",
+     "serving": "",
+     "cal": 460,
+     "f": 26,
+     "c": 39,
+     "p": 17
+    },
+    {
+     "name": "Sausage Biscuit",
+     "serving": "",
+     "cal": 460,
+     "f": 30,
+     "c": 37,
+     "p": 11
+    },
+    {
+     "name": "Sausage Biscuit with Egg",
+     "serving": "",
+     "cal": 530,
+     "f": 35,
+     "c": 38,
+     "p": 17
+    },
+    {
+     "name": "Bacon, Egg & Cheese McGriddles",
+     "serving": "",
+     "cal": 430,
+     "f": 21,
+     "c": 44,
+     "p": 17
+    },
+    {
+     "name": "Sausage McGriddles",
+     "serving": "",
+     "cal": 430,
+     "f": 24,
+     "c": 41,
+     "p": 11
+    },
+    {
+     "name": "Sausage, Egg & Cheese McGriddles",
+     "serving": "",
+     "cal": 550,
+     "f": 33,
+     "c": 44,
+     "p": 19
+    },
+    {
+     "name": "Big Breakfast",
+     "serving": "",
+     "cal": 1060,
+     "f": 48,
+     "c": 131,
+     "p": 26
+    },
+    {
+     "name": "Big Breakfast with Hotcakes",
+     "serving": "",
+     "cal": 1340,
+     "f": 63,
+     "c": 158,
+     "p": 36
+    },
+    {
+     "name": "Hotcakes",
+     "serving": "",
+     "cal": 580,
+     "f": 15,
+     "c": 101,
+     "p": 9
+    },
+    {
+     "name": "Iced Caramel Latte (Medium)",
+     "serving": "",
+     "cal": 220,
+     "f": 5,
+     "c": 36,
+     "p": 7
+    },
+    {
+     "name": "Latte Iced Caramel (small)",
+     "serving": "",
+     "cal": 180,
+     "f": 4.5,
+     "c": 28,
+     "p": 6
+    },
+    {
+     "name": "Latte Iced Caramel (large)",
+     "serving": "",
+     "cal": 330,
+     "f": 8,
+     "c": 54,
+     "p": 11
+    },
+    {
+     "name": "Hash Browns",
+     "serving": "",
+     "cal": 140,
+     "f": 8,
+     "c": 18,
+     "p": 2
+    },
+    {
+     "name": "Bacon, Egg & Cheese Bagel",
+     "serving": "",
+     "cal": 590,
+     "f": 30,
+     "c": 56,
+     "p": 25
+    },
+    {
+     "name": "McChicken",
+     "serving": "",
+     "cal": 390,
+     "f": 21,
+     "c": 38,
+     "p": 14
+    },
+    {
+     "name": "Filet-O-Fish",
+     "serving": "",
+     "cal": 380,
+     "f": 19,
+     "c": 38,
+     "p": 16
+    },
+    {
+     "name": "Sausage McMuffin",
+     "serving": "",
+     "cal": 400,
+     "f": 26,
+     "c": 29,
+     "p": 14
+    },
+    {
+     "name": "Latte (Large)",
+     "serving": "",
+     "cal": 250,
+     "f": 12,
+     "c": 22,
+     "p": 13
+    },
+    {
+     "name": "Latte (small)",
+     "serving": "",
+     "cal": 140,
+     "f": 7,
+     "c": 13,
+     "p": 8
+    },
+    {
+     "name": "Latte (Medium)",
+     "serving": "",
+     "cal": 190,
+     "f": 9,
+     "c": 17,
+     "p": 10
+    },
+    {
+     "name": "Big Mac",
+     "serving": "",
+     "cal": 580,
+     "f": 34,
+     "c": 45,
+     "p": 25
+    },
+    {
+     "name": "Quarter Pounder with Cheese",
+     "serving": "",
+     "cal": 520,
+     "f": 26,
+     "c": 42,
+     "p": 30
+    },
+    {
+     "name": "Double Quarter Pounder with Cheese",
+     "serving": "",
+     "cal": 740,
+     "f": 42,
+     "c": 43,
+     "p": 48
+    },
+    {
+     "name": "Hamburger",
+     "serving": "",
+     "cal": 250,
+     "f": 9,
+     "c": 30,
+     "p": 12
+    },
+    {
+     "name": "Cheeseburger",
+     "serving": "",
+     "cal": 300,
+     "f": 13,
+     "c": 31,
+     "p": 15
+    },
+    {
+     "name": "Double Cheeseburger",
+     "serving": "",
+     "cal": 440,
+     "f": 24,
+     "c": 34,
+     "p": 25
+    },
+    {
+     "name": "McDouble",
+     "serving": "",
+     "cal": 390,
+     "f": 20,
+     "c": 32,
+     "p": 22
+    },
+    {
+     "name": "Daily Double",
+     "serving": "",
+     "cal": 490,
+     "f": 31,
+     "c": 30,
+     "p": 22
+    },
+    {
+     "name": "Cappuccino (Small)",
+     "serving": "",
+     "cal": 110,
+     "f": 5,
+     "c": 10,
+     "p": 6
+    },
+    {
+     "name": "Cappuccino (Medium)",
+     "serving": "",
+     "cal": 160,
+     "f": 7,
+     "c": 14,
+     "p": 9
+    },
+    {
+     "name": "Cappuccino (Large)",
+     "serving": "",
+     "cal": 200,
+     "f": 10,
+     "c": 18,
+     "p": 11
+    },
+    {
+     "name": "Hot Chocolate (Large)",
+     "serving": "",
+     "cal": 540,
+     "f": 20,
+     "c": 73,
+     "p": 17
+    },
+    {
+     "name": "Hot Chocolate (small)",
+     "serving": "",
+     "cal": 360,
+     "f": 12,
+     "c": 51,
+     "p": 11
+    },
+    {
+     "name": "Hot Chocolate (medium)",
+     "serving": "",
+     "cal": 440,
+     "f": 15,
+     "c": 62,
+     "p": 14
+    },
+    {
+     "name": "Chicken McNuggets 10 piece",
+     "serving": "",
+     "cal": 410,
+     "f": 24,
+     "c": 26,
+     "p": 23
+    },
+    {
+     "name": "Chicken McNuggets (4 piece)",
+     "serving": "",
+     "cal": 170,
+     "f": 10,
+     "c": 10,
+     "p": 9
+    },
+    {
+     "name": "Chicken McNuggets (6 piece)",
+     "serving": "",
+     "cal": 250,
+     "f": 15,
+     "c": 15,
+     "p": 14
+    },
+    {
+     "name": "Chicken McNuggets (20 piece)",
+     "serving": "",
+     "cal": 830,
+     "f": 49,
+     "c": 51,
+     "p": 46
+    },
+    {
+     "name": "Chicken McNuggets (40 piece)",
+     "serving": "",
+     "cal": 1650,
+     "f": 98,
+     "c": 102,
+     "p": 92
+    },
+    {
+     "name": "Iced Coffee (Medium)",
+     "serving": "",
+     "cal": 190,
+     "f": 6,
+     "c": 32,
+     "p": 2
+    },
+    {
+     "name": "Iced Coffee (Small)",
+     "serving": "",
+     "cal": 150,
+     "f": 5,
+     "c": 25,
+     "p": 1
+    },
+    {
+     "name": "Iced Coffee (Large)",
+     "serving": "",
+     "cal": 270,
+     "f": 8,
+     "c": 47,
+     "p": 2
+    },
+    {
+     "name": "Reduced Sugar* Low Fat Chocolate Milk Jug",
+     "serving": "",
+     "cal": 130,
+     "f": 2.5,
+     "c": 18,
+     "p": 9
+    },
+    {
+     "name": "Dasani Water",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "1% Low Fat Milk Jug",
+     "serving": "",
+     "cal": 100,
+     "f": 2,
+     "c": 12,
+     "p": 8
+    },
+    {
+     "name": "Diet Coke (Small)",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Diet Coke (Extra Small)",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Diet Coke (Medium)",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Diet Coke (Large)",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Unsweetened Iced Tea (Small)",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 1
+    },
+    {
+     "name": "Unsweetened Iced Tea (Extra Small)",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 1
+    },
+    {
+     "name": "Unsweetened Iced Tea (Medium)",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 1
+    },
+    {
+     "name": "Unsweetened Iced Tea (Large)",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 1
+    },
+    {
+     "name": "Iced Mocha (Large)",
+     "serving": "",
+     "cal": 440,
+     "f": 14,
+     "c": 67,
+     "p": 11
+    },
+    {
+     "name": "Mocha Iced (small)",
+     "serving": "",
+     "cal": 270,
+     "f": 10,
+     "c": 39,
+     "p": 7
+    },
+    {
+     "name": "Iced Mocha (Medium)",
+     "serving": "",
+     "cal": 320,
+     "f": 11,
+     "c": 47,
+     "p": 8
+    },
+    {
+     "name": "Minute Maid Orange Juice (Large)",
+     "serving": "",
+     "cal": 270,
+     "f": 0,
+     "c": 65,
+     "p": 4
+    },
+    {
+     "name": "Minute Maid Orange Juice (Small)",
+     "serving": "",
+     "cal": 150,
+     "f": 0,
+     "c": 36,
+     "p": 2
+    },
+    {
+     "name": "Minute Maid Orange Juice (Medium)",
+     "serving": "",
+     "cal": 190,
+     "f": 0,
+     "c": 45,
+     "p": 3
+    },
+    {
+     "name": "Mocha (Large)",
+     "serving": "",
+     "cal": 460,
+     "f": 14,
+     "c": 68,
+     "p": 14
+    },
+    {
+     "name": "Mocha (small)",
+     "serving": "",
+     "cal": 290,
+     "f": 9,
+     "c": 45,
+     "p": 8
+    },
+    {
+     "name": "Mocha (medium)",
+     "serving": "",
+     "cal": 370,
+     "f": 11,
+     "c": 56,
+     "p": 10
+    },
+    {
+     "name": "Quarter Pounder with Cheese Deluxe",
+     "serving": "",
+     "cal": 630,
+     "f": 37,
+     "c": 44,
+     "p": 30
+    },
+    {
+     "name": "Dr Pepper (Medium) No Ice",
+     "serving": "",
+     "cal": 250,
+     "f": 0,
+     "c": 68,
+     "p": 0
+    },
+    {
+     "name": "Dr Pepper (Extra Small) No Ice",
+     "serving": "",
+     "cal": 140,
+     "f": 0,
+     "c": 39,
+     "p": 0
+    },
+    {
+     "name": "Dr Pepper (Small) No Ice",
+     "serving": "",
+     "cal": 190,
+     "f": 0,
+     "c": 52,
+     "p": 0
+    },
+    {
+     "name": "Dr Pepper (Large) No Ice",
+     "serving": "",
+     "cal": 360,
+     "f": 0,
+     "c": 98,
+     "p": 0
+    },
+    {
+     "name": "Egg and Cheese Bagel",
+     "serving": "",
+     "cal": 520,
+     "f": 24,
+     "c": 55,
+     "p": 21
+    },
+    {
+     "name": "Sprite (Large) No Ice",
+     "serving": "",
+     "cal": 350,
+     "f": 0,
+     "c": 91,
+     "p": 0
+    },
+    {
+     "name": "Sprite (Extra Small) No Ice",
+     "serving": "",
+     "cal": 140,
+     "f": 0,
+     "c": 36,
+     "p": 0
+    },
+    {
+     "name": "Sprite (Small) No Ice",
+     "serving": "",
+     "cal": 190,
+     "f": 0,
+     "c": 49,
+     "p": 0
+    },
+    {
+     "name": "Sprite (Medium) No Ice",
+     "serving": "",
+     "cal": 250,
+     "f": 0,
+     "c": 64,
+     "p": 0
+    },
+    {
+     "name": "Sausage Egg and Cheese Bagel",
+     "serving": "",
+     "cal": 710,
+     "f": 42,
+     "c": 56,
+     "p": 27
+    },
+    {
+     "name": "Coffee Decaf (Small)",
+     "serving": "",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 1
+    },
+    {
+     "name": "Coffee Decaf (Medium)",
+     "serving": "",
+     "cal": 10,
+     "f": 0,
+     "c": 2,
+     "p": 1
+    },
+    {
+     "name": "Coffee Decaf (Large)",
+     "serving": "",
+     "cal": 15,
+     "f": 0,
+     "c": 2,
+     "p": 1
+    },
+    {
+     "name": "Coca-Cola (Medium) No Ice",
+     "serving": "",
+     "cal": 270,
+     "f": 0,
+     "c": 70,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola (Extra Small) No Ice",
+     "serving": "",
+     "cal": 150,
+     "f": 0,
+     "c": 40,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola (Small) No Ice",
+     "serving": "",
+     "cal": 200,
+     "f": 0,
+     "c": 53,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola (Large) No Ice",
+     "serving": "",
+     "cal": 380,
+     "f": 0,
+     "c": 100,
+     "p": 0
+    },
+    {
+     "name": "Egg and Cheese Biscuit",
+     "serving": "",
+     "cal": 390,
+     "f": 21,
+     "c": 39,
+     "p": 13
+    },
+    {
+     "name": "Bagel Plain",
+     "serving": "",
+     "cal": 270,
+     "f": 3.5,
+     "c": 51,
+     "p": 9
+    },
+    {
+     "name": "Frozen Fanta Blue Raspberry (Medium)",
+     "serving": "",
+     "cal": 80,
+     "f": 0,
+     "c": 20,
+     "p": 0
+    },
+    {
+     "name": "Frozen Fanta Blue Raspberry (Small)",
+     "serving": "",
+     "cal": 60,
+     "f": 0,
+     "c": 16,
+     "p": 0
+    },
+    {
+     "name": "Frozen Fanta Blue Raspberry (Large)",
+     "serving": "",
+     "cal": 110,
+     "f": 0,
+     "c": 29,
+     "p": 0
+    },
+    {
+     "name": "Hot Tea (Large)",
+     "serving": "",
+     "cal": 15,
+     "f": 0,
+     "c": 0,
+     "p": 3
+    },
+    {
+     "name": "Hot Tea (Small )",
+     "serving": "",
+     "cal": 10,
+     "f": 0,
+     "c": 0,
+     "p": 2
+    },
+    {
+     "name": "Hot Tea (Medium)",
+     "serving": "",
+     "cal": 10,
+     "f": 0,
+     "c": 0,
+     "p": 3
+    },
+    {
+     "name": "Sweet Tea (Extra Small) No Ice",
+     "serving": "",
+     "cal": 110,
+     "f": 0,
+     "c": 28,
+     "p": 1
+    },
+    {
+     "name": "Sweet Tea (Small) No Ice",
+     "serving": "",
+     "cal": 170,
+     "f": 0,
+     "c": 42,
+     "p": 1
+    },
+    {
+     "name": "Sweet Tea (Medium) No Ice",
+     "serving": "",
+     "cal": 200,
+     "f": 0,
+     "c": 50,
+     "p": 1
+    },
+    {
+     "name": "Sweet Tea (large) No Ice",
+     "serving": "",
+     "cal": 280,
+     "f": 0,
+     "c": 70,
+     "p": 1
+    },
+    {
+     "name": "Frozen Coca Cola Classic (Small)",
+     "serving": "",
+     "cal": 60,
+     "f": 0,
+     "c": 16,
+     "p": 0
+    },
+    {
+     "name": "Frozen Coca Cola Classic (Medium)",
+     "serving": "",
+     "cal": 80,
+     "f": 0,
+     "c": 21,
+     "p": 0
+    },
+    {
+     "name": "Frozen Coca Cola Classic (Large)",
+     "serving": "",
+     "cal": 110,
+     "f": 0,
+     "c": 29,
+     "p": 0
+    },
+    {
+     "name": "Americano Coffee (Large)",
+     "serving": "",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Espresso Americano Coffee (Small)",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Espresso Americano Coffee (Medium)",
+     "serving": "",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Honest Kids Appley Ever After (Box 6 fl oz Drink Box)",
+     "serving": "",
+     "cal": 35,
+     "f": 0,
+     "c": 8,
+     "p": 0
+    },
+    {
+     "name": "Caramel Macchiato (Small)",
+     "serving": "",
+     "cal": 260,
+     "f": 6,
+     "c": 41,
+     "p": 9
+    },
+    {
+     "name": "Caramel Macchiato (Medium)",
+     "serving": "",
+     "cal": 320,
+     "f": 8,
+     "c": 51,
+     "p": 11
+    },
+    {
+     "name": "Caramel Macchiato (Large)",
+     "serving": "",
+     "cal": 400,
+     "f": 10,
+     "c": 62,
+     "p": 14
+    },
+    {
+     "name": "Iced Caramel Macchiato (Medium)",
+     "serving": "",
+     "cal": 240,
+     "f": 6,
+     "c": 41,
+     "p": 8
+    },
+    {
+     "name": "Iced Caramel Macchiato (Small)",
+     "serving": "",
+     "cal": 200,
+     "f": 5,
+     "c": 33,
+     "p": 7
+    },
+    {
+     "name": "Iced Caramel Macchiato (Large)",
+     "serving": "",
+     "cal": 360,
+     "f": 9,
+     "c": 59,
+     "p": 12
+    },
+    {
+     "name": "Bacon Quarter Pounder with Cheese",
+     "serving": "",
+     "cal": 630,
+     "f": 35,
+     "c": 43,
+     "p": 36
+    },
+    {
+     "name": "Hi-C Orange (Extra Small) No Ice",
+     "serving": "",
+     "cal": 160,
+     "f": 0,
+     "c": 42,
+     "p": 0
+    },
+    {
+     "name": "Hi-C Orange (Small) No Ice",
+     "serving": "",
+     "cal": 220,
+     "f": 0,
+     "c": 56,
+     "p": 0
+    },
+    {
+     "name": "Hi-C Orange (Medium) No Ice",
+     "serving": "",
+     "cal": 280,
+     "f": 0,
+     "c": 73,
+     "p": 0
+    },
+    {
+     "name": "Hi-C Orange (Large) No Ice",
+     "serving": "",
+     "cal": 410,
+     "f": 0,
+     "c": 104,
+     "p": 0
+    },
+    {
+     "name": "Deluxe McCrispy",
+     "serving": "",
+     "cal": 530,
+     "f": 26,
+     "c": 48,
+     "p": 27
+    },
+    {
+     "name": "McCrispy",
+     "serving": "",
+     "cal": 470,
+     "f": 20,
+     "c": 46,
+     "p": 26
+    },
+    {
+     "name": "Mighty Hot Sauce",
+     "serving": "",
+     "cal": 25,
+     "f": 0,
+     "c": 6,
+     "p": 0
+    },
+    {
+     "name": "Spicy Chicken Mcnuggets (20 Piece)",
+     "serving": "",
+     "cal": 980,
+     "f": 61,
+     "c": 56,
+     "p": 52
+    },
+    {
+     "name": "Spicy Chicken McNuggets (6 Piece)",
+     "serving": "",
+     "cal": 290,
+     "f": 18,
+     "c": 17,
+     "p": 15
+    },
+    {
+     "name": "Spicy Chicken Mcnuggets (10 Piece)",
+     "serving": "",
+     "cal": 490,
+     "f": 30,
+     "c": 28,
+     "p": 26
+    },
+    {
+     "name": "Spicy Chicken Mcnuggets (40 Piece)",
+     "serving": "",
+     "cal": 1950,
+     "f": 122,
+     "c": 112,
+     "p": 103
+    },
+    {
+     "name": "Spicy Deluxe McCrispy",
+     "serving": "",
+     "cal": 530,
+     "f": 26,
+     "c": 49,
+     "p": 27
+    },
+    {
+     "name": "Spicy McCrispy",
+     "serving": "",
+     "cal": 530,
+     "f": 26,
+     "c": 48,
+     "p": 27
+    },
+    {
+     "name": "McDonald's Lemonade (16 Oz.)",
+     "serving": "",
+     "cal": 120,
+     "f": 0,
+     "c": 31,
+     "p": 0
+    },
+    {
+     "name": "McDonald's Lemonade (22 Oz.)",
+     "serving": "",
+     "cal": 190,
+     "f": 0,
+     "c": 48,
+     "p": 1
+    },
+    {
+     "name": "McDonald's Lemonade (30 Oz.)",
+     "serving": "",
+     "cal": 270,
+     "f": 0,
+     "c": 68,
+     "p": 1
+    },
+    {
+     "name": "Frozen Hawaiian Punch (medium)",
+     "serving": "",
+     "cal": 70,
+     "f": 0,
+     "c": 20,
+     "p": 0
+    },
+    {
+     "name": "Frozen Hawaiian Punch (small)",
+     "serving": "",
+     "cal": 60,
+     "f": 0,
+     "c": 15,
+     "p": 0
+    },
+    {
+     "name": "Frozen Hawaiian Punch (large)",
+     "serving": "",
+     "cal": 110,
+     "f": 0,
+     "c": 28,
+     "p": 0
+    },
+    {
+     "name": "Iced Bold Blend Coffee Black (small)",
+     "serving": "",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 1
+    },
+    {
+     "name": "Iced Bold Blend Coffee Black (medium)",
+     "serving": "",
+     "cal": 10,
+     "f": 0,
+     "c": 1,
+     "p": 1
+    },
+    {
+     "name": "Iced Bold Blend Coffee Black (large)",
+     "serving": "",
+     "cal": 15,
+     "f": 0,
+     "c": 2,
+     "p": 1
+    },
+    {
+     "name": "Latte Caramel (large)",
+     "serving": "",
+     "cal": 390,
+     "f": 11,
+     "c": 60,
+     "p": 14
+    },
+    {
+     "name": "Latte Caramel (small)",
+     "serving": "",
+     "cal": 250,
+     "f": 7,
+     "c": 39,
+     "p": 9
+    },
+    {
+     "name": "Latte Caramel (medium)",
+     "serving": "",
+     "cal": 320,
+     "f": 8,
+     "c": 49,
+     "p": 11
+    },
+    {
+     "name": "Latte French Vanilla (large)",
+     "serving": "",
+     "cal": 400,
+     "f": 11,
+     "c": 63,
+     "p": 12
+    },
+    {
+     "name": "Latte French Vanilla (small)",
+     "serving": "",
+     "cal": 250,
+     "f": 6,
+     "c": 41,
+     "p": 8
+    },
+    {
+     "name": "Latte French Vanilla (medium)",
+     "serving": "",
+     "cal": 320,
+     "f": 8,
+     "c": 52,
+     "p": 10
+    },
+    {
+     "name": "Iced Caramel Coffee (large)",
+     "serving": "",
+     "cal": 280,
+     "f": 8,
+     "c": 46,
+     "p": 5
+    },
+    {
+     "name": "Iced Caramel Coffee (small)",
+     "serving": "",
+     "cal": 150,
+     "f": 5,
+     "c": 23,
+     "p": 2
+    },
+    {
+     "name": "Iced Caramel Coffee (medium)",
+     "serving": "",
+     "cal": 200,
+     "f": 6,
+     "c": 31,
+     "p": 3
+    },
+    {
+     "name": "Iced French Vanilla Coffee (medium)",
+     "serving": "",
+     "cal": 200,
+     "f": 6,
+     "c": 33,
+     "p": 2
+    },
+    {
+     "name": "Iced French Vanilla Coffee (small)",
+     "serving": "",
+     "cal": 150,
+     "f": 5,
+     "c": 25,
+     "p": 1
+    },
+    {
+     "name": "Iced French Vanilla Coffee (large)",
+     "serving": "",
+     "cal": 280,
+     "f": 8,
+     "c": 49,
+     "p": 2
+    },
+    {
+     "name": "Mccrispy Strips (4 Piece)",
+     "serving": "",
+     "cal": 530,
+     "f": 26,
+     "c": 32,
+     "p": 41
+    },
+    {
+     "name": "Mccrispy Strips (3 Piece)",
+     "serving": "",
+     "cal": 400,
+     "f": 20,
+     "c": 24,
+     "p": 31
+    },
+    {
+     "name": "Snack Wrap Mccrispy Ranch",
+     "serving": "",
+     "cal": 400,
+     "f": 23,
+     "c": 32,
+     "p": 17
+    },
+    {
+     "name": "Snack Wrap Mccrispy Spicy",
+     "serving": "",
+     "cal": 390,
+     "f": 22,
+     "c": 32,
+     "p": 17
+    },
+    {
+     "name": "Sprite Berry Blast 30 Oz",
+     "serving": "",
+     "cal": 410,
+     "f": 9,
+     "c": 85,
+     "p": 0
+    },
+    {
+     "name": "Sprite Berry Blast 16 Oz",
+     "serving": "",
+     "cal": 240,
+     "f": 6,
+     "c": 47,
+     "p": 0
+    },
+    {
+     "name": "Sprite Berry Blast 22 Oz",
+     "serving": "",
+     "cal": 320,
+     "f": 7,
+     "c": 64,
+     "p": 0
+    },
+    {
+     "name": "Strawberry Watermelon Lemonade Refresher 16 Oz",
+     "serving": "",
+     "cal": 160,
+     "f": 0,
+     "c": 36,
+     "p": 0
+    },
+    {
+     "name": "Strawberry Watermelon Lemonade Refresher 22 Oz",
+     "serving": "",
+     "cal": 210,
+     "f": 0,
+     "c": 50,
+     "p": 0
+    },
+    {
+     "name": "Strawberry Watermelon Lemonade Refresher 30 Oz",
+     "serving": "",
+     "cal": 260,
+     "f": 0,
+     "c": 62,
+     "p": 1
+    },
+    {
+     "name": "Mango Pineapple Lemonade Refresher 30 Oz",
+     "serving": "",
+     "cal": 330,
+     "f": 0,
+     "c": 77,
+     "p": 0
+    },
+    {
+     "name": "Mango Pineapple Lemonade Refresher 16 Oz",
+     "serving": "",
+     "cal": 180,
+     "f": 0,
+     "c": 43,
+     "p": 0
+    },
+    {
+     "name": "Mango Pineapple Lemonade Refresher 22 Oz",
+     "serving": "",
+     "cal": 250,
+     "f": 0,
+     "c": 58,
+     "p": 0
+    },
+    {
+     "name": "Red Bull Dragonberry Energizer 22 Oz",
+     "serving": "",
+     "cal": 200,
+     "f": 0,
+     "c": 50,
+     "p": 0
+    },
+    {
+     "name": "Blackberry Passion Fruit Lemonade Refresher 16 Oz",
+     "serving": "",
+     "cal": 170,
+     "f": 0,
+     "c": 40,
+     "p": 1
+    },
+    {
+     "name": "Blackberry Passion Fruit Lemonade Refresher 22 Oz",
+     "serving": "",
+     "cal": 230,
+     "f": 0,
+     "c": 54,
+     "p": 1
+    },
+    {
+     "name": "Blackberry Passion Fruit Lemonade Refresher 30 Oz",
+     "serving": "",
+     "cal": 270,
+     "f": 0,
+     "c": 66,
+     "p": 1
+    },
+    {
+     "name": "Orange Dream with Hi-C Small",
+     "serving": "",
+     "cal": 260,
+     "f": 6,
+     "c": 53,
+     "p": 0
+    },
+    {
+     "name": "Orange Dream with Hi-C Medium",
+     "serving": "",
+     "cal": 350,
+     "f": 7,
+     "c": 72,
+     "p": 0
+    },
+    {
+     "name": "Orange Dream with Hi-C Large",
+     "serving": "",
+     "cal": 450,
+     "f": 9,
+     "c": 96,
+     "p": 0
+    },
+    {
+     "name": "Dirty Dr. Pepper 30 Oz",
+     "serving": "",
+     "cal": 430,
+     "f": 9,
+     "c": 92,
+     "p": 0
+    },
+    {
+     "name": "Dirty Dr. Pepper 16 Oz",
+     "serving": "",
+     "cal": 250,
+     "f": 6,
+     "c": 51,
+     "p": 0
+    },
+    {
+     "name": "Dirty Dr. Pepper 22 Oz",
+     "serving": "",
+     "cal": 330,
+     "f": 7,
+     "c": 70,
+     "p": 0
+    },
+    {
+     "name": "Red Bull Zero Sugar Dragonberry Energizer Medium",
+     "serving": "",
+     "cal": 100,
+     "f": 0,
+     "c": 29,
+     "p": 0
+    },
+    {
+     "name": "Reduced Sugar Vanilla Swirl with Diet Coke Large",
+     "serving": "",
+     "cal": 230,
+     "f": 9,
+     "c": 39,
+     "p": 0
+    },
+    {
+     "name": "Reduced Sugar Vanilla Swirl with Diet Coke Small",
+     "serving": "",
+     "cal": 150,
+     "f": 6,
+     "c": 25,
+     "p": 0
+    },
+    {
+     "name": "Reduced Sugar Vanilla Swirl with Diet Coke Medium",
+     "serving": "",
+     "cal": 190,
+     "f": 7,
+     "c": 32,
+     "p": 0
+    },
+    {
+     "name": "Orange Dream with Fanta Large",
+     "serving": "",
+     "cal": 440,
+     "f": 9,
+     "c": 93,
+     "p": 0
+    },
+    {
+     "name": "Orange Dream with Fanta Small",
+     "serving": "",
+     "cal": 250,
+     "f": 6,
+     "c": 51,
+     "p": 0
+    },
+    {
+     "name": "Orange Dream with Fanta Medium",
+     "serving": "",
+     "cal": 340,
+     "f": 7,
+     "c": 70,
+     "p": 0
+    },
+    {
+     "name": "Vanilla Swirl With Coke Large",
+     "serving": "",
+     "cal": 430,
+     "f": 9,
+     "c": 95,
+     "p": 0
+    },
+    {
+     "name": "Vanilla Swirl With Coke Small",
+     "serving": "",
+     "cal": 260,
+     "f": 6,
+     "c": 53,
+     "p": 0
+    },
+    {
+     "name": "Vanilla Swirl With Coke Medium",
+     "serving": "",
+     "cal": 340,
+     "f": 7,
+     "c": 71,
+     "p": 0
     }
    ]
   }
@@ -11553,7 +13373,7 @@
  "status": {
   "chickfila": "ok: 369 items",
   "dunkin": "ok: 826 items",
-  "mcdonalds": "FAILED (kept previous data): only 0 items parsed",
+  "mcdonalds": "ok: 226 items",
   "subway": "FAILED (kept previous data): fetch failed",
   "wendys": "ok: 217 items"
  }

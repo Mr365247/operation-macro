@@ -13368,13 +13368,1623 @@
      "p": 0
     }
    ]
+  },
+  "subway": {
+   "name": "Subway",
+   "aliases": [
+    "subway"
+   ],
+   "source": "https://www.subway.com/en-us/menunutrition/nutrition",
+   "updated": "2026-10-05",
+   "items": [
+    {
+     "name": "6\" Steak Philly",
+     "serving": "192 g",
+     "cal": 510,
+     "f": 25,
+     "c": 43,
+     "p": 28
+    },
+    {
+     "name": "6\" Chipotle Philly",
+     "serving": "198 g",
+     "cal": 490,
+     "f": 22,
+     "c": 44,
+     "p": 30
+    },
+    {
+     "name": "6\" Steak & Bacon",
+     "serving": "213 g",
+     "cal": 590,
+     "f": 30,
+     "c": 44,
+     "p": 36
+    },
+    {
+     "name": "6\" Grilled Chicken",
+     "serving": "247 g",
+     "cal": 510,
+     "f": 24,
+     "c": 43,
+     "p": 31
+    },
+    {
+     "name": "6\" Chicken & Bacon Ranch",
+     "serving": "262 g",
+     "cal": 580,
+     "f": 29,
+     "c": 44,
+     "p": 35
+    },
+    {
+     "name": "6\" Honey Mustard Chicken",
+     "serving": "259 g",
+     "cal": 480,
+     "f": 20,
+     "c": 47,
+     "p": 30
+    },
+    {
+     "name": "6\" Sweet Onion Chicken Teriyaki",
+     "serving": "256 g",
+     "cal": 430,
+     "f": 11,
+     "c": 55,
+     "p": 29
+    },
+    {
+     "name": "6\" B.M.T.",
+     "serving": "237 g",
+     "cal": 590,
+     "f": 35,
+     "c": 44,
+     "p": 26
+    },
+    {
+     "name": "6\" Spicy Italian",
+     "serving": "236 g",
+     "cal": 660,
+     "f": 43,
+     "c": 44,
+     "p": 26
+    },
+    {
+     "name": "6\" 5 Meat Italian",
+     "serving": "300 g",
+     "cal": 660,
+     "f": 36,
+     "c": 46,
+     "p": 39
+    },
+    {
+     "name": "6\" Meatball Marinara",
+     "serving": "233 g",
+     "cal": 550,
+     "f": 27,
+     "c": 52,
+     "p": 26
+    },
+    {
+     "name": "6\" Meatball Pepperoni",
+     "serving": "262 g",
+     "cal": 670,
+     "f": 37,
+     "c": 56,
+     "p": 32
+    },
+    {
+     "name": "6\" Oven-Roasted Turkey",
+     "serving": "229 g",
+     "cal": 470,
+     "f": 22,
+     "c": 42,
+     "p": 25
+    },
+    {
+     "name": "6\" Black Forest Ham",
+     "serving": "229 g",
+     "cal": 480,
+     "f": 22,
+     "c": 44,
+     "p": 25
+    },
+    {
+     "name": "6\" Roast Beef",
+     "serving": "244 g",
+     "cal": 490,
+     "f": 22,
+     "c": 44,
+     "p": 30
+    },
+    {
+     "name": "6\" Cold Cut Combo",
+     "serving": "237 g",
+     "cal": 520,
+     "f": 28,
+     "c": 43,
+     "p": 24
+    },
+    {
+     "name": "6\" Tuna",
+     "serving": "233 g",
+     "cal": 560,
+     "f": 32,
+     "c": 42,
+     "p": 27
+    },
+    {
+     "name": "6\" Veggie Delite",
+     "serving": "188 g",
+     "cal": 310,
+     "f": 10,
+     "c": 40,
+     "p": 16
+    },
+    {
+     "name": "6\" All American Club",
+     "serving": "242 g",
+     "cal": 540,
+     "f": 28,
+     "c": 45,
+     "p": 28
+    },
+    {
+     "name": "6\" Subway Club",
+     "serving": "263 g",
+     "cal": 500,
+     "f": 23,
+     "c": 43,
+     "p": 31
+    },
+    {
+     "name": "6\" Big Hot Pastrami",
+     "serving": "232 g",
+     "cal": 620,
+     "f": 38,
+     "c": 43,
+     "p": 27
+    },
+    {
+     "name": "6\" B.L.T.",
+     "serving": "171 g",
+     "cal": 480,
+     "f": 26,
+     "c": 42,
+     "p": 18
+    },
+    {
+     "name": "6\" Buffalo Chicken",
+     "serving": "265 g",
+     "cal": 460,
+     "f": 19,
+     "c": 45,
+     "p": 29
+    },
+    {
+     "name": "6\" Oven-Roasted Turkey & Ham",
+     "serving": "230 g",
+     "cal": 460,
+     "f": 22,
+     "c": 41,
+     "p": 26
+    },
+    {
+     "name": "6\" Pizza Sub",
+     "serving": "173 g",
+     "cal": 480,
+     "f": 24,
+     "c": 45,
+     "p": 21
+    },
+    {
+     "name": "6\" Veggie Patty",
+     "serving": "263 g",
+     "cal": 470,
+     "f": 19,
+     "c": 58,
+     "p": 19
+    },
+    {
+     "name": "6\" Oven Roasted Turkey",
+     "serving": "219 g",
+     "cal": 270,
+     "f": 4,
+     "c": 40,
+     "p": 20
+    },
+    {
+     "name": "6\" Rotisserie-Style Chicken",
+     "serving": "233 g",
+     "cal": 310,
+     "f": 6,
+     "c": 40,
+     "p": 24
+    },
+    {
+     "name": "Veggie Delite",
+     "serving": "108 g",
+     "cal": 140,
+     "f": 2,
+     "c": 27,
+     "p": 6
+    },
+    {
+     "name": "Black Forest Ham",
+     "serving": "137 g",
+     "cal": 180,
+     "f": 3,
+     "c": 28,
+     "p": 11
+    },
+    {
+     "name": "Oven Roasted Turkey",
+     "serving": "137 g",
+     "cal": 170,
+     "f": 2,
+     "c": 27,
+     "p": 12
+    },
+    {
+     "name": "Steak Philly Wrap",
+     "serving": "295 g",
+     "cal": 710,
+     "f": 35,
+     "c": 56,
+     "p": 46
+    },
+    {
+     "name": "Chipotle Philly Wrap",
+     "serving": "300 g",
+     "cal": 700,
+     "f": 32,
+     "c": 56,
+     "p": 47
+    },
+    {
+     "name": "Steak & Bacon Wrap",
+     "serving": "330 g",
+     "cal": 880,
+     "f": 46,
+     "c": 58,
+     "p": 58
+    },
+    {
+     "name": "Grilled Chicken Wrap",
+     "serving": "349 g",
+     "cal": 680,
+     "f": 31,
+     "c": 55,
+     "p": 48
+    },
+    {
+     "name": "Chicken & Bacon Ranch Wrap",
+     "serving": "379 g",
+     "cal": 840,
+     "f": 45,
+     "c": 57,
+     "p": 55
+    },
+    {
+     "name": "Honey Mustard Chicken Wrap",
+     "serving": "361 g",
+     "cal": 670,
+     "f": 29,
+     "c": 58,
+     "p": 45
+    },
+    {
+     "name": "Sweet Onion Chicken Teriyaki Wrap",
+     "serving": "372 g",
+     "cal": 630,
+     "f": 18,
+     "c": 77,
+     "p": 44
+    },
+    {
+     "name": "B.M.T. Wrap",
+     "serving": "332 g",
+     "cal": 870,
+     "f": 54,
+     "c": 58,
+     "p": 38
+    },
+    {
+     "name": "Spicy Italian Wrap",
+     "serving": "326 g",
+     "cal": 1010,
+     "f": 70,
+     "c": 58,
+     "p": 37
+    },
+    {
+     "name": "5 Meat Italian Wrap",
+     "serving": "459 g",
+     "cal": 1000,
+     "f": 56,
+     "c": 61,
+     "p": 65
+    },
+    {
+     "name": "Meatball Marinara Wrap",
+     "serving": "401 g",
+     "cal": 890,
+     "f": 50,
+     "c": 76,
+     "p": 39
+    },
+    {
+     "name": "Meatball Pepperoni Wrap",
+     "serving": "436 g",
+     "cal": 1050,
+     "f": 64,
+     "c": 77,
+     "p": 45
+    },
+    {
+     "name": "Oven-Roasted Turkey Wrap",
+     "serving": "318 g",
+     "cal": 610,
+     "f": 28,
+     "c": 54,
+     "p": 37
+    },
+    {
+     "name": "Black Forest Ham Wrap",
+     "serving": "318 g",
+     "cal": 630,
+     "f": 30,
+     "c": 58,
+     "p": 35
+    },
+    {
+     "name": "Roast Beef Wrap",
+     "serving": "346 g",
+     "cal": 670,
+     "f": 29,
+     "c": 58,
+     "p": 46
+    },
+    {
+     "name": "Cold Cut Combo Wrap",
+     "serving": "332 g",
+     "cal": 720,
+     "f": 42,
+     "c": 55,
+     "p": 33
+    },
+    {
+     "name": "Tuna Wrap",
+     "serving": "339 g",
+     "cal": 910,
+     "f": 61,
+     "c": 53,
+     "p": 39
+    },
+    {
+     "name": "Veggie Delite Wrap",
+     "serving": "219 g",
+     "cal": 400,
+     "f": 15,
+     "c": 54,
+     "p": 15
+    },
+    {
+     "name": "All American Club Wrap",
+     "serving": "345 g",
+     "cal": 770,
+     "f": 41,
+     "c": 58,
+     "p": 43
+    },
+    {
+     "name": "Subway Club Wrap",
+     "serving": "386 g",
+     "cal": 700,
+     "f": 31,
+     "c": 59,
+     "p": 48
+    },
+    {
+     "name": "Big Hot Pastrami Wrap",
+     "serving": "377 g",
+     "cal": 1030,
+     "f": 72,
+     "c": 55,
+     "p": 42
+    },
+    {
+     "name": "B.L.T. Wrap",
+     "serving": "232 g",
+     "cal": 730,
+     "f": 44,
+     "c": 54,
+     "p": 29
+    },
+    {
+     "name": "Buffalo Chicken Wrap",
+     "serving": "385 g",
+     "cal": 640,
+     "f": 26,
+     "c": 58,
+     "p": 45
+    },
+    {
+     "name": "Turkey & Ham Wrap",
+     "serving": "318 g",
+     "cal": 620,
+     "f": 28,
+     "c": 56,
+     "p": 36
+    },
+    {
+     "name": "Pizza Sub Wrap",
+     "serving": "240 g",
+     "cal": 730,
+     "f": 43,
+     "c": 57,
+     "p": 28
+    },
+    {
+     "name": "Veggie Patty Wrap",
+     "serving": "379 g",
+     "cal": 740,
+     "f": 33,
+     "c": 88,
+     "p": 25
+    },
+    {
+     "name": "Baja Chicken Protein Pocket",
+     "serving": "184 g",
+     "cal": 330,
+     "f": 13,
+     "c": 30,
+     "p": 24
+    },
+    {
+     "name": "Italian Trio Protein Pocket",
+     "serving": "192 g",
+     "cal": 480,
+     "f": 29,
+     "c": 32,
+     "p": 22
+    },
+    {
+     "name": "Peppercorn Ranch Chicken Protein Pocket",
+     "serving": "190 g",
+     "cal": 330,
+     "f": 13,
+     "c": 30,
+     "p": 24
+    },
+    {
+     "name": "Turkey & Ham Protein Pocket",
+     "serving": "193 g",
+     "cal": 320,
+     "f": 11,
+     "c": 32,
+     "p": 21
+    },
+    {
+     "name": "Steak Philly Salad",
+     "serving": "409 g",
+     "cal": 450,
+     "f": 35,
+     "c": 13,
+     "p": 24
+    },
+    {
+     "name": "Chipotle Philly Salad",
+     "serving": "415 g",
+     "cal": 400,
+     "f": 29,
+     "c": 14,
+     "p": 25
+    },
+    {
+     "name": "Steak & Bacon Salad",
+     "serving": "430 g",
+     "cal": 510,
+     "f": 37,
+     "c": 15,
+     "p": 32
+    },
+    {
+     "name": "Grilled Chicken Salad",
+     "serving": "415 g",
+     "cal": 450,
+     "f": 34,
+     "c": 12,
+     "p": 26
+    },
+    {
+     "name": "Chicken & Bacon Ranch Salad",
+     "serving": "430 g",
+     "cal": 490,
+     "f": 36,
+     "c": 14,
+     "p": 30
+    },
+    {
+     "name": "Honey Mustard Chicken Salad",
+     "serving": "426 g",
+     "cal": 370,
+     "f": 24,
+     "c": 18,
+     "p": 25
+    },
+    {
+     "name": "Sweet Onion Chicken Teriyaki Salad",
+     "serving": "423 g",
+     "cal": 300,
+     "f": 10,
+     "c": 33,
+     "p": 23
+    },
+    {
+     "name": "B.M.T. Salad",
+     "serving": "404 g",
+     "cal": 530,
+     "f": 45,
+     "c": 13,
+     "p": 21
+    },
+    {
+     "name": "Spicy Italian Salad",
+     "serving": "404 g",
+     "cal": 600,
+     "f": 53,
+     "c": 13,
+     "p": 21
+    },
+    {
+     "name": "5 Meat Italian Salad",
+     "serving": "468 g",
+     "cal": 600,
+     "f": 46,
+     "c": 14,
+     "p": 34
+    },
+    {
+     "name": "Meatball Marinara with MVP Parmesan Vinaigrette Salad",
+     "serving": "478 g",
+     "cal": 520,
+     "f": 38,
+     "c": 25,
+     "p": 22
+    },
+    {
+     "name": "Meatball Pepperoni with MVP Parmesan Vinaigrette Salad",
+     "serving": "496 g",
+     "cal": 600,
+     "f": 46,
+     "c": 25,
+     "p": 25
+    },
+    {
+     "name": "Oven-Roasted Turkey Salad",
+     "serving": "397 g",
+     "cal": 400,
+     "f": 32,
+     "c": 11,
+     "p": 20
+    },
+    {
+     "name": "Black Forest Ham Salad",
+     "serving": "397 g",
+     "cal": 410,
+     "f": 33,
+     "c": 13,
+     "p": 20
+    },
+    {
+     "name": "Roast Beef Salad",
+     "serving": "411 g",
+     "cal": 430,
+     "f": 32,
+     "c": 13,
+     "p": 25
+    },
+    {
+     "name": "Cold Cut Combo Salad",
+     "serving": "404 g",
+     "cal": 460,
+     "f": 38,
+     "c": 11,
+     "p": 19
+    },
+    {
+     "name": "Tuna Salad",
+     "serving": "387 g",
+     "cal": 400,
+     "f": 31,
+     "c": 10,
+     "p": 21
+    },
+    {
+     "name": "Veggie Delite Salad",
+     "serving": "313 g",
+     "cal": 140,
+     "f": 8,
+     "c": 10,
+     "p": 9
+    },
+    {
+     "name": "All American Club Salad",
+     "serving": "410 g",
+     "cal": 470,
+     "f": 38,
+     "c": 13,
+     "p": 23
+    },
+    {
+     "name": "Subway Club Salad",
+     "serving": "430 g",
+     "cal": 440,
+     "f": 33,
+     "c": 14,
+     "p": 25
+    },
+    {
+     "name": "Big Hot Pastrami Salad",
+     "serving": "463 g",
+     "cal": 470,
+     "f": 38,
+     "c": 14,
+     "p": 23
+    },
+    {
+     "name": "B.L.T. Salad",
+     "serving": "345 g",
+     "cal": 420,
+     "f": 36,
+     "c": 11,
+     "p": 13
+    },
+    {
+     "name": "Buffalo Chicken Salad",
+     "serving": "536 g",
+     "cal": 540,
+     "f": 34,
+     "c": 18,
+     "p": 44
+    },
+    {
+     "name": "Turkey & Ham Salad",
+     "serving": "397 g",
+     "cal": 400,
+     "f": 32,
+     "c": 12,
+     "p": 20
+    },
+    {
+     "name": "Pizza Sub Salad",
+     "serving": "376 g",
+     "cal": 320,
+     "f": 23,
+     "c": 14,
+     "p": 17
+    },
+    {
+     "name": "Veggie Patty Salad",
+     "serving": "395 g",
+     "cal": 300,
+     "f": 17,
+     "c": 28,
+     "p": 13
+    },
+    {
+     "name": "Steak Philly Protein Bowl",
+     "serving": "403 g",
+     "cal": 630,
+     "f": 47,
+     "c": 14,
+     "p": 43
+    },
+    {
+     "name": "Chipotle Philly Protein Bowl",
+     "serving": "415 g",
+     "cal": 600,
+     "f": 41,
+     "c": 15,
+     "p": 46
+    },
+    {
+     "name": "Steak & Bacon Protein Bowl",
+     "serving": "430 g",
+     "cal": 720,
+     "f": 50,
+     "c": 16,
+     "p": 54
+    },
+    {
+     "name": "Grilled Chicken Protein Bowl",
+     "serving": "415 g",
+     "cal": 620,
+     "f": 44,
+     "c": 11,
+     "p": 48
+    },
+    {
+     "name": "Chicken & Bacon Ranch Protein Bowl",
+     "serving": "445 g",
+     "cal": 760,
+     "f": 55,
+     "c": 14,
+     "p": 55
+    },
+    {
+     "name": "Honey Mustard Chicken Protein Bowl",
+     "serving": "438 g",
+     "cal": 570,
+     "f": 36,
+     "c": 18,
+     "p": 45
+    },
+    {
+     "name": "Sweet Onion Chicken Teriyaki Protein Bowl",
+     "serving": "432 g",
+     "cal": 470,
+     "f": 18,
+     "c": 40,
+     "p": 42
+    },
+    {
+     "name": "B.M.T. Protein Bowl",
+     "serving": "394 g",
+     "cal": 800,
+     "f": 66,
+     "c": 14,
+     "p": 38
+    },
+    {
+     "name": "Spicy Italian Protein Bowl",
+     "serving": "389 g",
+     "cal": 930,
+     "f": 82,
+     "c": 13,
+     "p": 37
+    },
+    {
+     "name": "5 Meat Italian Protein Bowl",
+     "serving": "521 g",
+     "cal": 930,
+     "f": 68,
+     "c": 17,
+     "p": 65
+    },
+    {
+     "name": "Meatball Marinara with MVP Parmesan Vinaigrette Protein Bowl",
+     "serving": "541 g",
+     "cal": 850,
+     "f": 63,
+     "c": 36,
+     "p": 40
+    },
+    {
+     "name": "Meatball Pepperoni with MVP Parmesan Vinaigrette Protein Bowl",
+     "serving": "577 g",
+     "cal": 1010,
+     "f": 77,
+     "c": 38,
+     "p": 46
+    },
+    {
+     "name": "Oven-Roasted Turkey Protein Bowl",
+     "serving": "380 g",
+     "cal": 540,
+     "f": 40,
+     "c": 10,
+     "p": 37
+    },
+    {
+     "name": "Black Forest Ham Protein Bowl",
+     "serving": "380 g",
+     "cal": 560,
+     "f": 41,
+     "c": 13,
+     "p": 35
+    },
+    {
+     "name": "Roast Beef Protein Bowl",
+     "serving": "408 g",
+     "cal": 590,
+     "f": 40,
+     "c": 14,
+     "p": 46
+    },
+    {
+     "name": "Cold Cut Combo Protein Bowl",
+     "serving": "394 g",
+     "cal": 650,
+     "f": 53,
+     "c": 11,
+     "p": 33
+    },
+    {
+     "name": "Tuna Protein Bowl",
+     "serving": "387 g",
+     "cal": 730,
+     "f": 61,
+     "c": 9,
+     "p": 39
+    },
+    {
+     "name": "All American Club Protein Bowl",
+     "serving": "405 g",
+     "cal": 680,
+     "f": 52,
+     "c": 15,
+     "p": 41
+    },
+    {
+     "name": "Subway Club Protein Bowl",
+     "serving": "418 g",
+     "cal": 410,
+     "f": 20,
+     "c": 16,
+     "p": 45
+    },
+    {
+     "name": "Big Hot Pastrami Protein Bowl",
+     "serving": "512 g",
+     "cal": 870,
+     "f": 73,
+     "c": 15,
+     "p": 40
+    },
+    {
+     "name": "B.L.T. Protein Bowl",
+     "serving": "276 g",
+     "cal": 560,
+     "f": 49,
+     "c": 10,
+     "p": 22
+    },
+    {
+     "name": "Buffalo Chicken Protein Bowl",
+     "serving": "414 g",
+     "cal": 380,
+     "f": 21,
+     "c": 14,
+     "p": 35
+    },
+    {
+     "name": "Turkey & Ham Protein Bowl",
+     "serving": "380 g",
+     "cal": 540,
+     "f": 40,
+     "c": 12,
+     "p": 36
+    },
+    {
+     "name": "Pizza Sub Protein Bowl",
+     "serving": "366 g",
+     "cal": 580,
+     "f": 44,
+     "c": 17,
+     "p": 29
+    },
+    {
+     "name": "Veggie Patty Protein Bowl",
+     "serving": "404 g",
+     "cal": 540,
+     "f": 33,
+     "c": 44,
+     "p": 22
+    },
+    {
+     "name": "6\" Bacon, Egg & Cheese",
+     "serving": "193 g",
+     "cal": 550,
+     "f": 30,
+     "c": 43,
+     "p": 26
+    },
+    {
+     "name": "6\" Black Forest Ham, Egg & Cheese",
+     "serving": "214 g",
+     "cal": 510,
+     "f": 25,
+     "c": 44,
+     "p": 27
+    },
+    {
+     "name": "6\" Egg & Cheese",
+     "serving": "178 g",
+     "cal": 470,
+     "f": 24,
+     "c": 42,
+     "p": 21
+    },
+    {
+     "name": "6\" Steak, Egg & Cheese",
+     "serving": "214 g",
+     "cal": 530,
+     "f": 26,
+     "c": 43,
+     "p": 30
+    },
+    {
+     "name": "Bacon, Egg & Cheese",
+     "serving": "325 g",
+     "cal": 900,
+     "f": 56,
+     "c": 57,
+     "p": 42
+    },
+    {
+     "name": "Black Forest Ham, Egg & Cheese",
+     "serving": "366 g",
+     "cal": 820,
+     "f": 46,
+     "c": 58,
+     "p": 44
+    },
+    {
+     "name": "Egg & Cheese",
+     "serving": "295 g",
+     "cal": 740,
+     "f": 44,
+     "c": 55,
+     "p": 32
+    },
+    {
+     "name": "Steak, Egg & Cheese",
+     "serving": "366 g",
+     "cal": 860,
+     "f": 48,
+     "c": 57,
+     "p": 48
+    },
+    {
+     "name": "Cheese",
+     "serving": "293 g",
+     "cal": 700,
+     "f": 22,
+     "c": 95,
+     "p": 29
+    },
+    {
+     "name": "Bacon",
+     "serving": "308 g",
+     "cal": 780,
+     "f": 28,
+     "c": 96,
+     "p": 34
+    },
+    {
+     "name": "Meatball",
+     "serving": "330 g",
+     "cal": 810,
+     "f": 31,
+     "c": 98,
+     "p": 35
+    },
+    {
+     "name": "Pepperoni",
+     "serving": "311 g",
+     "cal": 780,
+     "f": 29,
+     "c": 96,
+     "p": 33
+    },
+    {
+     "name": "Ham & Jack (includes Pepper Jack Cheese)",
+     "serving": "71 g",
+     "cal": 160,
+     "f": 4,
+     "c": 21,
+     "p": 10
+    },
+    {
+     "name": "Italian Spice (includes American Cheese and MVP Parmesan Vinaigrette)",
+     "serving": "72 g",
+     "cal": 250,
+     "f": 15,
+     "c": 21,
+     "p": 9
+    },
+    {
+     "name": "Little Cheesesteak (includes American Cheese and Baja Chipotle Sauce)",
+     "serving": "71 g",
+     "cal": 180,
+     "f": 7,
+     "c": 21,
+     "p": 8
+    },
+    {
+     "name": "Turkey (includes Pepper Jack Cheese and Mayonnaise)",
+     "serving": "88 g",
+     "cal": 230,
+     "f": 12,
+     "c": 20,
+     "p": 12
+    },
+    {
+     "name": "6\" Artisan Italian Bread",
+     "serving": "71 g",
+     "cal": 210,
+     "f": 2,
+     "c": 39,
+     "p": 8
+    },
+    {
+     "name": "6\" Hearty Multigrain Bread",
+     "serving": "71 g",
+     "cal": 200,
+     "f": 3,
+     "c": 36,
+     "p": 9
+    },
+    {
+     "name": "6\" Italian Herbs & Cheese Bread",
+     "serving": "82 g",
+     "cal": 250,
+     "f": 5,
+     "c": 42,
+     "p": 10
+    },
+    {
+     "name": "6\" Jalapeño Cheddar Bread",
+     "serving": "82 g",
+     "cal": 240,
+     "f": 5,
+     "c": 39,
+     "p": 9
+    },
+    {
+     "name": "6\" Artisan Flatbread",
+     "serving": "78 g",
+     "cal": 220,
+     "f": 4,
+     "c": 39,
+     "p": 6
+    },
+    {
+     "name": "12\" Wrap",
+     "serving": "102 g",
+     "cal": 300,
+     "f": 8,
+     "c": 50,
+     "p": 8
+    },
+    {
+     "name": "9\" Wrap (Pocket)",
+     "serving": "52 g",
+     "cal": 150,
+     "f": 3,
+     "c": 26,
+     "p": 4
+    },
+    {
+     "name": "Mini Artisan Italian Bread",
+     "serving": "57 g",
+     "cal": 160,
+     "f": 2,
+     "c": 30,
+     "p": 6
+    },
+    {
+     "name": "Mini Hearty Multigrain Bread",
+     "serving": "47 g",
+     "cal": 130,
+     "f": 2,
+     "c": 24,
+     "p": 6
+    },
+    {
+     "name": "Baja Chipotle",
+     "serving": "14 g",
+     "cal": 70,
+     "f": 7,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "BBQ Sauce",
+     "serving": "14 g",
+     "cal": 25,
+     "f": 0,
+     "c": 6,
+     "p": 0
+    },
+    {
+     "name": "Frank's RedHot Buffalo Sauce",
+     "serving": "14 g",
+     "cal": 0,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Giardiniera",
+     "serving": "28 g",
+     "cal": 80,
+     "f": 9,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Honey Mustard",
+     "serving": "14 g",
+     "cal": 60,
+     "f": 5,
+     "c": 3,
+     "p": 0
+    },
+    {
+     "name": "Hot Honey Sauce",
+     "serving": "14 g",
+     "cal": 30,
+     "f": 0,
+     "c": 8,
+     "p": 0
+    },
+    {
+     "name": "Mayonnaise",
+     "serving": "14 g",
+     "cal": 100,
+     "f": 11,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Mustard, Yellow",
+     "serving": "14 g",
+     "cal": 10,
+     "f": 1,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Olive Oil Blend",
+     "serving": "5 g",
+     "cal": 45,
+     "f": 5,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Olive Oil Blend & Vinegar",
+     "serving": "9 g",
+     "cal": 45,
+     "f": 5,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "MVP Parmesan Vinaigrette",
+     "serving": "14 g",
+     "cal": 60,
+     "f": 6,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Peppercorn Ranch",
+     "serving": "14 g",
+     "cal": 80,
+     "f": 8,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Red Wine Vinegar",
+     "serving": "4 g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Roasted Garlic Aioli",
+     "serving": "14 g",
+     "cal": 80,
+     "f": 9,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Sweet Onion Teriyaki",
+     "serving": "14 g",
+     "cal": 30,
+     "f": 0,
+     "c": 7,
+     "p": 0
+    },
+    {
+     "name": "Pepper, Black",
+     "serving": "0 g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Oregano",
+     "serving": "0 g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Salt",
+     "serving": "0 g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Avocado, Sliced",
+     "serving": "28 g",
+     "cal": 45,
+     "f": 4,
+     "c": 2,
+     "p": 1
+    },
+    {
+     "name": "Avocado, Smashed",
+     "serving": "35 g",
+     "cal": 70,
+     "f": 6,
+     "c": 3,
+     "p": 1
+    },
+    {
+     "name": "Banana Peppers (3 rings)",
+     "serving": "4 g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Cucumbers (3 slices)",
+     "serving": "14 g",
+     "cal": 0,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Green Chiles",
+     "serving": "14 g",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Green Peppers (3 strips)",
+     "serving": "7 g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Jalapeno Peppers (3 rings)",
+     "serving": "4 g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Lettuce",
+     "serving": "21 g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Olives, Black (3 rings)",
+     "serving": "3 g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Onions",
+     "serving": "7 g",
+     "cal": 0,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Pickles, Crinkle (3 chips)",
+     "serving": "12 g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Spinach, Baby",
+     "serving": "7 g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Tomatoes (3 wheels)",
+     "serving": "35 g",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "American",
+     "serving": "23 g",
+     "cal": 80,
+     "f": 7,
+     "c": 1,
+     "p": 4
+    },
+    {
+     "name": "Monterey Cheddar, Shredded",
+     "serving": "28 g",
+     "cal": 110,
+     "f": 9,
+     "c": 1,
+     "p": 7
+    },
+    {
+     "name": "Parmesan Grated",
+     "serving": "1 g",
+     "cal": 5,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Pepperjack",
+     "serving": "28 g",
+     "cal": 100,
+     "f": 8,
+     "c": 1,
+     "p": 5
+    },
+    {
+     "name": "Provolone",
+     "serving": "25 g",
+     "cal": 90,
+     "f": 7,
+     "c": 1,
+     "p": 6
+    },
+    {
+     "name": "All-American Club Meats (Ham, Turkey, Bacon)",
+     "serving": "72 g",
+     "cal": 140,
+     "f": 7,
+     "c": 2,
+     "p": 15
+    },
+    {
+     "name": "Bacon (2 strips)",
+     "serving": "15 g",
+     "cal": 80,
+     "f": 6,
+     "c": 1,
+     "p": 5
+    },
+    {
+     "name": "Cold Cut Combo Meats",
+     "serving": "64 g",
+     "cal": 110,
+     "f": 8,
+     "c": 1,
+     "p": 9
+    },
+    {
+     "name": "Egg Patty",
+     "serving": "85 g",
+     "cal": 180,
+     "f": 15,
+     "c": 2,
+     "p": 10
+    },
+    {
+     "name": "Genoa Salami (3 slices)",
+     "serving": "18 g",
+     "cal": 70,
+     "f": 6,
+     "c": 1,
+     "p": 3
+    },
+    {
+     "name": "Grilled Chicken",
+     "serving": "71 g",
+     "cal": 80,
+     "f": 2,
+     "c": 1,
+     "p": 16
+    },
+    {
+     "name": "Grilled Chicken, Sweet Onion Teriyaki Glazed",
+     "serving": "85 g",
+     "cal": 110,
+     "f": 2,
+     "c": 9,
+     "p": 16
+    },
+    {
+     "name": "Meatballs",
+     "serving": "136 g",
+     "cal": 250,
+     "f": 17,
+     "c": 13,
+     "p": 12
+    },
+    {
+     "name": "Oven-Roasted Turkey",
+     "serving": "57 g",
+     "cal": 50,
+     "f": 0,
+     "c": 1,
+     "p": 11
+    },
+    {
+     "name": "Pastrami",
+     "serving": "113 g",
+     "cal": 320,
+     "f": 29,
+     "c": 2,
+     "p": 15
+    },
+    {
+     "name": "Pepperoni, (3 slices)",
+     "serving": "18 g",
+     "cal": 80,
+     "f": 7,
+     "c": 1,
+     "p": 3
+    },
+    {
+     "name": "Roast Beef",
+     "serving": "71 g",
+     "cal": 80,
+     "f": 2,
+     "c": 2,
+     "p": 15
+    },
+    {
+     "name": "Rotisserie-Style Chicken",
+     "serving": "71 g",
+     "cal": 90,
+     "f": 4,
+     "c": 0,
+     "p": 15
+    },
+    {
+     "name": "Steak (no cheese)",
+     "serving": "71 g",
+     "cal": 110,
+     "f": 5,
+     "c": 2,
+     "p": 17
+    },
+    {
+     "name": "Subway Club Meats (Turkey, Ham, Roast Beef)",
+     "serving": "92 g",
+     "cal": 100,
+     "f": 3,
+     "c": 3,
+     "p": 17
+    },
+    {
+     "name": "Tuna",
+     "serving": "74 g",
+     "cal": 250,
+     "f": 23,
+     "c": 0,
+     "p": 12
+    },
+    {
+     "name": "Veggie Patty",
+     "serving": "85 g",
+     "cal": 170,
+     "f": 9,
+     "c": 17,
+     "p": 6
+    },
+    {
+     "name": "Chocolate Chip Cookie",
+     "serving": "45 g",
+     "cal": 210,
+     "f": 10,
+     "c": 30,
+     "p": 2
+    },
+    {
+     "name": "Double Chocolate Cookie",
+     "serving": "45 g",
+     "cal": 210,
+     "f": 9,
+     "c": 29,
+     "p": 2
+    },
+    {
+     "name": "Oatmeal Raisin Cookie",
+     "serving": "45 g",
+     "cal": 200,
+     "f": 8,
+     "c": 30,
+     "p": 3
+    },
+    {
+     "name": "Naturally Flavored Raspberry Cheesecake Cookie",
+     "serving": "45 g",
+     "cal": 210,
+     "f": 9,
+     "c": 29,
+     "p": 2
+    },
+    {
+     "name": "White Chip Macadamia Nut Cookie",
+     "serving": "45 g",
+     "cal": 210,
+     "f": 10,
+     "c": 28,
+     "p": 2
+    },
+    {
+     "name": "Applesauce",
+     "serving": "90 g",
+     "cal": 70,
+     "f": 0,
+     "c": 16,
+     "p": 0
+    },
+    {
+     "name": "Hash Browns",
+     "serving": "108 g",
+     "cal": 190,
+     "f": 9,
+     "c": 24,
+     "p": 3
+    },
+    {
+     "name": "Broccoli Cheddar",
+     "serving": "227 g",
+     "cal": 200,
+     "f": 13,
+     "c": 16,
+     "p": 9
+    },
+    {
+     "name": "Chicken Noodle",
+     "serving": "227 g",
+     "cal": 70,
+     "f": 3,
+     "c": 6,
+     "p": 7
+    },
+    {
+     "name": "Loaded Baked Potato with Bacon",
+     "serving": "227 g",
+     "cal": 200,
+     "f": 14,
+     "c": 17,
+     "p": 9
+    }
+   ]
   }
  },
  "status": {
   "chickfila": "ok: 369 items",
   "dunkin": "ok: 826 items",
   "mcdonalds": "ok: 226 items",
-  "subway": "FAILED (kept previous data): fetch failed",
+  "subway": "ok: 200 items",
   "wendys": "ok: 217 items"
  }
 }

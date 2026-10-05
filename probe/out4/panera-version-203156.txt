@@ -1,1 +1,0 @@
-{"errorCode":"ms.nodatafound","errorMessage":"Could not find any data for: VersionControlAggregate, Query: { \"pkid.cafeId\" : 203156, \"pkid.busUnit\" : \"RETAIL\", \"pkid.effectiveDate\" : { \"$lte\" : { \"$java\" : 2026-10-04T23:54:44.585988022Z } } }, Fields: {}, Sort: { \"pkid.effectiveDate\" : -1} for /menu/aggregateVersion/203156"}

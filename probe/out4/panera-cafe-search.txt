@@ -1,1 +1,0 @@
-{"deliveryUnavailable":true,"cafeList":[]}

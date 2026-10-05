@@ -18,7 +18,14 @@ async function fetchText(url, headers = {}) {
   return res.text();
 }
 async function pdfText(url) {
-  const res = await fetch(url, { headers: HEADERS });
+  // A few retries: some PDF hosts drop the occasional connection.
+  let res, err;
+  for (let attempt = 0; attempt < 4 && !res; attempt++) {
+    try {
+      res = await fetch(url, { headers: { ...HEADERS, Accept: 'application/pdf,*/*', 'sec-ch-ua': '"Chromium";v="126", "Google Chrome";v="126", "Not-A.Brand";v="99"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"macOS"' } });
+    } catch (e) { err = e; await new Promise(r => setTimeout(r, 3000 * (attempt + 1))); }
+  }
+  if (!res) throw new Error(`${err.message} (${err.cause && (err.cause.code || err.cause.message)}) for ${url}`);
   if (!res.ok) throw new Error(`${res.status} for ${url}`);
   const file = join(tmpdir(), `nutrition-${Date.now()}.pdf`);
   await writeFile(file, Buffer.from(await res.arrayBuffer()));

@@ -32,3 +32,10 @@ The barcode reader is bundled in `vendor/` (barcode-detector + zxing-wasm, MIT).
 Actions → Update cafeteria menu → Run workflow). It pulls North Providence High School's
 breakfast and lunch menus with nutrition from Nutrislice and merges them into
 `cafeteria.json`. The Log food form autocompletes from favorites, saved barcodes and this library.
+
+## Restaurant library
+`.github/workflows/restaurants.yml` runs `scripts/update-restaurants.mjs` every Sunday (or via
+Actions → Update restaurant nutrition → Run workflow). It pulls official nutrition info into
+`restaurants.json` for Chick-fil-A, Dunkin', McDonald's, Subway and Wendy's (Wendy's carbs are
+estimated from calories, protein and fat). Each chain keeps its last good data if its source fails;
+`restaurants.json` → `status` shows how the last run went.

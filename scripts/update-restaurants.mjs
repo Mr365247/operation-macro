@@ -74,9 +74,10 @@ async function dunkin() {
 
 /* ---------------- McDonald's: nutrition calculator data ---------------- */
 // Some sites only answer requests that look like a full browser visit.
+const CLIENT_HINTS = { 'sec-ch-ua': '"Chromium";v="126", "Google Chrome";v="126", "Not-A.Brand";v="99"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"macOS"' };
 const BROWSER = {
-  'sec-ch-ua': '"Chromium";v="126", "Google Chrome";v="126", "Not-A.Brand";v="99"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"macOS"',
-  'Sec-Fetch-Dest': 'document', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-Site': 'none', 'Upgrade-Insecure-Requests': '1',
+  ...CLIENT_HINTS, 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8', 'Accept-Encoding': 'gzip, deflate, br',
+  'Sec-Fetch-Dest': 'document', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-User': '?1', 'Upgrade-Insecure-Requests': '1',
 };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 async function mcdonalds() {
@@ -91,26 +92,31 @@ async function mcdonalds() {
     for (const sz of prod.sizes || []) if (sz.itemId) ids.add(sz.itemId);
   }
   const items = [];
+  let lastErr = '';
   for (const id of ids) {
     try {
       const j = JSON.parse(await fetchText(`https://www.mcdonalds.com/dnaapp/itemDetails?country=US&language=en&showLiveData=true&item=${id}`,
-        { Accept: 'application/json, text/plain, */*', Referer: calc }));
+        { ...CLIENT_HINTS, Accept: 'application/json, text/plain, */*', Referer: calc }));
       const it = j.item;
       const nut = {};
       for (const n of (it.nutrient_facts && it.nutrient_facts.nutrient) || []) nut[n.nutrient_name_id] = num(n.value);
       const serving = typeof it.serving_size_imperial === 'string' ? it.serving_size_imperial : '';
       items.push({ name: clean(it.item_name || it.item_marketing_name), serving, cal: nut.calories, f: nut.fat, c: nut.carbohydrate, p: nut.protein });
-    } catch (e) { /* skip one bad item */ }
+    } catch (e) { lastErr = e.message; /* skip one bad item */ }
     await sleep(120); // be polite
   }
+  if (!items.length) throw new Error(`no item details loaded (${ids.size} ids; last error: ${lastErr})`);
   return items;
 }
 
 /* ---------------- Subway: official U.S. Nutrition Information PDF ---------------- */
 async function subway() {
-  const page = await fetchText('https://www.subway.com/en-us/menunutrition/nutrition', BROWSER);
-  const pdf = (page.match(/https:\/\/media\.subway\.com\/[^"'\s]+us-nutrition-en\.pdf/i) || [])[0];
-  if (!pdf) throw new Error('nutrition PDF link not found');
+  // Find the current PDF link on the nutrition page; if that page won't load, use the last known link.
+  let pdf = 'https://media.subway.com/dam/urn:aaid:aem:f20a4541-8c88-496b-940d-4aa8318cae26/original/as/us-nutrition-en.pdf';
+  try {
+    const page = await fetchText('https://www.subway.com/en-us/menunutrition/nutrition', BROWSER);
+    pdf = (page.match(/https:\/\/media\.subway\.com\/[^"'\s]+us-nutrition-en\.pdf/i) || [])[0] || pdf;
+  } catch { /* fall back to the known link */ }
   const text = await pdfText(pdf);
   const isNum = t => /^<?\d+(\.\d+)?$/.test(t);
   // Sections print each item again as a wrap, salad, bowl or pocket; tag the name so they stay distinct.

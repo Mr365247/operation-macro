@@ -398,3 +398,12 @@ input:focus { border-color: var(--pro); }
 .photo-panel .btn-row { margin-top: 8px; }
 .ai-form { display: flex; gap: 8px; }
 .ai-form input { flex: 1; min-width: 0; font-size: 16px; }
+
+/* ---------- Sunday weigh-in lock ---------- */
+.weighin { position: fixed; inset: 0; z-index: 44; background: var(--bg); overflow-y: auto; }
+.weighin-inner { max-width: 420px; margin: 0 auto; padding: calc(env(safe-area-inset-top, 0px) + 60px) 24px calc(var(--safe-b) + 24px); text-align: center; }
+.weighin-icon { font-size: 64px; }
+.weighin h2 { font-size: 28px; margin: 8px 0; }
+.weighin .field { text-align: left; margin-top: 18px; }
+.weighin input { font-size: 28px; text-align: center; }
+.check small { font-weight: 500; font-size: 13px; }

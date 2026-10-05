@@ -112,6 +112,7 @@
           <label class="field"><span>Current (lbs)</span><input id="s-weight" type="number" inputmode="decimal" step="0.1" min="0" required></label>
           <label class="field"><span>Goal (lbs)</span><input id="s-goal" type="number" inputmode="decimal" step="0.1" min="0" required></label>
         </div>
+        <label class="check"><input type="checkbox" id="s-sunday"> <span>Sunday weigh-in lock<br><small class="muted">On Sundays, enter your weight to open the app</small></span></label>
         <button class="btn primary block" type="submit">Save settings</button>
       </form>
 
@@ -213,6 +214,18 @@
         <button class="btn danger" type="button" id="sheet-delete">Delete</button>
         <button class="btn" type="button" id="sheet-cancel">Cancel</button>
       </div>
+    </form>
+  </div>
+
+  <!-- Sunday weigh-in lock -->
+  <div class="weighin" id="weighin" hidden>
+    <form class="weighin-inner" id="weighin-form" autocomplete="off" novalidate>
+      <div class="weighin-icon">⚖️</div>
+      <h2>Sunday weigh-in</h2>
+      <p class="muted">Step on the scale, then enter today's weight to unlock Operation Macro.</p>
+      <p class="small" id="weighin-last"></p>
+      <label class="field unit"><input id="weighin-input" type="number" inputmode="decimal" step="0.1" placeholder="Today's weight"><em>lbs</em></label>
+      <button class="btn primary block big" type="submit">Unlock</button>
     </form>
   </div>
 

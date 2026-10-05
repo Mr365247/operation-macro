@@ -3,7 +3,7 @@
 /* ================= Data ================= */
 
 const STORE_KEY = 'opmacro_v1';
-const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225 };
+const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
 const MACROS = [
   { k: 'cal', t: 'cal',     label: 'Calories', short: 'Cal',  unit: '',  cls: 'cal',  color: 'var(--cal)' },
@@ -169,6 +169,7 @@ function render() {
   if (view === 'history') renderHistory();
   if (view === 'list') renderList();
   if (view === 'settings') renderSettings();
+  checkWeighin();
 }
 
 function ringHTML(m, eaten, target) {
@@ -535,6 +536,7 @@ function renderSettings() {
   $('#s-cal').value = s.cal; $('#s-protein').value = s.protein;
   $('#s-carbs').value = s.carbs; $('#s-fat').value = s.fat;
   $('#s-weight').value = s.weight; $('#s-goal').value = s.goalWeight;
+  $('#s-sunday').checked = s.sundayLock !== false;
   renderAiSettings();
   $('#last-backup').textContent = lastBackupText();
 }
@@ -1328,6 +1330,35 @@ function aiErrorMessage(e) {
   return (e && e.message) || 'Something went wrong. Try again.';
 }
 
+/* ================= Sunday weigh-in lock ================= */
+// On Sundays the app stays locked until today's weight is entered.
+function weighinDue() {
+  return state.settings.sundayLock !== false && !state.needsSetup &&
+    parseKey(today).getDay() === 0 && state.weights[today] == null;
+}
+function checkWeighin() {
+  const due = weighinDue();
+  $('#weighin').hidden = !due;
+  if (!due) return;
+  const last = sortedWeights().pop();
+  $('#weighin-last').textContent = last ? `Last weigh-in: ${fmt1(last.w)} lbs (${dayLabel(last.k)})` : '';
+}
+$('#weighin-form').addEventListener('submit', ev => {
+  ev.preventDefault();
+  const w = parseFloat($('#weighin-input').value);
+  if (!(w >= 50 && w <= 1000)) { $('#weighin-input').focus(); return; }
+  const prev = sortedWeights().pop();
+  state.weights[today] = Math.round(w * 10) / 10;
+  syncCurrentWeight();
+  save();
+  $('#weighin-input').value = ''; $('#weighin-input').blur();
+  render();
+  const diff = prev ? Math.round((w - prev.w) * 10) / 10 : 0;
+  const toGo = Math.round((w - state.settings.goalWeight) * 10) / 10;
+  const change = !prev ? 'Weigh-in logged' : diff < 0 ? `Down ${fmt1(-diff)} lbs since last weigh-in 💪` : diff > 0 ? `Up ${fmt1(diff)} lbs since last weigh-in` : 'Same as last weigh-in';
+  toast(toGo > 0 ? `${change} · ${fmt1(toGo)} to go` : `${change} · Goal reached 🎯`);
+});
+
 /* ================= HOORAH ================= */
 
 function checkHoorah() {
@@ -1447,7 +1478,7 @@ $('#settings-form').addEventListener('submit', ev => {
   ev.preventDefault();
   const v = id => parseFloat($(id).value);
   const s = state.settings;
-  Object.assign(s, { cal: v('#s-cal'), protein: v('#s-protein'), carbs: v('#s-carbs'), fat: v('#s-fat'), goalWeight: v('#s-goal') });
+  Object.assign(s, { cal: v('#s-cal'), protein: v('#s-protein'), carbs: v('#s-carbs'), fat: v('#s-fat'), goalWeight: v('#s-goal'), sundayLock: $('#s-sunday').checked });
   const w = v('#s-weight');
   if (w > 0 && w !== s.weight) { state.weights[today] = w; syncCurrentWeight(); }
   if (state.days[today]) todayDay();

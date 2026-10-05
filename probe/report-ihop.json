@@ -1,0 +1,38 @@
+[
+ {
+  "url": "https://www.ihop.com/en/nutrition",
+  "status": 403,
+  "finalUrl": "https://www.ihop.com/en/nutrition",
+  "type": "text/html; charset=UTF-8",
+  "bytes": 4543,
+  "saved": "probe/ihop/0.html",
+  "links": []
+ },
+ {
+  "url": "https://www.ihop.com/en/menu",
+  "status": 403,
+  "finalUrl": "https://www.ihop.com/en/menu",
+  "type": "text/html; charset=UTF-8",
+  "bytes": 4543,
+  "saved": "probe/ihop/1.html",
+  "links": []
+ },
+ {
+  "url": "https://www.ihop.com/en/nutrition-calculator",
+  "status": 403,
+  "finalUrl": "https://www.ihop.com/en/nutrition-calculator",
+  "type": "text/html; charset=UTF-8",
+  "bytes": 4543,
+  "saved": "probe/ihop/2.html",
+  "links": []
+ },
+ {
+  "url": "https://www.ihop.com/-/media/ihop/files/ihop-nutrition-faq.pdf",
+  "status": 403,
+  "finalUrl": "https://www.ihop.com/-/media/ihop/files/ihop-nutrition-faq.pdf",
+  "type": "text/html; charset=UTF-8",
+  "bytes": 4543,
+  "saved": "probe/ihop/3.html",
+  "links": []
+ }
+]

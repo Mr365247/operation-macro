@@ -1,10 +1,10 @@
 // Offline cache for the app shell. Bump VERSION whenever you change a file
 // so phones pick up the new copy.
-const VERSION = 'opmacro-v14';
+const VERSION = 'opmacro-v15';
 const FILES = [
   './', './index.html', './style.css', './app.js', './manifest.json',
   './icons/icon-192.png', './icons/icon-512.png', './icons/maskable-512.png', './icons/apple-touch-icon.png',
-  './vendor/barcode-detector.js', './vendor/zxing_reader.wasm'
+  './vendor/barcode-detector.js', './vendor/zxing_reader.wasm', './vendor/anthropic-sdk.js'
 ];
 
 self.addEventListener('install', e => {

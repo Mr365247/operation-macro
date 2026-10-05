@@ -39,3 +39,9 @@ Actions → Update restaurant nutrition → Run workflow). It pulls official nut
 `restaurants.json` for Chick-fil-A, Dunkin', McDonald's, Subway and Wendy's (Wendy's carbs are
 estimated from calories, protein and fat). Each chain keeps its last good data if its source fails;
 `restaurants.json` → `status` shows how the last run went.
+
+## Photo estimates
+Log food → 📸 Photo sends a downscaled photo (plus an optional note) to Claude using the
+official Anthropic SDK, bundled at `vendor/anthropic-sdk.js` (see `vendor/anthropic-sdk.version`).
+Each person pastes their own Anthropic API key in Settings; it is kept in its own localStorage
+slot on the phone, never committed and never included in backups. Results fill the form for review.

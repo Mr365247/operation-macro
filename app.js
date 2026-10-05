@@ -535,6 +535,7 @@ function renderSettings() {
   $('#s-cal').value = s.cal; $('#s-protein').value = s.protein;
   $('#s-carbs').value = s.carbs; $('#s-fat').value = s.fat;
   $('#s-weight').value = s.weight; $('#s-goal').value = s.goalWeight;
+  renderAiSettings();
   $('#last-backup').textContent = lastBackupText();
 }
 
@@ -567,7 +568,7 @@ function openSheet(mode, item, prefill) {
   $('#sheet-delete').hidden = !item;
   $('#backdrop').hidden = false;
   resetScanState();
-  $('#scan-food').hidden = mode === 'entry';
+  $('#capture-row').hidden = mode === 'entry';
   if (!item) (prefill ? $('#in-cal') : $('#in-name')).focus();
 }
 function closeSheet() { $('#backdrop').hidden = true; sheet = null; document.activeElement.blur(); }
@@ -782,6 +783,8 @@ let servings = 1, perServing = null; // macros for ONE serving while a barcode i
 
 function resetScanState() {
   servings = 1; perServing = null;
+  photoData = null;
+  $('#photo-panel').hidden = true;
   $('#suggest').hidden = true;
   $('#serving-row').hidden = true;
   $('#scan-note').hidden = true;
@@ -1154,6 +1157,175 @@ function copyDayToToday(k) {
     d.entries = d.entries.filter(e => !ids.has(e.id));
     save(); render();
   });
+}
+
+/* ================= Photo estimates (Claude) ================= */
+// The API key lives in its own storage slot so it never ends up in an exported backup.
+const AI_KEY_SLOT = 'opmacro_ai_key';
+const AI_MODEL = 'claude-opus-5-5';
+const getAiKey = () => { try { return localStorage.getItem(AI_KEY_SLOT) || ''; } catch (e) { return ''; } };
+let photoData = null; // base64 JPEG of the chosen photo
+
+function renderAiSettings() {
+  const key = getAiKey();
+  $('#ai-status').textContent = key ? `✅ Key saved on this phone (…${key.slice(-4)})` : 'No key yet. Photo estimates are off.';
+  $('#ai-remove').hidden = !key;
+}
+$('#ai-form').addEventListener('submit', ev => {
+  ev.preventDefault();
+  const key = $('#ai-key').value.trim();
+  if (!/^sk-ant-/.test(key)) { toast("That doesn't look like an Anthropic key (it starts with sk-ant-)"); return; }
+  try { localStorage.setItem(AI_KEY_SLOT, key); } catch (e) { toast('Could not save the key on this phone'); return; }
+  $('#ai-key').value = ''; $('#ai-key').blur();
+  renderAiSettings();
+  toast('Key saved. Photo estimates are on 📸');
+});
+$('#ai-remove').addEventListener('click', () => {
+  if (!confirm('Remove your Anthropic key from this phone?')) return;
+  try { localStorage.removeItem(AI_KEY_SLOT); } catch (e) { /* ignore */ }
+  renderAiSettings();
+  toast('Key removed');
+});
+
+// Shrink the photo before sending: faster upload, lower cost, plenty of detail for food.
+function loadImage(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error("Couldn't read that photo. Try another one."));
+    img.src = URL.createObjectURL(file);
+  });
+}
+async function photoToJpeg(file, max = 1024) {
+  const img = await loadImage(file);
+  const scale = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+  const canvas = document.createElement('canvas');
+  canvas.width = Math.round(img.naturalWidth * scale);
+  canvas.height = Math.round(img.naturalHeight * scale);
+  canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+  URL.revokeObjectURL(img.src);
+  return canvas.toDataURL('image/jpeg', 0.8);
+}
+
+$('#photo-food').addEventListener('click', () => {
+  if (!getAiKey()) { scanNote('📸 Add your Anthropic API key in Settings → Photo estimates to turn this on.'); return; }
+  $('#photo-input').value = '';
+  $('#photo-input').click();
+});
+$('#photo-input').addEventListener('change', async () => {
+  const file = $('#photo-input').files[0];
+  $('#photo-input').value = ''; // so picking the same photo again still counts
+  if (!file || !sheet) return;
+  try {
+    const url = await photoToJpeg(file);
+    photoData = url.split(',')[1];
+    $('#photo-preview').src = url;
+    $('#photo-note').value = '';
+    $('#photo-panel').hidden = false;
+    scanNote('Add a note about portions if you like, then tap Estimate.');
+  } catch (e) { scanNote(e.message); }
+});
+$('#photo-cancel').addEventListener('click', () => { photoData = null; $('#photo-panel').hidden = true; scanNote(''); });
+$('#photo-go').addEventListener('click', estimatePhoto);
+
+const ESTIMATE_SCHEMA = {
+  type: 'object', additionalProperties: false,
+  required: ['name', 'items', 'total', 'confidence', 'notes'],
+  properties: {
+    name: { type: 'string', description: 'Short name for the meal, e.g. "Grilled chicken, rice and broccoli"' },
+    items: {
+      type: 'array',
+      items: {
+        type: 'object', additionalProperties: false, required: ['food', 'portion', 'cal', 'p', 'c', 'f'],
+        properties: {
+          food: { type: 'string' }, portion: { type: 'string', description: 'Estimated amount, e.g. "6 oz" or "1 cup"' },
+          cal: { type: 'number' }, p: { type: 'number' }, c: { type: 'number' }, f: { type: 'number' },
+        },
+      },
+    },
+    total: {
+      type: 'object', additionalProperties: false, required: ['cal', 'p', 'c', 'f'],
+      properties: { cal: { type: 'number' }, p: { type: 'number' }, c: { type: 'number' }, f: { type: 'number' } },
+    },
+    confidence: { type: 'string', enum: ['low', 'medium', 'high'] },
+    notes: { type: 'string', description: 'One short sentence on assumptions, e.g. hidden oil or sauce' },
+  },
+};
+const ESTIMATE_SYSTEM = 'You estimate nutrition from meal photos for a personal macro tracker. Identify each food, ' +
+  'estimate its portion from visual cues (plate size, utensils, hands, packaging), and give calories plus protein, ' +
+  'carbs and fat in grams for everything shown. Assume typical preparation, including visible oil, butter and sauces. ' +
+  'If the user adds a note about portions or ingredients, trust it over the photo. If the image does not show food, ' +
+  'return zeros, set confidence to low, and say so in notes.';
+
+async function estimatePhoto() {
+  if (!photoData || !sheet) return;
+  const btn = $('#photo-go');
+  btn.disabled = true; btn.textContent = 'Estimating…';
+  scanNote('📸 Looking at your food… this takes a few seconds.');
+  try {
+    await loadScript('vendor/anthropic-sdk.js');
+    const { Anthropic } = window.AnthropicSDK;
+    // Calls go straight from this phone to Anthropic with the user's own key; there is no server in between.
+    const client = new Anthropic({ apiKey: getAiKey(), dangerouslyAllowBrowser: true, maxRetries: 1 });
+    const note = $('#photo-note').value.trim();
+    const res = await client.beta.messages.create({
+      model: AI_MODEL,
+      max_tokens: 16000,
+      betas: ['server-side-fallback-2026-07-01'],
+      fallbacks: 'default',
+      output_config: { effort: 'medium', format: { type: 'json_schema', schema: ESTIMATE_SCHEMA } },
+      system: ESTIMATE_SYSTEM,
+      messages: [{
+        role: 'user',
+        content: [
+          { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: photoData } },
+          { type: 'text', text: note ? `Estimate the macros for this meal. Note from me: ${note}` : 'Estimate the macros for this meal.' },
+        ],
+      }],
+    });
+    if (res.stop_reason === 'refusal') throw new Error('refused');
+    const block = res.content.find(b => b.type === 'text');
+    if (!block) throw new Error('empty');
+    applyEstimate(JSON.parse(block.text));
+  } catch (e) {
+    scanNote(aiErrorMessage(e));
+  } finally {
+    btn.disabled = false; btn.textContent = 'Estimate macros';
+  }
+}
+
+function applyEstimate(est) {
+  if (!sheet) return; // form was closed while waiting
+  const r = (v, d) => Math.round((+v || 0) * d) / d;
+  $('#in-name').value = est.name || 'Photo meal';
+  sheet.code = null;
+  perServing = { cal: r(est.total.cal, 1), p: r(est.total.p, 10), c: r(est.total.c, 10), f: r(est.total.f, 10) };
+  setServings(1);
+  $('#serving-row').hidden = false;
+  $('#serving-info').textContent = '1 serving = what is in the photo';
+  $('#photo-panel').hidden = true;
+  const items = (est.items || []).map(i => `${i.food} (${i.portion})`).join(' · ');
+  scanNote(`📸 AI estimate, ${est.confidence} confidence: ${items}${est.notes ? '. ' + est.notes : ''} Check the numbers before logging.`);
+}
+
+// Most specific first: key problems, billing, rate limits, then connection, then anything else from the API.
+function aiErrorMessage(e) {
+  const A = window.AnthropicSDK && window.AnthropicSDK.Anthropic;
+  if (A) {
+    if (e instanceof A.AuthenticationError) return "🔑 Your API key wasn't accepted. Check it in Settings → Photo estimates.";
+    if (e instanceof A.PermissionDeniedError) return '🔑 That key does not have permission to use this model.';
+    if (e instanceof A.RateLimitError) return 'Too many requests right now. Wait a minute and try again.';
+    if (e instanceof A.BadRequestError) {
+      return /credit balance/i.test(e.message)
+        ? '💳 Your Anthropic account is out of credit. Add some at console.anthropic.com → Billing.'
+        : `The request was rejected: ${String(e.message).slice(0, 160)}`;
+    }
+    if (e instanceof A.APIConnectionError) return "Couldn't reach Anthropic. Check your internet connection.";
+    if (e instanceof A.APIError) return `Anthropic had a problem (${e.status}). Try again in a moment.`;
+  }
+  if (e && e.message === 'refused') return "The AI couldn't estimate this photo. Enter it by hand.";
+  if (e instanceof SyntaxError || (e && e.message === 'empty')) return 'Got an unreadable answer. Try again.';
+  return (e && e.message) || 'Something went wrong. Try again.';
 }
 
 /* ================= HOORAH ================= */

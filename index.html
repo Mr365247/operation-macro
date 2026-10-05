@@ -116,6 +116,17 @@
       </form>
 
       <div class="card">
+        <div class="card-head"><h3>📸 Photo estimates</h3></div>
+        <p class="muted small">Uses your own Anthropic API key (about 1–3¢ per photo). The key stays only on this phone and is never included in backups.</p>
+        <p class="small" id="ai-status"></p>
+        <form id="ai-form" class="ai-form" autocomplete="off">
+          <input id="ai-key" type="password" placeholder="Paste key (sk-ant-…)" autocomplete="off" autocapitalize="off" spellcheck="false">
+          <button class="btn primary" type="submit">Save</button>
+        </form>
+        <button class="btn danger block" type="button" id="ai-remove" hidden>Remove key</button>
+      </div>
+
+      <div class="card">
         <div class="card-head"><h3>Your data</h3></div>
         <p class="muted small">Everything lives only on this phone. The app reminds you to back up once a week. Save the file to iCloud Drive.</p>
         <p class="small" id="last-backup"></p>
@@ -165,7 +176,19 @@
     <form class="sheet" id="entry-form" autocomplete="off">
       <div class="grab"></div>
       <h2 id="sheet-title">Log food</h2>
-      <button class="btn block scan-btn" type="button" id="scan-food">📷 Scan barcode</button>
+      <div class="grid2 capture-row" id="capture-row">
+        <button class="btn scan-btn" type="button" id="scan-food">📷 Barcode</button>
+        <button class="btn scan-btn" type="button" id="photo-food">📸 Photo</button>
+      </div>
+      <input type="file" id="photo-input" accept="image/*" hidden>
+      <div class="photo-panel" id="photo-panel" hidden>
+        <img id="photo-preview" alt="Your food photo">
+        <input id="photo-note" type="text" placeholder="Optional: e.g. 8 oz chicken, 1 cup rice" autocomplete="off">
+        <div class="btn-row">
+          <button class="btn primary" type="button" id="photo-go">Estimate macros</button>
+          <button class="btn" type="button" id="photo-cancel">Cancel</button>
+        </div>
+      </div>
       <p class="scan-note" id="scan-note" hidden></p>
       <label class="field"><span>Food</span><input id="in-name" type="text" placeholder="Start typing, e.g. fajita" enterkeyhint="next" autocomplete="off" autocorrect="off"></label>
       <div class="suggest" id="suggest" hidden></div>

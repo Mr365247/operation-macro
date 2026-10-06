@@ -563,6 +563,7 @@ function openSheet(mode, item, prefill) {
   $('#sheet-title').textContent =
     mode === 'add' ? 'Log food' : mode === 'entry' ? 'Edit entry' : item ? 'Edit favorite' : 'New favorite';
   $('#sheet-save').textContent = mode === 'add' ? 'Log it' : 'Save';
+  $('#sheet-save').disabled = false;
   $('#in-name').value = src ? src.name : '';
   IN.forEach(k => { $('#in-' + k).value = src && src[k] != null ? +(+src[k]).toFixed(1) : ''; });
   $('#fav-row').hidden = mode === 'fav';
@@ -585,8 +586,36 @@ function readForm() {
   return data;
 }
 
-$('#entry-form').addEventListener('submit', ev => {
+// Typed a meal in the Food box but no numbers? Estimate it instead of logging zeros.
+function needsEstimate() {
+  if (!sheet || !$('#in-name').value.trim()) return false;
+  return IN.every(k => $('#in-' + k).value.trim() === '');
+}
+function updateSaveLabel() {
+  if (!sheet) return;
+  const estimate = needsEstimate() && getAiKey();
+  $('#sheet-save').textContent = estimate ? '✍️ Estimate macros' : sheet.mode === 'add' ? 'Log it' : 'Save';
+}
+$('#entry-form').addEventListener('input', updateSaveLabel);
+
+$('#entry-form').addEventListener('submit', async ev => {
   ev.preventDefault();
+  if (needsEstimate()) {
+    if (!getAiKey()) {
+      scanNote('Enter the calories or macros, or use 📷 Barcode, 📸 Photo or ✍️ Describe. (Photo and Describe need your API key in Settings.)');
+      $('#in-cal').focus();
+      return;
+    }
+    $('#in-name').blur();
+    const save = $('#sheet-save');
+    save.disabled = true; save.textContent = 'Estimating…';
+    photoData = null;
+    $('#photo-note').value = $('#in-name').value.trim();
+    await estimatePhoto();
+    save.disabled = false;
+    updateSaveLabel();
+    return;
+  }
   const data = readForm();
   if (!data) { $('#in-name').focus(); return; }
   const { mode, id, code } = sheet;
@@ -791,15 +820,17 @@ function resetScanState() {
   $('#serving-row').hidden = true;
   $('#scan-note').hidden = true;
   $('#in-servings').value = 1;
+  updateSaveLabel();
 }
 function setServings(v, fromInput) {
-  if (!(v > 0) || !perServing) return;
+  if (!(v > 0) || !perServing) { updateSaveLabel(); return; }
   servings = Math.round(v * 100) / 100;
   if (!fromInput) $('#in-servings').value = servings;
   IN.forEach(k => {
     const base = perServing[k];
     $('#in-' + k).value = base == null ? '' : +(base * servings).toFixed(k === 'cal' ? 0 : 1);
   });
+  updateSaveLabel();
 }
 function scanNote(text) { $('#scan-note').textContent = text; $('#scan-note').hidden = !text; }
 

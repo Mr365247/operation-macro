@@ -407,3 +407,10 @@ input:focus { border-color: var(--pro); }
 .weighin .field { text-align: left; margin-top: 18px; }
 .weighin input { font-size: 28px; text-align: center; }
 .check small { font-weight: 500; font-size: 13px; }
+.capture-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.capture-row .scan-btn { padding: 6px 4px; font-size: 15px; }
+.photo-panel textarea {
+  width: 100%; min-height: 64px; padding: 10px 14px; font: inherit; font-size: 17px; font-weight: 600; color: var(--text);
+  background: var(--card); border: 1.5px solid var(--line); border-radius: 12px; outline: none; resize: vertical;
+}
+.photo-panel textarea:focus { border-color: var(--pro); }

@@ -1170,7 +1170,7 @@ let photoData = null; // base64 JPEG of the chosen photo
 
 function renderAiSettings() {
   const key = getAiKey();
-  $('#ai-status').textContent = key ? `✅ Key saved on this phone (…${key.slice(-4)})` : 'No key yet. Photo estimates are off.';
+  $('#ai-status').textContent = key ? `✅ Key saved on this phone (…${key.slice(-4)})` : 'No key yet. Photo and Describe estimates are off.';
   $('#ai-remove').hidden = !key;
 }
 $('#ai-form').addEventListener('submit', ev => {
@@ -1222,10 +1222,23 @@ $('#photo-input').addEventListener('change', async () => {
     const url = await photoToJpeg(file);
     photoData = url.split(',')[1];
     $('#photo-preview').src = url;
+    $('#photo-preview').hidden = false;
     $('#photo-note').value = '';
+    $('#photo-note').placeholder = 'Optional: e.g. 8 oz chicken, 1 cup rice';
     $('#photo-panel').hidden = false;
     scanNote('Add a note about portions if you like, then tap Estimate.');
   } catch (e) { scanNote(e.message); }
+});
+// Describe a meal in words instead of a photo.
+$('#describe-food').addEventListener('click', () => {
+  if (!getAiKey()) { scanNote('✍️ Add your Anthropic API key in Settings → Photo estimates to turn this on.'); return; }
+  photoData = null;
+  $('#photo-preview').hidden = true;
+  $('#photo-note').value = '';
+  $('#photo-note').placeholder = 'e.g. 6 oz steak, 2 slices provolone, 1 torpedo roll';
+  $('#photo-panel').hidden = false;
+  scanNote('Describe what you ate, with amounts if you know them, then tap Estimate.');
+  $('#photo-note').focus();
 });
 $('#photo-cancel').addEventListener('click', () => { photoData = null; $('#photo-panel').hidden = true; scanNote(''); });
 $('#photo-go').addEventListener('click', estimatePhoto);
@@ -1253,23 +1266,25 @@ const ESTIMATE_SCHEMA = {
     notes: { type: 'string', description: 'One short sentence on assumptions, e.g. hidden oil or sauce' },
   },
 };
-const ESTIMATE_SYSTEM = 'You estimate nutrition from meal photos for a personal macro tracker. Identify each food, ' +
+const ESTIMATE_SYSTEM = 'You estimate nutrition from meal photos or written descriptions for a personal macro tracker. Identify each food, ' +
   'estimate its portion from visual cues (plate size, utensils, hands, packaging), and give calories plus protein, ' +
   'carbs and fat in grams for everything shown. Assume typical preparation, including visible oil, butter and sauces. ' +
-  'If the user adds a note about portions or ingredients, trust it over the photo. If the image does not show food, ' +
+  'If the user gives portions or ingredients in words, use them exactly and trust them over the photo; for a written ' +
+  'description with no amount, assume one typical serving. If there is no food to estimate, ' +
   'return zeros, set confidence to low, and say so in notes.';
 
 async function estimatePhoto() {
-  if (!photoData || !sheet) return;
+  const note = $('#photo-note').value.trim();
+  if (!sheet || (!photoData && !note)) { $('#photo-note').focus(); return; }
+  const fromPhoto = !!photoData;
   const btn = $('#photo-go');
   btn.disabled = true; btn.textContent = 'Estimating…';
-  scanNote('📸 Looking at your food… this takes a few seconds.');
+  scanNote(fromPhoto ? '📸 Looking at your food… this takes a few seconds.' : '✍️ Working out the macros… this takes a few seconds.');
   try {
     await loadScript('vendor/anthropic-sdk.js');
     const { Anthropic } = window.AnthropicSDK;
     // Calls go straight from this phone to Anthropic with the user's own key; there is no server in between.
     const client = new Anthropic({ apiKey: getAiKey(), dangerouslyAllowBrowser: true, maxRetries: 1 });
-    const note = $('#photo-note').value.trim();
     const res = await client.beta.messages.create({
       model: AI_MODEL,
       max_tokens: 16000,
@@ -1279,24 +1294,26 @@ async function estimatePhoto() {
       system: ESTIMATE_SYSTEM,
       messages: [{
         role: 'user',
-        content: [
+        content: fromPhoto ? [
           { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: photoData } },
           { type: 'text', text: note ? `Estimate the macros for this meal. Note from me: ${note}` : 'Estimate the macros for this meal.' },
+        ] : [
+          { type: 'text', text: `Estimate the macros for this meal: ${note}` },
         ],
       }],
     });
     if (res.stop_reason === 'refusal') throw new Error('refused');
     const block = res.content.find(b => b.type === 'text');
     if (!block) throw new Error('empty');
-    applyEstimate(JSON.parse(block.text));
+    applyEstimate(JSON.parse(block.text), fromPhoto);
   } catch (e) {
     scanNote(aiErrorMessage(e));
   } finally {
-    btn.disabled = false; btn.textContent = 'Estimate macros';
+    btn.disabled = false; btn.textContent = 'Estimate';
   }
 }
 
-function applyEstimate(est) {
+function applyEstimate(est, fromPhoto) {
   if (!sheet) return; // form was closed while waiting
   const r = (v, d) => Math.round((+v || 0) * d) / d;
   $('#in-name').value = est.name || 'Photo meal';
@@ -1304,10 +1321,10 @@ function applyEstimate(est) {
   perServing = { cal: r(est.total.cal, 1), p: r(est.total.p, 10), c: r(est.total.c, 10), f: r(est.total.f, 10) };
   setServings(1);
   $('#serving-row').hidden = false;
-  $('#serving-info').textContent = '1 serving = what is in the photo';
+  $('#serving-info').textContent = fromPhoto ? '1 serving = what is in the photo' : '1 serving = what you described';
   $('#photo-panel').hidden = true;
   const items = (est.items || []).map(i => `${i.food} (${i.portion})`).join(' · ');
-  scanNote(`📸 AI estimate, ${est.confidence} confidence: ${items}${est.notes ? '. ' + est.notes : ''} Check the numbers before logging.`);
+  scanNote(`${fromPhoto ? '📸' : '✍️'} AI estimate, ${est.confidence} confidence: ${items}${est.notes ? '. ' + est.notes : ''} Check the numbers before logging.`);
 }
 
 // Most specific first: key problems, billing, rate limits, then connection, then anything else from the API.

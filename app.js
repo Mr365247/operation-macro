@@ -232,6 +232,7 @@ function renderToday() {
   else if (has) status = `<div class="status">Need <b>${fmt(proLeft)} g protein</b> in <b>${fmt(calLeft)} cal</b>.</div>`;
   else status = '<div class="status">Log your first meal to start today\'s mission.</div>';
   $('#status').innerHTML = status;
+  $('#gap-open').hidden = !(calLeft > 0 && proLeft > 0);
 
   const favs = [...state.favorites].sort((a, b) => (b.uses || 0) - (a.uses || 0));
   $('#quick-wrap').hidden = !favs.length;
@@ -1304,6 +1305,13 @@ const ESTIMATE_SYSTEM = 'You estimate nutrition from meal photos or written desc
   'description with no amount, assume one typical serving. If there is no food to estimate, ' +
   'return zeros, set confidence to low, and say so in notes.';
 
+// Calls go straight from this phone to Anthropic with the user's own key; there is no server in between.
+async function aiClient() {
+  await loadScript('vendor/anthropic-sdk.js');
+  const { Anthropic } = window.AnthropicSDK;
+  return new Anthropic({ apiKey: getAiKey(), dangerouslyAllowBrowser: true, maxRetries: 1 });
+}
+
 async function estimatePhoto() {
   const note = $('#photo-note').value.trim();
   if (!sheet || (!photoData && !note)) { $('#photo-note').focus(); return; }
@@ -1312,10 +1320,7 @@ async function estimatePhoto() {
   btn.disabled = true; btn.textContent = 'Estimating…';
   scanNote(fromPhoto ? '📸 Looking at your food… this takes a few seconds.' : '✍️ Working out the macros… this takes a few seconds.');
   try {
-    await loadScript('vendor/anthropic-sdk.js');
-    const { Anthropic } = window.AnthropicSDK;
-    // Calls go straight from this phone to Anthropic with the user's own key; there is no server in between.
-    const client = new Anthropic({ apiKey: getAiKey(), dangerouslyAllowBrowser: true, maxRetries: 1 });
+    const client = await aiClient();
     const res = await client.beta.messages.create({
       model: AI_MODEL,
       max_tokens: 16000,
@@ -1405,6 +1410,139 @@ $('#weighin-form').addEventListener('submit', ev => {
   const toGo = Math.round((w - state.settings.goalWeight) * 10) / 10;
   const change = !prev ? 'Weigh-in logged' : diff < 0 ? `Down ${fmt1(-diff)} lbs since last weigh-in 💪` : diff > 0 ? `Up ${fmt1(diff)} lbs since last weigh-in` : 'Same as last weigh-in';
   toast(toGo > 0 ? `${change} · ${fmt1(toGo)} to go` : `${change} · Goal reached 🎯`);
+});
+
+/* ================= What should I eat? ================= */
+
+function remaining() {
+  const t = totals(today), g = state.settings;
+  return { cal: g.cal - t.cal, p: g.protein - t.p, c: g.carbs - t.c, f: g.fat - t.f };
+}
+
+// Rank the foods we already know (favorites, scans, restaurants, school menu) by how well one
+// serving closes the gap: protein shortfall and going over calories/carbs/fat both count against it.
+function localGapPicks(rem, n = 6) {
+  const pool = [
+    ...state.favorites.map(f => ({ ...f, src: 'fav' })),
+    ...Object.values(state.barcodes).map(b => ({ ...b, src: 'scan' })),
+    ...restaurants.map(i => ({ ...i, src: 'rest' })),
+    ...cafeteria.map(i => ({ ...i, src: 'school' })),
+  ].filter(i => i.name && i.cal > 0 && i.cal <= rem.cal + 25 && (i.p || 0) > 0);
+  const over = (val, left, scale) => Math.max(0, val - Math.max(left, 0)) / scale;
+  const seen = new Set();
+  return pool.map(i => {
+    const pShort = Math.max(0, rem.p - (i.p || 0)) / Math.max(rem.p, 1);
+    const score = pShort + over(i.cal, rem.cal, 200) + over(i.c || 0, rem.c, 20) + over(i.f || 0, rem.f, 10)
+      + { fav: -0.08, scan: -0.05, school: 0, rest: 0.02 }[i.src];
+    return { ...i, score };
+  }).sort((a, b) => a.score - b.score)
+    .filter(i => { const k = i.name.toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true; })
+    .slice(0, n);
+}
+
+function gapItemHTML(i, attr) {
+  const tag = { fav: '⭐', scan: '📷', rest: '🍔', school: '🏫', ai: '✨' }[i.src] || '';
+  const extra = i.portion ? `${esc(i.portion)} · ` : '';
+  return `<button class="gap-item" type="button" ${attr}><b>${tag} ${esc(i.name)}</b>
+    <small>${extra}${fmt(i.cal)} cal · P ${fmt1(i.p || 0)} · C ${fmt1(i.c || 0)} · F ${fmt1(i.f || 0)}</small>
+    ${i.why ? `<small>${esc(i.why)}</small>` : ''}</button>`;
+}
+
+let gapLocal = [], gapIdeas = [];
+function openGap() {
+  const rem = remaining();
+  $('#gap-left').innerHTML = [['cal', 'Calories', ''], ['p', 'Protein', 'g'], ['c', 'Carbs', 'g'], ['f', 'Fat', 'g']]
+    .map(([k, label, u]) => `<div><b>${fmt(Math.max(0, rem[k]))}${u}</b><span>${label} left</span></div>`).join('');
+  gapLocal = localGapPicks(rem);
+  $('#gap-local').innerHTML = gapLocal.length
+    ? gapLocal.map((i, n) => gapItemHTML(i, `data-gap-local="${n}"`)).join('')
+    : '<div class="empty">Nothing in your saved foods fits what\'s left. Try the ideas below.</div>';
+  gapIdeas = [];
+  $('#gap-ai').innerHTML = '';
+  $('#gap-note').hidden = true;
+  $('#gap-ai-btn').hidden = false;
+  $('#gap-ai-btn').disabled = false;
+  $('#gap-ai-btn').textContent = getAiKey() ? '✨ Get meal ideas' : '✨ Meal ideas (add your API key in Settings)';
+  $('#gap-backdrop').hidden = false;
+}
+function closeGap() { $('#gap-backdrop').hidden = true; }
+
+const GAP_SCHEMA = {
+  type: 'object', additionalProperties: false, required: ['summary', 'ideas'],
+  properties: {
+    summary: { type: 'string', description: 'One short sentence about the best approach for what is left' },
+    ideas: {
+      type: 'array',
+      items: {
+        type: 'object', additionalProperties: false, required: ['name', 'portion', 'why', 'cal', 'p', 'c', 'f'],
+        properties: {
+          name: { type: 'string' }, portion: { type: 'string' }, why: { type: 'string', description: 'Why it fits, under 12 words' },
+          cal: { type: 'number' }, p: { type: 'number' }, c: { type: 'number' }, f: { type: 'number' },
+        },
+      },
+    },
+  },
+};
+
+async function gapIdeasFromClaude() {
+  if (!getAiKey()) { setView('settings'); closeGap(); toast('Add your Anthropic API key under Photo estimates'); return; }
+  const rem = remaining();
+  const btn = $('#gap-ai-btn');
+  btn.disabled = true; btn.textContent = '✨ Thinking…';
+  const usual = [...state.favorites].sort((a, b) => (b.uses || 0) - (a.uses || 0)).slice(0, 25)
+    .map(f => `${f.name} (${fmt(f.cal)} cal, P${fmt1(f.p)} C${fmt1(f.c)} F${fmt1(f.f)})`).join('; ');
+  try {
+    const client = await aiClient();
+    const res = await client.beta.messages.create({
+      model: AI_MODEL,
+      max_tokens: 16000,
+      betas: ['server-side-fallback-2026-07-01'],
+      fallbacks: 'default',
+      output_config: { effort: 'low', format: { type: 'json_schema', schema: GAP_SCHEMA } },
+      system: 'You suggest foods for a personal macro tracker. Given what is left of the day\'s targets, suggest 3 to 4 ' +
+        'simple, realistic options (a single food or a quick meal) with specific portions that get as close as possible to ' +
+        'the remaining protein without going over the remaining calories, and keep carbs and fat within what is left. ' +
+        'Favor lean, high-protein foods and things the person already eats when they fit. Use standard nutrition values. ' +
+        'If the remaining numbers are hard to hit exactly, say so in the summary and give the closest options.',
+      messages: [{ role: 'user', content:
+        `Left for today: ${fmt(Math.max(0, rem.cal))} calories, ${fmt(Math.max(0, rem.p))} g protein, ` +
+        `${fmt(Math.max(0, rem.c))} g carbs, ${fmt(Math.max(0, rem.f))} g fat.` +
+        (usual ? ` Foods I eat often: ${usual}.` : '') }],
+    });
+    if (res.stop_reason === 'refusal') throw new Error('refused');
+    const block = res.content.find(b => b.type === 'text');
+    if (!block) throw new Error('empty');
+    const out = JSON.parse(block.text);
+    gapIdeas = (out.ideas || []).map(i => ({ ...i, src: 'ai' }));
+    $('#gap-ai').innerHTML = gapIdeas.map((i, n) => gapItemHTML(i, `data-gap-ai="${n}"`)).join('');
+    $('#gap-note').textContent = `✨ ${out.summary} Estimates; check them before logging.`;
+    $('#gap-note').hidden = false;
+    btn.hidden = true;
+  } catch (e) {
+    $('#gap-note').textContent = aiErrorMessage(e);
+    $('#gap-note').hidden = false;
+    btn.disabled = false; btn.textContent = '✨ Try again';
+  }
+}
+
+function logGapPick(i) {
+  closeGap();
+  openSheet('add', null, { name: i.name, cal: i.cal, p: i.p || 0, c: i.c || 0, f: i.f || 0 });
+  perServing = { cal: i.cal, p: i.p || 0, c: i.c || 0, f: i.f || 0 };
+  setServings(1);
+  $('#serving-row').hidden = false;
+  $('#serving-info').textContent = i.portion ? `1 serving = ${i.portion}` : (i.serving ? `1 serving = ${i.serving}` : 'Per serving');
+  scanNote(i.src === 'ai' ? '🎯 Suggested to close your gap (estimate). Adjust if your portion differs.' : '🎯 Suggested to close your gap.');
+}
+
+$('#gap-open').addEventListener('click', openGap);
+$('#gap-close').addEventListener('click', closeGap);
+$('#gap-backdrop').addEventListener('click', ev => { if (ev.target.id === 'gap-backdrop') closeGap(); });
+$('#gap-ai-btn').addEventListener('click', gapIdeasFromClaude);
+$('#gap-sheet').addEventListener('click', ev => {
+  const l = ev.target.closest('[data-gap-local]'), a = ev.target.closest('[data-gap-ai]');
+  if (l) logGapPick(gapLocal[+l.dataset.gapLocal]);
+  if (a) logGapPick(gapIdeas[+a.dataset.gapAi]);
 });
 
 /* ================= HOORAH ================= */

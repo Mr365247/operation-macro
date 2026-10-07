@@ -37,6 +37,7 @@
       </div>
       <div class="rings" id="rings"></div>
       <div id="status"></div>
+      <button class="btn block gap-btn" type="button" id="gap-open" hidden>🎯 What should I eat?</button>
       <div id="quick-wrap">
         <h2 class="section-title">Quick log</h2>
         <div class="chips" id="quick"></div>
@@ -151,6 +152,22 @@
     <button data-view="history"><span>📈</span>History</button>
     <button data-view="settings"><span>⚙️</span>Settings</button>
   </nav>
+
+  <!-- What should I eat? -->
+  <div class="backdrop" id="gap-backdrop" hidden>
+    <div class="sheet" id="gap-sheet">
+      <div class="grab"></div>
+      <h2>What should I eat?</h2>
+      <div class="gap-left" id="gap-left"></div>
+      <h3 class="section-title">From your foods</h3>
+      <div class="list" id="gap-local"></div>
+      <h3 class="section-title">Ideas from Claude</h3>
+      <div class="list" id="gap-ai"></div>
+      <button class="btn block" type="button" id="gap-ai-btn">✨ Get meal ideas</button>
+      <p class="scan-note" id="gap-note" hidden></p>
+      <button class="btn block" type="button" id="gap-close">Close</button>
+    </div>
+  </div>
 
   <!-- Shopping item sheet -->
   <div class="backdrop" id="item-backdrop" hidden>

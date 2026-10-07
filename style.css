@@ -414,3 +414,16 @@ input:focus { border-color: var(--pro); }
   background: var(--card); border: 1.5px solid var(--line); border-radius: 12px; outline: none; resize: vertical;
 }
 .photo-panel textarea:focus { border-color: var(--pro); }
+
+/* ---------- What should I eat? ---------- */
+.gap-btn { margin-top: 10px; border-color: var(--good); color: var(--good); }
+.gap-left { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 4px; }
+.gap-left div { background: var(--bg); border-radius: 10px; padding: 8px 4px; text-align: center; }
+.gap-left b { display: block; font-size: 18px; font-variant-numeric: tabular-nums; }
+.gap-left span { font-size: 12px; color: var(--muted); }
+.gap-item { width: 100%; text-align: left; background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; }
+.gap-item:active { background: var(--card2); }
+.gap-item b { display: block; font-size: 16px; }
+.gap-item small { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+#gap-sheet .section-title { margin: 16px 2px 8px; }
+#gap-ai-btn { margin-top: 8px; }

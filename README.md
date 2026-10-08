@@ -40,6 +40,11 @@ Actions → Update restaurant nutrition → Run workflow). It pulls official nut
 estimated from calories, protein and fat). Each chain keeps its last good data if its source fails;
 `restaurants.json` → `status` shows how the last run went.
 
+Tropical Smoothie Cafe blocks automated downloads, so it comes from their nutrition-guide PDF
+(`data/tropical-smoothie-nutrition-guide.pdf`, dated 05/14/26). When a new guide comes out, replace
+that file and run `pip install pypdf && python3 scripts/import-tropical-smoothie.py
+data/tropical-smoothie-nutrition-guide.pdf`. The weekly workflow leaves this chain alone.
+
 ## Photo estimates
 Log food → 📸 Photo sends a downscaled photo (plus an optional note) to Claude using the
 official Anthropic SDK, bundled at `vendor/anthropic-sdk.js` (see `vendor/anthropic-sdk.version`).

@@ -14978,6 +14978,1026 @@
      "p": 9
     }
    ]
+  },
+  "tropicalsmoothie": {
+   "name": "Tropical Smoothie Cafe",
+   "aliases": [
+    "tropical smoothie",
+    "tsc",
+    "tropical"
+   ],
+   "source": "Nutrition guide PDF dated 05/14/26 (data/tropical-smoothie-nutrition-guide.pdf)",
+   "updated": "2026-10-08",
+   "items": [
+    {
+     "name": "Acai Berry Boost Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 470,
+     "f": 2,
+     "c": 114,
+     "p": 2
+    },
+    {
+     "name": "Acai Berry Boost Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 240,
+     "f": 2,
+     "c": 62,
+     "p": 2
+    },
+    {
+     "name": "Avocolada Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 580,
+     "f": 8,
+     "c": 114,
+     "p": 4
+    },
+    {
+     "name": "Avocolada Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 350,
+     "f": 8,
+     "c": 63,
+     "p": 4
+    },
+    {
+     "name": "Bahama Mama Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 520,
+     "f": 4.5,
+     "c": 119,
+     "p": 3
+    },
+    {
+     "name": "Bahama Mama Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 290,
+     "f": 4.5,
+     "c": 67,
+     "p": 3
+    },
+    {
+     "name": "Beach Bum (Chocolate Frappe) Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 540,
+     "f": 4,
+     "c": 128,
+     "p": 4
+    },
+    {
+     "name": "Beach Bum (Chocolate Frappe) Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 310,
+     "f": 4,
+     "c": 76,
+     "p": 4
+    },
+    {
+     "name": "Beach Bum (White Chocolate Frappe) Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 560,
+     "f": 5,
+     "c": 127,
+     "p": 4
+    },
+    {
+     "name": "Beach Bum (White Chocolate Frappe) Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 330,
+     "f": 5,
+     "c": 76,
+     "p": 4
+    },
+    {
+     "name": "Blimey Limey Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 510,
+     "f": 0,
+     "c": 127,
+     "p": 3
+    },
+    {
+     "name": "Blimey Limey Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 220,
+     "f": 0,
+     "c": 60,
+     "p": 3
+    },
+    {
+     "name": "Blueberry Bliss Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 340,
+     "f": 1,
+     "c": 85,
+     "p": 1
+    },
+    {
+     "name": "Blueberry Bliss Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 110,
+     "f": 1,
+     "c": 33,
+     "p": 1
+    },
+    {
+     "name": "Chia Banana Boost Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 680,
+     "f": 26,
+     "c": 111,
+     "p": 13
+    },
+    {
+     "name": "Chia Banana Boost Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 570,
+     "f": 26,
+     "c": 89,
+     "p": 13
+    },
+    {
+     "name": "Detox Island Green Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 210,
+     "f": 1,
+     "c": 53,
+     "p": 4
+    },
+    {
+     "name": "Island Green Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 430,
+     "f": 1,
+     "c": 110,
+     "p": 4
+    },
+    {
+     "name": "Island Green Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 200,
+     "f": 1,
+     "c": 48,
+     "p": 4
+    },
+    {
+     "name": "Jetty Punch Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 360,
+     "f": 0.5,
+     "c": 90,
+     "p": 2
+    },
+    {
+     "name": "Jetty Punch Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 130,
+     "f": 0.5,
+     "c": 38,
+     "p": 2
+    },
+    {
+     "name": "Kiwi Quencher Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 490,
+     "f": 0,
+     "c": 117,
+     "p": 3
+    },
+    {
+     "name": "Kiwi Quencher Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 260,
+     "f": 0,
+     "c": 66,
+     "p": 3
+    },
+    {
+     "name": "Mango Magic Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 450,
+     "f": 1,
+     "c": 113,
+     "p": 4
+    },
+    {
+     "name": "Mango Magic Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 220,
+     "f": 1,
+     "c": 62,
+     "p": 4
+    },
+    {
+     "name": "Mango Monsoon Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 540,
+     "f": 3,
+     "c": 133,
+     "p": 2
+    },
+    {
+     "name": "Mango Monsoon Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 310,
+     "f": 3,
+     "c": 82,
+     "p": 2
+    },
+    {
+     "name": "Mocha Madness Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 810,
+     "f": 6,
+     "c": 185,
+     "p": 9
+    },
+    {
+     "name": "Mocha Madness Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 580,
+     "f": 6,
+     "c": 134,
+     "p": 9
+    },
+    {
+     "name": "Paradise Point Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 420,
+     "f": 1,
+     "c": 106,
+     "p": 2
+    },
+    {
+     "name": "Paradise Point Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 190,
+     "f": 1,
+     "c": 54,
+     "p": 2
+    },
+    {
+     "name": "Peanut Butter Cup Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 680,
+     "f": 19,
+     "c": 128,
+     "p": 10
+    },
+    {
+     "name": "Peanut Butter Cup Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 450,
+     "f": 19,
+     "c": 76,
+     "p": 10
+    },
+    {
+     "name": "Peanut Paradise with Pea Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 730,
+     "f": 17,
+     "c": 112,
+     "p": 35
+    },
+    {
+     "name": "Peanut Paradise with Pea Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 500,
+     "f": 17,
+     "c": 61,
+     "p": 35
+    },
+    {
+     "name": "Peanut Paradise with Whey Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 700,
+     "f": 16,
+     "c": 115,
+     "p": 26
+    },
+    {
+     "name": "Peanut Paradise with Whey Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 470,
+     "f": 16,
+     "c": 63,
+     "p": 26
+    },
+    {
+     "name": "Pomegranate Plunge Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 540,
+     "f": 0,
+     "c": 135,
+     "p": 2
+    },
+    {
+     "name": "Pomegranate Plunge Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 310,
+     "f": 0,
+     "c": 83,
+     "p": 2
+    },
+    {
+     "name": "Sunshine Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 510,
+     "f": 1,
+     "c": 128,
+     "p": 4
+    },
+    {
+     "name": "Sunshine Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 280,
+     "f": 1,
+     "c": 76,
+     "p": 4
+    },
+    {
+     "name": "Sunrise Sunset Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 460,
+     "f": 1,
+     "c": 115,
+     "p": 3
+    },
+    {
+     "name": "Sunrise Sunset Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 230,
+     "f": 1,
+     "c": 63,
+     "p": 3
+    },
+    {
+     "name": "Tropical Dragon Passion Smoothie",
+     "serving": "24 oz smoothie",
+     "cal": 410,
+     "f": 0,
+     "c": 99,
+     "p": 2
+    },
+    {
+     "name": "Tropical Dragon Passion Smoothie with Splenda",
+     "serving": "24 oz smoothie",
+     "cal": 180,
+     "f": 0,
+     "c": 48,
+     "p": 2
+    },
+    {
+     "name": "Kids Awesome Chocolate",
+     "serving": "12 oz kids smoothie",
+     "cal": 250,
+     "f": 2,
+     "c": 60,
+     "p": 2
+    },
+    {
+     "name": "Kids Awesome Chocolate with Splenda",
+     "serving": "12 oz kids smoothie",
+     "cal": 140,
+     "f": 2,
+     "c": 38,
+     "p": 2
+    },
+    {
+     "name": "Kids Jetty Junior",
+     "serving": "12 oz kids smoothie",
+     "cal": 180,
+     "f": 0,
+     "c": 44,
+     "p": 1
+    },
+    {
+     "name": "Kids Jetty Junior with Splenda",
+     "serving": "12 oz kids smoothie",
+     "cal": 60,
+     "f": 0,
+     "c": 23,
+     "p": 1
+    },
+    {
+     "name": "Kids Lil' Limeberry",
+     "serving": "12 oz kids smoothie",
+     "cal": 170,
+     "f": 0,
+     "c": 41,
+     "p": 0
+    },
+    {
+     "name": "Kids Lil' Limeberry with Splenda",
+     "serving": "12 oz kids smoothie",
+     "cal": 80,
+     "f": 0,
+     "c": 27,
+     "p": 0
+    },
+    {
+     "name": "Energizer",
+     "serving": "smoothie add-in",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Fat Burner",
+     "serving": "smoothie add-in",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Multivitamin",
+     "serving": "smoothie add-in",
+     "cal": 15,
+     "f": 0,
+     "c": 4,
+     "p": 0
+    },
+    {
+     "name": "Pea Protein Powder",
+     "serving": "smoothie add-in",
+     "cal": 130,
+     "f": 2.5,
+     "c": 3,
+     "p": 24
+    },
+    {
+     "name": "Probiotic",
+     "serving": "smoothie add-in",
+     "cal": 20,
+     "f": 0,
+     "c": 5,
+     "p": 0
+    },
+    {
+     "name": "Vital Proteins Collagen",
+     "serving": "smoothie add-in",
+     "cal": 35,
+     "f": 0,
+     "c": 0,
+     "p": 9
+    },
+    {
+     "name": "Vitamin B12",
+     "serving": "smoothie add-in",
+     "cal": 20,
+     "f": 0,
+     "c": 5,
+     "p": 0
+    },
+    {
+     "name": "Vitamin C Immune Complex",
+     "serving": "smoothie add-in",
+     "cal": 20,
+     "f": 0,
+     "c": 5,
+     "p": 0
+    },
+    {
+     "name": "Whey Protein Powder",
+     "serving": "smoothie add-in",
+     "cal": 100,
+     "f": 1.5,
+     "c": 6,
+     "p": 16
+    },
+    {
+     "name": "Chia Seeds",
+     "serving": "smoothie add-in",
+     "cal": 30,
+     "f": 2,
+     "c": 2,
+     "p": 1
+    },
+    {
+     "name": "Fresh Ginger",
+     "serving": "smoothie add-in",
+     "cal": 5,
+     "f": 0,
+     "c": 2,
+     "p": 0
+    },
+    {
+     "name": "Peanut Butter",
+     "serving": "smoothie add-in",
+     "cal": 180,
+     "f": 14,
+     "c": 6,
+     "p": 7
+    },
+    {
+     "name": "Raw Almonds",
+     "serving": "smoothie add-in",
+     "cal": 35,
+     "f": 3,
+     "c": 2,
+     "p": 0
+    },
+    {
+     "name": "Spinach & Kale",
+     "serving": "smoothie add-in",
+     "cal": 10,
+     "f": 0,
+     "c": 2,
+     "p": 2
+    },
+    {
+     "name": "Whole-Grain Oats",
+     "serving": "smoothie add-in",
+     "cal": 45,
+     "f": 0.5,
+     "c": 9,
+     "p": 1
+    },
+    {
+     "name": "Dasani (16.9 fl oz.)",
+     "serving": "bottle",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Gold Peak Sweet Tea (18.5 fl oz.)",
+     "serving": "bottle",
+     "cal": 190,
+     "f": 0,
+     "c": 48,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola (20 fl oz.)",
+     "serving": "bottle",
+     "cal": 240,
+     "f": 0,
+     "c": 65,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola Zero Sugar (20 fl oz.)",
+     "serving": "bottle",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Sprite (20 fl oz.)",
+     "serving": "bottle",
+     "cal": 230,
+     "f": 0,
+     "c": 64,
+     "p": 0
+    },
+    {
+     "name": "Acai Bowl",
+     "serving": "bowl",
+     "cal": 560,
+     "f": 18,
+     "c": 103,
+     "p": 6
+    },
+    {
+     "name": "Acai Bowl with NUTELLA",
+     "serving": "bowl",
+     "cal": 710,
+     "f": 27,
+     "c": 119,
+     "p": 8
+    },
+    {
+     "name": "Bahama Mama Bowl",
+     "serving": "bowl",
+     "cal": 400,
+     "f": 11,
+     "c": 79,
+     "p": 3
+    },
+    {
+     "name": "Chia Oatmeal",
+     "serving": "bowl",
+     "cal": 800,
+     "f": 37,
+     "c": 105,
+     "p": 16
+    },
+    {
+     "name": "Dragon Fruit Bowl",
+     "serving": "bowl",
+     "cal": 460,
+     "f": 10,
+     "c": 91,
+     "p": 5
+    },
+    {
+     "name": "Mixed Berry Greek Yogurt",
+     "serving": "bowl",
+     "cal": 560,
+     "f": 24,
+     "c": 63,
+     "p": 25
+    },
+    {
+     "name": "PB Protein Crunch",
+     "serving": "bowl",
+     "cal": 810,
+     "f": 46,
+     "c": 77,
+     "p": 31
+    },
+    {
+     "name": "NUTELLA Drizzle",
+     "serving": "bowl topping",
+     "cal": 150,
+     "f": 9,
+     "c": 16,
+     "p": 2
+    },
+    {
+     "name": "Peanut Butter Drizzle",
+     "serving": "bowl topping",
+     "cal": 180,
+     "f": 14,
+     "c": 6,
+     "p": 7
+    },
+    {
+     "name": "All American Wrap - Bacon",
+     "serving": "breakfast",
+     "cal": 410,
+     "f": 21,
+     "c": 35,
+     "p": 17
+    },
+    {
+     "name": "All American Wrap - Sausage",
+     "serving": "breakfast",
+     "cal": 540,
+     "f": 33,
+     "c": 36,
+     "p": 23
+    },
+    {
+     "name": "Cali Breakfast Flatbread - Chicken",
+     "serving": "breakfast",
+     "cal": 560,
+     "f": 30,
+     "c": 47,
+     "p": 27
+    },
+    {
+     "name": "Cali Breakfast Flatbread - Sausage",
+     "serving": "breakfast",
+     "cal": 660,
+     "f": 43,
+     "c": 46,
+     "p": 24
+    },
+    {
+     "name": "PB Banana Crunch Flatbread",
+     "serving": "breakfast",
+     "cal": 640,
+     "f": 26,
+     "c": 87,
+     "p": 17
+    },
+    {
+     "name": "Sausage, Egg & Cheese 'Dilla",
+     "serving": "breakfast",
+     "cal": 630,
+     "f": 40,
+     "c": 39,
+     "p": 27
+    },
+    {
+     "name": "Southwest Wrap - Chicken",
+     "serving": "breakfast",
+     "cal": 590,
+     "f": 38,
+     "c": 38,
+     "p": 24
+    },
+    {
+     "name": "Southwest Wrap - Sausage",
+     "serving": "breakfast",
+     "cal": 710,
+     "f": 51,
+     "c": 38,
+     "p": 23
+    },
+    {
+     "name": "Spinach & Pesto Wrap",
+     "serving": "breakfast",
+     "cal": 470,
+     "f": 29,
+     "c": 38,
+     "p": 20
+    },
+    {
+     "name": "Baja Chicken Wrap",
+     "serving": "wrap/bowl",
+     "cal": 760,
+     "f": 30,
+     "c": 83,
+     "p": 38
+    },
+    {
+     "name": "Baja Chicken Bowl",
+     "serving": "wrap/bowl",
+     "cal": 470,
+     "f": 20,
+     "c": 36,
+     "p": 35
+    },
+    {
+     "name": "Buffalo Chicken Wrap",
+     "serving": "wrap/bowl",
+     "cal": 620,
+     "f": 27,
+     "c": 59,
+     "p": 33
+    },
+    {
+     "name": "Buffalo Chicken Bowl",
+     "serving": "wrap/bowl",
+     "cal": 440,
+     "f": 26,
+     "c": 17,
+     "p": 34
+    },
+    {
+     "name": "Caribbean Jerk Chicken Wrap",
+     "serving": "wrap/bowl",
+     "cal": 700,
+     "f": 20,
+     "c": 91,
+     "p": 38
+    },
+    {
+     "name": "Caribbean Jerk Chicken Bowl",
+     "serving": "wrap/bowl",
+     "cal": 420,
+     "f": 12,
+     "c": 41,
+     "p": 35
+    },
+    {
+     "name": "Hummus Veggie Wrap",
+     "serving": "wrap/bowl",
+     "cal": 830,
+     "f": 41,
+     "c": 95,
+     "p": 23
+    },
+    {
+     "name": "Hummus Veggie Bowl",
+     "serving": "wrap/bowl",
+     "cal": 500,
+     "f": 31,
+     "c": 41,
+     "p": 15
+    },
+    {
+     "name": "Supergreen Caesar Chicken Wrap",
+     "serving": "wrap/bowl",
+     "cal": 750,
+     "f": 39,
+     "c": 55,
+     "p": 43
+    },
+    {
+     "name": "Supergreen Caesar Chicken Bowl",
+     "serving": "wrap/bowl",
+     "cal": 600,
+     "f": 36,
+     "c": 9,
+     "p": 37
+    },
+    {
+     "name": "Thai Chicken Wrap",
+     "serving": "wrap/bowl",
+     "cal": 600,
+     "f": 19,
+     "c": 77,
+     "p": 31
+    },
+    {
+     "name": "Thai Chicken Bowl",
+     "serving": "wrap/bowl",
+     "cal": 380,
+     "f": 13,
+     "c": 39,
+     "p": 28
+    },
+    {
+     "name": "Turkey Bacon Ranch",
+     "serving": "sandwich",
+     "cal": 500,
+     "f": 18,
+     "c": 51,
+     "p": 39
+    },
+    {
+     "name": "Chicken Bacon Ranch",
+     "serving": "flatbread",
+     "cal": 510,
+     "f": 23,
+     "c": 47,
+     "p": 28
+    },
+    {
+     "name": "Chicken Pesto",
+     "serving": "flatbread",
+     "cal": 490,
+     "f": 22,
+     "c": 46,
+     "p": 26
+    },
+    {
+     "name": "Chipotle Chicken Club",
+     "serving": "flatbread",
+     "cal": 520,
+     "f": 25,
+     "c": 46,
+     "p": 27
+    },
+    {
+     "name": "Santa Fe Chicken",
+     "serving": "quesadilla",
+     "cal": 450,
+     "f": 18,
+     "c": 46,
+     "p": 28
+    },
+    {
+     "name": "Three Cheese Chicken",
+     "serving": "quesadilla",
+     "cal": 540,
+     "f": 27,
+     "c": 39,
+     "p": 31
+    },
+    {
+     "name": "Bacon Chipotle Chicken",
+     "serving": "snack roll",
+     "cal": 580,
+     "f": 39,
+     "c": 38,
+     "p": 23
+    },
+    {
+     "name": "Hawaiian Heat",
+     "serving": "snack roll",
+     "cal": 380,
+     "f": 16,
+     "c": 43,
+     "p": 20
+    },
+    {
+     "name": "Turkey Bacon Honey Dijon",
+     "serving": "snack roll",
+     "cal": 460,
+     "f": 25,
+     "c": 39,
+     "p": 23
+    },
+    {
+     "name": "Cheese 'Dilla",
+     "serving": "kids meal",
+     "cal": 400,
+     "f": 22,
+     "c": 35,
+     "p": 17
+    },
+    {
+     "name": "Cheese 'Dilla with Chicken",
+     "serving": "kids meal",
+     "cal": 480,
+     "f": 23,
+     "c": 36,
+     "p": 29
+    },
+    {
+     "name": "Turkey & Cheddar Wrap",
+     "serving": "kids meal",
+     "cal": 360,
+     "f": 15,
+     "c": 35,
+     "p": 23
+    },
+    {
+     "name": "Apple",
+     "serving": "side",
+     "cal": 90,
+     "f": 0,
+     "c": 25,
+     "p": 0
+    },
+    {
+     "name": "Baked Lay's Original",
+     "serving": "side",
+     "cal": 140,
+     "f": 4,
+     "c": 24,
+     "p": 2
+    },
+    {
+     "name": "Banana",
+     "serving": "side",
+     "cal": 110,
+     "f": 0,
+     "c": 27,
+     "p": 1
+    },
+    {
+     "name": "Jalapeño Corn",
+     "serving": "side",
+     "cal": 150,
+     "f": 5,
+     "c": 22,
+     "p": 3
+    },
+    {
+     "name": "Kale & Apple Slaw",
+     "serving": "side",
+     "cal": 130,
+     "f": 9,
+     "c": 11,
+     "p": 1
+    },
+    {
+     "name": "Maple-Kissed Sweet Potatoes",
+     "serving": "side",
+     "cal": 140,
+     "f": 4,
+     "c": 26,
+     "p": 2
+    },
+    {
+     "name": "Miss Vickie's Sea Salt & Vinegar",
+     "serving": "side",
+     "cal": 200,
+     "f": 11,
+     "c": 23,
+     "p": 3
+    },
+    {
+     "name": "SunChips Harvest Cheddar",
+     "serving": "side",
+     "cal": 210,
+     "f": 9,
+     "c": 28,
+     "p": 3
+    },
+    {
+     "name": "Chocolate Chip Cookie",
+     "serving": "cookie",
+     "cal": 350,
+     "f": 19,
+     "c": 43,
+     "p": 4
+    },
+    {
+     "name": "Snickerdoodle Cookie",
+     "serving": "cookie",
+     "cal": 330,
+     "f": 14,
+     "c": 47,
+     "p": 3
+    },
+    {
+     "name": "Salted Caramel Javablender (limited time)",
+     "serving": "24 oz",
+     "cal": 490,
+     "f": 12,
+     "c": 89,
+     "p": 7
+    },
+    {
+     "name": "Fanta Phantom Smoothie (limited time)",
+     "serving": "24 oz",
+     "cal": 370,
+     "f": 0.5,
+     "c": 93,
+     "p": 4
+    },
+    {
+     "name": "Fanta Phantom Smoothie (limited time) no turbinado",
+     "serving": "24 oz",
+     "cal": 260,
+     "f": 0.5,
+     "c": 64,
+     "p": 4
+    }
+   ]
   }
  },
  "status": {
@@ -14985,6 +16005,7 @@
   "dunkin": "ok: 826 items",
   "mcdonalds": "ok: 226 items",
   "subway": "ok: 200 items",
-  "wendys": "ok: 217 items"
+  "wendys": "ok: 217 items",
+  "tropicalsmoothie": "ok: 126 items (manual import)"
  }
 }

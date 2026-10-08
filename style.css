@@ -110,6 +110,26 @@ main { padding: 14px 16px calc(var(--tabs-h) + var(--safe-b) + 110px); max-width
 .entry-time { color: var(--muted); font-size: 13px; flex: 0 0 auto; }
 .entry-macros { color: var(--muted); font-size: 14px; margin-top: 2px; font-variant-numeric: tabular-nums; }
 .entry-macros b { color: var(--text); }
+/* Today's log, grouped by meal */
+.meal { display: flex; flex-direction: column; gap: 8px; }
+.meal + .meal { margin-top: 6px; }
+.meal-head { display: flex; align-items: center; gap: 10px; min-height: 40px; }
+.meal-name { font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: 0.04em; }
+.meal-sum { flex: 1; color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; }
+.meal-add {
+  flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; font-size: 22px; font-weight: 700;
+  background: var(--card); border: 1px solid var(--line); color: var(--text);
+}
+.meal-add:active { background: var(--card2); }
+.meal-empty .meal-name { color: var(--muted); }
+.meal-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.meal-row > span { font-weight: 700; color: var(--muted); font-size: 14px; }
+.meal-seg { flex: 1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.meal-seg button {
+  min-height: 44px; border-radius: 12px; font-weight: 800; font-size: 17px;
+  background: var(--card2); border: 1px solid var(--line); color: var(--text);
+}
+.meal-seg button.on { background: var(--good); border-color: var(--good); color: #06231a; }
 .empty { color: var(--muted); text-align: center; padding: 24px 12px; border: 1px dashed var(--line); border-radius: 14px; }
 
 .fav-row { display: flex; gap: 8px; }
@@ -168,6 +188,8 @@ main { padding: 14px 16px calc(var(--tabs-h) + var(--safe-b) + 110px); max-width
 .bars .v.good { color: var(--good); font-weight: 700; }
 .day-entries { padding: 0 14px 12px; }
 .day-entries div { display: flex; justify-content: space-between; gap: 10px; border-top: 1px solid var(--line); padding: 6px 0; font-size: 14px; }
+.day-entries .day-meal { font-weight: 800; font-size: 13px; padding-top: 10px; }
+.day-entries .day-meal span:first-child { text-transform: uppercase; letter-spacing: 0.04em; }
 .day-entries span:last-child { color: var(--muted); white-space: nowrap; }
 
 /* ---------- Forms ---------- */

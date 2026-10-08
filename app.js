@@ -105,8 +105,28 @@ function syncCurrentWeight() {
 
 /* ================= Actions ================= */
 
+// Each day's log is split into Meal 1–5. New food goes to the meal you're on: the same one if you
+// logged something in the last 90 minutes, otherwise the next one.
+const MEALS = 5;
+function defaultMeal() {
+  const es = ((state.days[today] || {}).entries || []).filter(e => e.meal);
+  if (!es.length) return 1;
+  const last = es.reduce((a, b) => (b.t > a.t ? b : a));
+  if (Date.now() - last.t < 90 * 60000) return last.meal;
+  return Math.min(MEALS, Math.max(...es.map(e => e.meal)) + 1);
+}
+// Groups a day's entries by meal (oldest first within each). Entries from before meals existed go last.
+function mealGroups(entries) {
+  const groups = Array.from({ length: MEALS }, (_, i) => ({ meal: i + 1, entries: [] }));
+  const other = { meal: 0, entries: [] };
+  [...entries].sort((a, b) => (a.t || 0) - (b.t || 0))
+    .forEach(e => (groups[e.meal - 1] || other).entries.push(e));
+  return other.entries.length ? [...groups, other] : groups;
+}
+const sumOf = es => es.reduce((t, e) => ({ cal: t.cal + (+e.cal || 0), p: t.p + (+e.p || 0) }), { cal: 0, p: 0 });
+
 function addEntry(data) {
-  const e = { id: uid(), name: data.name, cal: data.cal, p: data.p, c: data.c, f: data.f, t: Date.now() };
+  const e = { id: uid(), name: data.name, cal: data.cal, p: data.p, c: data.c, f: data.f, meal: data.meal || defaultMeal(), t: Date.now() };
   todayDay().entries.push(e);
   save();
   render();
@@ -145,8 +165,8 @@ function logFavorite(id) {
   const fav = state.favorites.find(f => f.id === id);
   if (!fav) return;
   fav.uses = (fav.uses || 0) + 1;
-  const e = addEntry(fav);
-  toast(`Logged ${fav.name}`, 'Undo', () => {
+  const e = addEntry({ ...fav, meal: null });
+  toast(`Logged ${fav.name} · Meal ${e.meal}`, 'Undo', () => {
     fav.uses = Math.max(0, fav.uses - 1);
     const d = todayDay();
     d.entries = d.entries.filter(x => x.id !== e.id);
@@ -239,16 +259,21 @@ function renderToday() {
   $('#quick').innerHTML = favs.map(f => `<button class="chip" data-fav="${f.id}">+ ${esc(f.name)}</button>`).join('');
 
   const favNames = new Set(state.favorites.map(f => f.name.toLowerCase()));
-  const entries = has ? [...d.entries].reverse() : [];
-  $('#log').innerHTML = entries.length
-    ? entries.map(e => {
-        const isFav = favNames.has(e.name.toLowerCase());
-        return `<div class="swipe" data-swipe="${e.id}">
+  $('#log').innerHTML = mealGroups(has ? d.entries : []).map(({ meal, entries }) => {
+    const sum = sumOf(entries);
+    const head = `<div class="meal-head">
+        <span class="meal-name">${meal ? 'Meal ' + meal : 'Unsorted'}</span>
+        <span class="meal-sum">${entries.length ? `${fmt(sum.cal)} cal · P ${fmt(sum.p)}` : ''}</span>
+        ${meal ? `<button class="meal-add" type="button" data-meal-add="${meal}" aria-label="Add food to Meal ${meal}">+</button>` : ''}
+      </div>`;
+    return `<div class="meal${entries.length ? '' : ' meal-empty'}">${head}${entries.map(e => {
+      const isFav = favNames.has(e.name.toLowerCase());
+      return `<div class="swipe" data-swipe="${e.id}">
           <div class="swipe-bg"><span class="swipe-fav">⭐ Favorite</span><span class="swipe-del">Delete 🗑</span></div>
           ${entryHTML(isFav ? { ...e, name: '⭐ ' + e.name } : e, `data-entry="${e.id}"`).replace('class="entry"', 'class="entry swipe-move"')}
         </div>`;
-      }).join('')
-    : '<div class="empty">Nothing logged yet. Tap <b>+</b> to add food.</div>';
+    }).join('')}</div>`;
+  }).join('');
 }
 
 function renderFavs() {
@@ -313,8 +338,12 @@ function dayHTML(k) {
     return `<span>${m.short}</span><div class="bar"><i style="width:${w}%;background:${over && m.k !== 'p' ? 'var(--over)' : m.color}"></i></div>` +
       `<span class="v ${cls}">${fmt(eaten)} / ${fmt(target)}${m.unit}</span>`;
   }).join('');
-  const entries = d.entries.map(e =>
-    `<div><span>${esc(e.name)}</span><span>${fmt(e.cal)} cal · P${fmt(e.p)} C${fmt(e.c)} F${fmt(e.f)}</span></div>`).join('');
+  const groups = mealGroups(d.entries).filter(g => g.entries.length);
+  const entries = groups.map(({ meal, entries: es }) => {
+    const sum = sumOf(es);
+    return (groups.length === 1 && !meal ? '' : `<div class="day-meal"><span>${meal ? 'Meal ' + meal : 'Unsorted'}</span><span>${fmt(sum.cal)} cal · P${fmt(sum.p)}</span></div>`) +
+      es.map(e => `<div><span>${esc(e.name)}</span><span>${fmt(e.cal)} cal · P${fmt(e.p)} C${fmt(e.c)} F${fmt(e.f)}</span></div>`).join('');
+  }).join('');
   return `
     <div class="swipe swipe-copy day-wrap" data-swipe="${k}">
       <div class="swipe-bg"><span class="swipe-fav">📋 Copy to today</span><span class="swipe-del">Delete day 🗑</span></div>
@@ -558,8 +587,10 @@ function setView(v) {
 let sheet = null; // { mode: 'add' | 'entry' | 'fav', id }
 const IN = ['cal', 'p', 'c', 'f'];
 
-function openSheet(mode, item, prefill) {
+function openSheet(mode, item, prefill, meal) {
   sheet = { mode, id: item && item.id };
+  $('#meal-row').hidden = mode === 'fav';
+  setSheetMeal(mode === 'entry' ? item && item.meal : mode === 'add' ? meal || defaultMeal() : null);
   const src = item || prefill;
   $('#sheet-title').textContent =
     mode === 'add' ? 'Log food' : mode === 'entry' ? 'Edit entry' : item ? 'Edit favorite' : 'New favorite';
@@ -575,6 +606,14 @@ function openSheet(mode, item, prefill) {
   $('#capture-row').hidden = mode === 'entry';
   if (!item) (prefill ? $('#in-cal') : $('#in-name')).focus();
 }
+function setSheetMeal(m) {
+  if (sheet) sheet.meal = m || null;
+  document.querySelectorAll('#meal-seg button').forEach(b => b.classList.toggle('on', +b.dataset.meal === m));
+}
+$('#meal-seg').addEventListener('click', ev => {
+  const b = ev.target.closest('button[data-meal]');
+  if (b) setSheetMeal(+b.dataset.meal);
+});
 function closeSheet() { $('#backdrop').hidden = true; sheet = null; document.activeElement.blur(); }
 
 function readForm() {
@@ -620,14 +659,15 @@ $('#entry-form').addEventListener('submit', async ev => {
   const data = readForm();
   if (!data) { $('#in-name').focus(); return; }
   const { mode, id, code } = sheet;
+  if (sheet.meal) data.meal = sheet.meal;
   const asFav = $('#in-fav').checked;
   if (code) rememberBarcode(code, data);
   if (perServing && servings !== 1) data.name = `${data.name} ×${servings}`;
   closeSheet();
   if (mode === 'add') {
-    addEntry(data);
+    const e = addEntry(data);
     if (asFav) upsertFavorite(data);
-    toast(`Logged ${data.name}${asFav ? ' ★' : ''}`);
+    toast(`Logged ${data.name} · Meal ${e.meal}${asFav ? ' ★' : ''}`);
   } else if (mode === 'entry') {
     const e = todayDay().entries.find(x => x.id === id);
     if (e) Object.assign(e, data);
@@ -1625,6 +1665,8 @@ document.querySelector('.tabs').addEventListener('click', ev => {
 $('#fab').addEventListener('click', () => openSheet(view === 'favs' ? 'fav' : 'add'));
 
 document.addEventListener('click', ev => {
+  const add = ev.target.closest('[data-meal-add]');
+  if (add) { openSheet('add', null, null, +add.dataset.mealAdd); return; }
   const t = ev.target.closest('[data-fav],[data-entry],[data-edit-fav],[data-del-weight],[data-shop],[data-edit-shop],[data-shop-fav]');
   if (!t) return;
   if (t.dataset.fav) logFavorite(t.dataset.fav);

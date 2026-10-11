@@ -45,6 +45,12 @@ Tropical Smoothie Cafe blocks automated downloads, so it comes from their nutrit
 that file and run `pip install pypdf && python3 scripts/import-tropical-smoothie.py
 data/tropical-smoothie-nutrition-guide.pdf`. The weekly workflow leaves this chain alone.
 
+## Weeks and the weekly report
+History groups days into Sunday → Saturday weeks. After the Sunday weigh-in, the app opens a
+report on the week that just ended: weight change, daily averages vs targets, days hit, most-logged
+foods, restaurants visited, and suggestions (same-restaurant swaps come from `restaurants.json`).
+With an API key it also asks Claude for coaching once per week and saves the answer in the backup.
+
 ## Photo estimates
 Log food → 📸 Photo sends a downscaled photo (plus an optional note) to Claude using the
 official Anthropic SDK, bundled at `vendor/anthropic-sdk.js` (see `vendor/anthropic-sdk.version`).

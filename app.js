@@ -46,6 +46,7 @@ function load() {
     barcodes: s.barcodes || {}, // barcode -> per-serving nutrition you've scanned or entered
     lastBackup: s.lastBackup || null,     // when you last saved a backup file
     backupSnooze: s.backupSnooze || null, // "Later" hides the reminder until this time
+    reports: s.reports || {},             // week start (Sunday) -> saved Claude coaching for that week
     profile: s.profile || null,           // age, sex, height, activity, goal from the setup
     needsSetup: fresh || !!s.needsSetup,  // brand-new phone: ask for their info before anything else
   };
@@ -323,7 +324,9 @@ function renderHistory() {
     statHTML(bestStreak(), 'Best streak') +
     statHTML(past.length ? `${hits}/${past.length}` : '—', 'Days hit');
 
-  $('#days').innerHTML = keys.length ? keys.map(dayHTML).join('') : '<div class="empty">Your logged days will show up here.</div>';
+  // Weeks run Sunday → Saturday, newest week first; this week and last week start open.
+  const weeks = [...new Set([weekStart(today), ...keys.map(weekStart)])].sort().reverse();
+  $('#days').innerHTML = weeks.map((ws, i) => weekHTML(ws, i < 2)).join('');
 }
 
 function dayHTML(k) {
@@ -352,6 +355,57 @@ function dayHTML(k) {
         <div class="day-entries">${entries}</div>
       </details>
     </div>`;
+}
+
+/* ---- Weeks (Sunday → Saturday) ---- */
+const weekStart = k => shiftKey(k, -parseKey(k).getDay());
+const weekDays = ws => Array.from({ length: 7 }, (_, i) => shiftKey(ws, i));
+const shortDate = k => parseKey(k).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+const weekRange = ws => `${shortDate(ws)} – ${shortDate(shiftKey(ws, 6))}`;
+function weekName(ws) {
+  const cur = weekStart(today);
+  return ws === cur ? 'This week' : ws === shiftKey(cur, -7) ? 'Last week' : `Week of ${shortDate(ws)}`;
+}
+// Latest weigh-in on or before a day.
+function weightOnOrBefore(k) {
+  const ws = sortedWeights().filter(w => w.k <= k);
+  return ws.length ? ws[ws.length - 1] : null;
+}
+function weekStats(ws) {
+  const days = weekDays(ws);
+  const logged = days.filter(k => state.days[k] && state.days[k].entries.length);
+  const tot = logged.map(totals);
+  const avg = {};
+  for (const m of ['cal', 'p', 'c', 'f']) avg[m] = logged.length ? tot.reduce((s, t) => s + t[m], 0) / logged.length : 0;
+  const g = logged.length ? targetsFor(logged[logged.length - 1]) : state.settings;
+  const over = logged.filter(k => totals(k).cal > targetsFor(k).cal);
+  const short = logged.filter(k => totals(k).p < targetsFor(k).protein && k !== today);
+  // The weigh-in that closes the week is the next Sunday's; it's compared with the one that opened it.
+  const end = shiftKey(ws, 7) <= today ? shiftKey(ws, 7) : today;
+  const wEnd = weightOnOrBefore(end), wStart = weightOnOrBefore(shiftKey(ws, 0));
+  const change = wEnd && wStart && wEnd.k !== wStart.k ? wEnd.w - wStart.w : null;
+  const done = shiftKey(ws, 6) < today;
+  return { ws, days, logged, avg, g, hits: logged.filter(isHit).length, over, short, wEnd, wStart, change, done };
+}
+function weekHTML(ws, open) {
+  const st = weekStats(ws);
+  const sub = st.logged.length
+    ? `${st.hits}/${st.logged.length} hit · avg ${fmt(st.avg.cal)} cal · P ${fmt(st.avg.p)} g`
+    : 'Nothing logged';
+  const w = st.wEnd && st.wEnd.k >= ws
+    ? ` · ⚖️ ${fmt1(st.wEnd.w)}${st.change != null ? ` (${st.change > 0 ? '+' : ''}${fmt1(st.change)})` : ''}` : '';
+  const rows = st.days.map(k => state.days[k] && state.days[k].entries.length ? dayHTML(k)
+    : `<div class="day-empty${k > today ? ' future' : ''}"><span>${dayLabel(k)}</span><span>${k > today ? '' : 'Nothing logged'}</span></div>`).join('');
+  const report = st.logged.length
+    ? `<button class="btn block week-report" type="button" data-report="${ws}">📊 ${st.done ? 'Weekly report' : 'Week so far'}</button>` : '';
+  return `
+    <details class="week"${open ? ' open' : ''}>
+      <summary class="week-head">
+        <div class="week-title"><b>${weekName(ws)}</b><span>${weekRange(ws)}</span></div>
+        <div class="week-sub">${sub}${w}</div>
+      </summary>
+      ${report}${rows}
+    </details>`;
 }
 
 function renderWeightChart(ws, goal) {
@@ -953,13 +1007,16 @@ async function loadCafeteria() {
 }
 
 // restaurants.json is refreshed weekly from each chain's official nutrition info by a GitHub Action.
-let restaurants = [];
+let restaurants = [], chainList = [];
 const norm = s => String(s || '').toLowerCase().replace(/[’'`.-]/g, '').replace(/\s+/g, ' ');
 async function loadRestaurants() {
   try {
     const res = await fetch('restaurants.json', { cache: 'no-cache' });
     if (!res.ok) return;
     const data = await res.json();
+    chainList = Object.values(data.chains || {}).map(ch => ({
+      name: ch.name, keys: [ch.name, ...(ch.aliases || [])].map(norm).filter(Boolean),
+    }));
     restaurants = Object.values(data.chains || {}).flatMap(ch => (ch.items || [])
       .filter(i => i.cal != null || i.p != null)
       .map(i => {
@@ -1450,6 +1507,9 @@ $('#weighin-form').addEventListener('submit', ev => {
   const toGo = Math.round((w - state.settings.goalWeight) * 10) / 10;
   const change = !prev ? 'Weigh-in logged' : diff < 0 ? `Down ${fmt1(-diff)} lbs since last weigh-in 💪` : diff > 0 ? `Up ${fmt1(diff)} lbs since last weigh-in` : 'Same as last weigh-in';
   toast(toGo > 0 ? `${change} · ${fmt1(toGo)} to go` : `${change} · Goal reached 🎯`);
+  // Sunday: the week that just ended gets its report.
+  const lastWeek = shiftKey(weekStart(today), -7);
+  if (weekStats(lastWeek).logged.length) openReport(lastWeek, { auto: true });
 });
 
 /* ================= What should I eat? ================= */
@@ -1585,6 +1645,226 @@ $('#gap-sheet').addEventListener('click', ev => {
   if (a) logGapPick(gapIdeas[+a.dataset.gapAi]);
 });
 
+/* ================= Weekly report ================= */
+
+// Where a logged food came from: restaurant entries start with the chain's name (or an alias).
+function placeOf(name) {
+  const n = norm(name);
+  for (const ch of chainList) if (ch.keys.some(k => n === k || n.startsWith(k + ' '))) return ch.name;
+  if (cafeteria.some(i => norm(i.name) === n)) return 'School cafeteria';
+  return null;
+}
+const baseName = name => name.replace(/\s×[\d.]+$/, '');
+const servingsIn = name => { const m = name.match(/\s×([\d.]+)$/); return m ? +m[1] || 1 : 1; };
+
+function weekReport(ws) {
+  const st = weekStats(ws);
+  const entries = st.logged.flatMap(k => state.days[k].entries.map(e => ({ ...e, day: k, place: placeOf(baseName(e.name)) })));
+  const foods = {};
+  for (const e of entries) {
+    const k = baseName(e.name).toLowerCase();
+    const f = foods[k] || (foods[k] = { name: baseName(e.name), place: e.place, n: 0, cal: 0, p: 0, c: 0, f: 0 });
+    f.n += servingsIn(e.name); for (const m of ['cal', 'p', 'c', 'f']) f[m] += +e[m] || 0;
+  }
+  const foodList = Object.values(foods);
+  const places = {};
+  for (const e of entries) if (e.place) {
+    const pl = places[e.place] || (places[e.place] = { name: e.place, n: 0, cal: 0, p: 0, items: [] });
+    pl.n++; pl.cal += +e.cal || 0; pl.p += +e.p || 0; pl.items.push(e);
+  }
+  return { ...st, entries, foods: foodList, places: Object.values(places).sort((a, b) => b.n - a.n) };
+}
+
+// Same-chain swap of the same kind (smoothie for smoothie, wrap for wrap): more protein per calorie,
+// no more calories, at least as much protein. Compared per serving.
+function betterAt(place, e) {
+  const n = servingsIn(e.name), cal = (+e.cal || 0) / n, p = (+e.p || 0) / n;
+  const ratio = p / Math.max(1, cal);
+  const ate = restaurants.find(r => r.chain === place && norm(r.name) === norm(baseName(e.name)));
+  let best = null;
+  for (const r of restaurants) {
+    if (r.chain !== place || !r.cal || !r.p) continue;
+    if (norm(r.name) === norm(baseName(e.name))) continue;
+    if (ate && ate.serving ? r.serving !== ate.serving : r.cal < cal * 0.5) continue;
+    if (r.cal > cal || r.p < p || r.p / r.cal < ratio * 1.2) continue;
+    if (!best || r.p / r.cal > best.p / best.cal) best = r;
+  }
+  return best;
+}
+
+function localTips(r) {
+  const tips = [], g = r.g;
+  const list = items => items.map(f => esc(f.name)).join(', ');
+  if (r.done && r.logged.length < 7)
+    tips.push({ icon: '📝', title: `Logged ${r.logged.length} of 7 days`, detail: 'Unlogged days are where progress hides. Aim for all seven, even rough guesses.' });
+  const pShort = g.protein - r.avg.p;
+  if (pShort > g.protein * 0.05) {
+    const dense = r.foods.filter(f => f.p / f.n >= 10 && f.p / Math.max(1, f.cal) >= 0.08)
+      .sort((a, b) => b.p / b.cal - a.p / a.cal).slice(0, 3);
+    tips.push({ icon: '🥩', title: `Protein averaged ${fmt(r.avg.p)} g, ${fmt(pShort)} g a day short`,
+      detail: dense.length ? `Your best protein-per-calorie foods this week were ${list(dense)}. Lean on them earlier in the day.`
+        : 'Add a lean protein (chicken, egg whites, Greek yogurt, a shake) to each meal.' });
+  }
+  if (r.over.length >= 2) {
+    const big = {};
+    for (const e of r.entries) if (r.over.includes(e.day)) big[baseName(e.name)] = (big[baseName(e.name)] || 0) + (+e.cal || 0);
+    const top = Object.entries(big).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([n, c]) => `${esc(n)} (${fmt(c)} cal)`);
+    tips.push({ icon: '🔥', title: `Over calories on ${r.over.length} day${r.over.length === 1 ? '' : 's'}`,
+      detail: `Biggest calories on those days: ${top.join(', ')}.` });
+  }
+  for (const [m, label, t] of [['c', 'Carbs', g.carbs], ['f', 'Fat', g.fat]]) {
+    if (r.avg[m] <= t * 1.1) continue;
+    const top = [...r.foods].sort((a, b) => b[m] - a[m]).slice(0, 3).map(f => `${esc(f.name)} (${fmt(f[m])} g)`);
+    tips.push({ icon: m === 'c' ? '🍞' : '🧈', title: `${label} averaged ${fmt(r.avg[m])} g vs ${fmt(t)} g`, detail: `Biggest sources: ${top.join(', ')}.` });
+  }
+  for (const pl of r.places) {
+    const seen = new Set();
+    for (const e of [...pl.items].sort((a, b) => a.p / Math.max(1, a.cal) - b.p / Math.max(1, b.cal))) {
+      const key = baseName(e.name).toLowerCase();
+      if (seen.has(key)) continue;
+      seen.add(key);
+      const alt = betterAt(pl.name, e);
+      if (!alt) continue;
+      const n = servingsIn(e.name), cal = e.cal / n, p = e.p / n;
+      tips.push({ icon: '🔁', title: `At ${esc(pl.name)}: swap ${esc(baseName(e.name).replace(pl.name + ' ', ''))}`,
+        detail: `Try <b>${esc(alt.short)}</b>: ${fmt(alt.cal)} cal, P ${fmt(alt.p)} g, vs ${fmt(cal)} cal, P ${fmt(p)} g. ` +
+          `${cal - alt.cal >= 1 ? `Saves ${fmt(cal - alt.cal)} cal` : 'Same calories'}${alt.p - p >= 1 ? `, +${fmt(alt.p - p)} g protein` : ''}.` });
+      break;
+    }
+  }
+  if (!tips.length) tips.push({ icon: '🎖️', title: 'Solid week', detail: 'Protein and calories were on target. Keep the same playbook.' });
+  return tips;
+}
+
+let reportWeek = null;
+function openReport(ws, opts = {}) {
+  const r = weekReport(ws), g = r.g;
+  reportWeek = ws;
+  $('#report-title').textContent = r.done ? 'Weekly report' : 'Week so far';
+  $('#report-range').textContent = `${weekRange(ws)} · ${r.logged.length} day${r.logged.length === 1 ? '' : 's'} logged`;
+  const toGo = r.wEnd ? r.wEnd.w - state.settings.goalWeight : null;
+  $('#report-stats').innerHTML =
+    statHTML(r.wEnd ? fmt1(r.wEnd.w) : '—', 'Weight') +
+    statHTML(r.change == null ? '—' : (r.change > 0 ? '+' : '') + fmt1(r.change), 'Change') +
+    statHTML(toGo == null ? '—' : toGo > 0 ? fmt1(toGo) : '🎯', 'To go') +
+    statHTML(`${r.hits}/${r.logged.length}`, 'Days hit') +
+    statHTML(r.over.length, 'Over cal') +
+    statHTML('🔥 ' + currentStreak(), 'Streak');
+  $('#report-strip').innerHTML = r.days.map(k => {
+    const has = r.logged.includes(k), cls = !has ? (k > today ? 'future' : 'none') : isHit(k) ? 'hit' : 'miss';
+    const letter = parseKey(k).toLocaleDateString(undefined, { weekday: 'short' }).slice(0, 2);
+    return `<div class="${cls}"><span>${letter}</span><b>${cls === 'hit' ? '✓' : cls === 'miss' ? '✗' : '–'}</b></div>`;
+  }).join('');
+  $('#report-bars').innerHTML = MACROS.map(m => {
+    const v = r.avg[m.k], t = g[m.t], over = v > t;
+    const w = t > 0 ? Math.min(100, (v / t) * 100) : 0;
+    const cls = over ? (m.k === 'p' ? 'good' : 'over') : '';
+    return `<span>${m.short}</span><div class="bar"><i style="width:${w}%;background:${over && m.k !== 'p' ? 'var(--over)' : m.color}"></i></div>` +
+      `<span class="v ${cls}">${fmt(v)} / ${fmt(t)}${m.unit}</span>`;
+  }).join('');
+  const top = [...r.foods].sort((a, b) => b.n - a.n || b.cal - a.cal).slice(0, 5);
+  $('#report-foods').innerHTML = top.map(f =>
+    `<div><span>${esc(f.name)}${f.n > 1 ? ` <b>×${f.n}</b>` : ''}</span><span>${fmt(f.cal)} cal · P${fmt(f.p)}</span></div>`).join('');
+  $('#report-places-wrap').hidden = !r.places.length;
+  $('#report-places').innerHTML = r.places.map(p =>
+    `<div><span>${esc(p.name)} <b>×${p.n}</b></span><span>${fmt(p.cal)} cal · P${fmt(p.p)}</span></div>`).join('');
+  $('#report-tips').innerHTML = localTips(r).map(t =>
+    `<div class="advice"><b>${t.icon} ${t.title}</b><p>${t.detail}</p></div>`).join('');
+  const saved = state.reports[ws];
+  if (saved && saved.ai) showCoach(saved.ai);
+  else {
+    $('#report-ai').innerHTML = '';
+    $('#report-note').hidden = true;
+    $('#report-ai-btn').hidden = false;
+    $('#report-ai-btn').disabled = false;
+    $('#report-ai-btn').textContent = getAiKey() ? '✨ Get coaching from Claude' : '✨ Coaching (add your API key in Settings)';
+  }
+  $('#report-backdrop').hidden = false;
+  $('#report-sheet').scrollTop = 0;
+  if (opts.auto && !(saved && saved.ai) && getAiKey()) coachFromClaude();
+}
+function closeReport() { $('#report-backdrop').hidden = true; reportWeek = null; }
+
+function showCoach(out) {
+  const li = a => (a || []).map(x => `<li>${esc(x)}</li>`).join('');
+  $('#report-ai').innerHTML =
+    `<p class="coach-head">${esc(out.headline)}</p>` +
+    (out.wins && out.wins.length ? `<h4>What worked</h4><ul>${li(out.wins)}</ul>` : '') +
+    (out.fixes && out.fixes.length ? `<h4>Fix this week</h4>${out.fixes.map(f => `<div class="advice"><b>${esc(f.title)}</b><p>${esc(f.detail)}</p></div>`).join('')}` : '') +
+    (out.swaps && out.swaps.length ? `<h4>Smarter orders</h4>${out.swaps.map(w =>
+      `<div class="advice"><b>${w.place ? esc(w.place) + ': ' : ''}${esc(w.instead_of)} → ${esc(w.try_this)}</b><p>${esc(w.why)}</p></div>`).join('')}` : '');
+  $('#report-note').textContent = '✨ From Claude, based on your log. Numbers are estimates.';
+  $('#report-note').hidden = false;
+  $('#report-ai-btn').hidden = true;
+}
+
+const REPORT_SCHEMA = {
+  type: 'object', additionalProperties: false, required: ['headline', 'wins', 'fixes', 'swaps'],
+  properties: {
+    headline: { type: 'string', description: 'One or two sentences summing up the week, direct and encouraging' },
+    wins: { type: 'array', items: { type: 'string' }, description: '1 to 3 short things that went well' },
+    fixes: {
+      type: 'array', description: '2 to 4 specific changes for next week, tied to the foods and places in the log',
+      items: { type: 'object', additionalProperties: false, required: ['title', 'detail'],
+        properties: { title: { type: 'string' }, detail: { type: 'string' } } },
+    },
+    swaps: {
+      type: 'array', description: '0 to 4 swaps for foods actually eaten this week, at the same place when there was one',
+      items: { type: 'object', additionalProperties: false, required: ['place', 'instead_of', 'try_this', 'why'],
+        properties: { place: { type: 'string' }, instead_of: { type: 'string' }, try_this: { type: 'string' }, why: { type: 'string' } } },
+    },
+  },
+};
+
+async function coachFromClaude() {
+  if (!getAiKey()) { closeReport(); setView('settings'); toast('Add your Anthropic API key under Photo estimates'); return; }
+  const ws = reportWeek, r = weekReport(ws), g = r.g;
+  const btn = $('#report-ai-btn');
+  btn.disabled = true; btn.textContent = '✨ Reviewing your week…';
+  const days = r.days.map(k => {
+    const d = state.days[k];
+    const label = parseKey(k).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+    if (!d || !d.entries.length) return `${label}: not logged`;
+    const t = totals(k);
+    return `${label}: ${fmt(t.cal)} cal, P${fmt(t.p)} C${fmt(t.c)} F${fmt(t.f)}${isHit(k) ? ' (hit)' : ''}`;
+  }).join('\n');
+  const foods = [...r.foods].sort((a, b) => b.cal - a.cal).slice(0, 40).map(f =>
+    `${f.name}${f.place ? ` [${f.place}]` : ''} ×${f.n}: ${fmt(f.cal / f.n)} cal, P${fmt1(f.p / f.n)} C${fmt1(f.c / f.n)} F${fmt1(f.f / f.n)} each`).join('\n');
+  const weight = r.wEnd ? `${fmt1(r.wEnd.w)} lbs${r.change != null ? ` (${r.change > 0 ? '+' : ''}${fmt1(r.change)} this week)` : ''}, goal ${fmt1(state.settings.goalWeight)} lbs` : 'no weigh-in';
+  try {
+    const client = await aiClient();
+    const res = await client.beta.messages.create({
+      model: AI_MODEL,
+      max_tokens: 16000,
+      betas: ['server-side-fallback-2026-07-01'],
+      fallbacks: 'default',
+      output_config: { effort: 'medium', format: { type: 'json_schema', schema: REPORT_SCHEMA } },
+      system: 'You are a practical nutrition coach reviewing one week of a personal macro log. The person wants to lose ' +
+        'weight while hitting a high protein target. Base every point on the foods and places actually in the log: name them. ' +
+        'Prefer swaps at the same restaurant, or simple changes to foods they already eat, over generic advice. ' +
+        'Keep each item short and concrete (portions, calories, grams). No medical advice.',
+      messages: [{ role: 'user', content:
+        `Daily targets: ${fmt(g.cal)} cal, ${fmt(g.protein)} g protein, ${fmt(g.carbs)} g carbs, ${fmt(g.fat)} g fat.\n` +
+        `Weight: ${weight}.\nWeek ${weekRange(ws)}:\n${days}\n\nFoods eaten this week:\n${foods}` }],
+    });
+    if (res.stop_reason === 'refusal') throw new Error('refused');
+    const block = res.content.find(b => b.type === 'text');
+    if (!block) throw new Error('empty');
+    const out = JSON.parse(block.text);
+    state.reports[ws] = { ai: out, at: Date.now() };
+    save();
+    if (reportWeek === ws) showCoach(out);
+  } catch (e) {
+    if (reportWeek !== ws) return;
+    $('#report-note').textContent = aiErrorMessage(e);
+    $('#report-note').hidden = false;
+    btn.disabled = false; btn.textContent = '✨ Try again';
+  }
+}
+$('#report-close').addEventListener('click', closeReport);
+$('#report-backdrop').addEventListener('click', ev => { if (ev.target.id === 'report-backdrop') closeReport(); });
+$('#report-ai-btn').addEventListener('click', coachFromClaude);
+
 /* ================= HOORAH ================= */
 
 function checkHoorah() {
@@ -1665,6 +1945,8 @@ document.querySelector('.tabs').addEventListener('click', ev => {
 $('#fab').addEventListener('click', () => openSheet(view === 'favs' ? 'fav' : 'add'));
 
 document.addEventListener('click', ev => {
+  const rep = ev.target.closest('[data-report]');
+  if (rep) { openReport(rep.dataset.report); return; }
   const add = ev.target.closest('[data-meal-add]');
   if (add) { openSheet('add', null, null, +add.dataset.mealAdd); return; }
   const t = ev.target.closest('[data-fav],[data-entry],[data-edit-fav],[data-del-weight],[data-shop],[data-edit-shop],[data-shop-fav]');

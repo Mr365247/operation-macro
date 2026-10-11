@@ -68,7 +68,7 @@
       </div>
 
       <div class="card">
-        <div class="card-head"><h3>Mission record</h3><span class="muted swipe-tip">days: ← delete, → copy to today</span></div>
+        <div class="card-head"><h3>Mission record</h3><span class="muted swipe-tip">weeks run Sun → Sat · days: ← delete, → copy</span></div>
         <div class="stats" id="h-stats"></div>
       </div>
       <div id="days"></div>
@@ -166,6 +166,32 @@
       <button class="btn block" type="button" id="gap-ai-btn">✨ Get meal ideas</button>
       <p class="scan-note" id="gap-note" hidden></p>
       <button class="btn block" type="button" id="gap-close">Close</button>
+    </div>
+  </div>
+
+  <!-- Weekly report -->
+  <div class="backdrop" id="report-backdrop" hidden>
+    <div class="sheet" id="report-sheet">
+      <div class="grab"></div>
+      <h2 id="report-title">Weekly report</h2>
+      <p class="muted small report-range" id="report-range"></p>
+      <div class="stats report-stats" id="report-stats"></div>
+      <div class="report-strip" id="report-strip"></div>
+      <h3 class="section-title">Daily average vs target</h3>
+      <div class="bars" id="report-bars"></div>
+      <h3 class="section-title">Most logged</h3>
+      <div class="report-list" id="report-foods"></div>
+      <div id="report-places-wrap">
+        <h3 class="section-title">Places you ate</h3>
+        <div class="report-list" id="report-places"></div>
+      </div>
+      <h3 class="section-title">Suggestions</h3>
+      <div id="report-tips"></div>
+      <h3 class="section-title">Coaching from Claude</h3>
+      <div class="coach" id="report-ai"></div>
+      <button class="btn block" type="button" id="report-ai-btn">✨ Get coaching from Claude</button>
+      <p class="scan-note" id="report-note" hidden></p>
+      <button class="btn block" type="button" id="report-close">Close</button>
     </div>
   </div>
 

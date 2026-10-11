@@ -449,3 +449,39 @@ input:focus { border-color: var(--pro); }
 .gap-item small { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
 #gap-sheet .section-title { margin: 16px 2px 8px; }
 #gap-ai-btn { margin-top: 8px; }
+
+/* ---------- Weeks + weekly report ---------- */
+.week { margin-bottom: 14px; }
+.week-head { list-style: none; cursor: pointer; padding: 10px 2px 10px; }
+.week-head::-webkit-details-marker { display: none; }
+.week-title { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.week-title b { font-size: 18px; }
+.week-title b::before { content: '▸ '; color: var(--muted); }
+.week[open] .week-title b::before { content: '▾ '; }
+.week-title span { color: var(--muted); font-size: 14px; }
+.week-sub { color: var(--muted); font-size: 14px; margin-top: 2px; font-variant-numeric: tabular-nums; }
+.week-report { margin-bottom: 8px; border-color: var(--pro); color: var(--pro); }
+.day-empty { display: flex; justify-content: space-between; padding: 12px 14px; margin-bottom: 8px; border: 1px dashed var(--line); border-radius: 14px; color: var(--muted); font-size: 15px; }
+.day-empty span:first-child { font-weight: 700; }
+.day-empty.future { opacity: 0.5; }
+.report-range { margin: -6px 0 12px; }
+.report-stats { margin-bottom: 10px; }
+.report-strip { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.report-strip div { background: var(--bg); border-radius: 10px; padding: 6px 0; text-align: center; }
+.report-strip span { display: block; font-size: 11px; color: var(--muted); text-transform: uppercase; }
+.report-strip b { font-size: 16px; }
+.report-strip .hit b { color: var(--good); }
+.report-strip .miss b { color: var(--over); }
+.report-strip .none b, .report-strip .future b { color: var(--muted); }
+.report-list div { display: flex; justify-content: space-between; gap: 10px; padding: 7px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.report-list div:first-child { border-top: 0; }
+.report-list span:last-child { color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.advice { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; margin-bottom: 8px; }
+.advice b { display: block; font-size: 15px; }
+.advice p { margin: 4px 0 0; color: var(--muted); font-size: 14px; line-height: 1.4; }
+.advice p b { display: inline; color: var(--text); }
+.coach-head { font-weight: 700; font-size: 16px; line-height: 1.4; margin: 0 0 8px; }
+.coach h4 { margin: 12px 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.coach ul { margin: 0 0 4px; padding-left: 20px; }
+.coach li { margin-bottom: 4px; line-height: 1.4; }
+#report-sheet .section-title { margin: 18px 2px 8px; }

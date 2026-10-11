@@ -1,7 +1,7 @@
 {
  "school": "North Providence High School",
  "source": "https://npsd.nutrislice.com/menu/north-providence-high",
- "updated": "2026-10-04",
+ "updated": "2026-10-11",
  "items": [
   {
    "name": "Aloha Pizza",
@@ -1215,13 +1215,13 @@
   },
   {
    "name": "Fresh Fuji Apple",
-   "cal": 80,
+   "cal": 70,
    "p": 0,
    "c": 20,
    "f": 0,
    "serving": "1 each",
    "meal": "Lunch, Breakfast",
-   "lastServed": "2026-09-22"
+   "lastServed": "2026-09-29"
   },
   {
    "name": "Fresh Golden Delicious Apple",
@@ -1515,13 +1515,13 @@
   },
   {
    "name": "Homemade French Toast Casserole",
-   "cal": 190,
-   "p": 11,
-   "c": 23,
-   "f": 7,
-   "serving": "1 slice",
+   "cal": 320,
+   "p": 16,
+   "c": 47,
+   "f": 8,
+   "serving": "2 slice",
    "meal": "Lunch, Breakfast",
-   "lastServed": "2026-09-23"
+   "lastServed": "2026-10-07"
   },
   {
    "name": "Homemade Granola",
@@ -1746,8 +1746,8 @@
   {
    "name": "Macaroni and Cheese",
    "cal": 330,
-   "p": 15,
-   "c": 29,
+   "p": 16,
+   "c": 28,
    "f": 16,
    "serving": "6 oz portion",
    "meal": "Lunch",
@@ -2595,13 +2595,13 @@
   },
   {
    "name": "Strawberry Parfait with Granola",
-   "cal": 280,
-   "p": 9,
-   "c": 53,
-   "f": 5,
-   "serving": "1 each",
+   "cal": 530,
+   "p": 17,
+   "c": 97,
+   "f": 9,
+   "serving": "1 serving",
    "meal": "Lunch, Breakfast",
-   "lastServed": "2026-09-24"
+   "lastServed": "2026-10-30"
   },
   {
    "name": "Strawberry Smoothie",

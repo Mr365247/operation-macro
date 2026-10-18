@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-05",
+ "updated": "2026-10-18",
  "chains": {
   "chickfila": {
    "name": "Chick-fil-A",
@@ -9,7 +9,7 @@
     "cfa"
    ],
    "source": "https://www.chick-fil-a.com/nutrition-allergens",
-   "updated": "2026-10-05",
+   "updated": "2026-10-18",
    "items": [
     {
      "name": "Waffle",
@@ -1028,20 +1028,20 @@
      "p": 11
     },
     {
+     "name": "Chicken Tortilla Soup",
+     "serving": "265g",
+     "cal": 350,
+     "f": 11,
+     "c": 39,
+     "p": 25
+    },
+    {
      "name": "Kale Crunch Side",
      "serving": "112g",
      "cal": 170,
      "f": 12,
      "c": 13,
      "p": 4
-    },
-    {
-     "name": "Chicken Tortilla Soup",
-     "serving": "265g",
-     "cal": 280,
-     "f": 7,
-     "c": 31,
-     "p": 24
     },
     {
      "name": "Buddy Fruits Apple Sauce",
@@ -2973,7 +2973,7 @@
     "dd"
    ],
    "source": "https://www.dunkindonuts.com/en/menu/nutrition",
-   "updated": "2026-10-05",
+   "updated": "2026-10-18",
    "items": [
     {
      "name": "Creepy Crawler Coffee Chiller - Large",
@@ -9592,7 +9592,7 @@
     "wendy"
    ],
    "source": "https://order.wendys.com/us/en/national/menu",
-   "updated": "2026-10-05",
+   "updated": "2026-10-18",
    "items": [
     {
      "name": "Dave's Single",
@@ -9757,15 +9757,6 @@
      "carbsEstimated": true
     },
     {
-     "name": "Jr. Natural-Cut Fries",
-     "serving": "",
-     "cal": 210,
-     "f": 9,
-     "c": 29,
-     "p": 3,
-     "carbsEstimated": true
-    },
-    {
      "name": "Small Natural-Cut Fries",
      "serving": "",
      "cal": 260,
@@ -9790,6 +9781,15 @@
      "f": 21,
      "c": 63,
      "p": 7,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Small Chili",
+     "serving": "",
+     "cal": 280,
+     "f": 12,
+     "c": 24,
+     "p": 19,
      "carbsEstimated": true
     },
     {
@@ -9820,15 +9820,6 @@
      "carbsEstimated": true
     },
     {
-     "name": "Chocolate Milk",
-     "serving": "",
-     "cal": 140,
-     "f": 2.5,
-     "c": 22,
-     "p": 7,
-     "carbsEstimated": true
-    },
-    {
      "name": "Jr. Classic Chocolate Frosty",
      "serving": "",
      "cal": 190,
@@ -9853,6 +9844,15 @@
      "f": 9,
      "c": 48,
      "p": 9,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Large Classic Chocolate Frosty",
+     "serving": "",
+     "cal": 510,
+     "f": 15,
+     "c": 79,
+     "p": 15,
      "carbsEstimated": true
     },
     {
@@ -9892,11 +9892,11 @@
      "carbsEstimated": true
     },
     {
-     "name": "Chocolate Chunk Cookie",
+     "name": "Jr. Natural-Cut Fries",
      "serving": "",
-     "cal": 330,
-     "f": 16,
-     "c": 44,
+     "cal": 210,
+     "f": 9,
+     "c": 29,
      "p": 3,
      "carbsEstimated": true
     },
@@ -9919,20 +9919,11 @@
      "carbsEstimated": true
     },
     {
-     "name": "Bacon Cheese Baked Potato",
+     "name": "Cheese Baked Potato",
      "serving": "",
-     "cal": 420,
-     "f": 12,
-     "c": 61,
-     "p": 17,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Large Classic Chocolate Frosty",
-     "serving": "",
-     "cal": 510,
-     "f": 15,
-     "c": 79,
+     "cal": 440,
+     "f": 14,
+     "c": 64,
      "p": 15,
      "carbsEstimated": true
     },
@@ -9955,12 +9946,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Small Chili",
+     "name": "Kids' Meal Toy (Age 3+)",
      "serving": "",
-     "cal": 280,
-     "f": 12,
-     "c": 24,
-     "p": 19,
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0,
      "carbsEstimated": true
     },
     {
@@ -9991,15 +9982,6 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Coca-Cola",
-     "serving": "",
-     "cal": 320,
-     "f": 0,
-     "c": 80,
-     "p": 0,
-     "carbsEstimated": true
-    },
-    {
      "name": "Small Diet Coke",
      "serving": "",
      "cal": 0,
@@ -10018,7 +10000,7 @@
      "carbsEstimated": true
     },
     {
-     "name": "Kids' Meal Toy (Age 3+)",
+     "name": "Large Diet Coke",
      "serving": "",
      "cal": 0,
      "f": 0,
@@ -10072,12 +10054,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Sprite",
+     "name": "Chocolate Milk",
      "serving": "",
-     "cal": 300,
-     "f": 0,
-     "c": 75,
-     "p": 0,
+     "cal": 140,
+     "f": 2.5,
+     "c": 22,
+     "p": 7,
      "carbsEstimated": true
     },
     {
@@ -10090,11 +10072,11 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Diet Coke",
+     "name": "Medium Fanta Orange",
      "serving": "",
-     "cal": 0,
+     "cal": 260,
      "f": 0,
-     "c": 0,
+     "c": 65,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10153,15 +10135,6 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large All-Natural Lemonade",
-     "serving": "",
-     "cal": 330,
-     "f": 0,
-     "c": 83,
-     "p": 0,
-     "carbsEstimated": true
-    },
-    {
      "name": "Small Minute Maid Light Lemonade",
      "serving": "",
      "cal": 10,
@@ -10176,6 +10149,15 @@
      "cal": 10,
      "f": 0,
      "c": 3,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Large Minute Maid Light Lemonade",
+     "serving": "",
+     "cal": 15,
+     "f": 0,
+     "c": 4,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10216,11 +10198,11 @@
      "carbsEstimated": true
     },
     {
-     "name": "Pure Life Bottled Water",
+     "name": "Large All-Natural Lemonade",
      "serving": "",
-     "cal": 0,
+     "cal": 330,
      "f": 0,
-     "c": 0,
+     "c": 83,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10252,11 +10234,11 @@
      "carbsEstimated": true
     },
     {
-     "name": "Medium Fanta Orange",
+     "name": "$0.01",
      "serving": "",
-     "cal": 260,
+     "cal": 0,
      "f": 0,
-     "c": 65,
+     "c": 0,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10288,11 +10270,11 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Coca-Cola Zero Sugar",
+     "name": "Large Coca-Cola",
      "serving": "",
-     "cal": 0,
+     "cal": 320,
      "f": 0,
-     "c": 0,
+     "c": 80,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10342,21 +10324,30 @@
      "carbsEstimated": true
     },
     {
-     "name": "Sausage Gravy & Biscuit",
+     "name": "6 PC. Chicken Nuggets",
      "serving": "",
-     "cal": 410,
-     "f": 23,
-     "c": 44,
-     "p": 7,
+     "cal": 260,
+     "f": 16,
+     "c": 15,
+     "p": 14,
      "carbsEstimated": true
     },
     {
-     "name": "Bacon, Egg & Cheese Biscuit",
+     "name": "Chocolate Chunk Cookie",
      "serving": "",
-     "cal": 420,
-     "f": 24,
-     "c": 34,
-     "p": 17,
+     "cal": 330,
+     "f": 16,
+     "c": 44,
+     "p": 3,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Pure Life Bottled Water",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0,
      "carbsEstimated": true
     },
     {
@@ -10396,20 +10387,20 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Minute Maid Light Lemonade",
+     "name": "Sausage Biscuit",
      "serving": "",
-     "cal": 15,
-     "f": 0,
-     "c": 4,
-     "p": 0,
+     "cal": 470,
+     "f": 31,
+     "c": 36,
+     "p": 12,
      "carbsEstimated": true
     },
     {
-     "name": "Honest Kids Fruit Punch",
+     "name": "Large Coca-Cola Zero Sugar",
      "serving": "",
-     "cal": 35,
+     "cal": 0,
      "f": 0,
-     "c": 9,
+     "c": 0,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10441,30 +10432,30 @@
      "carbsEstimated": true
     },
     {
-     "name": "$0.01",
+     "name": "Breakfast Baconator",
      "serving": "",
-     "cal": 0,
+     "cal": 630,
+     "f": 42,
+     "c": 33,
+     "p": 30,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Bacon Cheese Baked Potato",
+     "serving": "",
+     "cal": 420,
+     "f": 12,
+     "c": 61,
+     "p": 17,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Large Sprite",
+     "serving": "",
+     "cal": 300,
      "f": 0,
-     "c": 0,
+     "c": 75,
      "p": 0,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Simply Orange Juice",
-     "serving": "",
-     "cal": 160,
-     "f": 0,
-     "c": 37,
-     "p": 3,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Honey Butter Biscuit",
-     "serving": "",
-     "cal": 330,
-     "f": 17,
-     "c": 39,
-     "p": 5,
      "carbsEstimated": true
     },
     {
@@ -10504,12 +10495,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Cheese Baked Potato",
+     "name": "Honey Butter Biscuit",
      "serving": "",
-     "cal": 440,
-     "f": 14,
-     "c": 64,
-     "p": 15,
+     "cal": 330,
+     "f": 17,
+     "c": 39,
+     "p": 5,
      "carbsEstimated": true
     },
     {
@@ -10558,12 +10549,21 @@
      "carbsEstimated": true
     },
     {
-     "name": "Spicy Nuggs Party Pack",
+     "name": "Kid Coca-Cola Zero Sugar",
      "serving": "",
-     "cal": 2340,
-     "f": 153,
-     "c": 113,
-     "p": 128,
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Crispy Nuggs Party Pack",
+     "serving": "",
+     "cal": 2260,
+     "f": 145,
+     "c": 116,
+     "p": 123,
      "carbsEstimated": true
     },
     {
@@ -10573,6 +10573,15 @@
      "f": 37,
      "c": 34,
      "p": 35,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Simply Orange Juice",
+     "serving": "",
+     "cal": 160,
+     "f": 0,
+     "c": 37,
+     "p": 3,
      "carbsEstimated": true
     },
     {
@@ -10603,15 +10612,6 @@
      "carbsEstimated": true
     },
     {
-     "name": "6 PC. Chicken Nuggets",
-     "serving": "",
-     "cal": 260,
-     "f": 16,
-     "c": 15,
-     "p": 14,
-     "carbsEstimated": true
-    },
-    {
      "name": "Value Diet Coke&#174;",
      "serving": "",
      "cal": 0,
@@ -10639,12 +10639,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Sausage Biscuit",
+     "name": "Sausage Gravy & Biscuit",
      "serving": "",
-     "cal": 470,
-     "f": 31,
-     "c": 36,
-     "p": 12,
+     "cal": 410,
+     "f": 23,
+     "c": 44,
+     "p": 7,
      "carbsEstimated": true
     },
     {
@@ -10654,15 +10654,6 @@
      "f": 0,
      "c": 35,
      "p": 0,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Breakfast Baconator",
-     "serving": "",
-     "cal": 630,
-     "f": 42,
-     "c": 33,
-     "p": 30,
      "carbsEstimated": true
     },
     {
@@ -10684,20 +10675,47 @@
      "carbsEstimated": true
     },
     {
-     "name": "Value Minute Maid&#174; Light Lemonade",
-     "serving": "",
-     "cal": 5,
-     "f": 0,
-     "c": 1,
-     "p": 0,
-     "carbsEstimated": true
-    },
-    {
      "name": "Value Dr Pepper &#174;",
      "serving": "",
      "cal": 140,
      "f": 0,
      "c": 35,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Honest Kids Fruit Punch",
+     "serving": "",
+     "cal": 35,
+     "f": 0,
+     "c": 9,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Spicy Nuggs Party Pack",
+     "serving": "",
+     "cal": 2340,
+     "f": 153,
+     "c": 113,
+     "p": 128,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Bacon, Egg & Cheese Biscuit",
+     "serving": "",
+     "cal": 420,
+     "f": 24,
+     "c": 34,
+     "p": 17,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Value Minute Maid&#174; Light Lemonade",
+     "serving": "",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10747,6 +10765,15 @@
      "carbsEstimated": true
     },
     {
+     "name": "Apple Pecan Salad",
+     "serving": "",
+     "cal": 510,
+     "f": 25,
+     "c": 40,
+     "p": 31,
+     "carbsEstimated": true
+    },
+    {
      "name": "Grilled Chicken Ranch Wrap",
      "serving": "",
      "cal": 420,
@@ -10783,21 +10810,21 @@
      "carbsEstimated": true
     },
     {
-     "name": "Medium Regular Hot Coffee",
-     "serving": "",
-     "cal": 5,
-     "f": 0,
-     "c": 1,
-     "p": 0,
-     "carbsEstimated": true
-    },
-    {
      "name": "Large Regular Hot Coffee",
      "serving": "",
      "cal": 5,
      "f": 0,
      "c": 0,
      "p": 1,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Medium Regular Hot Coffee",
+     "serving": "",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 0,
      "carbsEstimated": true
     },
     {
@@ -10855,12 +10882,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Kid Coca-Cola Zero Sugar",
+     "name": "Breakfast Burrito, Bacon",
      "serving": "",
-     "cal": 0,
-     "f": 0,
-     "c": 0,
-     "p": 0,
+     "cal": 700,
+     "f": 39,
+     "c": 55,
+     "p": 32,
      "carbsEstimated": true
     },
     {
@@ -10918,6 +10945,15 @@
      "carbsEstimated": true
     },
     {
+     "name": "Breakfast Burrito, Sausage",
+     "serving": "",
+     "cal": 820,
+     "f": 53,
+     "c": 55,
+     "p": 31,
+     "carbsEstimated": true
+    },
+    {
      "name": "Taco Salad",
      "serving": "",
      "cal": 610,
@@ -10929,9 +10965,9 @@
     {
      "name": "Small Caramel Crunch Vanilla Frosty Fusion",
      "serving": "",
-     "cal": 420,
+     "cal": 410,
      "f": 10,
-     "c": 74,
+     "c": 71,
      "p": 9,
      "carbsEstimated": true
     },
@@ -10956,8 +10992,8 @@
     {
      "name": "Small Caramel Crunch Chocolate Frosty Fusion",
      "serving": "",
-     "cal": 420,
-     "f": 11,
+     "cal": 410,
+     "f": 10,
      "c": 71,
      "p": 9,
      "carbsEstimated": true
@@ -10972,66 +11008,66 @@
      "carbsEstimated": true
     },
     {
-     "name": "Breakfast Burrito, Sausage",
+     "name": "Medium Caramel Crunch Chocolate Frosty Fusion",
      "serving": "",
-     "cal": 820,
-     "f": 53,
-     "c": 55,
-     "p": 31,
+     "cal": 580,
+     "f": 14,
+     "c": 102,
+     "p": 12,
      "carbsEstimated": true
     },
     {
      "name": "Small OREO Brownie Vanilla Frosty Fusion",
      "serving": "",
-     "cal": 520,
+     "cal": 500,
      "f": 23,
-     "c": 68,
+     "c": 63,
      "p": 10,
      "carbsEstimated": true
     },
     {
      "name": "Medium OREO Brownie Vanilla Frosty Fusion",
      "serving": "",
-     "cal": 680,
-     "f": 29,
-     "c": 91,
-     "p": 14,
+     "cal": 660,
+     "f": 28,
+     "c": 89,
+     "p": 13,
      "carbsEstimated": true
     },
     {
      "name": "Large OREO Brownie Vanilla Frosty Fusion",
      "serving": "",
-     "cal": 850,
-     "f": 35,
-     "c": 117,
-     "p": 17,
+     "cal": 820,
+     "f": 34,
+     "c": 113,
+     "p": 16,
      "carbsEstimated": true
     },
     {
      "name": "Small OREO Brownie Chocolate Frosty Fusion",
      "serving": "",
-     "cal": 520,
-     "f": 24,
-     "c": 66,
+     "cal": 500,
+     "f": 23,
+     "c": 63,
      "p": 10,
      "carbsEstimated": true
     },
     {
      "name": "Medium OREO Brownie Chocolate Frosty Fusion",
      "serving": "",
-     "cal": 680,
+     "cal": 660,
      "f": 29,
-     "c": 91,
-     "p": 14,
+     "c": 87,
+     "p": 13,
      "carbsEstimated": true
     },
     {
      "name": "Large OREO Brownie Chocolate Frosty Fusion",
      "serving": "",
-     "cal": 850,
-     "f": 35,
-     "c": 117,
-     "p": 17,
+     "cal": 820,
+     "f": 34,
+     "c": 113,
+     "p": 16,
      "carbsEstimated": true
     },
     {
@@ -11041,15 +11077,6 @@
      "f": 24,
      "c": 61,
      "p": 10,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Crispy Nuggs Party Pack",
-     "serving": "",
-     "cal": 2260,
-     "f": 145,
-     "c": 116,
-     "p": 123,
      "carbsEstimated": true
     },
     {
@@ -11073,18 +11100,18 @@
     {
      "name": "Small Strawberry Vanilla Frosty Swirl",
      "serving": "",
-     "cal": 330,
+     "cal": 350,
      "f": 8,
-     "c": 57,
+     "c": 62,
      "p": 8,
      "carbsEstimated": true
     },
     {
      "name": "Medium Strawberry Vanilla Frosty Swirl",
      "serving": "",
-     "cal": 430,
+     "cal": 450,
      "f": 11,
-     "c": 72,
+     "c": 77,
      "p": 11,
      "carbsEstimated": true
     },
@@ -11100,18 +11127,27 @@
     {
      "name": "Small Caramel Vanilla Frosty Swirl",
      "serving": "",
-     "cal": 380,
-     "f": 10,
+     "cal": 370,
+     "f": 9,
      "c": 63,
-     "p": 10,
+     "p": 9,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Medium Caramel Vanilla Frosty Swirl",
+     "serving": "",
+     "cal": 460,
+     "f": 12,
+     "c": 76,
+     "p": 12,
      "carbsEstimated": true
     },
     {
      "name": "Large Caramel Vanilla Frosty Swirl",
      "serving": "",
-     "cal": 570,
+     "cal": 560,
      "f": 15,
-     "c": 94,
+     "c": 91,
      "p": 15,
      "carbsEstimated": true
     },
@@ -11170,19 +11206,19 @@
      "carbsEstimated": true
     },
     {
-     "name": "Breakfast Burrito, Bacon",
+     "name": "Small Caramel Chocolate Frosty Swirl",
      "serving": "",
-     "cal": 700,
-     "f": 39,
-     "c": 55,
-     "p": 32,
+     "cal": 370,
+     "f": 10,
+     "c": 61,
+     "p": 9,
      "carbsEstimated": true
     },
     {
      "name": "Medium Caramel Chocolate Frosty Swirl",
      "serving": "",
-     "cal": 470,
-     "f": 13,
+     "cal": 460,
+     "f": 12,
      "c": 76,
      "p": 12,
      "carbsEstimated": true
@@ -11190,9 +11226,9 @@
     {
      "name": "Large Caramel Chocolate Frosty Swirl",
      "serving": "",
-     "cal": 570,
+     "cal": 560,
      "f": 15,
-     "c": 94,
+     "c": 91,
      "p": 15,
      "carbsEstimated": true
     },
@@ -11238,6 +11274,15 @@
      "cal": 190,
      "f": 8,
      "c": 29,
+     "p": 1,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Large Vanilla Cold Brew with Cream",
+     "serving": "",
+     "cal": 270,
+     "f": 12,
+     "c": 40,
      "p": 1,
      "carbsEstimated": true
     },
@@ -11305,33 +11350,6 @@
      "carbsEstimated": true
     },
     {
-     "name": "Apple Pecan Salad",
-     "serving": "",
-     "cal": 510,
-     "f": 25,
-     "c": 40,
-     "p": 31,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Large Cold Brew with Cream and Sugar",
-     "serving": "",
-     "cal": 270,
-     "f": 12,
-     "c": 40,
-     "p": 1,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Medium Caramel Vanilla Frosty Swirl",
-     "serving": "",
-     "cal": 470,
-     "f": 12,
-     "c": 79,
-     "p": 12,
-     "carbsEstimated": true
-    },
-    {
      "name": "Medium Cold Brew with Cream and Sugar",
      "serving": "",
      "cal": 190,
@@ -11341,12 +11359,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Small Caramel Chocolate Frosty Swirl",
+     "name": "Large Cold Brew with Cream and Sugar",
      "serving": "",
-     "cal": 380,
-     "f": 10,
-     "c": 63,
-     "p": 10,
+     "cal": 270,
+     "f": 12,
+     "c": 40,
+     "p": 1,
      "carbsEstimated": true
     },
     {
@@ -11368,12 +11386,21 @@
      "carbsEstimated": true
     },
     {
-     "name": "Medium Caramel Crunch Chocolate Frosty Fusion",
+     "name": "Small Pineapple Citrus Sparkling Energy",
      "serving": "",
-     "cal": 580,
-     "f": 14,
-     "c": 102,
-     "p": 12,
+     "cal": 160,
+     "f": 0,
+     "c": 40,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Medium Pineapple Citrus Sparkling Energy",
+     "serving": "",
+     "cal": 230,
+     "f": 0,
+     "c": 58,
+     "p": 0,
      "carbsEstimated": true
     },
     {
@@ -11395,12 +11422,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Vanilla Cold Brew with Cream",
+     "name": "Medium Cookie Dough Frosty Fusion, Vanilla",
      "serving": "",
-     "cal": 270,
-     "f": 12,
-     "c": 40,
-     "p": 1,
+     "cal": 740,
+     "f": 31,
+     "c": 101,
+     "p": 14,
      "carbsEstimated": true
     },
     {
@@ -11467,6 +11494,15 @@
      "carbsEstimated": true
     },
     {
+     "name": "Kids' Watermelon Lemonade",
+     "serving": "",
+     "cal": 160,
+     "f": 0,
+     "c": 40,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
      "name": "Kid Cookie Dough Frosty Fusion, Vanilla",
      "serving": "",
      "cal": 540,
@@ -11512,6 +11548,24 @@
      "carbsEstimated": true
     },
     {
+     "name": "Small Watermelon Sparkling Energy",
+     "serving": "",
+     "cal": 190,
+     "f": 0,
+     "c": 48,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Medium Watermelon Sparkling Energy",
+     "serving": "",
+     "cal": 280,
+     "f": 0,
+     "c": 70,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
      "name": "Kids' Sprite Watermelon",
      "serving": "",
      "cal": 110,
@@ -11528,24 +11582,6 @@
      "c": 24,
      "p": 23,
      "carbsEstimated": true
-    },
-    {
-     "name": "Medium Cookie Dough Frosty Fusion, Vanilla",
-     "serving": "",
-     "cal": 740,
-     "f": 31,
-     "c": 101,
-     "p": 14,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Kids' Watermelon Lemonade",
-     "serving": "",
-     "cal": 160,
-     "f": 0,
-     "c": 40,
-     "p": 0,
-     "carbsEstimated": true
     }
    ]
   },
@@ -11557,7 +11593,7 @@
     "mickey ds"
    ],
    "source": "https://www.mcdonalds.com/us/en-us/about-our-food/nutrition-calculator.html",
-   "updated": "2026-10-05",
+   "updated": "2026-10-18",
    "items": [
     {
      "name": "Baked Hot Apple Pie",
@@ -11718,6 +11754,38 @@
      "f": 8,
      "c": 38,
      "p": 5
+    },
+    {
+     "name": "Coca-Cola Zero Sugar (Large)",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola Zero Sugar (Extra Small)",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola Zero Sugar (Small)",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola Zero Sugar (Medium)",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
     },
     {
      "name": "Vanilla Shake (Small)",
@@ -12320,28 +12388,12 @@
      "p": 2
     },
     {
-     "name": "Reduced Sugar* Low Fat Chocolate Milk Jug",
-     "serving": "",
-     "cal": 130,
-     "f": 2.5,
-     "c": 18,
-     "p": 9
-    },
-    {
      "name": "Dasani Water",
      "serving": "",
      "cal": 0,
      "f": 0,
      "c": 0,
      "p": 0
-    },
-    {
-     "name": "1% Low Fat Milk Jug",
-     "serving": "",
-     "cal": 100,
-     "f": 2,
-     "c": 12,
-     "p": 8
     },
     {
      "name": "Diet Coke (Small)",
@@ -12642,25 +12694,25 @@
     {
      "name": "Frozen Fanta Blue Raspberry (Medium)",
      "serving": "",
-     "cal": 80,
+     "cal": 110,
      "f": 0,
-     "c": 20,
+     "c": 31,
      "p": 0
     },
     {
      "name": "Frozen Fanta Blue Raspberry (Small)",
      "serving": "",
-     "cal": 60,
+     "cal": 90,
      "f": 0,
-     "c": 16,
+     "c": 23,
      "p": 0
     },
     {
      "name": "Frozen Fanta Blue Raspberry (Large)",
      "serving": "",
-     "cal": 110,
+     "cal": 160,
      "f": 0,
-     "c": 29,
+     "c": 42,
      "p": 0
     },
     {
@@ -12722,25 +12774,25 @@
     {
      "name": "Frozen Coca Cola Classic (Small)",
      "serving": "",
-     "cal": 60,
+     "cal": 90,
      "f": 0,
-     "c": 16,
+     "c": 24,
      "p": 0
     },
     {
      "name": "Frozen Coca Cola Classic (Medium)",
      "serving": "",
-     "cal": 80,
+     "cal": 110,
      "f": 0,
-     "c": 21,
+     "c": 31,
      "p": 0
     },
     {
      "name": "Frozen Coca Cola Classic (Large)",
      "serving": "",
-     "cal": 110,
+     "cal": 160,
      "f": 0,
-     "c": 29,
+     "c": 43,
      "p": 0
     },
     {
@@ -12765,6 +12817,30 @@
      "cal": 5,
      "f": 0,
      "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Fanta Orange (Medium) No Ice",
+     "serving": "",
+     "cal": 270,
+     "f": 0,
+     "c": 71,
+     "p": 0
+    },
+    {
+     "name": "Fanta Orange (S) No Ice",
+     "serving": "",
+     "cal": 210,
+     "f": 0,
+     "c": 54,
+     "p": 0
+    },
+    {
+     "name": "Fanta Orange (Large) No Ice",
+     "serving": "",
+     "cal": 380,
+     "f": 0,
+     "c": 101,
      "p": 0
     },
     {
@@ -12878,46 +12954,6 @@
      "f": 20,
      "c": 46,
      "p": 26
-    },
-    {
-     "name": "Mighty Hot Sauce",
-     "serving": "",
-     "cal": 25,
-     "f": 0,
-     "c": 6,
-     "p": 0
-    },
-    {
-     "name": "Spicy Chicken Mcnuggets (20 Piece)",
-     "serving": "",
-     "cal": 980,
-     "f": 61,
-     "c": 56,
-     "p": 52
-    },
-    {
-     "name": "Spicy Chicken McNuggets (6 Piece)",
-     "serving": "",
-     "cal": 290,
-     "f": 18,
-     "c": 17,
-     "p": 15
-    },
-    {
-     "name": "Spicy Chicken Mcnuggets (10 Piece)",
-     "serving": "",
-     "cal": 490,
-     "f": 30,
-     "c": 28,
-     "p": 26
-    },
-    {
-     "name": "Spicy Chicken Mcnuggets (40 Piece)",
-     "serving": "",
-     "cal": 1950,
-     "f": 122,
-     "c": 112,
-     "p": 103
     },
     {
      "name": "Spicy Deluxe McCrispy",
@@ -13375,7 +13411,7 @@
     "subway"
    ],
    "source": "https://www.subway.com/en-us/menunutrition/nutrition",
-   "updated": "2026-10-05",
+   "updated": "2026-10-18",
    "items": [
     {
      "name": "6\" Steak Philly",
@@ -16005,7 +16041,6 @@
   "dunkin": "ok: 826 items",
   "mcdonalds": "ok: 226 items",
   "subway": "ok: 200 items",
-  "wendys": "ok: 217 items",
-  "tropicalsmoothie": "ok: 126 items (manual import)"
+  "wendys": "ok: 221 items"
  }
 }

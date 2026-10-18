@@ -1,7 +1,7 @@
 {
  "school": "North Providence High School",
  "source": "https://npsd.nutrislice.com/menu/north-providence-high",
- "updated": "2026-10-11",
+ "updated": "2026-10-18",
  "items": [
   {
    "name": "Aloha Pizza",
@@ -285,13 +285,13 @@
   },
   {
    "name": "Berry Parfait with Granola",
-   "cal": 530,
+   "cal": 520,
    "p": 17,
-   "c": 96,
+   "c": 94,
    "f": 10,
    "serving": "1 serving",
    "meal": "Lunch, Breakfast",
-   "lastServed": "2026-10-01"
+   "lastServed": "2026-10-30"
   },
   {
    "name": "Blueberry Parfait with Granola",
@@ -2651,7 +2651,7 @@
    "f": 0,
    "serving": "1 fl oz",
    "meal": "Lunch, Breakfast",
-   "lastServed": "2026-10-01"
+   "lastServed": "2026-10-28"
   },
   {
    "name": "Tater Tots",

@@ -2332,7 +2332,15 @@ $('#sign-out').addEventListener('click', () => {
 
 /* ================= Boot ================= */
 
-// Welcome note on every launch; tap anywhere (or wait a few seconds) to go in.
+// Welcome note on every launch: "Welcome to a better you" the very first time on this phone,
+// the motto after that. Tap anywhere (or wait a few seconds) to go in.
+const WELCOMED_SLOT = 'opmacro_welcomed';
+let welcomedBefore = false;
+try { welcomedBefore = !!localStorage.getItem(WELCOMED_SLOT); localStorage.setItem(WELCOMED_SLOT, '1'); } catch (e) { /* storage blocked */ }
+if (welcomedBefore) {
+  $('#welcome-title').textContent = 'The life you want starts with the life you live.';
+  $('#welcome').classList.add('motto');
+}
 function closeWelcome() {
   const w = $('#welcome');
   if (w.hidden || w.classList.contains('out')) return;

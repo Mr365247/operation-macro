@@ -56,12 +56,17 @@ and writes a pep talk around it, so it never makes up quotes. With an API key it
 coaching (teen-safe: never below the calorie target) once per week and saves the answer in the backup.
 
 ## Invite-only sign-in
-`config.js` holds the Supabase project URL and publishable key. Blank = sign-in off. When set,
-the app asks for an email and password before anything else; only accounts created in the
-Supabase dashboard (Authentication → Users → Add user, with sign-ups turned off) can get in, and
-people must pick their own password on first sign-in. Only the sign-in talks to Supabase: each
-account's logs stay on the phone under their own storage key. Deleting a user in Supabase locks
-them out the next time the app opens with internet.
+No server or accounts service. `config.js` → `inviteOnly: true` turns it on; the app then asks
+for an email and invite code once per phone and checks them against `invites.json`.
+
+    node scripts/invite.mjs add someone@example.com     # prints their code (a new code replaces the old one)
+    node scripts/invite.mjs remove someone@example.com  # locked out the next time the app opens online
+    node scripts/invite.mjs check someone@example.com
+
+`invites.json` holds only one-way fingerprints (PBKDF2) of each email and code, never the email
+or code itself, because the repo is public. Each email is a profile: its logs and API key stay on
+the phone under their own storage key, and a phone's existing data can be moved into the first
+account that signs in on it. Getting a new code keeps that person's data.
 
 ## Photo estimates
 Log food → 📸 Photo sends a downscaled photo (plus an optional note) to Claude using the

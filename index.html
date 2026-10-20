@@ -120,10 +120,7 @@
       <div class="card" id="account-card" hidden>
         <div class="card-head"><h3>👤 Account</h3></div>
         <p class="small">Signed in as <b id="account-email"></b></p>
-        <div class="btn-row">
-          <button class="btn" type="button" id="change-pw">Change password</button>
-          <button class="btn danger" type="button" id="sign-out">Sign out</button>
-        </div>
+        <button class="btn danger block" type="button" id="sign-out">Sign out</button>
       </div>
 
       <div class="card">
@@ -284,24 +281,13 @@
     <form class="setup-inner" id="signin-form" autocomplete="on" novalidate>
       <div class="brand">OPERATION MACRO</div>
       <div class="signin-icon">🎖️</div>
-      <h2>Sign in</h2>
-      <p class="muted small">Invite only. Use the email and password you were given.</p>
-      <label class="field"><span>Email</span><input id="si-email" type="email" autocomplete="username" autocapitalize="off" autocorrect="off" inputmode="email"></label>
-      <label class="field"><span>Password</span><input id="si-password" type="password" autocomplete="current-password"></label>
+      <h2>Invite only</h2>
+      <p class="muted small">Enter your email and the invite code you were texted. You only do this once on this phone.</p>
+      <label class="field"><span>Email</span><input id="si-email" type="email" autocomplete="email" autocapitalize="off" autocorrect="off" inputmode="email"></label>
+      <label class="field"><span>Invite code</span><input id="si-code" type="text" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" placeholder="XXXX-XXXX"></label>
       <button class="btn primary block big" type="submit" id="si-go">Sign in</button>
       <p class="scan-note" id="signin-note" hidden></p>
-      <p class="muted small">Your food logs and weigh-ins stay on this phone. Only your sign-in goes to the server.</p>
-    </form>
-    <form class="setup-inner" id="password-form" autocomplete="off" novalidate hidden>
-      <div class="brand">OPERATION MACRO</div>
-      <div class="signin-icon">🔒</div>
-      <h2 id="pw-title">Pick your own password</h2>
-      <p class="muted small">At least 8 characters. Only you will know it.</p>
-      <label class="field"><span>New password</span><input id="pw-new" type="password" autocomplete="new-password"></label>
-      <label class="field"><span>Type it again</span><input id="pw-again" type="password" autocomplete="new-password"></label>
-      <button class="btn primary block big" type="submit" id="pw-go">Save password</button>
-      <button class="btn block" type="button" id="pw-cancel">Cancel</button>
-      <p class="scan-note" id="pw-note" hidden></p>
+      <p class="muted small">Your food logs and weigh-ins stay on this phone. Nobody else can see them.</p>
     </form>
   </div>
 

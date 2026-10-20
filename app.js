@@ -2,10 +2,10 @@
 
 /* ================= Data ================= */
 
-// Invite-only sign-in (config.js). Each account's data lives on the phone under its own key;
-// nothing but the sign-in itself goes to the server.
+// Invite-only (config.js + invites.json). Each person's email is their profile: their data lives
+// on the phone under its own key, and nothing about it is sent anywhere.
 const AUTH = window.OPMACRO_CONFIG || {};
-const authOn = !!(AUTH.supabaseUrl && AUTH.supabaseKey);
+const authOn = !!AUTH.inviteOnly;
 const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
@@ -2245,49 +2245,30 @@ document.addEventListener('visibilitychange', () => { if (!document.hidden) chec
 window.addEventListener('focus', checkRollover);
 
 /* ================= Invite-only sign-in ================= */
-
-async function gotrue(path, { method = 'POST', body, token } = {}) {
-  const res = await fetch(`${AUTH.supabaseUrl.replace(/\/+$/, '')}/auth/v1/${path}`, {
-    method,
-    headers: { apikey: AUTH.supabaseKey, 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
-    body: body ? JSON.stringify(body) : undefined,
-  });
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) {
-    const e = new Error(data.msg || data.error_description || data.message || `Error ${res.status}`);
-    e.status = res.status; e.code = data.error_code || data.error || '';
-    throw e;
-  }
-  return data;
+// invites.json lists one entry per invited person: id = fingerprint of their email, h = fingerprint
+// of email + invite code. Neither can be turned back into the email or code. scripts/invite.mjs
+// adds and removes people; these settings must match it.
+const INVITE_ITER = 200000;
+const normEmail = e => String(e || '').trim().toLowerCase();
+const normCode = c => String(c || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+async function pbkdf2Hex(secret, salt) {
+  const enc = new TextEncoder();
+  const key = await crypto.subtle.importKey('raw', enc.encode(secret), 'PBKDF2', false, ['deriveBits']);
+  const bits = await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: enc.encode(salt), iterations: INVITE_ITER }, key, 256);
+  return [...new Uint8Array(bits)].map(b => b.toString(16).padStart(2, '0')).join('');
 }
-function authErrorMessage(e) {
-  if (e instanceof TypeError) return 'No internet connection. Signing in needs one.';
-  if (e.status === 429) return 'Too many tries. Wait a few minutes and try again.';
-  if (e.code === 'invalid_credentials' || e.code === 'invalid_grant' || e.status === 400) return 'Wrong email or password.';
-  if (e.code === 'weak_password') return 'Pick a stronger password (at least 8 characters).';
-  if (e.code === 'same_password') return 'Pick a password different from the one you were given.';
-  return e.message || 'Something went wrong. Try again.';
+const inviteId = email => pbkdf2Hex(normEmail(email), 'opmacro-id').then(h => h.slice(0, 16));
+const inviteHash = (email, code) => pbkdf2Hex(normCode(code), 'opmacro:' + normEmail(email));
+async function fetchInvites() {
+  const res = await fetch('invites.json', { cache: 'no-cache' });
+  if (!res.ok) throw new Error('invites ' + res.status);
+  return (await res.json()).invites || [];
 }
-function saveAccount(a) { localStorage.setItem(ACCOUNT_SLOT, JSON.stringify(a)); }
 
-let pwToken = null, pwFirst = false;
 function showSignin(msg) {
   $('#signin').hidden = false;
-  $('#signin-form').hidden = false;
-  $('#password-form').hidden = true;
   $('#signin-note').textContent = msg || '';
   $('#signin-note').hidden = !msg;
-}
-// first = must pick a password before using the app (accounts start with the one you were given).
-function showPasswordStep(token, first) {
-  pwToken = token; pwFirst = first;
-  $('#signin').hidden = false;
-  $('#signin-form').hidden = true;
-  $('#password-form').hidden = false;
-  $('#pw-cancel').hidden = first;
-  $('#pw-title').textContent = first ? 'Pick your own password' : 'Change password';
-  $('#pw-new').value = ''; $('#pw-again').value = '';
-  $('#pw-note').hidden = true;
 }
 
 // Moves this phone's pre-sign-in data into the account, if it's theirs.
@@ -2306,75 +2287,47 @@ function claimLegacyData(a) {
 
 $('#signin-form').addEventListener('submit', async ev => {
   ev.preventDefault();
-  const email = $('#si-email').value.trim().toLowerCase(), password = $('#si-password').value;
-  if (!email || !password) return;
+  const email = normEmail($('#si-email').value), code = normCode($('#si-code').value);
+  const note = msg => { $('#signin-note').textContent = msg; $('#signin-note').hidden = false; };
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return note('Enter your email address.');
+  if (code.length < 6) return note('Enter the invite code you were texted.');
   const btn = $('#si-go');
-  btn.disabled = true; btn.textContent = 'Signing in…';
+  btn.disabled = true; btn.textContent = 'Checking…';
   $('#signin-note').hidden = true;
   try {
-    const r = await gotrue('token?grant_type=password', { body: { email, password } });
-    const a = { id: r.user.id, email: r.user.email, refresh: r.refresh_token };
-    saveAccount(a);
-    claimLegacyData(a);
-    if (!(r.user.user_metadata || {}).pw_set) { btn.disabled = false; btn.textContent = 'Sign in'; showPasswordStep(r.access_token, true); return; }
-    location.reload();
+    const [invites, h, id] = await Promise.all([fetchInvites(), inviteHash(email, code), inviteId(email)]);
+    if (!invites.some(i => i.h === h)) {
+      note("That email and code don't match an invite. Check both, or ask for a new code.");
+    } else {
+      const a = { id, email, h };
+      localStorage.setItem(ACCOUNT_SLOT, JSON.stringify(a));
+      claimLegacyData(a);
+      location.reload();
+      return;
+    }
   } catch (e) {
-    $('#signin-note').textContent = authErrorMessage(e);
-    $('#signin-note').hidden = false;
-    btn.disabled = false; btn.textContent = 'Sign in';
+    note("Couldn't check your invite. You need internet the first time you sign in.");
   }
+  btn.disabled = false; btn.textContent = 'Sign in';
 });
 
-$('#password-form').addEventListener('submit', async ev => {
-  ev.preventDefault();
-  const pw = $('#pw-new').value, again = $('#pw-again').value;
-  const note = msg => { $('#pw-note').textContent = msg; $('#pw-note').hidden = false; };
-  if (pw.length < 8) return note('Use at least 8 characters.');
-  if (pw !== again) return note("Those passwords don't match.");
-  const btn = $('#pw-go');
-  btn.disabled = true;
-  try {
-    await gotrue('user', { method: 'PUT', token: pwToken, body: { password: pw, data: { pw_set: true } } });
-    if (pwFirst) { location.reload(); return; }
-    $('#signin').hidden = true;
-    toast('Password changed 🔒');
-  } catch (e) { note(authErrorMessage(e)); }
-  btn.disabled = false;
-});
-$('#pw-cancel').addEventListener('click', () => { $('#signin').hidden = true; });
-
-// A fresh session token; also how a removed account gets locked out.
-async function refreshSession() {
-  const r = await gotrue('token?grant_type=refresh_token', { body: { refresh_token: account.refresh } });
-  account.refresh = r.refresh_token;
-  saveAccount(account);
-  return r;
-}
 function signOut(msg) {
   try { localStorage.removeItem(ACCOUNT_SLOT); } catch (e) { /* ignore */ }
   if (msg) sessionStorage.setItem('opmacro_signin_msg', msg);
   location.reload();
 }
+// Removed from invites.json (or given a new code): locked out on the next launch with internet.
 async function checkAccount() {
-  if (!navigator.onLine) return; // offline: keep working with what's on the phone
-  try {
-    const r = await refreshSession();
-    if (!(r.user.user_metadata || {}).pw_set) showPasswordStep(r.access_token, true);
-  } catch (e) {
-    if (e instanceof TypeError) return; // network trouble, try next launch
-    if (e.status >= 400 && e.status < 500 && e.status !== 429) signOut('Your access to Operation Macro has ended. Ask for a new invite if that is a mistake.');
-  }
+  let invites;
+  try { invites = await fetchInvites(); } catch (e) { return; } // offline: keep working
+  if (!invites.some(i => i.h === account.h)) signOut('Your invite has ended or changed. Sign in with your new code, or ask for a new invite.');
 }
 function renderAccount() {
   $('#account-card').hidden = !account;
   if (account) $('#account-email').textContent = account.email;
 }
-$('#change-pw').addEventListener('click', async () => {
-  try { const r = await refreshSession(); showPasswordStep(r.access_token, false); }
-  catch (e) { toast(authErrorMessage(e)); }
-});
 $('#sign-out').addEventListener('click', () => {
-  if (confirm('Sign out? Your logs stay saved on this phone for when you sign back in.')) signOut();
+  if (confirm("Sign out? Your logs stay saved on this phone, and you'll need your invite code to sign back in.")) signOut();
 });
 
 /* ================= Boot ================= */

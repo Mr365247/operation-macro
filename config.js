@@ -1,7 +1,5 @@
-// Invite-only sign-in (Supabase Auth). Leave both blank to turn sign-in off.
-// These two values are public by design: they only let people try to sign in, and sign-up is
-// turned off in Supabase, so only accounts you create there can get in.
+// Invite-only mode. When true, the app asks for an email + invite code (checked against
+// invites.json, managed with scripts/invite.mjs) before anything else.
 window.OPMACRO_CONFIG = {
-  supabaseUrl: '',
-  supabaseKey: '',
+  inviteOnly: false,
 };

@@ -1531,6 +1531,89 @@ function remaining() {
 
 // Rank the foods we already know (favorites, scans, restaurants, school menu) by how well one
 // serving closes the gap: protein shortfall and going over calories/carbs/fat both count against it.
+// How many times each food has been logged (by name, ignoring "×2"), for "you've had this before".
+function eatenCounts() {
+  const c = {};
+  for (const d of Object.values(state.days)) for (const e of d.entries) {
+    const k = norm(baseName(e.name));
+    c[k] = (c[k] || 0) + 1;
+  }
+  return c;
+}
+
+/* ---- Where are you? Orders from one place's menu ---- */
+const SCHOOL = 'School cafeteria';
+let gapPlace = null; // null = anywhere
+function placeItems(place) {
+  if (place === SCHOOL) return cafeteria.map(i => ({ ...i, short: i.name, name: i.name, src: 'school' }));
+  return restaurants.filter(r => r.chain === place).map(i => ({ ...i, src: 'rest' }));
+}
+// Places in the order you go to them most (last 60 days), then everything else.
+function gapPlaces() {
+  const visits = {};
+  const since = shiftKey(today, -60);
+  for (const [k, d] of Object.entries(state.days)) if (k >= since) for (const e of d.entries) {
+    const pl = placeOf(baseName(e.name));
+    if (pl) visits[pl] = (visits[pl] || 0) + 1;
+  }
+  const all = [...(cafeteria.length ? [SCHOOL] : []), ...chainList.map(c => c.name)];
+  return all.sort((a, b) => (visits[b] || 0) - (visits[a] || 0) || a.localeCompare(b)).map(name => ({ name, visits: visits[name] || 0 }));
+}
+// Where you probably are: the place of your last log, if it was in the last 3 hours.
+function guessPlace() {
+  const es = ((state.days[today] || {}).entries || []).filter(e => Date.now() - (e.t || 0) < 3 * 3600000);
+  const last = es.sort((a, b) => b.t - a.t)[0];
+  return last ? placeOf(baseName(last.name)) : null;
+}
+const gapScore = (tot, rem) => {
+  const over = (val, left, scale) => Math.max(0, val - Math.max(left, 0)) / scale;
+  return Math.max(0, rem.p - tot.p) / Math.max(rem.p, 1) + over(tot.cal, rem.cal, 200) + over(tot.c, rem.c, 20) + over(tot.f, rem.f, 10);
+};
+// Party trays and family packs aren't a meal for one.
+const CATERING = /\btray\b|catering|bundle|family|gallon|dozen|\bbox of\b|\b(?:30|48|60|64|120|200)\s?(?:ct|pc|piece)/i;
+// Best single items and two-item orders from one place that fit what's left.
+function placeGapPicks(rem, place, n = 6) {
+  const eaten = eatenCounts();
+  const hour = new Date().getHours();
+  const items = placeItems(place).filter(i => i.cal > 0 && i.cal <= rem.cal + 25 && !CATERING.test(i.name))
+    // At school, stick to the meal being served now.
+    .filter(i => place !== SCHOOL || !i.meal || (hour < 10 ? i.meal === 'Breakfast' : i.meal !== 'Breakfast'))
+    .map(i => ({ ...i, p: i.p || 0, c: i.c || 0, f: i.f || 0, had: eaten[norm(i.name)] || 0 }));
+  const one = i => gapScore(i, rem) - (i.had ? 0.12 : 0);
+  // Pairs are built from the strongest items plus anything you've ordered there before.
+  const pool = [...items].sort((a, b) => one(a) - one(b)).slice(0, 40);
+  for (const i of items) if (i.had && !pool.includes(i)) pool.push(i);
+  const combos = items.map(i => [i]);
+  for (let a = 0; a < pool.length; a++) for (let b = a; b < pool.length; b++) {
+    const x = pool[a], y = pool[b];
+    if (x.cal + y.cal > rem.cal + 25 || (a === b && !x.p)) continue;
+    // School lunch is one entrée plus sides, not two entrées.
+    if (place === SCHOOL && Math.min(x.cal, y.cal) > 200) continue;
+    combos.push([x, y]);
+  }
+  const scored = combos.map(parts => {
+    const tot = { cal: 0, p: 0, c: 0, f: 0 };
+    for (const i of parts) for (const m in tot) tot[m] += i[m];
+    const had = parts.some(i => i.had);
+    return { parts, tot, had, score: gapScore(tot, rem) + (parts.length - 1) * 0.04 - (had ? 0.12 : 0) };
+  }).filter(o => o.tot.p > 0).sort((a, b) => a.score - b.score);
+  // Variety: the same main item shows up at most twice.
+  const uses = {}, out = [], seen = new Set();
+  for (const o of scored) {
+    // Same items, or a different item with identical numbers (Jr. vs Kids' Hamburger): skip.
+    const key = o.parts.map(i => `${i.cal}/${i.p}/${i.c}/${i.f}`).sort().join('|');
+    const main = [...o.parts].sort((a, b) => b.p - a.p)[0].name;
+    if (seen.has(key) || (uses[main] || 0) >= 2) continue;
+    seen.add(key); uses[main] = (uses[main] || 0) + 1;
+    const label = o.parts.length === 2 && o.parts[0] === o.parts[1] ? `2× ${o.parts[0].short}` : o.parts.map(i => i.short).join(' + ');
+    const prefix = place === SCHOOL ? 'School:' : place;
+    out.push({ name: `${prefix} ${label}`, ...o.tot, src: o.parts[0].src,
+      serving: o.parts.length === 1 ? o.parts[0].serving : '', why: o.had ? "⭐ You've ordered this before" : '' });
+    if (out.length >= n) break;
+  }
+  return out;
+}
+
 function localGapPicks(rem, n = 6) {
   const pool = [
     ...state.favorites.map(f => ({ ...f, src: 'fav' })),
@@ -1539,11 +1622,11 @@ function localGapPicks(rem, n = 6) {
     ...cafeteria.map(i => ({ ...i, src: 'school' })),
   ].filter(i => i.name && i.cal > 0 && i.cal <= rem.cal + 25 && (i.p || 0) > 0);
   const over = (val, left, scale) => Math.max(0, val - Math.max(left, 0)) / scale;
-  const seen = new Set();
+  const seen = new Set(), eaten = eatenCounts();
   return pool.map(i => {
     const pShort = Math.max(0, rem.p - (i.p || 0)) / Math.max(rem.p, 1);
     const score = pShort + over(i.cal, rem.cal, 200) + over(i.c || 0, rem.c, 20) + over(i.f || 0, rem.f, 10)
-      + { fav: -0.08, scan: -0.05, school: 0, rest: 0.02 }[i.src];
+      + { fav: -0.08, scan: -0.05, school: 0, rest: 0.02 }[i.src] - (eaten[norm(i.name)] ? 0.06 : 0);
     return { ...i, score };
   }).sort((a, b) => a.score - b.score)
     .filter(i => { const k = i.name.toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true; })
@@ -1563,17 +1646,31 @@ function openGap() {
   const rem = remaining();
   $('#gap-left').innerHTML = [['cal', 'Calories', ''], ['p', 'Protein', 'g'], ['c', 'Carbs', 'g'], ['f', 'Fat', 'g']]
     .map(([k, label, u]) => `<div><b>${fmt(Math.max(0, rem[k]))}${u}</b><span>${label} left</span></div>`).join('');
-  gapLocal = localGapPicks(rem);
+  gapPlace = guessPlace();
+  renderGapPicks();
+  $('#gap-backdrop').hidden = false;
+}
+function renderGapPicks() {
+  const rem = remaining();
+  const places = gapPlaces();
+  $('#gap-places').innerHTML = [{ name: null }, ...places].map(pl =>
+    `<button class="chip${pl.name === gapPlace ? ' on' : ''}" type="button" data-gap-place="${pl.name ? esc(pl.name) : ''}">` +
+    `${pl.name ? (pl.name === SCHOOL ? '🏫 School' : '🍔 ' + esc(pl.name)) : '🍽️ Anywhere'}</button>`).join('');
+  $('#gap-local-title').textContent = gapPlace ? `Best orders at ${gapPlace === SCHOOL ? 'school' : gapPlace}` : 'From your foods';
+  gapLocal = gapPlace ? placeGapPicks(rem, gapPlace) : localGapPicks(rem);
   $('#gap-local').innerHTML = gapLocal.length
     ? gapLocal.map((i, n) => gapItemHTML(i, `data-gap-local="${n}"`)).join('')
-    : '<div class="empty">Nothing in your saved foods fits what\'s left. Try the ideas below.</div>';
+    : gapPlace ? `<div class="empty">Nothing at ${esc(gapPlace)} fits what's left. Try another place.</div>`
+      : '<div class="empty">Nothing in your saved foods fits what\'s left. Try the ideas below.</div>';
   gapIdeas = [];
   $('#gap-ai').innerHTML = '';
   $('#gap-note').hidden = true;
   $('#gap-ai-btn').hidden = false;
   $('#gap-ai-btn').disabled = false;
-  $('#gap-ai-btn').textContent = getAiKey() ? '✨ Get meal ideas' : '✨ Meal ideas (add your API key in Settings)';
-  $('#gap-backdrop').hidden = false;
+  $('#gap-ai-btn').textContent = getAiKey() ? (gapPlace ? `✨ Order ideas at ${gapPlace === SCHOOL ? 'school' : gapPlace}` : '✨ Get meal ideas')
+    : '✨ Meal ideas (add your API key in Settings)';
+  const sel = $('#gap-places .chip.on');
+  if (sel) sel.scrollIntoView({ block: 'nearest', inline: 'center' });
 }
 function closeGap() { $('#gap-backdrop').hidden = true; }
 
@@ -1601,6 +1698,12 @@ async function gapIdeasFromClaude() {
   btn.disabled = true; btn.textContent = '✨ Thinking…';
   const usual = [...state.favorites].sort((a, b) => (b.uses || 0) - (a.uses || 0)).slice(0, 25)
     .map(f => `${f.name} (${fmt(f.cal)} cal, P${fmt1(f.p)} C${fmt1(f.c)} F${fmt1(f.f)})`).join('; ');
+  const place = gapPlace, eaten = eatenCounts();
+  // At a place: hand Claude that menu (best fits first, plus what they've ordered there) and nothing else.
+  const menu = place ? placeItems(place).filter(i => i.cal > 0 && i.cal <= Math.max(rem.cal, 0) + 25)
+    .map(i => ({ ...i, s: gapScore({ cal: i.cal, p: i.p || 0, c: i.c || 0, f: i.f || 0 }, rem) - (eaten[norm(i.name)] ? 0.12 : 0) }))
+    .sort((a, b) => a.s - b.s).slice(0, 80)
+    .map(i => `${i.short}${i.serving ? ` (${i.serving})` : ''}: ${fmt(i.cal)} cal, P${fmt1(i.p || 0)} C${fmt1(i.c || 0)} F${fmt1(i.f || 0)}${eaten[norm(i.name)] ? ' [ordered before]' : ''}`).join('\n') : '';
   try {
     const client = await aiClient();
     const res = await client.beta.messages.create({
@@ -1617,13 +1720,17 @@ async function gapIdeasFromClaude() {
       messages: [{ role: 'user', content:
         `Left for today: ${fmt(Math.max(0, rem.cal))} calories, ${fmt(Math.max(0, rem.p))} g protein, ` +
         `${fmt(Math.max(0, rem.c))} g carbs, ${fmt(Math.max(0, rem.f))} g fat.` +
-        (usual ? ` Foods I eat often: ${usual}.` : '') }],
+        (place ? `\nI'm at ${place === SCHOOL ? 'the school cafeteria' : place} right now. Build 3 to 4 orders using ONLY items ` +
+          `from this menu (one item or a combo; use the item names as written, joined with " + "), and use the menu's numbers. ` +
+          `Prefer things marked [ordered before] when they fit.\nMenu:\n${menu || '(nothing on the menu fits)'}`
+          : (usual ? ` Foods I eat often: ${usual}.` : '')) }],
     });
     if (res.stop_reason === 'refusal') throw new Error('refused');
     const block = res.content.find(b => b.type === 'text');
     if (!block) throw new Error('empty');
     const out = JSON.parse(block.text);
-    gapIdeas = (out.ideas || []).map(i => ({ ...i, src: 'ai' }));
+    gapIdeas = (out.ideas || []).map(i => ({ ...i, src: 'ai',
+      name: place && !norm(i.name).startsWith(norm(place === SCHOOL ? 'School' : place)) ? `${place === SCHOOL ? 'School:' : place} ${i.name}` : i.name }));
     $('#gap-ai').innerHTML = gapIdeas.map((i, n) => gapItemHTML(i, `data-gap-ai="${n}"`)).join('');
     $('#gap-note').textContent = `✨ ${out.summary} Estimates; check them before logging.`;
     $('#gap-note').hidden = false;
@@ -1650,6 +1757,8 @@ $('#gap-close').addEventListener('click', closeGap);
 $('#gap-backdrop').addEventListener('click', ev => { if (ev.target.id === 'gap-backdrop') closeGap(); });
 $('#gap-ai-btn').addEventListener('click', gapIdeasFromClaude);
 $('#gap-sheet').addEventListener('click', ev => {
+  const pl = ev.target.closest('[data-gap-place]');
+  if (pl) { gapPlace = pl.dataset.gapPlace || null; renderGapPicks(); return; }
   const l = ev.target.closest('[data-gap-local]'), a = ev.target.closest('[data-gap-ai]');
   if (l) logGapPick(gapLocal[+l.dataset.gapLocal]);
   if (a) logGapPick(gapIdeas[+a.dataset.gapAi]);
@@ -1661,7 +1770,7 @@ $('#gap-sheet').addEventListener('click', ev => {
 function placeOf(name) {
   const n = norm(name);
   for (const ch of chainList) if (ch.keys.some(k => n === k || n.startsWith(k + ' '))) return ch.name;
-  if (cafeteria.some(i => norm(i.name) === n)) return 'School cafeteria';
+  if (n.startsWith('school ') || cafeteria.some(i => norm(i.name) === n)) return 'School cafeteria';
   return null;
 }
 const baseName = name => name.replace(/\s×[\d.]+$/, '');

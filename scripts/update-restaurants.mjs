@@ -116,6 +116,73 @@ async function mcdonalds() {
   return items;
 }
 
+/* ---------------- Five Guys: official Nutrition & Allergen Guide PDF ---------------- */
+// The guide lists parts (patty, bun, cheese, bacon, shake base, mix-ins), not finished items,
+// so the menu is built from them the way Five Guys builds it (a burger is two patties).
+export function parseFiveGuys(text) {
+  const body = text.split(/INGREDIENT LISTING/)[0];
+  const parts = {}, out = [];
+  let section = '', seenMix = 0;
+  for (const raw of body.split('\n')) {
+    const line = raw.trim();
+    if (/^[A-Z][A-Z &\-()0-9%]+$/.test(line) || /^MIX-INS/.test(line)) {
+      section = line.replace(/\s*\(.*$/, '').replace(/ - .*$/, '');
+      if (section === 'MIX-INS' && seenMix++) section = 'MIX-INS#2';
+      continue;
+    }
+    // name, serving (g), calories, calories from fat, fat, sat, trans, cholesterol, sodium, carbs, fiber, sugars, protein
+    const m = line.match(/^(.+?)\s{2,}(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)/);
+    if (!m || num(m[3]) == null) continue;
+    const name = clean(m[1]).replace(/\s*\(Supplier \w+\)/i, '');
+    const item = { name, serving: num(m[2]) != null ? `${num(m[2])} g` : '', cal: num(m[3]), f: num(m[5]), c: num(m[10]), p: num(m[13]) };
+    const key = `${section}|${name}`;
+    if (parts[key]) continue; // same part from a second supplier
+    parts[key] = item;
+    if (/^(MEAT|BUN)$/.test(section)) continue; // parts of sandwiches, not ordered alone
+    if (/MILKSHAKES|MIX-INS/.test(section)) continue; // shakes are built below
+    const label = section === 'TOPPINGS' ? `${name} (topping)` : section === 'FRIES' ? `${name} Fries` : name;
+    out.push({ ...item, name: label.replace(/Five Guys Style Fries/, 'Fries') });
+  }
+  const get = (sec, n) => parts[`${sec}|${n}`];
+  const sum = (name, list) => {
+    if (list.some(x => !x)) return;
+    const t = { cal: 0, f: 0, c: 0, p: 0 };
+    for (const x of list) for (const k in t) t[k] += x[k] || 0;
+    out.push({ name, serving: 'built from Five Guys parts', ...Object.fromEntries(Object.entries(t).map(([k, v]) => [k, Math.round(v * 10) / 10])) });
+  };
+  const patty = get('MEAT', 'Hamburger Patty'), bun = get('BUN', 'Hamburger Bun'), cheese = get('TOPPINGS', 'Cheese (1 slice)');
+  const bacon = get('MEAT', 'Bacon (2 pieces)'), dog = get('MEAT', 'Hot Dog'), dogBun = get('BUN', 'Hot Dog Buns');
+  for (const [size, n] of [['', 2], ['Little ', 1]]) {
+    const pats = Array(n).fill(patty), chz = Array(n).fill(cheese);
+    sum(`${size}Hamburger`, [...pats, bun]);
+    sum(`${size}Cheeseburger`, [...pats, ...chz, bun]);
+    sum(`${size}Bacon Burger`, [...pats, bacon, bun]);
+    sum(`${size}Bacon Cheeseburger`, [...pats, ...chz, bacon, bun]);
+    sum(`${size}Hamburger (lettuce wrap, no bun)`, pats);
+    sum(`${size}Cheeseburger (lettuce wrap, no bun)`, [...pats, ...chz]);
+  }
+  sum('Hot Dog', [dog, dogBun]);
+  sum('Cheese Dog', [dog, cheese, dogBun]);
+  sum('Bacon Dog', [dog, bacon, dogBun]);
+  sum('Bacon Cheese Dog', [dog, cheese, bacon, dogBun]);
+  // Shakes: base + whipped cream, plus one mix-in. Mini shakes use the second set of parts.
+  for (const [label, base, mix] of [['', 'Vanilla Shake Base', 'MIX-INS'], ['Mini ', 'Mini Vanilla Shake Base', 'MIX-INS#2']]) {
+    const b = get(label ? 'MINI MILKSHAKES' : 'MILKSHAKES', base), w = get(label ? 'MINI MILKSHAKES' : 'MILKSHAKES', 'Whipped Cream');
+    sum(`${label}Vanilla Milkshake`, [b, w]);
+    for (const [k, v] of Object.entries(parts)) if (k.startsWith(mix + '|')) {
+      const flavor = v.name.replace(/\s*\(.*\)/, '').replace(/ (Sauce|Marinade)$/, '');
+      sum(`${label}${flavor} Milkshake`, [b, w, v]);
+    }
+  }
+  return out;
+}
+async function fiveguys() {
+  const page = await fetchText('https://www.fiveguys.com/nutritional-allergy-information/');
+  const pdf = (page.match(/https:\/\/www\.fiveguys\.com\/wp-content\/uploads\/[^"'\s]+US-Nutrition[^"'\s]*English[^"'\s]*\.pdf/i) || [])[0];
+  if (!pdf) throw new Error('Nutrition guide PDF link not found');
+  return parseFiveGuys(await pdfText(pdf));
+}
+
 /* ---------------- Subway: official U.S. Nutrition Information PDF ---------------- */
 async function subway() {
   // Find the current PDF link on the nutrition page; if that page won't load, use the last known link.
@@ -175,6 +242,7 @@ const CHAINS = {
   dunkin:    { name: "Dunkin'", aliases: ['dunkin', 'dunkin donuts', 'dd'], source: 'https://www.dunkindonuts.com/en/menu/nutrition', run: dunkin },
   mcdonalds: { name: "McDonald's", aliases: ['mcdonalds', 'mcd', 'mickey ds'], source: 'https://www.mcdonalds.com/us/en-us/about-our-food/nutrition-calculator.html', run: mcdonalds },
   subway:    { name: 'Subway', aliases: ['subway'], source: 'https://www.subway.com/en-us/menunutrition/nutrition', run: subway },
+  fiveguys:  { name: 'Five Guys', aliases: ['five guys', '5 guys', 'fiveguys'], source: 'https://www.fiveguys.com/nutritional-allergy-information/', run: fiveguys },
   wendys:    { name: "Wendy's", aliases: ['wendys', 'wendy'], source: 'https://order.wendys.com/us/en/national/menu', run: wendys },
 };
 
@@ -197,4 +265,5 @@ async function main() {
   }
   await writeFile(OUT, JSON.stringify(out, null, 1) + '\n');
 }
-main().catch(e => { console.error(e); process.exit(1); });
+import { fileURLToPath } from 'node:url';
+if (process.argv[1] === fileURLToPath(import.meta.url)) main().catch(e => { console.error(e); process.exit(1); });

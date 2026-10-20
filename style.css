@@ -491,3 +491,10 @@ input:focus { border-color: var(--pro); }
 .quote cite { display: block; margin-top: 8px; color: var(--pro); font-style: normal; font-weight: 800; }
 .quote .pep { margin: 12px 0 0; padding-top: 12px; border-top: 1px solid var(--line); line-height: 1.5; }
 #report-journey { margin-bottom: 4px; }
+
+/* ---------- Sign-in ---------- */
+.signin { z-index: 50; }
+.signin .setup-inner { max-width: 420px; padding-top: calc(env(safe-area-inset-top, 0px) + 48px); }
+.signin-icon { font-size: 56px; text-align: center; margin-top: 18px; }
+.signin h2 { text-align: center; }
+.signin .btn.block { margin-top: 8px; }

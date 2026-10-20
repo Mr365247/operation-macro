@@ -2,7 +2,15 @@
 
 /* ================= Data ================= */
 
-const STORE_KEY = 'opmacro_v1';
+// Invite-only sign-in (config.js). Each account's data lives on the phone under its own key;
+// nothing but the sign-in itself goes to the server.
+const AUTH = window.OPMACRO_CONFIG || {};
+const authOn = !!(AUTH.supabaseUrl && AUTH.supabaseKey);
+const ACCOUNT_SLOT = 'opmacro_account';
+const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
+const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
+// Signed out (with sign-in on): nothing is read or written until someone signs in.
+const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
 const MACROS = [
@@ -34,7 +42,7 @@ let state = load();
 
 function load() {
   let s = null;
-  try { s = JSON.parse(localStorage.getItem(STORE_KEY)); } catch (e) { /* corrupt or blocked */ }
+  try { s = STORE_KEY && JSON.parse(localStorage.getItem(STORE_KEY)); } catch (e) { /* corrupt or blocked */ }
   const fresh = !s;
   s = s || {};
   const st = {
@@ -53,6 +61,7 @@ function load() {
   return st;
 }
 function save() {
+  if (!STORE_KEY) return;
   try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
   catch (e) { toast('⚠️ Could not save to device storage'); }
 }
@@ -1294,12 +1303,13 @@ function copyDayToToday(k) {
 
 /* ================= Photo estimates (Claude) ================= */
 // The API key lives in its own storage slot so it never ends up in an exported backup.
-const AI_KEY_SLOT = 'opmacro_ai_key';
+const AI_KEY_SLOT = account ? `${LEGACY_AI_KEY}:${account.id}` : LEGACY_AI_KEY;
 const AI_MODEL = 'claude-opus-5-5';
 const getAiKey = () => { try { return localStorage.getItem(AI_KEY_SLOT) || ''; } catch (e) { return ''; } };
 let photoData = null; // base64 JPEG of the chosen photo
 
 function renderAiSettings() {
+  if (typeof renderAccount === 'function') renderAccount();
   const key = getAiKey();
   $('#ai-status').textContent = key ? `✅ Key saved on this phone (…${key.slice(-4)})` : 'No key yet. Photo and Describe estimates are off.';
   $('#ai-remove').hidden = !key;
@@ -2234,12 +2244,152 @@ setInterval(checkRollover, 15000);
 document.addEventListener('visibilitychange', () => { if (!document.hidden) checkRollover(); });
 window.addEventListener('focus', checkRollover);
 
+/* ================= Invite-only sign-in ================= */
+
+async function gotrue(path, { method = 'POST', body, token } = {}) {
+  const res = await fetch(`${AUTH.supabaseUrl.replace(/\/+$/, '')}/auth/v1/${path}`, {
+    method,
+    headers: { apikey: AUTH.supabaseKey, 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    const e = new Error(data.msg || data.error_description || data.message || `Error ${res.status}`);
+    e.status = res.status; e.code = data.error_code || data.error || '';
+    throw e;
+  }
+  return data;
+}
+function authErrorMessage(e) {
+  if (e instanceof TypeError) return 'No internet connection. Signing in needs one.';
+  if (e.status === 429) return 'Too many tries. Wait a few minutes and try again.';
+  if (e.code === 'invalid_credentials' || e.code === 'invalid_grant' || e.status === 400) return 'Wrong email or password.';
+  if (e.code === 'weak_password') return 'Pick a stronger password (at least 8 characters).';
+  if (e.code === 'same_password') return 'Pick a password different from the one you were given.';
+  return e.message || 'Something went wrong. Try again.';
+}
+function saveAccount(a) { localStorage.setItem(ACCOUNT_SLOT, JSON.stringify(a)); }
+
+let pwToken = null, pwFirst = false;
+function showSignin(msg) {
+  $('#signin').hidden = false;
+  $('#signin-form').hidden = false;
+  $('#password-form').hidden = true;
+  $('#signin-note').textContent = msg || '';
+  $('#signin-note').hidden = !msg;
+}
+// first = must pick a password before using the app (accounts start with the one you were given).
+function showPasswordStep(token, first) {
+  pwToken = token; pwFirst = first;
+  $('#signin').hidden = false;
+  $('#signin-form').hidden = true;
+  $('#password-form').hidden = false;
+  $('#pw-cancel').hidden = first;
+  $('#pw-title').textContent = first ? 'Pick your own password' : 'Change password';
+  $('#pw-new').value = ''; $('#pw-again').value = '';
+  $('#pw-note').hidden = true;
+}
+
+// Moves this phone's pre-sign-in data into the account, if it's theirs.
+function claimLegacyData(a) {
+  const key = `${LEGACY_KEY}:${a.id}`;
+  let legacy = null;
+  try { legacy = JSON.parse(localStorage.getItem(LEGACY_KEY)); } catch (e) { /* none */ }
+  if (!legacy || localStorage.getItem(key)) return;
+  const n = Object.values(legacy.days || {}).filter(d => d.entries && d.entries.length).length;
+  if (!confirm(`This phone already has Operation Macro data (${n} day${n === 1 ? '' : 's'} logged). Is it yours?\n\nOK: move it into ${a.email}.\nCancel: start fresh.`)) return;
+  localStorage.setItem(key, localStorage.getItem(LEGACY_KEY));
+  localStorage.removeItem(LEGACY_KEY);
+  const ai = localStorage.getItem(LEGACY_AI_KEY);
+  if (ai) { localStorage.setItem(`${LEGACY_AI_KEY}:${a.id}`, ai); localStorage.removeItem(LEGACY_AI_KEY); }
+}
+
+$('#signin-form').addEventListener('submit', async ev => {
+  ev.preventDefault();
+  const email = $('#si-email').value.trim().toLowerCase(), password = $('#si-password').value;
+  if (!email || !password) return;
+  const btn = $('#si-go');
+  btn.disabled = true; btn.textContent = 'Signing in…';
+  $('#signin-note').hidden = true;
+  try {
+    const r = await gotrue('token?grant_type=password', { body: { email, password } });
+    const a = { id: r.user.id, email: r.user.email, refresh: r.refresh_token };
+    saveAccount(a);
+    claimLegacyData(a);
+    if (!(r.user.user_metadata || {}).pw_set) { btn.disabled = false; btn.textContent = 'Sign in'; showPasswordStep(r.access_token, true); return; }
+    location.reload();
+  } catch (e) {
+    $('#signin-note').textContent = authErrorMessage(e);
+    $('#signin-note').hidden = false;
+    btn.disabled = false; btn.textContent = 'Sign in';
+  }
+});
+
+$('#password-form').addEventListener('submit', async ev => {
+  ev.preventDefault();
+  const pw = $('#pw-new').value, again = $('#pw-again').value;
+  const note = msg => { $('#pw-note').textContent = msg; $('#pw-note').hidden = false; };
+  if (pw.length < 8) return note('Use at least 8 characters.');
+  if (pw !== again) return note("Those passwords don't match.");
+  const btn = $('#pw-go');
+  btn.disabled = true;
+  try {
+    await gotrue('user', { method: 'PUT', token: pwToken, body: { password: pw, data: { pw_set: true } } });
+    if (pwFirst) { location.reload(); return; }
+    $('#signin').hidden = true;
+    toast('Password changed 🔒');
+  } catch (e) { note(authErrorMessage(e)); }
+  btn.disabled = false;
+});
+$('#pw-cancel').addEventListener('click', () => { $('#signin').hidden = true; });
+
+// A fresh session token; also how a removed account gets locked out.
+async function refreshSession() {
+  const r = await gotrue('token?grant_type=refresh_token', { body: { refresh_token: account.refresh } });
+  account.refresh = r.refresh_token;
+  saveAccount(account);
+  return r;
+}
+function signOut(msg) {
+  try { localStorage.removeItem(ACCOUNT_SLOT); } catch (e) { /* ignore */ }
+  if (msg) sessionStorage.setItem('opmacro_signin_msg', msg);
+  location.reload();
+}
+async function checkAccount() {
+  if (!navigator.onLine) return; // offline: keep working with what's on the phone
+  try {
+    const r = await refreshSession();
+    if (!(r.user.user_metadata || {}).pw_set) showPasswordStep(r.access_token, true);
+  } catch (e) {
+    if (e instanceof TypeError) return; // network trouble, try next launch
+    if (e.status >= 400 && e.status < 500 && e.status !== 429) signOut('Your access to Operation Macro has ended. Ask for a new invite if that is a mistake.');
+  }
+}
+function renderAccount() {
+  $('#account-card').hidden = !account;
+  if (account) $('#account-email').textContent = account.email;
+}
+$('#change-pw').addEventListener('click', async () => {
+  try { const r = await refreshSession(); showPasswordStep(r.access_token, false); }
+  catch (e) { toast(authErrorMessage(e)); }
+});
+$('#sign-out').addEventListener('click', () => {
+  if (confirm('Sign out? Your logs stay saved on this phone for when you sign back in.')) signOut();
+});
+
 /* ================= Boot ================= */
 
-save();
-loadCafeteria();
-setView('today');
-if (state.needsSetup) openSetup(true);
+if (authOn && !account) {
+  const msg = sessionStorage.getItem('opmacro_signin_msg');
+  sessionStorage.removeItem('opmacro_signin_msg');
+  showSignin(msg);
+} else {
+  save();
+  loadCafeteria();
+  setView('today');
+  if (state.needsSetup) openSetup(true);
+  if (account) checkAccount();
+}
 if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {
   navigator.serviceWorker.register('sw.js').catch(() => {});

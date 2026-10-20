@@ -55,6 +55,14 @@ public figure. The quotes are a fixed, hand-checked list in `QUOTES` in `app.js`
 and writes a pep talk around it, so it never makes up quotes. With an API key it also asks Claude for
 coaching (teen-safe: never below the calorie target) once per week and saves the answer in the backup.
 
+## Invite-only sign-in
+`config.js` holds the Supabase project URL and publishable key. Blank = sign-in off. When set,
+the app asks for an email and password before anything else; only accounts created in the
+Supabase dashboard (Authentication → Users → Add user, with sign-ups turned off) can get in, and
+people must pick their own password on first sign-in. Only the sign-in talks to Supabase: each
+account's logs stay on the phone under their own storage key. Deleting a user in Supabase locks
+them out the next time the app opens with internet.
+
 ## Photo estimates
 Log food → 📸 Photo sends a downscaled photo (plus an optional note) to Claude using the
 official Anthropic SDK, bundled at `vendor/anthropic-sdk.js` (see `vendor/anthropic-sdk.version`).

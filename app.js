@@ -2332,6 +2332,16 @@ $('#sign-out').addEventListener('click', () => {
 
 /* ================= Boot ================= */
 
+// Welcome note on every launch; tap anywhere (or wait a few seconds) to go in.
+function closeWelcome() {
+  const w = $('#welcome');
+  if (w.hidden || w.classList.contains('out')) return;
+  w.classList.add('out');
+  setTimeout(() => { w.hidden = true; }, 350);
+}
+$('#welcome').addEventListener('click', closeWelcome);
+setTimeout(closeWelcome, 4500);
+
 if (authOn && !account) {
   const msg = sessionStorage.getItem('opmacro_signin_msg');
   sessionStorage.removeItem('opmacro_signin_msg');

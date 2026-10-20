@@ -13,7 +13,7 @@ const PAGES0 = {
   'Chipotle': ['https://www.chipotle.com/nutrition-calculator', 'https://www.chipotle.com/'],
   "Baja's": ['https://www.bajasrestaurants.com/', 'https://bajasrestaurants.com/menu'],
 };
-const PAGES = PAGES2;
+const PAGES = { 'Five Guys': ['https://www.fiveguys.com/nutritional-allergy-information/'] };
 let md = `# Chain probe ${new Date().toISOString()}\n`;
 const pdfs = new Set();
 for (const [chain, urls] of Object.entries(PAGES)) {
@@ -48,8 +48,8 @@ for (const item of pdfs) {
     md += `- ${chain}: ${url} → ${res.status} ${res.headers.get('content-type')} ${buf.length} bytes\n`;
     if (res.ok && buf.slice(0, 4).toString() === '%PDF') {
       writeFileSync('/tmp/p.pdf', buf);
-      const text = execFileSync('pdftotext', ['-layout', '-l', '2', '/tmp/p.pdf', '-']).toString();
-      md += '```\n' + text.split('\n').slice(0, 40).join('\n') + '\n```\n';
+      const text = execFileSync('pdftotext', ['-layout', '/tmp/p.pdf', '-']).toString();
+      writeFileSync('probe/fiveguys.txt', text);
     }
   } catch (e) { md += `- ${chain}: ${url} → ERROR ${e.message}\n`; }
 }

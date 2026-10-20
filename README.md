@@ -49,7 +49,11 @@ data/tropical-smoothie-nutrition-guide.pdf`. The weekly workflow leaves this cha
 History groups days into Sunday → Saturday weeks. After the Sunday weigh-in, the app opens a
 report on the week that just ended: weight change, daily averages vs targets, days hit, most-logged
 foods, restaurants visited, and suggestions (same-restaurant swaps come from `restaurants.json`).
-With an API key it also asks Claude for coaching once per week and saves the answer in the backup.
+The report opens by itself the first time the app is opened after the week ends (on Sunday, right
+after the weigh-in). It also shows progress since day one and a quote from a famous athlete or other
+public figure. The quotes are a fixed, hand-checked list in `QUOTES` in `app.js`; Claude only picks one
+and writes a pep talk around it, so it never makes up quotes. With an API key it also asks Claude for
+coaching (teen-safe: never below the calorie target) once per week and saves the answer in the backup.
 
 ## Photo estimates
 Log food → 📸 Photo sends a downscaled photo (plus an optional note) to Claude using the

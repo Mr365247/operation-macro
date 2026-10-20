@@ -995,7 +995,7 @@ $('#scan-list').addEventListener('click', async () => {
 /* ================= Food autocomplete ================= */
 
 // cafeteria.json is refreshed weekly from the school's Nutrislice menu by a GitHub Action.
-let cafeteria = [];
+let cafeteria = [], menusLoaded = false;
 async function loadCafeteria() {
   try {
     const res = await fetch('cafeteria.json', { cache: 'no-cache' });
@@ -1003,7 +1003,9 @@ async function loadCafeteria() {
     const data = await res.json();
     cafeteria = (data.items || []).filter(i => i.cal != null || i.p != null);
   } catch (e) { /* offline and never loaded: just no school suggestions */ }
-  loadRestaurants();
+  await loadRestaurants();
+  menusLoaded = true;
+  maybeAutoReport();
 }
 
 // restaurants.json is refreshed weekly from each chain's official nutrition info by a GitHub Action.
@@ -1489,7 +1491,7 @@ function weighinDue() {
 function checkWeighin() {
   const due = weighinDue();
   $('#weighin').hidden = !due;
-  if (!due) return;
+  if (!due) { maybeAutoReport(); return; }
   const last = sortedWeights().pop();
   $('#weighin-last').textContent = last ? `Last weigh-in: ${fmt1(last.w)} lbs (${dayLabel(last.k)})` : '';
 }
@@ -1507,9 +1509,7 @@ $('#weighin-form').addEventListener('submit', ev => {
   const toGo = Math.round((w - state.settings.goalWeight) * 10) / 10;
   const change = !prev ? 'Weigh-in logged' : diff < 0 ? `Down ${fmt1(-diff)} lbs since last weigh-in 💪` : diff > 0 ? `Up ${fmt1(diff)} lbs since last weigh-in` : 'Same as last weigh-in';
   toast(toGo > 0 ? `${change} · ${fmt1(toGo)} to go` : `${change} · Goal reached 🎯`);
-  // Sunday: the week that just ended gets its report.
-  const lastWeek = shiftKey(weekStart(today), -7);
-  if (weekStats(lastWeek).logged.length) openReport(lastWeek, { auto: true });
+  // render() above opens the report for the week that just ended (see maybeAutoReport).
 });
 
 /* ================= What should I eat? ================= */
@@ -1736,6 +1736,76 @@ function localTips(r) {
   return tips;
 }
 
+// Real, well-known quotes only (Claude picks one from this list; it never writes its own).
+const QUOTES = [
+  { by: 'Michael Jordan', text: "I've missed more than 9,000 shots in my career. I've lost almost 300 games. 26 times I've been trusted to take the game-winning shot and missed. I've failed over and over and over again in my life. And that is why I succeed." },
+  { by: 'Kobe Bryant', text: 'Everything negative – pressure, challenges – is all an opportunity for me to rise.' },
+  { by: 'Kobe Bryant', text: 'The moment you give up is the moment you let someone else win.' },
+  { by: 'Wayne Gretzky', text: "You miss 100% of the shots you don't take." },
+  { by: 'Muhammad Ali', text: "I hated every minute of training, but I said, 'Don't quit. Suffer now and live the rest of your life as a champion.'" },
+  { by: 'Vince Lombardi', text: 'The price of success is hard work, dedication to the job at hand, and the determination that whether we win or lose, we have applied the best of ourselves to the task at hand.' },
+  { by: 'Tim Notke, made famous by Kevin Durant', text: 'Hard work beats talent when talent fails to work hard.' },
+  { by: 'LeBron James', text: 'I like criticism. It makes you strong.' },
+  { by: 'Serena Williams', text: 'I really think a champion is defined not by their wins but by how they can recover when they fall.' },
+  { by: 'Babe Ruth', text: "It's hard to beat a person who never gives up." },
+  { by: 'Jerry Rice', text: "Today I will do what others won't, so tomorrow I can accomplish what others can't." },
+  { by: 'Stephen Curry', text: 'Success is not an accident, success is actually a choice.' },
+  { by: 'Dwayne "The Rock" Johnson', text: "Success isn't always about greatness. It's about consistency. Consistent hard work leads to success. Greatness will come." },
+  { by: 'Bill Belichick', text: 'Do your job.' },
+  { by: 'Arnold Schwarzenegger', text: 'The last three or four reps is what makes the muscle grow.' },
+  { by: 'John Wooden', text: "Don't let what you cannot do interfere with what you can do." },
+  { by: 'Pelé', text: 'Success is no accident. It is hard work, perseverance, learning, studying, sacrifice and most of all, love of what you are doing or learning to do.' },
+  { by: 'Derek Jeter', text: "There may be people that have more talent than you, but there's no excuse for anyone to work harder than you do." },
+  { by: 'Michael Phelps', text: "You can't put a limit on anything. The more you dream, the farther you get." },
+  { by: 'Usain Bolt', text: 'I trained four years to run nine seconds.' },
+  { by: 'Lou Holtz', text: "It's not the load that breaks you down, it's the way you carry it." },
+  { by: 'Dan Gable', text: "Gold medals aren't really made of gold. They're made of sweat, determination, and a hard-to-find alloy called guts." },
+  { by: 'Kareem Abdul-Jabbar', text: 'Your mind is what makes everything else work.' },
+  { by: 'Nelson Mandela', text: 'It always seems impossible until it is done.' },
+];
+// Quotes not used in any other week yet (starts over once all have been seen).
+function freshQuotes(ws) {
+  const used = new Set(Object.entries(state.reports).filter(([k]) => k !== ws).map(([, r]) => r.quote).filter(n => n != null));
+  const fresh = QUOTES.map((_, i) => i).filter(i => !used.has(i));
+  return fresh.length ? fresh : QUOTES.map((_, i) => i);
+}
+function weekQuote(ws) {
+  const rec = state.reports[ws] || (state.reports[ws] = {});
+  if (rec.quote == null || !QUOTES[rec.quote]) {
+    const fresh = freshQuotes(ws);
+    rec.quote = fresh[Math.floor(Math.random() * fresh.length)];
+    save();
+  }
+  return QUOTES[rec.quote];
+}
+
+// The whole journey up to the end of a week: first log, starting weight, totals.
+function journey(ws) {
+  const end = shiftKey(ws, 6);
+  const keys = Object.keys(state.days).filter(k => k <= end && state.days[k].entries.length).sort();
+  const ws_ = sortedWeights().filter(w => w.k <= shiftKey(ws, 7));
+  const first = ws_[0], last = ws_[ws_.length - 1];
+  let best = 0, run = 0, prev = null;
+  for (const k of keys.filter(isHit)) { run = prev && shiftKey(prev, 1) === k ? run + 1 : 1; best = Math.max(best, run); prev = k; }
+  return {
+    since: keys[0] || null,
+    weeks: keys.length ? Math.floor((parseKey(end) - parseKey(weekStart(keys[0]))) / (7 * 86400000)) + 1 : 0,
+    daysLogged: keys.length, daysHit: keys.filter(isHit).length, bestStreak: best,
+    startW: first ? first.w : null, nowW: last ? last.w : null,
+    lost: first && last && first.k !== last.k ? first.w - last.w : null,
+  };
+}
+
+// The week that just ended opens by itself the first time the app is opened after it
+// (Sunday, right after the weigh-in when the Sunday lock is on).
+function maybeAutoReport() {
+  if (!menusLoaded || state.needsSetup || weighinDue() || !$('#report-backdrop').hidden) return;
+  if (!$('#backdrop').hidden || !$('#setup') || !$('#setup').hidden) return;
+  const ws = shiftKey(weekStart(today), -7);
+  if ((state.reports[ws] || {}).seen || !weekStats(ws).logged.length) return;
+  openReport(ws, { auto: true });
+}
+
 let reportWeek = null;
 function openReport(ws, opts = {}) {
   const r = weekReport(ws), g = r.g;
@@ -1770,6 +1840,17 @@ function openReport(ws, opts = {}) {
     `<div><span>${esc(p.name)} <b>×${p.n}</b></span><span>${fmt(p.cal)} cal · P${fmt(p.p)}</span></div>`).join('');
   $('#report-tips').innerHTML = localTips(r).map(t =>
     `<div class="advice"><b>${t.icon} ${t.title}</b><p>${t.detail}</p></div>`).join('');
+  const j = journey(ws);
+  $('#report-journey').innerHTML =
+    statHTML(j.lost == null ? '—' : (j.lost >= 0 ? '−' : '+') + fmt1(Math.abs(j.lost)), j.lost == null || j.lost >= 0 ? 'Lbs lost' : 'Lbs gained') +
+    statHTML(j.weeks, j.weeks === 1 ? 'Week' : 'Weeks') +
+    statHTML(`${j.daysHit}/${j.daysLogged}`, 'Days hit') +
+    statHTML(j.startW == null ? '—' : fmt1(j.startW), 'Start') +
+    statHTML(j.nowW == null ? '—' : fmt1(j.nowW), 'Now') +
+    statHTML('🔥 ' + j.bestStreak, 'Best streak');
+  $('#report-journey-note').textContent = j.since ? `Since ${parseKey(j.since).toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}` : '';
+  if (r.done) { (state.reports[ws] = state.reports[ws] || {}).seen = true; save(); }
+  showQuote(ws);
   const saved = state.reports[ws];
   if (saved && saved.ai) showCoach(saved.ai);
   else {
@@ -1783,9 +1864,18 @@ function openReport(ws, opts = {}) {
   $('#report-sheet').scrollTop = 0;
   if (opts.auto && !(saved && saved.ai) && getAiKey()) coachFromClaude();
 }
+function showQuote(ws, talk) {
+  const q = weekQuote(ws);
+  $('#report-quote').innerHTML = `<blockquote>“${esc(q.text)}”</blockquote><cite>— ${esc(q.by)}</cite>` +
+    (talk ? `<p class="pep">${esc(talk)}</p>` : '');
+}
 function closeReport() { $('#report-backdrop').hidden = true; reportWeek = null; }
 
 function showCoach(out) {
+  if (out.quote_id != null && QUOTES[out.quote_id] && reportWeek) {
+    state.reports[reportWeek].quote = out.quote_id; save();
+  }
+  if (reportWeek) showQuote(reportWeek, out.pep_talk);
   const li = a => (a || []).map(x => `<li>${esc(x)}</li>`).join('');
   $('#report-ai').innerHTML =
     `<p class="coach-head">${esc(out.headline)}</p>` +
@@ -1799,12 +1889,14 @@ function showCoach(out) {
 }
 
 const REPORT_SCHEMA = {
-  type: 'object', additionalProperties: false, required: ['headline', 'wins', 'fixes', 'swaps'],
+  type: 'object', additionalProperties: false, required: ['headline', 'wins', 'fixes', 'swaps', 'pep_talk', 'quote_id'],
   properties: {
+    pep_talk: { type: 'string', description: '3 to 5 sentences of locker-room motivation for next week, tied to this week and to the chosen quote' },
+    quote_id: { type: 'integer', description: 'id of the one quote from the list that best fits this week' },
     headline: { type: 'string', description: 'One or two sentences summing up the week, direct and encouraging' },
     wins: { type: 'array', items: { type: 'string' }, description: '1 to 3 short things that went well' },
     fixes: {
-      type: 'array', description: '2 to 4 specific changes for next week, tied to the foods and places in the log',
+      type: 'array', description: '2 to 4 specific changes for next week, tied to the foods and places in the log. Cover any macro that was well under or well over target.',
       items: { type: 'object', additionalProperties: false, required: ['title', 'detail'],
         properties: { title: { type: 'string' }, detail: { type: 'string' } } },
     },
@@ -1816,9 +1908,12 @@ const REPORT_SCHEMA = {
   },
 };
 
+const coaching = new Set(); // weeks with a request in flight or done this session
 async function coachFromClaude() {
   if (!getAiKey()) { closeReport(); setView('settings'); toast('Add your Anthropic API key under Photo estimates'); return; }
   const ws = reportWeek, r = weekReport(ws), g = r.g;
+  if (coaching.has(ws)) return;
+  coaching.add(ws);
   const btn = $('#report-ai-btn');
   btn.disabled = true; btn.textContent = '✨ Reviewing your week…';
   const days = r.days.map(k => {
@@ -1830,6 +1925,11 @@ async function coachFromClaude() {
   }).join('\n');
   const foods = [...r.foods].sort((a, b) => b.cal - a.cal).slice(0, 40).map(f =>
     `${f.name}${f.place ? ` [${f.place}]` : ''} ×${f.n}: ${fmt(f.cal / f.n)} cal, P${fmt1(f.p / f.n)} C${fmt1(f.c / f.n)} F${fmt1(f.f / f.n)} each`).join('\n');
+  const j = journey(ws), age = (state.profile || {}).age;
+  const quoteIds = freshQuotes(ws);
+  const quotes = quoteIds.map(i => `${i}: "${QUOTES[i].text}" (${QUOTES[i].by})`).join('\n');
+  const progress = j.since ? `Tracking since ${j.since}: ${j.weeks} weeks, ${j.daysHit} of ${j.daysLogged} logged days hit, best streak ${j.bestStreak} days` +
+    (j.startW != null ? `, weight ${fmt1(j.startW)} → ${fmt1(j.nowW)} lbs` : '') + '.' : '';
   const weight = r.wEnd ? `${fmt1(r.wEnd.w)} lbs${r.change != null ? ` (${r.change > 0 ? '+' : ''}${fmt1(r.change)} this week)` : ''}, goal ${fmt1(state.settings.goalWeight)} lbs` : 'no weigh-in';
   try {
     const client = await aiClient();
@@ -1839,22 +1939,30 @@ async function coachFromClaude() {
       betas: ['server-side-fallback-2026-07-01'],
       fallbacks: 'default',
       output_config: { effort: 'medium', format: { type: 'json_schema', schema: REPORT_SCHEMA } },
-      system: 'You are a practical nutrition coach reviewing one week of a personal macro log. The person wants to lose ' +
-        'weight while hitting a high protein target. Base every point on the foods and places actually in the log: name them. ' +
-        'Prefer swaps at the same restaurant, or simple changes to foods they already eat, over generic advice. ' +
-        'Keep each item short and concrete (portions, calories, grams). No medical advice.',
+      system: 'You are a practical nutrition coach and hype man reviewing one week of a personal macro log. The reader may be a ' +
+        'high school athlete, so talk like a good coach talks to a teenager: direct, upbeat, no lecturing. Base every point on the ' +
+        'foods and places actually in the log: name them. Call out any macro that was well under or well over its target ' +
+        '(including protein far above target) and say what to change. Prefer swaps at the same restaurant, or simple changes to ' +
+        'foods they already eat, over generic advice. Keep each item short and concrete (portions, calories, grams). ' +
+        'Keep advice safe for a growing teenager: never suggest eating below the calorie target, skipping meals, crash diets or ' +
+        'supplements beyond protein; if they are often far under calories, tell them to eat enough. No medical advice. ' +
+        'For quote_id, choose only from the numbered quotes given (never write or alter a quote), and write the pep talk in your ' +
+        'own words, connecting that quote to their week.',
       messages: [{ role: 'user', content:
         `Daily targets: ${fmt(g.cal)} cal, ${fmt(g.protein)} g protein, ${fmt(g.carbs)} g carbs, ${fmt(g.fat)} g fat.\n` +
-        `Weight: ${weight}.\nWeek ${weekRange(ws)}:\n${days}\n\nFoods eaten this week:\n${foods}` }],
+        `Weight: ${weight}.${age ? ` Age: ${age}.` : ''}\n${progress}\nWeek ${weekRange(ws)}:\n${days}\n\nFoods eaten this week:\n${foods}` +
+        `\n\nQuotes to choose from:\n${quotes}` }],
     });
     if (res.stop_reason === 'refusal') throw new Error('refused');
     const block = res.content.find(b => b.type === 'text');
     if (!block) throw new Error('empty');
     const out = JSON.parse(block.text);
-    state.reports[ws] = { ai: out, at: Date.now() };
+    if (!quoteIds.includes(out.quote_id)) delete out.quote_id;
+    state.reports[ws] = { ...(state.reports[ws] || {}), ai: out, at: Date.now() };
     save();
     if (reportWeek === ws) showCoach(out);
   } catch (e) {
+    coaching.delete(ws);
     if (reportWeek !== ws) return;
     $('#report-note').textContent = aiErrorMessage(e);
     $('#report-note').hidden = false;

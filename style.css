@@ -485,3 +485,9 @@ input:focus { border-color: var(--pro); }
 .coach ul { margin: 0 0 4px; padding-left: 20px; }
 .coach li { margin-bottom: 4px; line-height: 1.4; }
 #report-sheet .section-title { margin: 18px 2px 8px; }
+
+.quote { margin: 16px 0 4px; padding: 14px 16px; border-radius: 14px; background: linear-gradient(135deg, #1b2440, #1a1d26); border: 1px solid var(--line); }
+.quote blockquote { margin: 0; font-size: 17px; font-weight: 700; line-height: 1.4; }
+.quote cite { display: block; margin-top: 8px; color: var(--pro); font-style: normal; font-weight: 800; }
+.quote .pep { margin: 12px 0 0; padding-top: 12px; border-top: 1px solid var(--line); line-height: 1.5; }
+#report-journey { margin-bottom: 4px; }

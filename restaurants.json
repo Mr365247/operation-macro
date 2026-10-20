@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-18",
+ "updated": "2026-10-20",
  "chains": {
   "chickfila": {
    "name": "Chick-fil-A",
@@ -9,7 +9,7 @@
     "cfa"
    ],
    "source": "https://www.chick-fil-a.com/nutrition-allergens",
-   "updated": "2026-10-18",
+   "updated": "2026-10-20",
    "items": [
     {
      "name": "Waffle",
@@ -2973,7 +2973,7 @@
     "dd"
    ],
    "source": "https://www.dunkindonuts.com/en/menu/nutrition",
-   "updated": "2026-10-18",
+   "updated": "2026-10-20",
    "items": [
     {
      "name": "Creepy Crawler Coffee Chiller - Large",
@@ -9592,7 +9592,7 @@
     "wendy"
    ],
    "source": "https://order.wendys.com/us/en/national/menu",
-   "updated": "2026-10-18",
+   "updated": "2026-10-20",
    "items": [
     {
      "name": "Dave's Single",
@@ -9757,6 +9757,15 @@
      "carbsEstimated": true
     },
     {
+     "name": "Jr. Natural-Cut Fries",
+     "serving": "",
+     "cal": 210,
+     "f": 9,
+     "c": 29,
+     "p": 3,
+     "carbsEstimated": true
+    },
+    {
      "name": "Small Natural-Cut Fries",
      "serving": "",
      "cal": 260,
@@ -9772,15 +9781,6 @@
      "f": 16,
      "c": 47,
      "p": 5,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Large Natural-Cut Fries",
-     "serving": "",
-     "cal": 470,
-     "f": 21,
-     "c": 63,
-     "p": 7,
      "carbsEstimated": true
     },
     {
@@ -9820,12 +9820,21 @@
      "carbsEstimated": true
     },
     {
-     "name": "Jr. Classic Chocolate Frosty",
+     "name": "Chocolate Milk",
      "serving": "",
-     "cal": 190,
-     "f": 6,
-     "c": 28,
-     "p": 6,
+     "cal": 140,
+     "f": 2.5,
+     "c": 22,
+     "p": 7,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Large Natural-Cut Fries",
+     "serving": "",
+     "cal": 470,
+     "f": 21,
+     "c": 63,
+     "p": 7,
      "carbsEstimated": true
     },
     {
@@ -9883,20 +9892,11 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Vanilla Frosty",
+     "name": "Chocolate Chunk Cookie",
      "serving": "",
-     "cal": 510,
-     "f": 15,
-     "c": 79,
-     "p": 15,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Jr. Natural-Cut Fries",
-     "serving": "",
-     "cal": 210,
-     "f": 9,
-     "c": 29,
+     "cal": 330,
+     "f": 16,
+     "c": 44,
      "p": 3,
      "carbsEstimated": true
     },
@@ -9916,6 +9916,15 @@
      "f": 31,
      "c": 22,
      "p": 26,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Bacon Cheese Baked Potato",
+     "serving": "",
+     "cal": 420,
+     "f": 12,
+     "c": 61,
+     "p": 17,
      "carbsEstimated": true
     },
     {
@@ -9955,29 +9964,20 @@
      "carbsEstimated": true
     },
     {
-     "name": "Toddler Toy (Under age 3)",
-     "serving": "",
-     "cal": 0,
-     "f": 0,
-     "c": 0,
-     "p": 0,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Small Coca-Cola",
-     "serving": "",
-     "cal": 180,
-     "f": 0,
-     "c": 45,
-     "p": 0,
-     "carbsEstimated": true
-    },
-    {
      "name": "Medium Coca-Cola",
      "serving": "",
      "cal": 250,
      "f": 0,
      "c": 63,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Large Coca-Cola",
+     "serving": "",
+     "cal": 320,
+     "f": 0,
+     "c": 80,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10045,6 +10045,33 @@
      "carbsEstimated": true
     },
     {
+     "name": "Large Vanilla Frosty",
+     "serving": "",
+     "cal": 510,
+     "f": 15,
+     "c": 79,
+     "p": 15,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Jr. Classic Chocolate Frosty",
+     "serving": "",
+     "cal": 190,
+     "f": 6,
+     "c": 28,
+     "p": 6,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Toddler Toy (Under age 3)",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
      "name": "Medium Sprite",
      "serving": "",
      "cal": 240,
@@ -10054,12 +10081,21 @@
      "carbsEstimated": true
     },
     {
-     "name": "Chocolate Milk",
+     "name": "Small Coca-Cola",
      "serving": "",
-     "cal": 140,
-     "f": 2.5,
-     "c": 22,
-     "p": 7,
+     "cal": 180,
+     "f": 0,
+     "c": 45,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Large Sprite",
+     "serving": "",
+     "cal": 300,
+     "f": 0,
+     "c": 75,
+     "p": 0,
      "carbsEstimated": true
     },
     {
@@ -10135,6 +10171,15 @@
      "carbsEstimated": true
     },
     {
+     "name": "Large All-Natural Lemonade",
+     "serving": "",
+     "cal": 330,
+     "f": 0,
+     "c": 83,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
      "name": "Small Minute Maid Light Lemonade",
      "serving": "",
      "cal": 10,
@@ -10198,11 +10243,11 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large All-Natural Lemonade",
+     "name": "Pure Life Bottled Water",
      "serving": "",
-     "cal": 330,
+     "cal": 0,
      "f": 0,
-     "c": 83,
+     "c": 0,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10270,11 +10315,11 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Coca-Cola",
+     "name": "Large Coca-Cola Zero Sugar",
      "serving": "",
-     "cal": 320,
+     "cal": 0,
      "f": 0,
-     "c": 80,
+     "c": 0,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10333,21 +10378,21 @@
      "carbsEstimated": true
     },
     {
-     "name": "Chocolate Chunk Cookie",
+     "name": "Sausage Gravy & Biscuit",
      "serving": "",
-     "cal": 330,
-     "f": 16,
+     "cal": 410,
+     "f": 23,
      "c": 44,
-     "p": 3,
+     "p": 7,
      "carbsEstimated": true
     },
     {
-     "name": "Pure Life Bottled Water",
+     "name": "Bacon, Egg & Cheese Biscuit",
      "serving": "",
-     "cal": 0,
-     "f": 0,
-     "c": 0,
-     "p": 0,
+     "cal": 420,
+     "f": 24,
+     "c": 34,
+     "p": 17,
      "carbsEstimated": true
     },
     {
@@ -10396,11 +10441,11 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Coca-Cola Zero Sugar",
+     "name": "Honest Kids Fruit Punch",
      "serving": "",
-     "cal": 0,
+     "cal": 35,
      "f": 0,
-     "c": 0,
+     "c": 9,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10441,21 +10486,21 @@
      "carbsEstimated": true
     },
     {
-     "name": "Bacon Cheese Baked Potato",
+     "name": "Simply Orange Juice",
      "serving": "",
-     "cal": 420,
-     "f": 12,
-     "c": 61,
-     "p": 17,
+     "cal": 160,
+     "f": 0,
+     "c": 37,
+     "p": 3,
      "carbsEstimated": true
     },
     {
-     "name": "Large Sprite",
+     "name": "Honey Butter Biscuit",
      "serving": "",
-     "cal": 300,
-     "f": 0,
-     "c": 75,
-     "p": 0,
+     "cal": 330,
+     "f": 17,
+     "c": 39,
+     "p": 5,
      "carbsEstimated": true
     },
     {
@@ -10495,12 +10540,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Honey Butter Biscuit",
+     "name": "Kid Coca-Cola Zero Sugar",
      "serving": "",
-     "cal": 330,
-     "f": 17,
-     "c": 39,
-     "p": 5,
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0,
      "carbsEstimated": true
     },
     {
@@ -10549,12 +10594,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Kid Coca-Cola Zero Sugar",
+     "name": "Spicy Nuggs Party Pack",
      "serving": "",
-     "cal": 0,
-     "f": 0,
-     "c": 0,
-     "p": 0,
+     "cal": 2340,
+     "f": 153,
+     "c": 113,
+     "p": 128,
      "carbsEstimated": true
     },
     {
@@ -10573,15 +10618,6 @@
      "f": 37,
      "c": 34,
      "p": 35,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Simply Orange Juice",
-     "serving": "",
-     "cal": 160,
-     "f": 0,
-     "c": 37,
-     "p": 3,
      "carbsEstimated": true
     },
     {
@@ -10639,12 +10675,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Sausage Gravy & Biscuit",
+     "name": "Value Dr Pepper &#174;",
      "serving": "",
-     "cal": 410,
-     "f": 23,
-     "c": 44,
-     "p": 7,
+     "cal": 140,
+     "f": 0,
+     "c": 35,
+     "p": 0,
      "carbsEstimated": true
     },
     {
@@ -10672,42 +10708,6 @@
      "f": 0,
      "c": 40,
      "p": 0,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Value Dr Pepper &#174;",
-     "serving": "",
-     "cal": 140,
-     "f": 0,
-     "c": 35,
-     "p": 0,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Honest Kids Fruit Punch",
-     "serving": "",
-     "cal": 35,
-     "f": 0,
-     "c": 9,
-     "p": 0,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Spicy Nuggs Party Pack",
-     "serving": "",
-     "cal": 2340,
-     "f": 153,
-     "c": 113,
-     "p": 128,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Bacon, Egg & Cheese Biscuit",
-     "serving": "",
-     "cal": 420,
-     "f": 24,
-     "c": 34,
-     "p": 17,
      "carbsEstimated": true
     },
     {
@@ -10810,21 +10810,21 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Regular Hot Coffee",
-     "serving": "",
-     "cal": 5,
-     "f": 0,
-     "c": 0,
-     "p": 1,
-     "carbsEstimated": true
-    },
-    {
      "name": "Medium Regular Hot Coffee",
      "serving": "",
      "cal": 5,
      "f": 0,
      "c": 1,
      "p": 0,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Large Regular Hot Coffee",
+     "serving": "",
+     "cal": 5,
+     "f": 0,
+     "c": 0,
+     "p": 1,
      "carbsEstimated": true
     },
     {
@@ -11593,7 +11593,7 @@
     "mickey ds"
    ],
    "source": "https://www.mcdonalds.com/us/en-us/about-our-food/nutrition-calculator.html",
-   "updated": "2026-10-18",
+   "updated": "2026-10-20",
    "items": [
     {
      "name": "Baked Hot Apple Pie",
@@ -13411,7 +13411,7 @@
     "subway"
    ],
    "source": "https://www.subway.com/en-us/menunutrition/nutrition",
-   "updated": "2026-10-18",
+   "updated": "2026-10-20",
    "items": [
     {
      "name": "6\" Steak Philly",
@@ -16034,6 +16034,642 @@
      "p": 4
     }
    ]
+  },
+  "fiveguys": {
+   "name": "Five Guys",
+   "aliases": [
+    "five guys",
+    "5 guys",
+    "fiveguys"
+   ],
+   "source": "https://www.fiveguys.com/nutritional-allergy-information/",
+   "updated": "2026-10-20",
+   "items": [
+    {
+     "name": "Mini Fries",
+     "serving": "175 g",
+     "cal": 405,
+     "f": 17,
+     "c": 55,
+     "p": 6
+    },
+    {
+     "name": "Little Fries",
+     "serving": "227 g",
+     "cal": 526,
+     "f": 23,
+     "c": 72,
+     "p": 8
+    },
+    {
+     "name": "Regular Fries",
+     "serving": "411 g",
+     "cal": 953,
+     "f": 41,
+     "c": 131,
+     "p": 15
+    },
+    {
+     "name": "Large Fries",
+     "serving": "567 g",
+     "cal": 1314,
+     "f": 57,
+     "c": 181,
+     "p": 20
+    },
+    {
+     "name": "Little Cajun Style Fries",
+     "serving": "232 g",
+     "cal": 540,
+     "f": 28,
+     "c": 75,
+     "p": 8
+    },
+    {
+     "name": "Regular Cajun Style Fries",
+     "serving": "416 g",
+     "cal": 967,
+     "f": 41,
+     "c": 134,
+     "p": 15
+    },
+    {
+     "name": "Large Cajun Style Fries",
+     "serving": "572 g",
+     "cal": 1328,
+     "f": 57,
+     "c": 184,
+     "p": 20
+    },
+    {
+     "name": "A.1. Sauce (topping)",
+     "serving": "17 g",
+     "cal": 15,
+     "f": 0,
+     "c": 3,
+     "p": 0
+    },
+    {
+     "name": "BBQ Sauce (topping)",
+     "serving": "28 g",
+     "cal": 49,
+     "f": 0,
+     "c": 15,
+     "p": 1
+    },
+    {
+     "name": "Cheese (1 slice) (topping)",
+     "serving": "19 g",
+     "cal": 70,
+     "f": 6,
+     "c": 1,
+     "p": 4
+    },
+    {
+     "name": "Cheese (1/2 slice) (topping)",
+     "serving": "9 g",
+     "cal": 35,
+     "f": 3,
+     "c": 1,
+     "p": 2
+    },
+    {
+     "name": "Green Peppers (topping)",
+     "serving": "25 g",
+     "cal": 3,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Grilled Mushrooms (topping)",
+     "serving": "21 g",
+     "cal": 6,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Hot Sauce (topping)",
+     "serving": "5 g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Jalapeño Peppers (topping)",
+     "serving": "11 g",
+     "cal": 3,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Ketchup (topping)",
+     "serving": "17 g",
+     "cal": 30,
+     "f": 0,
+     "c": 5,
+     "p": 0
+    },
+    {
+     "name": "Lettuce (topping)",
+     "serving": "30 g",
+     "cal": 3,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Mayonnaise (topping)",
+     "serving": "14 g",
+     "cal": 111,
+     "f": 11,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Mustard (topping)",
+     "serving": "5 g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Onions / Grilled Onions (topping)",
+     "serving": "26 g",
+     "cal": 11,
+     "f": 0,
+     "c": 2,
+     "p": 0
+    },
+    {
+     "name": "Pickles (topping)",
+     "serving": "28 g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Relish (topping)",
+     "serving": "15 g",
+     "cal": 16,
+     "f": 0,
+     "c": 4,
+     "p": 0
+    },
+    {
+     "name": "Tomatoes (topping)",
+     "serving": "52 g",
+     "cal": 8,
+     "f": 0,
+     "c": 2,
+     "p": 1
+    },
+    {
+     "name": "Chocolate Milk",
+     "serving": "245 g",
+     "cal": 150,
+     "f": 2.5,
+     "c": 23,
+     "p": 8
+    },
+    {
+     "name": "Low Fat Milk",
+     "serving": "213 g",
+     "cal": 90,
+     "f": 2,
+     "c": 10,
+     "p": 7
+    },
+    {
+     "name": "Apple Juice",
+     "serving": "177 g",
+     "cal": 35,
+     "f": 0,
+     "c": 9,
+     "p": 0
+    },
+    {
+     "name": "Orange Juice Blend",
+     "serving": "300 g",
+     "cal": 140,
+     "f": 0,
+     "c": 34,
+     "p": 1
+    },
+    {
+     "name": "Cheese Sauce",
+     "serving": "90 g",
+     "cal": 92,
+     "f": 6,
+     "c": 7,
+     "p": 4
+    },
+    {
+     "name": "Five Guys Sauce",
+     "serving": "35 g",
+     "cal": 169,
+     "f": 15,
+     "c": 4,
+     "p": 1
+    },
+    {
+     "name": "Bulk Peanuts (1oz.)",
+     "serving": "30 g",
+     "cal": 170,
+     "f": 14,
+     "c": 5,
+     "p": 7
+    },
+    {
+     "name": "Cajun Peanuts",
+     "serving": "30 g",
+     "cal": 170,
+     "f": 14,
+     "c": 5,
+     "p": 7
+    },
+    {
+     "name": "Fry Sauce Bulk",
+     "serving": "28 g",
+     "cal": 80,
+     "f": 6,
+     "c": 6,
+     "p": 0
+    },
+    {
+     "name": "Fry Sauce PC",
+     "serving": "35 g",
+     "cal": 100,
+     "f": 9,
+     "c": 5,
+     "p": 0
+    },
+    {
+     "name": "Malt Vinegar (1tbs)",
+     "serving": "15 g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Eggs (2)",
+     "serving": "105 g",
+     "cal": 160,
+     "f": 11,
+     "c": 1,
+     "p": 13
+    },
+    {
+     "name": "Liquid Butter Flavored Oil",
+     "serving": "14 g",
+     "cal": 120,
+     "f": 14,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Chives Seasoning",
+     "serving": "1 g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Lemons (1 slice)",
+     "serving": "10 g",
+     "cal": 3,
+     "f": 0,
+     "c": 1,
+     "p": 1
+    },
+    {
+     "name": "Hamburger",
+     "serving": "built from Five Guys parts",
+     "cal": 844,
+     "f": 42,
+     "c": 35,
+     "p": 39
+    },
+    {
+     "name": "Cheeseburger",
+     "serving": "built from Five Guys parts",
+     "cal": 984,
+     "f": 54,
+     "c": 37,
+     "p": 47
+    },
+    {
+     "name": "Bacon Burger",
+     "serving": "built from Five Guys parts",
+     "cal": 914,
+     "f": 48,
+     "c": 35,
+     "p": 44
+    },
+    {
+     "name": "Bacon Cheeseburger",
+     "serving": "built from Five Guys parts",
+     "cal": 1054,
+     "f": 60,
+     "c": 37,
+     "p": 52
+    },
+    {
+     "name": "Hamburger (lettuce wrap, no bun)",
+     "serving": "built from Five Guys parts",
+     "cal": 604,
+     "f": 34,
+     "c": 0,
+     "p": 32
+    },
+    {
+     "name": "Cheeseburger (lettuce wrap, no bun)",
+     "serving": "built from Five Guys parts",
+     "cal": 744,
+     "f": 46,
+     "c": 2,
+     "p": 40
+    },
+    {
+     "name": "Little Hamburger",
+     "serving": "built from Five Guys parts",
+     "cal": 542,
+     "f": 25,
+     "c": 35,
+     "p": 23
+    },
+    {
+     "name": "Little Cheeseburger",
+     "serving": "built from Five Guys parts",
+     "cal": 612,
+     "f": 31,
+     "c": 36,
+     "p": 27
+    },
+    {
+     "name": "Little Bacon Burger",
+     "serving": "built from Five Guys parts",
+     "cal": 612,
+     "f": 31,
+     "c": 35,
+     "p": 28
+    },
+    {
+     "name": "Little Bacon Cheeseburger",
+     "serving": "built from Five Guys parts",
+     "cal": 682,
+     "f": 37,
+     "c": 36,
+     "p": 32
+    },
+    {
+     "name": "Little Hamburger (lettuce wrap, no bun)",
+     "serving": "built from Five Guys parts",
+     "cal": 302,
+     "f": 17,
+     "c": 0,
+     "p": 16
+    },
+    {
+     "name": "Little Cheeseburger (lettuce wrap, no bun)",
+     "serving": "built from Five Guys parts",
+     "cal": 372,
+     "f": 23,
+     "c": 1,
+     "p": 20
+    },
+    {
+     "name": "Hot Dog",
+     "serving": "built from Five Guys parts",
+     "cal": 500,
+     "f": 33,
+     "c": 34,
+     "p": 17
+    },
+    {
+     "name": "Cheese Dog",
+     "serving": "built from Five Guys parts",
+     "cal": 570,
+     "f": 39,
+     "c": 35,
+     "p": 21
+    },
+    {
+     "name": "Bacon Dog",
+     "serving": "built from Five Guys parts",
+     "cal": 570,
+     "f": 39,
+     "c": 34,
+     "p": 22
+    },
+    {
+     "name": "Bacon Cheese Dog",
+     "serving": "built from Five Guys parts",
+     "cal": 640,
+     "f": 45,
+     "c": 35,
+     "p": 26
+    },
+    {
+     "name": "Vanilla Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 531,
+     "f": 26.5,
+     "c": 66,
+     "p": 10
+    },
+    {
+     "name": "Blackberry Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 611,
+     "f": 26.5,
+     "c": 86,
+     "p": 10
+    },
+    {
+     "name": "Bacon Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 601,
+     "f": 32.5,
+     "c": 66,
+     "p": 15
+    },
+    {
+     "name": "Banana Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 705,
+     "f": 26.5,
+     "c": 109,
+     "p": 11
+    },
+    {
+     "name": "Chocolate Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 664,
+     "f": 28.5,
+     "c": 96,
+     "p": 12
+    },
+    {
+     "name": "Coffee Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 558,
+     "f": 27.5,
+     "c": 73,
+     "p": 11
+    },
+    {
+     "name": "Oreo Crème Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 851,
+     "f": 51.5,
+     "c": 89,
+     "p": 10
+    },
+    {
+     "name": "Oreo Cookie Pieces Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 651,
+     "f": 31.5,
+     "c": 84,
+     "p": 11
+    },
+    {
+     "name": "Peanut Butter Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 853,
+     "f": 55.5,
+     "c": 75,
+     "p": 19
+    },
+    {
+     "name": "Reese's Peanut Butter Cup Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 681,
+     "f": 34.5,
+     "c": 81,
+     "p": 13
+    },
+    {
+     "name": "Salted Caramel Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 686,
+     "f": 27.5,
+     "c": 103,
+     "p": 11
+    },
+    {
+     "name": "Strawberry Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 638,
+     "f": 27.5,
+     "c": 94,
+     "p": 11
+    },
+    {
+     "name": "Mini Vanilla Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 254,
+     "f": 13,
+     "c": 33,
+     "p": 5
+    },
+    {
+     "name": "Mini Blackberry Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 294,
+     "f": 13,
+     "c": 43,
+     "p": 5
+    },
+    {
+     "name": "Mini Bacon Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 289,
+     "f": 16,
+     "c": 33,
+     "p": 7
+    },
+    {
+     "name": "Mini Banana Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 341,
+     "f": 13,
+     "c": 54,
+     "p": 5
+    },
+    {
+     "name": "Mini Chocolate Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 320,
+     "f": 14,
+     "c": 48,
+     "p": 6
+    },
+    {
+     "name": "Mini Coffee Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 267,
+     "f": 13,
+     "c": 36,
+     "p": 5
+    },
+    {
+     "name": "Mini Oreo Crème Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 414,
+     "f": 25,
+     "c": 44,
+     "p": 5
+    },
+    {
+     "name": "Mini Oreo Cookie Pieces Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 314,
+     "f": 15,
+     "c": 42,
+     "p": 6
+    },
+    {
+     "name": "Mini Peanut Butter Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 415,
+     "f": 27,
+     "c": 37,
+     "p": 9
+    },
+    {
+     "name": "Mini Reese's Peanut Butter Cup Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 329,
+     "f": 17,
+     "c": 40,
+     "p": 6
+    },
+    {
+     "name": "Mini Salted Caramel Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 331,
+     "f": 13,
+     "c": 51,
+     "p": 5
+    },
+    {
+     "name": "Mini Strawberry Milkshake",
+     "serving": "built from Five Guys parts",
+     "cal": 307,
+     "f": 13,
+     "c": 47,
+     "p": 5
+    }
+   ]
   }
  },
  "status": {
@@ -16041,6 +16677,7 @@
   "dunkin": "ok: 826 items",
   "mcdonalds": "ok: 226 items",
   "subway": "ok: 200 items",
+  "fiveguys": "ok: 78 items",
   "wendys": "ok: 221 items"
  }
 }

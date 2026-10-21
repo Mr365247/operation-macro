@@ -40,6 +40,13 @@ Actions → Update restaurant nutrition → Run workflow). It pulls official nut
 estimated from calories, protein and fat). Each chain keeps its last good data if its source fails;
 `restaurants.json` → `status` shows how the last run went.
 
+Chili's, Burger King, Raising Cane's and Chipotle can't be downloaded automatically either, so their
+numbers were copied from each chain's official nutrition page into
+`data/fast-food-macros-2026-10-20.xlsx` (sources on its Notes sheet) and loaded with
+`pip install openpyxl && python3 scripts/import-sheet.py data/<file>.xlsx`. Chipotle lists
+ingredients, so common bowls, burritos, salads and tacos are built from them. Alcohol and party
+platters are left out.
+
 Tropical Smoothie Cafe blocks automated downloads, so it comes from their nutrition-guide PDF
 (`data/tropical-smoothie-nutrition-guide.pdf`, dated 05/14/26). When a new guide comes out, replace
 that file and run `pip install pypdf && python3 scripts/import-tropical-smoothie.py

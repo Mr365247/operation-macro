@@ -16670,6 +16670,5938 @@
      "p": 5
     }
    ]
+  },
+  "chilis": {
+   "name": "Chili's",
+   "aliases": [
+    "chilis",
+    "chili's"
+   ],
+   "source": "chilis.com/nutrition → Nutritionix interactive nutrition menu (data dated Oct 6, 2026) (data/fast-food-macros-2026-10-20.xlsx)",
+   "updated": "2026-10-21",
+   "items": [
+    {
+     "name": "Bottomless Chips & Salsa",
+     "serving": "",
+     "cal": 910,
+     "f": 45,
+     "c": 113,
+     "p": 13
+    },
+    {
+     "name": "Chicken Bacon Ranch Nachos",
+     "serving": "",
+     "cal": 2260,
+     "f": 155,
+     "c": 109,
+     "p": 112
+    },
+    {
+     "name": "Dip Trio - Chips Only (Choose 3 Dips)",
+     "serving": "",
+     "cal": 880,
+     "f": 45,
+     "c": 107,
+     "p": 12
+    },
+    {
+     "name": "Dip Trio - Fresh Guacamole",
+     "serving": "",
+     "cal": 160,
+     "f": 14,
+     "c": 9,
+     "p": 2
+    },
+    {
+     "name": "Dip Trio - Fresh Salsa",
+     "serving": "",
+     "cal": 30,
+     "f": 0,
+     "c": 7,
+     "p": 1
+    },
+    {
+     "name": "Dip Trio - House-Made Ranch",
+     "serving": "",
+     "cal": 450,
+     "f": 47,
+     "c": 5,
+     "p": 3
+    },
+    {
+     "name": "Dip Trio - Skillet Beef Queso",
+     "serving": "",
+     "cal": 220,
+     "f": 16,
+     "c": 8,
+     "p": 11
+    },
+    {
+     "name": "Dip Trio - Southwestern Queso",
+     "serving": "",
+     "cal": 230,
+     "f": 19,
+     "c": 6,
+     "p": 10
+    },
+    {
+     "name": "Fresh Guacamole & Chips",
+     "serving": "",
+     "cal": 1150,
+     "f": 67,
+     "c": 127,
+     "p": 16
+    },
+    {
+     "name": "Fried Mozzarella, 3 Count",
+     "serving": "",
+     "cal": 920,
+     "f": 55,
+     "c": 59,
+     "p": 48
+    },
+    {
+     "name": "Fried Mozzarella, 6 Count",
+     "serving": "",
+     "cal": 1790,
+     "f": 109,
+     "c": 108,
+     "p": 95
+    },
+    {
+     "name": "Fried Mozzarella - Honey Chipotle, 3 Count",
+     "serving": "",
+     "cal": 1450,
+     "f": 101,
+     "c": 86,
+     "p": 50
+    },
+    {
+     "name": "Fried Mozzarella - Honey Chipotle, 6 Count",
+     "serving": "",
+     "cal": 2440,
+     "f": 155,
+     "c": 167,
+     "p": 97
+    },
+    {
+     "name": "Fried Mozzarella - Nashville Sauce, 3 Count",
+     "serving": "",
+     "cal": 1460,
+     "f": 114,
+     "c": 60,
+     "p": 51
+    },
+    {
+     "name": "Fried Mozzarella - Nashville Sauce, 6 Count",
+     "serving": "",
+     "cal": 2470,
+     "f": 181,
+     "c": 114,
+     "p": 99
+    },
+    {
+     "name": "Skillet Beef Queso & Chips",
+     "serving": "",
+     "cal": 1340,
+     "f": 77,
+     "c": 129,
+     "p": 35
+    },
+    {
+     "name": "Southwest Queso & Chips",
+     "serving": "",
+     "cal": 1360,
+     "f": 83,
+     "c": 125,
+     "p": 33
+    },
+    {
+     "name": "Southwestern Eggrolls",
+     "serving": "",
+     "cal": 1020,
+     "f": 49,
+     "c": 108,
+     "p": 36
+    },
+    {
+     "name": "Texas Cheese Fries",
+     "serving": "",
+     "cal": 1790,
+     "f": 123,
+     "c": 101,
+     "p": 72
+    },
+    {
+     "name": "TD Big Mouth Bites",
+     "serving": "",
+     "cal": 820,
+     "f": 59,
+     "c": 42,
+     "p": 32
+    },
+    {
+     "name": "TD Boneless Wings - Buffalo",
+     "serving": "",
+     "cal": 530,
+     "f": 37,
+     "c": 27,
+     "p": 22
+    },
+    {
+     "name": "TD Boneless Wings - Honey-Chipotle",
+     "serving": "",
+     "cal": 650,
+     "f": 36,
+     "c": 62,
+     "p": 22
+    },
+    {
+     "name": "TD Boneless Wings - House BBQ",
+     "serving": "",
+     "cal": 620,
+     "f": 35,
+     "c": 54,
+     "p": 23
+    },
+    {
+     "name": "TD Crispy Chicken Crispers without Sauce",
+     "serving": "",
+     "cal": 590,
+     "f": 38,
+     "c": 28,
+     "p": 34
+    },
+    {
+     "name": "TD Fried Mozzarella",
+     "serving": "",
+     "cal": 600,
+     "f": 36,
+     "c": 36,
+     "p": 32
+    },
+    {
+     "name": "TD Fried Mozzarella Honey Chipotle",
+     "serving": "",
+     "cal": 870,
+     "f": 54,
+     "c": 67,
+     "p": 33
+    },
+    {
+     "name": "TD Fried Mozzarella Nashville Sauce",
+     "serving": "",
+     "cal": 890,
+     "f": 67,
+     "c": 40,
+     "p": 34
+    },
+    {
+     "name": "TD Honey-Chipotle Chicken Crispers",
+     "serving": "",
+     "cal": 950,
+     "f": 56,
+     "c": 79,
+     "p": 35
+    },
+    {
+     "name": "TD Nashville Hot Chicken Crispers",
+     "serving": "",
+     "cal": 1020,
+     "f": 80,
+     "c": 40,
+     "p": 37
+    },
+    {
+     "name": "TD Southwestern Eggrolls",
+     "serving": "",
+     "cal": 570,
+     "f": 31,
+     "c": 55,
+     "p": 19
+    },
+    {
+     "name": "TD Bone-In Wings - Buffalo",
+     "serving": "",
+     "cal": 490,
+     "f": 37,
+     "c": 3,
+     "p": 37
+    },
+    {
+     "name": "TD Bone-In Wings - Honey-Chipotle",
+     "serving": "",
+     "cal": 580,
+     "f": 36,
+     "c": 30,
+     "p": 37
+    },
+    {
+     "name": "TD Bone-In Wings - House BBQ",
+     "serving": "",
+     "cal": 570,
+     "f": 36,
+     "c": 26,
+     "p": 38
+    },
+    {
+     "name": "12 Count Wings - Buffalo",
+     "serving": "",
+     "cal": 1310,
+     "f": 94,
+     "c": 7,
+     "p": 110
+    },
+    {
+     "name": "12 Count Wings - Honey Chipotle",
+     "serving": "",
+     "cal": 1580,
+     "f": 89,
+     "c": 88,
+     "p": 110
+    },
+    {
+     "name": "12 Count Wings - House BBQ",
+     "serving": "",
+     "cal": 1540,
+     "f": 89,
+     "c": 77,
+     "p": 111
+    },
+    {
+     "name": "12 Count Wings - Nashville Hot",
+     "serving": "",
+     "cal": 1610,
+     "f": 122,
+     "c": 17,
+     "p": 113
+    },
+    {
+     "name": "16 Count Wings - Buffalo",
+     "serving": "",
+     "cal": 1640,
+     "f": 114,
+     "c": 8,
+     "p": 146
+    },
+    {
+     "name": "16 Count Wings - Honey Chipotle",
+     "serving": "",
+     "cal": 1990,
+     "f": 107,
+     "c": 117,
+     "p": 146
+    },
+    {
+     "name": "16 Count Wings - House BBQ",
+     "serving": "",
+     "cal": 1940,
+     "f": 107,
+     "c": 101,
+     "p": 148
+    },
+    {
+     "name": "16 Count Wings - Nashville Hot",
+     "serving": "",
+     "cal": 2040,
+     "f": 151,
+     "c": 21,
+     "p": 150
+    },
+    {
+     "name": "8 Count Wings - Buffalo",
+     "serving": "",
+     "cal": 990,
+     "f": 74,
+     "c": 6,
+     "p": 74
+    },
+    {
+     "name": "8 Count Wings - Honey Chipotle",
+     "serving": "",
+     "cal": 1170,
+     "f": 71,
+     "c": 60,
+     "p": 74
+    },
+    {
+     "name": "8 Count Wings - House BBQ",
+     "serving": "",
+     "cal": 1140,
+     "f": 71,
+     "c": 53,
+     "p": 75
+    },
+    {
+     "name": "8 Count Wings - Nashville Hot",
+     "serving": "",
+     "cal": 1190,
+     "f": 93,
+     "c": 13,
+     "p": 76
+    },
+    {
+     "name": "12 Count Boneless Wings - Buffalo",
+     "serving": "",
+     "cal": 1210,
+     "f": 83,
+     "c": 64,
+     "p": 53
+    },
+    {
+     "name": "12 Count Boneless Wings - Honey Chipotle",
+     "serving": "",
+     "cal": 1490,
+     "f": 78,
+     "c": 148,
+     "p": 53
+    },
+    {
+     "name": "12 Count Boneless Wings - House BBQ",
+     "serving": "",
+     "cal": 1420,
+     "f": 78,
+     "c": 129,
+     "p": 54
+    },
+    {
+     "name": "12 Count Boneless Wings - Nashville Hot",
+     "serving": "",
+     "cal": 1610,
+     "f": 120,
+     "c": 78,
+     "p": 57
+    },
+    {
+     "name": "16 Count Boneless Wings - Buffalo",
+     "serving": "",
+     "cal": 1500,
+     "f": 99,
+     "c": 84,
+     "p": 70
+    },
+    {
+     "name": "16 Count Boneless Wings - Honey Chipotle",
+     "serving": "",
+     "cal": 1880,
+     "f": 93,
+     "c": 196,
+     "p": 70
+    },
+    {
+     "name": "16 Count Boneless Wings - House BBQ",
+     "serving": "",
+     "cal": 1780,
+     "f": 92,
+     "c": 171,
+     "p": 71
+    },
+    {
+     "name": "16 Count Boneless Wings - Nashville Hot",
+     "serving": "",
+     "cal": 2030,
+     "f": 148,
+     "c": 102,
+     "p": 75
+    },
+    {
+     "name": "8 Count Boneless Wings - Buffalo",
+     "serving": "",
+     "cal": 920,
+     "f": 67,
+     "c": 44,
+     "p": 36
+    },
+    {
+     "name": "8 Count Boneless Wings - Honey Chipotle",
+     "serving": "",
+     "cal": 1110,
+     "f": 64,
+     "c": 100,
+     "p": 36
+    },
+    {
+     "name": "8 Count Boneless Wings - House BBQ",
+     "serving": "",
+     "cal": 1060,
+     "f": 64,
+     "c": 88,
+     "p": 37
+    },
+    {
+     "name": "8 Count Boneless Wings - Nashville Hot",
+     "serving": "",
+     "cal": 1190,
+     "f": 92,
+     "c": 53,
+     "p": 39
+    },
+    {
+     "name": "Fajita Grilled Chicken",
+     "serving": "",
+     "cal": 480,
+     "f": 17,
+     "c": 22,
+     "p": 62
+    },
+    {
+     "name": "Fajita Grilled Steak",
+     "serving": "",
+     "cal": 570,
+     "f": 29,
+     "c": 24,
+     "p": 57
+    },
+    {
+     "name": "Fajita Shrimp",
+     "serving": "",
+     "cal": 310,
+     "f": 15,
+     "c": 21,
+     "p": 25
+    },
+    {
+     "name": "Fajita Trio",
+     "serving": "",
+     "cal": 590,
+     "f": 25,
+     "c": 24,
+     "p": 71
+    },
+    {
+     "name": "Fajita Veggie",
+     "serving": "",
+     "cal": 340,
+     "f": 14,
+     "c": 45,
+     "p": 17
+    },
+    {
+     "name": "Alex's Santa Fe Burger",
+     "serving": "",
+     "cal": 930,
+     "f": 62,
+     "c": 48,
+     "p": 49
+    },
+    {
+     "name": "Bacon Cheeseburger",
+     "serving": "",
+     "cal": 1130,
+     "f": 79,
+     "c": 44,
+     "p": 63
+    },
+    {
+     "name": "Bacon Rancher Burger",
+     "serving": "",
+     "cal": 1710,
+     "f": 123,
+     "c": 48,
+     "p": 107
+    },
+    {
+     "name": "Burger Big Mouth Bites",
+     "serving": "",
+     "cal": 1220,
+     "f": 76,
+     "c": 78,
+     "p": 57
+    },
+    {
+     "name": "Mushroom Swiss Burger",
+     "serving": "",
+     "cal": 1010,
+     "f": 68,
+     "c": 50,
+     "p": 53
+    },
+    {
+     "name": "Oldtimer Burger with Cheese",
+     "serving": "",
+     "cal": 850,
+     "f": 53,
+     "c": 45,
+     "p": 49
+    },
+    {
+     "name": "The Big QP Burger",
+     "serving": "",
+     "cal": 890,
+     "f": 56,
+     "c": 47,
+     "p": 51
+    },
+    {
+     "name": "The Big Smasher Burger",
+     "serving": "",
+     "cal": 950,
+     "f": 64,
+     "c": 49,
+     "p": 47
+    },
+    {
+     "name": "Veggie Santa Fe Burger",
+     "serving": "",
+     "cal": 640,
+     "f": 31,
+     "c": 74,
+     "p": 28
+    },
+    {
+     "name": "The Double Big Smasher Burger",
+     "serving": "",
+     "cal": 1490,
+     "f": 106,
+     "c": 50,
+     "p": 86
+    },
+    {
+     "name": "Big Crispy Chicken Sandwich",
+     "serving": "",
+     "cal": 880,
+     "f": 52,
+     "c": 61,
+     "p": 43
+    },
+    {
+     "name": "Deluxe Big Crispy Chicken Sandwich",
+     "serving": "",
+     "cal": 1050,
+     "f": 64,
+     "c": 63,
+     "p": 56
+    },
+    {
+     "name": "Deluxe Grilled Chicken Sandwich",
+     "serving": "",
+     "cal": 800,
+     "f": 47,
+     "c": 46,
+     "p": 50
+    },
+    {
+     "name": "Buffalo Big Crispy Chicken Sandwich",
+     "serving": "",
+     "cal": 710,
+     "f": 33,
+     "c": 62,
+     "p": 43
+    },
+    {
+     "name": "Honey-Chipotle Big Crispy Chicken Sandwich",
+     "serving": "",
+     "cal": 840,
+     "f": 29,
+     "c": 104,
+     "p": 43
+    },
+    {
+     "name": "Nashville Hot Big Crispy Chicken Sandwich",
+     "serving": "",
+     "cal": 950,
+     "f": 54,
+     "c": 70,
+     "p": 45
+    },
+    {
+     "name": "Spicy Big Crispy Chicken Sandwich",
+     "serving": "",
+     "cal": 870,
+     "f": 52,
+     "c": 61,
+     "p": 43
+    },
+    {
+     "name": "Grilled Chicken Sandwich",
+     "serving": "",
+     "cal": 740,
+     "f": 36,
+     "c": 54,
+     "p": 51
+    },
+    {
+     "name": "Fresh Fajita Toppings",
+     "serving": "",
+     "cal": 260,
+     "f": 20,
+     "c": 4,
+     "p": 15
+    },
+    {
+     "name": "Side Dippable Guacamole",
+     "serving": "",
+     "cal": 160,
+     "f": 14,
+     "c": 9,
+     "p": 2
+    },
+    {
+     "name": "Side Dippable House-Made Ranch",
+     "serving": "",
+     "cal": 450,
+     "f": 47,
+     "c": 5,
+     "p": 3
+    },
+    {
+     "name": "Side Dippable Skillet Beef Queso",
+     "serving": "",
+     "cal": 220,
+     "f": 16,
+     "c": 8,
+     "p": 11
+    },
+    {
+     "name": "Side Dippable Southwestern Queso",
+     "serving": "",
+     "cal": 230,
+     "f": 19,
+     "c": 6,
+     "p": 10
+    },
+    {
+     "name": "Tortillas Corn, 4 Each",
+     "serving": "",
+     "cal": 240,
+     "f": 4,
+     "c": 44,
+     "p": 5
+    },
+    {
+     "name": "Tortillas Flour, 4 Each",
+     "serving": "",
+     "cal": 390,
+     "f": 14,
+     "c": 57,
+     "p": 8
+    },
+    {
+     "name": "Applewood Smoked Bacon (Add-on)",
+     "serving": "",
+     "cal": 80,
+     "f": 6,
+     "c": 0,
+     "p": 7
+    },
+    {
+     "name": "Garlic Butter Mushrooms (Add-on)",
+     "serving": "",
+     "cal": 50,
+     "f": 3.5,
+     "c": 3,
+     "p": 2
+    },
+    {
+     "name": "Guacamole (Add-on)",
+     "serving": "",
+     "cal": 50,
+     "f": 4.5,
+     "c": 3,
+     "p": 1
+    },
+    {
+     "name": "Sub Black Bean Patty",
+     "serving": "",
+     "cal": 180,
+     "f": 6,
+     "c": 26,
+     "p": 15
+    },
+    {
+     "name": "Sub Classic Beef Patty",
+     "serving": "",
+     "cal": 470,
+     "f": 37,
+     "c": 0,
+     "p": 36
+    },
+    {
+     "name": "Jalapeno-Cheddar Smoked Sausage",
+     "serving": "",
+     "cal": 380,
+     "f": 31,
+     "c": 4,
+     "p": 21
+    },
+    {
+     "name": "Seared Shrimp - Full Order",
+     "serving": "",
+     "cal": 60,
+     "f": 2,
+     "c": 1,
+     "p": 11
+    },
+    {
+     "name": "Seared Shrimp - Half Order",
+     "serving": "",
+     "cal": 30,
+     "f": 1,
+     "c": 0,
+     "p": 6
+    },
+    {
+     "name": "Ancho Salmon (Add-on)",
+     "serving": "",
+     "cal": 330,
+     "f": 21,
+     "c": 4,
+     "p": 41
+    },
+    {
+     "name": "Crispy Crispers, 4 Count",
+     "serving": "",
+     "cal": 790,
+     "f": 51,
+     "c": 38,
+     "p": 45
+    },
+    {
+     "name": "Crispy Crispers, 5 Count",
+     "serving": "",
+     "cal": 990,
+     "f": 64,
+     "c": 47,
+     "p": 57
+    },
+    {
+     "name": "Crispy Crispers, 6 Count",
+     "serving": "",
+     "cal": 1190,
+     "f": 76,
+     "c": 57,
+     "p": 68
+    },
+    {
+     "name": "Honey Chipotle Crispy Crispers, 4 Count",
+     "serving": "",
+     "cal": 1040,
+     "f": 51,
+     "c": 103,
+     "p": 45
+    },
+    {
+     "name": "Honey Chipotle Crispy Crispers, 5 Count",
+     "serving": "",
+     "cal": 1300,
+     "f": 64,
+     "c": 129,
+     "p": 57
+    },
+    {
+     "name": "Honey Chipotle Crispy Crispers, 6 Count",
+     "serving": "",
+     "cal": 1560,
+     "f": 77,
+     "c": 154,
+     "p": 68
+    },
+    {
+     "name": "Nashville Hot Crispy Crispers, 4 Count",
+     "serving": "",
+     "cal": 1140,
+     "f": 83,
+     "c": 51,
+     "p": 48
+    },
+    {
+     "name": "Nashville Hot Crispy Crispers, 5 Count",
+     "serving": "",
+     "cal": 1420,
+     "f": 104,
+     "c": 63,
+     "p": 60
+    },
+    {
+     "name": "Nashville Hot Crispy Crispers, 6 Count",
+     "serving": "",
+     "cal": 1710,
+     "f": 125,
+     "c": 76,
+     "p": 72
+    },
+    {
+     "name": "Buffalo, 1.5 oz",
+     "serving": "",
+     "cal": 40,
+     "f": 3,
+     "c": 2,
+     "p": 0
+    },
+    {
+     "name": "Buffalo Ranch, 1.5 oz",
+     "serving": "",
+     "cal": 180,
+     "f": 19,
+     "c": 2,
+     "p": 1
+    },
+    {
+     "name": "Honey Mustard, 1.5 oz",
+     "serving": "",
+     "cal": 200,
+     "f": 18,
+     "c": 10,
+     "p": 1
+    },
+    {
+     "name": "House BBQ, 1.5 oz",
+     "serving": "",
+     "cal": 110,
+     "f": 0,
+     "c": 27,
+     "p": 1
+    },
+    {
+     "name": "Ranch, 1.5 oz",
+     "serving": "",
+     "cal": 170,
+     "f": 18,
+     "c": 2,
+     "p": 1
+    },
+    {
+     "name": "Bacon Ranch Chicken Quesadilla",
+     "serving": "",
+     "cal": 740,
+     "f": 53,
+     "c": 32,
+     "p": 34
+    },
+    {
+     "name": "Brisket Quesadilla",
+     "serving": "",
+     "cal": 700,
+     "f": 50,
+     "c": 40,
+     "p": 25
+    },
+    {
+     "name": "Crispers Crispy without Sauce",
+     "serving": "",
+     "cal": 590,
+     "f": 38,
+     "c": 28,
+     "p": 34
+    },
+    {
+     "name": "Crispers Honey Chipotle with Ranch",
+     "serving": "",
+     "cal": 950,
+     "f": 56,
+     "c": 79,
+     "p": 35
+    },
+    {
+     "name": "Crispers Nashville Hot with Ranch",
+     "serving": "",
+     "cal": 1020,
+     "f": 80,
+     "c": 40,
+     "p": 37
+    },
+    {
+     "name": "Ribs House BBQ",
+     "serving": "",
+     "cal": 1130,
+     "f": 73,
+     "c": 54,
+     "p": 68
+    },
+    {
+     "name": "House BBQ - Full Rack",
+     "serving": "",
+     "cal": 2160,
+     "f": 145,
+     "c": 81,
+     "p": 136
+    },
+    {
+     "name": "House BBQ - Half Rack",
+     "serving": "",
+     "cal": 1130,
+     "f": 73,
+     "c": 54,
+     "p": 68
+    },
+    {
+     "name": "Monterey Chicken",
+     "serving": "",
+     "cal": 880,
+     "f": 47,
+     "c": 55,
+     "p": 62
+    },
+    {
+     "name": "Classic Ribeye",
+     "serving": "",
+     "cal": 620,
+     "f": 39,
+     "c": 0,
+     "p": 67
+    },
+    {
+     "name": "Classic Sirloin, 10 oz",
+     "serving": "",
+     "cal": 390,
+     "f": 18,
+     "c": 2,
+     "p": 54
+    },
+    {
+     "name": "Classic Sirloin, 6 oz",
+     "serving": "",
+     "cal": 250,
+     "f": 12,
+     "c": 1,
+     "p": 34
+    },
+    {
+     "name": "Surf & Turf Ribeye",
+     "serving": "",
+     "cal": 690,
+     "f": 41,
+     "c": 1,
+     "p": 78
+    },
+    {
+     "name": "Surf & Turf Sirloin, 10 oz",
+     "serving": "",
+     "cal": 450,
+     "f": 20,
+     "c": 3,
+     "p": 66
+    },
+    {
+     "name": "Cajun Pasta with Grilled Chicken",
+     "serving": "",
+     "cal": 1160,
+     "f": 51,
+     "c": 109,
+     "p": 64
+    },
+    {
+     "name": "Cajun Pasta with Shrimp",
+     "serving": "",
+     "cal": 1070,
+     "f": 50,
+     "c": 108,
+     "p": 46
+    },
+    {
+     "name": "Ultimate Cajun Pasta",
+     "serving": "",
+     "cal": 1230,
+     "f": 53,
+     "c": 110,
+     "p": 76
+    },
+    {
+     "name": "Smoked Cajun Pasta",
+     "serving": "",
+     "cal": 1540,
+     "f": 83,
+     "c": 113,
+     "p": 86
+    },
+    {
+     "name": "Veggie Pasta",
+     "serving": "",
+     "cal": 1010,
+     "f": 48,
+     "c": 107,
+     "p": 35
+    },
+    {
+     "name": "Ancho Salmon",
+     "serving": "",
+     "cal": 590,
+     "f": 31,
+     "c": 41,
+     "p": 48
+    },
+    {
+     "name": "Guiltless 10 oz Sirloin",
+     "serving": "",
+     "cal": 450,
+     "f": 20,
+     "c": 10,
+     "p": 59
+    },
+    {
+     "name": "Guiltless 6 oz Sirloin",
+     "serving": "",
+     "cal": 300,
+     "f": 13,
+     "c": 9,
+     "p": 38
+    },
+    {
+     "name": "Margarita Grilled Chicken",
+     "serving": "",
+     "cal": 640,
+     "f": 14,
+     "c": 61,
+     "p": 69
+    },
+    {
+     "name": "Guiltless Grill Chicken Platter",
+     "serving": "",
+     "cal": 350,
+     "f": 8,
+     "c": 37,
+     "p": 35
+    },
+    {
+     "name": "Quesadillas - Brisket",
+     "serving": "",
+     "cal": 1620,
+     "f": 120,
+     "c": 86,
+     "p": 53
+    },
+    {
+     "name": "Quesadillas - Chicken Bacon Ranch",
+     "serving": "",
+     "cal": 1700,
+     "f": 127,
+     "c": 71,
+     "p": 70
+    },
+    {
+     "name": "Quesadillas - Veggie",
+     "serving": "",
+     "cal": 1390,
+     "f": 101,
+     "c": 79,
+     "p": 40
+    },
+    {
+     "name": "Crispy Crispers, 3 Count, with Choice of Sauce",
+     "serving": "",
+     "cal": 1010,
+     "f": 55,
+     "c": 89,
+     "p": 40
+    },
+    {
+     "name": "Crispy Crispers, 3 Count, with Honey Chipotle Sauce",
+     "serving": "",
+     "cal": 1370,
+     "f": 73,
+     "c": 140,
+     "p": 41
+    },
+    {
+     "name": "Crispy Crispers, 3 Count, with Nashville Sauce",
+     "serving": "",
+     "cal": 1440,
+     "f": 97,
+     "c": 100,
+     "p": 43
+    },
+    {
+     "name": "Chipotle Chicken Fresh Mex Bowl",
+     "serving": "",
+     "cal": 880,
+     "f": 42,
+     "c": 80,
+     "p": 46
+    },
+    {
+     "name": "House Side Salad without Dressing",
+     "serving": "",
+     "cal": 130,
+     "f": 7,
+     "c": 12,
+     "p": 5
+    },
+    {
+     "name": "Quesadilla Explosion Salad with Crispers",
+     "serving": "",
+     "cal": 1420,
+     "f": 100,
+     "c": 82,
+     "p": 51
+    },
+    {
+     "name": "Quesadilla Explosion Salad with Grilled Chicken",
+     "serving": "",
+     "cal": 1180,
+     "f": 77,
+     "c": 65,
+     "p": 58
+    },
+    {
+     "name": "Santa Fe Chicken Salad with Crispers",
+     "serving": "",
+     "cal": 780,
+     "f": 58,
+     "c": 42,
+     "p": 28
+    },
+    {
+     "name": "Santa Fe Chicken Salad with Grilled Chicken",
+     "serving": "",
+     "cal": 540,
+     "f": 35,
+     "c": 24,
+     "p": 35
+    },
+    {
+     "name": "Avocado Ranch Dressing, 1.5 oz",
+     "serving": "",
+     "cal": 130,
+     "f": 14,
+     "c": 3,
+     "p": 1
+    },
+    {
+     "name": "Blue Cheese Dressing, 1.5 oz",
+     "serving": "",
+     "cal": 250,
+     "f": 27,
+     "c": 1,
+     "p": 1
+    },
+    {
+     "name": "Citrus Balsamic Vinaigrette, 1.5 oz",
+     "serving": "",
+     "cal": 250,
+     "f": 25,
+     "c": 5,
+     "p": 0
+    },
+    {
+     "name": "Ranch Dressing, 1.5 oz",
+     "serving": "",
+     "cal": 170,
+     "f": 18,
+     "c": 2,
+     "p": 1
+    },
+    {
+     "name": "Santa Fe Dressing, 1.5 oz",
+     "serving": "",
+     "cal": 230,
+     "f": 24,
+     "c": 3,
+     "p": 1
+    },
+    {
+     "name": "Thousand Island Dressing, 1.5 oz",
+     "serving": "",
+     "cal": 200,
+     "f": 19,
+     "c": 6,
+     "p": 0
+    },
+    {
+     "name": "Chicken Enchilada Soup, Bowl",
+     "serving": "",
+     "cal": 390,
+     "f": 24,
+     "c": 23,
+     "p": 19
+    },
+    {
+     "name": "Chicken Enchilada Soup, Cup",
+     "serving": "",
+     "cal": 200,
+     "f": 12,
+     "c": 11,
+     "p": 10
+    },
+    {
+     "name": "Loaded Baked Potato Soup, Bowl",
+     "serving": "",
+     "cal": 430,
+     "f": 30,
+     "c": 25,
+     "p": 16
+    },
+    {
+     "name": "Loaded Baked Potato Soup, Cup",
+     "serving": "",
+     "cal": 220,
+     "f": 15,
+     "c": 12,
+     "p": 8
+    },
+    {
+     "name": "House Large Salad without Dressing",
+     "serving": "",
+     "cal": 270,
+     "f": 14,
+     "c": 25,
+     "p": 11
+    },
+    {
+     "name": "Molten Chocolate Cake",
+     "serving": "",
+     "cal": 1140,
+     "f": 57,
+     "c": 147,
+     "p": 13
+    },
+    {
+     "name": "Peanut Butter Pie",
+     "serving": "",
+     "cal": 920,
+     "f": 65,
+     "c": 81,
+     "p": 13
+    },
+    {
+     "name": "Skillet Chocolate Chip Cookie",
+     "serving": "",
+     "cal": 1210,
+     "f": 49,
+     "c": 174,
+     "p": 17
+    },
+    {
+     "name": "Classic Cheesecake",
+     "serving": "",
+     "cal": 870,
+     "f": 60,
+     "c": 71,
+     "p": 11
+    },
+    {
+     "name": "Asparagus",
+     "serving": "",
+     "cal": 35,
+     "f": 1,
+     "c": 5,
+     "p": 3
+    },
+    {
+     "name": "Black Beans",
+     "serving": "",
+     "cal": 110,
+     "f": 0.5,
+     "c": 20,
+     "p": 6
+    },
+    {
+     "name": "Bowl of Loaded Street Corn",
+     "serving": "",
+     "cal": 350,
+     "f": 26,
+     "c": 24,
+     "p": 6
+    },
+    {
+     "name": "Garlic Butter Mushrooms",
+     "serving": "",
+     "cal": 100,
+     "f": 7,
+     "c": 5,
+     "p": 5
+    },
+    {
+     "name": "Homestyle Fries",
+     "serving": "",
+     "cal": 420,
+     "f": 17,
+     "c": 60,
+     "p": 6
+    },
+    {
+     "name": "Loaded Mac & Cheese",
+     "serving": "",
+     "cal": 350,
+     "f": 23,
+     "c": 19,
+     "p": 18
+    },
+    {
+     "name": "Loaded Mashed Potatoes",
+     "serving": "",
+     "cal": 320,
+     "f": 21,
+     "c": 25,
+     "p": 9
+    },
+    {
+     "name": "Mashed Potatoes",
+     "serving": "",
+     "cal": 230,
+     "f": 13,
+     "c": 25,
+     "p": 4
+    },
+    {
+     "name": "Mexican Rice",
+     "serving": "",
+     "cal": 160,
+     "f": 4.5,
+     "c": 27,
+     "p": 3
+    },
+    {
+     "name": "Steamed Broccoli",
+     "serving": "",
+     "cal": 40,
+     "f": 0,
+     "c": 8,
+     "p": 3
+    },
+    {
+     "name": "Texas Cheese Fries - Half Order",
+     "serving": "",
+     "cal": 1300,
+     "f": 92,
+     "c": 68,
+     "p": 51
+    },
+    {
+     "name": "White Cheddar Mac & Cheese",
+     "serving": "",
+     "cal": 260,
+     "f": 15,
+     "c": 19,
+     "p": 12
+    },
+    {
+     "name": "Cheese Pizza",
+     "serving": "",
+     "cal": 500,
+     "f": 33,
+     "c": 34,
+     "p": 17
+    },
+    {
+     "name": "Cheeseburger Bites",
+     "serving": "",
+     "cal": 450,
+     "f": 23,
+     "c": 36,
+     "p": 25
+    },
+    {
+     "name": "Cheesy Chicken Pasta",
+     "serving": "",
+     "cal": 620,
+     "f": 27,
+     "c": 47,
+     "p": 47
+    },
+    {
+     "name": "Crispy Crispers",
+     "serving": "",
+     "cal": 570,
+     "f": 43,
+     "c": 21,
+     "p": 24
+    },
+    {
+     "name": "Grilled Chicken Bites",
+     "serving": "",
+     "cal": 150,
+     "f": 3,
+     "c": 1,
+     "p": 30
+    },
+    {
+     "name": "Kraft Macaroni & Cheese",
+     "serving": "",
+     "cal": 310,
+     "f": 9,
+     "c": 44,
+     "p": 11
+    },
+    {
+     "name": "Side Applesauce",
+     "serving": "",
+     "cal": 90,
+     "f": 0,
+     "c": 24,
+     "p": 0
+    },
+    {
+     "name": "Side Corn Kernels",
+     "serving": "",
+     "cal": 120,
+     "f": 1.5,
+     "c": 22,
+     "p": 4
+    },
+    {
+     "name": "Side Homestyle Fries",
+     "serving": "",
+     "cal": 210,
+     "f": 8,
+     "c": 30,
+     "p": 3
+    },
+    {
+     "name": "Side Mashed Potatoes",
+     "serving": "",
+     "cal": 110,
+     "f": 7,
+     "c": 12,
+     "p": 2
+    },
+    {
+     "name": "Side Salad with Ranch",
+     "serving": "",
+     "cal": 240,
+     "f": 21,
+     "c": 8,
+     "p": 4
+    },
+    {
+     "name": "Side Steamed Broccoli",
+     "serving": "",
+     "cal": 40,
+     "f": 0,
+     "c": 8,
+     "p": 3
+    },
+    {
+     "name": "Cheese Quesadilla",
+     "serving": "",
+     "cal": 460,
+     "f": 30,
+     "c": 30,
+     "p": 17
+    },
+    {
+     "name": "Blue Bell Vanilla Ice Cream",
+     "serving": "",
+     "cal": 180,
+     "f": 9,
+     "c": 20,
+     "p": 4
+    },
+    {
+     "name": "Mini Molten Chocolate Cake",
+     "serving": "",
+     "cal": 640,
+     "f": 30,
+     "c": 90,
+     "p": 7
+    },
+    {
+     "name": "Arnold Palmer - Mango, Regular Cup",
+     "serving": "",
+     "cal": 80,
+     "f": 0,
+     "c": 23,
+     "p": 0
+    },
+    {
+     "name": "Arnold Palmer - Mango, To-Go Cup",
+     "serving": "",
+     "cal": 150,
+     "f": 0,
+     "c": 41,
+     "p": 0
+    },
+    {
+     "name": "Arnold Palmer - Regular Cup",
+     "serving": "",
+     "cal": 60,
+     "f": 0,
+     "c": 16,
+     "p": 0
+    },
+    {
+     "name": "Arnold Palmer - Regular, To-Go Cup",
+     "serving": "",
+     "cal": 100,
+     "f": 0,
+     "c": 28,
+     "p": 0
+    },
+    {
+     "name": "Arnold Palmer - Strawberry, Regular Cup",
+     "serving": "",
+     "cal": 70,
+     "f": 0,
+     "c": 19,
+     "p": 0
+    },
+    {
+     "name": "Arnold Palmer - Strawberry, To-Go Cup",
+     "serving": "",
+     "cal": 120,
+     "f": 0,
+     "c": 33,
+     "p": 0
+    },
+    {
+     "name": "Iced Tea - Blackberry, Regular Cup",
+     "serving": "",
+     "cal": 80,
+     "f": 0,
+     "c": 19,
+     "p": 0
+    },
+    {
+     "name": "Iced Tea - Blackberry, To-Go Cup",
+     "serving": "",
+     "cal": 80,
+     "f": 0,
+     "c": 19,
+     "p": 0
+    },
+    {
+     "name": "Iced Tea - Mango, Regular Cup",
+     "serving": "",
+     "cal": 80,
+     "f": 0,
+     "c": 20,
+     "p": 0
+    },
+    {
+     "name": "Iced Tea - Mango, To-Go Cup",
+     "serving": "",
+     "cal": 80,
+     "f": 0,
+     "c": 20,
+     "p": 0
+    },
+    {
+     "name": "Iced Tea - Unsweetened, Regular Cup",
+     "serving": "",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Iced Tea - Unsweetened, To-Go Cup",
+     "serving": "",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Apple Juice",
+     "serving": "",
+     "cal": 100,
+     "f": 0,
+     "c": 24,
+     "p": 0
+    },
+    {
+     "name": "Cranberry Juice",
+     "serving": "",
+     "cal": 120,
+     "f": 0,
+     "c": 30,
+     "p": 0
+    },
+    {
+     "name": "Orange Juice",
+     "serving": "",
+     "cal": 110,
+     "f": 0,
+     "c": 27,
+     "p": 2
+    },
+    {
+     "name": "Pineapple Juice",
+     "serving": "",
+     "cal": 130,
+     "f": 0,
+     "c": 30,
+     "p": 1
+    },
+    {
+     "name": "Minute Maid Lemonade, Kid Cup",
+     "serving": "",
+     "cal": 100,
+     "f": 0,
+     "c": 27,
+     "p": 0
+    },
+    {
+     "name": "Minute Maid Lemonade, Regular Cup",
+     "serving": "",
+     "cal": 110,
+     "f": 0,
+     "c": 31,
+     "p": 0
+    },
+    {
+     "name": "Minute Maid Lemonade, To-Go Cup",
+     "serving": "",
+     "cal": 200,
+     "f": 0,
+     "c": 55,
+     "p": 0
+    },
+    {
+     "name": "Strawberry Lemonade, Kid Cup",
+     "serving": "",
+     "cal": 120,
+     "f": 0,
+     "c": 33,
+     "p": 0
+    },
+    {
+     "name": "Strawberry Lemonade, Regular Cup",
+     "serving": "",
+     "cal": 130,
+     "f": 0,
+     "c": 37,
+     "p": 0
+    },
+    {
+     "name": "Strawberry Lemonade, To-Go Cup",
+     "serving": "",
+     "cal": 240,
+     "f": 0,
+     "c": 65,
+     "p": 0
+    },
+    {
+     "name": "1% Chocolate Milk, Kids",
+     "serving": "",
+     "cal": 140,
+     "f": 2.5,
+     "c": 23,
+     "p": 8
+    },
+    {
+     "name": "1% Milk, Kids",
+     "serving": "",
+     "cal": 110,
+     "f": 2.5,
+     "c": 13,
+     "p": 8
+    },
+    {
+     "name": "Chili's Premium Blend Coffee",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Dasani Water",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Blue Lagoon, Kids",
+     "serving": "",
+     "cal": 120,
+     "f": 0,
+     "c": 31,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola, Kid Cup",
+     "serving": "",
+     "cal": 100,
+     "f": 0,
+     "c": 27,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola, Regular Cup",
+     "serving": "",
+     "cal": 110,
+     "f": 0,
+     "c": 30,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola, To-Go Cup",
+     "serving": "",
+     "cal": 190,
+     "f": 0,
+     "c": 53,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola Zero, Kid Cup",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola Zero, Regular Cup",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola Zero, To-Go Cup",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Diet Coke, Regular Cup",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Diet Coke, To-Go Cup",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Dr Pepper, Kid Cup",
+     "serving": "",
+     "cal": 100,
+     "f": 0,
+     "c": 27,
+     "p": 0
+    },
+    {
+     "name": "Dr Pepper, Regular Cup",
+     "serving": "",
+     "cal": 110,
+     "f": 0,
+     "c": 30,
+     "p": 0
+    },
+    {
+     "name": "Dr Pepper, To-Go Cup",
+     "serving": "",
+     "cal": 200,
+     "f": 0,
+     "c": 53,
+     "p": 0
+    },
+    {
+     "name": "Sprite, Regular Cup",
+     "serving": "",
+     "cal": 120,
+     "f": 0,
+     "c": 30,
+     "p": 0
+    },
+    {
+     "name": "Sprite, Kid Cup",
+     "serving": "",
+     "cal": 110,
+     "f": 0,
+     "c": 27,
+     "p": 0
+    },
+    {
+     "name": "Sprite, To-Go Cup",
+     "serving": "",
+     "cal": 210,
+     "f": 0,
+     "c": 54,
+     "p": 0
+    },
+    {
+     "name": "Iced Tea - Dragon Fruit, Regular Cup",
+     "serving": "",
+     "cal": 80,
+     "f": 0,
+     "c": 19,
+     "p": 0
+    },
+    {
+     "name": "Iced Tea - Dragon Fruit, To-Go Cup",
+     "serving": "",
+     "cal": 80,
+     "f": 0,
+     "c": 19,
+     "p": 0
+    },
+    {
+     "name": "Dragon Fruit Lemonade, Regular Cup",
+     "serving": "",
+     "cal": 180,
+     "f": 0,
+     "c": 49,
+     "p": 0
+    },
+    {
+     "name": "Dragon Fruit Lemonade, To-Go Cup",
+     "serving": "",
+     "cal": 270,
+     "f": 0,
+     "c": 73,
+     "p": 0
+    },
+    {
+     "name": "Coke Float, Kids",
+     "serving": "",
+     "cal": 280,
+     "f": 9,
+     "c": 49,
+     "p": 4
+    },
+    {
+     "name": "Dr Pepper Float, Kids",
+     "serving": "",
+     "cal": 280,
+     "f": 9,
+     "c": 49,
+     "p": 4
+    },
+    {
+     "name": "Shirley Temple, Kids",
+     "serving": "",
+     "cal": 140,
+     "f": 0,
+     "c": 34,
+     "p": 0
+    }
+   ]
+  },
+  "burgerking": {
+   "name": "Burger King",
+   "aliases": [
+    "burger king",
+    "bk"
+   ],
+   "source": "bk.com/nutrition-explorer (data/fast-food-macros-2026-10-20.xlsx)",
+   "updated": "2026-10-21",
+   "items": [
+    {
+     "name": "Fully Loaded Croissan'wich",
+     "serving": "",
+     "cal": 620,
+     "f": 43,
+     "c": 31,
+     "p": 30
+    },
+    {
+     "name": "Double Sausage, Egg, & Cheese Croissan'wich",
+     "serving": "",
+     "cal": 730,
+     "f": 55,
+     "c": 30,
+     "p": 28
+    },
+    {
+     "name": "Bacon, Sausage, Egg, & Cheese Croissan'wich",
+     "serving": "",
+     "cal": 580,
+     "f": 41,
+     "c": 29,
+     "p": 24
+    },
+    {
+     "name": "Sausage, Egg, & Cheese Croissan'wich",
+     "serving": "",
+     "cal": 500,
+     "f": 34,
+     "c": 28,
+     "p": 19
+    },
+    {
+     "name": "Bacon, Egg, & Cheese Croissan'wich",
+     "serving": "",
+     "cal": 360,
+     "f": 21,
+     "c": 28,
+     "p": 15
+    },
+    {
+     "name": "Ham, Egg, & Cheese Croissan'wich",
+     "serving": "",
+     "cal": 350,
+     "f": 19,
+     "c": 29,
+     "p": 18
+    },
+    {
+     "name": "Egg & Cheese Croissan'wich",
+     "serving": "",
+     "cal": 310,
+     "f": 17,
+     "c": 28,
+     "p": 12
+    },
+    {
+     "name": "Fully Loaded Biscuit",
+     "serving": "",
+     "cal": 660,
+     "f": 45,
+     "c": 34,
+     "p": 31
+    },
+    {
+     "name": "Double Sausage, Egg, & Cheese Biscuit",
+     "serving": "",
+     "cal": 790,
+     "f": 59,
+     "c": 33,
+     "p": 29
+    },
+    {
+     "name": "Bacon, Sausage, Egg, & Cheese Biscuit",
+     "serving": "",
+     "cal": 650,
+     "f": 46,
+     "c": 33,
+     "p": 25
+    },
+    {
+     "name": "Sausage, Egg, & Cheese Biscuit",
+     "serving": "",
+     "cal": 560,
+     "f": 39,
+     "c": 32,
+     "p": 20
+    },
+    {
+     "name": "Bacon, Egg, & Cheese Biscuit",
+     "serving": "",
+     "cal": 420,
+     "f": 26,
+     "c": 31,
+     "p": 16
+    },
+    {
+     "name": "Ham, Egg, & Cheese Biscuit",
+     "serving": "",
+     "cal": 420,
+     "f": 24,
+     "c": 32,
+     "p": 19
+    },
+    {
+     "name": "Egg & Cheese Biscuit",
+     "serving": "",
+     "cal": 380,
+     "f": 22,
+     "c": 31,
+     "p": 13
+    },
+    {
+     "name": "Sausage Biscuit",
+     "serving": "",
+     "cal": 440,
+     "f": 30,
+     "c": 30,
+     "p": 12
+    },
+    {
+     "name": "Egg-Normous Burrito",
+     "serving": "",
+     "cal": 800,
+     "f": 44,
+     "c": 67,
+     "p": 35
+    },
+    {
+     "name": "Breakfast Burrito Jr.",
+     "serving": "",
+     "cal": 420,
+     "f": 26,
+     "c": 29,
+     "p": 16
+    },
+    {
+     "name": "Pancake & Sausage Platter",
+     "serving": "",
+     "cal": 580,
+     "f": 26,
+     "c": 75,
+     "p": 12
+    },
+    {
+     "name": "Pancake Platter",
+     "serving": "",
+     "cal": 400,
+     "f": 9,
+     "c": 74,
+     "p": 5
+    },
+    {
+     "name": "5 Pc. French Toast Sticks",
+     "serving": "",
+     "cal": 500,
+     "f": 21,
+     "c": 71,
+     "p": 6
+    },
+    {
+     "name": "3 Pc. French Toast Sticks",
+     "serving": "",
+     "cal": 340,
+     "f": 13,
+     "c": 52,
+     "p": 4
+    },
+    {
+     "name": "Small Hash Browns",
+     "serving": "",
+     "cal": 270,
+     "f": 16,
+     "c": 29,
+     "p": 2
+    },
+    {
+     "name": "Medium Hash Browns",
+     "serving": "",
+     "cal": 510,
+     "f": 30,
+     "c": 55,
+     "p": 4
+    },
+    {
+     "name": "Large Hash Browns",
+     "serving": "",
+     "cal": 700,
+     "f": 42,
+     "c": 76,
+     "p": 6
+    },
+    {
+     "name": "Game Day Pretzel Burger",
+     "serving": "",
+     "cal": 920,
+     "f": 51,
+     "c": 68,
+     "p": 46
+    },
+    {
+     "name": "Whopper",
+     "serving": "",
+     "cal": 710,
+     "f": 42,
+     "c": 57,
+     "p": 34
+    },
+    {
+     "name": "Whopper with Bacon",
+     "serving": "",
+     "cal": 770,
+     "f": 47,
+     "c": 57,
+     "p": 38
+    },
+    {
+     "name": "Whopper with Cheese",
+     "serving": "",
+     "cal": 790,
+     "f": 49,
+     "c": 58,
+     "p": 37
+    },
+    {
+     "name": "Whopper with Bacon & Cheese",
+     "serving": "",
+     "cal": 860,
+     "f": 54,
+     "c": 58,
+     "p": 42
+    },
+    {
+     "name": "Impossible Whopper",
+     "serving": "",
+     "cal": 670,
+     "f": 35,
+     "c": 64,
+     "p": 32
+    },
+    {
+     "name": "Texas Whopper",
+     "serving": "",
+     "cal": 850,
+     "f": 54,
+     "c": 56,
+     "p": 42
+    },
+    {
+     "name": "Texas Double Whopper",
+     "serving": "",
+     "cal": 1120,
+     "f": 74,
+     "c": 56,
+     "p": 64
+    },
+    {
+     "name": "Impossible Texas Whopper",
+     "serving": "",
+     "cal": 810,
+     "f": 47,
+     "c": 64,
+     "p": 41
+    },
+    {
+     "name": "Texas Whopper Jr.",
+     "serving": "",
+     "cal": 420,
+     "f": 26,
+     "c": 29,
+     "p": 21
+    },
+    {
+     "name": "Double Whopper",
+     "serving": "",
+     "cal": 980,
+     "f": 62,
+     "c": 57,
+     "p": 56
+    },
+    {
+     "name": "Double Whopper with Bacon",
+     "serving": "",
+     "cal": 1040,
+     "f": 67,
+     "c": 57,
+     "p": 60
+    },
+    {
+     "name": "Double Whopper with Cheese",
+     "serving": "",
+     "cal": 1060,
+     "f": 69,
+     "c": 59,
+     "p": 60
+    },
+    {
+     "name": "Double Whopper with Bacon & Cheese",
+     "serving": "",
+     "cal": 1120,
+     "f": 74,
+     "c": 59,
+     "p": 64
+    },
+    {
+     "name": "Triple Whopper",
+     "serving": "",
+     "cal": 1250,
+     "f": 82,
+     "c": 57,
+     "p": 78
+    },
+    {
+     "name": "Triple Whopper with Bacon",
+     "serving": "",
+     "cal": 1310,
+     "f": 87,
+     "c": 58,
+     "p": 83
+    },
+    {
+     "name": "Triple Whopper with Cheese",
+     "serving": "",
+     "cal": 1330,
+     "f": 89,
+     "c": 59,
+     "p": 82
+    },
+    {
+     "name": "Triple Whopper with Bacon & Cheese",
+     "serving": "",
+     "cal": 1390,
+     "f": 94,
+     "c": 59,
+     "p": 87
+    },
+    {
+     "name": "Bacon King",
+     "serving": "",
+     "cal": 1260,
+     "f": 84,
+     "c": 58,
+     "p": 69
+    },
+    {
+     "name": "BBQ Bacon Whopper Jr.",
+     "serving": "",
+     "cal": 390,
+     "f": 23,
+     "c": 32,
+     "p": 19
+    },
+    {
+     "name": "Whopper Jr.",
+     "serving": "",
+     "cal": 340,
+     "f": 19,
+     "c": 30,
+     "p": 15
+    },
+    {
+     "name": "Whopper Jr. with Bacon",
+     "serving": "",
+     "cal": 380,
+     "f": 23,
+     "c": 30,
+     "p": 19
+    },
+    {
+     "name": "Whopper Jr. with Cheese",
+     "serving": "",
+     "cal": 380,
+     "f": 23,
+     "c": 31,
+     "p": 17
+    },
+    {
+     "name": "Whopper Jr. with Bacon & Cheese",
+     "serving": "",
+     "cal": 430,
+     "f": 26,
+     "c": 31,
+     "p": 20
+    },
+    {
+     "name": "Bacon Double Cheeseburger",
+     "serving": "",
+     "cal": 500,
+     "f": 29,
+     "c": 31,
+     "p": 30
+    },
+    {
+     "name": "Bacon Cheeseburger",
+     "serving": "",
+     "cal": 350,
+     "f": 17,
+     "c": 30,
+     "p": 19
+    },
+    {
+     "name": "Double Cheeseburger",
+     "serving": "",
+     "cal": 460,
+     "f": 25,
+     "c": 31,
+     "p": 27
+    },
+    {
+     "name": "Cheeseburger",
+     "serving": "",
+     "cal": 300,
+     "f": 14,
+     "c": 30,
+     "p": 16
+    },
+    {
+     "name": "Rodeo Burger",
+     "serving": "",
+     "cal": 340,
+     "f": 13,
+     "c": 40,
+     "p": 15
+    },
+    {
+     "name": "Rodeo Double Cheeseburger",
+     "serving": "",
+     "cal": 530,
+     "f": 29,
+     "c": 41,
+     "p": 28
+    },
+    {
+     "name": "Rodeo Cheeseburger",
+     "serving": "",
+     "cal": 380,
+     "f": 17,
+     "c": 41,
+     "p": 17
+    },
+    {
+     "name": "Hamburger",
+     "serving": "",
+     "cal": 260,
+     "f": 10,
+     "c": 29,
+     "p": 14
+    },
+    {
+     "name": "Kid's Hamburger",
+     "serving": "",
+     "cal": 260,
+     "f": 10,
+     "c": 29,
+     "p": 14
+    },
+    {
+     "name": "Kid's Cheeseburger",
+     "serving": "",
+     "cal": 300,
+     "f": 13,
+     "c": 29,
+     "p": 16
+    },
+    {
+     "name": "12 Pc. Game Day Chicken Fries",
+     "serving": "",
+     "cal": 450,
+     "f": 26,
+     "c": 32,
+     "p": 22
+    },
+    {
+     "name": "8 Pc. Game Day Chicken Fries",
+     "serving": "",
+     "cal": 330,
+     "f": 21,
+     "c": 23,
+     "p": 15
+    },
+    {
+     "name": "4 Pc. Game Day Chicken Fries",
+     "serving": "",
+     "cal": 220,
+     "f": 15,
+     "c": 15,
+     "p": 9
+    },
+    {
+     "name": "Original Chicken Sandwich",
+     "serving": "",
+     "cal": 680,
+     "f": 39,
+     "c": 63,
+     "p": 23
+    },
+    {
+     "name": "Royal Crispy Chicken",
+     "serving": "",
+     "cal": 600,
+     "f": 31,
+     "c": 54,
+     "p": 31
+    },
+    {
+     "name": "Spicy Royal Crispy Chicken",
+     "serving": "",
+     "cal": 760,
+     "f": 47,
+     "c": 58,
+     "p": 31
+    },
+    {
+     "name": "Bacon and Swiss Royal Crispy Chicken",
+     "serving": "",
+     "cal": 740,
+     "f": 43,
+     "c": 56,
+     "p": 39
+    },
+    {
+     "name": "Chicken Jr.",
+     "serving": "",
+     "cal": 440,
+     "f": 27,
+     "c": 39,
+     "p": 13
+    },
+    {
+     "name": "20 Pc. Chicken Nuggets",
+     "serving": "",
+     "cal": 1030,
+     "f": 64,
+     "c": 62,
+     "p": 53
+    },
+    {
+     "name": "10 Pc. Chicken Nuggets",
+     "serving": "",
+     "cal": 520,
+     "f": 32,
+     "c": 31,
+     "p": 26
+    },
+    {
+     "name": "6 Pc. Chicken Nuggets",
+     "serving": "",
+     "cal": 310,
+     "f": 19,
+     "c": 19,
+     "p": 16
+    },
+    {
+     "name": "4 Pc. Chicken Nuggets",
+     "serving": "",
+     "cal": 210,
+     "f": 13,
+     "c": 12,
+     "p": 11
+    },
+    {
+     "name": "Big Fish",
+     "serving": "",
+     "cal": 570,
+     "f": 30,
+     "c": 58,
+     "p": 19
+    },
+    {
+     "name": "Spicy Big Fish",
+     "serving": "",
+     "cal": 730,
+     "f": 46,
+     "c": 61,
+     "p": 19
+    },
+    {
+     "name": "Classic Original Chicken Wrap",
+     "serving": "",
+     "cal": 310,
+     "f": 17,
+     "c": 31,
+     "p": 13
+    },
+    {
+     "name": "Spicy Original Chicken Wrap",
+     "serving": "",
+     "cal": 390,
+     "f": 26,
+     "c": 32,
+     "p": 13
+    },
+    {
+     "name": "Honey Mustard Original Chicken Wrap",
+     "serving": "",
+     "cal": 290,
+     "f": 14,
+     "c": 33,
+     "p": 13
+    },
+    {
+     "name": "Spicy Original Chicken Sandwich",
+     "serving": "",
+     "cal": 790,
+     "f": 49,
+     "c": 64,
+     "p": 23
+    },
+    {
+     "name": "Royal Crispy Wrap",
+     "serving": "",
+     "cal": 310,
+     "f": 17,
+     "c": 28,
+     "p": 15
+    },
+    {
+     "name": "Spicy Royal Crispy Wrap",
+     "serving": "",
+     "cal": 390,
+     "f": 25,
+     "c": 30,
+     "p": 15
+    },
+    {
+     "name": "Honey Mustard Royal Crispy Wrap",
+     "serving": "",
+     "cal": 290,
+     "f": 14,
+     "c": 30,
+     "p": 15
+    },
+    {
+     "name": "Flame-Grilled Chicken Sandwich",
+     "serving": "",
+     "cal": 410,
+     "f": 15,
+     "c": 43,
+     "p": 35
+    },
+    {
+     "name": "Bacon and Swiss Flame-Grilled Chicken Sandwich",
+     "serving": "",
+     "cal": 560,
+     "f": 28,
+     "c": 45,
+     "p": 43
+    },
+    {
+     "name": "Spicy Flame-Grilled Chicken Sandwich",
+     "serving": "",
+     "cal": 570,
+     "f": 31,
+     "c": 46,
+     "p": 35
+    },
+    {
+     "name": "Classic Flame-Grilled Chicken Wrap",
+     "serving": "",
+     "cal": 240,
+     "f": 11,
+     "c": 21,
+     "p": 17
+    },
+    {
+     "name": "Honey Mustard Flame-Grilled Chicken Wrap",
+     "serving": "",
+     "cal": 230,
+     "f": 9,
+     "c": 24,
+     "p": 17
+    },
+    {
+     "name": "Spicy Flame-Grilled Chicken Wrap",
+     "serving": "",
+     "cal": 320,
+     "f": 20,
+     "c": 23,
+     "p": 17
+    },
+    {
+     "name": "12 Pc. Chicken Fries",
+     "serving": "",
+     "cal": 340,
+     "f": 18,
+     "c": 25,
+     "p": 20
+    },
+    {
+     "name": "8 Pc. Chicken Fries",
+     "serving": "",
+     "cal": 220,
+     "f": 12,
+     "c": 16,
+     "p": 13
+    },
+    {
+     "name": "4 Pc. Chicken Fries",
+     "serving": "",
+     "cal": 110,
+     "f": 6,
+     "c": 8,
+     "p": 7
+    },
+    {
+     "name": "Value French Fries",
+     "serving": "",
+     "cal": 230,
+     "f": 10,
+     "c": 31,
+     "p": 3
+    },
+    {
+     "name": "Small French Fries",
+     "serving": "",
+     "cal": 300,
+     "f": 13,
+     "c": 40,
+     "p": 4
+    },
+    {
+     "name": "Medium French Fries",
+     "serving": "",
+     "cal": 370,
+     "f": 17,
+     "c": 50,
+     "p": 5
+    },
+    {
+     "name": "Large French Fries",
+     "serving": "",
+     "cal": 440,
+     "f": 20,
+     "c": 60,
+     "p": 6
+    },
+    {
+     "name": "Value Onion Rings",
+     "serving": "",
+     "cal": 170,
+     "f": 8,
+     "c": 22,
+     "p": 2
+    },
+    {
+     "name": "Small Onion Rings",
+     "serving": "",
+     "cal": 230,
+     "f": 11,
+     "c": 31,
+     "p": 3
+    },
+    {
+     "name": "Medium Onion Rings",
+     "serving": "",
+     "cal": 290,
+     "f": 13,
+     "c": 39,
+     "p": 4
+    },
+    {
+     "name": "Large Onion Rings",
+     "serving": "",
+     "cal": 430,
+     "f": 20,
+     "c": 57,
+     "p": 5
+    },
+    {
+     "name": "Value Have-sies",
+     "serving": "",
+     "cal": 220,
+     "f": 9,
+     "c": 27,
+     "p": 3
+    },
+    {
+     "name": "Small Have-sies",
+     "serving": "",
+     "cal": 280,
+     "f": 13,
+     "c": 38,
+     "p": 4
+    },
+    {
+     "name": "Medium Have-sies",
+     "serving": "",
+     "cal": 350,
+     "f": 16,
+     "c": 47,
+     "p": 4
+    },
+    {
+     "name": "Large Have-sies",
+     "serving": "",
+     "cal": 490,
+     "f": 23,
+     "c": 67,
+     "p": 6
+    },
+    {
+     "name": "8 Pc. Cheesy Bacon Tots",
+     "serving": "",
+     "cal": 260,
+     "f": 11,
+     "c": 33,
+     "p": 8
+    },
+    {
+     "name": "4 Pc. Cheesy Bacon Tots",
+     "serving": "",
+     "cal": 130,
+     "f": 5,
+     "c": 16,
+     "p": 4
+    },
+    {
+     "name": "8 Pc. Jalapeño Cheddar Bites",
+     "serving": "",
+     "cal": 460,
+     "f": 21,
+     "c": 54,
+     "p": 13
+    },
+    {
+     "name": "4 Pc. Jalapeño Cheddar Bites",
+     "serving": "",
+     "cal": 230,
+     "f": 11,
+     "c": 27,
+     "p": 6
+    },
+    {
+     "name": "Mott's Applesauce",
+     "serving": "",
+     "cal": 50,
+     "f": 0,
+     "c": 13,
+     "p": 0
+    },
+    {
+     "name": "12 Pc. Mozzarella Fries",
+     "serving": "",
+     "cal": 660,
+     "f": 36,
+     "c": 71,
+     "p": 29
+    },
+    {
+     "name": "8 Pc. Mozzarella Fries",
+     "serving": "",
+     "cal": 440,
+     "f": 24,
+     "c": 48,
+     "p": 19
+    },
+    {
+     "name": "4 Pc. Mozzarella Fries",
+     "serving": "",
+     "cal": 220,
+     "f": 12,
+     "c": 24,
+     "p": 10
+    },
+    {
+     "name": "Value Coca-Cola",
+     "serving": "",
+     "cal": 140,
+     "f": 0,
+     "c": 39,
+     "p": 0
+    },
+    {
+     "name": "Small Coca-Cola",
+     "serving": "",
+     "cal": 180,
+     "f": 0,
+     "c": 50,
+     "p": 0
+    },
+    {
+     "name": "Medium Coca-Cola",
+     "serving": "",
+     "cal": 270,
+     "f": 0,
+     "c": 70,
+     "p": 0
+    },
+    {
+     "name": "Large Coca-Cola",
+     "serving": "",
+     "cal": 320,
+     "f": 0,
+     "c": 88,
+     "p": 0
+    },
+    {
+     "name": "Value Diet Coke",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Small Diet Coke",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Medium Diet Coke",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Large Diet Coke",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Value Coca-Cola Zero",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Small Coca-Cola Zero",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Medium Coca-Cola Zero",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Large Coca-Cola Zero",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Pure Life Purified Water",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Value Sweetened Iced Tea",
+     "serving": "",
+     "cal": 90,
+     "f": 0,
+     "c": 22,
+     "p": 0
+    },
+    {
+     "name": "Small Sweetened Iced Tea",
+     "serving": "",
+     "cal": 130,
+     "f": 0,
+     "c": 32,
+     "p": 0
+    },
+    {
+     "name": "Medium Sweetened Iced Tea",
+     "serving": "",
+     "cal": 170,
+     "f": 0,
+     "c": 44,
+     "p": 0
+    },
+    {
+     "name": "Large Sweetened Iced Tea",
+     "serving": "",
+     "cal": 240,
+     "f": 0,
+     "c": 59,
+     "p": 0
+    },
+    {
+     "name": "Value Unsweetened Iced Tea",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Small Unsweetened Iced Tea",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Medium Unsweetened Iced Tea",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Large Unsweetened Iced Tea",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Value Sprite",
+     "serving": "",
+     "cal": 130,
+     "f": 0,
+     "c": 35,
+     "p": 0
+    },
+    {
+     "name": "Small Sprite",
+     "serving": "",
+     "cal": 170,
+     "f": 0,
+     "c": 45,
+     "p": 0
+    },
+    {
+     "name": "Medium Sprite",
+     "serving": "",
+     "cal": 260,
+     "f": 0,
+     "c": 68,
+     "p": 0
+    },
+    {
+     "name": "Large Sprite",
+     "serving": "",
+     "cal": 310,
+     "f": 0,
+     "c": 81,
+     "p": 0
+    },
+    {
+     "name": "Value Sprite Zero",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Small Sprite Zero",
+     "serving": "",
+     "cal": 5,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Medium Sprite Zero",
+     "serving": "",
+     "cal": 10,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Large Sprite Zero",
+     "serving": "",
+     "cal": 10,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Value Barq's Root Beer",
+     "serving": "",
+     "cal": 150,
+     "f": 0,
+     "c": 42,
+     "p": 0
+    },
+    {
+     "name": "Small Barq's Root Beer",
+     "serving": "",
+     "cal": 200,
+     "f": 0,
+     "c": 54,
+     "p": 0
+    },
+    {
+     "name": "Medium Barq's Root Beer",
+     "serving": "",
+     "cal": 300,
+     "f": 0,
+     "c": 81,
+     "p": 0
+    },
+    {
+     "name": "Large Barq's Root Beer",
+     "serving": "",
+     "cal": 350,
+     "f": 0,
+     "c": 96,
+     "p": 0
+    },
+    {
+     "name": "Value Diet Barq's Root Beer",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Small Diet Barq's Root Beer",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Medium Diet Barq's Root Beer",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Large Diet Barq's Root Beer",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Value Dr Pepper",
+     "serving": "",
+     "cal": 130,
+     "f": 0,
+     "c": 36,
+     "p": 0
+    },
+    {
+     "name": "Small Dr Pepper",
+     "serving": "",
+     "cal": 170,
+     "f": 0,
+     "c": 46,
+     "p": 0
+    },
+    {
+     "name": "Medium Dr Pepper",
+     "serving": "",
+     "cal": 260,
+     "f": 0,
+     "c": 70,
+     "p": 0
+    },
+    {
+     "name": "Large Dr Pepper",
+     "serving": "",
+     "cal": 310,
+     "f": 0,
+     "c": 82,
+     "p": 0
+    },
+    {
+     "name": "Value Diet Dr Pepper",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Small Diet Dr Pepper",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Medium Diet Dr Pepper",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Large Diet Dr Pepper",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Value Fanta Orange",
+     "serving": "",
+     "cal": 140,
+     "f": 0,
+     "c": 38,
+     "p": 0
+    },
+    {
+     "name": "Small Fanta Orange",
+     "serving": "",
+     "cal": 180,
+     "f": 0,
+     "c": 49,
+     "p": 0
+    },
+    {
+     "name": "Medium Fanta Orange",
+     "serving": "",
+     "cal": 280,
+     "f": 0,
+     "c": 74,
+     "p": 0
+    },
+    {
+     "name": "Large Fanta Orange",
+     "serving": "",
+     "cal": 330,
+     "f": 0,
+     "c": 88,
+     "p": 0
+    },
+    {
+     "name": "Value Mello Yello",
+     "serving": "",
+     "cal": 120,
+     "f": 0,
+     "c": 33,
+     "p": 0
+    },
+    {
+     "name": "Small Mello Yello",
+     "serving": "",
+     "cal": 160,
+     "f": 0,
+     "c": 43,
+     "p": 0
+    },
+    {
+     "name": "Medium Mello Yello",
+     "serving": "",
+     "cal": 240,
+     "f": 0,
+     "c": 64,
+     "p": 0
+    },
+    {
+     "name": "Large Mello Yello",
+     "serving": "",
+     "cal": 280,
+     "f": 0,
+     "c": 76,
+     "p": 0
+    },
+    {
+     "name": "Value Powerade Zero",
+     "serving": "",
+     "cal": 5,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Small Powerade Zero",
+     "serving": "",
+     "cal": 10,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Medium Powerade Zero",
+     "serving": "",
+     "cal": 10,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Large Powerade Zero",
+     "serving": "",
+     "cal": 15,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Value Hi-C Fruit Punch",
+     "serving": "",
+     "cal": 160,
+     "f": 0,
+     "c": 41,
+     "p": 0
+    },
+    {
+     "name": "Small Hi-C Fruit Punch",
+     "serving": "",
+     "cal": 210,
+     "f": 0,
+     "c": 53,
+     "p": 0
+    },
+    {
+     "name": "Medium Hi-C Fruit Punch",
+     "serving": "",
+     "cal": 310,
+     "f": 0,
+     "c": 79,
+     "p": 0
+    },
+    {
+     "name": "Large Hi-C Fruit Punch",
+     "serving": "",
+     "cal": 370,
+     "f": 0,
+     "c": 94,
+     "p": 0
+    },
+    {
+     "name": "Value Hi-C Pink Lemonade",
+     "serving": "",
+     "cal": 130,
+     "f": 0,
+     "c": 36,
+     "p": 0
+    },
+    {
+     "name": "Small Hi-C Pink Lemonade",
+     "serving": "",
+     "cal": 170,
+     "f": 0,
+     "c": 46,
+     "p": 0
+    },
+    {
+     "name": "Medium Hi-C Pink Lemonade",
+     "serving": "",
+     "cal": 250,
+     "f": 0,
+     "c": 69,
+     "p": 0
+    },
+    {
+     "name": "Large Hi-C Pink Lemonade",
+     "serving": "",
+     "cal": 300,
+     "f": 0,
+     "c": 82,
+     "p": 0
+    },
+    {
+     "name": "Value Hi-C Orange",
+     "serving": "",
+     "cal": 190,
+     "f": 0,
+     "c": 49,
+     "p": 0
+    },
+    {
+     "name": "Small Hi-C Orange",
+     "serving": "",
+     "cal": 240,
+     "f": 0,
+     "c": 63,
+     "p": 0
+    },
+    {
+     "name": "Medium Hi-C Orange",
+     "serving": "",
+     "cal": 360,
+     "f": 0,
+     "c": 95,
+     "p": 0
+    },
+    {
+     "name": "Large Hi-C Orange",
+     "serving": "",
+     "cal": 430,
+     "f": 0,
+     "c": 113,
+     "p": 0
+    },
+    {
+     "name": "Kids Signature Mango Peach Lemonade",
+     "serving": "",
+     "cal": 150,
+     "f": 0,
+     "c": 37,
+     "p": 0
+    },
+    {
+     "name": "Small Signature Mango Peach Lemonade",
+     "serving": "",
+     "cal": 200,
+     "f": 0,
+     "c": 50,
+     "p": 0
+    },
+    {
+     "name": "Medium Signature Mango Peach Lemonade",
+     "serving": "",
+     "cal": 250,
+     "f": 0,
+     "c": 63,
+     "p": 0
+    },
+    {
+     "name": "Large Signature Mango Peach Lemonade",
+     "serving": "",
+     "cal": 360,
+     "f": 0,
+     "c": 92,
+     "p": 0
+    },
+    {
+     "name": "Kids Signature Strawberry Lemonade",
+     "serving": "",
+     "cal": 150,
+     "f": 0,
+     "c": 38,
+     "p": 0
+    },
+    {
+     "name": "Small Signature Strawberry Lemonade",
+     "serving": "",
+     "cal": 200,
+     "f": 0,
+     "c": 50,
+     "p": 0
+    },
+    {
+     "name": "Medium Signature Strawberry Lemonade",
+     "serving": "",
+     "cal": 250,
+     "f": 0,
+     "c": 63,
+     "p": 0
+    },
+    {
+     "name": "Large Signature Strawberry Lemonade",
+     "serving": "",
+     "cal": 500,
+     "f": 0,
+     "c": 120,
+     "p": 2
+    },
+    {
+     "name": "Small Minute Maid Lemonade",
+     "serving": "",
+     "cal": 190,
+     "f": 0,
+     "c": 50,
+     "p": 0
+    },
+    {
+     "name": "Medium Minute Maid Lemonade",
+     "serving": "",
+     "cal": 290,
+     "f": 0,
+     "c": 76,
+     "p": 0
+    },
+    {
+     "name": "Large Minute Maid Lemonade",
+     "serving": "",
+     "cal": 340,
+     "f": 0,
+     "c": 90,
+     "p": 0
+    },
+    {
+     "name": "Honest Kids Apple Juice Drink",
+     "serving": "",
+     "cal": 35,
+     "f": 0,
+     "c": 9,
+     "p": 0
+    },
+    {
+     "name": "Vampire's Bite Strawberry and Sprite",
+     "serving": "",
+     "cal": 480,
+     "f": 0,
+     "c": 121,
+     "p": 0
+    },
+    {
+     "name": "Small Coke Freezee King",
+     "serving": "",
+     "cal": 100,
+     "f": 0,
+     "c": 26,
+     "p": 0
+    },
+    {
+     "name": "Medium Coke Freezee King",
+     "serving": "",
+     "cal": 130,
+     "f": 0,
+     "c": 35,
+     "p": 0
+    },
+    {
+     "name": "Large Coke Freezee King",
+     "serving": "",
+     "cal": 160,
+     "f": 0,
+     "c": 44,
+     "p": 0
+    },
+    {
+     "name": "Small Fanta Strawberry Freezee King",
+     "serving": "",
+     "cal": 100,
+     "f": 0,
+     "c": 26,
+     "p": 0
+    },
+    {
+     "name": "Medium Fanta Strawberry Freezee King",
+     "serving": "",
+     "cal": 130,
+     "f": 0,
+     "c": 34,
+     "p": 0
+    },
+    {
+     "name": "Large Fanta Strawberry Freezee King",
+     "serving": "",
+     "cal": 160,
+     "f": 0,
+     "c": 43,
+     "p": 0
+    },
+    {
+     "name": "Small Fanta Blue Raspberry Freezee King",
+     "serving": "",
+     "cal": 100,
+     "f": 0,
+     "c": 26,
+     "p": 0
+    },
+    {
+     "name": "Medium Fanta Blue Raspberry Freezee King",
+     "serving": "",
+     "cal": 130,
+     "f": 0,
+     "c": 34,
+     "p": 0
+    },
+    {
+     "name": "Large Fanta Blue Raspberry Freezee King",
+     "serving": "",
+     "cal": 160,
+     "f": 0,
+     "c": 43,
+     "p": 0
+    },
+    {
+     "name": "Small Brewed Coffee",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Medium Brewed Coffee",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Large Brewed Coffee",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Small Decaf Coffee",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Medium Decaf Coffee",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Large Decaf Coffee",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Small Black Iced Coffee",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Medium Black Iced Coffee",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Large Black Iced Coffee",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Extra Large Black Iced Coffee",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Small Plain Iced Coffee",
+     "serving": "",
+     "cal": 150,
+     "f": 7,
+     "c": 21,
+     "p": 1
+    },
+    {
+     "name": "Medium Plain Iced Coffee",
+     "serving": "",
+     "cal": 200,
+     "f": 9,
+     "c": 27,
+     "p": 2
+    },
+    {
+     "name": "Large Plain Iced Coffee",
+     "serving": "",
+     "cal": 260,
+     "f": 12,
+     "c": 35,
+     "p": 2
+    },
+    {
+     "name": "Extra Large Plain Iced Coffee",
+     "serving": "",
+     "cal": 390,
+     "f": 18,
+     "c": 53,
+     "p": 3
+    },
+    {
+     "name": "Small Mocha Iced Coffee",
+     "serving": "",
+     "cal": 160,
+     "f": 7,
+     "c": 21,
+     "p": 2
+    },
+    {
+     "name": "Medium Mocha Iced Coffee",
+     "serving": "",
+     "cal": 200,
+     "f": 10,
+     "c": 27,
+     "p": 2
+    },
+    {
+     "name": "Large Mocha Iced Coffee",
+     "serving": "",
+     "cal": 260,
+     "f": 12,
+     "c": 34,
+     "p": 3
+    },
+    {
+     "name": "Extra Large Mocha Iced Coffee",
+     "serving": "",
+     "cal": 400,
+     "f": 19,
+     "c": 52,
+     "p": 4
+    },
+    {
+     "name": "Small Vanilla Iced Coffee",
+     "serving": "",
+     "cal": 150,
+     "f": 7,
+     "c": 20,
+     "p": 1
+    },
+    {
+     "name": "Medium Vanilla Iced Coffee",
+     "serving": "",
+     "cal": 200,
+     "f": 9,
+     "c": 27,
+     "p": 2
+    },
+    {
+     "name": "Large Vanilla Iced Coffee",
+     "serving": "",
+     "cal": 250,
+     "f": 12,
+     "c": 34,
+     "p": 2
+    },
+    {
+     "name": "Extra Large Vanilla Iced Coffee",
+     "serving": "",
+     "cal": 390,
+     "f": 19,
+     "c": 51,
+     "p": 3
+    },
+    {
+     "name": "Fat Free Milk",
+     "serving": "",
+     "cal": 100,
+     "f": 0,
+     "c": 15,
+     "p": 10
+    },
+    {
+     "name": "Chocolate Milk",
+     "serving": "",
+     "cal": 170,
+     "f": 2.4,
+     "c": 28,
+     "p": 10
+    },
+    {
+     "name": "Simply Orange Juice",
+     "serving": "",
+     "cal": 160,
+     "f": 1.5,
+     "c": 35,
+     "p": 2
+    },
+    {
+     "name": "HERSHEY'S Sundae Pie",
+     "serving": "",
+     "cal": 310,
+     "f": 18,
+     "c": 32,
+     "p": 3
+    },
+    {
+     "name": "Classic Oreo Shake",
+     "serving": "",
+     "cal": 640,
+     "f": 17,
+     "c": 109,
+     "p": 13
+    },
+    {
+     "name": "Chocolate Oreo Shake",
+     "serving": "",
+     "cal": 670,
+     "f": 17,
+     "c": 116,
+     "p": 13
+    },
+    {
+     "name": "Chocolate Shake",
+     "serving": "",
+     "cal": 590,
+     "f": 14,
+     "c": 103,
+     "p": 13
+    },
+    {
+     "name": "Vanilla Shake",
+     "serving": "",
+     "cal": 560,
+     "f": 14,
+     "c": 96,
+     "p": 12
+    },
+    {
+     "name": "Strawberry Shake",
+     "serving": "",
+     "cal": 610,
+     "f": 14,
+     "c": 110,
+     "p": 12
+    },
+    {
+     "name": "Soft Serve Cup",
+     "serving": "",
+     "cal": 180,
+     "f": 5,
+     "c": 28,
+     "p": 4
+    },
+    {
+     "name": "Soft Serve Cone",
+     "serving": "",
+     "cal": 200,
+     "f": 5,
+     "c": 33,
+     "p": 5
+    },
+    {
+     "name": "2 Chocolate Chip Cookies",
+     "serving": "",
+     "cal": 320,
+     "f": 15,
+     "c": 46,
+     "p": 4
+    },
+    {
+     "name": "Nacho Cheese Sauce",
+     "serving": "",
+     "cal": 110,
+     "f": 9,
+     "c": 7,
+     "p": 2
+    },
+    {
+     "name": "Hidden Valley Ranch Dipping Sauce",
+     "serving": "",
+     "cal": 110,
+     "f": 11,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Zesty Sauce",
+     "serving": "",
+     "cal": 140,
+     "f": 14,
+     "c": 3,
+     "p": 0
+    },
+    {
+     "name": "BBQ Sauce",
+     "serving": "",
+     "cal": 35,
+     "f": 0,
+     "c": 8,
+     "p": 0
+    },
+    {
+     "name": "Honey Mustard Sauce",
+     "serving": "",
+     "cal": 110,
+     "f": 8,
+     "c": 8,
+     "p": 0
+    },
+    {
+     "name": "Special Savory Sauce",
+     "serving": "",
+     "cal": 116,
+     "f": 10.9,
+     "c": 4.5,
+     "p": 0.4
+    },
+    {
+     "name": "Sweet & Sour Sauce",
+     "serving": "",
+     "cal": 70,
+     "f": 0,
+     "c": 18,
+     "p": 0
+    },
+    {
+     "name": "Buffalo Sauce",
+     "serving": "",
+     "cal": 70,
+     "f": 7,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Marinara Dipping Sauce",
+     "serving": "",
+     "cal": 25,
+     "f": 1,
+     "c": 5,
+     "p": 3
+    },
+    {
+     "name": "Syrup Packet",
+     "serving": "",
+     "cal": 95,
+     "f": 0,
+     "c": 24,
+     "p": 0
+    },
+    {
+     "name": "Ketchup Packet",
+     "serving": "",
+     "cal": 10,
+     "f": 0,
+     "c": 2.2,
+     "p": 0.1
+    },
+    {
+     "name": "Mayo Packet",
+     "serving": "",
+     "cal": 87,
+     "f": 9.5,
+     "c": 0.3,
+     "p": 0.1
+    },
+    {
+     "name": "Mustard Packet",
+     "serving": "",
+     "cal": 5,
+     "f": 0.3,
+     "c": 0.3,
+     "p": 0.3
+    },
+    {
+     "name": "Picante Sauce Packet",
+     "serving": "",
+     "cal": 10,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Honey Packet",
+     "serving": "",
+     "cal": 45,
+     "f": 0,
+     "c": 12,
+     "p": 0
+    },
+    {
+     "name": "Salt Packet",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Pepper Packet",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Creamer",
+     "serving": "",
+     "cal": 15,
+     "f": 1,
+     "c": 0.5,
+     "p": 0
+    },
+    {
+     "name": "Pure Sugar Packet",
+     "serving": "",
+     "cal": 10,
+     "f": 0,
+     "c": 3,
+     "p": 0
+    },
+    {
+     "name": "Sugar Substitute Packet",
+     "serving": "",
+     "cal": 3,
+     "f": 0,
+     "c": 0.9,
+     "p": 0
+    },
+    {
+     "name": "Strawberry Jelly Packet",
+     "serving": "",
+     "cal": 25,
+     "f": 0,
+     "c": 7,
+     "p": 0
+    },
+    {
+     "name": "Grape Jelly Packet",
+     "serving": "",
+     "cal": 25,
+     "f": 0,
+     "c": 7,
+     "p": 0
+    },
+    {
+     "name": "Butter Blend",
+     "serving": "",
+     "cal": 50,
+     "f": 6,
+     "c": 0,
+     "p": 0
+    }
+   ]
+  },
+  "raisingcanes": {
+   "name": "Raising Cane's",
+   "aliases": [
+    "raising canes",
+    "canes",
+    "cane's"
+   ],
+   "source": "raisingcanes.com/allergens → Allergen & Nutritional Information PDF (Aug 2026) (data/fast-food-macros-2026-10-20.xlsx)",
+   "updated": "2026-10-21",
+   "items": [
+    {
+     "name": "Chicken Finger",
+     "serving": "",
+     "cal": 130,
+     "f": 6,
+     "c": 5,
+     "p": 12
+    },
+    {
+     "name": "Crinkle-Cut Fries",
+     "serving": "",
+     "cal": 420,
+     "f": 21,
+     "c": 53,
+     "p": 5
+    },
+    {
+     "name": "Texas Toast",
+     "serving": "",
+     "cal": 150,
+     "f": 4.5,
+     "c": 23,
+     "p": 4
+    },
+    {
+     "name": "Coleslaw",
+     "serving": "",
+     "cal": 90,
+     "f": 6,
+     "c": 10,
+     "p": 1
+    },
+    {
+     "name": "Cane's Sauce",
+     "serving": "",
+     "cal": 190,
+     "f": 18,
+     "c": 6,
+     "p": 0
+    },
+    {
+     "name": "Chicken Sandwich",
+     "serving": "",
+     "cal": 810,
+     "f": 40,
+     "c": 68,
+     "p": 45
+    },
+    {
+     "name": "3 Finger Combo",
+     "serving": "",
+     "cal": 1050,
+     "f": 58,
+     "c": 84,
+     "p": 46
+    },
+    {
+     "name": "Box Combo",
+     "serving": "",
+     "cal": 1270,
+     "f": 70,
+     "c": 99,
+     "p": 60
+    },
+    {
+     "name": "Caniac Combo",
+     "serving": "",
+     "cal": 1810,
+     "f": 106,
+     "c": 126,
+     "p": 87
+    },
+    {
+     "name": "Sandwich Combo",
+     "serving": "",
+     "cal": 1130,
+     "f": 56,
+     "c": 109,
+     "p": 50
+    },
+    {
+     "name": "Box Combo - The Posty Way",
+     "serving": "",
+     "cal": 1730,
+     "f": 88,
+     "c": 174,
+     "p": 64
+    },
+    {
+     "name": "Kid's Combo",
+     "serving": "",
+     "cal": 640,
+     "f": 41,
+     "c": 40,
+     "p": 28
+    },
+    {
+     "name": "Sweet Tea - Kid's",
+     "serving": "",
+     "cal": 130,
+     "f": 0,
+     "c": 33,
+     "p": 0
+    },
+    {
+     "name": "Sweet Tea - Regular",
+     "serving": "",
+     "cal": 230,
+     "f": 0,
+     "c": 60,
+     "p": 0
+    },
+    {
+     "name": "Sweet Tea - Large",
+     "serving": "",
+     "cal": 340,
+     "f": 0,
+     "c": 88,
+     "p": 0
+    },
+    {
+     "name": "Sweet Tea - Jug",
+     "serving": "",
+     "cal": 1360,
+     "f": 0,
+     "c": 352,
+     "p": 0
+    },
+    {
+     "name": "Unsweet Tea - Kid's",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Unsweet Tea - Regular",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Unsweet Tea - Large",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Unsweet Tea - Jug",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Lemonade - Kid's",
+     "serving": "",
+     "cal": 160,
+     "f": 0,
+     "c": 41,
+     "p": 0
+    },
+    {
+     "name": "Lemonade - Regular",
+     "serving": "",
+     "cal": 290,
+     "f": 0,
+     "c": 76,
+     "p": 0
+    },
+    {
+     "name": "Lemonade - Large",
+     "serving": "",
+     "cal": 420,
+     "f": 0,
+     "c": 111,
+     "p": 0
+    },
+    {
+     "name": "Lemonade - Jug",
+     "serving": "",
+     "cal": 1700,
+     "f": 1,
+     "c": 442,
+     "p": 1
+    },
+    {
+     "name": "Half Sweet/Half Lemonade - Kid's",
+     "serving": "",
+     "cal": 140,
+     "f": 0,
+     "c": 37,
+     "p": 0
+    },
+    {
+     "name": "Half Sweet/Half Lemonade - Regular",
+     "serving": "",
+     "cal": 260,
+     "f": 0,
+     "c": 68,
+     "p": 0
+    },
+    {
+     "name": "Half Sweet/Half Lemonade - Large",
+     "serving": "",
+     "cal": 380,
+     "f": 0,
+     "c": 99,
+     "p": 0
+    },
+    {
+     "name": "Half Unsweet/Half Lemonade - Kid's",
+     "serving": "",
+     "cal": 80,
+     "f": 0,
+     "c": 20,
+     "p": 0
+    },
+    {
+     "name": "Half Unsweet/Half Lemonade - Regular",
+     "serving": "",
+     "cal": 150,
+     "f": 0,
+     "c": 38,
+     "p": 0
+    },
+    {
+     "name": "Half Unsweet/Half Lemonade - Large",
+     "serving": "",
+     "cal": 210,
+     "f": 0,
+     "c": 55,
+     "p": 0
+    },
+    {
+     "name": "Half Sweet/Half Unsweet - Kid's",
+     "serving": "",
+     "cal": 60,
+     "f": 0,
+     "c": 16,
+     "p": 0
+    },
+    {
+     "name": "Half Sweet/Half Unsweet - Regular",
+     "serving": "",
+     "cal": 120,
+     "f": 0,
+     "c": 30,
+     "p": 0
+    },
+    {
+     "name": "Half Sweet/Half Unsweet - Large",
+     "serving": "",
+     "cal": 170,
+     "f": 0,
+     "c": 44,
+     "p": 0
+    },
+    {
+     "name": "Barq's Root Beer - Kid's",
+     "serving": "",
+     "cal": 150,
+     "f": 0,
+     "c": 42,
+     "p": 0
+    },
+    {
+     "name": "Barq's Root Beer - Regular",
+     "serving": "",
+     "cal": 280,
+     "f": 0,
+     "c": 77,
+     "p": 0
+    },
+    {
+     "name": "Barq's Root Beer - Large",
+     "serving": "",
+     "cal": 410,
+     "f": 0,
+     "c": 112,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola Cherry - Kid's",
+     "serving": "",
+     "cal": 160,
+     "f": 0,
+     "c": 44,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola Cherry - Regular",
+     "serving": "",
+     "cal": 290,
+     "f": 0,
+     "c": 80,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola Cherry - Large",
+     "serving": "",
+     "cal": 430,
+     "f": 0,
+     "c": 116,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola - Kid's",
+     "serving": "",
+     "cal": 150,
+     "f": 0,
+     "c": 42,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola - Regular",
+     "serving": "",
+     "cal": 280,
+     "f": 0,
+     "c": 77,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola - Large",
+     "serving": "",
+     "cal": 410,
+     "f": 0,
+     "c": 111,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola Zero - Kid's",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola Zero - Regular",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola Zero - Large",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Diet Coke - Kid's",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Diet Coke - Regular",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Diet Coke - Large",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Diet Mountain Dew - Kid's",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Diet Mountain Dew - Regular",
+     "serving": "",
+     "cal": 10,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Diet Mountain Dew - Large",
+     "serving": "",
+     "cal": 10,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Diet Pepsi - Kid's",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Diet Pepsi - Regular",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Diet Pepsi - Large",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Dr Pepper - Kid's",
+     "serving": "",
+     "cal": 140,
+     "f": 0,
+     "c": 39,
+     "p": 0
+    },
+    {
+     "name": "Dr Pepper - Regular",
+     "serving": "",
+     "cal": 260,
+     "f": 0,
+     "c": 72,
+     "p": 0
+    },
+    {
+     "name": "Dr Pepper - Large",
+     "serving": "",
+     "cal": 380,
+     "f": 0,
+     "c": 104,
+     "p": 0
+    },
+    {
+     "name": "Fanta Fruit Punch - Kid's",
+     "serving": "",
+     "cal": 230,
+     "f": 0,
+     "c": 63,
+     "p": 0
+    },
+    {
+     "name": "Fanta Fruit Punch - Regular",
+     "serving": "",
+     "cal": 430,
+     "f": 0,
+     "c": 116,
+     "p": 0
+    },
+    {
+     "name": "Fanta Fruit Punch - Large",
+     "serving": "",
+     "cal": 630,
+     "f": 0,
+     "c": 168,
+     "p": 0
+    },
+    {
+     "name": "Fanta Orange - Kid's",
+     "serving": "",
+     "cal": 150,
+     "f": 0,
+     "c": 41,
+     "p": 0
+    },
+    {
+     "name": "Fanta Orange - Regular",
+     "serving": "",
+     "cal": 280,
+     "f": 0,
+     "c": 76,
+     "p": 0
+    },
+    {
+     "name": "Fanta Orange - Large",
+     "serving": "",
+     "cal": 410,
+     "f": 0,
+     "c": 111,
+     "p": 0
+    },
+    {
+     "name": "Gatorade Fruit Punch - Kid's",
+     "serving": "",
+     "cal": 80,
+     "f": 0,
+     "c": 22,
+     "p": 0
+    },
+    {
+     "name": "Gatorade Fruit Punch - Regular",
+     "serving": "",
+     "cal": 150,
+     "f": 0,
+     "c": 40,
+     "p": 0
+    },
+    {
+     "name": "Gatorade Fruit Punch - Large",
+     "serving": "",
+     "cal": 220,
+     "f": 0,
+     "c": 58,
+     "p": 0
+    },
+    {
+     "name": "Hi-C Flashin' Fruit Punch - Kid's",
+     "serving": "",
+     "cal": 160,
+     "f": 0,
+     "c": 44,
+     "p": 0
+    },
+    {
+     "name": "Hi-C Flashin' Fruit Punch - Regular",
+     "serving": "",
+     "cal": 300,
+     "f": 0,
+     "c": 81,
+     "p": 0
+    },
+    {
+     "name": "Hi-C Flashin' Fruit Punch - Large",
+     "serving": "",
+     "cal": 430,
+     "f": 0,
+     "c": 118,
+     "p": 0
+    },
+    {
+     "name": "Mello Yello - Kid's",
+     "serving": "",
+     "cal": 160,
+     "f": 0,
+     "c": 45,
+     "p": 0
+    },
+    {
+     "name": "Mello Yello - Regular",
+     "serving": "",
+     "cal": 300,
+     "f": 0,
+     "c": 83,
+     "p": 0
+    },
+    {
+     "name": "Mello Yello - Large",
+     "serving": "",
+     "cal": 440,
+     "f": 0,
+     "c": 121,
+     "p": 0
+    },
+    {
+     "name": "Mountain Dew - Kid's",
+     "serving": "",
+     "cal": 170,
+     "f": 0,
+     "c": 44,
+     "p": 0
+    },
+    {
+     "name": "Mountain Dew - Regular",
+     "serving": "",
+     "cal": 310,
+     "f": 0,
+     "c": 81,
+     "p": 0
+    },
+    {
+     "name": "Mountain Dew - Large",
+     "serving": "",
+     "cal": 450,
+     "f": 0,
+     "c": 117,
+     "p": 0
+    },
+    {
+     "name": "Mug Root Beer - Kid's",
+     "serving": "",
+     "cal": 140,
+     "f": 0,
+     "c": 39,
+     "p": 0
+    },
+    {
+     "name": "Mug Root Beer - Regular",
+     "serving": "",
+     "cal": 260,
+     "f": 0,
+     "c": 72,
+     "p": 0
+    },
+    {
+     "name": "Mug Root Beer - Large",
+     "serving": "",
+     "cal": 380,
+     "f": 0,
+     "c": 105,
+     "p": 0
+    },
+    {
+     "name": "Orange Crush - Kid's",
+     "serving": "",
+     "cal": 160,
+     "f": 0,
+     "c": 44,
+     "p": 0
+    },
+    {
+     "name": "Orange Crush - Regular",
+     "serving": "",
+     "cal": 300,
+     "f": 0,
+     "c": 81,
+     "p": 0
+    },
+    {
+     "name": "Orange Crush - Large",
+     "serving": "",
+     "cal": 440,
+     "f": 0,
+     "c": 117,
+     "p": 0
+    },
+    {
+     "name": "Pepsi - Kid's",
+     "serving": "",
+     "cal": 150,
+     "f": 0,
+     "c": 41,
+     "p": 0
+    },
+    {
+     "name": "Pepsi - Regular",
+     "serving": "",
+     "cal": 280,
+     "f": 0,
+     "c": 76,
+     "p": 0
+    },
+    {
+     "name": "Pepsi - Large",
+     "serving": "",
+     "cal": 410,
+     "f": 0,
+     "c": 110,
+     "p": 0
+    },
+    {
+     "name": "Pepsi Zero - Kid's",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Pepsi Zero - Regular",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Pepsi Zero - Large",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Pibb Xtra - Kid's",
+     "serving": "",
+     "cal": 140,
+     "f": 0,
+     "c": 38,
+     "p": 0
+    },
+    {
+     "name": "Pibb Xtra - Regular",
+     "serving": "",
+     "cal": 260,
+     "f": 0,
+     "c": 70,
+     "p": 0
+    },
+    {
+     "name": "Pibb Xtra - Large",
+     "serving": "",
+     "cal": 380,
+     "f": 0,
+     "c": 102,
+     "p": 0
+    },
+    {
+     "name": "Powerade Mtn Berry Blast - Kid's",
+     "serving": "",
+     "cal": 90,
+     "f": 0,
+     "c": 23,
+     "p": 0
+    },
+    {
+     "name": "Powerade Mtn Berry Blast - Regular",
+     "serving": "",
+     "cal": 160,
+     "f": 0,
+     "c": 42,
+     "p": 0
+    },
+    {
+     "name": "Powerade Mtn Berry Blast - Large",
+     "serving": "",
+     "cal": 230,
+     "f": 0,
+     "c": 61,
+     "p": 0
+    },
+    {
+     "name": "Sprite - Kid's",
+     "serving": "",
+     "cal": 140,
+     "f": 0,
+     "c": 38,
+     "p": 0
+    },
+    {
+     "name": "Sprite - Regular",
+     "serving": "",
+     "cal": 260,
+     "f": 0,
+     "c": 70,
+     "p": 0
+    },
+    {
+     "name": "Sprite - Large",
+     "serving": "",
+     "cal": 380,
+     "f": 0,
+     "c": 101,
+     "p": 0
+    },
+    {
+     "name": "Starry - Kid's",
+     "serving": "",
+     "cal": 150,
+     "f": 0,
+     "c": 39,
+     "p": 0
+    },
+    {
+     "name": "Starry - Regular",
+     "serving": "",
+     "cal": 270,
+     "f": 0,
+     "c": 71,
+     "p": 0
+    },
+    {
+     "name": "Starry - Large",
+     "serving": "",
+     "cal": 390,
+     "f": 0,
+     "c": 104,
+     "p": 0
+    },
+    {
+     "name": "Tropicana Fruit Punch - Kid's",
+     "serving": "",
+     "cal": 170,
+     "f": 0,
+     "c": 45,
+     "p": 0
+    },
+    {
+     "name": "Tropicana Fruit Punch - Regular",
+     "serving": "",
+     "cal": 310,
+     "f": 0,
+     "c": 83,
+     "p": 0
+    },
+    {
+     "name": "Tropicana Fruit Punch - Large",
+     "serving": "",
+     "cal": 450,
+     "f": 0,
+     "c": 120,
+     "p": 0
+    },
+    {
+     "name": "Apple Juice Drink Pouch",
+     "serving": "",
+     "cal": 35,
+     "f": 0,
+     "c": 9,
+     "p": 0
+    },
+    {
+     "name": "Milk 1% Box",
+     "serving": "",
+     "cal": 110,
+     "f": 2.5,
+     "c": 13,
+     "p": 8
+    },
+    {
+     "name": "Honey Mustard",
+     "serving": "",
+     "cal": 140,
+     "f": 8,
+     "c": 16,
+     "p": 0
+    },
+    {
+     "name": "Ketchup (Dip N Squeeze Cup)",
+     "serving": "",
+     "cal": 35,
+     "f": 0,
+     "c": 8,
+     "p": 0
+    },
+    {
+     "name": "Louisiana Hot Sauce Packet",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Kraft Mayonnaise Packet",
+     "serving": "",
+     "cal": 90,
+     "f": 10,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Sugar Packet",
+     "serving": "",
+     "cal": 10,
+     "f": 0,
+     "c": 3,
+     "p": 0
+    },
+    {
+     "name": "Splenda Packet",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Equal Packet",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Sweet 'N Low Packet",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Iodized Salt Packet",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Black Pepper Packet",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Lemon Wedge",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    }
+   ]
+  },
+  "chipotle": {
+   "name": "Chipotle",
+   "aliases": [
+    "chipotle"
+   ],
+   "source": "chipotle.com/nutrition-calculator → US Nutrition Facts PDF (data/fast-food-macros-2026-10-20.xlsx)",
+   "updated": "2026-10-21",
+   "items": [
+    {
+     "name": "Flour Tortilla (burrito, 1 ea)",
+     "serving": "1 ea",
+     "cal": 320,
+     "f": 9,
+     "c": 50,
+     "p": 8
+    },
+    {
+     "name": "Flour Tortilla (taco, 1 ea)",
+     "serving": "1 ea",
+     "cal": 80,
+     "f": 2.5,
+     "c": 13,
+     "p": 2
+    },
+    {
+     "name": "Crispy Corn Tortilla (1 ea)",
+     "serving": "1 ea",
+     "cal": 70,
+     "f": 3,
+     "c": 10,
+     "p": 1
+    },
+    {
+     "name": "Cilantro-Lime Brown Rice (4 oz)",
+     "serving": "4 oz",
+     "cal": 210,
+     "f": 6,
+     "c": 36,
+     "p": 4
+    },
+    {
+     "name": "Cilantro-Lime White Rice (4 oz)",
+     "serving": "4 oz",
+     "cal": 210,
+     "f": 4,
+     "c": 40,
+     "p": 4
+    },
+    {
+     "name": "Black Beans (4 oz)",
+     "serving": "4 oz",
+     "cal": 130,
+     "f": 1.5,
+     "c": 22,
+     "p": 8
+    },
+    {
+     "name": "Pinto Beans (4 oz)",
+     "serving": "4 oz",
+     "cal": 130,
+     "f": 1.5,
+     "c": 21,
+     "p": 8
+    },
+    {
+     "name": "Fajita Vegetables (2 oz)",
+     "serving": "2 oz",
+     "cal": 20,
+     "f": 0,
+     "c": 5,
+     "p": 1
+    },
+    {
+     "name": "Barbacoa (4 oz)",
+     "serving": "4 oz",
+     "cal": 170,
+     "f": 7,
+     "c": 2,
+     "p": 24
+    },
+    {
+     "name": "Chicken (4 oz)",
+     "serving": "4 oz",
+     "cal": 180,
+     "f": 7,
+     "c": 0,
+     "p": 32
+    },
+    {
+     "name": "Carnitas (4 oz)",
+     "serving": "4 oz",
+     "cal": 210,
+     "f": 12,
+     "c": 0,
+     "p": 23
+    },
+    {
+     "name": "Steak (4 oz)",
+     "serving": "4 oz",
+     "cal": 150,
+     "f": 6,
+     "c": 1,
+     "p": 21
+    },
+    {
+     "name": "Sofritas (4 oz)",
+     "serving": "4 oz",
+     "cal": 150,
+     "f": 10,
+     "c": 9,
+     "p": 8
+    },
+    {
+     "name": "Fresh Tomato Salsa (4 oz)",
+     "serving": "4 oz",
+     "cal": 25,
+     "f": 0,
+     "c": 4,
+     "p": 0
+    },
+    {
+     "name": "Roasted Chili-Corn Salsa (4 oz)",
+     "serving": "4 oz",
+     "cal": 80,
+     "f": 1.5,
+     "c": 16,
+     "p": 3
+    },
+    {
+     "name": "Tomatillo-Green Chili Salsa (2 fl oz)",
+     "serving": "2 fl oz",
+     "cal": 15,
+     "f": 0,
+     "c": 4,
+     "p": 0
+    },
+    {
+     "name": "Tomatillo-Red Chili Salsa (2 fl oz)",
+     "serving": "2 fl oz",
+     "cal": 30,
+     "f": 0,
+     "c": 4,
+     "p": 0
+    },
+    {
+     "name": "Cheese (1 oz)",
+     "serving": "1 oz",
+     "cal": 110,
+     "f": 8,
+     "c": 1,
+     "p": 6
+    },
+    {
+     "name": "Sour Cream (2 oz)",
+     "serving": "2 oz",
+     "cal": 110,
+     "f": 9,
+     "c": 2,
+     "p": 2
+    },
+    {
+     "name": "Guacamole (topping/side, 4 oz)",
+     "serving": "4 oz",
+     "cal": 230,
+     "f": 22,
+     "c": 8,
+     "p": 2
+    },
+    {
+     "name": "Guacamole (large, 8 oz)",
+     "serving": "8 oz",
+     "cal": 460,
+     "f": 44,
+     "c": 16,
+     "p": 4
+    },
+    {
+     "name": "Queso Blanco (entree, 2 oz)",
+     "serving": "2 oz",
+     "cal": 120,
+     "f": 9,
+     "c": 4,
+     "p": 5
+    },
+    {
+     "name": "Queso Blanco (side, 4 oz)",
+     "serving": "4 oz",
+     "cal": 240,
+     "f": 18,
+     "c": 7,
+     "p": 10
+    },
+    {
+     "name": "Queso Blanco (large, 8 oz)",
+     "serving": "8 oz",
+     "cal": 480,
+     "f": 37,
+     "c": 14,
+     "p": 20
+    },
+    {
+     "name": "Supergreens Salad Mix (3 oz)",
+     "serving": "3 oz",
+     "cal": 15,
+     "f": 0,
+     "c": 3,
+     "p": 1
+    },
+    {
+     "name": "Romaine Lettuce (tacos, 1 oz)",
+     "serving": "1 oz",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Chips (regular)",
+     "serving": "4 oz",
+     "cal": 540,
+     "f": 25,
+     "c": 73,
+     "p": 7
+    },
+    {
+     "name": "Chips (large)",
+     "serving": "6 oz",
+     "cal": 810,
+     "f": 38,
+     "c": 110,
+     "p": 11
+    },
+    {
+     "name": "Chipotle-Honey Vinaigrette",
+     "serving": "2 fl oz",
+     "cal": 220,
+     "f": 16,
+     "c": 18,
+     "p": 1
+    },
+    {
+     "name": "Barq's Root Beer (22 fl oz)",
+     "serving": "22 fl oz",
+     "cal": 280,
+     "f": 0,
+     "c": 85,
+     "p": 0
+    },
+    {
+     "name": "Barq's Root Beer (32 fl oz)",
+     "serving": "32 fl oz",
+     "cal": 430,
+     "f": 0,
+     "c": 120,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola Classic (22 fl oz)",
+     "serving": "22 fl oz",
+     "cal": 260,
+     "f": 0,
+     "c": 70,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola Classic (32 fl oz)",
+     "serving": "32 fl oz",
+     "cal": 380,
+     "f": 0,
+     "c": 105,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola Life (22 fl oz)",
+     "serving": "22 fl oz",
+     "cal": 170,
+     "f": 0,
+     "c": 44,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola Life (32 fl oz)",
+     "serving": "32 fl oz",
+     "cal": 250,
+     "f": 0,
+     "c": 64,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola Zero (22 fl oz)",
+     "serving": "22 fl oz",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola Zero (32 fl oz)",
+     "serving": "32 fl oz",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Diet Coke (22 fl oz)",
+     "serving": "22 fl oz",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Diet Coke (32 fl oz)",
+     "serving": "32 fl oz",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Diet Coke, Caffeine Free (22 fl oz)",
+     "serving": "22 fl oz",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Diet Coke, Caffeine Free (32 fl oz)",
+     "serving": "32 fl oz",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Pibb Xtra (22 fl oz)",
+     "serving": "22 fl oz",
+     "cal": 260,
+     "f": 0,
+     "c": 70,
+     "p": 0
+    },
+    {
+     "name": "Pibb Xtra (32 fl oz)",
+     "serving": "32 fl oz",
+     "cal": 380,
+     "f": 0,
+     "c": 105,
+     "p": 0
+    },
+    {
+     "name": "Sprite (22 fl oz)",
+     "serving": "22 fl oz",
+     "cal": 260,
+     "f": 0,
+     "c": 70,
+     "p": 0
+    },
+    {
+     "name": "Sprite (32 fl oz)",
+     "serving": "32 fl oz",
+     "cal": 380,
+     "f": 0,
+     "c": 105,
+     "p": 0
+    },
+    {
+     "name": "Fanta Orange (22 fl oz)",
+     "serving": "22 fl oz",
+     "cal": 290,
+     "f": 0,
+     "c": 80,
+     "p": 0
+    },
+    {
+     "name": "Fanta Orange (32 fl oz)",
+     "serving": "32 fl oz",
+     "cal": 430,
+     "f": 0,
+     "c": 120,
+     "p": 0
+    },
+    {
+     "name": "Minute Maid Lemonade (22 fl oz)",
+     "serving": "22 fl oz",
+     "cal": 280,
+     "f": 0,
+     "c": 75,
+     "p": 0
+    },
+    {
+     "name": "Minute Maid Lemonade (32 fl oz)",
+     "serving": "32 fl oz",
+     "cal": 400,
+     "f": 0,
+     "c": 110,
+     "p": 0
+    },
+    {
+     "name": "Powerade Mountain Berry Blast (22 fl oz)",
+     "serving": "22 fl oz",
+     "cal": 280,
+     "f": 0,
+     "c": 75,
+     "p": 0
+    },
+    {
+     "name": "Powerade Mountain Berry Blast (32 fl oz)",
+     "serving": "32 fl oz",
+     "cal": 400,
+     "f": 0,
+     "c": 110,
+     "p": 0
+    },
+    {
+     "name": "Mello Yello (22 fl oz)",
+     "serving": "22 fl oz",
+     "cal": 290,
+     "f": 0,
+     "c": 80,
+     "p": 0
+    },
+    {
+     "name": "Mello Yello (32 fl oz)",
+     "serving": "32 fl oz",
+     "cal": 420,
+     "f": 0,
+     "c": 116,
+     "p": 0
+    },
+    {
+     "name": "Lemonade - Blue Sky (22 fl oz)",
+     "serving": "22 fl oz",
+     "cal": 300,
+     "f": 0,
+     "c": 78,
+     "p": 0
+    },
+    {
+     "name": "Lemonade - Blue Sky (32 fl oz)",
+     "serving": "32 fl oz",
+     "cal": 440,
+     "f": 0,
+     "c": 113,
+     "p": 0
+    },
+    {
+     "name": "Mango Orange - Blue Sky (22 fl oz)",
+     "serving": "22 fl oz",
+     "cal": 300,
+     "f": 0,
+     "c": 75,
+     "p": 0
+    },
+    {
+     "name": "Mango Orange - Blue Sky (32 fl oz)",
+     "serving": "32 fl oz",
+     "cal": 430,
+     "f": 0,
+     "c": 109,
+     "p": 0
+    },
+    {
+     "name": "Maine Root Root Beer (22 fl oz)",
+     "serving": "22 fl oz",
+     "cal": 170,
+     "f": 0,
+     "c": 62,
+     "p": 0
+    },
+    {
+     "name": "Maine Root Root Beer (32 fl oz)",
+     "serving": "32 fl oz",
+     "cal": 240,
+     "f": 0,
+     "c": 90,
+     "p": 0
+    },
+    {
+     "name": "Chipotle Iced Tea (22 fl oz)",
+     "serving": "22 fl oz",
+     "cal": 10,
+     "f": 0,
+     "c": 3,
+     "p": 0
+    },
+    {
+     "name": "Chipotle Iced Tea (32 fl oz)",
+     "serving": "32 fl oz",
+     "cal": 15,
+     "f": 0,
+     "c": 4,
+     "p": 0
+    },
+    {
+     "name": "Chipotle Sweet Iced Tea (22 fl oz)",
+     "serving": "22 fl oz",
+     "cal": 150,
+     "f": 0,
+     "c": 45,
+     "p": 0
+    },
+    {
+     "name": "Chipotle Sweet Iced Tea (32 fl oz)",
+     "serving": "32 fl oz",
+     "cal": 220,
+     "f": 0,
+     "c": 65,
+     "p": 0
+    },
+    {
+     "name": "Tractor Berry Agua Fresca (22 fl oz)",
+     "serving": "22 fl oz",
+     "cal": 200,
+     "f": 0,
+     "c": 50,
+     "p": 0
+    },
+    {
+     "name": "Tractor Berry Agua Fresca (32 fl oz)",
+     "serving": "32 fl oz",
+     "cal": 290,
+     "f": 0,
+     "c": 72,
+     "p": 0
+    },
+    {
+     "name": "Tractor Watermelon Limeade (22 fl oz)",
+     "serving": "22 fl oz",
+     "cal": 230,
+     "f": 0,
+     "c": 56,
+     "p": 0
+    },
+    {
+     "name": "Tractor Watermelon Limeade (32 fl oz)",
+     "serving": "32 fl oz",
+     "cal": 330,
+     "f": 0,
+     "c": 82,
+     "p": 0
+    },
+    {
+     "name": "Tractor Lemonade (22 fl oz)",
+     "serving": "22 fl oz",
+     "cal": 170,
+     "f": 0,
+     "c": 43,
+     "p": 0
+    },
+    {
+     "name": "Tractor Lemonade (32 fl oz)",
+     "serving": "32 fl oz",
+     "cal": 250,
+     "f": 0,
+     "c": 62,
+     "p": 0
+    },
+    {
+     "name": "Tractor Mandarin Agua Fresca (22 fl oz)",
+     "serving": "22 fl oz",
+     "cal": 190,
+     "f": 0,
+     "c": 47,
+     "p": 0
+    },
+    {
+     "name": "Tractor Mandarin Agua Fresca (32 fl oz)",
+     "serving": "32 fl oz",
+     "cal": 280,
+     "f": 0,
+     "c": 69,
+     "p": 0
+    },
+    {
+     "name": "Kids Flour Tortilla (taco)",
+     "serving": "2 ea",
+     "cal": 170,
+     "f": 5,
+     "c": 27,
+     "p": 5
+    },
+    {
+     "name": "Kids Flour Tortilla (quesadilla)",
+     "serving": "1 ea",
+     "cal": 80,
+     "f": 2.5,
+     "c": 13,
+     "p": 2
+    },
+    {
+     "name": "Kids Crispy Corn Tortilla",
+     "serving": "2 ea",
+     "cal": 130,
+     "f": 6,
+     "c": 19,
+     "p": 2
+    },
+    {
+     "name": "Kids Cilantro-Lime Brown Rice",
+     "serving": "2 oz",
+     "cal": 110,
+     "f": 3,
+     "c": 18,
+     "p": 2
+    },
+    {
+     "name": "Kids Cilantro-Lime White Rice",
+     "serving": "2 oz",
+     "cal": 100,
+     "f": 2,
+     "c": 20,
+     "p": 2
+    },
+    {
+     "name": "Kids Black Beans",
+     "serving": "3 oz",
+     "cal": 100,
+     "f": 1,
+     "c": 16,
+     "p": 6
+    },
+    {
+     "name": "Kids Pinto Beans",
+     "serving": "3 oz",
+     "cal": 100,
+     "f": 1,
+     "c": 15,
+     "p": 6
+    },
+    {
+     "name": "Kids Fajita Vegetables",
+     "serving": "2 oz",
+     "cal": 20,
+     "f": 0,
+     "c": 5,
+     "p": 1
+    },
+    {
+     "name": "Kids Barbacoa",
+     "serving": "2 oz",
+     "cal": 80,
+     "f": 3,
+     "c": 1,
+     "p": 12
+    },
+    {
+     "name": "Kids Chicken",
+     "serving": "2 oz",
+     "cal": 90,
+     "f": 3,
+     "c": 0,
+     "p": 15
+    },
+    {
+     "name": "Kids Carnitas",
+     "serving": "2 oz",
+     "cal": 110,
+     "f": 6,
+     "c": 0,
+     "p": 12
+    },
+    {
+     "name": "Kids Steak",
+     "serving": "2 oz",
+     "cal": 70,
+     "f": 3,
+     "c": 0,
+     "p": 10
+    },
+    {
+     "name": "Kids Sofritas",
+     "serving": "2 oz",
+     "cal": 70,
+     "f": 5,
+     "c": 5,
+     "p": 4
+    },
+    {
+     "name": "Kids Fresh Tomato Salsa",
+     "serving": "2 oz",
+     "cal": 15,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Kids Roasted Chili-Corn Salsa",
+     "serving": "2 oz",
+     "cal": 40,
+     "f": 1,
+     "c": 9,
+     "p": 1
+    },
+    {
+     "name": "Kids Tomatillo-Green Chili Salsa",
+     "serving": "2 fl oz",
+     "cal": 15,
+     "f": 0,
+     "c": 4,
+     "p": 0
+    },
+    {
+     "name": "Kids Tomatillo-Red Chili Salsa",
+     "serving": "2 fl oz",
+     "cal": 30,
+     "f": 0,
+     "c": 4,
+     "p": 0
+    },
+    {
+     "name": "Kids Cheese",
+     "serving": "1 oz",
+     "cal": 110,
+     "f": 8,
+     "c": 1,
+     "p": 6
+    },
+    {
+     "name": "Kids Sour Cream",
+     "serving": "1 oz",
+     "cal": 60,
+     "f": 5,
+     "c": 1,
+     "p": 1
+    },
+    {
+     "name": "Kids Guacamole",
+     "serving": "2 oz",
+     "cal": 110,
+     "f": 11,
+     "c": 3,
+     "p": 1
+    },
+    {
+     "name": "Kids Queso Blanco",
+     "serving": "1 oz",
+     "cal": 60,
+     "f": 4.5,
+     "c": 2,
+     "p": 2
+    },
+    {
+     "name": "Kids Romaine Lettuce",
+     "serving": "1 oz",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Kids Mandarins",
+     "serving": "1 ea",
+     "cal": 35,
+     "f": 0,
+     "c": 9,
+     "p": 1
+    },
+    {
+     "name": "Kids Blueberries",
+     "serving": "1 ea",
+     "cal": 20,
+     "f": 0,
+     "c": 5,
+     "p": 1
+    },
+    {
+     "name": "Kids Chips",
+     "serving": "1 oz",
+     "cal": 140,
+     "f": 6,
+     "c": 18,
+     "p": 2
+    },
+    {
+     "name": "Kids Organic Milk",
+     "serving": "8 oz",
+     "cal": 110,
+     "f": 2.5,
+     "c": 12,
+     "p": 8
+    },
+    {
+     "name": "Kids Organic Chocolate Milk",
+     "serving": "8 oz",
+     "cal": 160,
+     "f": 3,
+     "c": 24,
+     "p": 9
+    },
+    {
+     "name": "Kids Organic Apple Juice",
+     "serving": "6.75 oz",
+     "cal": 100,
+     "f": 0,
+     "c": 25,
+     "p": 0
+    },
+    {
+     "name": "Chicken Bowl",
+     "serving": "white rice, black beans, mild salsa",
+     "cal": 545,
+     "f": 12.5,
+     "c": 66,
+     "p": 44
+    },
+    {
+     "name": "Chicken Bowl with Cheese & Sour Cream",
+     "serving": "white rice, black beans, mild salsa, cheese, sour cream",
+     "cal": 765,
+     "f": 29.5,
+     "c": 69,
+     "p": 52
+    },
+    {
+     "name": "Chicken Bowl, Double Chicken",
+     "serving": "white rice, black beans, mild salsa, double chicken",
+     "cal": 725,
+     "f": 19.5,
+     "c": 66,
+     "p": 76
+    },
+    {
+     "name": "Chicken Burrito",
+     "serving": "tortilla, white rice, black beans, mild salsa, cheese",
+     "cal": 975,
+     "f": 29.5,
+     "c": 117,
+     "p": 58
+    },
+    {
+     "name": "Chicken Salad",
+     "serving": "supergreens, black beans, mild salsa (no dressing)",
+     "cal": 350,
+     "f": 8.5,
+     "c": 29,
+     "p": 41
+    },
+    {
+     "name": "Chicken Tacos (3, soft)",
+     "serving": "3 flour tortillas, meat, mild salsa, cheese, lettuce",
+     "cal": 560,
+     "f": 22.5,
+     "c": 45,
+     "p": 44
+    },
+    {
+     "name": "Steak Bowl",
+     "serving": "white rice, black beans, mild salsa",
+     "cal": 515,
+     "f": 11.5,
+     "c": 67,
+     "p": 33
+    },
+    {
+     "name": "Steak Bowl with Cheese & Sour Cream",
+     "serving": "white rice, black beans, mild salsa, cheese, sour cream",
+     "cal": 735,
+     "f": 28.5,
+     "c": 70,
+     "p": 41
+    },
+    {
+     "name": "Steak Bowl, Double Steak",
+     "serving": "white rice, black beans, mild salsa, double steak",
+     "cal": 665,
+     "f": 17.5,
+     "c": 68,
+     "p": 54
+    },
+    {
+     "name": "Steak Burrito",
+     "serving": "tortilla, white rice, black beans, mild salsa, cheese",
+     "cal": 945,
+     "f": 28.5,
+     "c": 118,
+     "p": 47
+    },
+    {
+     "name": "Steak Salad",
+     "serving": "supergreens, black beans, mild salsa (no dressing)",
+     "cal": 320,
+     "f": 7.5,
+     "c": 30,
+     "p": 30
+    },
+    {
+     "name": "Steak Tacos (3, soft)",
+     "serving": "3 flour tortillas, meat, mild salsa, cheese, lettuce",
+     "cal": 530,
+     "f": 21.5,
+     "c": 46,
+     "p": 33
+    },
+    {
+     "name": "Barbacoa Bowl",
+     "serving": "white rice, black beans, mild salsa",
+     "cal": 535,
+     "f": 12.5,
+     "c": 68,
+     "p": 36
+    },
+    {
+     "name": "Barbacoa Bowl with Cheese & Sour Cream",
+     "serving": "white rice, black beans, mild salsa, cheese, sour cream",
+     "cal": 755,
+     "f": 29.5,
+     "c": 71,
+     "p": 44
+    },
+    {
+     "name": "Barbacoa Bowl, Double Barbacoa",
+     "serving": "white rice, black beans, mild salsa, double barbacoa",
+     "cal": 705,
+     "f": 19.5,
+     "c": 70,
+     "p": 60
+    },
+    {
+     "name": "Barbacoa Burrito",
+     "serving": "tortilla, white rice, black beans, mild salsa, cheese",
+     "cal": 965,
+     "f": 29.5,
+     "c": 119,
+     "p": 50
+    },
+    {
+     "name": "Barbacoa Salad",
+     "serving": "supergreens, black beans, mild salsa (no dressing)",
+     "cal": 340,
+     "f": 8.5,
+     "c": 31,
+     "p": 33
+    },
+    {
+     "name": "Barbacoa Tacos (3, soft)",
+     "serving": "3 flour tortillas, meat, mild salsa, cheese, lettuce",
+     "cal": 550,
+     "f": 22.5,
+     "c": 47,
+     "p": 36
+    },
+    {
+     "name": "Carnitas Bowl",
+     "serving": "white rice, black beans, mild salsa",
+     "cal": 575,
+     "f": 17.5,
+     "c": 66,
+     "p": 35
+    },
+    {
+     "name": "Carnitas Bowl with Cheese & Sour Cream",
+     "serving": "white rice, black beans, mild salsa, cheese, sour cream",
+     "cal": 795,
+     "f": 34.5,
+     "c": 69,
+     "p": 43
+    },
+    {
+     "name": "Carnitas Bowl, Double Carnitas",
+     "serving": "white rice, black beans, mild salsa, double carnitas",
+     "cal": 785,
+     "f": 29.5,
+     "c": 66,
+     "p": 58
+    },
+    {
+     "name": "Carnitas Burrito",
+     "serving": "tortilla, white rice, black beans, mild salsa, cheese",
+     "cal": 1005,
+     "f": 34.5,
+     "c": 117,
+     "p": 49
+    },
+    {
+     "name": "Carnitas Salad",
+     "serving": "supergreens, black beans, mild salsa (no dressing)",
+     "cal": 380,
+     "f": 13.5,
+     "c": 29,
+     "p": 32
+    },
+    {
+     "name": "Carnitas Tacos (3, soft)",
+     "serving": "3 flour tortillas, meat, mild salsa, cheese, lettuce",
+     "cal": 590,
+     "f": 27.5,
+     "c": 45,
+     "p": 35
+    },
+    {
+     "name": "Sofritas Bowl",
+     "serving": "white rice, black beans, mild salsa",
+     "cal": 515,
+     "f": 15.5,
+     "c": 75,
+     "p": 20
+    },
+    {
+     "name": "Sofritas Bowl with Cheese & Sour Cream",
+     "serving": "white rice, black beans, mild salsa, cheese, sour cream",
+     "cal": 735,
+     "f": 32.5,
+     "c": 78,
+     "p": 28
+    },
+    {
+     "name": "Sofritas Bowl, Double Sofritas",
+     "serving": "white rice, black beans, mild salsa, double sofritas",
+     "cal": 665,
+     "f": 25.5,
+     "c": 84,
+     "p": 28
+    },
+    {
+     "name": "Sofritas Burrito",
+     "serving": "tortilla, white rice, black beans, mild salsa, cheese",
+     "cal": 945,
+     "f": 32.5,
+     "c": 126,
+     "p": 34
+    },
+    {
+     "name": "Sofritas Salad",
+     "serving": "supergreens, black beans, mild salsa (no dressing)",
+     "cal": 320,
+     "f": 11.5,
+     "c": 38,
+     "p": 17
+    },
+    {
+     "name": "Sofritas Tacos (3, soft)",
+     "serving": "3 flour tortillas, meat, mild salsa, cheese, lettuce",
+     "cal": 530,
+     "f": 25.5,
+     "c": 54,
+     "p": 20
+    }
+   ]
   }
  },
  "status": {
@@ -16678,6 +22610,10 @@
   "mcdonalds": "ok: 226 items",
   "subway": "ok: 200 items",
   "fiveguys": "ok: 78 items",
-  "wendys": "ok: 221 items"
+  "wendys": "ok: 221 items",
+  "chilis": "ok: 236 items (manual import)",
+  "burgerking": "ok: 256 items (manual import)",
+  "raisingcanes": "ok: 115 items (manual import)",
+  "chipotle": "ok: 129 items (manual import)"
  }
 }

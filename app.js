@@ -1587,6 +1587,8 @@ function placeGapPicks(rem, place, n = 6) {
   for (let a = 0; a < pool.length; a++) for (let b = a; b < pool.length; b++) {
     const x = pool[a], y = pool[b];
     if (x.cal + y.cal > rem.cal + 25 || (a === b && !x.p)) continue;
+    // A drink or sauce with no protein doesn't help close the gap, so don't pair it.
+    if (x.p < 3 || y.p < 3) continue;
     // School lunch is one entrée plus sides, not two entrées.
     if (place === SCHOOL && Math.min(x.cal, y.cal) > 200) continue;
     combos.push([x, y]);

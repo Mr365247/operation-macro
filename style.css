@@ -531,3 +531,8 @@ input:focus { border-color: var(--pro); }
 .swipe-more { font-size: 12px; text-transform: none; letter-spacing: 0; float: right; }
 /* Fade on the right edge so it's clear the row scrolls. */
 .place-chips { -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
+
+/* Restaurant logos */
+.logo { width: 20px; height: 20px; border-radius: 5px; object-fit: contain; vertical-align: -4px; background: #fff; }
+.pp-item .logo { width: 24px; height: 24px; vertical-align: -6px; }
+.logo-emoji { display: inline-block; width: 20px; text-align: center; }

@@ -10,6 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
+const APP_VERSION = 'v32'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -627,6 +628,7 @@ $('#it-log').addEventListener('click', () => {
 
 function renderSettings() {
   const s = state.settings;
+  $('#app-version').textContent = APP_VERSION;
   $('#s-cal').value = s.cal; $('#s-protein').value = s.protein;
   $('#s-carbs').value = s.carbs; $('#s-fat').value = s.fat;
   $('#s-weight').value = s.weight; $('#s-goal').value = s.goalWeight;
@@ -1074,7 +1076,7 @@ function showSuggest() {
   $('#suggest').innerHTML = suggestList.map((it, i) => {
     const meta = [it.cal != null ? `${fmt(it.cal)} cal` : '', it.p != null ? `P ${fmt1(it.p)}` : '', it.serving ? esc(it.serving) : '']
       .filter(Boolean).join(' · ');
-    return `<button type="button" class="sug" data-sug="${i}"><span class="sug-name">${esc(it.short || it.name)}</span><span class="sug-meta">${icon[it.src]} ${it.chain ? esc(it.chain) + ' · ' : ''}${meta}</span></button>`;
+    return `<button type="button" class="sug" data-sug="${i}"><span class="sug-name">${esc(it.short || it.name)}</span><span class="sug-meta">${it.src === 'rest' && it.chain ? placeIcon(it.chain) : icon[it.src]} ${it.chain ? esc(it.chain) + ' · ' : ''}${meta}</span></button>`;
   }).join('');
   $('#suggest').hidden = !suggestList.length;
 }
@@ -1545,7 +1547,21 @@ function eatenCounts() {
 
 /* ---- Where are you? Orders from one place's menu ---- */
 const SCHOOL = 'North Providence High School';
-const placeLabel = pl => pl === SCHOOL ? '🏫 North Providence High' : '🍔 ' + pl;
+const placeName = pl => pl === SCHOOL ? 'North Providence High' : pl;
+// Each restaurant's own logo (its site icon, via Google's public favicon service). Falls back to 🍔
+// when it can't load, e.g. offline.
+const PLACE_DOMAINS = {
+  'Chick-fil-A': 'chick-fil-a.com', "Dunkin'": 'dunkindonuts.com', "McDonald's": 'mcdonalds.com', 'Subway': 'subway.com',
+  "Wendy's": 'wendys.com', 'Tropical Smoothie Cafe': 'tropicalsmoothiecafe.com', 'Five Guys': 'fiveguys.com',
+  "Chili's": 'chilis.com', 'Burger King': 'bk.com', "Raising Cane's": 'raisingcanes.com', 'Chipotle': 'chipotle.com',
+};
+function placeIcon(pl) {
+  if (pl === SCHOOL) return '<span class="logo-emoji">🏫</span>';
+  const d = PLACE_DOMAINS[pl];
+  if (!d) return '<span class="logo-emoji">🍔</span>';
+  return `<img class="logo" src="https://www.google.com/s2/favicons?domain=${d}&amp;sz=64" alt="" loading="lazy" onerror="this.outerHTML='<span class=&quot;logo-emoji&quot;>🍔</span>'">`;
+}
+const placeHTML = pl => `${placeIcon(pl)} ${esc(placeName(pl))}`;
 let gapPlace = null; // null = anywhere
 function placeItems(place) {
   if (place === SCHOOL) return cafeteria.map(i => ({ ...i, short: i.name, name: i.name, src: 'school' }));
@@ -1615,7 +1631,7 @@ function placeGapPicks(rem, place, n = 6) {
     seen.add(key); uses[main] = (uses[main] || 0) + 1;
     const label = o.parts.length === 2 && o.parts[0] === o.parts[1] ? `2× ${o.parts[0].short}` : o.parts.map(i => i.short).join(' + ');
     const prefix = place === SCHOOL ? 'NPHS:' : place;
-    out.push({ name: `${prefix} ${label}`, ...o.tot, src: o.parts[0].src,
+    out.push({ name: `${prefix} ${label}`, ...o.tot, src: o.parts[0].src, chain: place,
       serving: o.parts.length === 1 ? o.parts[0].serving : '', why: o.had ? "⭐ You've ordered this before" : '' });
     if (out.length >= n) break;
   }
@@ -1642,7 +1658,7 @@ function localGapPicks(rem, n = 6) {
 }
 
 function gapItemHTML(i, attr) {
-  const tag = { fav: '⭐', scan: '📷', rest: '🍔', school: '🏫', ai: '✨' }[i.src] || '';
+  const tag = i.src === 'rest' && i.chain ? placeIcon(i.chain) : { fav: '⭐', scan: '📷', rest: '🍔', school: '🏫', ai: '✨' }[i.src] || '';
   const extra = i.portion ? `${esc(i.portion)} · ` : '';
   return `<button class="gap-item" type="button" ${attr}><b>${tag} ${esc(i.name)}</b>
     <small>${extra}${fmt(i.cal)} cal · P ${fmt1(i.p || 0)} · C ${fmt1(i.c || 0)} · F ${fmt1(i.f || 0)}</small>
@@ -1663,7 +1679,7 @@ function renderGapPicks() {
   const places = gapPlaces();
   $('#gap-places').innerHTML = [{ name: null }, ...places].map(pl =>
     `<button class="chip${pl.name === gapPlace ? ' on' : ''}" type="button" data-gap-place="${pl.name ? esc(pl.name) : ''}">` +
-    `${pl.name ? esc(placeLabel(pl.name)) : '🍽️ Anywhere'}</button>`).join('');
+    `${pl.name ? placeHTML(pl.name) : '🍽️ Anywhere'}</button>`).join('');
   $('#gap-local-title').textContent = gapPlace ? `Best orders at ${gapPlace === SCHOOL ? 'North Providence High' : gapPlace}` : 'From your foods';
   gapLocal = gapPlace ? placeGapPicks(rem, gapPlace) : localGapPicks(rem);
   $('#gap-local').innerHTML = gapLocal.length
@@ -1965,7 +1981,7 @@ function openPlacesPicker() {
 function renderPlacesPicker() {
   $('#pp-list').innerHTML = allPlaces().map(pl => {
     const n = pickOrder.indexOf(pl) + 1;
-    return `<button type="button" class="pp-item${n ? ' on' : ''}" data-pp="${esc(pl)}"><span>${esc(placeLabel(pl))}</span>${n ? `<b>${n}</b>` : ''}</button>`;
+    return `<button type="button" class="pp-item${n ? ' on' : ''}" data-pp="${esc(pl)}"><span>${placeHTML(pl)}</span>${n ? `<b>${n}</b>` : ''}</button>`;
   }).join('');
   $('#pp-save').textContent = pickOrder.length ? `Save ${pickOrder.length} place${pickOrder.length === 1 ? '' : 's'}` : 'Save';
 }
@@ -1986,7 +2002,7 @@ $('#pp-save').addEventListener('click', () => { closePlacesPicker(pickOrder); to
 $('#pp-skip').addEventListener('click', () => closePlacesPicker(state.places || []));
 function renderMyPlaces() {
   const mine = state.places || [];
-  $('#my-places').textContent = mine.length ? mine.map(p => p === SCHOOL ? 'North Providence High' : p).join(' · ') : 'None picked yet.';
+  $('#my-places').innerHTML = mine.length ? mine.map(placeHTML).join(' · ') : 'None picked yet.';
 }
 $('#edit-places').addEventListener('click', openPlacesPicker);
 
@@ -2032,7 +2048,7 @@ function openReport(ws, opts = {}) {
     `<div><span>${esc(f.name)}${f.n > 1 ? ` <b>×${f.n}</b>` : ''}</span><span>${fmt(f.cal)} cal · P${fmt(f.p)}</span></div>`).join('');
   $('#report-places-wrap').hidden = !r.places.length;
   $('#report-places').innerHTML = r.places.map(p =>
-    `<div><span>${esc(p.name)} <b>×${p.n}</b></span><span>${fmt(p.cal)} cal · P${fmt(p.p)}</span></div>`).join('');
+    `<div><span>${placeHTML(p.name)} <b>×${p.n}</b></span><span>${fmt(p.cal)} cal · P${fmt(p.p)}</span></div>`).join('');
   $('#report-tips').innerHTML = localTips(r).map(t =>
     `<div class="advice"><b>${t.icon} ${t.title}</b><p>${t.detail}</p></div>`).join('');
   const j = journey(ws);

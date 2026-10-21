@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v37'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v38'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -963,6 +963,7 @@ let servings = 1, perServing = null; // macros for ONE serving while a barcode i
 
 function resetScanState() {
   servings = 1; perServing = null;
+  estItems = null; $('#est-items').hidden = true;
   photoData = null;
   $('#photo-panel').hidden = true;
   $('#suggest').hidden = true;
@@ -1438,9 +1439,11 @@ const ESTIMATE_SCHEMA = {
     items: {
       type: 'array',
       items: {
-        type: 'object', additionalProperties: false, required: ['food', 'portion', 'cal', 'p', 'c', 'f'],
+        type: 'object', additionalProperties: false, required: ['food', 'portion', 'ref', 'qty', 'cal', 'p', 'c', 'f'],
         properties: {
           food: { type: 'string' }, portion: { type: 'string', description: 'Estimated amount, e.g. "6 oz" or "1 cup"' },
+          ref: { type: 'string', description: 'Id of the matching reference item (e.g. "R3"), or "" if none matches' },
+          qty: { type: 'number', description: 'How many of the reference serving this is (1 if ref is empty)' },
           cal: { type: 'number' }, p: { type: 'number' }, c: { type: 'number' }, f: { type: 'number' },
         },
       },
@@ -1458,7 +1461,89 @@ const ESTIMATE_SYSTEM = 'You estimate nutrition from meal photos or written desc
   'carbs and fat in grams for everything shown. Assume typical preparation, including visible oil, butter and sauces. ' +
   'If the user gives portions or ingredients in words, use them exactly and trust them over the photo; for a written ' +
   'description with no amount, assume one typical serving. If there is no food to estimate, ' +
-  'return zeros, set confidence to low, and say so in notes.';
+  'return zeros, set confidence to low, and say so in notes. ' +
+  'You may be given REFERENCE items with exact official numbers (restaurant menus, the school menu, foods the person ' +
+  'saved or scanned). When a food in the meal is one of those items (same restaurant and same item, or clearly the same ' +
+  'saved food), set ref to its id, qty to how many of that serving it is, and use its numbers times qty. Never use a ' +
+  'reference for a different food, never count one twice, and leave ref empty for anything else. List each food separately.';
+
+/* ---- Official numbers first: the app's own matches go with each estimate request ---- */
+const REF_STOP = new Set(('a an the and with of on in for to my some i had ate got oz g cup cups piece pieces slice slices ' +
+  'large small medium regular side order w plus extra no add').split(' '));
+let estRefs = {}; // id -> reference item for the current estimate
+function refCandidates(text, limit = 50) {
+  const n = norm(text);
+  const words = n.split(/[^a-z0-9]+/).filter(w => w.length > 2 && !REF_STOP.has(w));
+  const chains = chainList.filter(ch => ch.keys.some(k => k.length > 2 && new RegExp(`(^|\\W)${escRe(k)}(\\W|$)`).test(n))).map(c => c.name);
+  const school = /\b(school|cafeteria|nphs)\b/.test(n);
+  const pool = [
+    ...state.favorites.map(f => ({ ...f, src: 'fav' })),
+    ...Object.values(state.barcodes).map(b => ({ ...b, src: 'scan' })),
+    ...cafeteria.map(i => ({ ...i, src: 'school' })),
+    ...restaurants.map(i => ({ ...i, src: 'rest' })),
+  ].filter(i => i.name && i.cal != null);
+  const scored = [];
+  for (const i of pool) {
+    if (i.src === 'rest' && chains.length && !chains.includes(i.chain)) continue;
+    if (i.src === 'school' && !school) continue;
+    const toks = norm(i.short || i.name).split(/[^a-z0-9]+/);
+    let hit = 0;
+    for (const w of words) if (toks.some(t => t === w || (t.startsWith(w) && w.length > 3) || (w.startsWith(t) && t.length > 3))) hit++;
+    if (!words.length && i.src === 'fav') hit = 0.5 + Math.min(1, (i.uses || 0) / 10); // photo with no note: your usual foods
+    if (i.src === 'rest' && !chains.length) hit -= 1;   // a menu item only counts if its chain was named
+    if (hit <= 0) continue;
+    scored.push({ i, hit: hit + (i.src === 'fav' ? 0.3 : 0) });
+  }
+  scored.sort((a, b) => b.hit - a.hit);
+  const seen = new Set(), out = [];
+  for (const { i } of scored) {
+    const label = i.src === 'rest' ? `${i.chain}: ${i.short || i.name}` : i.src === 'school' ? `NPHS cafeteria: ${i.name}` : i.name;
+    if (seen.has(label.toLowerCase())) continue;
+    seen.add(label.toLowerCase());
+    out.push({ ...i, label });
+    if (out.length >= limit) break;
+  }
+  return out;
+}
+function refBlock(text) {
+  estRefs = {};
+  const refs = refCandidates(text);
+  if (!refs.length) return '';
+  return '\n\nREFERENCE items (official numbers per serving):\n' + refs.map((r, n) => {
+    const id = 'R' + (n + 1);
+    estRefs[id] = r;
+    return `${id}. ${r.label}${r.serving ? ` (${r.serving})` : ''}: ${fmt(r.cal)} cal, P${fmt1(r.p || 0)} C${fmt1(r.c || 0)} F${fmt1(r.f || 0)}`;
+  }).join('\n');
+}
+
+/* ---- Adjust each part of an estimate ---- */
+let estItems = null; // [{ food, portion, cal, p, c, f, mult, official }]
+const EST_STEP = 0.25;
+function showEstItems() {
+  if (!estItems || !estItems.length) { $('#est-items').hidden = true; return; }
+  $('#est-items').hidden = false;
+  $('#est-list').innerHTML = estItems.map((it, i) => {
+    const m = it.mult, x = k => (it[k] || 0) * m;
+    return `<div class="est-row${m === 0 ? ' off' : ''}">
+      <div class="est-info"><b>${esc(it.food)}</b>
+        <small>${it.official ? `<span class="est-off">✓ ${esc(it.official)}</span> · ` : `${esc(it.portion || '')} · `}${fmt(x('cal'))} cal · P ${fmt1(x('p'))}</small></div>
+      <div class="est-step"><button type="button" data-est="${i}" data-d="-1" aria-label="Less ${esc(it.food)}">−</button>
+        <span>${m === 0 ? 'none' : '×' + +m.toFixed(2)}</span>
+        <button type="button" data-est="${i}" data-d="1" aria-label="More ${esc(it.food)}">+</button></div>
+    </div>`;
+  }).join('');
+  const t = { cal: 0, p: 0, c: 0, f: 0 };
+  for (const it of estItems) for (const k in t) t[k] += (it[k] || 0) * it.mult;
+  IN.forEach(k => { $('#in-' + k).value = +t[k].toFixed(k === 'cal' ? 0 : 1); });
+  updateSaveLabel();
+}
+$('#est-list').addEventListener('click', ev => {
+  const b = ev.target.closest('[data-est]');
+  if (!b || !estItems) return;
+  const it = estItems[+b.dataset.est];
+  it.mult = Math.max(0, Math.min(5, Math.round((it.mult + EST_STEP * +b.dataset.d) * 100) / 100));
+  showEstItems();
+});
 
 // Calls go straight from this phone to Anthropic with the user's own key; there is no server in between.
 async function aiClient() {
@@ -1474,6 +1559,7 @@ async function estimatePhoto() {
   const btn = $('#photo-go');
   btn.disabled = true; btn.textContent = 'Estimating…';
   scanNote(fromPhoto ? '📸 Looking at your food… this takes a few seconds.' : '✍️ Working out the macros… this takes a few seconds.');
+  const refs = refBlock(note);
   try {
     const client = await aiClient();
     const res = await client.beta.messages.create({
@@ -1487,9 +1573,9 @@ async function estimatePhoto() {
         role: 'user',
         content: fromPhoto ? [
           { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: photoData } },
-          { type: 'text', text: note ? `Estimate the macros for this meal. Note from me: ${note}` : 'Estimate the macros for this meal.' },
+          { type: 'text', text: (note ? `Estimate the macros for this meal. Note from me: ${note}` : 'Estimate the macros for this meal.') + refs },
         ] : [
-          { type: 'text', text: `Estimate the macros for this meal: ${note}` },
+          { type: 'text', text: `Estimate the macros for this meal: ${note}${refs}` },
         ],
       }],
     });
@@ -1509,13 +1595,24 @@ function applyEstimate(est, fromPhoto) {
   const r = (v, d) => Math.round((+v || 0) * d) / d;
   $('#in-name').value = est.name || 'Photo meal';
   sheet.code = null;
-  perServing = { cal: r(est.total.cal, 1), p: r(est.total.p, 10), c: r(est.total.c, 10), f: r(est.total.f, 10) };
-  setServings(1);
-  $('#serving-row').hidden = false;
-  $('#serving-info').textContent = fromPhoto ? '1 serving = what is in the photo' : '1 serving = what you described';
+  // Matched items use the app's official numbers (times how many), not the AI's.
+  estItems = (est.items || []).map(i => {
+    const ref = i.ref && estRefs[i.ref];
+    const q = ref ? Math.max(0.25, +i.qty || 1) : 1;
+    if (ref) return { food: ref.src === 'rest' ? `${ref.chain} ${ref.short || ref.name}` : ref.name, portion: ref.serving || '',
+      cal: r(ref.cal * q, 1), p: r((ref.p || 0) * q, 10), c: r((ref.c || 0) * q, 10), f: r((ref.f || 0) * q, 10), mult: 1,
+      official: `${ref.src === 'rest' ? 'official' : ref.src === 'school' ? 'NPHS menu' : ref.src === 'scan' ? 'scanned' : 'favorite'}${q !== 1 ? ' ×' + q : ''}` };
+    return { food: i.food, portion: i.portion, cal: r(i.cal, 1), p: r(i.p, 10), c: r(i.c, 10), f: r(i.f, 10), mult: 1 };
+  });
+  perServing = null; servings = 1;
+  $('#serving-row').hidden = true;
   $('#photo-panel').hidden = true;
-  const items = (est.items || []).map(i => `${i.food} (${i.portion})`).join(' · ');
-  scanNote(`${fromPhoto ? '📸' : '✍️'} AI estimate, ${est.confidence} confidence: ${items}${est.notes ? '. ' + est.notes : ''} Check the numbers before logging.`);
+  if (estItems.length) showEstItems();
+  else IN.forEach(k => { $('#in-' + k).value = r(est.total[k], k === 'cal' ? 1 : 10); });
+  const official = estItems.filter(i => i.official).length;
+  scanNote(`${fromPhoto ? '📸' : '✍️'} AI estimate, ${est.confidence} confidence.` +
+    (official ? ` ${official} item${official === 1 ? '' : 's'} use official numbers ✓.` : '') +
+    `${est.notes ? ' ' + est.notes : ''} Adjust any portion below, then log it.`);
 }
 
 // Most specific first: key problems, billing, rate limits, then connection, then anything else from the API.

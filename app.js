@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v32'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v33'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -1072,7 +1072,7 @@ function suggestions(query) {
 let suggestList = [];
 function showSuggest() {
   suggestList = suggestions($('#in-name').value);
-  const icon = { fav: '⭐', scan: '📷', school: '🏫', rest: '🍔' };
+  const icon = { fav: '⭐', scan: '📷', school: '🏫', rest: '🥗' };
   $('#suggest').innerHTML = suggestList.map((it, i) => {
     const meta = [it.cal != null ? `${fmt(it.cal)} cal` : '', it.p != null ? `P ${fmt1(it.p)}` : '', it.serving ? esc(it.serving) : '']
       .filter(Boolean).join(' · ');
@@ -1098,7 +1098,7 @@ $('#suggest').addEventListener('click', ev => {
   setServings(1);
   $('#serving-row').hidden = false;
   $('#serving-info').textContent = it.serving ? `1 serving = ${it.serving}` : 'Per serving';
-  scanNote(it.src === 'school' ? '🏫 From the NPHS cafeteria menu' : it.src === 'rest' ? `🍔 From ${it.chain}'s official nutrition info${it.carbsEstimated ? ' (carbs estimated)' : ''}` : '');
+  scanNote(it.src === 'school' ? '🏫 From the NPHS cafeteria menu' : it.src === 'rest' ? `🥗 From ${it.chain}'s official nutrition info${it.carbsEstimated ? ' (carbs estimated)' : ''}` : '');
 });
 
 /* ================= Setup / macro calculator ================= */
@@ -1548,7 +1548,7 @@ function eatenCounts() {
 /* ---- Where are you? Orders from one place's menu ---- */
 const SCHOOL = 'North Providence High School';
 const placeName = pl => pl === SCHOOL ? 'North Providence High' : pl;
-// Each restaurant's own logo (its site icon, via Google's public favicon service). Falls back to 🍔
+// Each restaurant's own logo (its site icon, via Google's public favicon service). Falls back to 🥗
 // when it can't load, e.g. offline.
 const PLACE_DOMAINS = {
   'Chick-fil-A': 'chick-fil-a.com', "Dunkin'": 'dunkindonuts.com', "McDonald's": 'mcdonalds.com', 'Subway': 'subway.com',
@@ -1558,8 +1558,8 @@ const PLACE_DOMAINS = {
 function placeIcon(pl) {
   if (pl === SCHOOL) return '<span class="logo-emoji">🏫</span>';
   const d = PLACE_DOMAINS[pl];
-  if (!d) return '<span class="logo-emoji">🍔</span>';
-  return `<img class="logo" src="https://www.google.com/s2/favicons?domain=${d}&amp;sz=64" alt="" loading="lazy" onerror="this.outerHTML='<span class=&quot;logo-emoji&quot;>🍔</span>'">`;
+  if (!d) return '<span class="logo-emoji">🥗</span>';
+  return `<img class="logo" src="https://www.google.com/s2/favicons?domain=${d}&amp;sz=64" alt="" loading="lazy" onerror="this.outerHTML='<span class=&quot;logo-emoji&quot;>🥗</span>'">`;
 }
 const placeHTML = pl => `${placeIcon(pl)} ${esc(placeName(pl))}`;
 let gapPlace = null; // null = anywhere
@@ -1658,7 +1658,7 @@ function localGapPicks(rem, n = 6) {
 }
 
 function gapItemHTML(i, attr) {
-  const tag = i.src === 'rest' && i.chain ? placeIcon(i.chain) : { fav: '⭐', scan: '📷', rest: '🍔', school: '🏫', ai: '✨' }[i.src] || '';
+  const tag = i.src === 'rest' && i.chain ? placeIcon(i.chain) : { fav: '⭐', scan: '📷', rest: '🥗', school: '🏫', ai: '✨' }[i.src] || '';
   const extra = i.portion ? `${esc(i.portion)} · ` : '';
   return `<button class="gap-item" type="button" ${attr}><b>${tag} ${esc(i.name)}</b>
     <small>${extra}${fmt(i.cal)} cal · P ${fmt1(i.p || 0)} · C ${fmt1(i.c || 0)} · F ${fmt1(i.f || 0)}</small>
@@ -1998,7 +1998,7 @@ function closePlacesPicker(places) {
   $('#places-pick').hidden = true;
   render();
 }
-$('#pp-save').addEventListener('click', () => { closePlacesPicker(pickOrder); toast(pickOrder.length ? 'Your places are saved 🍔' : 'Saved'); });
+$('#pp-save').addEventListener('click', () => { closePlacesPicker(pickOrder); toast(pickOrder.length ? 'Your places are saved 🥗' : 'Saved'); });
 $('#pp-skip').addEventListener('click', () => closePlacesPicker(state.places || []));
 function renderMyPlaces() {
   const mine = state.places || [];

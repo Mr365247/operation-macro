@@ -38,10 +38,6 @@
       <div class="rings" id="rings"></div>
       <div id="status"></div>
       <button class="btn block gap-btn" type="button" id="gap-open" hidden>🎯 What should I eat?</button>
-      <div id="quick-wrap">
-        <h2 class="section-title">Quick log</h2>
-        <div class="chips" id="quick"></div>
-      </div>
       <h2 class="section-title">Today's log <span class="muted" id="swipe-hint">· swipe ← delete, → favorite</span></h2>
       <div class="list" id="log"></div>
     </section>
@@ -243,6 +239,10 @@
         <div class="meal-seg" id="meal-seg">
           <button type="button" data-meal="1">1</button><button type="button" data-meal="2">2</button><button type="button" data-meal="3">3</button><button type="button" data-meal="4">4</button><button type="button" data-meal="5">5</button>
         </div>
+      </div>
+      <div class="sheet-quick" id="sheet-quick" hidden>
+        <div class="sheet-quick-label">⭐ Quick log <span class="muted">· tap to add to this meal</span></div>
+        <div class="chips" id="sheet-quick-chips"></div>
       </div>
       <div class="capture-row" id="capture-row">
         <button class="btn scan-btn" type="button" id="scan-food">📷 Barcode</button>

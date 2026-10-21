@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v35'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v36'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -173,11 +173,11 @@ function upsertFavorite(data, id) {
   Object.assign(fav, { name: data.name, cal: data.cal, p: data.p, c: data.c, f: data.f });
   save();
 }
-function logFavorite(id) {
+function logFavorite(id, meal) {
   const fav = state.favorites.find(f => f.id === id);
   if (!fav) return;
   fav.uses = (fav.uses || 0) + 1;
-  const e = addEntry({ ...fav, meal: null });
+  const e = addEntry({ ...fav, meal: meal || null });
   toast(`Logged ${fav.name} · Meal ${e.meal}`, 'Undo', () => {
     fav.uses = Math.max(0, fav.uses - 1);
     const d = todayDay();
@@ -267,8 +267,6 @@ function renderToday() {
   $('#gap-open').hidden = !(calLeft > 0 && proLeft > 0);
 
   const favs = [...state.favorites].sort((a, b) => (b.uses || 0) - (a.uses || 0));
-  $('#quick-wrap').hidden = !favs.length;
-  $('#quick').innerHTML = favs.map(f => `<button class="chip" data-fav="${f.id}">+ ${esc(f.name)}</button>`).join('');
 
   const favNames = new Set(state.favorites.map(f => f.name.toLowerCase()));
   $('#log').innerHTML = mealGroups(has ? d.entries : []).map(({ meal, entries }) => {
@@ -670,6 +668,10 @@ function openSheet(mode, item, prefill, meal) {
   $('#backdrop').hidden = false;
   resetScanState();
   $('#capture-row').hidden = mode === 'entry';
+  // Quick log: your favorites, most used first, one tap into the selected meal.
+  const favs = mode === 'add' ? [...state.favorites].sort((a, b) => (b.uses || 0) - (a.uses || 0)) : [];
+  $('#sheet-quick').hidden = !favs.length;
+  $('#sheet-quick-chips').innerHTML = favs.map(f => `<button class="chip" type="button" data-quick="${f.id}">+ ${esc(f.name)}</button>`).join('');
   // Open with the keyboard down so Barcode / Photo / Describe are in view; they tap a box to type.
   if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
   $('#entry-form').scrollTop = 0;
@@ -678,6 +680,13 @@ function setSheetMeal(m) {
   if (sheet) sheet.meal = m || null;
   document.querySelectorAll('#meal-seg button').forEach(b => b.classList.toggle('on', +b.dataset.meal === m));
 }
+$('#sheet-quick-chips').addEventListener('click', ev => {
+  const b = ev.target.closest('[data-quick]');
+  if (!b) return;
+  const meal = sheet && sheet.meal;
+  closeSheet();
+  logFavorite(b.dataset.quick, meal);
+});
 $('#meal-seg').addEventListener('click', ev => {
   const b = ev.target.closest('button[data-meal]');
   if (b) setSheetMeal(+b.dataset.meal);

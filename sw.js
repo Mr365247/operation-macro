@@ -1,6 +1,6 @@
 // Offline cache for the app shell. Bump VERSION whenever you change a file
 // so phones pick up the new copy.
-const VERSION = 'opmacro-v38';
+const VERSION = 'opmacro-v39';
 const FILES = [
   './', './index.html', './style.css', './config.js', './app.js', './manifest.json',
   './icons/icon-192.png', './icons/icon-512.png', './icons/maskable-512.png', './icons/apple-touch-icon.png',

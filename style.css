@@ -536,3 +536,5 @@ input:focus { border-color: var(--pro); }
 .logo { width: 20px; height: 20px; border-radius: 5px; object-fit: contain; vertical-align: -4px; background: #fff; }
 .pp-item .logo { width: 24px; height: 24px; vertical-align: -6px; }
 .logo-emoji { display: inline-block; width: 20px; text-align: center; }
+
+.welcome-ver { position: absolute; left: 0; right: 0; bottom: calc(var(--safe-b) + 14px); margin: 0; text-align: center; font-size: 12px; color: var(--muted); opacity: .7; }

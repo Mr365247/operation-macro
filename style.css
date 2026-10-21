@@ -517,3 +517,17 @@ input:focus { border-color: var(--pro); }
 
 .place-chips .chip { min-height: 40px; padding: 6px 14px; font-size: 15px; }
 .chip.on { background: var(--good); border-color: var(--good); color: #06231a; }
+
+/* ---------- Where do you eat? ---------- */
+#places-pick { z-index: 46; }
+.pp-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 14px 0 16px; }
+.pp-item {
+  display: flex; align-items: center; justify-content: space-between; gap: 6px; text-align: left;
+  min-height: 52px; padding: 8px 12px; border-radius: 14px; font-weight: 700; font-size: 15px;
+  background: var(--card); border: 1.5px solid var(--line); color: var(--text);
+}
+.pp-item.on { border-color: var(--good); background: #12261e; }
+.pp-item b { flex: 0 0 26px; height: 26px; border-radius: 50%; background: var(--good); color: #06231a; display: grid; place-items: center; font-size: 14px; }
+.swipe-more { font-size: 12px; text-transform: none; letter-spacing: 0; float: right; }
+/* Fade on the right edge so it's clear the row scrolls. */
+.place-chips { -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }

@@ -117,6 +117,13 @@
         <button class="btn primary block" type="submit">Save settings</button>
       </form>
 
+      <div class="card">
+        <div class="card-head"><h3>🍔 My places</h3></div>
+        <p class="small" id="my-places"></p>
+        <p class="muted small">These show first under 🎯 What should I eat? → Where are you?</p>
+        <button class="btn block" type="button" id="edit-places">Edit my places</button>
+      </div>
+
       <div class="card" id="account-card" hidden>
         <div class="card-head"><h3>👤 Account</h3></div>
         <p class="small">Signed in as <b id="account-email"></b></p>
@@ -165,7 +172,7 @@
       <div class="grab"></div>
       <h2>What should I eat?</h2>
       <div class="gap-left" id="gap-left"></div>
-      <h3 class="section-title">Where are you?</h3>
+      <h3 class="section-title">Where are you? <span class="muted swipe-more">swipe for more →</span></h3>
       <div class="chips place-chips" id="gap-places"></div>
       <h3 class="section-title" id="gap-local-title">From your foods</h3>
       <div class="list" id="gap-local"></div>
@@ -300,6 +307,18 @@
       <p class="scan-note" id="signin-note" hidden></p>
       <p class="muted small">Your food logs and weigh-ins stay on this phone. Nobody else can see them.</p>
     </form>
+  </div>
+
+  <!-- Where do you eat? -->
+  <div class="setup" id="places-pick" hidden>
+    <div class="setup-inner">
+      <div class="brand">OPERATION MACRO</div>
+      <h2>Where do you eat?</h2>
+      <p class="muted small">Tap the places you go, <b>most-visited first</b>. They'll be at the front of 🎯 What should I eat? so you can find their menus fast. Tap again to remove. You can change this later in Settings.</p>
+      <div class="pp-list" id="pp-list"></div>
+      <button class="btn primary block big" type="button" id="pp-save">Save</button>
+      <button class="btn block" type="button" id="pp-skip">Skip for now</button>
+    </div>
   </div>
 
   <!-- Sunday weigh-in lock -->

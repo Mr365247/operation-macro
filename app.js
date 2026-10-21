@@ -54,7 +54,8 @@ function load() {
     barcodes: s.barcodes || {}, // barcode -> per-serving nutrition you've scanned or entered
     lastBackup: s.lastBackup || null,     // when you last saved a backup file
     backupSnooze: s.backupSnooze || null, // "Later" hides the reminder until this time
-    reports: s.reports || {},             // week start (Sunday) -> saved Claude coaching for that week
+    reports: s.reports || {},
+    places: Array.isArray(s.places) ? s.places : null, // places they eat, in their order (null = not asked yet)             // week start (Sunday) -> saved Claude coaching for that week
     profile: s.profile || null,           // age, sex, height, activity, goal from the setup
     needsSetup: fresh || !!s.needsSetup,  // brand-new phone: ask for their info before anything else
   };
@@ -1310,6 +1311,7 @@ let photoData = null; // base64 JPEG of the chosen photo
 
 function renderAiSettings() {
   if (typeof renderAccount === 'function') renderAccount();
+  if (typeof renderMyPlaces === 'function') renderMyPlaces();
   const key = getAiKey();
   $('#ai-status').textContent = key ? `✅ Key saved on this phone (…${key.slice(-4)})` : 'No key yet. Photo and Describe estimates are off.';
   $('#ai-remove').hidden = !key;
@@ -1542,13 +1544,15 @@ function eatenCounts() {
 }
 
 /* ---- Where are you? Orders from one place's menu ---- */
-const SCHOOL = 'School cafeteria';
+const SCHOOL = 'North Providence High School';
+const placeLabel = pl => pl === SCHOOL ? '🏫 North Providence High' : '🍔 ' + pl;
 let gapPlace = null; // null = anywhere
 function placeItems(place) {
   if (place === SCHOOL) return cafeteria.map(i => ({ ...i, short: i.name, name: i.name, src: 'school' }));
   return restaurants.filter(r => r.chain === place).map(i => ({ ...i, src: 'rest' }));
 }
-// Places in the order you go to them most (last 60 days), then everything else.
+const allPlaces = () => [...(cafeteria.length ? [SCHOOL] : []), ...chainList.map(c => c.name).sort((a, b) => a.localeCompare(b))];
+// Your places first (in the order you picked them), then the rest by how often you've been (last 60 days).
 function gapPlaces() {
   const visits = {};
   const since = shiftKey(today, -60);
@@ -1556,8 +1560,10 @@ function gapPlaces() {
     const pl = placeOf(baseName(e.name));
     if (pl) visits[pl] = (visits[pl] || 0) + 1;
   }
-  const all = [...(cafeteria.length ? [SCHOOL] : []), ...chainList.map(c => c.name)];
-  return all.sort((a, b) => (visits[b] || 0) - (visits[a] || 0) || a.localeCompare(b)).map(name => ({ name, visits: visits[name] || 0 }));
+  const all = allPlaces();
+  const mine = (state.places || []).filter(p => all.includes(p));
+  const rest = all.filter(p => !mine.includes(p)).sort((a, b) => (visits[b] || 0) - (visits[a] || 0) || a.localeCompare(b));
+  return [...mine, ...rest].map(name => ({ name, visits: visits[name] || 0, mine: mine.includes(name) }));
 }
 // Where you probably are: the place of your last log, if it was in the last 3 hours.
 function guessPlace() {
@@ -1608,7 +1614,7 @@ function placeGapPicks(rem, place, n = 6) {
     if (seen.has(key) || (uses[main] || 0) >= 2) continue;
     seen.add(key); uses[main] = (uses[main] || 0) + 1;
     const label = o.parts.length === 2 && o.parts[0] === o.parts[1] ? `2× ${o.parts[0].short}` : o.parts.map(i => i.short).join(' + ');
-    const prefix = place === SCHOOL ? 'School:' : place;
+    const prefix = place === SCHOOL ? 'NPHS:' : place;
     out.push({ name: `${prefix} ${label}`, ...o.tot, src: o.parts[0].src,
       serving: o.parts.length === 1 ? o.parts[0].serving : '', why: o.had ? "⭐ You've ordered this before" : '' });
     if (out.length >= n) break;
@@ -1657,8 +1663,8 @@ function renderGapPicks() {
   const places = gapPlaces();
   $('#gap-places').innerHTML = [{ name: null }, ...places].map(pl =>
     `<button class="chip${pl.name === gapPlace ? ' on' : ''}" type="button" data-gap-place="${pl.name ? esc(pl.name) : ''}">` +
-    `${pl.name ? (pl.name === SCHOOL ? '🏫 School' : '🍔 ' + esc(pl.name)) : '🍽️ Anywhere'}</button>`).join('');
-  $('#gap-local-title').textContent = gapPlace ? `Best orders at ${gapPlace === SCHOOL ? 'school' : gapPlace}` : 'From your foods';
+    `${pl.name ? esc(placeLabel(pl.name)) : '🍽️ Anywhere'}</button>`).join('');
+  $('#gap-local-title').textContent = gapPlace ? `Best orders at ${gapPlace === SCHOOL ? 'North Providence High' : gapPlace}` : 'From your foods';
   gapLocal = gapPlace ? placeGapPicks(rem, gapPlace) : localGapPicks(rem);
   $('#gap-local').innerHTML = gapLocal.length
     ? gapLocal.map((i, n) => gapItemHTML(i, `data-gap-local="${n}"`)).join('')
@@ -1669,7 +1675,7 @@ function renderGapPicks() {
   $('#gap-note').hidden = true;
   $('#gap-ai-btn').hidden = false;
   $('#gap-ai-btn').disabled = false;
-  $('#gap-ai-btn').textContent = getAiKey() ? (gapPlace ? `✨ Order ideas at ${gapPlace === SCHOOL ? 'school' : gapPlace}` : '✨ Get meal ideas')
+  $('#gap-ai-btn').textContent = getAiKey() ? (gapPlace ? `✨ Order ideas at ${gapPlace === SCHOOL ? 'North Providence High' : gapPlace}` : '✨ Get meal ideas')
     : '✨ Meal ideas (add your API key in Settings)';
   const sel = $('#gap-places .chip.on');
   if (sel) sel.scrollIntoView({ block: 'nearest', inline: 'center' });
@@ -1722,7 +1728,7 @@ async function gapIdeasFromClaude() {
       messages: [{ role: 'user', content:
         `Left for today: ${fmt(Math.max(0, rem.cal))} calories, ${fmt(Math.max(0, rem.p))} g protein, ` +
         `${fmt(Math.max(0, rem.c))} g carbs, ${fmt(Math.max(0, rem.f))} g fat.` +
-        (place ? `\nI'm at ${place === SCHOOL ? 'the school cafeteria' : place} right now. Build 3 to 4 orders using ONLY items ` +
+        (place ? `\nI'm at ${place === SCHOOL ? 'the North Providence High School cafeteria' : place} right now. Build 3 to 4 orders using ONLY items ` +
           `from this menu (one item or a combo; use the item names as written, joined with " + "), and use the menu's numbers. ` +
           `Prefer things marked [ordered before] when they fit.\nMenu:\n${menu || '(nothing on the menu fits)'}`
           : (usual ? ` Foods I eat often: ${usual}.` : '')) }],
@@ -1732,7 +1738,7 @@ async function gapIdeasFromClaude() {
     if (!block) throw new Error('empty');
     const out = JSON.parse(block.text);
     gapIdeas = (out.ideas || []).map(i => ({ ...i, src: 'ai',
-      name: place && !norm(i.name).startsWith(norm(place === SCHOOL ? 'School' : place)) ? `${place === SCHOOL ? 'School:' : place} ${i.name}` : i.name }));
+      name: place && !norm(i.name).startsWith(norm(place === SCHOOL ? 'NPHS' : place)) ? `${place === SCHOOL ? 'NPHS:' : place} ${i.name}` : i.name }));
     $('#gap-ai').innerHTML = gapIdeas.map((i, n) => gapItemHTML(i, `data-gap-ai="${n}"`)).join('');
     $('#gap-note').textContent = `✨ ${out.summary} Estimates; check them before logging.`;
     $('#gap-note').hidden = false;
@@ -1772,7 +1778,7 @@ $('#gap-sheet').addEventListener('click', ev => {
 function placeOf(name) {
   const n = norm(name);
   for (const ch of chainList) if (ch.keys.some(k => n === k || n.startsWith(k + ' '))) return ch.name;
-  if (n.startsWith('school ') || cafeteria.some(i => norm(i.name) === n)) return 'School cafeteria';
+  if (n.startsWith('school ') || n.startsWith('nphs ') || cafeteria.some(i => norm(i.name) === n)) return SCHOOL;
   return null;
 }
 const baseName = name => name.replace(/\s×[\d.]+$/, '');
@@ -1948,8 +1954,47 @@ function journey(ws) {
 
 // The week that just ended opens by itself the first time the app is opened after it
 // (Sunday, right after the weigh-in when the Sunday lock is on).
+/* ---- Where do you eat? (asked once, editable in Settings) ---- */
+let pickOrder = [];
+function openPlacesPicker() {
+  pickOrder = [...(state.places || [])];
+  renderPlacesPicker();
+  $('#places-pick').hidden = false;
+  $('#places-pick').scrollTop = 0;
+}
+function renderPlacesPicker() {
+  $('#pp-list').innerHTML = allPlaces().map(pl => {
+    const n = pickOrder.indexOf(pl) + 1;
+    return `<button type="button" class="pp-item${n ? ' on' : ''}" data-pp="${esc(pl)}"><span>${esc(placeLabel(pl))}</span>${n ? `<b>${n}</b>` : ''}</button>`;
+  }).join('');
+  $('#pp-save').textContent = pickOrder.length ? `Save ${pickOrder.length} place${pickOrder.length === 1 ? '' : 's'}` : 'Save';
+}
+$('#pp-list').addEventListener('click', ev => {
+  const b = ev.target.closest('[data-pp]');
+  if (!b) return;
+  const pl = b.dataset.pp, i = pickOrder.indexOf(pl);
+  if (i >= 0) pickOrder.splice(i, 1); else pickOrder.push(pl);
+  renderPlacesPicker();
+});
+function closePlacesPicker(places) {
+  state.places = places;
+  save();
+  $('#places-pick').hidden = true;
+  render();
+}
+$('#pp-save').addEventListener('click', () => { closePlacesPicker(pickOrder); toast(pickOrder.length ? 'Your places are saved 🍔' : 'Saved'); });
+$('#pp-skip').addEventListener('click', () => closePlacesPicker(state.places || []));
+function renderMyPlaces() {
+  const mine = state.places || [];
+  $('#my-places').textContent = mine.length ? mine.map(p => p === SCHOOL ? 'North Providence High' : p).join(' · ') : 'None picked yet.';
+}
+$('#edit-places').addEventListener('click', openPlacesPicker);
+
 function maybeAutoReport() {
   if (!menusLoaded || state.needsSetup || weighinDue() || !$('#report-backdrop').hidden) return;
+  if (!$('#places-pick').hidden) return;
+  // New profile: ask where they eat first (needs the menus loaded to list the places).
+  if (state.places === null && $('#setup').hidden) { openPlacesPicker(); return; }
   if (!$('#backdrop').hidden || !$('#setup') || !$('#setup').hidden) return;
   const ws = shiftKey(weekStart(today), -7);
   if ((state.reports[ws] || {}).seen || !weekStats(ws).logged.length) return;

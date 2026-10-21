@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v36'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v37'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -269,22 +269,53 @@ function renderToday() {
   const favs = [...state.favorites].sort((a, b) => (b.uses || 0) - (a.uses || 0));
 
   const favNames = new Set(state.favorites.map(f => f.name.toLowerCase()));
+  // Each meal is one card: a bar whose length is the meal's share of today's calories, split by
+  // where those calories came from (protein 4, carbs 4, fat 9 per gram). Tap to see the foods.
   $('#log').innerHTML = mealGroups(has ? d.entries : []).map(({ meal, entries }) => {
-    const sum = sumOf(entries);
-    const head = `<div class="meal-head">
-        <span class="meal-name">${meal ? 'Meal ' + meal : 'Unsorted'}</span>
-        <span class="meal-sum">${entries.length ? `${fmt(sum.cal)} cal · P ${fmt(sum.p)}` : ''}</span>
-        ${meal ? `<button class="meal-add" type="button" data-meal-add="${meal}" aria-label="Add food to Meal ${meal}">+</button>` : ''}
-      </div>`;
-    return `<div class="meal${entries.length ? '' : ' meal-empty'}">${head}${entries.map(e => {
+    const key = meal || 'other', open = openMeals.has(key) && entries.length;
+    const t = { cal: 0, p: 0, c: 0, f: 0 };
+    for (const e of entries) for (const m in t) t[m] += +e[m] || 0;
+    const add = meal ? `<button class="meal-add" type="button" data-meal-add="${meal}" aria-label="Add food to Meal ${meal}">+</button>` : '';
+    const name = meal ? 'Meal ' + meal : 'Unsorted';
+    if (!entries.length) {
+      return `<div class="meal-card meal-empty"><div class="meal-head"><span class="meal-name">${name}</span><span class="meal-sum">nothing yet</span>${add}</div></div>`;
+    }
+    const dayCal = Math.max(g.cal, 1);
+    const seg = [['p', 4, 'var(--pro)'], ['c', 4, 'var(--carb)'], ['f', 9, 'var(--fat)']]
+      .filter(([k]) => t[k] > 0)
+      .map(([k, kc, color]) => `<i style="width:${Math.min(100, (t[k] * kc / dayCal) * 100)}%;background:${color}"></i>`).join('');
+    const legend = [['p', 'P', 'var(--pro)'], ['c', 'C', 'var(--carb)'], ['f', 'F', 'var(--fat)']]
+      .filter(([k]) => t[k] > 0)
+      .map(([k, l, color]) => `<span><i class="dot" style="background:${color}"></i><b>${fmt(t[k])}</b> ${l}</span>`).join('');
+    const items = open ? `<div class="meal-items">${entries.map(e => {
       const isFav = favNames.has(e.name.toLowerCase());
       return `<div class="swipe" data-swipe="${e.id}">
           <div class="swipe-bg"><span class="swipe-fav">⭐ Favorite</span><span class="swipe-del">Delete 🗑</span></div>
-          ${entryHTML(isFav ? { ...e, name: '⭐ ' + e.name } : e, `data-entry="${e.id}"`).replace('class="entry"', 'class="entry swipe-move"')}
+          <button class="entry slim swipe-move" data-entry="${e.id}"><span class="entry-name">${isFav ? '⭐ ' : ''}${esc(e.name)}</span><span class="entry-macros"><b>${fmt(e.cal)}</b> cal · P ${fmt1(e.p)}</span></button>
         </div>`;
-    }).join('')}</div>`;
+    }).join('')}</div>` : '';
+    return `<div class="meal-card${open ? ' open' : ''}">
+      <div class="meal-head" data-meal-toggle="${key}">
+        <span class="meal-name">${name} <span class="chev">${open ? '▾' : '▸'}</span></span>
+        <span class="meal-sum">${entries.length} item${entries.length === 1 ? '' : 's'} · ${fmt(t.cal)} cal</span>${add}
+      </div>
+      <div class="meal-bar" data-meal-toggle="${key}">${seg}</div>
+      <div class="meal-legend" data-meal-toggle="${key}">${legend}<span class="meal-day"><b>${fmt(t.cal)}</b> cal · ${Math.round(t.cal / dayCal * 100)}% of day</span></div>
+      ${items}
+    </div>`;
   }).join('');
 }
+
+// Which meal cards are open (this visit only; they start closed).
+const openMeals = new Set();
+$('#log').addEventListener('click', ev => {
+  if (ev.target.closest('[data-meal-add]')) return;
+  const t = ev.target.closest('[data-meal-toggle]');
+  if (!t) return;
+  const k = t.dataset.mealToggle === 'other' ? 'other' : +t.dataset.mealToggle;
+  openMeals.has(k) ? openMeals.delete(k) : openMeals.add(k);
+  renderToday();
+});
 
 function renderFavs() {
   const favs = [...state.favorites].sort((a, b) => a.name.localeCompare(b.name));

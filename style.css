@@ -544,3 +544,23 @@ input:focus { border-color: var(--pro); }
 .sheet-quick-label { font-weight: 700; font-size: 14px; margin-bottom: 8px; }
 .sheet-quick-label .muted { font-weight: 500; }
 .sheet-quick .chips .chip { min-height: 42px; padding: 6px 14px; }
+
+/* ---------- Meal cards (split bar) ---------- */
+#log { gap: 10px; }
+.meal-card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 10px 12px 12px 14px; }
+.meal-card.meal-empty { padding-bottom: 10px; }
+.meal-card .meal-head { min-height: 40px; cursor: pointer; }
+.chev { color: var(--muted); font-size: 13px; }
+.meal-bar { display: flex; height: 12px; border-radius: 7px; overflow: hidden; background: var(--card2); margin-top: 6px; cursor: pointer; }
+.meal-bar i { display: block; height: 100%; }
+.meal-legend { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; font-size: 13px; color: var(--muted); margin-top: 7px; cursor: pointer; }
+.meal-legend b { color: var(--text); font-variant-numeric: tabular-nums; }
+.meal-legend .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
+.meal-day { margin-left: auto; }
+.meal-day b { color: var(--cal); }
+.meal-items { border-top: 1px solid var(--line); margin-top: 10px; padding-top: 4px; display: flex; flex-direction: column; }
+.entry.slim { display: flex; justify-content: space-between; align-items: center; gap: 10px; min-height: 44px; padding: 8px 2px;
+  background: var(--card); border: 0; border-radius: 0; border-bottom: 1px solid var(--line); }
+.meal-items .swipe:last-child .entry.slim { border-bottom: 0; }
+.entry.slim .entry-name { font-size: 15px; font-weight: 600; }
+.entry.slim .entry-macros { margin: 0; white-space: nowrap; font-size: 13px; }

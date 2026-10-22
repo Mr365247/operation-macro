@@ -1,0 +1,26 @@
+{
+ "041196910759": {
+  "status": 200,
+  "cors": "*",
+  "search": {
+   "totalHits": 0,
+   "foods": []
+  }
+ },
+ "028400090896": {
+  "status": 200,
+  "cors": "*",
+  "search": {
+   "totalHits": 0,
+   "foods": []
+  }
+ },
+ "049000028911": {
+  "status": 200,
+  "cors": "*",
+  "search": {
+   "totalHits": 0,
+   "foods": []
+  }
+ }
+}

@@ -1,20 +1,23 @@
-// Round 2: get real barcodes by name, then see which query form finds them by barcode.
+// Round 3: same as round 2 but never crashes; records HTTP status and errors.
 import { writeFileSync } from 'node:fs';
 const K = 'api_key=DEMO_KEY';
+const get = async url => { try { const r = await fetch(url); const t = await r.text(); let j = null; try { j = JSON.parse(t); } catch {} return { status: r.status, j, t: j ? '' : t.slice(0, 300) }; } catch (e) { return { status: 0, j: null, t: String(e) }; } };
 const out = { byName: {}, tries: [] };
-for (const q of ['Fairlife core power chocolate', 'Doritos nacho cheese', 'Chobani greek yogurt vanilla']) {
-  const r = await (await fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?query=${encodeURIComponent(q)}&dataType=Branded&pageSize=2&${K}`)).json();
-  out.byName[q] = (r.foods || []).map(f => ({ fdcId: f.fdcId, description: f.description, brandName: f.brandName, gtinUpc: f.gtinUpc, servingSize: f.servingSize, servingSizeUnit: f.servingSizeUnit, householdServingFullText: f.householdServingFullText, publishedDate: f.publishedDate,
-    nutrients: (f.foodNutrients || []).filter(n => [1003, 1004, 1005, 1008].includes(n.nutrientId)).map(n => [n.nutrientId, n.nutrientName, n.value, n.unitName]) }));
-}
-const sample = Object.values(out.byName).flat().find(f => f.gtinUpc);
-if (sample) {
-  const g = sample.gtinUpc, short = g.replace(/^0+/, '');
-  for (const q of [g, short, `gtinUpc:${g}`, `gtinUpc:"${g}"`, `"${g}"`]) {
-    const r = await (await fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?query=${encodeURIComponent(q)}&dataType=Branded&pageSize=3&${K}`)).json();
-    out.tries.push({ q, totalHits: r.totalHits, first: (r.foods || []).slice(0, 2).map(f => [f.fdcId, f.gtinUpc, f.description]) });
+try {
+  for (const q of ['Fairlife core power chocolate', 'Doritos nacho cheese', 'Chobani greek yogurt vanilla']) {
+    const r = await get(`https://api.nal.usda.gov/fdc/v1/foods/search?query=${encodeURIComponent(q)}&dataType=Branded&pageSize=2&${K}`);
+    out.byName[q] = { status: r.status, err: r.t, foods: ((r.j && r.j.foods) || []).map(f => ({ fdcId: f.fdcId, description: f.description, brandName: f.brandName, gtinUpc: f.gtinUpc, servingSize: f.servingSize, servingSizeUnit: f.servingSizeUnit, householdServingFullText: f.householdServingFullText, publishedDate: f.publishedDate,
+      nutrients: (f.foodNutrients || []).filter(n => [1003, 1004, 1005, 1008].includes(n.nutrientId)).map(n => [n.nutrientId, n.nutrientName, n.value, n.unitName]) })) };
   }
-  const d = await (await fetch(`https://api.nal.usda.gov/fdc/v1/food/${sample.fdcId}?${K}`)).json();
-  out.detail = { gtinUpc: d.gtinUpc, servingSize: d.servingSize, servingSizeUnit: d.servingSizeUnit, householdServingFullText: d.householdServingFullText, labelNutrients: d.labelNutrients };
-}
+  const sample = Object.values(out.byName).flatMap(x => x.foods).find(f => f.gtinUpc);
+  if (sample) {
+    const g = sample.gtinUpc, short = g.replace(/^0+/, '');
+    for (const q of [g, short, `gtinUpc:${g}`, `"${g}"`]) {
+      const r = await get(`https://api.nal.usda.gov/fdc/v1/foods/search?query=${encodeURIComponent(q)}&dataType=Branded&pageSize=3&${K}`);
+      out.tries.push({ q, status: r.status, totalHits: r.j && r.j.totalHits, first: ((r.j && r.j.foods) || []).slice(0, 2).map(f => [f.fdcId, f.gtinUpc, f.description]), err: r.t });
+    }
+    const d = await get(`https://api.nal.usda.gov/fdc/v1/food/${sample.fdcId}?${K}`);
+    out.detail = d.j ? { status: d.status, gtinUpc: d.j.gtinUpc, servingSize: d.j.servingSize, servingSizeUnit: d.j.servingSizeUnit, householdServingFullText: d.j.householdServingFullText, labelNutrients: d.j.labelNutrients } : { status: d.status, err: d.t };
+  }
+} catch (e) { out.crash = String(e.stack || e); }
 writeFileSync('probe/usda.json', JSON.stringify(out, null, 1));

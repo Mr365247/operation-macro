@@ -61,6 +61,8 @@ main { padding: 14px 16px calc(var(--tabs-h) + var(--safe-b) + 110px); max-width
 .ring.pro { --c: var(--pro); }
 .ring.carb { --c: var(--carb); }
 .ring.fat { --c: var(--fat); }
+/* Each ring box is outlined in its own color (red when over, green when protein's past target). */
+.ring { border: 2px solid var(--c); }
 .ring.over { --c: var(--over); border-color: var(--over); background: #2a1519; }
 .ring.over.pro { --c: var(--good); border-color: var(--good); background: #12261e; }
 .ring-box { position: relative; width: 100%; max-width: 150px; margin: 0 auto; aspect-ratio: 1; }

@@ -602,3 +602,5 @@ input:focus { border-color: var(--pro); }
   100% { background-position: 50% 85%, 0 0, 0 0, 0 0; box-shadow: 0 6px 30px rgba(255, 120, 30, .5), inset 0 0 28px rgba(255, 160, 60, .45); }
 }
 @media (prefers-reduced-motion: reduce) { .status.mission { animation: none; } }
+
+.label-btn { margin: -2px 0 12px; border-color: var(--pro); color: var(--pro); }

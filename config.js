@@ -2,4 +2,6 @@
 // invites.json, managed with scripts/invite.mjs) before anything else.
 window.OPMACRO_CONFIG = {
   inviteOnly: true,
+  // Free key from api.data.gov/signup for USDA barcode lookups (blank = shared demo key, ~30 lookups/hour).
+  usdaKey: '',
 };

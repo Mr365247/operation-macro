@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v39'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v40'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -921,8 +921,57 @@ $('#scan-manual').addEventListener('submit', ev => {
 
 // Your own saved barcodes first, then Open Food Facts.
 // Returns product info, null if not found, or throws if offline.
+// Barcodes: your saved numbers first, then USDA FoodData Central (manufacturer label data), then
+// Open Food Facts (crowd-edited, so least reliable).
+const FDC_URL = 'https://api.nal.usda.gov/fdc/v1/';
+const fdcKey = () => (window.OPMACRO_CONFIG || {}).usdaKey || 'DEMO_KEY';
+// The same product can be written as UPC-A (12), EAN-13 or GTIN-14 digits, with or without leading zeros.
+function gtinForms(code) {
+  const core = String(code).replace(/\D/g, '').replace(/^0+/, '');
+  return new Set([core, core.padStart(12, '0'), core.padStart(13, '0'), core.padStart(14, '0')]);
+}
+async function lookupUSDA(code) {
+  const want = gtinForms(code), core = [...want][0];
+  // USDA only finds the exact digits it stored (often 14 digits with leading zeros), so try each form.
+  const tries = [...new Set([String(code), core.padStart(14, '0'), core.padStart(12, '0'), core.padStart(13, '0')])];
+  let hits = [];
+  for (const q of tries) {
+    const res = await fetch(`${FDC_URL}foods/search?query=${encodeURIComponent(q)}&dataType=Branded&pageSize=10&api_key=${fdcKey()}`);
+    if (!res.ok) return null;
+    const j = await res.json().catch(() => null);
+    hits = ((j && j.foods) || []).filter(f => f.gtinUpc && [...gtinForms(f.gtinUpc)].some(g => want.has(g)));
+    if (hits.length) break;
+  }
+  if (!hits.length) return null;
+  hits.sort((a, b) => String(b.publishedDate || '').localeCompare(String(a.publishedDate || '')));
+  const f = hits[0];
+  // Per-serving label numbers come from the item's detail; otherwise scale its per-100 g values.
+  let label = null;
+  try { const d = await (await fetch(`${FDC_URL}food/${f.fdcId}?api_key=${fdcKey()}`)).json(); label = d && d.labelNutrients; } catch (e) { /* use per-100 g */ }
+  const lv = k => label && label[k] && isFinite(+label[k].value) ? +label[k].value : null;
+  let per = { cal: lv('calories'), p: lv('protein'), c: lv('carbohydrates'), f: lv('fat') };
+  if (per.cal == null && per.p == null) {
+    const unit = String(f.servingSizeUnit || '').toLowerCase();
+    const m = f.servingSize > 0 && /^(g|grm|ml|mlt)$/.test(unit) ? f.servingSize / 100 : null;
+    if (m == null) return null;
+    const n = id => { const x = (f.foodNutrients || []).find(v => v.nutrientId === id); return x && isFinite(+x.value) ? +x.value * m : null; };
+    per = { cal: n(1008), p: n(1003), c: n(1005), f: n(1004) };
+  }
+  if ([per.cal, per.p, per.c, per.f].every(v => v == null)) return null;
+  const titled = s => String(s || '').toLowerCase().replace(/\b\w/g, ch => ch.toUpperCase()).trim();
+  const brand = titled(f.brandName || f.brandOwner).replace(/-[A-Z]{1,3}$/i, '').trim(); // "Core Power-KO" -> "Core Power"
+  // USDA names repeat themselves ("Nacho Cheese, Nacho Cheese"): keep each part once.
+  let name = [...new Set(titled(f.description).split(/\s*,\s*/).filter(Boolean))].join(', ');
+  const firstWord = brand.split(' ')[0].toLowerCase();
+  if (brand && !name.toLowerCase().includes(firstWord)) name = `${brand} ${name}`;
+  const unit = String(f.servingSizeUnit || '').toLowerCase().replace(/^grm$/, 'g').replace(/^mlt$/, 'ml');
+  const serving = [f.householdServingFullText, f.servingSize ? `${+f.servingSize} ${unit}`.trim() : ''].filter(Boolean).join(' · ');
+  const r = (v, d) => v == null ? null : Math.round(v * d) / d;
+  return { code, source: 'usda', name: name || 'Scanned item', serving, cal: r(per.cal, 1), p: r(per.p, 10), c: r(per.c, 10), f: r(per.f, 10), hasNutrition: true };
+}
 async function lookupBarcode(code) {
   if (state.barcodes[code]) return { ...state.barcodes[code], code, source: 'saved' };
+  try { const u = await lookupUSDA(code); if (u) return u; } catch (e) { /* fall through to Open Food Facts */ }
   const res = await fetch(`${OFF_URL}${code}.json?fields=product_name,product_name_en,brands,serving_size,serving_quantity,nutriments`);
   const json = await res.json().catch(() => null);
   if (!json || json.status !== 1 || !json.product) return null;
@@ -967,6 +1016,7 @@ let servings = 1, perServing = null; // macros for ONE serving while a barcode i
 
 function resetScanState() {
   servings = 1; perServing = null;
+  $('#label-btn').hidden = true;
   estItems = null; $('#est-items').hidden = true;
   photoData = null;
   $('#photo-panel').hidden = true;
@@ -991,6 +1041,7 @@ function scanNote(text) { $('#scan-note').textContent = text; $('#scan-note').hi
 async function fillFromBarcode(code) {
   if (!sheet) return;
   sheet.code = code;
+  $('#label-btn').hidden = false;
   $('#serving-row').hidden = false;
   $('#serving-info').textContent = '';
   perServing = { cal: null, p: null, c: null, f: null };
@@ -1004,7 +1055,9 @@ async function fillFromBarcode(code) {
     sheet.serving = info.serving;
     setServings(1);
     $('#serving-info').textContent = info.serving ? `1 serving = ${info.serving}` : 'Per serving';
-    scanNote(info.source === 'saved' ? '✓ From your saved barcodes' : '✓ Found in Open Food Facts. Check it against the label.');
+    scanNote(info.source === 'saved' ? '✓ From your saved barcodes.'
+      : info.source === 'usda' ? '✓ From USDA FoodData Central (the maker\'s label data).'
+      : '⚠️ From Open Food Facts, which anyone can edit. If it doesn\'t match the package, snap the label below.');
   } else {
     if (info && info.name) $('#in-name').value = info.name;
     IN.forEach(k => { $('#in-' + k).value = ''; });
@@ -1421,6 +1474,63 @@ $('#photo-input').addEventListener('change', async () => {
     scanNote('Add a note about portions if you like, then tap Estimate.');
   } catch (e) { scanNote(e.message); }
 });
+/* ---- Read a Nutrition Facts label from a photo ---- */
+const LABEL_SCHEMA = {
+  type: 'object', additionalProperties: false, required: ['is_label', 'name', 'serving', 'cal', 'p', 'c', 'f'],
+  properties: {
+    is_label: { type: 'boolean', description: 'true only if a Nutrition Facts panel is readable' },
+    name: { type: 'string', description: 'Product name if visible on the package, else ""' },
+    serving: { type: 'string', description: 'Serving size exactly as printed, e.g. "1 bottle (340 mL)"' },
+    cal: { type: 'number' }, p: { type: 'number' }, c: { type: 'number' }, f: { type: 'number' },
+  },
+};
+$('#label-btn').addEventListener('click', () => {
+  if (!getAiKey()) { scanNote('📸 Add your Anthropic API key in Settings → Photo estimates to read labels.'); return; }
+  $('#label-input').value = '';
+  $('#label-input').click();
+});
+$('#label-input').addEventListener('change', async () => {
+  const file = $('#label-input').files[0];
+  $('#label-input').value = '';
+  if (!file || !sheet) return;
+  const code = sheet.code, btn = $('#label-btn');
+  btn.disabled = true; btn.textContent = 'Reading the label…';
+  scanNote('📸 Reading the Nutrition Facts label…');
+  try {
+    const data = (await photoToJpeg(file, 1600)).split(',')[1]; // larger, so small print stays sharp
+    const client = await aiClient();
+    const res = await client.beta.messages.create({
+      model: AI_MODEL, max_tokens: 4000,
+      betas: ['server-side-fallback-2026-07-01'], fallbacks: 'default',
+      output_config: { effort: 'low', format: { type: 'json_schema', schema: LABEL_SCHEMA } },
+      system: 'You read US Nutrition Facts labels. Copy the PER SERVING numbers exactly as printed: Calories, Protein, ' +
+        'Total Carbohydrate and Total Fat in grams. If the label has two columns, use the per-serving one, not per container. ' +
+        'Never estimate: if the panel is not readable, set is_label to false and the numbers to 0.',
+      messages: [{ role: 'user', content: [
+        { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data } },
+        { type: 'text', text: 'Read this Nutrition Facts label.' },
+      ] }],
+    });
+    if (res.stop_reason === 'refusal') throw new Error('refused');
+    const block = res.content.find(b => b.type === 'text');
+    if (!block) throw new Error('empty');
+    const l = JSON.parse(block.text);
+    if (!sheet || sheet.code !== code) return;
+    if (!l.is_label) { scanNote("Couldn't read a Nutrition Facts label in that photo. Try again closer, with good light."); return; }
+    perServing = { cal: Math.round(l.cal), p: l.p, c: l.c, f: l.f };
+    if (l.name && (!$('#in-name').value.trim() || $('#in-name').value === 'Scanned item')) $('#in-name').value = l.name;
+    sheet.serving = l.serving;
+    $('#serving-row').hidden = false;
+    setServings(1);
+    $('#serving-info').textContent = l.serving ? `1 serving = ${l.serving}` : 'Per serving';
+    scanNote('✓ Read from the label. These numbers are saved for this barcode when you log it.');
+  } catch (e) {
+    scanNote(aiErrorMessage(e));
+  } finally {
+    btn.disabled = false; btn.textContent = '📸 Snap the Nutrition Facts label';
+  }
+});
+
 // Describe a meal in words instead of a photo.
 $('#describe-food').addEventListener('click', () => {
   if (!getAiKey()) { scanNote('✍️ Add your Anthropic API key in Settings → Photo estimates to turn this on.'); return; }

@@ -351,12 +351,6 @@ input:focus { border-color: var(--pro); }
 .scan-bottom .btn.block { grid-column: 1 / -1; margin: 0; }
 
 /* ---------- Weekly backup reminder ---------- */
-.backup-banner {
-  display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
-  background: var(--card); border: 1px solid var(--pro); border-radius: 14px; padding: 12px 14px; margin-bottom: 12px;
-}
-.backup-actions { display: flex; gap: 8px; }
-.backup-actions .btn { min-height: 48px; }
 
 /* ---------- Food autocomplete ---------- */
 .suggest { margin: -4px 0 10px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--bg); }
@@ -620,3 +614,8 @@ input:focus { border-color: var(--pro); }
 .ex-sec .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; }
 .ex-row { margin: 6px 0; font-size: 15px; line-height: 1.45; color: var(--text); }
 .ex-tip { margin: 8px 0 2px; font-size: 14px; color: var(--muted); line-height: 1.4; }
+
+/* This week's quote on Today */
+.today-quote { margin: 0 0 12px; padding: 14px 16px; border-radius: var(--radius); background: linear-gradient(135deg, #1b2440, #1a1d26); border: 1px solid var(--line); }
+.today-quote blockquote { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.4; }
+.today-quote cite { display: block; margin-top: 6px; color: var(--pro); font-style: normal; font-weight: 800; font-size: 14px; }

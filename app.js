@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v42'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v43'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -258,8 +258,9 @@ function lastBackupText() {
 }
 
 function renderToday() {
-  $('#backup-banner').hidden = !backupDue();
-  $('#backup-when').textContent = lastBackupText();
+  // This week's quote (the one from your last weekly report) where the backup reminder used to be.
+  const q = weekQuote(shiftKey(weekStart(today), -7));
+  $('#today-quote').innerHTML = `<blockquote>“${esc(q.text)}”</blockquote><cite>— ${esc(q.by)}</cite>`;
   const t = totals(today), g = state.settings;
   $('#rings').innerHTML = MACROS.map(m => ringHTML(m, t[m.k], g[m.t])).join('');
 
@@ -1729,7 +1730,7 @@ function weighinDue() {
 function checkWeighin() {
   const due = weighinDue();
   $('#weighin').hidden = !due;
-  if (!due) { maybeAutoReport(); return; }
+  if (!due) { maybeAutoReport(); maybeBackupPopup(); return; }
   const last = sortedWeights().pop();
   $('#weighin-last').textContent = last ? `Last weigh-in: ${fmt1(last.w)} lbs (${dayLabel(last.k)})` : '';
 }
@@ -2309,7 +2310,7 @@ function showQuote(ws, talk) {
   $('#report-quote').innerHTML = `<blockquote>“${esc(q.text)}”</blockquote><cite>— ${esc(q.by)}</cite>` +
     (talk ? `<p class="pep">${esc(talk)}</p>` : '');
 }
-function closeReport() { $('#report-backdrop').hidden = true; reportWeek = null; }
+function closeReport() { $('#report-backdrop').hidden = true; reportWeek = null; setTimeout(maybeBackupPopup, 350); }
 
 function showCoach(out) {
   if (out.quote_id != null && QUOTES[out.quote_id] && reportWeek) {
@@ -2586,11 +2587,28 @@ function downloadFile(file) {
   setTimeout(() => URL.revokeObjectURL(a.href), 5000);
 }
 $('#export-btn').addEventListener('click', backupNow);
-$('#backup-now').addEventListener('click', backupNow);
+// The backup reminder pops up once, right after the Sunday weigh-in (after the weekly report if
+// that opens). With the Sunday lock off it comes up on Sundays; it also comes up if it's very overdue.
+let backupShown = false;
+function maybeBackupPopup() {
+  if (backupShown || !backupDue() || state.needsSetup || weighinDue()) return;
+  if (['#report-backdrop', '#places-pick', '#setup', '#backdrop', '#signin'].some(sel => $(sel) && !$(sel).hidden)) return;
+  const sunday = parseKey(today).getDay() === 0;
+  const afterWeighin = sunday && state.weights[today] != null;
+  const lockOff = state.settings.sundayLock === false && sunday;
+  const overdue = state.lastBackup && Date.now() - state.lastBackup > 9 * 86400000;
+  if (!(afterWeighin || lockOff || overdue)) return;
+  backupShown = true;
+  $('#backup-when').textContent = lastBackupText();
+  $('#backup-backdrop').hidden = false;
+}
+const closeBackup = () => { $('#backup-backdrop').hidden = true; };
+$('#backup-now').addEventListener('click', async () => { await backupNow(); if (!backupDue()) closeBackup(); });
 $('#backup-later').addEventListener('click', () => {
-  state.backupSnooze = Date.now() + 86400000; // ask again tomorrow
-  save(); render();
+  state.backupSnooze = Date.now() + 86400000; // don't ask again today
+  save(); closeBackup();
 });
+$('#backup-backdrop').addEventListener('click', ev => { if (ev.target.id === 'backup-backdrop') closeBackup(); });
 $('#import-file').addEventListener('change', async ev => {
   const file = ev.target.files[0];
   ev.target.value = '';

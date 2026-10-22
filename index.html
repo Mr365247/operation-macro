@@ -28,13 +28,7 @@
   <main>
     <!-- TODAY -->
     <section class="view" id="view-today">
-      <div class="backup-banner" id="backup-banner" hidden>
-        <div><b>💾 Weekly backup</b><div class="muted small" id="backup-when"></div></div>
-        <div class="backup-actions">
-          <button class="btn" type="button" id="backup-later">Later</button>
-          <button class="btn primary" type="button" id="backup-now">Back up</button>
-        </div>
-      </div>
+      <div class="today-quote" id="today-quote"></div>
       <div class="rings" id="rings"></div>
       <button class="explain-link" type="button" data-explain="">ⓘ How to read your numbers</button>
       <div id="status"></div>
@@ -178,6 +172,18 @@
       <button class="btn block" type="button" id="gap-ai-btn">✨ Get meal ideas</button>
       <p class="scan-note" id="gap-note" hidden></p>
       <button class="btn block" type="button" id="gap-close">Close</button>
+    </div>
+  </div>
+
+  <!-- Weekly backup (pops up after the Sunday weigh-in) -->
+  <div class="backdrop" id="backup-backdrop" hidden>
+    <div class="sheet">
+      <div class="grab"></div>
+      <h2>💾 Weekly backup</h2>
+      <p class="muted">Save a copy of your logs to Files or iCloud Drive, so nothing is lost if your phone resets or the app gets deleted.</p>
+      <p class="small" id="backup-when"></p>
+      <button class="btn primary block big" type="button" id="backup-now">Back up now</button>
+      <button class="btn block" type="button" id="backup-later">Later</button>
     </div>
   </div>
 

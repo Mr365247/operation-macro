@@ -484,7 +484,7 @@ input:focus { border-color: var(--pro); }
 
 .quote { margin: 16px 0 4px; padding: 14px 16px; border-radius: 14px; background: linear-gradient(135deg, #1b2440, #1a1d26); border: 1px solid var(--line); }
 .quote blockquote { margin: 0; font-size: 17px; font-weight: 700; line-height: 1.4; }
-.quote cite { display: block; margin-top: 8px; color: var(--pro); font-style: normal; font-weight: 800; }
+.quote cite { display: block; text-align: center; margin-top: 8px; color: var(--pro); font-style: normal; font-weight: 800; }
 .quote .pep { margin: 12px 0 0; padding-top: 12px; border-top: 1px solid var(--line); line-height: 1.5; }
 #report-journey { margin-bottom: 4px; }
 
@@ -618,4 +618,4 @@ input:focus { border-color: var(--pro); }
 /* This week's quote on Today */
 .today-quote { margin: 0 0 12px; padding: 14px 16px; border-radius: var(--radius); background: linear-gradient(135deg, #1b2440, #1a1d26); border: 1px solid var(--line); }
 .today-quote blockquote { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.4; }
-.today-quote cite { display: block; margin-top: 6px; color: var(--pro); font-style: normal; font-weight: 800; font-size: 14px; }
+.today-quote cite { display: block; text-align: center; margin-top: 8px; color: var(--pro); font-style: normal; font-weight: 800; font-size: 14px; }

@@ -611,8 +611,9 @@ input:focus { border-color: var(--pro); }
 .explain-link { display: block; margin: 8px auto 0; background: none; border: 0; color: var(--muted); font-size: 14px; font-weight: 600; padding: 6px 10px; }
 .ring { cursor: pointer; }
 .ex-good { background: #12261e; border: 1px solid var(--good); border-radius: 12px; padding: 10px 12px; font-size: 15px; line-height: 1.45; margin-bottom: 12px; }
-.ex-sec { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 10px 14px; margin-bottom: 10px; scroll-margin-top: 8px; }
-.ex-sec.focus { border-color: var(--pro); }
+.ex-sec { background: var(--bg); border: 2px solid var(--mc, var(--line)); border-radius: 14px; padding: 10px 14px; margin-bottom: 10px; scroll-margin-top: 8px; }
+.ex-sec.focus { box-shadow: 0 0 0 3px color-mix(in srgb, var(--mc) 35%, transparent); }
+.ex-sec h3 { color: var(--mc, var(--text)); }
 .ex-sec h3 { margin: 2px 0 6px; font-size: 17px; }
 .ex-sec .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; }
 .ex-row { margin: 6px 0; font-size: 15px; line-height: 1.45; color: var(--text); }

@@ -1016,7 +1016,6 @@ let servings = 1, perServing = null; // macros for ONE serving while a barcode i
 
 function resetScanState() {
   servings = 1; perServing = null;
-  $('#label-btn').hidden = true;
   estItems = null; $('#est-items').hidden = true;
   photoData = null;
   $('#photo-panel').hidden = true;
@@ -1041,7 +1040,6 @@ function scanNote(text) { $('#scan-note').textContent = text; $('#scan-note').hi
 async function fillFromBarcode(code) {
   if (!sheet) return;
   sheet.code = code;
-  $('#label-btn').hidden = false;
   $('#serving-row').hidden = false;
   $('#serving-info').textContent = '';
   perServing = { cal: null, p: null, c: null, f: null };
@@ -1057,14 +1055,14 @@ async function fillFromBarcode(code) {
     $('#serving-info').textContent = info.serving ? `1 serving = ${info.serving}` : 'Per serving';
     scanNote(info.source === 'saved' ? '✓ From your saved barcodes.'
       : info.source === 'usda' ? '✓ From USDA FoodData Central (the maker\'s label data).'
-      : '⚠️ From Open Food Facts, which anyone can edit. If it doesn\'t match the package, snap the label below.');
+      : '⚠️ From Open Food Facts, which anyone can edit. If it doesn\'t match the package, tap 📸 Photo and snap the Nutrition Facts label.');
   } else {
     if (info && info.name) $('#in-name').value = info.name;
     IN.forEach(k => { $('#in-' + k).value = ''; });
     $('#serving-info').textContent = 'Enter 1 serving from the label';
     scanNote(info === undefined
-      ? "Couldn't reach the food database. Enter it from the label and it'll be saved for next time."
-      : "No nutrition info for this one. Enter it from the label and it'll be saved for next time.");
+      ? "Couldn't reach the food database. Tap 📸 Photo and snap the Nutrition Facts label, or type it in. It'll be saved for next time."
+      : "No nutrition info for this one. Tap 📸 Photo and snap the Nutrition Facts label, or type it in. It'll be saved for next time.");
   }
 }
 
@@ -1443,7 +1441,7 @@ function loadImage(file) {
     img.src = URL.createObjectURL(file);
   });
 }
-async function photoToJpeg(file, max = 1024) {
+async function photoToJpeg(file, max = 1400) { // big enough to read label print
   const img = await loadImage(file);
   const scale = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
   const canvas = document.createElement('canvas');
@@ -1474,63 +1472,6 @@ $('#photo-input').addEventListener('change', async () => {
     scanNote('Add a note about portions if you like, then tap Estimate.');
   } catch (e) { scanNote(e.message); }
 });
-/* ---- Read a Nutrition Facts label from a photo ---- */
-const LABEL_SCHEMA = {
-  type: 'object', additionalProperties: false, required: ['is_label', 'name', 'serving', 'cal', 'p', 'c', 'f'],
-  properties: {
-    is_label: { type: 'boolean', description: 'true only if a Nutrition Facts panel is readable' },
-    name: { type: 'string', description: 'Product name if visible on the package, else ""' },
-    serving: { type: 'string', description: 'Serving size exactly as printed, e.g. "1 bottle (340 mL)"' },
-    cal: { type: 'number' }, p: { type: 'number' }, c: { type: 'number' }, f: { type: 'number' },
-  },
-};
-$('#label-btn').addEventListener('click', () => {
-  if (!getAiKey()) { scanNote('📸 Add your Anthropic API key in Settings → Photo estimates to read labels.'); return; }
-  $('#label-input').value = '';
-  $('#label-input').click();
-});
-$('#label-input').addEventListener('change', async () => {
-  const file = $('#label-input').files[0];
-  $('#label-input').value = '';
-  if (!file || !sheet) return;
-  const code = sheet.code, btn = $('#label-btn');
-  btn.disabled = true; btn.textContent = 'Reading the label…';
-  scanNote('📸 Reading the Nutrition Facts label…');
-  try {
-    const data = (await photoToJpeg(file, 1600)).split(',')[1]; // larger, so small print stays sharp
-    const client = await aiClient();
-    const res = await client.beta.messages.create({
-      model: AI_MODEL, max_tokens: 4000,
-      betas: ['server-side-fallback-2026-07-01'], fallbacks: 'default',
-      output_config: { effort: 'low', format: { type: 'json_schema', schema: LABEL_SCHEMA } },
-      system: 'You read US Nutrition Facts labels. Copy the PER SERVING numbers exactly as printed: Calories, Protein, ' +
-        'Total Carbohydrate and Total Fat in grams. If the label has two columns, use the per-serving one, not per container. ' +
-        'Never estimate: if the panel is not readable, set is_label to false and the numbers to 0.',
-      messages: [{ role: 'user', content: [
-        { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data } },
-        { type: 'text', text: 'Read this Nutrition Facts label.' },
-      ] }],
-    });
-    if (res.stop_reason === 'refusal') throw new Error('refused');
-    const block = res.content.find(b => b.type === 'text');
-    if (!block) throw new Error('empty');
-    const l = JSON.parse(block.text);
-    if (!sheet || sheet.code !== code) return;
-    if (!l.is_label) { scanNote("Couldn't read a Nutrition Facts label in that photo. Try again closer, with good light."); return; }
-    perServing = { cal: Math.round(l.cal), p: l.p, c: l.c, f: l.f };
-    if (l.name && (!$('#in-name').value.trim() || $('#in-name').value === 'Scanned item')) $('#in-name').value = l.name;
-    sheet.serving = l.serving;
-    $('#serving-row').hidden = false;
-    setServings(1);
-    $('#serving-info').textContent = l.serving ? `1 serving = ${l.serving}` : 'Per serving';
-    scanNote('✓ Read from the label. These numbers are saved for this barcode when you log it.');
-  } catch (e) {
-    scanNote(aiErrorMessage(e));
-  } finally {
-    btn.disabled = false; btn.textContent = '📸 Snap the Nutrition Facts label';
-  }
-});
-
 // Describe a meal in words instead of a photo.
 $('#describe-food').addEventListener('click', () => {
   if (!getAiKey()) { scanNote('✍️ Add your Anthropic API key in Settings → Photo estimates to turn this on.'); return; }
@@ -1547,8 +1488,10 @@ $('#photo-go').addEventListener('click', estimatePhoto);
 
 const ESTIMATE_SCHEMA = {
   type: 'object', additionalProperties: false,
-  required: ['name', 'items', 'total', 'confidence', 'notes'],
+  required: ['is_label', 'serving', 'name', 'items', 'total', 'confidence', 'notes'],
   properties: {
+    is_label: { type: 'boolean', description: 'true if the photo is a Nutrition Facts label rather than a meal' },
+    serving: { type: 'string', description: 'For a label: the serving size exactly as printed, e.g. "1 bottle (340 mL)". Otherwise ""' },
     name: { type: 'string', description: 'Short name for the meal, e.g. "Grilled chicken, rice and broccoli"' },
     items: {
       type: 'array',
@@ -1579,7 +1522,10 @@ const ESTIMATE_SYSTEM = 'You estimate nutrition from meal photos or written desc
   'You may be given REFERENCE items with exact official numbers (restaurant menus, the school menu, foods the person ' +
   'saved or scanned). When a food in the meal is one of those items (same restaurant and same item, or clearly the same ' +
   'saved food), set ref to its id, qty to how many of that serving it is, and use its numbers times qty. Never use a ' +
-  'reference for a different food, never count one twice, and leave ref empty for anything else. List each food separately.';
+  'reference for a different food, never count one twice, and leave ref empty for anything else. List each food separately. ' +
+  'If the photo is a Nutrition Facts label instead of a meal, set is_label to true and copy the PER SERVING numbers exactly as ' +
+  'printed (Calories, Protein, Total Carbohydrate, Total Fat; use the per-serving column, not per container) into total and ' +
+  'one item, put the serving size as printed in serving and the product name in name, set confidence to high, and never estimate.';
 
 /* ---- Official numbers first: the app's own matches go with each estimate request ---- */
 const REF_STOP = new Set(('a an the and with of on in for to my some i had ate got oz g cup cups piece pieces slice slices ' +
@@ -1707,6 +1653,19 @@ async function estimatePhoto() {
 function applyEstimate(est, fromPhoto) {
   if (!sheet) return; // form was closed while waiting
   const r = (v, d) => Math.round((+v || 0) * d) / d;
+  if (est.is_label) {
+    // A Nutrition Facts label: exact per-serving numbers, kept with the scanned barcode if there is one.
+    if (est.name && (!$('#in-name').value.trim() || $('#in-name').value === 'Scanned item')) $('#in-name').value = est.name;
+    estItems = null; $('#est-items').hidden = true;
+    $('#photo-panel').hidden = true;
+    perServing = { cal: r(est.total.cal, 1), p: r(est.total.p, 10), c: r(est.total.c, 10), f: r(est.total.f, 10) };
+    sheet.serving = est.serving || '';
+    $('#serving-row').hidden = false;
+    setServings(1);
+    $('#serving-info').textContent = est.serving ? `1 serving = ${est.serving}` : 'Per serving';
+    scanNote('✓ Read from the Nutrition Facts label.' + (sheet.code ? ' Saved for this barcode when you log it.' : ''));
+    return;
+  }
   $('#in-name').value = est.name || 'Photo meal';
   sheet.code = null;
   // Matched items use the app's official numbers (times how many), not the AI's.

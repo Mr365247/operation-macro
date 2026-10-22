@@ -603,4 +603,3 @@ input:focus { border-color: var(--pro); }
 }
 @media (prefers-reduced-motion: reduce) { .status.mission { animation: none; } }
 
-.label-btn { margin: -2px 0 12px; border-color: var(--pro); color: var(--pro); }

@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v44'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v45'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -939,14 +939,25 @@ $('#scan-manual').addEventListener('submit', ev => {
 const FDC_URL = 'https://api.nal.usda.gov/fdc/v1/';
 const fdcKey = () => (window.OPMACRO_CONFIG || {}).usdaKey || 'DEMO_KEY';
 // The same product can be written as UPC-A (12), EAN-13 or GTIN-14 digits, with or without leading zeros.
+// Short 8-digit UPC-E codes (small packages) are a squeezed UPC-A; expand them so databases can match.
+function upcEtoA(e) {
+  if (!/^[01]\d{7}$/.test(e)) return null;
+  const [ns, x1, x2, x3, x4, x5, x6, ck] = e;
+  const body = x6 <= '2' ? `${x1}${x2}${x6}0000${x3}${x4}${x5}`
+    : x6 === '3' ? `${x1}${x2}${x3}00000${x4}${x5}`
+    : x6 === '4' ? `${x1}${x2}${x3}${x4}00000${x5}`
+    : `${x1}${x2}${x3}${x4}${x5}0000${x6}`;
+  return ns + body + ck;
+}
 function gtinForms(code) {
+  code = upcEtoA(String(code)) || String(code);
   const core = String(code).replace(/\D/g, '').replace(/^0+/, '');
   return new Set([core, core.padStart(12, '0'), core.padStart(13, '0'), core.padStart(14, '0')]);
 }
 async function lookupUSDA(code) {
   const want = gtinForms(code), core = [...want][0];
   // USDA only finds the exact digits it stored (often 14 digits with leading zeros), so try each form.
-  const tries = [...new Set([String(code), core.padStart(14, '0'), core.padStart(12, '0'), core.padStart(13, '0')])];
+  const tries = [...new Set([upcEtoA(String(code)) || String(code), core.padStart(14, '0'), core.padStart(12, '0'), core.padStart(13, '0')])];
   let hits = [];
   for (const q of tries) {
     const res = await fetch(`${FDC_URL}foods/search?query=${encodeURIComponent(q)}&dataType=Branded&pageSize=10&api_key=${fdcKey()}`);
@@ -982,9 +993,13 @@ async function lookupUSDA(code) {
   const r = (v, d) => v == null ? null : Math.round(v * d) / d;
   return { code, source: 'usda', name: name || 'Scanned item', serving, cal: r(per.cal, 1), p: r(per.p, 10), c: r(per.c, 10), f: r(per.f, 10), hasNutrition: true };
 }
+// Saved numbers you can trust (your label photo, your own edits, or USDA) win. Anything saved from
+// Open Food Facts, or saved before the app tracked where numbers came from, gets checked against USDA.
 async function lookupBarcode(code) {
-  if (state.barcodes[code]) return { ...state.barcodes[code], code, source: 'saved' };
-  try { const u = await lookupUSDA(code); if (u) return u; } catch (e) { /* fall through to Open Food Facts */ }
+  const saved = state.barcodes[code];
+  if (saved && ['label', 'edited', 'usda'].includes(saved.src)) return { ...saved, code, source: 'saved' };
+  try { const u = await lookupUSDA(code); if (u) return u; } catch (e) { /* fall through */ }
+  if (saved) return { ...saved, code, source: 'saved' };
   const res = await fetch(`${OFF_URL}${code}.json?fields=product_name,product_name_en,brands,serving_size,serving_quantity,nutriments`);
   const json = await res.json().catch(() => null);
   if (!json || json.status !== 1 || !json.product) return null;
@@ -1020,7 +1035,11 @@ function fromOpenFoodFacts(p, code) {
 function rememberBarcode(code, data) {
   const prev = state.barcodes[code] || {};
   const per = k => Math.round(((+data[k] || 0) / servings) * 10) / 10;
-  state.barcodes[code] = { name: data.name, serving: (sheet && sheet.serving) || prev.serving || '', cal: per('cal'), p: per('p'), c: per('c'), f: per('f') };
+  // Where these numbers came from: a label photo, your own edits, or the database as-is.
+  const looked = (sheet && sheet.lookup) || {};
+  const changed = ['cal', 'p', 'c', 'f'].some(k => looked[k] == null || Math.abs(per(k) - looked[k]) > (k === 'cal' ? 1.5 : 0.15));
+  const src = sheet && sheet.lookupSrc === 'label' ? 'label' : changed ? 'edited' : (looked.src || prev.src || 'off');
+  state.barcodes[code] = { name: data.name, serving: (sheet && sheet.serving) || prev.serving || '', cal: per('cal'), p: per('p'), c: per('c'), f: per('f'), src };
   save();
 }
 
@@ -1064,9 +1083,12 @@ async function fillFromBarcode(code) {
     $('#in-name').value = info.name;
     perServing = { cal: info.cal, p: info.p, c: info.c, f: info.f };
     sheet.serving = info.serving;
+    sheet.lookupSrc = info.source === 'saved' ? info.src : info.source;
+    sheet.lookup = { cal: info.cal, p: info.p, c: info.c, f: info.f, src: sheet.lookupSrc };
     setServings(1);
     $('#serving-info').textContent = info.serving ? `1 serving = ${info.serving}` : 'Per serving';
-    scanNote(info.source === 'saved' ? '✓ From your saved barcodes.'
+    scanNote(info.source === 'saved' ? ({ label: '✓ From your label photo of this product.', edited: '✓ Your corrected numbers for this product.',
+        usda: '✓ From USDA FoodData Central (saved).' }[info.src] || '⚠️ Saved from Open Food Facts, which anyone can edit. If it doesn\'t match the package, tap 📸 Photo and snap the Nutrition Facts label.')
       : info.source === 'usda' ? '✓ From USDA FoodData Central (the maker\'s label data).'
       : '⚠️ From Open Food Facts, which anyone can edit. If it doesn\'t match the package, tap 📸 Photo and snap the Nutrition Facts label.');
   } else {
@@ -1673,6 +1695,7 @@ function applyEstimate(est, fromPhoto) {
     $('#photo-panel').hidden = true;
     perServing = { cal: r(est.total.cal, 1), p: r(est.total.p, 10), c: r(est.total.c, 10), f: r(est.total.f, 10) };
     sheet.serving = est.serving || '';
+    sheet.lookupSrc = 'label';
     $('#serving-row').hidden = false;
     setServings(1);
     $('#serving-info').textContent = est.serving ? `1 serving = ${est.serving}` : 'Per serving';

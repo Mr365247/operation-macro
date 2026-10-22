@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v40'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v41'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -84,6 +84,14 @@ function totals(k) {
   const d = state.days[k];
   if (d) for (const e of d.entries) for (const m in t) t[m] += +e[m] || 0;
   return t;
+}
+// Way under on calories backfires (hunger, low energy, lost muscle), so those days get flagged.
+// Teenagers are still growing, so their line is closer to the target.
+const isTeen = () => !!(state.profile && +state.profile.age > 0 && +state.profile.age < 18);
+const lowLine = () => (isTeen() ? 0.85 : 0.75);
+function tooLow(k) {
+  const d = state.days[k];
+  return !!(d && d.entries.length) && totals(k).cal < targetsFor(k).cal * lowLine();
 }
 function isHit(k) {
   const d = state.days[k];
@@ -211,7 +219,7 @@ function ringHTML(m, eaten, target) {
   const frac = over ? 1 : target > 0 ? Math.max(0, left / target) : 0;
   const n = fmt(Math.abs(left));
   return `
-    <div class="ring ${m.cls} ${over ? 'over' : ''}">
+    <div class="ring ${m.cls} ${over ? 'over' : ''}" data-explain="${m.k}" role="button" aria-label="What ${m.label.toLowerCase()} means">
       <div class="ring-box">
         <svg viewBox="0 0 100 100" aria-hidden="true">
           <circle class="track" cx="50" cy="50" r="${R}"/>
@@ -259,7 +267,9 @@ function renderToday() {
   const has = d && d.entries.length;
   const proLeft = g.protein - t.p, calLeft = g.cal - t.cal;
   let status;
-  if (isHit(today)) status = '<div class="status good">🎖️ Mission accomplished — protein hit, calories in check.</div>';
+  if (isHit(today) && tooLow(today)) status = `<div class="status low">🎖️ Protein hit! But you're still <b>${fmt(calLeft)} calories under</b>. ` +
+    `Eat a real meal: going this low backfires. <button class="link-btn" type="button" data-explain="cal">Why?</button></div>`;
+  else if (isHit(today)) status = '<div class="status good">🎖️ Mission accomplished — protein hit, calories in check.</div>';
   else if (calLeft < 0) status = `<div class="status bad">🚨 ${fmt(-calLeft)} calories over target.</div>`;
   // Today's mission: calories you have left and protein still to get, with the target in between.
   else status = `<div class="status mission">
@@ -375,9 +385,10 @@ function renderHistory() {
 
 function dayHTML(k) {
   const d = state.days[k], t = totals(k), g = targetsFor(k), hit = isHit(k);
-  const badge = hit ? '<span class="badge hit">🎖️ HIT</span>'
+  const low = k !== today && tooLow(k);
+  const badge = (hit ? '<span class="badge hit">🎖️ HIT</span>'
     : k === today ? '<span class="badge">IN PROGRESS</span>'
-    : '<span class="badge miss">✗ MISSED</span>';
+    : '<span class="badge miss">✗ MISSED</span>') + (low ? ' <span class="badge low">⚠️ TOO LOW</span>' : '');
   const bars = MACROS.map(m => {
     const eaten = t[m.k], target = g[m.t], over = eaten > target;
     const w = target > 0 ? Math.min(100, (eaten / target) * 100) : 0;
@@ -429,7 +440,8 @@ function weekStats(ws) {
   const wEnd = weightOnOrBefore(end), wStart = weightOnOrBefore(shiftKey(ws, 0));
   const change = wEnd && wStart && wEnd.k !== wStart.k ? wEnd.w - wStart.w : null;
   const done = shiftKey(ws, 6) < today;
-  return { ws, days, logged, avg, g, hits: logged.filter(isHit).length, over, short, wEnd, wStart, change, done };
+  const low = logged.filter(k => k !== today && tooLow(k));
+  return { ws, days, logged, avg, g, hits: logged.filter(isHit).length, over, short, low, wEnd, wStart, change, done };
 }
 function weekHTML(ws, open) {
   const st = weekStats(ws);
@@ -2060,6 +2072,11 @@ function localTips(r) {
       detail: dense.length ? `Your best protein-per-calorie foods this week were ${list(dense)}. Lean on them earlier in the day.`
         : 'Add a lean protein (chicken, egg whites, Greek yogurt, a shake) to each meal.' });
   }
+  if (r.low.length) {
+    tips.push({ icon: '📉', title: `Way under calories on ${r.low.length} day${r.low.length === 1 ? '' : 's'}`,
+      detail: 'Eating far below your target backfires: more hunger, less energy, and lost muscle instead of fat.' +
+        (isTeen() ? ' You\'re still growing, so fuel matters even more.' : '') + ' Aim to land within about 300 calories of your target.' });
+  }
   if (r.over.length >= 2) {
     const big = {};
     for (const e of r.entries) if (r.over.includes(e.day)) big[baseName(e.name)] = (big[baseName(e.name)] || 0) + (+e.cal || 0);
@@ -2242,7 +2259,7 @@ function openReport(ws, opts = {}) {
     statHTML(toGo == null ? '—' : toGo > 0 ? fmt1(toGo) : '🎯', 'To go') +
     statHTML(`${r.hits}/${r.logged.length}`, 'Days hit') +
     statHTML(r.over.length, 'Over cal') +
-    statHTML('🔥 ' + currentStreak(), 'Streak');
+    statHTML(r.low.length, 'Too low');
   $('#report-strip').innerHTML = r.days.map(k => {
     const has = r.logged.includes(k), cls = !has ? (k > today ? 'future' : 'none') : isHit(k) ? 'hit' : 'miss';
     const letter = parseKey(k).toLocaleDateString(undefined, { weekday: 'short' }).slice(0, 2);
@@ -2344,7 +2361,7 @@ async function coachFromClaude() {
     const label = parseKey(k).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
     if (!d || !d.entries.length) return `${label}: not logged`;
     const t = totals(k);
-    return `${label}: ${fmt(t.cal)} cal, P${fmt(t.p)} C${fmt(t.c)} F${fmt(t.f)}${isHit(k) ? ' (hit)' : ''}`;
+    return `${label}: ${fmt(t.cal)} cal, P${fmt(t.p)} C${fmt(t.c)} F${fmt(t.f)}${isHit(k) ? ' (hit)' : ''}${tooLow(k) ? ' (way under calories)' : ''}`;
   }).join('\n');
   const foods = [...r.foods].sort((a, b) => b.cal - a.cal).slice(0, 40).map(f =>
     `${f.name}${f.place ? ` [${f.place}]` : ''} ×${f.n}: ${fmt(f.cal / f.n)} cal, P${fmt1(f.p / f.n)} C${fmt1(f.c / f.n)} F${fmt1(f.f / f.n)} each`).join('\n');
@@ -2395,6 +2412,18 @@ async function coachFromClaude() {
 $('#report-close').addEventListener('click', closeReport);
 $('#report-backdrop').addEventListener('click', ev => { if (ev.target.id === 'report-backdrop') closeReport(); });
 $('#report-ai-btn').addEventListener('click', coachFromClaude);
+
+/* ================= How to read your numbers ================= */
+function openExplain(which) {
+  $('#explain-teen').hidden = !isTeen();
+  $('#explain-low').textContent = `${Math.round((1 - lowLine()) * 100)}%`;
+  $('#explain-backdrop').hidden = false;
+  const target = which && $('#ex-' + which);
+  document.querySelectorAll('.ex-sec').forEach(el => el.classList.toggle('focus', el === target));
+  if (target) target.scrollIntoView({ block: 'start' }); else $('#explain-sheet').scrollTop = 0;
+}
+$('#explain-close').addEventListener('click', () => { $('#explain-backdrop').hidden = true; });
+$('#explain-backdrop').addEventListener('click', ev => { if (ev.target.id === 'explain-backdrop') $('#explain-backdrop').hidden = true; });
 
 /* ================= HOORAH ================= */
 
@@ -2476,6 +2505,8 @@ document.querySelector('.tabs').addEventListener('click', ev => {
 $('#fab').addEventListener('click', () => openSheet(view === 'favs' ? 'fav' : 'add'));
 
 document.addEventListener('click', ev => {
+  const ex = ev.target.closest('[data-explain]');
+  if (ex) { openExplain(ex.dataset.explain); return; }
   const rep = ev.target.closest('[data-report]');
   if (rep) { openReport(rep.dataset.report); return; }
   const add = ev.target.closest('[data-meal-add]');

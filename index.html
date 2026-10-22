@@ -36,6 +36,7 @@
         </div>
       </div>
       <div class="rings" id="rings"></div>
+      <button class="explain-link" type="button" data-explain="">ⓘ How to read your numbers</button>
       <div id="status"></div>
       <button class="btn block gap-btn" type="button" id="gap-open" hidden>🎯 What should I eat?</button>
       <h2 class="section-title">Today's log <span class="muted" id="swipe-hint">· swipe ← delete, → favorite</span></h2>
@@ -177,6 +178,37 @@
       <button class="btn block" type="button" id="gap-ai-btn">✨ Get meal ideas</button>
       <p class="scan-note" id="gap-note" hidden></p>
       <button class="btn block" type="button" id="gap-close">Close</button>
+    </div>
+  </div>
+
+  <!-- How to read your numbers -->
+  <div class="backdrop" id="explain-backdrop" hidden>
+    <div class="sheet" id="explain-sheet">
+      <div class="grab"></div>
+      <h2>How to read your numbers</h2>
+      <div class="ex-good"><b>A good day =</b> protein hit ✅ + calories at or a little under (0–300) ✅. Carbs and fat can move around inside that.</div>
+
+      <div class="ex-sec" id="ex-p"><h3><i class="dot" style="background:var(--pro)"></i> Protein: the must</h3>
+        <p class="ex-row"><b>❌ Under:</b> fix this one first. When you eat less, protein protects your muscle, so the weight you lose is fat, not muscle. It also keeps you full.</p>
+        <p class="ex-row"><b>👍 Over:</b> fine for most people.</p>
+        <p class="ex-tip">Goal: hit it every day, or get within about 10%.</p></div>
+
+      <div class="ex-sec" id="ex-cal"><h3><i class="dot" style="background:var(--cal)"></i> Calories</h3>
+        <p class="ex-row"><b>✅ A little under:</b> that's how you lose fat. Eating a bit less than you burn is the whole game.</p>
+        <p class="ex-row"><b>⚠️ Way under</b> (more than <span id="explain-low">25%</span>): backfires. More hunger and binge risk, less energy, muscle loss, and slower progress. The app flags these days as <b>TOO LOW</b>.</p>
+        <p class="ex-row"><b>❌ Over:</b> slows fat loss. One day won't ruin anything; your week matters more than any single day.</p>
+        <p class="ex-tip" id="explain-teen" hidden>🏀 You're still growing, so your body needs the fuel. Your "too low" line is closer to your target.</p></div>
+
+      <div class="ex-sec" id="ex-c"><h3><i class="dot" style="background:var(--carb)"></i> Carbs</h3>
+        <p class="ex-row"><b>👍 Under:</b> usually fine. Carbs are the most flexible, as long as your calories and energy are okay.</p>
+        <p class="ex-row"><b>⚠️ Over:</b> usually means calories are creeping up.</p>
+        <p class="ex-tip">Put your carbs around practice and workouts, when your body uses them best.</p></div>
+
+      <div class="ex-sec" id="ex-f"><h3><i class="dot" style="background:var(--fat)"></i> Fat</h3>
+        <p class="ex-row"><b>👍 A bit under:</b> fine.</p>
+        <p class="ex-row"><b>⚠️ Way under every day</b> (below about 20–25% of your calories): not great for your hormones and how you feel.</p>
+        <p class="ex-row"><b>⚠️ Over:</b> the easiest way calories sneak up: fried food, sauces, dressings.</p></div>
+      <button class="btn block" type="button" id="explain-close">Got it</button>
     </div>
   </div>
 

@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v45'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v46'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -212,14 +212,37 @@ function render() {
   checkWeighin();
 }
 
+// Good / close / bad for each ring. Being under is judged against the time of day ("pace":
+// the day runs 7 AM to 9 PM), so a morning with little eaten isn't flagged as a problem.
+function dayPace(now = new Date()) {
+  return Math.max(0, Math.min(1, (now.getHours() + now.getMinutes() / 60 - 7) / 14));
+}
+function ringStatus(k, eaten, target) {
+  if (!(target > 0)) return { s: 'good', tag: '' };
+  const over = eaten - target, pct = Math.round(over / target * 100), pace = dayPace(), evening = pace >= 12 / 14;
+  if (k === 'p') {
+    if (eaten >= target) return { s: 'good', tag: 'Hit ✓' };
+    if (pace === 0) return { s: 'good', tag: 'Day ahead' };
+    const r = eaten / (target * pace);
+    return r >= 0.9 ? { s: 'good', tag: 'On pace' } : r >= 0.7 ? { s: 'close', tag: 'A bit behind' } : { s: 'bad', tag: 'Behind' };
+  }
+  if (over > target * 0.1) return { s: 'bad', tag: `Over ${pct}%` };
+  if (over > 0) return { s: 'close', tag: 'Just over' };
+  if (k === 'cal' && evening) {
+    if (eaten < target * lowLine()) return { s: 'bad', tag: 'Too low' };
+    if (target - eaten > 300) return { s: 'close', tag: 'Eat a bit more' };
+  }
+  return { s: 'good', tag: k === 'cal' ? 'On track' : 'Good' };
+}
 function ringHTML(m, eaten, target) {
+  const st = ringStatus(m.k, eaten, target);
   const left = target - eaten, over = left < 0;
   const R = 43, C = 2 * Math.PI * R;
   // The arc shows what's LEFT, so it shrinks as you eat. Full red when over.
   const frac = over ? 1 : target > 0 ? Math.max(0, left / target) : 0;
   const n = fmt(Math.abs(left));
   return `
-    <div class="ring ${m.cls} ${over ? 'over' : ''}" data-explain="${m.k}" role="button" aria-label="What ${m.label.toLowerCase()} means">
+    <div class="ring ${m.cls} ${over ? 'over' : ''} st-${st.s}" data-explain="${m.k}" role="button" aria-label="What ${m.label.toLowerCase()} means">
       <div class="ring-box">
         <svg viewBox="0 0 100 100" aria-hidden="true">
           <circle class="track" cx="50" cy="50" r="${R}"/>
@@ -232,6 +255,7 @@ function ringHTML(m, eaten, target) {
       </div>
       <div class="ring-label">${m.label}</div>
       <div class="ring-foot">${fmt(eaten)} / ${fmt(target)}${m.unit}</div>
+      ${st.tag ? `<div class="ring-tag">${st.tag}</div>` : ''}
     </div>`;
 }
 

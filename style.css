@@ -61,22 +61,22 @@ main { padding: 14px 16px calc(var(--tabs-h) + var(--safe-b) + 110px); max-width
 .ring.pro { --c: var(--pro); }
 .ring.carb { --c: var(--carb); }
 .ring.fat { --c: var(--fat); }
-/* Each ring box is outlined in its own color (red when over, green when protein's past target). */
-.ring { border: 2px solid var(--c); }
-.ring.over { --c: var(--over); border-color: var(--over); background: #2a1519; }
-.ring.over.pro { --c: var(--good); border-color: var(--good); background: #12261e; }
+/* Each ring box is outlined in its own color; the arc and tag show good (green), close (yellow) or bad (red). */
+.ring { border: 2px solid var(--c); --s: var(--good); }
+.ring.st-close { --s: #f5a524; }
+.ring.st-bad { --s: var(--over); background: #24161a; }
 .ring-box { position: relative; width: 100%; max-width: 150px; margin: 0 auto; aspect-ratio: 1; }
 .ring svg { width: 100%; height: 100%; transform: rotate(-90deg); display: block; }
 .ring .track { fill: none; stroke: var(--card2); stroke-width: 9; }
 .ring .arc {
-  fill: none; stroke: var(--c); stroke-width: 9; stroke-linecap: round;
+  fill: none; stroke: var(--s); stroke-width: 9; stroke-linecap: round;
   transition: stroke-dashoffset 0.6s cubic-bezier(.2,.8,.2,1);
 }
 .ring-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .ring-num { font-size: clamp(24px, 8vw, 34px); font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
 .ring-num small { font-size: 0.5em; font-weight: 700; margin-left: 1px; }
 .ring-sub { font-size: 12px; font-weight: 800; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; margin-top: 3px; }
-.ring.over .ring-sub { color: var(--c); }
+.ring.over .ring-sub, .ring.st-bad .ring-sub { color: var(--s); }
 .ring-label { margin-top: 6px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 6px; }
 .ring-label::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
 .ring-foot { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
@@ -619,3 +619,9 @@ input:focus { border-color: var(--pro); }
 .today-quote { margin: 0 0 12px; padding: 14px 16px; border-radius: var(--radius); background: linear-gradient(135deg, #1b2440, #1a1d26); border: 1px solid var(--line); }
 .today-quote blockquote { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.4; }
 .today-quote cite { display: block; text-align: center; margin-top: 8px; color: var(--pro); font-style: normal; font-weight: 800; font-size: 14px; }
+
+.ring-tag { display: inline-flex; align-items: center; gap: 5px; margin-top: 6px; padding: 3px 10px; border-radius: 999px;
+  font-size: 12px; font-weight: 800; color: var(--s); background: color-mix(in srgb, var(--s) 16%, transparent); }
+.ring-tag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--s); }
+.ex-colors { font-size: 14px; line-height: 1.45; color: var(--muted); margin: -4px 2px 12px; }
+.ex-colors b { color: var(--text); }

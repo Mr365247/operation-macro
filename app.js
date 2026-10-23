@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v46'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v47'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -212,27 +212,24 @@ function render() {
   checkWeighin();
 }
 
-// Good / close / bad for each ring. Being under is judged against the time of day ("pace":
-// the day runs 7 AM to 9 PM), so a morning with little eaten isn't flagged as a problem.
-function dayPace(now = new Date()) {
-  return Math.max(0, Math.min(1, (now.getHours() + now.getMinutes() / 60 - 7) / 14));
-}
+// Good / close / bad for each ring, judged as if the day ended right now.
 function ringStatus(k, eaten, target) {
   if (!(target > 0)) return { s: 'good', tag: '' };
-  const over = eaten - target, pct = Math.round(over / target * 100), pace = dayPace(), evening = pace >= 12 / 14;
+  const over = eaten - target, under = target - eaten;
+  const pct = Math.round(Math.abs(over) / target * 100);
   if (k === 'p') {
     if (eaten >= target) return { s: 'good', tag: 'Hit ✓' };
-    if (pace === 0) return { s: 'good', tag: 'Day ahead' };
-    const r = eaten / (target * pace);
-    return r >= 0.9 ? { s: 'good', tag: 'On pace' } : r >= 0.7 ? { s: 'close', tag: 'A bit behind' } : { s: 'bad', tag: 'Behind' };
+    return under <= target * 0.1 ? { s: 'close', tag: `${fmt(under)} g short` } : { s: 'bad', tag: `${fmt(under)} g short` };
   }
   if (over > target * 0.1) return { s: 'bad', tag: `Over ${pct}%` };
-  if (over > 0) return { s: 'close', tag: 'Just over' };
-  if (k === 'cal' && evening) {
+  if (over > 0) return { s: 'close', tag: `Over ${pct}%` };
+  if (k === 'cal') {
     if (eaten < target * lowLine()) return { s: 'bad', tag: 'Too low' };
-    if (target - eaten > 300) return { s: 'close', tag: 'Eat a bit more' };
+    if (under > 300) return { s: 'close', tag: `${fmt(under)} under` };
+    return { s: 'good', tag: 'On target' };
   }
-  return { s: 'good', tag: k === 'cal' ? 'On track' : 'Good' };
+  if (k === 'f' && eaten < target * 0.5) return { s: 'close', tag: 'Low' };
+  return { s: 'good', tag: 'Good' };
 }
 function ringHTML(m, eaten, target) {
   const st = ringStatus(m.k, eaten, target);

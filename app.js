@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v52'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v53'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -222,6 +222,8 @@ function ringStatus(k, eaten, target) {
     return under <= target * 0.1 ? { s: 'close', tag: `${fmt(under)} g short` } : { s: 'bad', tag: `${fmt(under)} g short` };
   }
   if (over > target * 0.1) return { s: 'bad', tag: `Over ${pct}%` };
+  // Calories get a small buffer: up to 5% over is within normal counting error, so it's still on target.
+  if (k === 'cal' && over > 0 && over <= target * 0.05) return { s: 'good', tag: 'On target' };
   if (over > 0) return { s: 'close', tag: `Over ${pct}%` };
   if (k === 'cal') {
     if (eaten < target * lowLine()) return { s: 'bad', tag: 'Too low' };

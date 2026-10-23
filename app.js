@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v49'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v50'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -245,9 +245,15 @@ function ringStatus(k, eaten, target, n = 1) {
   if (k === 'f' && eaten < target * 0.5) return { s: 'close', tag: 'Low' };
   return { s: 'good', tag: 'Good' };
 }
+// Calories, carbs and fat average out over a week; protein doesn't (your body can't bank it), so
+// protein is always judged on today. A single day way over on calories still shows at least yellow.
 function ringHTML(m, eaten, target, wk) {
-  const st = wk ? ringStatus(m.k, wk.eaten[m.k], wk.target[m.k], wk.n) : ringStatus(m.k, eaten, target);
-  if (wk && wk.n > 1 && st.tag) st.tag = `Week: ${st.tag}`;
+  const weekly = wk && wk.n > 1 && m.k !== 'p';
+  let st = weekly ? ringStatus(m.k, wk.eaten[m.k], wk.target[m.k], wk.n) : ringStatus(m.k, eaten, target);
+  if (weekly && st.tag) st.tag = `Week: ${st.tag}`;
+  if (weekly && m.k === 'cal' && st.s === 'good' && eaten > target * 1.25) {
+    st = { s: 'close', tag: `Today +${Math.round((eaten / target - 1) * 100)}%` };
+  }
   const left = target - eaten, over = left < 0;
   const R = 43, C = 2 * Math.PI * R;
   // The arc shows what's LEFT, so it shrinks as you eat. Full red when over.

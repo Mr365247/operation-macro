@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v50'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v51'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -212,22 +212,8 @@ function render() {
   checkWeighin();
 }
 
-// Good / close / bad for each ring, judged on the WEEK so far (Sunday through today) as if it ended
-// right now: what you've eaten on the days you logged vs those days' targets added up. Days with
-// nothing logged are left out, so a forgotten day doesn't count as a day of zero.
-function weekSoFar() {
-  const days = [];
-  for (let k = weekStart(today); k <= today; k = shiftKey(k, 1)) {
-    if (k === today || (state.days[k] && state.days[k].entries.length)) days.push(k);
-  }
-  const eaten = { cal: 0, p: 0, c: 0, f: 0 }, target = { cal: 0, p: 0, c: 0, f: 0 };
-  for (const k of days) {
-    const t = totals(k), g = targetsFor(k);
-    for (const m of MACROS) { eaten[m.k] += t[m.k]; target[m.k] += +g[m.t] || 0; }
-  }
-  return { n: days.length, eaten, target };
-}
-function ringStatus(k, eaten, target, n = 1) {
+// Good / close / bad for each ring, judged as if the day ended right now.
+function ringStatus(k, eaten, target) {
   if (!(target > 0)) return { s: 'good', tag: '' };
   const over = eaten - target, under = target - eaten;
   const pct = Math.round(Math.abs(over) / target * 100);
@@ -239,21 +225,14 @@ function ringStatus(k, eaten, target, n = 1) {
   if (over > 0) return { s: 'close', tag: `Over ${pct}%` };
   if (k === 'cal') {
     if (eaten < target * lowLine()) return { s: 'bad', tag: 'Too low' };
-    if (under > 300 * n) return { s: 'close', tag: `${fmt(under)} under` };
+    if (under > 300) return { s: 'close', tag: `${fmt(under)} under` };
     return { s: 'good', tag: 'On target' };
   }
   if (k === 'f' && eaten < target * 0.5) return { s: 'close', tag: 'Low' };
   return { s: 'good', tag: 'Good' };
 }
-// Calories, carbs and fat average out over a week; protein doesn't (your body can't bank it), so
-// protein is always judged on today. A single day way over on calories still shows at least yellow.
-function ringHTML(m, eaten, target, wk) {
-  const weekly = wk && wk.n > 1 && m.k !== 'p';
-  let st = weekly ? ringStatus(m.k, wk.eaten[m.k], wk.target[m.k], wk.n) : ringStatus(m.k, eaten, target);
-  if (weekly && st.tag) st.tag = `Week: ${st.tag}`;
-  if (weekly && m.k === 'cal' && st.s === 'good' && eaten > target * 1.25) {
-    st = { s: 'close', tag: `Today +${Math.round((eaten / target - 1) * 100)}%` };
-  }
+function ringHTML(m, eaten, target) {
+  const st = ringStatus(m.k, eaten, target);
   const left = target - eaten, over = left < 0;
   const R = 43, C = 2 * Math.PI * R;
   // The arc shows what's LEFT, so it shrinks as you eat. Full red when over.
@@ -304,8 +283,7 @@ function renderToday() {
   const q = weekQuote(shiftKey(weekStart(today), -7));
   $('#today-quote').innerHTML = `<blockquote>“${esc(q.text)}”</blockquote><cite>— ${esc(q.by)}</cite>`;
   const t = totals(today), g = state.settings;
-  const wk = weekSoFar();
-  $('#rings').innerHTML = MACROS.map(m => ringHTML(m, t[m.k], g[m.t], wk)).join('');
+  $('#rings').innerHTML = MACROS.map(m => ringHTML(m, t[m.k], g[m.t])).join('');
 
   const d = state.days[today];
   const has = d && d.entries.length;

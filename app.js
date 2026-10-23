@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v48'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v49'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -308,12 +308,11 @@ function renderToday() {
   if (isHit(today) && tooLow(today)) status = `<div class="status low">🎖️ Protein hit! But you're still <b>${fmt(calLeft)} calories under</b>. ` +
     `Eat a real meal: going this low backfires. <button class="link-btn" type="button" data-explain="cal">Why?</button></div>`;
   else if (isHit(today)) status = '<div class="status good">🎖️ Mission accomplished — protein hit, calories in check.</div>';
-  else if (calLeft < 0) status = `<div class="status bad">🚨 ${fmt(-calLeft)} calories over target.</div>`;
-  // Today's mission: calories you have left and protein still to get, with the target in between.
+  // Today's mission: calories left (or over) and protein still to get, with the target in between.
   else status = `<div class="status mission">
-      <div class="need"><b>${fmt(calLeft)}</b><span>calories left</span></div>
+      <div class="need">${calLeft < 0 ? `<b>+${fmt(-calLeft)}</b><span>calories over</span>` : `<b>${fmt(calLeft)}</b><span>calories left</span>`}</div>
       <div class="target" aria-hidden="true">🎯</div>
-      <div class="need"><b>${fmt(proLeft)}<small>g</small></b><span>protein to go</span></div>
+      <div class="need">${proLeft > 0 ? `<b>${fmt(proLeft)}<small>g</small></b><span>protein to go</span>` : `<b>✓</b><span>protein hit</span>`}</div>
     </div>`;
   $('#status').innerHTML = status;
   $('#gap-open').hidden = !(calLeft > 0 && proLeft > 0);

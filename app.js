@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v51'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v52'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -736,6 +736,17 @@ function openSheet(mode, item, prefill, meal) {
   $('#backdrop').hidden = false;
   resetScanState();
   $('#capture-row').hidden = mode === 'entry';
+  if (mode === 'entry' && item) {
+    // Change the portion of something already logged: the stepper scales its numbers.
+    // "Chicken ×2" opens as Chicken at 2 servings.
+    const m = servingsIn(item.name);
+    $('#in-name').value = baseName(item.name);
+    perServing = {};
+    IN.forEach(k => { perServing[k] = item[k] != null ? (+item[k]) / m : null; });
+    setServings(m);
+    $('#serving-row').hidden = false;
+    $('#serving-info').textContent = 'Change the portion; the numbers update';
+  }
   // Quick log: your favorites, most used first, one tap into the selected meal.
   const favs = mode === 'add' ? [...state.favorites].sort((a, b) => (b.uses || 0) - (a.uses || 0)) : [];
   $('#sheet-quick').hidden = !favs.length;

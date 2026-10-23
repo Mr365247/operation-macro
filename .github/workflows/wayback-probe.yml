@@ -1,0 +1,21 @@
+name: Wayback probe (temporary)
+on:
+  push:
+    branches: [wayback-probe]
+    paths: [probe/wayback.mjs, .github/workflows/wayback-probe.yml]
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: sudo apt-get install -y -qq poppler-utils >/dev/null
+      - run: node probe/wayback.mjs
+      - run: |
+          git config user.name "probe-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add probe/ && git commit -m "Wayback probe results" && git push

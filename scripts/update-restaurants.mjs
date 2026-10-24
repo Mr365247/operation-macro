@@ -183,6 +183,42 @@ async function fiveguys() {
   return parseFiveGuys(await pdfText(pdf));
 }
 
+/* ---------------- Wayback Burgers: Nutritional Info table on waybackburgers.com ---------------- */
+// The table lists calories, fat and protein (no carbs), with some rows split by size ("Reg: 300 Large: 650").
+// Carbs are estimated from the calories left after protein and fat (4/9/4 per gram), like Wendy's.
+export function parseWayback(html) {
+  const out = [];
+  const cellText = c => clean(c.replace(/<[^>]+>/g, ' | ')).replace(/(\s*\|\s*)+/g, ' | ').replace(/^\s*\|\s*|\s*\|\s*$/g, '');
+  // "Reg: | 300 | Large: | 650" -> [['Reg', 300], ['Large', 650]]; "640" -> [['', 640]]
+  const variants = t => {
+    const parts = t.split(' | ').map(x => x.trim()).filter(Boolean), v = [];
+    for (let i = 0; i < parts.length; i++) {
+      if (/:$/.test(parts[i]) && i + 1 < parts.length) { v.push([parts[i].replace(/:$/, ''), num(parts[i + 1])]); i++; }
+      else if (num(parts[i]) != null) v.push(['', num(parts[i])]);
+    }
+    return v;
+  };
+  for (const row of html.matchAll(/<tr class="[^"]*menu-item[^"]*"[^>]*>([\s\S]*?)<\/tr>/g)) {
+    const tds = [...row[1].matchAll(/<td class="([^"]*)"[^>]*>([\s\S]*?)<\/td>/g)];
+    const head = tds.find(t => /nutrition-heading/.test(t[1]));
+    const cal = tds.find(t => /nutrition-calories/.test(t[1]));
+    if (!head || !cal) continue;
+    const rest = tds.slice(tds.indexOf(cal) + 1); // fat, then protein
+    const name = cellText(head[2]).split(' | ')[0].replace(/[™®*]/g, '').trim();
+    const cv = variants(cellText(cal[2])), fv = variants(cellText((rest[0] || [])[2] || '')), pv = variants(cellText((rest[1] || [])[2] || ''));
+    cv.forEach(([label, c], i) => {
+      const f = (fv[i] || [])[1], p = (pv[i] || [])[1];
+      if (c == null) return;
+      const carbs = f != null && p != null ? Math.max(0, Math.round((c - 9 * f - 4 * p) / 4)) : null;
+      out.push({ name: label ? `${name} (${label})` : name, serving: '', cal: c, f: f ?? null, c: carbs, p: p ?? null, carbsEstimated: true });
+    });
+  }
+  return out;
+}
+async function wayback() {
+  return parseWayback(await fetchText('https://waybackburgers.com/nutritional-info/'));
+}
+
 /* ---------------- Subway: official U.S. Nutrition Information PDF ---------------- */
 async function subway() {
   // Find the current PDF link on the nutrition page; if that page won't load, use the last known link.
@@ -242,6 +278,7 @@ const CHAINS = {
   dunkin:    { name: "Dunkin'", aliases: ['dunkin', 'dunkin donuts', 'dd'], source: 'https://www.dunkindonuts.com/en/menu/nutrition', run: dunkin },
   mcdonalds: { name: "McDonald's", aliases: ['mcdonalds', 'mcd', 'mickey ds'], source: 'https://www.mcdonalds.com/us/en-us/about-our-food/nutrition-calculator.html', run: mcdonalds },
   subway:    { name: 'Subway', aliases: ['subway'], source: 'https://www.subway.com/en-us/menunutrition/nutrition', run: subway },
+  wayback:   { name: 'Wayback Burgers', aliases: ['wayback', 'wayback burgers'], source: 'https://waybackburgers.com/nutritional-info/', run: wayback },
   fiveguys:  { name: 'Five Guys', aliases: ['five guys', '5 guys', 'fiveguys'], source: 'https://www.fiveguys.com/nutritional-allergy-information/', run: fiveguys },
   wendys:    { name: "Wendy's", aliases: ['wendys', 'wendy'], source: 'https://order.wendys.com/us/en/national/menu', run: wendys },
 };

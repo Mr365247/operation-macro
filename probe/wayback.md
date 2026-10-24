@@ -1,9 +1,10 @@
 # Wayback probe
-- https://waybackburgers.com/ → 200 https://waybackburgers.com/ (162919 bytes) "Wayback Burgers - Home"
+- https://waybackburgers.com/nutritional-info/ → 200 https://waybackburgers.com/nutritional-info/ (299089 bytes) "Nutritional Info - Wayback Burgers"
   - https://waybackburgers.com/nutritional-info/
-- https://waybackburgers.com/nutrition/ → 404 https://waybackburgers.com/nutrition/ (115558 bytes) "404 - Page not found - Wayback Burgers"
-  - https://waybackburgers.com/nutritional-info/
-- https://waybackburgers.com/menu/ → 200 https://waybackburgers.com/menu/ (295243 bytes) "Menu - Wayback Burgers"
-  - https://waybackburgers.com/nutritional-info/
-- https://waybackburgers.com/allergens/ → 404 https://waybackburgers.com/allergens/ (115557 bytes) "404 - Page not found - Wayback Burgers"
-  - https://waybackburgers.com/nutritional-info/
+  - https://waybackburgers.ca/nutritional-info/
+  - https://waybackburgers.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwaybackburgers.com%2Fnutritional-info%2F
+  - https://waybackburgers.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwaybackburgers.com%2Fnutritional-info%2F&#038;format=xml
+  - counts: Calories=5 calories=55 Protein=5 Fat=5 <table=1 iframe=16 .pdf=0
+  - iframe: https://www.googletagmanager.com/ns.html?id=GTM-T7VG8DN
+  - iframe: https://smartmenu.foodcalc.com/?accountId=1279
+  - text: ` Nutritional Info - Wayback Burgers Opens in a new tab Wayback Burgers Menu Locations Catering Rewards Franchising Order Now Menu Locations Catering Rewards Franchising Order Now Order Now Wayback Burgers Nutritional Information Item Calories Fat Protein Signature Burgers Classic Contains: Milk, Soy, Wheat 640 34g 47g Bourbon Bacon Contains: Milk, Soy, Wheat 970 56g 58g Double Bacon Contains: Milk, Soy, Wheat 830 48g 59g Cheeeesy Contains: Milk, Soy, Wheat 830 55g 52g A.1. Steakhouse Contains: Milk, Soy, Wheat 710 44g 39g Cajun Contains: Egg, Milk, Soy, Wheat 1010 73g 61g Carolina* Contains: Egg, Milk, Soy, Wheat 800 49g 49g Craft Your Own: Single Contains: Soy, Wheat 350 16g 23g Craft Your Own: Double Contains: Soy, Wheat 530 27g 41g Craft Your Own: Impossible™ Contains: Soy, Wheat 410 18g 25g Craft Your Own: Gardenburger® Contains: Milk, Soy, Wheat 320 9g 13g Chicken &amp; More Chicken Nuggets Contains: Milk, Soy, Wheat 5 Pcs: 290 8 Pcs: 470 12 Pcs: 700 5 Pcs: 18g 8 Pcs: 28g 12 Pcs: 43g 5 Pcs: 25g 8 Pcs: 39g 12 Pcs: 59g Buffalo Chicken Contains: Milk, Soy, Wheat 700 40g 36g Chicken BLT Contains: Egg, Milk, Soy, Wheat Crispy: 880 Grilled: 500 Crispy: 58g Grilled: 25g Crispy: 41g Grilled: 37g Chili Cheese Hot Dog Contains: Milk, Soy, Wheat 550 35g 28g Cheesesteak Contains: Milk, Soy, Wheat 680 25g 50g Impossible™ Melt Contains: Egg, Milk, Soy, Wheat 790 57g 32g Craft Your Own: Crispy Chicken Contains: Milk, Soy, Wheat 560 25g 35g Craft Your Own: Grilled Chicken Contains: Soy, Wheat 300 7g 31g Craft Your Own: Hot Dog Contains: Soy, Wheat 450 27g 22g Bowls and Salads Chicken Bacon Ranch Lettuce Bowl Contains: Egg, Milk, Soy, Wheat 630 45g 38g Chicken Bacon Ranch Fry Bowl Contains: Egg, Milk, Soy, Wheat 1250`

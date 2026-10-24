@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v54'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v55'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -181,18 +181,20 @@ function upsertFavorite(data, id) {
   Object.assign(fav, { name: data.name, cal: data.cal, p: data.p, c: data.c, f: data.f });
   save();
 }
-function logFavorite(id, meal) {
+// Quick log and the Favorites tab fill the Log food form instead of logging straight away,
+// so the portion is picked first; it's logged (and counted as a use) on Log it.
+function fillFavorite(id) {
   const fav = state.favorites.find(f => f.id === id);
-  if (!fav) return;
-  fav.uses = (fav.uses || 0) + 1;
-  const e = addEntry({ ...fav, meal: meal || null });
-  toast(`Logged ${fav.name} · Meal ${e.meal}`, 'Undo', () => {
-    fav.uses = Math.max(0, fav.uses - 1);
-    const d = todayDay();
-    d.entries = d.entries.filter(x => x.id !== e.id);
-    save(); render();
-  });
-  if (navigator.vibrate) navigator.vibrate(15);
+  if (!fav || !sheet) return;
+  sheet.fav = fav.id;
+  $('#in-name').value = fav.name;
+  perServing = {};
+  IN.forEach(k => { perServing[k] = fav[k] != null ? +fav[k] : null; });
+  setServings(1);
+  $('#serving-row').hidden = false;
+  $('#serving-info').textContent = `How much ${fav.name}? 1 = as saved`;
+  document.querySelectorAll('#sheet-quick-chips [data-quick]').forEach(b => b.classList.toggle('on', b.dataset.quick === fav.id));
+  $('#serving-row').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
 }
 
 /* ================= Rendering ================= */
@@ -749,7 +751,7 @@ function openSheet(mode, item, prefill, meal) {
     $('#serving-row').hidden = false;
     $('#serving-info').textContent = 'Change the portion; the numbers update';
   }
-  // Quick log: your favorites, most used first, one tap into the selected meal.
+  // Quick log: your favorites, most used first; a tap fills the form to pick a portion.
   const favs = mode === 'add' ? [...state.favorites].sort((a, b) => (b.uses || 0) - (a.uses || 0)) : [];
   $('#sheet-quick').hidden = !favs.length;
   $('#sheet-quick-chips').innerHTML = favs.map(f => `<button class="chip" type="button" data-quick="${f.id}">+ ${esc(f.name)}</button>`).join('');
@@ -764,9 +766,7 @@ function setSheetMeal(m) {
 $('#sheet-quick-chips').addEventListener('click', ev => {
   const b = ev.target.closest('[data-quick]');
   if (!b) return;
-  const meal = sheet && sheet.meal;
-  closeSheet();
-  logFavorite(b.dataset.quick, meal);
+  fillFavorite(b.dataset.quick);
 });
 $('#meal-seg').addEventListener('click', ev => {
   const b = ev.target.closest('button[data-meal]');
@@ -816,13 +816,15 @@ $('#entry-form').addEventListener('submit', async ev => {
   }
   const data = readForm();
   if (!data) { $('#in-name').focus(); return; }
-  const { mode, id, code } = sheet;
+  const { mode, id, code, fav } = sheet;
   if (sheet.meal) data.meal = sheet.meal;
   const asFav = $('#in-fav').checked;
   if (code) rememberBarcode(code, data);
   if (perServing && servings !== 1) data.name = `${data.name} ×${servings}`;
   closeSheet();
   if (mode === 'add') {
+    const f = fav && state.favorites.find(x => x.id === fav);
+    if (f) f.uses = (f.uses || 0) + 1;
     const e = addEntry(data);
     if (asFav) upsertFavorite(data);
     toast(`Logged ${data.name} · Meal ${e.meal}${asFav ? ' ★' : ''}`);
@@ -2571,7 +2573,7 @@ document.addEventListener('click', ev => {
   if (add) { openSheet('add', null, null, +add.dataset.mealAdd); return; }
   const t = ev.target.closest('[data-fav],[data-entry],[data-edit-fav],[data-del-weight],[data-shop],[data-edit-shop],[data-shop-fav]');
   if (!t) return;
-  if (t.dataset.fav) logFavorite(t.dataset.fav);
+  if (t.dataset.fav) { openSheet('add'); fillFavorite(t.dataset.fav); }
   else if (t.dataset.entry) openSheet('entry', todayDay().entries.find(e => e.id === t.dataset.entry));
   else if (t.dataset.editFav) openSheet('fav', state.favorites.find(f => f.id === t.dataset.editFav));
   else if (t.dataset.shop) {

@@ -14,6 +14,7 @@ for (const url of ['https://waybackburgers.com/nutritional-info/']) {
     if (/cf-chl|captcha|Access Denied/i.test(html.slice(0, 5000))) md += '  - ⚠️ bot protection\n';
     md += '  - counts: ' + ['Calories', 'calories', 'Protein', 'Fat', '<table', 'iframe', '.pdf'].map(k => `${k}=${html.split(k).length - 1}`).join(' ') + '\n';
     for (const m of html.matchAll(/<iframe[^>]+src=["']([^"']+)/gi)) md += `  - iframe: ${m[1]}\n`;
+    const tbl = (html.match(/<table[\s\S]*?<\/table>/i) || [''])[0]; writeFileSync('probe/wayback-table.html', tbl);
     const text = html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
     const at = text.search(/Calories/i); md += '  - text: `' + text.slice(Math.max(0, at - 400), at + 1500).replace(/`/g, "'") + '`\n';
   } catch (e) { md += `- ${url} → ERROR ${e.message}\n`; }

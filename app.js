@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v53'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v54'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -1835,6 +1835,7 @@ const PLACE_DOMAINS = {
   'Chick-fil-A': 'chick-fil-a.com', "Dunkin'": 'dunkindonuts.com', "McDonald's": 'mcdonalds.com', 'Subway': 'subway.com',
   "Wendy's": 'wendys.com', 'Tropical Smoothie Cafe': 'tropicalsmoothiecafe.com', 'Five Guys': 'fiveguys.com',
   "Chili's": 'chilis.com', 'Burger King': 'bk.com', "Raising Cane's": 'raisingcanes.com', 'Chipotle': 'chipotle.com',
+  'Wayback Burgers': 'waybackburgers.com',
 };
 function placeIcon(pl) {
   if (pl === SCHOOL) return '<span class="logo-emoji">🏫</span>';

@@ -22602,6 +22602,539 @@
      "p": 20
     }
    ]
+  },
+  "wayback": {
+   "name": "Wayback Burgers",
+   "aliases": [
+    "wayback",
+    "wayback burgers"
+   ],
+   "source": "https://waybackburgers.com/nutritional-info/",
+   "updated": "2026-10-24",
+   "items": [
+    {
+     "name": "Classic",
+     "serving": "",
+     "cal": 640,
+     "f": 34,
+     "c": 37,
+     "p": 47,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Bourbon Bacon",
+     "serving": "",
+     "cal": 970,
+     "f": 56,
+     "c": 59,
+     "p": 58,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Double Bacon",
+     "serving": "",
+     "cal": 830,
+     "f": 48,
+     "c": 41,
+     "p": 59,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Cheeeesy",
+     "serving": "",
+     "cal": 830,
+     "f": 55,
+     "c": 32,
+     "p": 52,
+     "carbsEstimated": true
+    },
+    {
+     "name": "A.1. Steakhouse",
+     "serving": "",
+     "cal": 710,
+     "f": 44,
+     "c": 40,
+     "p": 39,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Cajun",
+     "serving": "",
+     "cal": 1010,
+     "f": 73,
+     "c": 27,
+     "p": 61,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Carolina",
+     "serving": "",
+     "cal": 800,
+     "f": 49,
+     "c": 41,
+     "p": 49,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Craft Your Own: Single",
+     "serving": "",
+     "cal": 350,
+     "f": 16,
+     "c": 29,
+     "p": 23,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Craft Your Own: Double",
+     "serving": "",
+     "cal": 530,
+     "f": 27,
+     "c": 31,
+     "p": 41,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Craft Your Own: Impossible",
+     "serving": "",
+     "cal": 410,
+     "f": 18,
+     "c": 37,
+     "p": 25,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Craft Your Own: Gardenburger",
+     "serving": "",
+     "cal": 320,
+     "f": 9,
+     "c": 47,
+     "p": 13,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Chicken Nuggets (5 Pcs)",
+     "serving": "",
+     "cal": 290,
+     "f": 18,
+     "c": 7,
+     "p": 25,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Chicken Nuggets (8 Pcs)",
+     "serving": "",
+     "cal": 470,
+     "f": 28,
+     "c": 16,
+     "p": 39,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Chicken Nuggets (12 Pcs)",
+     "serving": "",
+     "cal": 700,
+     "f": 43,
+     "c": 19,
+     "p": 59,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Buffalo Chicken",
+     "serving": "",
+     "cal": 700,
+     "f": 40,
+     "c": 49,
+     "p": 36,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Chicken BLT (Crispy)",
+     "serving": "",
+     "cal": 880,
+     "f": 58,
+     "c": 49,
+     "p": 41,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Chicken BLT (Grilled)",
+     "serving": "",
+     "cal": 500,
+     "f": 25,
+     "c": 32,
+     "p": 37,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Chili Cheese Hot Dog",
+     "serving": "",
+     "cal": 550,
+     "f": 35,
+     "c": 31,
+     "p": 28,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Cheesesteak",
+     "serving": "",
+     "cal": 680,
+     "f": 25,
+     "c": 64,
+     "p": 50,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Impossible Melt",
+     "serving": "",
+     "cal": 790,
+     "f": 57,
+     "c": 37,
+     "p": 32,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Craft Your Own: Crispy Chicken",
+     "serving": "",
+     "cal": 560,
+     "f": 25,
+     "c": 49,
+     "p": 35,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Craft Your Own: Grilled Chicken",
+     "serving": "",
+     "cal": 300,
+     "f": 7,
+     "c": 28,
+     "p": 31,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Craft Your Own: Hot Dog",
+     "serving": "",
+     "cal": 450,
+     "f": 27,
+     "c": 30,
+     "p": 22,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Chicken Bacon Ranch Lettuce Bowl",
+     "serving": "",
+     "cal": 630,
+     "f": 45,
+     "c": 18,
+     "p": 38,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Chicken Bacon Ranch Fry Bowl",
+     "serving": "",
+     "cal": 1250,
+     "f": 82,
+     "c": 81,
+     "p": 47,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Caesar Salad",
+     "serving": "",
+     "cal": 510,
+     "f": 33,
+     "c": 35,
+     "p": 18,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Bacon Cheese Fries (Reg)",
+     "serving": "",
+     "cal": 510,
+     "f": 34,
+     "c": 35,
+     "p": 16,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Bacon Cheese Fries (Large)",
+     "serving": "",
+     "cal": 1030,
+     "f": 68,
+     "c": 72,
+     "p": 33,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Chili Cheese Fries (Reg)",
+     "serving": "",
+     "cal": 510,
+     "f": 33,
+     "c": 38,
+     "p": 15,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Chili Cheese Fries (Large)",
+     "serving": "",
+     "cal": 1020,
+     "f": 66,
+     "c": 76,
+     "p": 31,
+     "carbsEstimated": true
+    },
+    {
+     "name": "French Fry (Reg)",
+     "serving": "",
+     "cal": 300,
+     "f": 17,
+     "c": 34,
+     "p": 3,
+     "carbsEstimated": true
+    },
+    {
+     "name": "French Fry (Large)",
+     "serving": "",
+     "cal": 650,
+     "f": 38,
+     "c": 70,
+     "p": 7,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Cheese Fries (Reg)",
+     "serving": "",
+     "cal": 420,
+     "f": 27,
+     "c": 33,
+     "p": 11,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Cheese Fries (Large)",
+     "serving": "",
+     "cal": 850,
+     "f": 54,
+     "c": 70,
+     "p": 21,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Cheese Curds (Reg)",
+     "serving": "",
+     "cal": 440,
+     "f": 30,
+     "c": 26,
+     "p": 17,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Cheese Curds (Large)",
+     "serving": "",
+     "cal": 870,
+     "f": 61,
+     "c": 47,
+     "p": 33,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Fried Pickles (Reg)",
+     "serving": "",
+     "cal": 210,
+     "f": 7,
+     "c": 32,
+     "p": 5,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Fried Pickles (Large)",
+     "serving": "",
+     "cal": 420,
+     "f": 14,
+     "c": 65,
+     "p": 9,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Tater Tots (Reg)",
+     "serving": "",
+     "cal": 450,
+     "f": 29,
+     "c": 43,
+     "p": 4,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Tater Tots (Large)",
+     "serving": "",
+     "cal": 900,
+     "f": 57,
+     "c": 88,
+     "p": 9,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Cajun Tater Tots (Reg)",
+     "serving": "",
+     "cal": 450,
+     "f": 29,
+     "c": 43,
+     "p": 4,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Cajun Tater Tots (Large)",
+     "serving": "",
+     "cal": 900,
+     "f": 57,
+     "c": 88,
+     "p": 9,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Onion Rings",
+     "serving": "",
+     "cal": 390,
+     "f": 19,
+     "c": 51,
+     "p": 4,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Kids Chicken Nuggets (5PC)",
+     "serving": "",
+     "cal": 290,
+     "f": 18,
+     "c": 7,
+     "p": 25,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Kids' Cheeseburger",
+     "serving": "",
+     "cal": 390,
+     "f": 19,
+     "c": 29,
+     "p": 26,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Kids' Grilled Cheese",
+     "serving": "",
+     "cal": 380,
+     "f": 25,
+     "c": 27,
+     "p": 12,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Kids' Fry",
+     "serving": "",
+     "cal": 180,
+     "f": 10,
+     "c": 21,
+     "p": 2,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Pumpkin Churro Shake",
+     "serving": "",
+     "cal": 800,
+     "f": 31,
+     "c": 117,
+     "p": 13,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Caramel Crème Brûlée Shake",
+     "serving": "",
+     "cal": 870,
+     "f": 34,
+     "c": 128,
+     "p": 13,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Dubai Swirl",
+     "serving": "",
+     "cal": 850,
+     "f": 34,
+     "c": 121,
+     "p": 15,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Banana Cream Pie Shake",
+     "serving": "",
+     "cal": 820,
+     "f": 33,
+     "c": 118,
+     "p": 13,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Chocolate Brownie Shake",
+     "serving": "",
+     "cal": 930,
+     "f": 38,
+     "c": 133,
+     "p": 14,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Regular Milkshake",
+     "serving": "",
+     "cal": 600,
+     "f": 29,
+     "c": 72,
+     "p": 13,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Strawberry Hibiscus Lemonade",
+     "serving": "",
+     "cal": 320,
+     "f": 0,
+     "c": 80,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Fresh Brewed Iced Tea (Unsweetened)",
+     "serving": "",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Fresh Brewed Iced Tea (Sweetened)",
+     "serving": "",
+     "cal": 240,
+     "f": 0,
+     "c": 60,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Lemonade (Reg)",
+     "serving": "",
+     "cal": 300,
+     "f": 0,
+     "c": 75,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Lemonade (Large)",
+     "serving": "",
+     "cal": 440,
+     "f": 0,
+     "c": 110,
+     "p": 0,
+     "carbsEstimated": true
+    }
+   ]
   }
  },
  "status": {
@@ -22609,6 +23142,7 @@
   "dunkin": "ok: 826 items",
   "mcdonalds": "ok: 226 items",
   "subway": "ok: 200 items",
+  "wayback": "ok: 58 items",
   "fiveguys": "ok: 78 items",
   "wendys": "ok: 221 items"
  }

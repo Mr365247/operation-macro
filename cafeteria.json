@@ -1,7 +1,7 @@
 {
  "school": "North Providence High School",
  "source": "https://npsd.nutrislice.com/menu/north-providence-high",
- "updated": "2026-10-18",
+ "updated": "2026-10-25",
  "items": [
   {
    "name": "Aloha Pizza",
@@ -845,9 +845,9 @@
   },
   {
    "name": "Classic Cheese Pizza",
-   "cal": 340,
-   "p": 17,
-   "c": 33,
+   "cal": 410,
+   "p": 21,
+   "c": 45,
    "f": 15,
    "serving": "1 slice",
    "meal": "Lunch",
@@ -872,6 +872,16 @@
    "serving": "1 sandwich",
    "meal": "Lunch",
    "lastServed": "2026-10-02"
+  },
+  {
+   "name": "Classic Pepperoni Pizza",
+   "cal": 440,
+   "p": 23,
+   "c": 46,
+   "f": 18,
+   "serving": "1 slice",
+   "meal": "Lunch",
+   "lastServed": "2026-10-30"
   },
   {
    "name": "Corn",
@@ -2741,7 +2751,7 @@
    "f": 17,
    "serving": "1 slice",
    "meal": "Lunch",
-   "lastServed": "2026-10-30"
+   "lastServed": "2026-10-23"
   },
   {
    "name": "Tropical Fruit Cocktail",

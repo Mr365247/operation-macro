@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v59'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v60'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -99,10 +99,11 @@ function isHit(k) {
   const t = totals(k), g = targetsFor(k);
   return t.p >= g.protein && t.cal <= g.cal;
 }
-// Counts back from today (or yesterday, if today isn't hit yet — today is still in play).
-function currentStreak() {
-  let k = isHit(today) ? today : shiftKey(today, -1), n = 0;
-  while (isHit(k)) { n++; k = shiftKey(k, -1); }
+// Days hit this week, Sunday through today. Starts over each Sunday (weigh-in day), so one
+// off day costs a day, not the whole count.
+function weekHits() {
+  let n = 0;
+  for (let k = weekStart(today); k <= today; k = shiftKey(k, 1)) if (isHit(k)) n++;
   return n;
 }
 function loggedDay(k) { return !!(state.days[k] && state.days[k].entries.length); }
@@ -210,8 +211,8 @@ let view = 'today';
 
 function render() {
   $('#today-label').textContent = new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' });
-  const s = currentStreak(), ls = logRun();
-  $('#streak').textContent = `🔥 ${s}`;
+  const s = weekHits(), ls = logRun();
+  $('#streak').textContent = `🔥 ${s}/7`;
   $('#streak').classList.toggle('hot', s > 0);
   $('#log-streak').textContent = `📝 ${ls}`;
   $('#log-streak').classList.toggle('hot', ls > 0);
@@ -409,7 +410,7 @@ function renderHistory() {
   const past = keys.filter(k => k !== today);
   const hits = past.filter(isHit).length;
   $('#h-stats').innerHTML =
-    statHTML('🔥 ' + currentStreak(), 'Streak') +
+    statHTML(`🔥 ${weekHits()}/7`, 'This week') +
     statHTML(bestStreak(), 'Best streak') +
     statHTML(past.length ? `${hits}/${past.length}` : '—', 'Days hit');
 
@@ -2584,8 +2585,8 @@ function checkHoorah() {
 
 let hoorahTimer;
 function celebrate() {
-  const s = currentStreak();
-  $('#hoorah-sub').innerHTML = `Protein ✔ Calories ✔<br>🔥 ${s}-day streak`;
+  const s = weekHits();
+  $('#hoorah-sub').innerHTML = `Protein ✔ Calories ✔<br>🔥 ${s} of 7 days this week`;
   $('#hoorah').hidden = false;
   clearTimeout(hoorahTimer);
   hoorahTimer = setTimeout(() => { $('#hoorah').hidden = true; }, 4500);

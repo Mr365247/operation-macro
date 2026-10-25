@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v58'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v59'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -103,6 +103,13 @@ function isHit(k) {
 function currentStreak() {
   let k = isHit(today) ? today : shiftKey(today, -1), n = 0;
   while (isHit(k)) { n++; k = shiftKey(k, -1); }
+  return n;
+}
+function loggedDay(k) { return !!(state.days[k] && state.days[k].entries.length); }
+// Days in a row with anything logged, through today if today's logged, else through yesterday.
+function logRun() {
+  let k = loggedDay(today) ? today : shiftKey(today, -1), n = 0;
+  while (loggedDay(k)) { n++; k = shiftKey(k, -1); }
   return n;
 }
 function bestStreak() {
@@ -203,9 +210,11 @@ let view = 'today';
 
 function render() {
   $('#today-label').textContent = new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' });
-  const s = currentStreak();
+  const s = currentStreak(), ls = logRun();
   $('#streak').textContent = `🔥 ${s}`;
   $('#streak').classList.toggle('hot', s > 0);
+  $('#log-streak').textContent = `📝 ${ls}`;
+  $('#log-streak').classList.toggle('hot', ls > 0);
   if (view === 'today') renderToday();
   if (view === 'favs') renderFavs();
   if (view === 'history') renderHistory();
@@ -2220,13 +2229,6 @@ const PUSH_URL = (AUTH.pushUrl || '').replace(/\/+$/, '');
 const pushSupported = () => 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
 function pushPrefs() { try { return JSON.parse(localStorage.getItem('opmacro_push')) || {}; } catch { return {}; } }
 function setPushPrefs(p) { try { localStorage.setItem('opmacro_push', JSON.stringify(p)); } catch {} }
-const loggedDay = k => !!(state.days[k] && state.days[k].entries.length);
-// Days in a row with anything logged, through today if today's logged, else through yesterday.
-function logRun() {
-  let k = loggedDay(today) ? today : shiftKey(today, -1), n = 0;
-  while (loggedDay(k)) { n++; k = shiftKey(k, -1); }
-  return n;
-}
 const dayQuote = self.opmacroDayQuote; // a different short quote each day, same one sw.js shows
 function pushApi(path, body) {
   return fetch(PUSH_URL + path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })

@@ -336,6 +336,19 @@
     </form>
   </div>
 
+  <!-- Evening reminder (opens when the notification is tapped). After the other sheets so it
+       sits on top of a weekly report that opened by itself. -->
+  <div class="backdrop" id="nudge-backdrop" hidden>
+    <div class="sheet">
+      <div class="grab"></div>
+      <h2 id="nudge-title"></h2>
+      <div class="quote" id="nudge-quote"></div>
+      <p class="muted" id="nudge-note"></p>
+      <button class="btn primary block big" type="button" id="nudge-log">Log food</button>
+      <button class="btn block" type="button" id="nudge-close">Later</button>
+    </div>
+  </div>
+
   <!-- Welcome note: 'Welcome to a better you' the first time, the motto every time after -->
   <div class="welcome" id="welcome" role="dialog" aria-label="Welcome">
     <div class="welcome-inner">
@@ -459,6 +472,7 @@
   <div class="toast" id="toast" hidden><span id="toast-msg"></span><button id="toast-btn" type="button"></button></div>
 
   <script src="config.js"></script>
+  <script src="quotes.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

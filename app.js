@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v57'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v58'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -2170,62 +2170,8 @@ function localTips(r) {
   return tips;
 }
 
-// Real, well-known quotes only (Claude picks one from this list; it never writes its own).
-const QUOTES = [
-  { by: 'Michael Jordan', text: "I've missed more than 9,000 shots in my career. I've lost almost 300 games. 26 times I've been trusted to take the game-winning shot and missed. I've failed over and over and over again in my life. And that is why I succeed." },
-  { by: 'Kobe Bryant', text: 'Everything negative – pressure, challenges – is all an opportunity for me to rise.' },
-  { by: 'Kobe Bryant', text: 'The moment you give up is the moment you let someone else win.' },
-  { by: 'Wayne Gretzky', text: "You miss 100% of the shots you don't take." },
-  { by: 'Muhammad Ali', text: "I hated every minute of training, but I said, 'Don't quit. Suffer now and live the rest of your life as a champion.'" },
-  { by: 'Vince Lombardi', text: 'The price of success is hard work, dedication to the job at hand, and the determination that whether we win or lose, we have applied the best of ourselves to the task at hand.' },
-  { by: 'Tim Notke, made famous by Kevin Durant', text: 'Hard work beats talent when talent fails to work hard.' },
-  { by: 'LeBron James', text: 'I like criticism. It makes you strong.' },
-  { by: 'Serena Williams', text: 'I really think a champion is defined not by their wins but by how they can recover when they fall.' },
-  { by: 'Babe Ruth', text: "It's hard to beat a person who never gives up." },
-  { by: 'Jerry Rice', text: "Today I will do what others won't, so tomorrow I can accomplish what others can't." },
-  { by: 'Stephen Curry', text: 'Success is not an accident, success is actually a choice.' },
-  { by: 'Dwayne "The Rock" Johnson', text: "Success isn't always about greatness. It's about consistency. Consistent hard work leads to success. Greatness will come." },
-  { by: 'Bill Belichick', text: 'Do your job.' },
-  { by: 'Arnold Schwarzenegger', text: 'The last three or four reps is what makes the muscle grow.' },
-  { by: 'John Wooden', text: "Don't let what you cannot do interfere with what you can do." },
-  { by: 'Pelé', text: 'Success is no accident. It is hard work, perseverance, learning, studying, sacrifice and most of all, love of what you are doing or learning to do.' },
-  { by: 'Derek Jeter', text: "There may be people that have more talent than you, but there's no excuse for anyone to work harder than you do." },
-  { by: 'Michael Phelps', text: "You can't put a limit on anything. The more you dream, the farther you get." },
-  { by: 'Usain Bolt', text: 'I trained four years to run nine seconds.' },
-  { by: 'Lou Holtz', text: "It's not the load that breaks you down, it's the way you carry it." },
-  { by: 'Dan Gable', text: "Gold medals aren't really made of gold. They're made of sweat, determination, and a hard-to-find alloy called guts." },
-  { by: 'Kareem Abdul-Jabbar', text: 'Your mind is what makes everything else work.' },
-  { by: 'Nelson Mandela', text: 'It always seems impossible until it is done.' },
-  { by: 'Michael Jordan', text: 'Some people want it to happen, some wish it would happen, others make it happen.' },
-  { by: 'Michael Jordan', text: 'Talent wins games, but teamwork and intelligence win championships.' },
-  { by: 'Kobe Bryant', text: 'Dedication makes dreams come true.' },
-  { by: 'Magic Johnson', text: 'All kids need is a little help, a little hope and somebody who believes in them.' },
-  { by: 'Larry Bird', text: 'A winner is someone who recognizes his God-given talents, works his tail off to develop them into skills, and uses these skills to accomplish his goals.' },
-  { by: 'Bill Russell', text: 'Concentration and mental toughness are the margins of victory.' },
-  { by: "Tim Duncan's motto, from his mother", text: 'Good, better, best. Never let it rest. Until your good is better and your better is best.' },
-  { by: 'Giannis Antetokounmpo', text: "There's no failure in sports. There's good days, bad days. Some days you are able to be successful, some days you're not." },
-  { by: 'Kevin Garnett', text: 'Anything is possible!' },
-  { by: 'Jim Valvano', text: "Don't give up. Don't ever give up." },
-  { by: 'Vince Lombardi', text: "It's not whether you get knocked down, it's whether you get up." },
-  { by: 'Vince Lombardi', text: 'Practice does not make perfect. Only perfect practice makes perfect.' },
-  { by: 'Walter Payton', text: 'Never die easy.' },
-  { by: 'Bo Jackson', text: "Set your goals high, and don't stop till you get there." },
-  { by: 'Tom Landry', text: 'Setting a goal is not the main thing. It is deciding how you will go about achieving it and staying with that plan.' },
-  { by: 'Bill Walsh', text: "Champions behave like champions before they're champions." },
-  { by: 'Bill Walsh', text: 'The score takes care of itself.' },
-  { by: 'Roger Staubach', text: 'There are no traffic jams along the extra mile.' },
-  { by: 'Joe Namath', text: 'When you have confidence, you can have a lot of fun. And when you have fun, you can do amazing things.' },
-  { by: 'Deion Sanders', text: 'If you look good, you feel good. If you feel good, you play good. If you play good, they pay good.' },
-  { by: 'Mike Tyson', text: 'Everybody has a plan until they get punched in the mouth.' },
-  { by: 'Hank Aaron', text: 'My motto was always to keep swinging. Whether I was in a slump or feeling badly or having trouble off the field, the only thing to do was keep swinging.' },
-  { by: 'Jesse Owens', text: 'We all have dreams. But in order to make dreams come into reality, it takes an awful lot of determination, dedication, self-discipline, and effort.' },
-  { by: 'Wilma Rudolph', text: 'Never underestimate the power of dreams and the influence of the human spirit.' },
-  { by: 'Jackie Joyner-Kersee', text: 'The glory of sport comes from dedication, determination, and desire.' },
-  { by: 'Simone Biles', text: "I'd rather regret the risks that didn't work out than the chances I didn't take at all." },
-  { by: 'Cristiano Ronaldo', text: 'Talent without working hard is nothing.' },
-  { by: 'Lionel Messi', text: 'You have to fight to reach your dream. You have to sacrifice and work hard for it.' },
-  { by: 'Eliud Kipchoge', text: 'No human is limited.' },
-];
+// Real, well-known quotes only (in quotes.js; Claude picks one from this list, it never writes its own).
+const QUOTES = self.OPMACRO_QUOTES;
 // Quotes not used in any other week yet (starts over once all have been seen).
 function freshQuotes(ws) {
   const used = new Set(Object.entries(state.reports).filter(([k]) => k !== ws).map(([, r]) => r.quote).filter(n => n != null));
@@ -2268,8 +2214,8 @@ function journey(ws) {
 }
 
 /* ---- Evening reminder: Web Push from the Cloudflare Worker in worker/push-worker.js ---- */
-// The Worker only knows a random ID per phone and the last day it checked in. The words in the
-// notification (quote, log streak) are saved for the service worker in the 'opmacro-push' cache.
+// The Worker only knows a random ID per phone and the last day it checked in. The quote comes
+// from quotes.js; the log streak is saved for the service worker in the 'opmacro-push' cache.
 const PUSH_URL = (AUTH.pushUrl || '').replace(/\/+$/, '');
 const pushSupported = () => 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
 function pushPrefs() { try { return JSON.parse(localStorage.getItem('opmacro_push')) || {}; } catch { return {}; } }
@@ -2281,11 +2227,7 @@ function logRun() {
   while (loggedDay(k)) { n++; k = shiftKey(k, -1); }
   return n;
 }
-// A different short quote each day (long ones get cut off on the lock screen).
-function dayQuote(k) {
-  const short = QUOTES.filter(q => q.text.length <= 140);
-  return short[Math.round(parseKey(k).getTime() / 86400000) % short.length];
-}
+const dayQuote = self.opmacroDayQuote; // a different short quote each day, same one sw.js shows
 function pushApi(path, body) {
   return fetch(PUSH_URL + path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
     .then(async r => { const j = await r.json().catch(() => ({})); if (!r.ok) throw Object.assign(new Error(j.error || 'HTTP ' + r.status), { status: r.status }); return j; });
@@ -2294,8 +2236,7 @@ let lastPushState = '', checkingIn = false, checkInFailed = 0;
 function pushSync() {
   const pr = pushPrefs();
   if (!PUSH_URL || !pr.on) return;
-  const st = { day: today, logged: loggedDay(today), run: logRun(), quotes: {} };
-  for (let i = 0; i < 7; i++) { const k = shiftKey(today, i), q = dayQuote(k); st.quotes[k] = { text: q.text, by: q.by }; }
+  const st = { day: today, logged: loggedDay(today), run: logRun() };
   const js = JSON.stringify(st);
   if (js !== lastPushState && 'caches' in window) {
     lastPushState = js;
@@ -2375,6 +2316,27 @@ $('#push-test').addEventListener('click', () => {
     });
 });
 
+// Tapping the reminder opens the app on this card: the log streak, the day's quote and a way to log.
+function showNudge() {
+  if ((authOn && !account) || state.needsSetup || weighinDue()) return; // Sunday weigh-in comes first
+  const logged = loggedDay(today), run = logRun(), q = dayQuote(today);
+  $('#nudge-title').textContent = logged ? '✓ Logged today'
+    : run > 0 ? `📝 Keep your ${run}-day log streak alive` : '📝 Log today, start a streak';
+  $('#nudge-quote').innerHTML = `<blockquote>“${esc(q.text)}”</blockquote><cite>— ${esc(q.by)}</cite>`;
+  $('#nudge-note').textContent = logged ? 'Nice work staying consistent.' : 'It’s not too late. Log some food and stay consistent.';
+  $('#nudge-log').textContent = logged ? 'Log more' : 'Log food';
+  closeWelcome();
+  $('#nudge-backdrop').hidden = false;
+}
+const closeNudge = () => { $('#nudge-backdrop').hidden = true; maybeAutoReport(); };
+$('#nudge-log').addEventListener('click', () => { $('#nudge-backdrop').hidden = true; setView('today'); openSheet('add'); });
+$('#nudge-close').addEventListener('click', closeNudge);
+$('#nudge-backdrop').addEventListener('click', ev => { if (ev.target.id === 'nudge-backdrop') closeNudge(); });
+// The app was already open in the background: sw.js sends a message instead of reopening it.
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.addEventListener('message', ev => { if (ev.data && ev.data.nudge) showNudge(); });
+}
+
 // The week that just ended opens by itself the first time the app is opened after it
 // (Sunday, right after the weigh-in when the Sunday lock is on).
 /* ---- Where do you eat? (asked once, editable in Settings) ---- */
@@ -2415,7 +2377,7 @@ $('#edit-places').addEventListener('click', openPlacesPicker);
 
 function maybeAutoReport() {
   if (!menusLoaded || state.needsSetup || weighinDue() || !$('#report-backdrop').hidden) return;
-  if (!$('#places-pick').hidden) return;
+  if (!$('#places-pick').hidden || !$('#nudge-backdrop').hidden) return;
   // New profile: ask where they eat first (needs the menus loaded to list the places).
   if (state.places === null && $('#setup').hidden) { openPlacesPicker(); return; }
   if (!$('#backdrop').hidden || !$('#setup') || !$('#setup').hidden) return;
@@ -2772,7 +2734,7 @@ $('#export-btn').addEventListener('click', backupNow);
 let backupShown = false;
 function maybeBackupPopup() {
   if (backupShown || !backupDue() || state.needsSetup || weighinDue()) return;
-  if (['#report-backdrop', '#places-pick', '#setup', '#backdrop', '#signin'].some(sel => $(sel) && !$(sel).hidden)) return;
+  if (['#report-backdrop', '#nudge-backdrop', '#places-pick', '#setup', '#backdrop', '#signin'].some(sel => $(sel) && !$(sel).hidden)) return;
   const sunday = parseKey(today).getDay() === 0;
   const afterWeighin = sunday && state.weights[today] != null;
   const lockOff = state.settings.sundayLock === false && sunday;
@@ -2974,6 +2936,11 @@ if (authOn && !account) {
   setView('today');
   if (state.needsSetup) openSetup(true);
   if (account) checkAccount();
+  // Opened by tapping the evening reminder (sw.js adds ?nudge).
+  if (new URLSearchParams(location.search).has('nudge')) {
+    history.replaceState(null, '', location.pathname);
+    showNudge();
+  }
 }
 if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {

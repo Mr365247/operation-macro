@@ -32,6 +32,8 @@ It makes its own keys the first time it runs, so there's nothing secret to paste
 
 - When the phone logs its first food of the day, it tells the Worker "logged today ✓".
 - At 7 pm the Worker sends a reminder to every phone that hasn't checked in today.
-- The notification text (quote of the day, log streak) is put together on the phone itself,
-  from what the app last saved, so the Worker never sees it.
+- The notification text is put together on the phone itself, so the Worker never sees it. The
+  quote of the day is built into the app (`quotes.js`); the log streak comes from what the app
+  last saved, and is left out on the odd iPhone push that can't read it.
+- Tapping the notification opens the app on a card with the streak, the quote and a Log food button.
 - Turning it off, or deleting the app, removes the phone from the list.

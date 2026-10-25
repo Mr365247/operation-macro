@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v55'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v56'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -2248,10 +2248,18 @@ function journey(ws) {
   const first = ws_[0], last = ws_[ws_.length - 1];
   let best = 0, run = 0, prev = null;
   for (const k of keys.filter(isHit)) { run = prev && shiftKey(prev, 1) === k ? run + 1 : 1; best = Math.max(best, run); prev = k; }
+  // Logging streak: days in a row with anything logged, hit or not, counted back from the
+  // week's last day. Easier to build than the hit streak, so new users see it grow right away.
+  const logged = new Set(keys);
+  let logRun = 0, bestLog = 0;
+  run = 0; prev = null;
+  for (const k of keys) { run = prev && shiftKey(prev, 1) === k ? run + 1 : 1; bestLog = Math.max(bestLog, run); prev = k; }
+  for (let k = end; logged.has(k); k = shiftKey(k, -1)) logRun++;
   return {
     since: keys[0] || null,
     weeks: keys.length ? Math.floor((parseKey(end) - parseKey(weekStart(keys[0]))) / (7 * 86400000)) + 1 : 0,
     daysLogged: keys.length, daysHit: keys.filter(isHit).length, bestStreak: best,
+    logStreak: logRun, bestLogStreak: bestLog,
     startW: first ? first.w : null, nowW: last ? last.w : null,
     lost: first && last && first.k !== last.k ? first.w - last.w : null,
   };
@@ -2347,7 +2355,10 @@ function openReport(ws, opts = {}) {
     statHTML(`${j.daysHit}/${j.daysLogged}`, 'Days hit') +
     statHTML(j.startW == null ? '—' : fmt1(j.startW), 'Start') +
     statHTML(j.nowW == null ? '—' : fmt1(j.nowW), 'Now') +
-    statHTML('🔥 ' + j.bestStreak, 'Best streak');
+    statHTML('🔥 ' + j.bestStreak, 'Best streak') +
+    statHTML('📝 ' + j.logStreak, 'Log streak') +
+    statHTML('📝 ' + j.bestLogStreak, 'Best log') +
+    statHTML(j.daysLogged, 'Days logged');
   $('#report-journey-note').textContent = j.since ? `Since ${parseKey(j.since).toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}` : '';
   if (r.done) { (state.reports[ws] = state.reports[ws] || {}).seen = true; save(); }
   showQuote(ws);
@@ -2428,7 +2439,7 @@ async function coachFromClaude() {
   const j = journey(ws), age = (state.profile || {}).age;
   const quoteIds = freshQuotes(ws);
   const quotes = quoteIds.map(i => `${i}: "${QUOTES[i].text}" (${QUOTES[i].by})`).join('\n');
-  const progress = j.since ? `Tracking since ${j.since}: ${j.weeks} weeks, ${j.daysHit} of ${j.daysLogged} logged days hit, best streak ${j.bestStreak} days` +
+  const progress = j.since ? `Tracking since ${j.since}: ${j.weeks} weeks, ${j.daysHit} of ${j.daysLogged} logged days hit, best streak ${j.bestStreak} days, logging streak ${j.logStreak} days in a row (best ${j.bestLogStreak})` +
     (j.startW != null ? `, weight ${fmt1(j.startW)} → ${fmt1(j.nowW)} lbs` : '') + '.' : '';
   const weight = r.wEnd ? `${fmt1(r.wEnd.w)} lbs${r.change != null ? ` (${r.change > 0 ? '+' : ''}${fmt1(r.change)} this week)` : ''}, goal ${fmt1(state.settings.goalWeight)} lbs` : 'no weigh-in';
   try {

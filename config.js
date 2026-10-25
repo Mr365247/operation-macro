@@ -5,4 +5,7 @@ window.OPMACRO_CONFIG = {
   // Free key from api.data.gov/signup for USDA barcode lookups (blank = shared demo key, ~30 lookups/hour).
   // Not a secret: it only allows free food lookups and isn't tied to any payment.
   usdaKey: 'wGJnfbGNwhdrtfMKLhbdDkgNJkNN8WfMLdbCkdPf',
+  // Evening reminder Worker (worker/push-worker.js), e.g. https://opmacro-push.NAME.workers.dev.
+  // Not a secret. Blank hides the reminder card in Settings.
+  pushUrl: '',
 };

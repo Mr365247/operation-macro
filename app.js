@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v56'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v57'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -212,6 +212,7 @@ function render() {
   if (view === 'list') renderList();
   if (view === 'settings') renderSettings();
   checkWeighin();
+  pushSync();
 }
 
 // Good / close / bad for each ring, judged as if the day ended right now.
@@ -699,6 +700,7 @@ $('#it-log').addEventListener('click', () => {
 function renderSettings() {
   const s = state.settings;
   $('#app-version').textContent = APP_VERSION;
+  renderPush();
   $('#s-cal').value = s.cal; $('#s-protein').value = s.protein;
   $('#s-carbs').value = s.carbs; $('#s-fat').value = s.fat;
   $('#s-weight').value = s.weight; $('#s-goal').value = s.goalWeight;
@@ -2264,6 +2266,114 @@ function journey(ws) {
     lost: first && last && first.k !== last.k ? first.w - last.w : null,
   };
 }
+
+/* ---- Evening reminder: Web Push from the Cloudflare Worker in worker/push-worker.js ---- */
+// The Worker only knows a random ID per phone and the last day it checked in. The words in the
+// notification (quote, log streak) are saved for the service worker in the 'opmacro-push' cache.
+const PUSH_URL = (AUTH.pushUrl || '').replace(/\/+$/, '');
+const pushSupported = () => 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
+function pushPrefs() { try { return JSON.parse(localStorage.getItem('opmacro_push')) || {}; } catch { return {}; } }
+function setPushPrefs(p) { try { localStorage.setItem('opmacro_push', JSON.stringify(p)); } catch {} }
+const loggedDay = k => !!(state.days[k] && state.days[k].entries.length);
+// Days in a row with anything logged, through today if today's logged, else through yesterday.
+function logRun() {
+  let k = loggedDay(today) ? today : shiftKey(today, -1), n = 0;
+  while (loggedDay(k)) { n++; k = shiftKey(k, -1); }
+  return n;
+}
+// A different short quote each day (long ones get cut off on the lock screen).
+function dayQuote(k) {
+  const short = QUOTES.filter(q => q.text.length <= 140);
+  return short[Math.round(parseKey(k).getTime() / 86400000) % short.length];
+}
+function pushApi(path, body) {
+  return fetch(PUSH_URL + path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+    .then(async r => { const j = await r.json().catch(() => ({})); if (!r.ok) throw Object.assign(new Error(j.error || 'HTTP ' + r.status), { status: r.status }); return j; });
+}
+let lastPushState = '', checkingIn = false, checkInFailed = 0;
+function pushSync() {
+  const pr = pushPrefs();
+  if (!PUSH_URL || !pr.on) return;
+  const st = { day: today, logged: loggedDay(today), run: logRun(), quotes: {} };
+  for (let i = 0; i < 7; i++) { const k = shiftKey(today, i), q = dayQuote(k); st.quotes[k] = { text: q.text, by: q.by }; }
+  const js = JSON.stringify(st);
+  if (js !== lastPushState && 'caches' in window) {
+    lastPushState = js;
+    caches.open('opmacro-push').then(c => c.put('state', new Response(js, { headers: { 'Content-Type': 'application/json' } }))).catch(() => {});
+  }
+  // "Logged today ✓", once a day, so tonight's 7 pm reminder skips this phone.
+  if (st.logged && pr.pinged !== today && !checkingIn && Date.now() - checkInFailed > 5 * 60000) {
+    checkingIn = true;
+    pushApi('/logged', { id: pr.id, day: today })
+      .then(() => setPushPrefs({ ...pushPrefs(), pinged: today }))
+      .catch(() => { checkInFailed = Date.now(); })
+      .finally(() => { checkingIn = false; });
+  }
+}
+function renderPush() {
+  $('#push-card').hidden = !PUSH_URL;
+  if (!PUSH_URL) return;
+  const on = !!pushPrefs().on;
+  $('#push-toggle').textContent = on ? 'Turn off' : 'Turn on';
+  $('#push-toggle').classList.toggle('primary', !on);
+  $('#push-test').hidden = !on;
+  const denied = 'Notification' in window && Notification.permission === 'denied';
+  $('#push-status').textContent = on ? (denied ? '⚠️ Notifications are blocked for this app in your phone’s Settings.' : '✓ On · 7 pm on days you haven’t logged')
+    : 'Off';
+}
+async function pushTurnOn() {
+  const ios = /iPhone|iPad|iPod/.test(navigator.userAgent);
+  const installed = navigator.standalone || matchMedia('(display-mode: standalone)').matches;
+  if (!pushSupported()) {
+    $('#push-status').textContent = ios && !installed
+      ? 'On iPhone, first add Operation Macro to your Home Screen (Share → Add to Home Screen), open it from there, then turn this on.'
+      : 'This browser can’t show notifications.';
+    return;
+  }
+  const btn = $('#push-toggle');
+  btn.disabled = true; btn.textContent = 'Turning on…';
+  try {
+    if (await Notification.requestPermission() !== 'granted') {
+      throw new Error('Notifications are blocked. Allow them for Operation Macro in your phone’s Settings → Notifications, then try again.');
+    }
+    const { key } = await fetch(PUSH_URL + '/key').then(r => r.json());
+    const reg = await navigator.serviceWorker.ready;
+    const old = await reg.pushManager.getSubscription();
+    if (old) await old.unsubscribe();
+    const raw = atob(key.replace(/-/g, '+').replace(/_/g, '/') + '='.repeat((4 - key.length % 4) % 4));
+    const sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: Uint8Array.from(raw, c => c.charCodeAt(0)) });
+    const id = pushPrefs().id || [...crypto.getRandomValues(new Uint8Array(16))].map(b => b.toString(16).padStart(2, '0')).join('');
+    const day = loggedDay(today) ? today : null;
+    await pushApi('/subscribe', { id, sub: sub.toJSON(), day });
+    setPushPrefs({ id, on: true, pinged: day });
+    lastPushState = '';
+    pushSync();
+    toast('Evening reminder on');
+  } catch (e) {
+    btn.disabled = false; renderPush();
+    $('#push-status').textContent = e.message || 'Couldn’t turn it on. Try again.';
+    return;
+  }
+  btn.disabled = false; renderPush();
+}
+async function pushTurnOff() {
+  const pr = pushPrefs();
+  setPushPrefs({ id: pr.id, on: false });
+  renderPush();
+  try { const reg = await navigator.serviceWorker.ready; const sub = await reg.pushManager.getSubscription(); if (sub) await sub.unsubscribe(); } catch {}
+  if (pr.id) pushApi('/unsubscribe', { id: pr.id }).catch(() => {});
+  toast('Evening reminder off');
+}
+$('#push-toggle').addEventListener('click', () => (pushPrefs().on ? pushTurnOff() : pushTurnOn()));
+$('#push-test').addEventListener('click', () => {
+  lastPushState = ''; pushSync();
+  pushApi('/test', { id: pushPrefs().id })
+    .then(() => toast('Test sent. It should pop up in a few seconds.'))
+    .catch(e => {
+      if (e.status === 404) { setPushPrefs({ id: pushPrefs().id, on: false }); renderPush(); }
+      $('#push-status').textContent = e.status === 404 ? 'This phone isn’t signed up anymore. Turn it on again.' : 'Couldn’t send a test. Check your connection.';
+    });
+});
 
 // The week that just ended opens by itself the first time the app is opened after it
 // (Sunday, right after the weigh-in when the Sunday lock is on).

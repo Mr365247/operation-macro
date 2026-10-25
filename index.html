@@ -115,6 +115,14 @@
         <button class="btn block" type="button" id="edit-places">Edit my places</button>
       </div>
 
+      <div class="card" id="push-card" hidden>
+        <div class="card-head"><h3>📲 Evening reminder</h3></div>
+        <p class="muted small">A 7 pm nudge with a quote, only on days you haven't logged anything yet. To know who's logged, this phone sends a "logged today ✓" check-in. No foods, numbers, email or name.</p>
+        <p class="small" id="push-status"></p>
+        <button class="btn primary block" type="button" id="push-toggle">Turn on</button>
+        <button class="btn block" type="button" id="push-test" hidden>Send a test</button>
+      </div>
+
       <div class="card" id="account-card" hidden>
         <div class="card-head"><h3>👤 Account</h3></div>
         <p class="small">Signed in as <b id="account-email"></b></p>

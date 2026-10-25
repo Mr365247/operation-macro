@@ -7,5 +7,5 @@ window.OPMACRO_CONFIG = {
   usdaKey: 'wGJnfbGNwhdrtfMKLhbdDkgNJkNN8WfMLdbCkdPf',
   // Evening reminder Worker (worker/push-worker.js), e.g. https://opmacro-push.NAME.workers.dev.
   // Not a secret. Blank hides the reminder card in Settings.
-  pushUrl: '',
+  pushUrl: 'https://opmacro-push.mynewbarber.workers.dev',
 };

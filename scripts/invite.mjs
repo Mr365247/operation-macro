@@ -4,7 +4,7 @@
 //   node scripts/invite.mjs check someone@example.com    -> is this email invited?
 // invites.json only stores one-way fingerprints, never emails or codes, because the repo is public.
 // Must match the settings in app.js (INVITE_ITER, salts).
-import { pbkdf2Sync, randomInt } from 'node:crypto';
+import { pbkdf2Sync, randomInt, createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 
 const FILE = process.env.INVITES_FILE || new URL('../invites.json', import.meta.url);
@@ -14,6 +14,8 @@ const normCode = c => String(c || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
 const hex = (secret, salt) => pbkdf2Sync(secret, salt, ITER, 32, 'sha256').toString('hex');
 const idOf = email => hex(normEmail(email), 'opmacro-id').slice(0, 16);
 const hashOf = (email, code) => hex(normCode(code), 'opmacro:' + normEmail(email));
+// v lets the Worker check a phone's shared-Claude secret (app.js aiSecret) with one cheap SHA-256.
+const aiCheckOf = (email, code) => createHash('sha256').update(hex(normCode(code), 'opmacro-ai:' + normEmail(email))).digest('hex');
 
 // No 0/O, 1/I/L: easy to read off a text message.
 const ALPHABET = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
@@ -36,7 +38,7 @@ if (cmd === 'check') {
   console.log(`Removed ${normEmail(email)}.`);
 } else {
   const code = newCode();
-  data.invites = [...others, { id, h: hashOf(email, code), added: new Date().toISOString().slice(0, 10) }];
+  data.invites = [...others, { id, h: hashOf(email, code), v: aiCheckOf(email, code), added: new Date().toISOString().slice(0, 10) }];
   writeFileSync(FILE, JSON.stringify(data, null, 1) + '\n');
   console.log(`${normEmail(email)} invite code: ${code}`);
 }

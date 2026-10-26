@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v62'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v63'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -831,7 +831,7 @@ function needsEstimate() {
 }
 function updateSaveLabel() {
   if (!sheet) return;
-  const estimate = needsEstimate() && getAiKey();
+  const estimate = needsEstimate();
   $('#sheet-save').textContent = estimate ? '✍️ Estimate macros' : sheet.mode === 'add' ? 'Log it' : 'Save';
 }
 $('#entry-form').addEventListener('input', updateSaveLabel);
@@ -840,8 +840,8 @@ $('#entry-form').addEventListener('submit', async ev => {
   ev.preventDefault();
   if (needsEstimate()) {
     if (!getAiKey()) {
-      scanNote('Enter the calories or macros, or use 📷 Barcode, 📸 Photo or ✍️ Describe. (Photo and Describe need your API key in Settings.)');
-      $('#in-cal').focus();
+      $('#in-name').blur();
+      if (!applyLocalEstimate($('#in-name').value.trim())) $('#in-cal').focus();
       return;
     }
     $('#in-name').blur();
@@ -1588,13 +1588,14 @@ $('#photo-input').addEventListener('change', async () => {
 });
 // Describe a meal in words instead of a photo.
 $('#describe-food').addEventListener('click', () => {
-  if (!getAiKey()) { scanNote('✍️ Add your Anthropic API key in Settings → Photo estimates to turn this on.'); return; }
   photoData = null;
   $('#photo-preview').hidden = true;
   $('#photo-note').value = '';
   $('#photo-note').placeholder = 'e.g. 6 oz steak, 2 slices provolone, 1 torpedo roll';
   $('#photo-panel').hidden = false;
-  scanNote('Describe what you ate, with amounts if you know them, then tap Estimate.');
+  scanNote(getAiKey() ? 'Describe what you ate, with amounts if you know them, then tap Estimate.'
+    : 'Describe what you ate with amounts, like "2 eggs, 1 slice toast, 1 banana", then tap Estimate. ' +
+      'It matches the app\'s food list; an API key in Settings makes it smarter.');
   $('#photo-note').focus();
 });
 $('#photo-cancel').addEventListener('click', () => { photoData = null; $('#photo-panel').hidden = true; scanNote(''); });
@@ -1719,6 +1720,143 @@ $('#est-list').addEventListener('click', ev => {
   showEstItems();
 });
 
+
+/* ---- ✍️ Describe without an API key: match the words to foods the app already knows ---- */
+// "2 eggs, 1 slice toast and a banana" -> parts -> amount + unit + food -> best match among your
+// favorites and scans, the named restaurant's menu, the school menu, and common foods (foods.js).
+const FOODS = self.OPMACRO_FOODS || [];
+const WEIGHT = { oz: 28.35, lb: 453.6, g: 1 };
+const UNIT_WORDS = {
+  oz: ['oz', 'ounce', 'ounces'], lb: ['lb', 'lbs', 'pound', 'pounds'], g: ['g', 'gram', 'grams'],
+  cup: ['cup', 'cups', 'c'], tbsp: ['tbsp', 'tablespoon', 'tablespoons', 'tbs', 'tbl'], tsp: ['tsp', 'teaspoon', 'teaspoons'],
+  slice: ['slice', 'slices', 'strip', 'strips'], scoop: ['scoop', 'scoops'], can: ['can', 'cans'], bottle: ['bottle', 'bottles'],
+  glass: ['glass', 'glasses'], bowl: ['bowl', 'bowls'], pack: ['pack', 'packs', 'packet', 'packets'], bag: ['bag', 'bags'],
+  handful: ['handful', 'handfuls'], serving: ['serving', 'servings', 'order', 'orders'], pat: ['pat', 'pats'],
+  each: ['piece', 'pieces', 'pc', 'pcs', 'whole', 'each', 'link', 'links'],
+};
+const UNIT_OF = Object.fromEntries(Object.entries(UNIT_WORDS).flatMap(([u, ws]) => ws.map(w => [w, u])));
+const NUM_WORDS = { a: 1, an: 1, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10,
+  half: 0.5, quarter: 0.25, couple: 2, few: 3, dozen: 12, double: 2 };
+const LOCAL_STOP = new Set('a an the of some my small medium large big regular plain fresh side had ate'.split(' '));
+const stem = w => w.length > 4 && w.endsWith('ies') ? w.slice(0, -3) + 'y' : w.length > 3 && /[^s]s$/.test(w) ? w.slice(0, -1) : w;
+const localWords = t => norm(t).replace(/&/g, ' and ').split(/[^a-z0-9%]+/).filter(w => w && !LOCAL_STOP.has(w)).map(stem);
+
+// Amount, unit and food words from one part, e.g. "1 1/2 cups of white rice".
+function parseAmount(text) {
+  let t = String(text).toLowerCase().replace(/[×]/g, 'x').trim(), qty = 1, unit = null;
+  const num = t.match(/^(\d+)\s+(\d+)\/(\d+)\b|^(\d+)\/(\d+)\b|^(\d*\.?\d+)(?!\s*%)/); // not the 2 in "2% milk"
+  if (num) {
+    qty = num[1] ? +num[1] + num[2] / num[3] : num[4] ? num[4] / num[5] : +num[6];
+    t = t.slice(num[0].length).trim(); // "8oz steak" -> "oz steak"
+  } else {
+    const w = t.split(/\s+/)[0];
+    if (NUM_WORDS[w] != null) { qty = NUM_WORDS[w]; t = t.slice(w.length).trim(); }
+    if (/^half\b/.test(t)) { qty *= 0.5; t = t.slice(4).trim(); } // "a half cup"
+  }
+  const u = t.split(/\s+/)[0];
+  if (UNIT_OF[u] && t.split(/\s+/).length > 1) { unit = UNIT_OF[u]; t = t.slice(u.length).trim(); }
+  t = t.replace(/^of\s+/, '');
+  const times = t.match(/\s*x\s*(\d*\.?\d+)$/);
+  if (times) { qty *= +times[1]; t = t.slice(0, times.index); }
+  return { qty: qty > 0 ? qty : 1, unit, food: t.trim() };
+}
+function overlap(words, names, skip) {
+  let best = 0;
+  for (const nm of names) {
+    const toks = localWords(nm).filter(t => !skip || !skip.has(t));
+    if (!toks.length || !words.length) continue;
+    const hit = toks.filter(t => words.includes(t)).length;
+    best = Math.max(best, (2 * hit) / (toks.length + words.length));
+  }
+  return best;
+}
+function localMatch(foodText, ctx) {
+  let words = localWords(foodText);
+  // The chain's own name ("chick fil a", "Chick-fil-A Nuggets") isn't part of the food.
+  const chainWords = new Set(chainList.filter(c => ctx.chains.includes(c.name)).flatMap(c => c.keys.flatMap(localWords)));
+  if (ctx.chains.length) words = words.filter(w => !chainWords.has(w));
+  if (!words.length) return null;
+  let best = null;
+  const offer = (raw, item, bonus = 0) => {
+    const score = raw + bonus;
+    if (raw >= 0.5 && (!best || score > best.score + 1e-9 || (Math.abs(score - best.score) < 1e-9 && item.len < best.item.len))) best = { score, raw, item };
+  };
+  for (const f of FOODS) offer(overlap(words, [f.n, ...f.a]), { kind: 'common', f, len: f.n.length });
+  for (const i of state.favorites) if (i.name && i.cal != null) offer(overlap(words, [baseName(i.name)]), { kind: 'ref', i, src: 'fav', len: i.name.length }, 0.15);
+  for (const i of Object.values(state.barcodes)) if (i.name && i.cal != null) offer(overlap(words, [i.name]), { kind: 'ref', i, src: 'scan', len: i.name.length }, 0.05);
+  if (ctx.school) for (const i of cafeteria) if (i.cal != null) offer(overlap(words, [i.name]), { kind: 'ref', i, src: 'school', len: i.name.length }, 0.1);
+  for (const i of restaurants) {
+    if (!ctx.chains.includes(i.chain) || i.cal == null) continue;
+    offer(overlap(words, [i.short || i.name], chainWords), { kind: 'ref', i, src: 'rest', len: (i.short || i.name).length }, 0.5);
+  }
+  return best;
+}
+function localItem(part, ctx) {
+  const a = parseAmount(part);
+  const m = localMatch(a.food, ctx);
+  if (!m) return null;
+  const r = (v, d) => Math.round((+v || 0) * d) / d;
+  if (m.item.kind === 'common') {
+    const f = m.item.f;
+    const unit = a.unit || (f.d === 'oz' && f.u.each ? 'each' : f.d);
+    const each = WEIGHT[unit] || f.u[unit] || f.u[f.d] || WEIGHT[f.d] || 100;
+    const grams = each * a.qty, k = grams / 100;
+    const q = +a.qty.toFixed(2);
+    const label = unit === 'each' ? `${q}` : `${q} ${unit}${q !== 1 && !WEIGHT[unit] ? 's' : ''}`;
+    return { food: f.n, portion: `${label} · ${Math.round(grams)} g`, cal: r(f.m[0] * k, 1), p: r(f.m[1] * k, 10), c: r(f.m[2] * k, 10), f: r(f.m[3] * k, 10), mult: 1 };
+  }
+  const i = m.item.i, q = WEIGHT[a.unit] ? 1 : a.qty; // a weight for a menu item can't be converted; count it as 1
+  const nm = i.short || i.name;
+  return { food: m.item.src === 'rest' ? (norm(nm).startsWith(norm(i.chain)) ? nm : `${i.chain} ${nm}`) : baseName(i.name), portion: i.serving || '',
+    cal: r(i.cal * q, 1), p: r((i.p || 0) * q, 10), c: r((i.c || 0) * q, 10), f: r((i.f || 0) * q, 10), mult: 1,
+    official: `${m.item.src === 'rest' ? 'official' : m.item.src === 'school' ? 'NPHS menu' : m.item.src === 'scan' ? 'scanned' : 'favorite'}${q !== 1 ? ' ×' + +q.toFixed(2) : ''}` };
+}
+function localEstimate(note) {
+  const n = norm(note);
+  const ctx = {
+    chains: chainList.filter(ch => ch.keys.some(k => k.length > 2 && new RegExp(`(^|\\W)${escRe(k)}(\\W|$)`).test(n))).map(c => c.name),
+    school: /\b(school|cafeteria|nphs)\b/.test(n),
+  };
+  const items = [], missed = [];
+  const wholeScore = part => { const m = localMatch(parseAmount(part).food, ctx); return m ? m.raw : 0; };
+  const add = part => {
+    part = part.trim().replace(/^(and|with|plus)\s+/i, '');
+    if (!part) return;
+    const whole = localItem(part, ctx);
+    // "mac and cheese" is one food; "eggs and toast" is two.
+    const pieces = part.split(/\s+(?:and|with|plus|&)\s+/i);
+    if (pieces.length > 1 && (!whole || wholeScore(part) < 0.8)) {
+      const split = pieces.map(p => localItem(p, ctx));
+      if (split.some(Boolean)) {
+        split.forEach((it, j) => (it ? items.push(it) : missed.push(pieces[j].trim())));
+        return;
+      }
+    }
+    if (whole) items.push(whole); else missed.push(part);
+  };
+  String(note).split(/[,;\n+]+/).forEach(add);
+  return { items, missed };
+}
+function applyLocalEstimate(note) {
+  if (!sheet) return false;
+  const { items, missed } = localEstimate(note);
+  if (!items.length) {
+    scanNote(`Couldn't match "${note}" to foods in the app. Try simple words with amounts, like "2 eggs, 1 slice toast, 1 banana", or type the calories.`);
+    return false;
+  }
+  sheet.code = null;
+  if (!$('#in-name').value.trim()) $('#in-name').value = note.length > 60 ? note.slice(0, 57) + '…' : note;
+  estItems = items;
+  perServing = null; servings = 1;
+  $('#serving-row').hidden = true;
+  $('#photo-panel').hidden = true;
+  showEstItems();
+  scanNote(`✍️ Matched ${items.length} food${items.length === 1 ? '' : 's'} from the app's food list (average numbers, no AI). ` +
+    'Fix any portion with − / +, then log it.' +
+    (missed.length ? ` Couldn't find: ${missed.map(m => `"${m}"`).join(', ')}. Add ${missed.length === 1 ? 'it' : 'them'} separately or type the numbers.` : ''));
+  return true;
+}
+
 // Calls go straight from this phone to Anthropic with the user's own key; there is no server in between.
 async function aiClient() {
   await loadScript('vendor/anthropic-sdk.js');
@@ -1730,6 +1868,7 @@ async function estimatePhoto() {
   const note = $('#photo-note').value.trim();
   if (!sheet || (!photoData && !note)) { $('#photo-note').focus(); return; }
   const fromPhoto = !!photoData;
+  if (!fromPhoto && !getAiKey()) { applyLocalEstimate(note); return; }
   const btn = $('#photo-go');
   btn.disabled = true; btn.textContent = 'Estimating…';
   scanNote(fromPhoto ? '📸 Looking at your food… this takes a few seconds.' : '✍️ Working out the macros… this takes a few seconds.');
@@ -1758,7 +1897,9 @@ async function estimatePhoto() {
     if (!block) throw new Error('empty');
     applyEstimate(JSON.parse(block.text), fromPhoto);
   } catch (e) {
-    scanNote(aiErrorMessage(e));
+    // Claude unreachable for a description: fall back to the food list.
+    if (!fromPhoto && applyLocalEstimate(note)) scanNote($('#scan-note').textContent + ' (Claude was unavailable.)');
+    else scanNote(aiErrorMessage(e));
   } finally {
     btn.disabled = false; btn.textContent = 'Estimate';
   }

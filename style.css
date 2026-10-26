@@ -559,11 +559,20 @@ input:focus { border-color: var(--pro); }
 .meal-day { margin-left: auto; }
 .meal-day b { color: var(--cal); }
 .meal-items { border-top: 1px solid var(--line); margin-top: 10px; padding-top: 4px; display: flex; flex-direction: column; }
-.entry.slim { display: flex; justify-content: space-between; align-items: center; gap: 10px; min-height: 44px; padding: 8px 2px;
+.entry.slim { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-height: 44px; padding: 8px 2px; text-align: left;
   background: var(--card); border: 0; border-radius: 0; border-bottom: 1px solid var(--line); }
 .meal-items .swipe:last-child .entry.slim { border-bottom: 0; }
 .entry.slim .entry-name { font-size: 15px; font-weight: 600; }
-.entry.slim .entry-macros { margin: 0; white-space: nowrap; font-size: 13px; }
+.entry.slim .entry-macros, .group-row .entry-macros { margin: 0; white-space: nowrap; font-size: 13px; color: var(--muted); }
+.entry-macros b { color: var(--cal); }
+.mp { color: var(--pro); } .mc { color: var(--carb); } .mf { color: var(--fat); }
+.group-tag { display: inline-block; margin-left: 4px; padding: 1px 8px; border-radius: 10px; background: var(--card2);
+  color: var(--muted); font-size: 12px; font-weight: 700; white-space: nowrap; }
+.group-items { margin: 0 0 8px 10px; padding: 2px 0 2px 12px; border-left: 3px solid var(--line); }
+.group-row { padding: 7px 0; border-bottom: 1px dashed var(--line); }
+.group-food b { font-size: 14px; font-weight: 600; }
+.group-food small { display: block; color: var(--muted); font-size: 12px; }
+.group-edit { margin-top: 6px; font-size: 14px; }
 
 /* ---------- Estimate: adjust each part ---------- */
 .est-items { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 8px 12px; margin-bottom: 12px; }

@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v63'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v64'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -169,6 +169,7 @@ const sumOf = es => es.reduce((t, e) => ({ cal: t.cal + (+e.cal || 0), p: t.p + 
 
 function addEntry(data) {
   const e = { id: uid(), name: data.name, cal: data.cal, p: data.p, c: data.c, f: data.f, meal: data.meal || defaultMeal(), t: Date.now() };
+  if (data.parts) e.parts = data.parts;
   todayDay().entries.push(e);
   save();
   render();
@@ -201,6 +202,7 @@ function upsertFavorite(data, id) {
                : state.favorites.find(f => f.name.toLowerCase() === data.name.toLowerCase());
   if (!fav) { fav = { id: uid(), uses: 0 }; state.favorites.push(fav); }
   Object.assign(fav, { name: data.name, cal: data.cal, p: data.p, c: data.c, f: data.f });
+  if (data.parts) fav.parts = data.parts; else delete fav.parts;
   save();
 }
 // Quick log and the Favorites tab fill the Log food form instead of logging straight away,
@@ -209,6 +211,7 @@ function fillFavorite(id) {
   const fav = state.favorites.find(f => f.id === id);
   if (!fav || !sheet) return;
   sheet.fav = fav.id;
+  sheet.favParts = fav.parts || null;
   $('#in-name').value = fav.name;
   perServing = {};
   IN.forEach(k => { perServing[k] = fav[k] != null ? +fav[k] : null; });
@@ -366,10 +369,19 @@ function renderToday() {
       .map(([k, l, color]) => `<span><i class="dot" style="background:${color}"></i><b>${fmt(t[k])}</b> ${l}</span>`).join('');
     const items = open ? `<div class="meal-items">${entries.map(e => {
       const isFav = favNames.has(e.name.toLowerCase());
+      const parts = e.parts && e.parts.length > 1 ? e.parts : null, shown = parts && openGroups.has(e.id);
+      const group = parts ? `<span class="group-tag">${shown ? '▾' : '▸'} ${parts.length} foods</span>` : '';
       return `<div class="swipe" data-swipe="${e.id}">
           <div class="swipe-bg"><span class="swipe-fav">⭐ Favorite</span><span class="swipe-del">Delete 🗑</span></div>
-          <button class="entry slim swipe-move" data-entry="${e.id}"><span class="entry-name">${isFav ? '⭐ ' : ''}${esc(e.name)}</span><span class="entry-macros"><b>${fmt(e.cal)}</b> cal · P ${fmt1(e.p)}</span></button>
-        </div>`;
+          <button class="entry slim swipe-move" data-entry="${e.id}"${parts ? ` data-group="${e.id}"` : ''}>
+            <span class="entry-name">${isFav ? '⭐ ' : ''}${esc(e.name)} ${group}</span><span class="entry-macros">${macroLine(e)}</span></button>
+        </div>${shown ? `<div class="group-items">${parts.map(pt => {
+          const m = pt.mult || 1, amt = { cal: pt.cal * m, p: pt.p * m, c: pt.c * m, f: pt.f * m };
+          const sub = [pt.official ? '✓ ' + pt.official : pt.portion, m !== 1 ? `×${+m.toFixed(2)}` : ''].filter(Boolean).join(' · ');
+          return `<div class="group-row"><div class="group-food"><b>${esc(pt.food)}</b>${sub ? `<small>${esc(sub)}</small>` : ''}</div>
+            <div class="entry-macros">${macroLine(amt)}</div></div>`;
+        }).join('')}
+          <button class="link-btn group-edit" type="button" data-entry="${e.id}">✎ Change portions</button></div>` : ''}`;
     }).join('')}</div>` : '';
     return `<div class="meal-card${open ? ' open' : ''}">
       <div class="meal-head" data-meal-toggle="${key}">
@@ -383,10 +395,23 @@ function renderToday() {
   }).join('');
 }
 
-// Which meal cards are open (this visit only; they start closed).
-const openMeals = new Set();
+// Calories plus each macro in its ring color.
+function macroLine(x) {
+  return `<b>${fmt(x.cal)}</b> cal · <span class="mp">P ${fmt1(x.p || 0)}</span> · <span class="mc">C ${fmt1(x.c || 0)}</span> · <span class="mf">F ${fmt1(x.f || 0)}</span>`;
+}
+// Which meal cards, and which grouped meals inside them, are open (this visit only).
+const openMeals = new Set(), openGroups = new Set();
 $('#log').addEventListener('click', ev => {
   if (ev.target.closest('[data-meal-add]')) return;
+  // A meal made of several foods opens to show each one; "Change portions" inside edits it.
+  const grp = ev.target.closest('[data-group]');
+  if (grp) {
+    ev.stopPropagation();
+    const id = grp.dataset.group;
+    openGroups.has(id) ? openGroups.delete(id) : openGroups.add(id);
+    renderToday();
+    return;
+  }
   const t = ev.target.closest('[data-meal-toggle]');
   if (!t) return;
   const k = t.dataset.mealToggle === 'other' ? 'other' : +t.dataset.mealToggle;
@@ -780,7 +805,11 @@ function openSheet(mode, item, prefill, meal) {
   $('#backdrop').hidden = false;
   resetScanState();
   $('#capture-row').hidden = mode === 'entry';
-  if (mode === 'entry' && item) {
+  if (mode === 'entry' && item && item.parts && item.parts.length) {
+    // A meal of several foods: change each food's portion with − / +.
+    estItems = item.parts.map(pt => ({ ...pt, mult: pt.mult || 1, official: pt.official || '' }));
+    showEstItems();
+  } else if (mode === 'entry' && item) {
     // Change the portion of something already logged: the stepper scales its numbers.
     // "Chicken ×2" opens as Chicken at 2 servings.
     const m = servingsIn(item.name);
@@ -824,6 +853,23 @@ function readForm() {
   return data;
 }
 
+// The foods inside a meal from Describe or Photo (or a favorite made from one), at the amounts
+// being logged, so Today can show each one's breakdown. Skipped if the totals were typed over.
+function mealParts(data) {
+  const r = (v, d) => Math.round((+v || 0) * d) / d;
+  let parts = null;
+  if (estItems && estItems.length) {
+    // Each food keeps its matched amount (cal, p, c, f) and how much of it (mult).
+    parts = estItems.filter(it => it.mult > 0).map(it => ({ food: it.food, portion: it.portion || '', official: it.official || '',
+      cal: it.cal, p: it.p, c: it.c, f: it.f, mult: it.mult }));
+  } else if (sheet && sheet.favParts && perServing) {
+    parts = sheet.favParts.map(pt => ({ ...pt, mult: r((pt.mult || 1) * servings, 100) }));
+  }
+  if (!parts || parts.length < 2) return null;
+  const sum = parts.reduce((t, pt) => t + pt.cal * (pt.mult || 1), 0);
+  return Math.abs(sum - data.cal) <= Math.max(15, data.cal * 0.05) ? parts : null;
+}
+
 // Typed a meal in the Food box but no numbers? Estimate it instead of logging zeros.
 function needsEstimate() {
   if (!sheet || !$('#in-name').value.trim()) return false;
@@ -858,6 +904,8 @@ $('#entry-form').addEventListener('submit', async ev => {
   if (!data) { $('#in-name').focus(); return; }
   const { mode, id, code, fav } = sheet;
   if (sheet.meal) data.meal = sheet.meal;
+  const parts = mealParts(data);
+  if (parts) data.parts = parts;
   const asFav = $('#in-fav').checked;
   if (code) rememberBarcode(code, data);
   if (perServing && servings !== 1) data.name = `${data.name} ×${servings}`;
@@ -870,7 +918,7 @@ $('#entry-form').addEventListener('submit', async ev => {
     toast(`Logged ${data.name} · Meal ${e.meal}${asFav ? ' ★' : ''}`);
   } else if (mode === 'entry') {
     const e = todayDay().entries.find(x => x.id === id);
-    if (e) Object.assign(e, data);
+    if (e) { Object.assign(e, data); if (!data.parts) delete e.parts; }
     if (asFav) upsertFavorite(data);
     save(); render(); checkHoorah();
     toast('Entry updated');

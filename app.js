@@ -885,7 +885,7 @@ $('#entry-form').addEventListener('input', updateSaveLabel);
 $('#entry-form').addEventListener('submit', async ev => {
   ev.preventDefault();
   if (needsEstimate()) {
-    if (!getAiKey()) {
+    if (!aiReady()) {
       $('#in-name').blur();
       if (!applyLocalEstimate($('#in-name').value.trim())) $('#in-cal').focus();
       return;
@@ -1569,14 +1569,27 @@ function copyDayToToday(k) {
 const AI_KEY_SLOT = account ? `${LEGACY_AI_KEY}:${account.id}` : LEGACY_AI_KEY;
 const AI_MODEL = 'claude-opus-5-5';
 const getAiKey = () => { try { return localStorage.getItem(AI_KEY_SLOT) || ''; } catch (e) { return ''; } };
+// Shared Claude: no key of your own, so requests go through the team's Worker on the owner's key.
+// The phone proves its invite with a secret made from the invite code (never the code itself).
+const AI_PROXY = (AUTH.pushUrl || '').replace(/\/+$/, '');
+const AI_TOKEN_SLOT = account ? `opmacro_ai_token:${account.id}` : null;
+const aiSecret = (email, code) => pbkdf2Hex(normCode(code), 'opmacro-ai:' + normEmail(email));
+const getAiToken = () => { try { return (AI_TOKEN_SLOT && localStorage.getItem(AI_TOKEN_SLOT)) || ''; } catch (e) { return ''; } };
+const sharedAi = () => !getAiKey() && !!AI_PROXY && !!getAiToken();
+const aiReady = () => !!getAiKey() || sharedAi();
 let photoData = null; // base64 JPEG of the chosen photo
 
 function renderAiSettings() {
   if (typeof renderAccount === 'function') renderAccount();
   if (typeof renderMyPlaces === 'function') renderMyPlaces();
   const key = getAiKey();
-  $('#ai-status').textContent = key ? `✅ Key saved on this phone (…${key.slice(-4)})` : 'No key yet. Photo and Describe estimates are off.';
+  const canShare = !!AI_PROXY && !!account;
+  $('#ai-status').textContent = key ? `✅ Your own key is saved on this phone (…${key.slice(-4)})`
+    : getAiToken() && canShare ? '✅ Using the team\'s shared Claude: up to 25 estimates a day. Nothing to set up.'
+    : canShare ? 'Enter your invite code below once to turn on Photo and Describe estimates.'
+    : 'No key yet. Describe matches foods from the app\'s list; a key adds Claude estimates.';
   $('#ai-remove').hidden = !key;
+  $('#ai-share-form').hidden = !canShare || !!getAiToken() || !!key;
 }
 $('#ai-form').addEventListener('submit', ev => {
   ev.preventDefault();
@@ -1586,6 +1599,21 @@ $('#ai-form').addEventListener('submit', ev => {
   $('#ai-key').value = ''; $('#ai-key').blur();
   renderAiSettings();
   toast('Key saved. Photo estimates are on 📸');
+});
+// Already signed in before shared Claude existed: enter the invite code once to make the secret.
+$('#ai-share-form').addEventListener('submit', async ev => {
+  ev.preventDefault();
+  const code = normCode($('#ai-share-code').value), btn = $('#ai-share-go');
+  if (code.length < 6 || !account) return;
+  btn.disabled = true; btn.textContent = 'Checking…';
+  try {
+    if (await inviteHash(account.email, code) !== account.h) { toast("That's not your invite code"); return; }
+    localStorage.setItem(AI_TOKEN_SLOT, await aiSecret(account.email, code));
+    $('#ai-share-code').value = ''; $('#ai-share-code').blur();
+    renderAiSettings();
+    toast('Shared Claude is on ✨');
+  } catch (e) { toast('Could not save it on this phone'); }
+  finally { btn.disabled = false; btn.textContent = 'Turn on'; }
 });
 $('#ai-remove').addEventListener('click', () => {
   if (!confirm('Remove your Anthropic key from this phone?')) return;
@@ -1615,7 +1643,7 @@ async function photoToJpeg(file, max = 1400) { // big enough to read label print
 }
 
 $('#photo-food').addEventListener('click', () => {
-  if (!getAiKey()) { scanNote('📸 Add your Anthropic API key in Settings → Photo estimates to turn this on.'); return; }
+  if (!aiReady()) { scanNote('📸 Turn on Claude in Settings → Photo estimates (your invite code or an API key).'); return; }
   $('#photo-input').value = '';
   $('#photo-input').click();
 });
@@ -1641,7 +1669,7 @@ $('#describe-food').addEventListener('click', () => {
   $('#photo-note').value = '';
   $('#photo-note').placeholder = 'e.g. 6 oz steak, 2 slices provolone, 1 torpedo roll';
   $('#photo-panel').hidden = false;
-  scanNote(getAiKey() ? 'Describe what you ate, with amounts if you know them, then tap Estimate.'
+  scanNote(aiReady() ? 'Describe what you ate, with amounts if you know them, then tap Estimate.'
     : 'Describe what you ate with amounts, like "2 eggs, 1 slice toast, 1 banana", then tap Estimate. ' +
       'It matches the app\'s food list; an API key in Settings makes it smarter.');
   $('#photo-note').focus();
@@ -1906,9 +1934,14 @@ function applyLocalEstimate(note) {
 }
 
 // Calls go straight from this phone to Anthropic with the user's own key; there is no server in between.
+// Without one, they go through the team's Worker (shared Claude), which adds the owner's key.
 async function aiClient() {
   await loadScript('vendor/anthropic-sdk.js');
   const { Anthropic } = window.AnthropicSDK;
+  if (sharedAi()) {
+    return new Anthropic({ apiKey: 'shared', baseURL: AI_PROXY + '/ai', dangerouslyAllowBrowser: true, maxRetries: 1,
+      defaultHeaders: { 'x-om-id': account.id, 'x-om-key': getAiToken() } });
+  }
   return new Anthropic({ apiKey: getAiKey(), dangerouslyAllowBrowser: true, maxRetries: 1 });
 }
 
@@ -1916,7 +1949,7 @@ async function estimatePhoto() {
   const note = $('#photo-note').value.trim();
   if (!sheet || (!photoData && !note)) { $('#photo-note').focus(); return; }
   const fromPhoto = !!photoData;
-  if (!fromPhoto && !getAiKey()) { applyLocalEstimate(note); return; }
+  if (!fromPhoto && !aiReady()) { applyLocalEstimate(note); return; }
   const btn = $('#photo-go');
   btn.disabled = true; btn.textContent = 'Estimating…';
   scanNote(fromPhoto ? '📸 Looking at your food… this takes a few seconds.' : '✍️ Working out the macros… this takes a few seconds.');
@@ -1946,7 +1979,7 @@ async function estimatePhoto() {
     applyEstimate(JSON.parse(block.text), fromPhoto);
   } catch (e) {
     // Claude unreachable for a description: fall back to the food list.
-    if (!fromPhoto && applyLocalEstimate(note)) scanNote($('#scan-note').textContent + ' (Claude was unavailable.)');
+    if (!fromPhoto && applyLocalEstimate(note)) scanNote($('#scan-note').textContent + (e && e.status === 429 ? ' ' + aiErrorMessage(e) : ' (Claude was unavailable.)'));
     else scanNote(aiErrorMessage(e));
   } finally {
     btn.disabled = false; btn.textContent = 'Estimate';
@@ -1995,6 +2028,9 @@ function applyEstimate(est, fromPhoto) {
 // Most specific first: key problems, billing, rate limits, then connection, then anything else from the API.
 function aiErrorMessage(e) {
   const A = window.AnthropicSDK && window.AnthropicSDK.Anthropic;
+  // Shared Claude explains its own limits and invite problems; show those as written.
+  const said = e && e.error && e.error.error && e.error.error.message;
+  if (A && sharedAi() && said && e instanceof A.APIError && [401, 403, 413, 429, 503].includes(e.status)) return '✨ ' + said;
   if (A) {
     if (e instanceof A.AuthenticationError) return "🔑 Your API key wasn't accepted. Check it in Settings → Photo estimates.";
     if (e instanceof A.PermissionDeniedError) return '🔑 That key does not have permission to use this model.';
@@ -2211,7 +2247,7 @@ function renderGapPicks() {
   $('#gap-note').hidden = true;
   $('#gap-ai-btn').hidden = false;
   $('#gap-ai-btn').disabled = false;
-  $('#gap-ai-btn').textContent = getAiKey() ? (gapPlace ? `✨ Order ideas at ${gapPlace === SCHOOL ? 'North Providence High' : gapPlace}` : '✨ Get meal ideas')
+  $('#gap-ai-btn').textContent = aiReady() ? (gapPlace ? `✨ Order ideas at ${gapPlace === SCHOOL ? 'North Providence High' : gapPlace}` : '✨ Get meal ideas')
     : '✨ Meal ideas (add your API key in Settings)';
   const sel = $('#gap-places .chip.on');
   if (sel) sel.scrollIntoView({ block: 'nearest', inline: 'center' });
@@ -2236,7 +2272,7 @@ const GAP_SCHEMA = {
 };
 
 async function gapIdeasFromClaude() {
-  if (!getAiKey()) { setView('settings'); closeGap(); toast('Add your Anthropic API key under Photo estimates'); return; }
+  if (!aiReady()) { setView('settings'); closeGap(); toast('Turn on Claude under Photo estimates'); return; }
   const rem = remaining();
   const btn = $('#gap-ai-btn');
   btn.disabled = true; btn.textContent = '✨ Thinking…';
@@ -2732,11 +2768,11 @@ function openReport(ws, opts = {}) {
     $('#report-note').hidden = true;
     $('#report-ai-btn').hidden = false;
     $('#report-ai-btn').disabled = false;
-    $('#report-ai-btn').textContent = getAiKey() ? '✨ Get coaching from Claude' : '✨ Coaching (add your API key in Settings)';
+    $('#report-ai-btn').textContent = aiReady() ? '✨ Get coaching from Claude' : '✨ Coaching (turn on Claude in Settings)';
   }
   $('#report-backdrop').hidden = false;
   $('#report-sheet').scrollTop = 0;
-  if (opts.auto && !(saved && saved.ai) && getAiKey()) coachFromClaude();
+  if (opts.auto && !(saved && saved.ai) && aiReady()) coachFromClaude();
 }
 function showQuote(ws, talk) {
   const q = weekQuote(ws);
@@ -2784,7 +2820,7 @@ const REPORT_SCHEMA = {
 
 const coaching = new Set(); // weeks with a request in flight or done this session
 async function coachFromClaude() {
-  if (!getAiKey()) { closeReport(); setView('settings'); toast('Add your Anthropic API key under Photo estimates'); return; }
+  if (!aiReady()) { closeReport(); setView('settings'); toast('Turn on Claude under Photo estimates'); return; }
   const ws = reportWeek, r = weekReport(ws), g = r.g;
   if (coaching.has(ws)) return;
   coaching.add(ws);
@@ -3179,6 +3215,7 @@ $('#signin-form').addEventListener('submit', async ev => {
     } else {
       const a = { id, email, h };
       localStorage.setItem(ACCOUNT_SLOT, JSON.stringify(a));
+      localStorage.setItem(`opmacro_ai_token:${id}`, await aiSecret(email, code)); // for shared Claude
       claimLegacyData(a);
       location.reload();
       return;

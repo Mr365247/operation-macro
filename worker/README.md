@@ -37,3 +37,20 @@ It makes its own keys the first time it runs, so there's nothing secret to paste
   last saved, and is left out on the odd iPhone push that can't read it.
 - Tapping the notification opens the app on a card with the streak, the quote and a Log food button.
 - Turning it off, or deleting the app, removes the phone from the list.
+
+## Shared Claude (Photo, Describe, meal ideas, coaching for everyone)
+
+Invited members without their own Anthropic key use yours, through this Worker. Your key
+lives only in Cloudflare's secret settings, never in the app, the repo or a chat.
+
+1. **Make a key just for this** at console.anthropic.com → API Keys → Create key
+   (name it `operation-macro-shared`). Copy it; you won't see it again.
+2. **Set a spending cap** at console.anthropic.com → Limits (for example $20 a month).
+3. **Give it to the Worker:** Cloudflare → Workers & Pages → `opmacro-push` → Settings →
+   Variables and Secrets → Add → Type **Secret**, Name `ANTHROPIC_API_KEY`, Value: paste the key → Deploy.
+4. **Update the code:** Edit code → replace everything with the new `push-worker.js` → Deploy.
+
+Limits (top of `push-worker.js`): 25 requests per person per day, 200 for everyone together.
+Each phone proves its invite with a secret made from its invite code. Requests go straight to
+Anthropic; the Worker keeps only a per-person count for the day. To turn it off, delete the
+`ANTHROPIC_API_KEY` secret.

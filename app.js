@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v61'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v62'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -3058,14 +3058,39 @@ if (authOn && !account) {
 }
 if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-  // Never use a cached copy of sw.js itself, so a new version is noticed on every open.
-  navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).catch(() => {});
-  // When a new version takes over, reload once so it's running now, not on the next open.
-  const hadController = !!navigator.serviceWorker.controller;
-  let reloading = false;
-  navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if (!hadController || reloading) return;
+  // Never use a cached copy of sw.js itself, so a new version is noticed on every check.
+  const reg = navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).catch(() => null);
+  // iPhones resume the app from the background without reloading it, so look for a new version
+  // every time it comes back on screen, and every 30 minutes while it stays open.
+  const checkForUpdate = () => reg.then(r => r && r.update()).catch(() => {});
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') checkForUpdate(); });
+  setInterval(() => { if (document.visibilityState === 'visible') checkForUpdate(); }, 30 * 60000);
+  // When a new version takes over, reload so it's running now. Not in the middle of something,
+  // though (a form open or a box being typed in): then wait until that's done or the app is
+  // put away, so nothing they typed is lost.
+  // The first takeover on a phone's very first visit isn't an update; every one after it is.
+  let controlled = !!navigator.serviceWorker.controller, reloading = false, pending = false;
+  const busy = () => !!sheet || /^(INPUT|TEXTAREA|SELECT)$/.test((document.activeElement || {}).tagName || '') ||
+    !!document.querySelector('.backdrop:not([hidden]), #setup:not([hidden]), #places-pick:not([hidden]), #weighin:not([hidden])');
+  const reloadNow = () => {
+    if (reloading) return;
     reloading = true;
+    try { sessionStorage.setItem('opmacro_updated', '1'); } catch (e) { /* ignore */ }
     location.reload();
+  };
+  const reloadWhenFree = () => { if (pending && (document.visibilityState === 'hidden' || !busy())) reloadNow(); };
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!controlled) { controlled = true; return; }
+    pending = true;
+    reloadWhenFree();
   });
+  document.addEventListener('visibilitychange', reloadWhenFree);
+  setInterval(reloadWhenFree, 2000);
 }
+// Just reloaded into a new version: say so.
+try {
+  if (sessionStorage.getItem('opmacro_updated')) {
+    sessionStorage.removeItem('opmacro_updated');
+    setTimeout(() => toast(`Updated to ${APP_VERSION} ✨`), 800);
+  }
+} catch (e) { /* ignore */ }

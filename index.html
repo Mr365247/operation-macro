@@ -203,23 +203,31 @@
     <div class="sheet" id="explain-sheet">
       <div class="grab"></div>
       <h2>How to read your numbers</h2>
-      <div class="ex-good"><b>A good day =</b> protein hit ✅ + calories at or a little under (0–300) ✅. Carbs and fat can move around inside that.</div>
+      <div class="ex-good ex-lose"><b>A good day =</b> protein hit ✅ + calories at or a little under (0–300) ✅. Carbs and fat can move around inside that.</div>
+      <div class="ex-good ex-gain" hidden><b>A good bulk day =</b> protein hit ✅ + calories at your target (5% under to 10% over) ✅. Eating enough is the whole job.</div>
       <div class="ex-colors"><b>Ring colors:</b> <span style="color:var(--good)">● green</span> good · <span style="color:#f5a524">● yellow</span> close · <span style="color:var(--over)">● red</span> needs attention. Each ring shows where you'd land if the day ended right now.</div>
 
       <div class="ex-sec" id="ex-p" style="--mc:var(--pro)"><h3><i class="dot" style="background:var(--pro)"></i> Protein: the must</h3>
-        <p class="ex-row"><b>❌ Under:</b> fix this one first. When you eat less, protein protects your muscle, so the weight you lose is fat, not muscle. It also keeps you full.</p>
+        <p class="ex-row ex-lose"><b>❌ Under:</b> fix this one first. When you eat less, protein protects your muscle, so the weight you lose is fat, not muscle. It also keeps you full.</p>
+        <p class="ex-row ex-gain" hidden><b>❌ Under:</b> fix this one first. Protein is what new muscle is built from; the extra calories only turn into muscle if it's there.</p>
         <p class="ex-row"><b>👍 Over:</b> fine for most people.</p>
         <p class="ex-tip">Goal: hit it every day, or get within about 10%.</p></div>
 
       <div class="ex-sec" id="ex-cal" style="--mc:var(--cal)"><h3><i class="dot" style="background:var(--cal)"></i> Calories</h3>
-        <p class="ex-row"><b>✅ A little under:</b> that's how you lose fat. Eating a bit less than you burn is the whole game.</p>
-        <p class="ex-row"><b>⚠️ Way under</b> (more than <span id="explain-low">25%</span>): backfires. More hunger and binge risk, less energy, muscle loss, and slower progress. The app flags these days as <b>TOO LOW</b>.</p>
-        <p class="ex-row"><b>❌ Over:</b> slows fat loss. One day won't ruin anything; your week matters more than any single day.</p>
+        <p class="ex-row ex-lose"><b>✅ A little under:</b> that's how you lose fat. Eating a bit less than you burn is the whole game.</p>
+        <p class="ex-row ex-lose"><b>⚠️ Way under</b> (more than <span id="explain-low">25%</span>): backfires. More hunger and binge risk, less energy, muscle loss, and slower progress. The app flags these days as <b>TOO LOW</b>.</p>
+        <p class="ex-row ex-lose"><b>❌ Over:</b> slows fat loss. One day won't ruin anything; your week matters more than any single day.</p>
+        <p class="ex-row ex-gain" hidden><b>✅ At or a little over:</b> that's the surplus that builds muscle. Your target is already about 10% more than you burn.</p>
+        <p class="ex-row ex-gain" hidden><b>⚠️ Under:</b> no surplus, no growth. More than 15% under means you ate less than you burn, and the app flags it <b>TOO LOW</b>.</p>
+        <p class="ex-row ex-gain" hidden><b>⚠️ Way over</b> (more than 10%): the extra mostly turns into fat, not muscle. One day is fine; every day isn't.</p>
+        <p class="ex-tip ex-gain" hidden>⚖️ Aim to gain about 0.25–0.5% of your weight a week. The weekly report checks your pace and tells you if your target should move.</p>
         <p class="ex-tip" id="explain-teen" hidden>🏀 You're still growing, so your body needs the fuel. Your "too low" line is closer to your target.</p></div>
 
       <div class="ex-sec" id="ex-c" style="--mc:var(--carb)"><h3><i class="dot" style="background:var(--carb)"></i> Carbs</h3>
-        <p class="ex-row"><b>👍 Under:</b> usually fine. Carbs are the most flexible, as long as your calories and energy are okay.</p>
-        <p class="ex-row"><b>⚠️ Over:</b> usually means calories are creeping up.</p>
+        <p class="ex-row ex-lose"><b>👍 Under:</b> usually fine. Carbs are the most flexible, as long as your calories and energy are okay.</p>
+        <p class="ex-row ex-lose"><b>⚠️ Over:</b> usually means calories are creeping up.</p>
+        <p class="ex-row ex-gain" hidden><b>⚠️ Way under:</b> less energy for practice and much harder to hit your calories. Rice, pasta, oats, bagels and fruit make it easy.</p>
+        <p class="ex-row ex-gain" hidden><b>👍 Over:</b> fine as long as your calories are on target. Carbs fuel the workouts that build the muscle.</p>
         <p class="ex-tip">Put your carbs around practice and workouts, when your body uses them best.</p></div>
 
       <div class="ex-sec" id="ex-f" style="--mc:var(--fat)"><h3><i class="dot" style="background:var(--fat)"></i> Fat</h3>
@@ -431,7 +439,7 @@
 
       <div class="field"><span>Your goal</span></div>
       <div class="seg seg3" id="su-goal">
-        <button type="button" data-v="lose">Lose fat</button><button type="button" data-v="maintain">Maintain</button><button type="button" data-v="gain">Build muscle</button>
+        <button type="button" data-v="lose">Lose fat</button><button type="button" data-v="maintain">Maintain</button><button type="button" data-v="gain">Bulk up</button>
       </div>
 
       <div class="setup-results" id="su-results" hidden>

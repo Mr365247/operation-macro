@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v60'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v61'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -88,7 +88,20 @@ function totals(k) {
 // Way under on calories backfires (hunger, low energy, lost muscle), so those days get flagged.
 // Teenagers are still growing, so their line is closer to the target.
 const isTeen = () => !!(state.profile && +state.profile.age > 0 && +state.profile.age < 18);
-const lowLine = () => (isTeen() ? 0.85 : 0.75);
+// Losing, holding or bulking: from the setup, else read off the goal weight vs current weight.
+function goalMode() {
+  const g = state.profile && state.profile.goal;
+  if (g) return g;
+  const s = state.settings;
+  return s.goalWeight > s.weight + 1 ? 'gain' : s.goalWeight < s.weight - 1 ? 'lose' : 'maintain';
+}
+const bulking = () => goalMode() === 'gain';
+// On a bulk the target is about 10% over what you burn, so more than 15% under it means no surplus at all.
+const lowLine = () => (isTeen() || bulking() ? 0.85 : 0.75);
+// A good bulk day lands from 5% under to 10% over the calorie target.
+const BULK_UNDER = 0.95, BULK_OVER = 1.10;
+// Lean bulk pace: about 0.25–0.5% of body weight a week. Faster is mostly fat.
+function bulkPace(w) { return { lo: Math.round(w * 0.0025 * 10) / 10, hi: Math.round(w * 0.005 * 10) / 10 }; }
 function tooLow(k) {
   const d = state.days[k];
   return !!(d && d.entries.length) && totals(k).cal < targetsFor(k).cal * lowLine();
@@ -97,6 +110,7 @@ function isHit(k) {
   const d = state.days[k];
   if (!d || !d.entries.length) return false;
   const t = totals(k), g = targetsFor(k);
+  if (bulking()) return t.p >= g.protein && t.cal >= g.cal * BULK_UNDER && t.cal <= g.cal * BULK_OVER;
   return t.p >= g.protein && t.cal <= g.cal;
 }
 // Days hit this week, Sunday through today. Starts over each Sunday (weigh-in day), so one
@@ -234,6 +248,18 @@ function ringStatus(k, eaten, target) {
     if (eaten >= target) return { s: 'good', tag: 'Hit ✓' };
     return under <= target * 0.1 ? { s: 'close', tag: `${fmt(under)} g short` } : { s: 'bad', tag: `${fmt(under)} g short` };
   }
+  if (bulking()) {
+    // Bulking: eating too little is the problem; a bit over is fine, way over is mostly fat.
+    if (over > target * 0.25) return { s: 'bad', tag: `Over ${pct}%` };
+    if (over > target * 0.1) return { s: 'close', tag: `Over ${pct}%` };
+    if (k === 'cal') {
+      if (eaten < target * lowLine()) return { s: 'bad', tag: 'Too low' };
+      if (eaten < target * BULK_UNDER) return { s: 'close', tag: `${fmt(under)} to go` };
+      return { s: 'good', tag: 'On target' };
+    }
+    if (eaten < target * (k === 'c' ? 0.75 : 0.5)) return { s: 'close', tag: 'Low' };
+    return { s: 'good', tag: 'Good' };
+  }
   if (over > target * 0.1) return { s: 'bad', tag: `Over ${pct}%` };
   // Calories get a small buffer: up to 5% over is within normal counting error, so it's still on target.
   if (k === 'cal' && over > 0 && over <= target * 0.05) return { s: 'good', tag: 'On target' };
@@ -306,15 +332,16 @@ function renderToday() {
   let status;
   if (isHit(today) && tooLow(today)) status = `<div class="status low">🎖️ Protein hit! But you're still <b>${fmt(calLeft)} calories under</b>. ` +
     `Eat a real meal: going this low backfires. <button class="link-btn" type="button" data-explain="cal">Why?</button></div>`;
-  else if (isHit(today)) status = '<div class="status good">🎖️ Mission accomplished — protein hit, calories in check.</div>';
+  else if (isHit(today)) status = `<div class="status good">🎖️ Mission accomplished — protein hit, ${bulking() ? 'fuel tank full. That\'s how you grow' : 'calories in check'}.</div>`;
   // Today's mission: calories left (or over) and protein still to get, with the target in between.
   else status = `<div class="status mission">
-      <div class="need">${calLeft < 0 ? `<b>+${fmt(-calLeft)}</b><span>calories over</span>` : `<b>${fmt(calLeft)}</b><span>calories left</span>`}</div>
+      <div class="need">${calLeft < 0 ? `<b>+${fmt(-calLeft)}</b><span>calories over</span>` : `<b>${fmt(calLeft)}</b><span>calories ${bulking() ? 'to go' : 'left'}</span>`}</div>
       <div class="target" aria-hidden="true">🎯</div>
       <div class="need">${proLeft > 0 ? `<b>${fmt(proLeft)}<small>g</small></b><span>protein to go</span>` : `<b>✓</b><span>protein hit</span>`}</div>
     </div>`;
   $('#status').innerHTML = status;
-  $('#gap-open').hidden = !(calLeft > 0 && proLeft > 0);
+  // On a bulk, still help fill the calories after protein is hit.
+  $('#gap-open').hidden = !(calLeft > 0 && (proLeft > 0 || (bulking() && calLeft > 150)));
 
   const favs = [...state.favorites].sort((a, b) => (b.uses || 0) - (a.uses || 0));
 
@@ -388,15 +415,16 @@ function renderHistory() {
   const s = state.settings, ws = sortedWeights();
   const start = ws.length ? ws[0].w : s.weight;
   const current = ws.length ? ws[ws.length - 1].w : s.weight;
-  const toGo = current - s.goalWeight;
+  const dir = bulking() ? -1 : 1; // which way the scale should move
+  const toGo = dir * (current - s.goalWeight);
   const change = current - start;
   $('#w-goal').textContent = `Goal ${fmt1(s.goalWeight)} lbs`;
   $('#w-stats').innerHTML =
     statHTML(fmt1(current), 'Current') +
     statHTML(toGo > 0 ? fmt1(toGo) : '🎯', toGo > 0 ? 'To go' : 'Goal hit') +
     statHTML((change > 0 ? '+' : '') + fmt1(change), 'Change');
-  const span = start - s.goalWeight;
-  const pct = span > 0 ? Math.max(0, Math.min(100, ((start - current) / span) * 100)) : (toGo <= 0 ? 100 : 0);
+  const span = dir * (start - s.goalWeight);
+  const pct = span > 0 ? Math.max(0, Math.min(100, (dir * (start - current) / span) * 100)) : (toGo <= 0 ? 100 : 0);
   $('#w-progress').style.width = pct + '%';
   $('#w-progress').title = `${Math.round(pct)}% of the way`;
   renderWeightChart(ws, s.goalWeight);
@@ -469,7 +497,7 @@ function weekStats(ws) {
   const avg = {};
   for (const m of ['cal', 'p', 'c', 'f']) avg[m] = logged.length ? tot.reduce((s, t) => s + t[m], 0) / logged.length : 0;
   const g = logged.length ? targetsFor(logged[logged.length - 1]) : state.settings;
-  const over = logged.filter(k => totals(k).cal > targetsFor(k).cal);
+  const over = logged.filter(k => totals(k).cal > targetsFor(k).cal * (bulking() ? BULK_OVER : 1));
   const short = logged.filter(k => totals(k).p < targetsFor(k).protein && k !== today);
   // The weigh-in that closes the week is the next Sunday's; it's compared with the one that opened it.
   const end = shiftKey(ws, 7) <= today ? shiftKey(ws, 7) : today;
@@ -1351,9 +1379,13 @@ function updateSetup() {
   const pct = Math.round(Math.abs(t.adj) * 100);
   $('#su-explain').textContent = `You burn about ${fmt(t.tdee)} calories a day. ` + (
     pr.goal === 'lose' ? `This target is about ${pct}% under that${t.teen ? ', a gentle cut' : ''}, to lose fat while keeping muscle.`
-    : pr.goal === 'gain' ? `This target is about ${pct}% over that, to build muscle without much fat gain.`
+    : pr.goal === 'gain' ? `This target is about ${pct}% over that, to build muscle without much fat gain. ` +
+      `Aim to gain about ${fmt1(bulkPace(pr.weight).lo)}–${fmt1(bulkPace(pr.weight).hi)} lbs a week; the weekly report checks your pace.`
     : 'This target matches it, to hold your weight steady.');
   $('#su-teen').hidden = !t.teen;
+  $('#su-teen').textContent = pr.goal === 'gain'
+    ? 'Under 18: a slow, steady bulk on real food is best for a growing body. No junk-food "dirty bulk" and no weight-gainer powders. These are estimates. Check them with your doctor or coach.'
+    : 'Under 18: this plan keeps any calorie cut small, because a growing body needs enough fuel. These are estimates. Check them with your doctor or coach.';
 }
 // Typing in the top section recalculates; editing a result box keeps your number.
 ['su-age', 'su-ft', 'su-in', 'su-weight', 'su-goalw'].forEach(id => $('#' + id).addEventListener('input', updateSetup));
@@ -1815,8 +1847,10 @@ $('#weighin-form').addEventListener('submit', ev => {
   $('#weighin-input').value = ''; $('#weighin-input').blur();
   render();
   const diff = prev ? Math.round((w - prev.w) * 10) / 10 : 0;
-  const toGo = Math.round((w - state.settings.goalWeight) * 10) / 10;
-  const change = !prev ? 'Weigh-in logged' : diff < 0 ? `Down ${fmt1(-diff)} lbs since last weigh-in 💪` : diff > 0 ? `Up ${fmt1(diff)} lbs since last weigh-in` : 'Same as last weigh-in';
+  const up = bulking();
+  const toGo = Math.round((up ? state.settings.goalWeight - w : w - state.settings.goalWeight) * 10) / 10;
+  const change = !prev ? 'Weigh-in logged' : diff < 0 ? `Down ${fmt1(-diff)} lbs since last weigh-in${up ? '' : ' 💪'}`
+    : diff > 0 ? `Up ${fmt1(diff)} lbs since last weigh-in${up ? ' 💪' : ''}` : 'Same as last weigh-in';
   toast(toGo > 0 ? `${change} · ${fmt1(toGo)} to go` : `${change} · Goal reached 🎯`);
   // render() above opens the report for the week that just ended (see maybeAutoReport).
 });
@@ -1885,7 +1919,8 @@ function guessPlace() {
 }
 const gapScore = (tot, rem) => {
   const over = (val, left, scale) => Math.max(0, val - Math.max(left, 0)) / scale;
-  return Math.max(0, rem.p - tot.p) / Math.max(rem.p, 1) + over(tot.cal, rem.cal, 200) + over(tot.c, rem.c, 20) + over(tot.f, rem.f, 10);
+  const fill = bulking() ? Math.max(0, rem.cal - tot.cal) / Math.max(rem.cal, 1) * 0.6 : 0;
+  return Math.max(0, rem.p - tot.p) / Math.max(rem.p, 1) + over(tot.cal, rem.cal, 200) + over(tot.c, rem.c, 20) + over(tot.f, rem.f, 10) + fill;
 };
 // Party trays and family packs aren't a meal for one.
 const CATERING = /\btray\b|catering|bundle|family|gallon|dozen|\bbox of\b|\b(?:30|48|60|64|120|200)\s?(?:ct|pc|piece)/i;
@@ -2116,7 +2151,8 @@ function weekReport(ws) {
 
 // Same-chain swap of the same kind (smoothie for smoothie, wrap for wrap): more protein per calorie,
 // no more calories, at least as much protein. Compared per serving.
-function betterAt(place, e) {
+// On a bulk it looks the other way: same kind, at least 8 g more protein, up to ~60% more food.
+function betterAt(place, e, gain) {
   const n = servingsIn(e.name), cal = (+e.cal || 0) / n, p = (+e.p || 0) / n;
   const ratio = p / Math.max(1, cal);
   const ate = restaurants.find(r => r.chain === place && norm(r.name) === norm(baseName(e.name)));
@@ -2125,6 +2161,11 @@ function betterAt(place, e) {
     if (r.chain !== place || !r.cal || !r.p) continue;
     if (norm(r.name) === norm(baseName(e.name))) continue;
     if (ate && ate.serving ? r.serving !== ate.serving : r.cal < cal * 0.5) continue;
+    if (gain) {
+      if (r.cal < cal || r.cal > cal * 1.6 || r.p < p + 8 || r.p / r.cal < ratio * 0.9) continue;
+      if (!best || r.p > best.p) best = r;
+      continue;
+    }
     if (r.cal > cal || r.p < p || r.p / r.cal < ratio * 1.2) continue;
     if (!best || r.p / r.cal > best.p / best.cal) best = r;
   }
@@ -2144,7 +2185,13 @@ function localTips(r) {
       detail: dense.length ? `Your best protein-per-calorie foods this week were ${list(dense)}. Lean on them earlier in the day.`
         : 'Add a lean protein (chicken, egg whites, Greek yogurt, a shake) to each meal.' });
   }
-  if (r.low.length) {
+  const gain = bulking();
+  if (gain) tips.push(...bulkTips(r));
+  if (r.low.length && gain) {
+    tips.push({ icon: '📉', title: `Under your calories on ${r.low.length} day${r.low.length === 1 ? '' : 's'}`,
+      detail: 'On those days you ate less than you burn, so there was nothing left over to build muscle with. ' +
+        'Add a snack between meals or bigger portions at dinner.' });
+  } else if (r.low.length) {
     tips.push({ icon: '📉', title: `Way under calories on ${r.low.length} day${r.low.length === 1 ? '' : 's'}`,
       detail: 'Eating far below your target backfires: more hunger, less energy, and lost muscle instead of fat.' +
         (isTeen() ? ' You\'re still growing, so fuel matters even more.' : '') + ' Aim to land within about 300 calories of your target.' });
@@ -2153,11 +2200,11 @@ function localTips(r) {
     const big = {};
     for (const e of r.entries) if (r.over.includes(e.day)) big[baseName(e.name)] = (big[baseName(e.name)] || 0) + (+e.cal || 0);
     const top = Object.entries(big).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([n, c]) => `${esc(n)} (${fmt(c)} cal)`);
-    tips.push({ icon: '🔥', title: `Over calories on ${r.over.length} day${r.over.length === 1 ? '' : 's'}`,
-      detail: `Biggest calories on those days: ${top.join(', ')}.` });
+    tips.push({ icon: '🔥', title: `${gain ? 'Way over' : 'Over'} calories on ${r.over.length} day${r.over.length === 1 ? '' : 's'}`,
+      detail: `Biggest calories on those days: ${top.join(', ')}.` + (gain ? ' On a bulk, much past your target mostly turns into fat, not muscle.' : '') });
   }
   for (const [m, label, t] of [['c', 'Carbs', g.carbs], ['f', 'Fat', g.fat]]) {
-    if (r.avg[m] <= t * 1.1) continue;
+    if (r.avg[m] <= t * 1.1 || (gain && m === 'c' && r.avg.cal <= r.g.cal * BULK_OVER)) continue; // carbs fuel a bulk
     const top = [...r.foods].sort((a, b) => b[m] - a[m]).slice(0, 3).map(f => `${esc(f.name)} (${fmt(f[m])} g)`);
     tips.push({ icon: m === 'c' ? '🍞' : '🧈', title: `${label} averaged ${fmt(r.avg[m])} g vs ${fmt(t)} g`, detail: `Biggest sources: ${top.join(', ')}.` });
   }
@@ -2167,9 +2214,15 @@ function localTips(r) {
       const key = baseName(e.name).toLowerCase();
       if (seen.has(key)) continue;
       seen.add(key);
-      const alt = betterAt(pl.name, e);
+      const alt = betterAt(pl.name, e, gain);
       if (!alt) continue;
       const n = servingsIn(e.name), cal = e.cal / n, p = e.p / n;
+      if (gain) {
+        tips.push({ icon: '⬆️', title: `At ${esc(pl.name)}: step up from ${esc(baseName(e.name).replace(pl.name + ' ', ''))}`,
+          detail: `Try <b>${esc(alt.short)}</b>: ${fmt(alt.cal)} cal, P ${fmt(alt.p)} g, vs ${fmt(cal)} cal, P ${fmt(p)} g. ` +
+            `+${fmt(alt.cal - cal)} cal, +${fmt(alt.p - p)} g protein.` });
+        break;
+      }
       tips.push({ icon: '🔁', title: `At ${esc(pl.name)}: swap ${esc(baseName(e.name).replace(pl.name + ' ', ''))}`,
         detail: `Try <b>${esc(alt.short)}</b>: ${fmt(alt.cal)} cal, P ${fmt(alt.p)} g, vs ${fmt(cal)} cal, P ${fmt(p)} g. ` +
           `${cal - alt.cal >= 1 ? `Saves ${fmt(cal - alt.cal)} cal` : 'Same calories'}${alt.p - p >= 1 ? `, +${fmt(alt.p - p)} g protein` : ''}.` });
@@ -2179,6 +2232,52 @@ function localTips(r) {
   if (!tips.length) tips.push({ icon: '🎖️', title: 'Solid week', detail: 'Protein and calories were on target. Keep the same playbook.' });
   return tips;
 }
+
+// Bulking: is the scale moving at a lean-bulk pace, and are they eating enough to get there?
+// Offers a one-tap calorie change (data-set-cal) when the pace says so.
+function bulkTips(r) {
+  const tips = [], g = r.g;
+  const short = g.cal - r.avg.cal;
+  const fixBtn = cal => `<button class="btn small-btn" type="button" data-set-cal="${cal}">Set my target to ${fmt(cal)} cal</button>`;
+  if (r.logged.length && short > g.cal * (1 - BULK_UNDER)) {
+    const dense = [...r.foods].filter(f => f.p / f.n >= 15 && f.cal / f.n <= 900).sort((a, b) => b.p / b.n - a.p / a.n)[0];
+    tips.push({ icon: '🍽️', title: `Averaged ${fmt(r.avg.cal)} cal, ${fmt(short)} a day short`,
+      detail: 'A bulk only works when you eat the surplus. Easy adds: a glass of milk (about 150 cal), 2 tbsp peanut butter (190), ' +
+        'a bowl of rice or oats (200+), or a shake with a banana.' +
+        (dense ? ` Or a second ${esc(dense.name)} (+${fmt(dense.cal / dense.n)} cal, +${fmt(dense.p / dense.n)} g protein).` : '') });
+  }
+  if (r.change == null || !r.wEnd) return tips;
+  const pace = bulkPace(r.wEnd.w), ch = Math.round(r.change * 10) / 10;
+  const step = r => Math.round(r / 10) * 10;
+  if (ch > pace.hi + 0.3) {
+    tips.push({ icon: '⚖️', title: `Up ${fmt1(ch)} lbs this week: a bit fast`,
+      detail: `A lean bulk is about ${fmt1(pace.lo)}–${fmt1(pace.hi)} lbs a week; faster than that is mostly fat. One week can be water, ` +
+        `but if it happens again, trim about 150 calories a day.<br>${fixBtn(step(g.cal - 150))}` });
+  } else if (ch < pace.lo) {
+    const ateEnough = r.avg.cal >= g.cal * BULK_UNDER;
+    tips.push({ icon: '⚖️', title: ch < 0 ? `Down ${fmt1(-ch)} lbs this week` : ch === 0 ? 'No change on the scale this week' : `Up ${fmt1(ch)} lbs this week: a bit slow`,
+      detail: ateEnough
+        ? `You hit your calories, so your body needs more. Aim for ${fmt1(pace.lo)}–${fmt1(pace.hi)} lbs a week: add about 200 calories a day.<br>${fixBtn(step(g.cal + 200))}`
+        : `Aim for ${fmt1(pace.lo)}–${fmt1(pace.hi)} lbs a week. Hit your calorie target every day first, then we'll see if it needs to go up.` });
+  } else {
+    tips.push({ icon: '💪', title: `Up ${fmt1(ch)} lbs: right on pace`,
+      detail: `That's lean-bulk speed (${fmt1(pace.lo)}–${fmt1(pace.hi)} lbs a week): mostly muscle, not fat. Keep the same plan.` });
+  }
+  return tips;
+}
+// One tap from the weekly report: new calorie target, with the change made up in carbs.
+document.addEventListener('click', ev => {
+  const b = ev.target.closest('[data-set-cal]');
+  if (!b) return;
+  const s = state.settings, cal = +b.dataset.setCal, diff = cal - s.cal;
+  if (!(cal > 0) || !diff) return;
+  s.carbs = Math.max(0, Math.round((s.carbs + diff / 4) / 5) * 5);
+  s.cal = cal;
+  if (state.days[today]) todayDay();
+  save(); render();
+  b.disabled = true; b.textContent = `✓ Target is now ${fmt(cal)} cal`;
+  toast(`Calorie target ${diff > 0 ? 'up' : 'down'} to ${fmt(cal)} (carbs ${fmt(s.carbs)} g)`);
+});
 
 // Real, well-known quotes only (in quotes.js; Claude picks one from this list, it never writes its own).
 const QUOTES = self.OPMACRO_QUOTES;
@@ -2395,7 +2494,7 @@ function openReport(ws, opts = {}) {
   reportWeek = ws;
   $('#report-title').textContent = r.done ? 'Weekly report' : 'Week so far';
   $('#report-range').textContent = `${weekRange(ws)} · ${r.logged.length} day${r.logged.length === 1 ? '' : 's'} logged`;
-  const toGo = r.wEnd ? r.wEnd.w - state.settings.goalWeight : null;
+  const toGo = r.wEnd ? (bulking() ? -1 : 1) * (r.wEnd.w - state.settings.goalWeight) : null;
   $('#report-stats').innerHTML =
     statHTML(r.wEnd ? fmt1(r.wEnd.w) : '—', 'Weight') +
     statHTML(r.change == null ? '—' : (r.change > 0 ? '+' : '') + fmt1(r.change), 'Change') +
@@ -2517,6 +2616,10 @@ async function coachFromClaude() {
   const progress = j.since ? `Tracking since ${j.since}: ${j.weeks} weeks, ${j.daysHit} of ${j.daysLogged} logged days hit, best streak ${j.bestStreak} days, logging streak ${j.logStreak} days in a row (best ${j.bestLogStreak})` +
     (j.startW != null ? `, weight ${fmt1(j.startW)} → ${fmt1(j.nowW)} lbs` : '') + '.' : '';
   const weight = r.wEnd ? `${fmt1(r.wEnd.w)} lbs${r.change != null ? ` (${r.change > 0 ? '+' : ''}${fmt1(r.change)} this week)` : ''}, goal ${fmt1(state.settings.goalWeight)} lbs` : 'no weigh-in';
+  const mode = goalMode(), pace = bulkPace(r.wEnd ? r.wEnd.w : state.settings.weight);
+  const goalLine = mode === 'gain' ? `Goal: bulk (gain muscle). The calorie target is about a 10% surplus; a good day is 5% under to 10% over it. ` +
+      `Lean-bulk pace: ${fmt1(pace.lo)}–${fmt1(pace.hi)} lbs a week.`
+    : mode === 'lose' ? 'Goal: lose fat.' : 'Goal: hold weight steady.';
   try {
     const client = await aiClient();
     const res = await client.beta.messages.create({
@@ -2532,11 +2635,16 @@ async function coachFromClaude() {
         'foods they already eat, over generic advice. Keep each item short and concrete (portions, calories, grams). ' +
         'Keep advice safe for a growing teenager: never suggest eating below the calorie target, skipping meals, crash diets or ' +
         'supplements beyond protein; if they are often far under calories, tell them to eat enough. No medical advice. ' +
+        'If the goal is to bulk (gain muscle): the usual problem is eating too little, not too much. Coach them to hit the calorie ' +
+        'target every day with bigger portions, an extra meal or snack, and calorie-dense real food (milk, eggs, peanut butter, nuts, ' +
+        'rice, oats, pasta, bagels), with carbs around practice. Judge the weekly weight change against the pace given: faster means ' +
+        'trim a little, slower means eat more. Swaps should add protein and food, not cut calories. Never push a dirty bulk ' +
+        '(junk food or soda to hit numbers), mass-gainer powders or other supplements beyond plain protein. ' +
         'For quote_id, choose only from the numbered quotes given (never write or alter a quote), and write the pep talk in your ' +
         'own words, connecting that quote to their week.',
       messages: [{ role: 'user', content:
         `Daily targets: ${fmt(g.cal)} cal, ${fmt(g.protein)} g protein, ${fmt(g.carbs)} g carbs, ${fmt(g.fat)} g fat.\n` +
-        `Weight: ${weight}.${age ? ` Age: ${age}.` : ''}\n${progress}\nWeek ${weekRange(ws)}:\n${days}\n\nFoods eaten this week:\n${foods}` +
+        `${goalLine}\nWeight: ${weight}.${age ? ` Age: ${age}.` : ''}\n${progress}\nWeek ${weekRange(ws)}:\n${days}\n\nFoods eaten this week:\n${foods}` +
         `\n\nQuotes to choose from:\n${quotes}` }],
     });
     if (res.stop_reason === 'refusal') throw new Error('refused');
@@ -2561,7 +2669,10 @@ $('#report-ai-btn').addEventListener('click', coachFromClaude);
 
 /* ================= How to read your numbers ================= */
 function openExplain(which) {
-  $('#explain-teen').hidden = !isTeen();
+  const gain = bulking();
+  document.querySelectorAll('#explain-sheet .ex-lose').forEach(el => { el.hidden = gain; });
+  document.querySelectorAll('#explain-sheet .ex-gain').forEach(el => { el.hidden = !gain; });
+  $('#explain-teen').hidden = !isTeen() || gain;
   $('#explain-low').textContent = `${Math.round((1 - lowLine()) * 100)}%`;
   $('#explain-backdrop').hidden = false;
   const target = which && $('#ex-' + which);
@@ -2688,7 +2799,7 @@ $('#weight-form').addEventListener('submit', ev => {
   syncCurrentWeight(); save();
   $('#in-weight').value = ''; $('#in-weight').blur();
   render();
-  const toGo = state.settings.weight - state.settings.goalWeight;
+  const toGo = (bulking() ? -1 : 1) * (state.settings.weight - state.settings.goalWeight);
   toast(toGo > 0 ? `Logged ${fmt1(w)} lbs — ${fmt1(toGo)} to go` : `Logged ${fmt1(w)} lbs — GOAL REACHED 🎯`);
 });
 

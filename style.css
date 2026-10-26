@@ -479,6 +479,7 @@ input:focus { border-color: var(--pro); }
 .advice b { display: block; font-size: 15px; }
 .advice p { margin: 4px 0 0; color: var(--muted); font-size: 14px; line-height: 1.4; }
 .advice p b { display: inline; color: var(--text); }
+.advice .small-btn { display: inline-block; margin-top: 8px; padding: 8px 14px; font-size: 14px; color: var(--text); }
 .coach-head { font-weight: 700; font-size: 16px; line-height: 1.4; margin: 0 0 8px; }
 .coach h4 { margin: 12px 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
 .coach ul { margin: 0 0 4px; padding-left: 20px; }

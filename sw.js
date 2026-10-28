@@ -1,6 +1,6 @@
 // Offline cache for the app shell. Bump VERSION whenever you change a file
 // so phones pick up the new copy.
-const VERSION = 'opmacro-v65';
+const VERSION = 'opmacro-v66';
 const PUSH_CACHE = 'opmacro-push'; // what the evening reminder says; written by the app, kept across versions
 const FILES = [
   './', './index.html', './style.css', './config.js', './quotes.js', './foods.js', './app.js', './manifest.json',

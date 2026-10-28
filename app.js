@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v64'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v65'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -209,17 +209,70 @@ function upsertFavorite(data, id) {
 // so the portion is picked first; it's logged (and counted as a use) on Log it.
 function fillFavorite(id) {
   const fav = state.favorites.find(f => f.id === id);
-  if (!fav || !sheet) return;
-  sheet.fav = fav.id;
-  sheet.favParts = fav.parts || null;
-  $('#in-name').value = fav.name;
-  perServing = {};
-  IN.forEach(k => { perServing[k] = fav[k] != null ? +fav[k] : null; });
-  setServings(1);
-  $('#serving-row').hidden = false;
-  $('#serving-info').textContent = `How much ${fav.name}? 1 = as saved`;
-  document.querySelectorAll('#sheet-quick-chips [data-quick]').forEach(b => b.classList.toggle('on', b.dataset.quick === fav.id));
-  $('#serving-row').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  if (fav) fillQuick({ kind: 'fav', item: fav, chip: 'f:' + fav.id });
+}
+// Fill the form from a favorite or something logged recently. A meal of several foods opens
+// with each food adjustable (− / +); a single food gets the servings stepper.
+function fillQuick(pick) {
+  const it = pick.item;
+  if (!it || !sheet) return;
+  resetScanState();
+  sheet.fav = pick.kind === 'fav' ? it.id : null;
+  sheet.favParts = null;
+  if (it.parts && it.parts.length > 1) {
+    $('#in-name').value = it.name;
+    estItems = it.parts.map(pt => ({ ...pt, mult: pt.mult || 1, official: pt.official || '' }));
+    showEstItems();
+    scanNote(`${it.name}: adjust any food with − / +, or tap − until "none" to leave it out. Then Log it.`);
+    $('#est-items').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  } else {
+    // "Chicken ×2" from yesterday comes back as Chicken at 2 servings.
+    const m = servingsIn(it.name);
+    $('#in-name').value = baseName(it.name);
+    perServing = {};
+    IN.forEach(k => { perServing[k] = it[k] != null ? +it[k] / m : null; });
+    setServings(m);
+    $('#serving-row').hidden = false;
+    $('#serving-info').textContent = pick.kind === 'fav' ? `How much ${it.name}? 1 = as saved` : 'Same as last time; change the portion if you like';
+    $('#serving-row').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+  document.querySelectorAll('#sheet-quick-chips [data-quick]').forEach(b => b.classList.toggle('on', b.dataset.quick === pick.chip));
+}
+
+// Quick log: your favorites plus what you've logged in the last two weeks, ordered by how often
+// you've eaten each one around this time of day (and in the meal picked). Recent days count more.
+function quickPicks(meal) {
+  const now = new Date(), nowMin = now.getHours() * 60 + now.getMinutes();
+  const score = {}, last = {};
+  for (let i = 0; i <= 30; i++) {
+    const k = shiftKey(today, -i), d = state.days[k];
+    if (!d) continue;
+    for (const e of [...d.entries].reverse()) {
+      const key = baseName(e.name).toLowerCase();
+      if (i <= 14 && !last[key]) last[key] = e;
+      if (!e.t) continue;
+      const t = new Date(e.t), dm = Math.abs(t.getHours() * 60 + t.getMinutes() - nowMin), gap = Math.min(dm, 1440 - dm);
+      const near = gap <= 60 ? 1 : gap <= 120 ? 0.6 : gap <= 180 ? 0.3 : 0.05;
+      score[key] = (score[key] || 0) + (near + (meal && e.meal === meal ? 0.5 : 0)) * Math.pow(0.95, i);
+    }
+  }
+  const favKeys = new Set(state.favorites.map(f => baseName(f.name).toLowerCase()));
+  const favs = state.favorites.map(f => ({ kind: 'fav', item: f, chip: 'f:' + f.id, name: f.name, score: score[baseName(f.name).toLowerCase()] || 0, uses: f.uses || 0 }));
+  const recents = Object.entries(last).filter(([key]) => !favKeys.has(key))
+    .map(([key, e]) => ({ kind: 'recent', item: e, chip: 'e:' + e.id, name: baseName(e.name), score: score[key] || 0, uses: 0 }))
+    .sort((a, b) => b.score - a.score).slice(0, 8);
+  return [...favs, ...recents].sort((a, b) => b.score - a.score || (a.kind === b.kind ? 0 : a.kind === 'fav' ? -1 : 1) || b.uses - a.uses);
+}
+function renderQuick() {
+  if (!sheet || sheet.mode !== 'add') return;
+  const picks = quickPicks(sheet.meal);
+  sheet.quick = new Map(picks.map(q => [q.chip, q]));
+  $('#sheet-quick').hidden = !picks.length;
+  $('#sheet-quick-chips').innerHTML = picks.map(q => {
+    const n = q.item.parts && q.item.parts.length > 1 ? ` <small>· ${q.item.parts.length}</small>` : '';
+    return `<button class="chip" type="button" data-quick="${q.chip}">${q.kind === 'fav' ? '+' : '🕘'} ${esc(q.name)}${n}</button>`;
+  }).join('');
+  $('#sheet-quick-chips').scrollLeft = 0;
 }
 
 /* ================= Rendering ================= */
@@ -820,10 +873,8 @@ function openSheet(mode, item, prefill, meal) {
     $('#serving-row').hidden = false;
     $('#serving-info').textContent = 'Change the portion; the numbers update';
   }
-  // Quick log: your favorites, most used first; a tap fills the form to pick a portion.
-  const favs = mode === 'add' ? [...state.favorites].sort((a, b) => (b.uses || 0) - (a.uses || 0)) : [];
-  $('#sheet-quick').hidden = !favs.length;
-  $('#sheet-quick-chips').innerHTML = favs.map(f => `<button class="chip" type="button" data-quick="${f.id}">+ ${esc(f.name)}</button>`).join('');
+  // Quick log: what you usually eat around now; a tap fills the form to adjust before logging.
+  if (mode === 'add') renderQuick(); else $('#sheet-quick').hidden = true;
   // Open with the keyboard down so Barcode / Photo / Describe are in view; they tap a box to type.
   if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
   $('#entry-form').scrollTop = 0;
@@ -834,12 +885,15 @@ function setSheetMeal(m) {
 }
 $('#sheet-quick-chips').addEventListener('click', ev => {
   const b = ev.target.closest('[data-quick]');
-  if (!b) return;
-  fillFavorite(b.dataset.quick);
+  if (!b || !sheet || !sheet.quick) return;
+  fillQuick(sheet.quick.get(b.dataset.quick));
 });
 $('#meal-seg').addEventListener('click', ev => {
   const b = ev.target.closest('button[data-meal]');
-  if (b) setSheetMeal(+b.dataset.meal);
+  if (!b) return;
+  setSheetMeal(+b.dataset.meal);
+  // Re-order Quick log for that meal, unless something from it is already filled in.
+  if (!document.querySelector('#sheet-quick-chips .chip.on')) renderQuick();
 });
 function closeSheet() { $('#backdrop').hidden = true; sheet = null; document.activeElement.blur(); }
 

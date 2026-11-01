@@ -1,7 +1,7 @@
 {
  "school": "North Providence High School",
  "source": "https://npsd.nutrislice.com/menu/north-providence-high",
- "updated": "2026-10-25",
+ "updated": "2026-11-01",
  "items": [
   {
    "name": "Aloha Pizza",
@@ -1737,8 +1737,8 @@
    "name": "Low Fat Milk",
    "cal": 100,
    "p": 8,
-   "c": 11,
-   "f": 2,
+   "c": 12,
+   "f": 2.5,
    "serving": "1 each",
    "meal": "Lunch, Breakfast",
    "lastServed": "2026-10-30"

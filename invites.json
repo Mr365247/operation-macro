@@ -1,11 +1,6 @@
 {
  "invites": [
   {
-   "id": "42a8581c7bd7ba18",
-   "h": "7e5a0dc6f9aa0b44c2b496cc2e7d3eb4b3bed20c3719309f208f66a4c8ebadbf",
-   "added": "2026-10-20"
-  },
-  {
    "id": "8195f23f58e66015",
    "h": "17266e10ea7ef1bb5fdfb79d87b62845966dbaf705ff7e79789263e708cbacad",
    "added": "2026-10-25"
@@ -36,6 +31,12 @@
    "h": "dab18b68a7b3a5f74d4ccdb0923ab2724c6ae1953c3e7d3240d1ca4694f4e908",
    "v": "bd3654a4b3e02239b94c2f8fdbd6b1162cbf62adb06092d80627c077d14f3ae3",
    "added": "2026-11-02"
+  },
+  {
+   "id": "42a8581c7bd7ba18",
+   "h": "a11335ff974a2075bdfdcdd17c9fe082faecee266d5715ef07843f6e523206a3",
+   "v": "363c5d88fb9de759a6305d692e4f3eebbe16885061ccd4dbda9972750ac1f311",
+   "added": "2026-11-04"
   }
  ]
 }

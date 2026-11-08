@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-01",
+ "updated": "2026-11-08",
  "chains": {
   "chickfila": {
    "name": "Chick-fil-A",
@@ -9,34 +9,266 @@
     "cfa"
    ],
    "source": "https://www.chick-fil-a.com/nutrition-allergens",
-   "updated": "2026-11-01",
+   "updated": "2026-11-08",
    "items": [
     {
-     "name": "Breakfast Breads",
-     "serving": "81g",
-     "cal": 350,
-     "f": 15,
+     "name": "Chick-fil-A Chick-n-Minis",
+     "serving": "127g",
+     "cal": 360,
+     "f": 13,
+     "c": 41,
+     "p": 20
+    },
+    {
+     "name": "4 ct Chick-fil-A Chick-n-Minis",
+     "serving": "127g",
+     "cal": 360,
+     "f": 13,
+     "c": 41,
+     "p": 20
+    },
+    {
+     "name": "10 ct Chick-fil-A Chick-n-Minis",
+     "serving": "318g",
+     "cal": 910,
+     "f": 34,
+     "c": 103,
+     "p": 49
+    },
+    {
+     "name": "Hash Brown Scramble Burrito",
+     "serving": "304g",
+     "cal": 700,
+     "f": 40,
+     "c": 51,
+     "p": 34
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ Nuggets",
+     "serving": "304g",
+     "cal": 700,
+     "f": 40,
+     "c": 51,
+     "p": 34
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ Sausage",
+     "serving": "283g",
+     "cal": 720,
+     "f": 47,
+     "c": 46,
+     "p": 28
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ Grilled Filet",
+     "serving": "301g",
+     "cal": 650,
+     "f": 36,
+     "c": 46,
+     "p": 35
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ Spicy Chicken",
+     "serving": "322g",
+     "cal": 740,
+     "f": 42,
      "c": 53,
+     "p": 37
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ Bacon",
+     "serving": "271g",
+     "cal": 680,
+     "f": 42,
+     "c": 46,
+     "p": 30
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ No Meat",
+     "serving": "251g",
+     "cal": 580,
+     "f": 34,
+     "c": 47,
+     "p": 22
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ Nuggets - no hash browns",
+     "serving": "261g",
+     "cal": 550,
+     "f": 30,
+     "c": 38,
+     "p": 33
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ Sausage - no hash browns",
+     "serving": "240g",
+     "cal": 570,
+     "f": 37,
+     "c": 34,
+     "p": 26
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ Grilled Filet - no hash brown",
+     "serving": "258g",
+     "cal": 500,
+     "f": 26,
+     "c": 34,
+     "p": 34
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ Spicy Chicken - no hash browns",
+     "serving": "279g",
+     "cal": 590,
+     "f": 32,
+     "c": 40,
+     "p": 36
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ Bacon - no hash browns",
+     "serving": "228g",
+     "cal": 540,
+     "f": 32,
+     "c": 34,
+     "p": 27
+    },
+    {
+     "name": "Hash Brown Scramble Burrito w/ No Meat - no hash browns",
+     "serving": "208g",
+     "cal": 440,
+     "f": 24,
+     "c": 35,
+     "p": 21
+    },
+    {
+     "name": "Hash Brown Scramble Bowl",
+     "serving": "233g",
+     "cal": 470,
+     "f": 30,
+     "c": 19,
+     "p": 29
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ Nuggets",
+     "serving": "233g",
+     "cal": 470,
+     "f": 30,
+     "c": 19,
+     "p": 29
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ Sausage",
+     "serving": "212g",
+     "cal": 480,
+     "f": 37,
+     "c": 15,
+     "p": 23
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ Grilled Filet",
+     "serving": "230g",
+     "cal": 410,
+     "f": 26,
+     "c": 15,
+     "p": 30
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ Spicy Chicken",
+     "serving": "251g",
+     "cal": 500,
+     "f": 32,
+     "c": 21,
+     "p": 32
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ Bacon",
+     "serving": "200g",
+     "cal": 450,
+     "f": 32,
+     "c": 15,
+     "p": 23
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ No Meat",
+     "serving": "180g",
+     "cal": 350,
+     "f": 24,
+     "c": 16,
+     "p": 17
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ Nuggets - no hash browns",
+     "serving": "190g",
+     "cal": 320,
+     "f": 20,
+     "c": 7,
+     "p": 28
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ Sausage - no hash browns",
+     "serving": "169g",
+     "cal": 340,
+     "f": 27,
+     "c": 2,
+     "p": 21
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ Grilled Filet - no hash browns",
+     "serving": "187g",
+     "cal": 270,
+     "f": 16,
+     "c": 2,
+     "p": 29
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ Spicy Chicken - no hash browns",
+     "serving": "208g",
+     "cal": 350,
+     "f": 22,
+     "c": 9,
+     "p": 31
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ Bacon - no hash browns",
+     "serving": "158g",
+     "cal": 300,
+     "f": 22,
+     "c": 2,
+     "p": 22
+    },
+    {
+     "name": "Hash Brown Scramble Bowl w/ No Meat - no hash browns",
+     "serving": "137g",
+     "cal": 200,
+     "f": 14,
+     "c": 3,
+     "p": 16
+    },
+    {
+     "name": "Hash Browns",
+     "serving": "77g",
+     "cal": 270,
+     "f": 18,
+     "c": 23,
+     "p": 3
+    },
+    {
+     "name": "Small Hash Browns",
+     "serving": "77g",
+     "cal": 270,
+     "f": 18,
+     "c": 23,
+     "p": 3
+    },
+    {
+     "name": "Large Hash Browns",
+     "serving": "121g",
+     "cal": 420,
+     "f": 29,
+     "c": 35,
      "p": 4
     },
     {
-     "name": "4 ct Mini Yeast Rolls",
-     "serving": "70g",
-     "cal": 300,
-     "f": 8,
-     "c": 52,
-     "p": 6
-    },
-    {
-     "name": "English Muffin",
-     "serving": "58g",
-     "cal": 200,
-     "f": 1,
-     "c": 43,
-     "p": 5
-    },
-    {
-     "name": "Buttery Biscuit",
+     "name": "Breakfast Breads",
      "serving": "81g",
      "cal": 350,
      "f": 15,
@@ -52,19 +284,35 @@
      "p": 4
     },
     {
+     "name": "Buttery Biscuit",
+     "serving": "81g",
+     "cal": 350,
+     "f": 15,
+     "c": 53,
+     "p": 4
+    },
+    {
+     "name": "English Muffin",
+     "serving": "58g",
+     "cal": 200,
+     "f": 1,
+     "c": 43,
+     "p": 5
+    },
+    {
+     "name": "4 ct Mini Yeast Rolls",
+     "serving": "70g",
+     "cal": 300,
+     "f": 8,
+     "c": 52,
+     "p": 6
+    },
+    {
      "name": "Fruit Cup",
      "serving": "125g",
      "cal": 70,
      "f": 0,
      "c": 16,
-     "p": 1
-    },
-    {
-     "name": "Large Fruit Cup",
-     "serving": "215g",
-     "cal": 120,
-     "f": 0,
-     "c": 28,
      "p": 1
     },
     {
@@ -84,236 +332,68 @@
      "p": 1
     },
     {
-     "name": "Hash Brown Scramble Bowl",
-     "serving": "233g",
-     "cal": 470,
-     "f": 30,
-     "c": 19,
-     "p": 29
+     "name": "Large Fruit Cup",
+     "serving": "215g",
+     "cal": 120,
+     "f": 0,
+     "c": 28,
+     "p": 1
     },
     {
-     "name": "Hash Brown Scramble Bowl w/ No Meat - no hash browns",
-     "serving": "137g",
-     "cal": 200,
-     "f": 14,
-     "c": 3,
-     "p": 16
-    },
-    {
-     "name": "Hash Brown Scramble Bowl w/ Bacon - no hash browns",
-     "serving": "158g",
-     "cal": 300,
-     "f": 22,
-     "c": 2,
-     "p": 22
-    },
-    {
-     "name": "Hash Brown Scramble Bowl w/ Spicy Chicken - no hash browns",
-     "serving": "208g",
-     "cal": 350,
-     "f": 22,
-     "c": 9,
-     "p": 31
-    },
-    {
-     "name": "Hash Brown Scramble Bowl w/ Grilled Filet - no hash browns",
-     "serving": "187g",
+     "name": "Berry Parfait",
+     "serving": "206g",
      "cal": 270,
-     "f": 16,
-     "c": 2,
-     "p": 29
-    },
-    {
-     "name": "Hash Brown Scramble Bowl w/ Sausage - no hash browns",
-     "serving": "169g",
-     "cal": 340,
-     "f": 27,
-     "c": 2,
-     "p": 21
-    },
-    {
-     "name": "Hash Brown Scramble Bowl w/ Nuggets - no hash browns",
-     "serving": "190g",
-     "cal": 320,
-     "f": 20,
-     "c": 7,
-     "p": 28
-    },
-    {
-     "name": "Hash Brown Scramble Bowl w/ No Meat",
-     "serving": "180g",
-     "cal": 350,
-     "f": 24,
-     "c": 16,
-     "p": 17
-    },
-    {
-     "name": "Hash Brown Scramble Bowl w/ Bacon",
-     "serving": "200g",
-     "cal": 450,
-     "f": 32,
-     "c": 15,
-     "p": 23
-    },
-    {
-     "name": "Hash Brown Scramble Bowl w/ Spicy Chicken",
-     "serving": "251g",
-     "cal": 500,
-     "f": 32,
-     "c": 21,
-     "p": 32
-    },
-    {
-     "name": "Hash Brown Scramble Bowl w/ Grilled Filet",
-     "serving": "230g",
-     "cal": 410,
-     "f": 26,
-     "c": 15,
-     "p": 30
-    },
-    {
-     "name": "Hash Brown Scramble Bowl w/ Sausage",
-     "serving": "212g",
-     "cal": 480,
-     "f": 37,
-     "c": 15,
-     "p": 23
-    },
-    {
-     "name": "Hash Brown Scramble Bowl w/ Nuggets",
-     "serving": "233g",
-     "cal": 470,
-     "f": 30,
-     "c": 19,
-     "p": 29
-    },
-    {
-     "name": "Hash Brown Scramble Burrito",
-     "serving": "304g",
-     "cal": 700,
-     "f": 40,
-     "c": 51,
-     "p": 34
-    },
-    {
-     "name": "Hash Brown Scramble Burrito w/ No Meat - no hash browns",
-     "serving": "208g",
-     "cal": 440,
-     "f": 24,
+     "f": 9,
      "c": 35,
-     "p": 21
+     "p": 13
     },
     {
-     "name": "Hash Brown Scramble Burrito w/ Bacon - no hash browns",
-     "serving": "228g",
-     "cal": 540,
-     "f": 32,
-     "c": 34,
-     "p": 27
+     "name": "Berry Parfait w/ Cookie Crumbs",
+     "serving": "195g",
+     "cal": 240,
+     "f": 8,
+     "c": 31,
+     "p": 12
     },
     {
-     "name": "Hash Brown Scramble Burrito w/ Spicy Chicken - no hash browns",
-     "serving": "279g",
-     "cal": 590,
-     "f": 32,
-     "c": 40,
-     "p": 36
+     "name": "Berry Parfait w/ Granola",
+     "serving": "206g",
+     "cal": 270,
+     "f": 9,
+     "c": 35,
+     "p": 13
     },
     {
-     "name": "Hash Brown Scramble Burrito w/ Grilled Filet - no hash brown",
-     "serving": "258g",
-     "cal": 500,
+     "name": "Chicken & Waffles Breakfast Sandwich w/ Chick-fil-A Filet",
+     "serving": "150g",
+     "cal": 530,
      "f": 26,
-     "c": 34,
-     "p": 34
-    },
-    {
-     "name": "Hash Brown Scramble Burrito w/ Sausage - no hash browns",
-     "serving": "240g",
-     "cal": 570,
-     "f": 37,
-     "c": 34,
-     "p": 26
-    },
-    {
-     "name": "Hash Brown Scramble Burrito w/ Nuggets - no hash browns",
-     "serving": "261g",
-     "cal": 550,
-     "f": 30,
-     "c": 38,
-     "p": 33
-    },
-    {
-     "name": "Hash Brown Scramble Burrito w/ No Meat",
-     "serving": "251g",
-     "cal": 580,
-     "f": 34,
-     "c": 47,
+     "c": 55,
      "p": 22
     },
     {
-     "name": "Hash Brown Scramble Burrito w/ Bacon",
-     "serving": "271g",
-     "cal": 680,
-     "f": 42,
-     "c": 46,
-     "p": 30
+     "name": "Chicken & Waffles Breakfast Sandwich w/ Spicy Filet",
+     "serving": "150g",
+     "cal": 530,
+     "f": 25,
+     "c": 54,
+     "p": 23
     },
     {
-     "name": "Hash Brown Scramble Burrito w/ Spicy Chicken",
-     "serving": "322g",
-     "cal": 740,
-     "f": 42,
-     "c": 53,
-     "p": 37
+     "name": "Chick-fil-A Chicken Biscuit",
+     "serving": "153g",
+     "cal": 460,
+     "f": 23,
+     "c": 45,
+     "p": 19
     },
     {
-     "name": "Hash Brown Scramble Burrito w/ Grilled Filet",
-     "serving": "301g",
-     "cal": 650,
-     "f": 36,
-     "c": 46,
-     "p": 35
-    },
-    {
-     "name": "Hash Brown Scramble Burrito w/ Sausage",
-     "serving": "283g",
-     "cal": 720,
-     "f": 47,
-     "c": 46,
-     "p": 28
-    },
-    {
-     "name": "Hash Brown Scramble Burrito w/ Nuggets",
-     "serving": "304g",
-     "cal": 700,
-     "f": 40,
-     "c": 51,
-     "p": 34
-    },
-    {
-     "name": "Chick-fil-A Chick-n-Minis",
-     "serving": "127g",
-     "cal": 360,
-     "f": 13,
-     "c": 41,
-     "p": 20
-    },
-    {
-     "name": "10 ct Chick-fil-A Chick-n-Minis",
-     "serving": "318g",
-     "cal": 910,
-     "f": 34,
-     "c": 103,
-     "p": 49
-    },
-    {
-     "name": "4 ct Chick-fil-A Chick-n-Minis",
-     "serving": "127g",
-     "cal": 360,
-     "f": 13,
-     "c": 41,
-     "p": 20
+     "name": "Spicy Chicken Biscuit",
+     "serving": "153g",
+     "cal": 450,
+     "f": 22,
+     "c": 44,
+     "p": 19
     },
     {
      "name": "Sausage, Egg & Cheese Muffin",
@@ -372,22 +452,6 @@
      "p": 27
     },
     {
-     "name": "Spicy Chicken Biscuit",
-     "serving": "153g",
-     "cal": 450,
-     "f": 22,
-     "c": 44,
-     "p": 19
-    },
-    {
-     "name": "Chick-fil-A Chicken Biscuit",
-     "serving": "153g",
-     "cal": 460,
-     "f": 23,
-     "c": 45,
-     "p": 19
-    },
-    {
      "name": "Chicken & Waffles Breakfast Sandwich w/ Grilled Filet",
      "serving": "129g",
      "cal": 440,
@@ -396,212 +460,44 @@
      "p": 20
     },
     {
-     "name": "Chicken & Waffles Breakfast Sandwich w/ Spicy Filet",
-     "serving": "150g",
-     "cal": 530,
-     "f": 25,
-     "c": 54,
-     "p": 23
-    },
-    {
-     "name": "Berry Parfait",
-     "serving": "206g",
-     "cal": 270,
-     "f": 9,
-     "c": 35,
-     "p": 13
-    },
-    {
-     "name": "Berry Parfait w/ Cookie Crumbs",
-     "serving": "195g",
-     "cal": 240,
-     "f": 8,
-     "c": 31,
-     "p": 12
-    },
-    {
-     "name": "Berry Parfait w/ Granola",
-     "serving": "206g",
-     "cal": 270,
-     "f": 9,
-     "c": 35,
-     "p": 13
-    },
-    {
-     "name": "Hash Browns",
-     "serving": "77g",
-     "cal": 270,
-     "f": 18,
-     "c": 23,
-     "p": 3
-    },
-    {
-     "name": "Large Hash Browns",
-     "serving": "121g",
-     "cal": 420,
-     "f": 29,
-     "c": 35,
-     "p": 4
-    },
-    {
-     "name": "Small Hash Browns",
-     "serving": "77g",
-     "cal": 270,
-     "f": 18,
-     "c": 23,
-     "p": 3
-    },
-    {
-     "name": "Chicken & Waffles Breakfast Sandwich w/ Chick-fil-A Filet",
-     "serving": "150g",
-     "cal": 530,
-     "f": 26,
-     "c": 55,
-     "p": 22
-    },
-    {
-     "name": "Chick-fil-A Chick-n-Strips",
-     "serving": "136g",
-     "cal": 310,
-     "f": 14,
-     "c": 16,
-     "p": 29
-    },
-    {
-     "name": "2 ct Chick-fil-A Chick-n-Strips",
-     "serving": "91g",
-     "cal": 200,
-     "f": 9,
-     "c": 11,
-     "p": 19
-    },
-    {
-     "name": "10 ct Chick-fil-A Chick-n-Strips",
-     "serving": "452g",
-     "cal": 1020,
-     "f": 46,
-     "c": 54,
-     "p": 96
-    },
-    {
-     "name": "4 ct Chick-fil-A Chick-n-Strips",
-     "serving": "181g",
-     "cal": 410,
-     "f": 19,
-     "c": 22,
-     "p": 39
-    },
-    {
-     "name": "3 ct Chick-fil-A Chick-n-Strips",
-     "serving": "136g",
-     "cal": 310,
-     "f": 14,
-     "c": 16,
-     "p": 29
-    },
-    {
-     "name": "Grilled Nuggets",
-     "serving": "95g",
-     "cal": 130,
-     "f": 3,
-     "c": 1,
-     "p": 25
-    },
-    {
-     "name": "30 ct Grilled Nuggets",
-     "serving": "369g",
-     "cal": 510,
-     "f": 11,
-     "c": 4,
-     "p": 98
-    },
-    {
-     "name": "12 ct Grilled Nuggets",
-     "serving": "142g",
-     "cal": 200,
-     "f": 4.5,
-     "c": 2,
-     "p": 38
-    },
-    {
-     "name": "8 ct Grilled Nuggets",
-     "serving": "95g",
-     "cal": 130,
-     "f": 3,
-     "c": 1,
-     "p": 25
-    },
-    {
-     "name": "Chick-fil-A Nuggets",
-     "serving": "113g",
-     "cal": 250,
-     "f": 11,
-     "c": 11,
-     "p": 27
-    },
-    {
-     "name": "30 ct Chick-fil-A Nuggets",
-     "serving": "425g",
-     "cal": 950,
-     "f": 43,
-     "c": 41,
-     "p": 100
-    },
-    {
-     "name": "12 ct Chick-fil-A Nuggets",
-     "serving": "170g",
-     "cal": 380,
-     "f": 17,
-     "c": 16,
-     "p": 40
-    },
-    {
-     "name": "8 ct Chick-fil-A Nuggets",
-     "serving": "113g",
-     "cal": 250,
-     "f": 11,
-     "c": 11,
-     "p": 27
-    },
-    {
-     "name": "Chick-fil-A Grilled Chicken Club Sandwich",
-     "serving": "237g",
-     "cal": 520,
-     "f": 22,
-     "c": 45,
-     "p": 37
-    },
-    {
-     "name": "Grilled Chicken Club w/ No Cheese",
-     "serving": "216g",
-     "cal": 440,
-     "f": 15,
-     "c": 45,
-     "p": 31
-    },
-    {
-     "name": "Grilled Chicken Club w/ American",
-     "serving": "230g",
+     "name": "Chick-fil-A Deluxe Sandwich",
+     "serving": "247g",
      "cal": 490,
-     "f": 19,
-     "c": 45,
+     "f": 21,
+     "c": 43,
+     "p": 32
+    },
+    {
+     "name": "Chick-fil-A Deluxe Sandwich w/ American",
+     "serving": "247g",
+     "cal": 490,
+     "f": 21,
+     "c": 43,
+     "p": 32
+    },
+    {
+     "name": "Chick-fil-A Deluxe Sandwich w/ Colby Jack",
+     "serving": "254g",
+     "cal": 510,
+     "f": 23,
+     "c": 43,
      "p": 34
     },
     {
-     "name": "Grilled Chicken Club w/ Pepper Jack",
-     "serving": "237g",
-     "cal": 520,
-     "f": 22,
-     "c": 45,
-     "p": 37
+     "name": "Chick-fil-A Deluxe Sandwich w/ Pepper Jack",
+     "serving": "254g",
+     "cal": 510,
+     "f": 23,
+     "c": 43,
+     "p": 34
     },
     {
-     "name": "Grilled Chicken Club w/ Colby Jack",
-     "serving": "237g",
-     "cal": 520,
-     "f": 22,
-     "c": 45,
-     "p": 37
+     "name": "Chick-fil-A Deluxe Sandwich w/ No Cheese",
+     "serving": "233g",
+     "cal": 430,
+     "f": 16,
+     "c": 42,
+     "p": 29
     },
     {
      "name": "Spicy Deluxe Sandwich",
@@ -612,12 +508,12 @@
      "p": 34
     },
     {
-     "name": "Spicy Deluxe Sandwich w/ No Cheese",
-     "serving": "238g",
-     "cal": 460,
-     "f": 18,
+     "name": "Spicy Deluxe Sandwich w/ Pepper Jack",
+     "serving": "259g",
+     "cal": 540,
+     "f": 24,
      "c": 46,
-     "p": 28
+     "p": 34
     },
     {
      "name": "Spicy Deluxe Sandwich w/ American",
@@ -636,76 +532,156 @@
      "p": 33
     },
     {
-     "name": "Spicy Deluxe Sandwich w/ Pepper Jack",
-     "serving": "259g",
-     "cal": 540,
-     "f": 24,
+     "name": "Spicy Deluxe Sandwich w/ No Cheese",
+     "serving": "238g",
+     "cal": 460,
+     "f": 18,
      "c": 46,
+     "p": 28
+    },
+    {
+     "name": "Chick-fil-A Grilled Chicken Club Sandwich",
+     "serving": "237g",
+     "cal": 520,
+     "f": 22,
+     "c": 45,
+     "p": 37
+    },
+    {
+     "name": "Grilled Chicken Club w/ Colby Jack",
+     "serving": "237g",
+     "cal": 520,
+     "f": 22,
+     "c": 45,
+     "p": 37
+    },
+    {
+     "name": "Grilled Chicken Club w/ American",
+     "serving": "230g",
+     "cal": 490,
+     "f": 19,
+     "c": 45,
      "p": 34
     },
     {
-     "name": "Chick-fil-A Deluxe Sandwich",
-     "serving": "247g",
-     "cal": 490,
-     "f": 21,
-     "c": 43,
-     "p": 32
+     "name": "Grilled Chicken Club w/ Pepper Jack",
+     "serving": "237g",
+     "cal": 520,
+     "f": 22,
+     "c": 45,
+     "p": 37
     },
     {
-     "name": "Chick-fil-A Deluxe Sandwich w/ No Cheese",
-     "serving": "233g",
-     "cal": 430,
-     "f": 16,
-     "c": 42,
+     "name": "Grilled Chicken Club w/ No Cheese",
+     "serving": "216g",
+     "cal": 440,
+     "f": 15,
+     "c": 45,
+     "p": 31
+    },
+    {
+     "name": "Chick-fil-A Nuggets",
+     "serving": "113g",
+     "cal": 250,
+     "f": 11,
+     "c": 11,
+     "p": 27
+    },
+    {
+     "name": "8 ct Chick-fil-A Nuggets",
+     "serving": "113g",
+     "cal": 250,
+     "f": 11,
+     "c": 11,
+     "p": 27
+    },
+    {
+     "name": "12 ct Chick-fil-A Nuggets",
+     "serving": "170g",
+     "cal": 380,
+     "f": 17,
+     "c": 16,
+     "p": 40
+    },
+    {
+     "name": "30 ct Chick-fil-A Nuggets",
+     "serving": "425g",
+     "cal": 950,
+     "f": 43,
+     "c": 41,
+     "p": 100
+    },
+    {
+     "name": "Grilled Nuggets",
+     "serving": "95g",
+     "cal": 130,
+     "f": 3,
+     "c": 1,
+     "p": 25
+    },
+    {
+     "name": "8 ct Grilled Nuggets",
+     "serving": "95g",
+     "cal": 130,
+     "f": 3,
+     "c": 1,
+     "p": 25
+    },
+    {
+     "name": "12 ct Grilled Nuggets",
+     "serving": "142g",
+     "cal": 200,
+     "f": 4.5,
+     "c": 2,
+     "p": 38
+    },
+    {
+     "name": "30 ct Grilled Nuggets",
+     "serving": "369g",
+     "cal": 510,
+     "f": 11,
+     "c": 4,
+     "p": 98
+    },
+    {
+     "name": "Chick-fil-A Chick-n-Strips",
+     "serving": "136g",
+     "cal": 310,
+     "f": 14,
+     "c": 16,
      "p": 29
     },
     {
-     "name": "Chick-fil-A Deluxe Sandwich w/ Pepper Jack",
-     "serving": "254g",
-     "cal": 510,
-     "f": 23,
-     "c": 43,
-     "p": 34
+     "name": "2 ct Chick-fil-A Chick-n-Strips",
+     "serving": "91g",
+     "cal": 200,
+     "f": 9,
+     "c": 11,
+     "p": 19
     },
     {
-     "name": "Chick-fil-A Deluxe Sandwich w/ Colby Jack",
-     "serving": "254g",
-     "cal": 510,
-     "f": 23,
-     "c": 43,
-     "p": 34
+     "name": "3 ct Chick-fil-A Chick-n-Strips",
+     "serving": "136g",
+     "cal": 310,
+     "f": 14,
+     "c": 16,
+     "p": 29
     },
     {
-     "name": "Chick-fil-A Deluxe Sandwich w/ American",
-     "serving": "247g",
-     "cal": 490,
-     "f": 21,
-     "c": 43,
-     "p": 32
+     "name": "4 ct Chick-fil-A Chick-n-Strips",
+     "serving": "181g",
+     "cal": 410,
+     "f": 19,
+     "c": 22,
+     "p": 39
     },
     {
-     "name": "Chick-fil-A Cool Wrap",
-     "serving": "231g",
-     "cal": 660,
-     "f": 45,
-     "c": 32,
-     "p": 43
-    },
-    {
-     "name": "Grilled Chicken Sandwich",
-     "serving": "206g",
-     "cal": 390,
-     "f": 11,
-     "c": 45,
-     "p": 28
-    },
-    {
-     "name": "Spicy Chicken Sandwich",
-     "serving": "188g",
-     "cal": 450,
-     "f": 18,
-     "c": 44,
-     "p": 28
+     "name": "10 ct Chick-fil-A Chick-n-Strips",
+     "serving": "452g",
+     "cal": 1020,
+     "f": 46,
+     "c": 54,
+     "p": 96
     },
     {
      "name": "Chick-fil-A Chicken Sandwich",
@@ -716,20 +692,20 @@
      "p": 29
     },
     {
-     "name": "Chicken & Waffles Sandwich w/ Grilled Filet",
-     "serving": "179g",
-     "cal": 540,
-     "f": 24,
-     "c": 55,
-     "p": 29
+     "name": "Spicy Chicken Sandwich",
+     "serving": "188g",
+     "cal": 450,
+     "f": 18,
+     "c": 44,
+     "p": 28
     },
     {
-     "name": "Chicken & Waffles Sandwich w/ Spicy Filet",
-     "serving": "215g",
-     "cal": 710,
-     "f": 35,
-     "c": 70,
-     "p": 31
+     "name": "Chick-fil-A Cool Wrap",
+     "serving": "231g",
+     "cal": 660,
+     "f": 45,
+     "c": 32,
+     "p": 43
     },
     {
      "name": "Chicken & Waffles Sandwich w/ Chick-fil-A Filet",
@@ -740,8 +716,208 @@
      "p": 32
     },
     {
+     "name": "Chicken & Waffles Sandwich w/ Spicy Filet",
+     "serving": "215g",
+     "cal": 710,
+     "f": 35,
+     "c": 70,
+     "p": 31
+    },
+    {
+     "name": "Grilled Chicken Sandwich",
+     "serving": "206g",
+     "cal": 390,
+     "f": 11,
+     "c": 45,
+     "p": 28
+    },
+    {
+     "name": "Chicken & Waffles Sandwich w/ Grilled Filet",
+     "serving": "179g",
+     "cal": 540,
+     "f": 24,
+     "c": 55,
+     "p": 29
+    },
+    {
+     "name": "Cobb Salad",
+     "serving": "411g",
+     "cal": 830,
+     "f": 60,
+     "c": 31,
+     "p": 41
+    },
+    {
+     "name": "Cobb Salad w/ Nuggets",
+     "serving": "411g",
+     "cal": 830,
+     "f": 60,
+     "c": 31,
+     "p": 41
+    },
+    {
+     "name": "Cobb Salad w/ Spicy Grilled Filet (Cold)",
+     "serving": "369g",
+     "cal": 600,
+     "f": 45,
+     "c": 16,
+     "p": 33
+    },
+    {
+     "name": "Cobb Salad w/ Grilled Nuggets",
+     "serving": "378g",
+     "cal": 630,
+     "f": 45,
+     "c": 16,
+     "p": 39
+    },
+    {
+     "name": "Cobb Salad w/ Chick-fil-A Chick-n-Strips",
+     "serving": "420g",
+     "cal": 810,
+     "f": 56,
+     "c": 31,
+     "p": 43
+    },
+    {
+     "name": "Cobb Salad w/ Grilled Filet (Cold)",
+     "serving": "369g",
+     "cal": 610,
+     "f": 44,
+     "c": 16,
+     "p": 35
+    },
+    {
+     "name": "Cobb Salad w/ Grilled Filet (Warm)",
+     "serving": "368g",
+     "cal": 600,
+     "f": 44,
+     "c": 16,
+     "p": 35
+    },
+    {
+     "name": "Cobb Salad w/ No Chicken",
+     "serving": "284g",
+     "cal": 500,
+     "f": 42,
+     "c": 15,
+     "p": 14
+    },
+    {
+     "name": "Spicy Southwest Salad",
+     "serving": "424g",
+     "cal": 680,
+     "f": 49,
+     "c": 27,
+     "p": 33
+    },
+    {
+     "name": "Spicy Southwest Salad w/ Spicy Grilled Filet (Cold)",
+     "serving": "424g",
+     "cal": 680,
+     "f": 49,
+     "c": 27,
+     "p": 33
+    },
+    {
+     "name": "Spicy Southwest Salad w/ Grilled Filet (Cold)",
+     "serving": "424g",
+     "cal": 680,
+     "f": 48,
+     "c": 26,
+     "p": 35
+    },
+    {
+     "name": "Spicy Southwest Salad w/ Nuggets",
+     "serving": "448g",
+     "cal": 800,
+     "f": 56,
+     "c": 35,
+     "p": 39
+    },
+    {
+     "name": "Spicy Southwest Salad w/ Grilled Nuggets",
+     "serving": "434g",
+     "cal": 700,
+     "f": 49,
+     "c": 26,
+     "p": 39
+    },
+    {
+     "name": "Spicy Southwest Salad w/ Chick-fil-A Chick-n-Strips",
+     "serving": "475g",
+     "cal": 880,
+     "f": 60,
+     "c": 41,
+     "p": 43
+    },
+    {
+     "name": "Spicy Southwest Salad w/ Grilled Filet (Warm)",
+     "serving": "423g",
+     "cal": 680,
+     "f": 48,
+     "c": 26,
+     "p": 35
+    },
+    {
+     "name": "Spicy Southwest Salad w/ No Chicken",
+     "serving": "339g",
+     "cal": 570,
+     "f": 47,
+     "c": 25,
+     "p": 14
+    },
+    {
      "name": "Market Salad",
      "serving": "326g",
+     "cal": 550,
+     "f": 31,
+     "c": 42,
+     "p": 28
+    },
+    {
+     "name": "Market Salad w/ Grilled Filet (Cold)",
+     "serving": "326g",
+     "cal": 550,
+     "f": 31,
+     "c": 42,
+     "p": 28
+    },
+    {
+     "name": "Market Salad w/ Spicy Grilled Filet (Cold)",
+     "serving": "326g",
+     "cal": 540,
+     "f": 31,
+     "c": 42,
+     "p": 26
+    },
+    {
+     "name": "Market Salad w/ Chick-fil-A Chick-n-Strips",
+     "serving": "377g",
+     "cal": 750,
+     "f": 43,
+     "c": 57,
+     "p": 36
+    },
+    {
+     "name": "Market Salad w/ Nuggets",
+     "serving": "354g",
+     "cal": 700,
+     "f": 40,
+     "c": 51,
+     "p": 34
+    },
+    {
+     "name": "Market Salad w/ Grilled Nuggets",
+     "serving": "335g",
+     "cal": 570,
+     "f": 32,
+     "c": 41,
+     "p": 32
+    },
+    {
+     "name": "Market Salad w/ Grilled Filet (Warm)",
+     "serving": "325g",
      "cal": 550,
      "f": 31,
      "c": 42,
@@ -756,180 +932,36 @@
      "p": 7
     },
     {
-     "name": "Market Salad w/ Grilled Filet (Warm)",
-     "serving": "325g",
-     "cal": 550,
-     "f": 31,
-     "c": 42,
-     "p": 28
+     "name": "Chick-fil-A Waffle Potato Fries",
+     "serving": "125g",
+     "cal": 420,
+     "f": 24,
+     "c": 45,
+     "p": 5
     },
     {
-     "name": "Market Salad w/ Grilled Nuggets",
-     "serving": "335g",
-     "cal": 570,
-     "f": 32,
-     "c": 41,
-     "p": 32
-    },
-    {
-     "name": "Market Salad w/ Nuggets",
-     "serving": "354g",
-     "cal": 700,
-     "f": 40,
-     "c": 51,
-     "p": 34
-    },
-    {
-     "name": "Market Salad w/ Chick-fil-A Chick-n-Strips",
-     "serving": "377g",
-     "cal": 750,
-     "f": 43,
-     "c": 57,
-     "p": 36
-    },
-    {
-     "name": "Market Salad w/ Spicy Grilled Filet (Cold)",
-     "serving": "326g",
-     "cal": 540,
-     "f": 31,
-     "c": 42,
-     "p": 26
-    },
-    {
-     "name": "Market Salad w/ Grilled Filet (Cold)",
-     "serving": "326g",
-     "cal": 550,
-     "f": 31,
-     "c": 42,
-     "p": 28
-    },
-    {
-     "name": "Spicy Southwest Salad",
-     "serving": "424g",
-     "cal": 680,
-     "f": 49,
-     "c": 27,
-     "p": 33
-    },
-    {
-     "name": "Spicy Southwest Salad w/ No Chicken",
-     "serving": "339g",
-     "cal": 570,
-     "f": 47,
-     "c": 25,
-     "p": 14
-    },
-    {
-     "name": "Spicy Southwest Salad w/ Grilled Filet (Warm)",
-     "serving": "423g",
-     "cal": 680,
-     "f": 48,
-     "c": 26,
-     "p": 35
-    },
-    {
-     "name": "Spicy Southwest Salad w/ Chick-fil-A Chick-n-Strips",
-     "serving": "475g",
-     "cal": 880,
-     "f": 60,
-     "c": 41,
-     "p": 43
-    },
-    {
-     "name": "Spicy Southwest Salad w/ Grilled Nuggets",
-     "serving": "434g",
-     "cal": 700,
-     "f": 49,
-     "c": 26,
-     "p": 39
-    },
-    {
-     "name": "Spicy Southwest Salad w/ Nuggets",
-     "serving": "448g",
-     "cal": 800,
-     "f": 56,
+     "name": "Small Chick-fil-A Waffle Potato Fries",
+     "serving": "96g",
+     "cal": 320,
+     "f": 19,
      "c": 35,
-     "p": 39
+     "p": 4
     },
     {
-     "name": "Spicy Southwest Salad w/ Grilled Filet (Cold)",
-     "serving": "424g",
-     "cal": 680,
-     "f": 48,
-     "c": 26,
-     "p": 35
+     "name": "Medium Chick-fil-A Waffle Potato Fries",
+     "serving": "125g",
+     "cal": 420,
+     "f": 24,
+     "c": 45,
+     "p": 5
     },
     {
-     "name": "Spicy Southwest Salad w/ Spicy Grilled Filet (Cold)",
-     "serving": "424g",
-     "cal": 680,
-     "f": 49,
-     "c": 27,
-     "p": 33
-    },
-    {
-     "name": "Cobb Salad",
-     "serving": "411g",
-     "cal": 830,
-     "f": 60,
-     "c": 31,
-     "p": 41
-    },
-    {
-     "name": "Cobb Salad w/ No Chicken",
-     "serving": "284g",
-     "cal": 500,
-     "f": 42,
-     "c": 15,
-     "p": 14
-    },
-    {
-     "name": "Cobb Salad w/ Grilled Filet (Warm)",
-     "serving": "368g",
+     "name": "Large Chick-fil-A Waffle Potato Fries",
+     "serving": "179g",
      "cal": 600,
-     "f": 44,
-     "c": 16,
-     "p": 35
-    },
-    {
-     "name": "Cobb Salad w/ Grilled Filet (Cold)",
-     "serving": "369g",
-     "cal": 610,
-     "f": 44,
-     "c": 16,
-     "p": 35
-    },
-    {
-     "name": "Cobb Salad w/ Chick-fil-A Chick-n-Strips",
-     "serving": "420g",
-     "cal": 810,
-     "f": 56,
-     "c": 31,
-     "p": 43
-    },
-    {
-     "name": "Cobb Salad w/ Grilled Nuggets",
-     "serving": "378g",
-     "cal": 630,
-     "f": 45,
-     "c": 16,
-     "p": 39
-    },
-    {
-     "name": "Cobb Salad w/ Spicy Grilled Filet (Cold)",
-     "serving": "369g",
-     "cal": 600,
-     "f": 45,
-     "c": 16,
-     "p": 33
-    },
-    {
-     "name": "Cobb Salad w/ Nuggets",
-     "serving": "411g",
-     "cal": 830,
-     "f": 60,
-     "c": 31,
-     "p": 41
+     "f": 35,
+     "c": 65,
+     "p": 7
     },
     {
      "name": "Mac & Cheese",
@@ -956,47 +988,15 @@
      "p": 20
     },
     {
-     "name": "Chick-fil-A Waffle Potato Fries",
-     "serving": "125g",
-     "cal": 420,
-     "f": 24,
-     "c": 45,
-     "p": 5
-    },
-    {
-     "name": "Small Chick-fil-A Waffle Potato Fries",
-     "serving": "96g",
-     "cal": 320,
-     "f": 19,
-     "c": 35,
-     "p": 4
-    },
-    {
-     "name": "Large Chick-fil-A Waffle Potato Fries",
-     "serving": "179g",
-     "cal": 600,
-     "f": 35,
-     "c": 65,
-     "p": 7
-    },
-    {
-     "name": "Medium Chick-fil-A Waffle Potato Fries",
-     "serving": "125g",
-     "cal": 420,
-     "f": 24,
-     "c": 45,
-     "p": 5
-    },
-    {
-     "name": "Side Salad",
-     "serving": "166g",
-     "cal": 470,
-     "f": 42,
-     "c": 14,
-     "p": 6
-    },
-    {
      "name": "Chicken Noodle Soup",
+     "serving": "252g",
+     "cal": 190,
+     "f": 4.5,
+     "c": 27,
+     "p": 11
+    },
+    {
+     "name": "Cup of Chicken Noodle Soup",
      "serving": "252g",
      "cal": 190,
      "f": 4.5,
@@ -1010,14 +1010,6 @@
      "f": 8,
      "c": 42,
      "p": 20
-    },
-    {
-     "name": "Cup of Chicken Noodle Soup",
-     "serving": "252g",
-     "cal": 190,
-     "f": 4.5,
-     "c": 27,
-     "p": 11
     },
     {
      "name": "Chicken Tortilla Soup",
@@ -1036,20 +1028,12 @@
      "p": 4
     },
     {
-     "name": "Buddy Fruits Apple Sauce",
-     "serving": "90g",
-     "cal": 45,
-     "f": 0,
-     "c": 12,
-     "p": 0
-    },
-    {
-     "name": "Chick-fil-A Sauce Flavored Waffle Potato Chips",
-     "serving": "43g",
-     "cal": 210,
-     "f": 12,
-     "c": 26,
-     "p": 3
+     "name": "Side Salad",
+     "serving": "166g",
+     "cal": 470,
+     "f": 42,
+     "c": 14,
+     "p": 6
     },
     {
      "name": "Original Flavor Waffle Potato Chips",
@@ -1060,28 +1044,20 @@
      "p": 3
     },
     {
-     "name": "Mac & Cheese Kid's Meal",
-     "serving": "227g",
-     "cal": 450,
-     "f": 29,
-     "c": 28,
-     "p": 20
+     "name": "Chick-fil-A Sauce Flavored Waffle Potato Chips",
+     "serving": "43g",
+     "cal": 210,
+     "f": 12,
+     "c": 26,
+     "p": 3
     },
     {
-     "name": "5 Ct Grilled Nuggets Kid's Meal",
-     "serving": "59g",
-     "cal": 80,
-     "f": 2,
-     "c": 1,
-     "p": 16
-    },
-    {
-     "name": "2 Ct Chick-n-Strips Kid's Meal",
-     "serving": "91g",
-     "cal": 200,
-     "f": 9,
-     "c": 11,
-     "p": 19
+     "name": "Buddy Fruits Apple Sauce",
+     "serving": "90g",
+     "cal": 45,
+     "f": 0,
+     "c": 12,
+     "p": 0
     },
     {
      "name": "5 Ct Nuggets Kid's Meal",
@@ -1092,171 +1068,43 @@
      "p": 17
     },
     {
-     "name": "Chocolate Fudge Brownie",
-     "serving": "85g",
-     "cal": 370,
-     "f": 21,
-     "c": 47,
-     "p": 4
+     "name": "2 Ct Chick-n-Strips Kid's Meal",
+     "serving": "91g",
+     "cal": 200,
+     "f": 9,
+     "c": 11,
+     "p": 19
     },
     {
-     "name": "Chocolate Chunk Cookie",
-     "serving": "78g",
-     "cal": 370,
-     "f": 17,
-     "c": 49,
-     "p": 5
+     "name": "5 Ct Grilled Nuggets Kid's Meal",
+     "serving": "59g",
+     "cal": 80,
+     "f": 2,
+     "c": 1,
+     "p": 16
     },
     {
-     "name": "6 pack Chocolate Chunk Cookie",
-     "serving": "78g",
-     "cal": 370,
-     "f": 17,
-     "c": 49,
-     "p": 5
+     "name": "Mac & Cheese Kid's Meal",
+     "serving": "227g",
+     "cal": 450,
+     "f": 29,
+     "c": 28,
+     "p": 20
     },
     {
-     "name": "Frosted Sodas",
-     "serving": "369g",
-     "cal": 320,
+     "name": "Pineapple Dragonfruit Frosted Lemonade",
+     "serving": "375g",
+     "cal": 360,
      "f": 7,
-     "c": 60,
+     "c": 70,
      "p": 7
     },
     {
-     "name": "Frosted Powerade Mountain Berry Blast",
-     "serving": "369g",
-     "cal": 290,
+     "name": "Pineapple Dragonfruit Frosted Lemonade w/ Diet Lemonade",
+     "serving": "375g",
+     "cal": 300,
      "f": 7,
-     "c": 53,
-     "p": 7
-    },
-    {
-     "name": "Frosted Barq's Red Flash",
-     "serving": "369g",
-     "cal": 320,
-     "f": 7,
-     "c": 61,
-     "p": 7
-    },
-    {
-     "name": "Frosted Fanta Strawberry",
-     "serving": "369g",
-     "cal": 320,
-     "f": 7,
-     "c": 61,
-     "p": 7
-    },
-    {
-     "name": "Frosted Fanta Orange",
-     "serving": "369g",
-     "cal": 320,
-     "f": 7,
-     "c": 60,
-     "p": 7
-    },
-    {
-     "name": "Frosted Mello Yello",
-     "serving": "369g",
-     "cal": 320,
-     "f": 7,
-     "c": 62,
-     "p": 7
-    },
-    {
-     "name": "Frosted Caffeine Free Barq's Root Beer",
-     "serving": "369g",
-     "cal": 320,
-     "f": 7,
-     "c": 62,
-     "p": 7
-    },
-    {
-     "name": "Frosted Sprite",
-     "serving": "369g",
-     "cal": 320,
-     "f": 7,
-     "c": 59,
-     "p": 7
-    },
-    {
-     "name": "Frosted Hi-C Orange",
-     "serving": "369g",
-     "cal": 310,
-     "f": 7,
-     "c": 58,
-     "p": 7
-    },
-    {
-     "name": "Frosted Hi-C Fruit Punch",
-     "serving": "369g",
-     "cal": 320,
-     "f": 7,
-     "c": 61,
-     "p": 7
-    },
-    {
-     "name": "Frosted Coca-Cola Cherry",
-     "serving": "369g",
-     "cal": 320,
-     "f": 7,
-     "c": 61,
-     "p": 7
-    },
-    {
-     "name": "Frosted Caffeine Free Diet Coke",
-     "serving": "369g",
-     "cal": 260,
-     "f": 7,
-     "c": 45,
-     "p": 7
-    },
-    {
-     "name": "Frosted Coke Zero Sugar",
-     "serving": "369g",
-     "cal": 260,
-     "f": 7,
-     "c": 45,
-     "p": 7
-    },
-    {
-     "name": "Frosted Diet Coke",
-     "serving": "369g",
-     "cal": 260,
-     "f": 7,
-     "c": 45,
-     "p": 7
-    },
-    {
-     "name": "Frosted Coke",
-     "serving": "369g",
-     "cal": 320,
-     "f": 7,
-     "c": 60,
-     "p": 7
-    },
-    {
-     "name": "Frosted Barq's Root Beer",
-     "serving": "369g",
-     "cal": 320,
-     "f": 7,
-     "c": 61,
-     "p": 7
-    },
-    {
-     "name": "Frosted Diet Dr Pepper",
-     "serving": "369g",
-     "cal": 260,
-     "f": 7,
-     "c": 45,
-     "p": 7
-    },
-    {
-     "name": "Frosted Dr Pepper",
-     "serving": "369g",
-     "cal": 320,
-     "f": 7,
-     "c": 60,
+     "c": 54,
      "p": 7
     },
     {
@@ -1276,20 +1124,172 @@
      "p": 7
     },
     {
-     "name": "Pineapple Dragonfruit Frosted Lemonade",
-     "serving": "375g",
-     "cal": 360,
+     "name": "Frosted Sodas",
+     "serving": "369g",
+     "cal": 320,
      "f": 7,
-     "c": 70,
+     "c": 60,
      "p": 7
     },
     {
-     "name": "Pineapple Dragonfruit Frosted Lemonade w/ Diet Lemonade",
-     "serving": "375g",
-     "cal": 300,
+     "name": "Frosted Dr Pepper",
+     "serving": "369g",
+     "cal": 320,
      "f": 7,
-     "c": 54,
+     "c": 60,
      "p": 7
+    },
+    {
+     "name": "Frosted Diet Dr Pepper",
+     "serving": "369g",
+     "cal": 260,
+     "f": 7,
+     "c": 45,
+     "p": 7
+    },
+    {
+     "name": "Frosted Barq's Root Beer",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 61,
+     "p": 7
+    },
+    {
+     "name": "Frosted Coke",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 60,
+     "p": 7
+    },
+    {
+     "name": "Frosted Coca-Cola Cherry",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 61,
+     "p": 7
+    },
+    {
+     "name": "Frosted Diet Coke",
+     "serving": "369g",
+     "cal": 260,
+     "f": 7,
+     "c": 45,
+     "p": 7
+    },
+    {
+     "name": "Frosted Coke Zero Sugar",
+     "serving": "369g",
+     "cal": 260,
+     "f": 7,
+     "c": 45,
+     "p": 7
+    },
+    {
+     "name": "Frosted Caffeine Free Diet Coke",
+     "serving": "369g",
+     "cal": 260,
+     "f": 7,
+     "c": 45,
+     "p": 7
+    },
+    {
+     "name": "Frosted Hi-C Fruit Punch",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 61,
+     "p": 7
+    },
+    {
+     "name": "Frosted Hi-C Orange",
+     "serving": "369g",
+     "cal": 310,
+     "f": 7,
+     "c": 58,
+     "p": 7
+    },
+    {
+     "name": "Frosted Sprite",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 59,
+     "p": 7
+    },
+    {
+     "name": "Frosted Fanta Orange",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 60,
+     "p": 7
+    },
+    {
+     "name": "Frosted Fanta Strawberry",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 61,
+     "p": 7
+    },
+    {
+     "name": "Frosted Powerade Mountain Berry Blast",
+     "serving": "369g",
+     "cal": 290,
+     "f": 7,
+     "c": 53,
+     "p": 7
+    },
+    {
+     "name": "Frosted Barq's Red Flash",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 61,
+     "p": 7
+    },
+    {
+     "name": "Frosted Mello Yello",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 62,
+     "p": 7
+    },
+    {
+     "name": "Frosted Caffeine Free Barq's Root Beer",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 62,
+     "p": 7
+    },
+    {
+     "name": "Chocolate Chunk Cookie",
+     "serving": "78g",
+     "cal": 370,
+     "f": 17,
+     "c": 49,
+     "p": 5
+    },
+    {
+     "name": "6 pack Chocolate Chunk Cookie",
+     "serving": "78g",
+     "cal": 370,
+     "f": 17,
+     "c": 49,
+     "p": 5
+    },
+    {
+     "name": "Chocolate Fudge Brownie",
+     "serving": "85g",
+     "cal": 370,
+     "f": 21,
+     "c": 47,
+     "p": 4
     },
     {
      "name": "S'mores Frosted Coffee",
@@ -1314,6 +1314,46 @@
      "f": 3,
      "c": 7,
      "p": 1
+    },
+    {
+     "name": "Dr Pepper Float",
+     "serving": "369g",
+     "cal": 320,
+     "f": 7,
+     "c": 60,
+     "p": 7
+    },
+    {
+     "name": "Caramel Frosted Coffee",
+     "serving": "406g",
+     "cal": 370,
+     "f": 10,
+     "c": 63,
+     "p": 7
+    },
+    {
+     "name": "Mocha Frosted Coffee",
+     "serving": "400g",
+     "cal": 330,
+     "f": 7,
+     "c": 61,
+     "p": 7
+    },
+    {
+     "name": "Vanilla Frosted Coffee",
+     "serving": "400g",
+     "cal": 330,
+     "f": 7,
+     "c": 62,
+     "p": 7
+    },
+    {
+     "name": "Frosted Coffee",
+     "serving": "374g",
+     "cal": 260,
+     "f": 7,
+     "c": 45,
+     "p": 7
     },
     {
      "name": "Chick-fil-A Icedream Cone",
@@ -1364,542 +1404,6 @@
      "p": 13
     },
     {
-     "name": "Vanilla Frosted Coffee",
-     "serving": "400g",
-     "cal": 330,
-     "f": 7,
-     "c": 62,
-     "p": 7
-    },
-    {
-     "name": "Mocha Frosted Coffee",
-     "serving": "400g",
-     "cal": 330,
-     "f": 7,
-     "c": 61,
-     "p": 7
-    },
-    {
-     "name": "Caramel Frosted Coffee",
-     "serving": "406g",
-     "cal": 370,
-     "f": 10,
-     "c": 63,
-     "p": 7
-    },
-    {
-     "name": "Frosted Coffee",
-     "serving": "374g",
-     "cal": 260,
-     "f": 7,
-     "c": 45,
-     "p": 7
-    },
-    {
-     "name": "Dr Pepper Float",
-     "serving": "369g",
-     "cal": 320,
-     "f": 7,
-     "c": 60,
-     "p": 7
-    },
-    {
-     "name": "Gallon Beverages",
-     "serving": "340g",
-     "cal": 190,
-     "f": 0,
-     "c": 49,
-     "p": 0
-    },
-    {
-     "name": "Bag of Ice",
-     "serving": "28g",
-     "cal": 0,
-     "f": 0,
-     "c": 0,
-     "p": 0
-    },
-    {
-     "name": "Gallon Pineapple Dragonfruit Unsweet Tea",
-     "serving": "340g",
-     "cal": 25,
-     "f": 0,
-     "c": 5,
-     "p": 0
-    },
-    {
-     "name": "Gallon Pineapple Dragonfruit Sweet Tea",
-     "serving": "340g",
-     "cal": 150,
-     "f": 0,
-     "c": 37,
-     "p": 0
-    },
-    {
-     "name": "Gallon Pineapple Dragonfruit Sunjoy (1/2 Unsweet Tea, 1/2 Diet Lemonade)",
-     "serving": "340g",
-     "cal": 45,
-     "f": 0,
-     "c": 10,
-     "p": 0
-    },
-    {
-     "name": "Gallon Pineapple Dragonfruit Sunjoy (1/2 Sweet Tea, 1/2 Diet Lemonade)",
-     "serving": "340g",
-     "cal": 110,
-     "f": 0,
-     "c": 28,
-     "p": 0
-    },
-    {
-     "name": "Gallon Pineapple Dragonfruit Sunjoy (1/2 Unsweet Tea, 1/2 Lemonade)",
-     "serving": "340g",
-     "cal": 110,
-     "f": 0,
-     "c": 27,
-     "p": 0
-    },
-    {
-     "name": "Gallon Pineapple Dragonfruit Sunjoy (1/2 Sweet Tea, 1/2 Lemonade)",
-     "serving": "340g",
-     "cal": 180,
-     "f": 0,
-     "c": 44,
-     "p": 0
-    },
-    {
-     "name": "Gallon Pineapple Dragonfruit Diet Lemonade",
-     "serving": "340g",
-     "cal": 70,
-     "f": 0,
-     "c": 16,
-     "p": 0
-    },
-    {
-     "name": "Gallon Pineapple Dragonfruit Lemonade",
-     "serving": "340g",
-     "cal": 210,
-     "f": 0,
-     "c": 53,
-     "p": 0
-    },
-    {
-     "name": "Gallon Sunjoy (1/2 Unsweet Tea, 1/2 Diet Lemonade)",
-     "serving": "340g",
-     "cal": 20,
-     "f": 0,
-     "c": 6,
-     "p": 0
-    },
-    {
-     "name": "Gallon Sunjoy (1/2 Unsweet Tea, 1/2 Lemonade)",
-     "serving": "340g",
-     "cal": 100,
-     "f": 0,
-     "c": 26,
-     "p": 0
-    },
-    {
-     "name": "Gallon Sunjoy (1/2 Sweet Tea, 1/2 Diet Lemonade)",
-     "serving": "340g",
-     "cal": 90,
-     "f": 0,
-     "c": 23,
-     "p": 0
-    },
-    {
-     "name": "Gallon Sunjoy (1/2 Sweet Tea, 1/2 Lemonade)",
-     "serving": "340g",
-     "cal": 160,
-     "f": 0,
-     "c": 41,
-     "p": 0
-    },
-    {
-     "name": "Gallon Chick-fil-A Iced Tea (1/2 Sweet Tea, 1/2 Unsweet Tea)",
-     "serving": "340g",
-     "cal": 70,
-     "f": 0,
-     "c": 18,
-     "p": 0
-    },
-    {
-     "name": "Gallon Freshly-Brewed Iced Tea Unsweetened",
-     "serving": "340g",
-     "cal": 0,
-     "f": 0,
-     "c": 0,
-     "p": 0
-    },
-    {
-     "name": "Gallon Freshly-Brewed Iced Tea Sweetened",
-     "serving": "340g",
-     "cal": 130,
-     "f": 0,
-     "c": 33,
-     "p": 0
-    },
-    {
-     "name": "Gallon Chick-fil-A Lemonade (1/2 Lemonade, 1/2 Diet Lemonade)",
-     "serving": "340g",
-     "cal": 120,
-     "f": 0,
-     "c": 33,
-     "p": 0
-    },
-    {
-     "name": "Gallon Chick-fil-A Diet Lemonade",
-     "serving": "340g",
-     "cal": 40,
-     "f": 0,
-     "c": 12,
-     "p": 0
-    },
-    {
-     "name": "Gallon Chick-fil-A Lemonade",
-     "serving": "340g",
-     "cal": 190,
-     "f": 0,
-     "c": 49,
-     "p": 0
-    },
-    {
-     "name": "Seasonal Gallon Beverages",
-     "serving": "340g",
-     "cal": 210,
-     "f": 0,
-     "c": 53,
-     "p": 0
-    },
-    {
-     "name": "Freshly-Brewed Sweetened Iced Tea",
-     "serving": "604g",
-     "cal": 120,
-     "f": 0,
-     "c": 31,
-     "p": 0
-    },
-    {
-     "name": "Large Freshly-Brewed Sweetened Iced Tea",
-     "serving": "893g",
-     "cal": 170,
-     "f": 0,
-     "c": 44,
-     "p": 0
-    },
-    {
-     "name": "Medium Freshly-Brewed Sweetened Iced Tea",
-     "serving": "604g",
-     "cal": 120,
-     "f": 0,
-     "c": 31,
-     "p": 0
-    },
-    {
-     "name": "Small Freshly-Brewed Sweetened Iced Tea",
-     "serving": "451g",
-     "cal": 90,
-     "f": 0,
-     "c": 22,
-     "p": 0
-    },
-    {
-     "name": "Toasted Marshmallow Hot Coffee",
-     "serving": "380g",
-     "cal": 110,
-     "f": 0,
-     "c": 26,
-     "p": 0
-    },
-    {
-     "name": "Dr Pepper",
-     "serving": "584g",
-     "cal": 170,
-     "f": 0,
-     "c": 44,
-     "p": 0
-    },
-    {
-     "name": "Large Dr Pepper",
-     "serving": "859g",
-     "cal": 250,
-     "f": 0,
-     "c": 64,
-     "p": 0
-    },
-    {
-     "name": "Medium Dr Pepper",
-     "serving": "584g",
-     "cal": 170,
-     "f": 0,
-     "c": 44,
-     "p": 0
-    },
-    {
-     "name": "Small Dr Pepper",
-     "serving": "451g",
-     "cal": 130,
-     "f": 0,
-     "c": 34,
-     "p": 0
-    },
-    {
-     "name": "Coca-Cola",
-     "serving": "584g",
-     "cal": 170,
-     "f": 0,
-     "c": 46,
-     "p": 0
-    },
-    {
-     "name": "Large Coca-Cola",
-     "serving": "859g",
-     "cal": 250,
-     "f": 0,
-     "c": 68,
-     "p": 0
-    },
-    {
-     "name": "Medium Coca-Cola",
-     "serving": "584g",
-     "cal": 170,
-     "f": 0,
-     "c": 46,
-     "p": 0
-    },
-    {
-     "name": "Small Coca-Cola",
-     "serving": "451g",
-     "cal": 130,
-     "f": 0,
-     "c": 35,
-     "p": 0
-    },
-    {
-     "name": "Sunjoy (1/2 Sweet Tea, 1/2 Diet Lemonade)",
-     "serving": "641g",
-     "cal": 110,
-     "f": 0,
-     "c": 29,
-     "p": 0
-    },
-    {
-     "name": "Large Sunjoy (1/2 Sweet Tea, 1/2 Diet Lemonade)",
-     "serving": "944g",
-     "cal": 150,
-     "f": 0,
-     "c": 40,
-     "p": 0
-    },
-    {
-     "name": "Medium Sunjoy (1/2 Sweet Tea, 1/2 Diet Lemonade)",
-     "serving": "641g",
-     "cal": 110,
-     "f": 0,
-     "c": 29,
-     "p": 0
-    },
-    {
-     "name": "Small Sunjoy (1/2 Sweet Tea, 1/2 Diet Lemonade)",
-     "serving": "479g",
-     "cal": 80,
-     "f": 0,
-     "c": 20,
-     "p": 0
-    },
-    {
-     "name": "Sunjoy (1/2 Unsweet Tea, 1/2 Lemonade)",
-     "serving": "641g",
-     "cal": 160,
-     "f": 0,
-     "c": 41,
-     "p": 0
-    },
-    {
-     "name": "Large Sunjoy (1/2 Unsweet Tea, 1/2 Lemonade)",
-     "serving": "944g",
-     "cal": 260,
-     "f": 0,
-     "c": 66,
-     "p": 0
-    },
-    {
-     "name": "Medium Sunjoy (1/2 Unsweet Tea, 1/2 Lemonade)",
-     "serving": "641g",
-     "cal": 160,
-     "f": 0,
-     "c": 41,
-     "p": 0
-    },
-    {
-     "name": "Small Sunjoy (1/2 Unsweet Tea, 1/2 Lemonade)",
-     "serving": "479g",
-     "cal": 130,
-     "f": 0,
-     "c": 33,
-     "p": 0
-    },
-    {
-     "name": "Sunjoy (1/2 Unsweet Tea, 1/2 Diet Lemonade)",
-     "serving": "641g",
-     "cal": 35,
-     "f": 0,
-     "c": 10,
-     "p": 0
-    },
-    {
-     "name": "Large Sunjoy (1/2 Unsweet Tea, 1/2 Diet Lemonade)",
-     "serving": "944g",
-     "cal": 60,
-     "f": 0,
-     "c": 15,
-     "p": 0
-    },
-    {
-     "name": "Medium Sunjoy (1/2 Unsweet Tea, 1/2 Diet Lemonade)",
-     "serving": "641g",
-     "cal": 35,
-     "f": 0,
-     "c": 10,
-     "p": 0
-    },
-    {
-     "name": "Small Sunjoy (1/2 Unsweet Tea, 1/2 Diet Lemonade)",
-     "serving": "479g",
-     "cal": 30,
-     "f": 0,
-     "c": 8,
-     "p": 0
-    },
-    {
-     "name": "Sunjoy (1/2 Sweet Tea, 1/2 Lemonade)",
-     "serving": "641g",
-     "cal": 240,
-     "f": 0,
-     "c": 60,
-     "p": 0
-    },
-    {
-     "name": "Large Sunjoy (1/2 Sweet Tea, 1/2 Lemonade)",
-     "serving": "944g",
-     "cal": 350,
-     "f": 0,
-     "c": 91,
-     "p": 0
-    },
-    {
-     "name": "Medium Sunjoy (1/2 Sweet Tea, 1/2 Lemonade)",
-     "serving": "641g",
-     "cal": 240,
-     "f": 0,
-     "c": 60,
-     "p": 0
-    },
-    {
-     "name": "Small Sunjoy (1/2 Sweet Tea, 1/2 Lemonade)",
-     "serving": "479g",
-     "cal": 180,
-     "f": 0,
-     "c": 45,
-     "p": 0
-    },
-    {
-     "name": "Chick-fil-A Diet Lemonade",
-     "serving": "612g",
-     "cal": 60,
-     "f": 0,
-     "c": 15,
-     "p": 0
-    },
-    {
-     "name": "Large Chick-fil-A Diet Lemonade",
-     "serving": "916g",
-     "cal": 80,
-     "f": 0,
-     "c": 23,
-     "p": 0
-    },
-    {
-     "name": "Medium Chick-fil-A Diet Lemonade",
-     "serving": "612g",
-     "cal": 60,
-     "f": 0,
-     "c": 15,
-     "p": 0
-    },
-    {
-     "name": "Small Chick-fil-A Diet Lemonade",
-     "serving": "465g",
-     "cal": 40,
-     "f": 0,
-     "c": 12,
-     "p": 0
-    },
-    {
-     "name": "Chick-fil-A Lemonade",
-     "serving": "612g",
-     "cal": 260,
-     "f": 0,
-     "c": 66,
-     "p": 0
-    },
-    {
-     "name": "Large Chick-fil-A Lemonade",
-     "serving": "916g",
-     "cal": 380,
-     "f": 0,
-     "c": 98,
-     "p": 1
-    },
-    {
-     "name": "Medium Chick-fil-A Lemonade",
-     "serving": "612g",
-     "cal": 260,
-     "f": 0,
-     "c": 66,
-     "p": 0
-    },
-    {
-     "name": "Small Chick-fil-A Lemonade",
-     "serving": "465g",
-     "cal": 190,
-     "f": 0,
-     "c": 49,
-     "p": 0
-    },
-    {
-     "name": "Freshly-Brewed Unsweetened Iced Tea",
-     "serving": "604g",
-     "cal": 0,
-     "f": 0,
-     "c": 0,
-     "p": 0
-    },
-    {
-     "name": "Large Freshly-Brewed Unsweetened Iced Tea",
-     "serving": "893g",
-     "cal": 0,
-     "f": 0,
-     "c": 0,
-     "p": 0
-    },
-    {
-     "name": "Medium Freshly-Brewed Unsweetened Iced Tea",
-     "serving": "604g",
-     "cal": 0,
-     "f": 0,
-     "c": 0,
-     "p": 0
-    },
-    {
-     "name": "Small Freshly-Brewed Unsweetened Iced Tea",
-     "serving": "451g",
-     "cal": 0,
-     "f": 0,
-     "c": 0,
-     "p": 0
-    },
-    {
      "name": "Pineapple Dragonfruit Lemonade",
      "serving": "691g",
      "cal": 290,
@@ -1916,6 +1420,502 @@
      "p": 0
     },
     {
+     "name": "Freshly-Brewed Sweetened Iced Tea",
+     "serving": "604g",
+     "cal": 120,
+     "f": 0,
+     "c": 31,
+     "p": 0
+    },
+    {
+     "name": "Small Freshly-Brewed Sweetened Iced Tea",
+     "serving": "451g",
+     "cal": 90,
+     "f": 0,
+     "c": 22,
+     "p": 0
+    },
+    {
+     "name": "Medium Freshly-Brewed Sweetened Iced Tea",
+     "serving": "604g",
+     "cal": 120,
+     "f": 0,
+     "c": 31,
+     "p": 0
+    },
+    {
+     "name": "Large Freshly-Brewed Sweetened Iced Tea",
+     "serving": "893g",
+     "cal": 170,
+     "f": 0,
+     "c": 44,
+     "p": 0
+    },
+    {
+     "name": "Freshly-Brewed Unsweetened Iced Tea",
+     "serving": "604g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Small Freshly-Brewed Unsweetened Iced Tea",
+     "serving": "451g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Medium Freshly-Brewed Unsweetened Iced Tea",
+     "serving": "604g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Large Freshly-Brewed Unsweetened Iced Tea",
+     "serving": "893g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Chick-fil-A Lemonade",
+     "serving": "612g",
+     "cal": 260,
+     "f": 0,
+     "c": 66,
+     "p": 0
+    },
+    {
+     "name": "Small Chick-fil-A Lemonade",
+     "serving": "465g",
+     "cal": 190,
+     "f": 0,
+     "c": 49,
+     "p": 0
+    },
+    {
+     "name": "Medium Chick-fil-A Lemonade",
+     "serving": "612g",
+     "cal": 260,
+     "f": 0,
+     "c": 66,
+     "p": 0
+    },
+    {
+     "name": "Large Chick-fil-A Lemonade",
+     "serving": "916g",
+     "cal": 380,
+     "f": 0,
+     "c": 98,
+     "p": 1
+    },
+    {
+     "name": "Chick-fil-A Diet Lemonade",
+     "serving": "612g",
+     "cal": 60,
+     "f": 0,
+     "c": 15,
+     "p": 0
+    },
+    {
+     "name": "Small Chick-fil-A Diet Lemonade",
+     "serving": "465g",
+     "cal": 40,
+     "f": 0,
+     "c": 12,
+     "p": 0
+    },
+    {
+     "name": "Medium Chick-fil-A Diet Lemonade",
+     "serving": "612g",
+     "cal": 60,
+     "f": 0,
+     "c": 15,
+     "p": 0
+    },
+    {
+     "name": "Large Chick-fil-A Diet Lemonade",
+     "serving": "916g",
+     "cal": 80,
+     "f": 0,
+     "c": 23,
+     "p": 0
+    },
+    {
+     "name": "Sunjoy (1/2 Sweet Tea, 1/2 Lemonade)",
+     "serving": "641g",
+     "cal": 240,
+     "f": 0,
+     "c": 60,
+     "p": 0
+    },
+    {
+     "name": "Small Sunjoy (1/2 Sweet Tea, 1/2 Lemonade)",
+     "serving": "479g",
+     "cal": 180,
+     "f": 0,
+     "c": 45,
+     "p": 0
+    },
+    {
+     "name": "Medium Sunjoy (1/2 Sweet Tea, 1/2 Lemonade)",
+     "serving": "641g",
+     "cal": 240,
+     "f": 0,
+     "c": 60,
+     "p": 0
+    },
+    {
+     "name": "Large Sunjoy (1/2 Sweet Tea, 1/2 Lemonade)",
+     "serving": "944g",
+     "cal": 350,
+     "f": 0,
+     "c": 91,
+     "p": 0
+    },
+    {
+     "name": "Sunjoy (1/2 Sweet Tea, 1/2 Diet Lemonade)",
+     "serving": "641g",
+     "cal": 110,
+     "f": 0,
+     "c": 29,
+     "p": 0
+    },
+    {
+     "name": "Small Sunjoy (1/2 Sweet Tea, 1/2 Diet Lemonade)",
+     "serving": "479g",
+     "cal": 80,
+     "f": 0,
+     "c": 20,
+     "p": 0
+    },
+    {
+     "name": "Medium Sunjoy (1/2 Sweet Tea, 1/2 Diet Lemonade)",
+     "serving": "641g",
+     "cal": 110,
+     "f": 0,
+     "c": 29,
+     "p": 0
+    },
+    {
+     "name": "Large Sunjoy (1/2 Sweet Tea, 1/2 Diet Lemonade)",
+     "serving": "944g",
+     "cal": 150,
+     "f": 0,
+     "c": 40,
+     "p": 0
+    },
+    {
+     "name": "Sunjoy (1/2 Unsweet Tea, 1/2 Lemonade)",
+     "serving": "641g",
+     "cal": 160,
+     "f": 0,
+     "c": 41,
+     "p": 0
+    },
+    {
+     "name": "Small Sunjoy (1/2 Unsweet Tea, 1/2 Lemonade)",
+     "serving": "479g",
+     "cal": 130,
+     "f": 0,
+     "c": 33,
+     "p": 0
+    },
+    {
+     "name": "Medium Sunjoy (1/2 Unsweet Tea, 1/2 Lemonade)",
+     "serving": "641g",
+     "cal": 160,
+     "f": 0,
+     "c": 41,
+     "p": 0
+    },
+    {
+     "name": "Large Sunjoy (1/2 Unsweet Tea, 1/2 Lemonade)",
+     "serving": "944g",
+     "cal": 260,
+     "f": 0,
+     "c": 66,
+     "p": 0
+    },
+    {
+     "name": "Sunjoy (1/2 Unsweet Tea, 1/2 Diet Lemonade)",
+     "serving": "641g",
+     "cal": 35,
+     "f": 0,
+     "c": 10,
+     "p": 0
+    },
+    {
+     "name": "Small Sunjoy (1/2 Unsweet Tea, 1/2 Diet Lemonade)",
+     "serving": "479g",
+     "cal": 30,
+     "f": 0,
+     "c": 8,
+     "p": 0
+    },
+    {
+     "name": "Medium Sunjoy (1/2 Unsweet Tea, 1/2 Diet Lemonade)",
+     "serving": "641g",
+     "cal": 35,
+     "f": 0,
+     "c": 10,
+     "p": 0
+    },
+    {
+     "name": "Large Sunjoy (1/2 Unsweet Tea, 1/2 Diet Lemonade)",
+     "serving": "944g",
+     "cal": 60,
+     "f": 0,
+     "c": 15,
+     "p": 0
+    },
+    {
+     "name": "Coca-Cola",
+     "serving": "584g",
+     "cal": 170,
+     "f": 0,
+     "c": 46,
+     "p": 0
+    },
+    {
+     "name": "Small Coca-Cola",
+     "serving": "451g",
+     "cal": 130,
+     "f": 0,
+     "c": 35,
+     "p": 0
+    },
+    {
+     "name": "Medium Coca-Cola",
+     "serving": "584g",
+     "cal": 170,
+     "f": 0,
+     "c": 46,
+     "p": 0
+    },
+    {
+     "name": "Large Coca-Cola",
+     "serving": "859g",
+     "cal": 250,
+     "f": 0,
+     "c": 68,
+     "p": 0
+    },
+    {
+     "name": "Dr Pepper",
+     "serving": "584g",
+     "cal": 170,
+     "f": 0,
+     "c": 44,
+     "p": 0
+    },
+    {
+     "name": "Small Dr Pepper",
+     "serving": "451g",
+     "cal": 130,
+     "f": 0,
+     "c": 34,
+     "p": 0
+    },
+    {
+     "name": "Medium Dr Pepper",
+     "serving": "584g",
+     "cal": 170,
+     "f": 0,
+     "c": 44,
+     "p": 0
+    },
+    {
+     "name": "Large Dr Pepper",
+     "serving": "859g",
+     "cal": 250,
+     "f": 0,
+     "c": 64,
+     "p": 0
+    },
+    {
+     "name": "Gallon Beverages",
+     "serving": "340g",
+     "cal": 190,
+     "f": 0,
+     "c": 49,
+     "p": 0
+    },
+    {
+     "name": "Gallon Chick-fil-A Lemonade",
+     "serving": "340g",
+     "cal": 190,
+     "f": 0,
+     "c": 49,
+     "p": 0
+    },
+    {
+     "name": "Gallon Chick-fil-A Diet Lemonade",
+     "serving": "340g",
+     "cal": 40,
+     "f": 0,
+     "c": 12,
+     "p": 0
+    },
+    {
+     "name": "Gallon Chick-fil-A Lemonade (1/2 Lemonade, 1/2 Diet Lemonade)",
+     "serving": "340g",
+     "cal": 120,
+     "f": 0,
+     "c": 33,
+     "p": 0
+    },
+    {
+     "name": "Gallon Freshly-Brewed Iced Tea Sweetened",
+     "serving": "340g",
+     "cal": 130,
+     "f": 0,
+     "c": 33,
+     "p": 0
+    },
+    {
+     "name": "Gallon Freshly-Brewed Iced Tea Unsweetened",
+     "serving": "340g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Gallon Chick-fil-A Iced Tea (1/2 Sweet Tea, 1/2 Unsweet Tea)",
+     "serving": "340g",
+     "cal": 70,
+     "f": 0,
+     "c": 18,
+     "p": 0
+    },
+    {
+     "name": "Gallon Sunjoy (1/2 Sweet Tea, 1/2 Lemonade)",
+     "serving": "340g",
+     "cal": 160,
+     "f": 0,
+     "c": 41,
+     "p": 0
+    },
+    {
+     "name": "Gallon Sunjoy (1/2 Sweet Tea, 1/2 Diet Lemonade)",
+     "serving": "340g",
+     "cal": 90,
+     "f": 0,
+     "c": 23,
+     "p": 0
+    },
+    {
+     "name": "Gallon Sunjoy (1/2 Unsweet Tea, 1/2 Lemonade)",
+     "serving": "340g",
+     "cal": 100,
+     "f": 0,
+     "c": 26,
+     "p": 0
+    },
+    {
+     "name": "Gallon Sunjoy (1/2 Unsweet Tea, 1/2 Diet Lemonade)",
+     "serving": "340g",
+     "cal": 20,
+     "f": 0,
+     "c": 6,
+     "p": 0
+    },
+    {
+     "name": "Gallon Pineapple Dragonfruit Lemonade",
+     "serving": "340g",
+     "cal": 210,
+     "f": 0,
+     "c": 53,
+     "p": 0
+    },
+    {
+     "name": "Gallon Pineapple Dragonfruit Diet Lemonade",
+     "serving": "340g",
+     "cal": 70,
+     "f": 0,
+     "c": 16,
+     "p": 0
+    },
+    {
+     "name": "Gallon Pineapple Dragonfruit Sunjoy (1/2 Sweet Tea, 1/2 Lemonade)",
+     "serving": "340g",
+     "cal": 180,
+     "f": 0,
+     "c": 44,
+     "p": 0
+    },
+    {
+     "name": "Gallon Pineapple Dragonfruit Sunjoy (1/2 Unsweet Tea, 1/2 Lemonade)",
+     "serving": "340g",
+     "cal": 110,
+     "f": 0,
+     "c": 27,
+     "p": 0
+    },
+    {
+     "name": "Gallon Pineapple Dragonfruit Sunjoy (1/2 Sweet Tea, 1/2 Diet Lemonade)",
+     "serving": "340g",
+     "cal": 110,
+     "f": 0,
+     "c": 28,
+     "p": 0
+    },
+    {
+     "name": "Gallon Pineapple Dragonfruit Sunjoy (1/2 Unsweet Tea, 1/2 Diet Lemonade)",
+     "serving": "340g",
+     "cal": 45,
+     "f": 0,
+     "c": 10,
+     "p": 0
+    },
+    {
+     "name": "Gallon Pineapple Dragonfruit Sweet Tea",
+     "serving": "340g",
+     "cal": 150,
+     "f": 0,
+     "c": 37,
+     "p": 0
+    },
+    {
+     "name": "Gallon Pineapple Dragonfruit Unsweet Tea",
+     "serving": "340g",
+     "cal": 25,
+     "f": 0,
+     "c": 5,
+     "p": 0
+    },
+    {
+     "name": "Bag of Ice",
+     "serving": "28g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0
+    },
+    {
+     "name": "Seasonal Gallon Beverages",
+     "serving": "340g",
+     "cal": 210,
+     "f": 0,
+     "c": 53,
+     "p": 0
+    },
+    {
+     "name": "Toasted Marshmallow Hot Coffee",
+     "serving": "380g",
+     "cal": 110,
+     "f": 0,
+     "c": 26,
+     "p": 0
+    },
+    {
      "name": "Iced Coffee",
      "serving": "661g",
      "cal": 200,
@@ -1924,43 +1924,51 @@
      "p": 7
     },
     {
-     "name": "Honest Kids Apple Juice",
-     "serving": "170g",
-     "cal": 35,
+     "name": "Pineapple Dragonfruit Sunjoy (Sweet Tea, Lemonade)",
+     "serving": "662g",
+     "cal": 240,
      "f": 0,
-     "c": 9,
+     "c": 59,
      "p": 0
     },
     {
-     "name": "1% Chocolate Milk",
-     "serving": "198g",
+     "name": "Pineapple Dragonfruit Sunjoy (Sweet Tea, Diet Lemonade)",
+     "serving": "662g",
      "cal": 140,
-     "f": 2,
-     "c": 23,
-     "p": 7
-    },
-    {
-     "name": "1% Milk",
-     "serving": "213g",
-     "cal": 90,
-     "f": 2,
-     "c": 10,
-     "p": 7
-    },
-    {
-     "name": "Simply Orange",
-     "serving": "326g",
-     "cal": 160,
      "f": 0,
      "c": 34,
-     "p": 2
+     "p": 0
     },
     {
-     "name": "DASANI Bottled Water",
-     "serving": "479g",
-     "cal": 0,
+     "name": "Pineapple Dragonfruit Sunjoy (Unsweet Tea, Lemonade)",
+     "serving": "662g",
+     "cal": 160,
      "f": 0,
-     "c": 0,
+     "c": 39,
+     "p": 0
+    },
+    {
+     "name": "Pineapple Dragonfruit Sunjoy (Unsweet Tea, Diet Lemonade)",
+     "serving": "662g",
+     "cal": 60,
+     "f": 0,
+     "c": 14,
+     "p": 0
+    },
+    {
+     "name": "Pineapple Dragonfruit Sweet Tea",
+     "serving": "662g",
+     "cal": 150,
+     "f": 0,
+     "c": 37,
+     "p": 0
+    },
+    {
+     "name": "Pineapple Dragonfruit Unsweet Tea",
+     "serving": "662g",
+     "cal": 35,
+     "f": 0,
+     "c": 7,
      "p": 0
     },
     {
@@ -1980,52 +1988,44 @@
      "p": 7
     },
     {
-     "name": "Pineapple Dragonfruit Unsweet Tea",
-     "serving": "662g",
-     "cal": 35,
-     "f": 0,
-     "c": 7,
-     "p": 0
-    },
-    {
-     "name": "Pineapple Dragonfruit Sweet Tea",
-     "serving": "662g",
-     "cal": 150,
-     "f": 0,
-     "c": 37,
-     "p": 0
-    },
-    {
-     "name": "Pineapple Dragonfruit Sunjoy (Unsweet Tea, Diet Lemonade)",
-     "serving": "662g",
-     "cal": 60,
-     "f": 0,
-     "c": 14,
-     "p": 0
-    },
-    {
-     "name": "Pineapple Dragonfruit Sunjoy (Unsweet Tea, Lemonade)",
-     "serving": "662g",
+     "name": "Simply Orange",
+     "serving": "326g",
      "cal": 160,
      "f": 0,
-     "c": 39,
-     "p": 0
-    },
-    {
-     "name": "Pineapple Dragonfruit Sunjoy (Sweet Tea, Diet Lemonade)",
-     "serving": "662g",
-     "cal": 140,
-     "f": 0,
      "c": 34,
+     "p": 2
+    },
+    {
+     "name": "DASANI Bottled Water",
+     "serving": "479g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
      "p": 0
     },
     {
-     "name": "Pineapple Dragonfruit Sunjoy (Sweet Tea, Lemonade)",
-     "serving": "662g",
-     "cal": 240,
+     "name": "Honest Kids Apple Juice",
+     "serving": "170g",
+     "cal": 35,
      "f": 0,
-     "c": 59,
+     "c": 9,
      "p": 0
+    },
+    {
+     "name": "1% Milk",
+     "serving": "213g",
+     "cal": 90,
+     "f": 2,
+     "c": 10,
+     "p": 7
+    },
+    {
+     "name": "1% Chocolate Milk",
+     "serving": "198g",
+     "cal": 140,
+     "f": 2,
+     "c": 23,
+     "p": 7
     },
     {
      "name": "Pineapple Dragonfruit & Sprite",
@@ -2033,14 +2033,6 @@
      "cal": 190,
      "f": 0,
      "c": 50,
-     "p": 0
-    },
-    {
-     "name": "Hot Coffee",
-     "serving": "340g",
-     "cal": 0,
-     "f": 0,
-     "c": 0,
      "p": 0
     },
     {
@@ -2052,12 +2044,12 @@
      "p": 9
     },
     {
-     "name": "Vanilla Cream Cold Brew",
-     "serving": "689g",
-     "cal": 470,
-     "f": 17,
-     "c": 72,
-     "p": 8
+     "name": "Caramel Cream Cold Brew",
+     "serving": "700g",
+     "cal": 520,
+     "f": 22,
+     "c": 75,
+     "p": 9
     },
     {
      "name": "Mocha Cream Cold Brew",
@@ -2068,27 +2060,11 @@
      "p": 9
     },
     {
-     "name": "Caramel Cream Cold Brew",
-     "serving": "700g",
-     "cal": 520,
-     "f": 22,
-     "c": 75,
-     "p": 9
-    },
-    {
-     "name": "Vanilla Iced Coffee",
-     "serving": "661g",
-     "cal": 210,
-     "f": 4,
-     "c": 35,
-     "p": 7
-    },
-    {
-     "name": "Mocha Iced Coffee",
-     "serving": "661g",
-     "cal": 200,
-     "f": 4.5,
-     "c": 34,
+     "name": "Vanilla Cream Cold Brew",
+     "serving": "689g",
+     "cal": 470,
+     "f": 17,
+     "c": 72,
      "p": 8
     },
     {
@@ -2100,25 +2076,57 @@
      "p": 8
     },
     {
-     "name": "Honey Roasted BBQ Sauce",
-     "serving": "12g",
-     "cal": 60,
-     "f": 5,
-     "c": 3,
+     "name": "Mocha Iced Coffee",
+     "serving": "661g",
+     "cal": 200,
+     "f": 4.5,
+     "c": 34,
+     "p": 8
+    },
+    {
+     "name": "Vanilla Iced Coffee",
+     "serving": "661g",
+     "cal": 210,
+     "f": 4,
+     "c": 35,
+     "p": 7
+    },
+    {
+     "name": "Hot Coffee",
+     "serving": "340g",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
      "p": 0
     },
     {
-     "name": "Zesty Buffalo Sauce",
+     "name": "Barbeque Sauce",
+     "serving": "28g",
+     "cal": 45,
+     "f": 0,
+     "c": 11,
+     "p": 0
+    },
+    {
+     "name": "Chick-fil-A Sauce",
+     "serving": "28g",
+     "cal": 140,
+     "f": 13,
+     "c": 6,
+     "p": 0
+    },
+    {
+     "name": "Garden Herb Ranch Sauce",
      "serving": "21g",
-     "cal": 25,
-     "f": 2.5,
+     "cal": 100,
+     "f": 11,
      "c": 1,
      "p": 0
     },
     {
-     "name": "Sweet & Spicy Sriracha Sauce",
+     "name": "Honey Mustard Sauce",
      "serving": "28g",
-     "cal": 45,
+     "cal": 50,
      "f": 0,
      "c": 11,
      "p": 0
@@ -2132,35 +2140,27 @@
      "p": 0
     },
     {
-     "name": "Honey Mustard Sauce",
-     "serving": "28g",
-     "cal": 50,
-     "f": 0,
-     "c": 11,
-     "p": 0
-    },
-    {
-     "name": "Garden Herb Ranch Sauce",
-     "serving": "21g",
-     "cal": 100,
-     "f": 11,
-     "c": 1,
-     "p": 0
-    },
-    {
-     "name": "Chick-fil-A Sauce",
-     "serving": "28g",
-     "cal": 140,
-     "f": 13,
-     "c": 6,
-     "p": 0
-    },
-    {
-     "name": "Barbeque Sauce",
+     "name": "Sweet & Spicy Sriracha Sauce",
      "serving": "28g",
      "cal": 45,
      "f": 0,
      "c": 11,
+     "p": 0
+    },
+    {
+     "name": "Zesty Buffalo Sauce",
+     "serving": "21g",
+     "cal": 25,
+     "f": 2.5,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "Honey Roasted BBQ Sauce",
+     "serving": "12g",
+     "cal": 60,
+     "f": 5,
+     "c": 3,
      "p": 0
     },
     {
@@ -2172,34 +2172,18 @@
      "p": 0
     },
     {
-     "name": "Zesty Apple Cider Vinaigrette Dressing",
-     "serving": "56g",
-     "cal": 230,
-     "f": 19,
-     "c": 16,
-     "p": 0
-    },
-    {
-     "name": "Light Italian Dressing",
+     "name": "Avocado Lime Ranch Dressing",
      "serving": "57g",
-     "cal": 25,
-     "f": 1,
+     "cal": 310,
+     "f": 32,
      "c": 3,
-     "p": 0
+     "p": 1
     },
     {
-     "name": "Light Balsamic Vinaigrette Dressing",
+     "name": "Creamy Salsa Dressing",
      "serving": "57g",
-     "cal": 80,
-     "f": 4,
-     "c": 10,
-     "p": 0
-    },
-    {
-     "name": "Garden Herb Ranch Dressing",
-     "serving": "57g",
-     "cal": 280,
-     "f": 29,
+     "cal": 290,
+     "f": 31,
      "c": 2,
      "p": 1
     },
@@ -2212,35 +2196,43 @@
      "p": 0
     },
     {
-     "name": "Creamy Salsa Dressing",
+     "name": "Garden Herb Ranch Dressing",
      "serving": "57g",
-     "cal": 290,
-     "f": 31,
+     "cal": 280,
+     "f": 29,
      "c": 2,
      "p": 1
     },
     {
-     "name": "Avocado Lime Ranch Dressing",
+     "name": "Light Balsamic Vinaigrette Dressing",
      "serving": "57g",
-     "cal": 310,
-     "f": 32,
+     "cal": 80,
+     "f": 4,
+     "c": 10,
+     "p": 0
+    },
+    {
+     "name": "Light Italian Dressing",
+     "serving": "57g",
+     "cal": 25,
+     "f": 1,
      "c": 3,
-     "p": 1
+     "p": 0
     },
     {
-     "name": "Multigrain Brioche Bun",
-     "serving": "71g",
-     "cal": 210,
-     "f": 4.5,
-     "c": 38,
-     "p": 7
+     "name": "Zesty Apple Cider Vinaigrette Dressing",
+     "serving": "56g",
+     "cal": 230,
+     "f": 19,
+     "c": 16,
+     "p": 0
     },
     {
-     "name": "Buttery White Bun",
-     "serving": "60g",
-     "cal": 180,
-     "f": 6,
-     "c": 29,
+     "name": "Waffle",
+     "serving": "83g",
+     "cal": 380,
+     "f": 18,
+     "c": 52,
      "p": 5
     },
     {
@@ -2252,12 +2244,20 @@
      "p": 3
     },
     {
-     "name": "Waffle",
-     "serving": "83g",
-     "cal": 380,
-     "f": 18,
-     "c": 52,
+     "name": "Buttery White Bun",
+     "serving": "60g",
+     "cal": 180,
+     "f": 6,
+     "c": 29,
      "p": 5
+    },
+    {
+     "name": "Multigrain Brioche Bun",
+     "serving": "71g",
+     "cal": 210,
+     "f": 4.5,
+     "c": 38,
+     "p": 7
     },
     {
      "name": "White Bun (Unbuttered)",
@@ -2268,36 +2268,12 @@
      "p": 5
     },
     {
-     "name": "Chick-fil-A Filet",
-     "serving": "115g",
-     "cal": 250,
-     "f": 12,
-     "c": 12,
-     "p": 24
-    },
-    {
-     "name": "Spicy Filet",
-     "serving": "120g",
-     "cal": 280,
-     "f": 13,
-     "c": 16,
-     "p": 23
-    },
-    {
-     "name": "Grilled Filet",
-     "serving": "84g",
-     "cal": 110,
-     "f": 2,
-     "c": 1,
-     "p": 21
-    },
-    {
-     "name": "Spicy Breakfast Filet",
-     "serving": "71g",
-     "cal": 150,
-     "f": 7,
-     "c": 7,
-     "p": 15
+     "name": "Grilled Breakfast Filet",
+     "serving": "50g",
+     "cal": 60,
+     "f": 1,
+     "c": 0,
+     "p": 13
     },
     {
      "name": "Chick-fil-A Breakfast Filet",
@@ -2308,20 +2284,36 @@
      "p": 15
     },
     {
-     "name": "Grilled Breakfast Filet",
-     "serving": "50g",
-     "cal": 60,
-     "f": 1,
-     "c": 0,
-     "p": 13
+     "name": "Spicy Breakfast Filet",
+     "serving": "71g",
+     "cal": 150,
+     "f": 7,
+     "c": 7,
+     "p": 15
     },
     {
-     "name": "Sausage",
-     "serving": "57g",
-     "cal": 240,
-     "f": 22,
+     "name": "Chick-fil-A Filet",
+     "serving": "115g",
+     "cal": 250,
+     "f": 12,
+     "c": 12,
+     "p": 24
+    },
+    {
+     "name": "Grilled Filet",
+     "serving": "84g",
+     "cal": 110,
+     "f": 2,
      "c": 1,
-     "p": 11
+     "p": 21
+    },
+    {
+     "name": "Spicy Filet",
+     "serving": "120g",
+     "cal": 280,
+     "f": 13,
+     "c": 16,
+     "p": 23
     },
     {
      "name": "Bacon",
@@ -2332,6 +2324,14 @@
      "p": 3
     },
     {
+     "name": "Sausage",
+     "serving": "57g",
+     "cal": 240,
+     "f": 22,
+     "c": 1,
+     "p": 11
+    },
+    {
      "name": "Roasted Nut Blend",
      "serving": "10g",
      "cal": 70,
@@ -2340,11 +2340,27 @@
      "p": 1
     },
     {
-     "name": "Seasoned Tortilla Strips",
+     "name": "Blue Cheese Crumbles",
+     "serving": "9g",
+     "cal": 30,
+     "f": 2.5,
+     "c": 0,
+     "p": 2
+    },
+    {
+     "name": "Chili Lime Pepitas",
      "serving": "14g",
-     "cal": 70,
-     "f": 4,
-     "c": 8,
+     "cal": 80,
+     "f": 7,
+     "c": 2,
+     "p": 4
+    },
+    {
+     "name": "Crispy Bell Peppers",
+     "serving": "14g",
+     "cal": 80,
+     "f": 6,
+     "c": 6,
      "p": 1
     },
     {
@@ -2356,60 +2372,12 @@
      "p": 1
     },
     {
-     "name": "Crispy Bell Peppers",
+     "name": "Seasoned Tortilla Strips",
      "serving": "14g",
-     "cal": 80,
-     "f": 6,
-     "c": 6,
+     "cal": 70,
+     "f": 4,
+     "c": 8,
      "p": 1
-    },
-    {
-     "name": "Chili Lime Pepitas",
-     "serving": "14g",
-     "cal": 80,
-     "f": 7,
-     "c": 2,
-     "p": 4
-    },
-    {
-     "name": "Blue Cheese Crumbles",
-     "serving": "9g",
-     "cal": 30,
-     "f": 2.5,
-     "c": 0,
-     "p": 2
-    },
-    {
-     "name": "Pepper Jack Cheese",
-     "serving": "21g",
-     "cal": 80,
-     "f": 6,
-     "c": 0,
-     "p": 4
-    },
-    {
-     "name": "Colby Jack Cheese",
-     "serving": "21g",
-     "cal": 80,
-     "f": 7,
-     "c": 0,
-     "p": 5
-    },
-    {
-     "name": "American Cheese",
-     "serving": "14g",
-     "cal": 50,
-     "f": 4.5,
-     "c": 1,
-     "p": 3
-    },
-    {
-     "name": "Tomato",
-     "serving": "30g",
-     "cal": 5,
-     "f": 0,
-     "c": 1,
-     "p": 0
     },
     {
      "name": "Lettuce",
@@ -2420,6 +2388,38 @@
      "p": 0
     },
     {
+     "name": "Tomato",
+     "serving": "30g",
+     "cal": 5,
+     "f": 0,
+     "c": 1,
+     "p": 0
+    },
+    {
+     "name": "American Cheese",
+     "serving": "14g",
+     "cal": 50,
+     "f": 4.5,
+     "c": 1,
+     "p": 3
+    },
+    {
+     "name": "Colby Jack Cheese",
+     "serving": "21g",
+     "cal": 80,
+     "f": 7,
+     "c": 0,
+     "p": 5
+    },
+    {
+     "name": "Pepper Jack Cheese",
+     "serving": "21g",
+     "cal": 80,
+     "f": 6,
+     "c": 0,
+     "p": 4
+    },
+    {
      "name": "Saltines",
      "serving": "12g",
      "cal": 50,
@@ -2428,55 +2428,23 @@
      "p": 1
     },
     {
-     "name": "Chick-n-Strips Trays",
-     "serving": "47g",
-     "cal": 110,
-     "f": 5,
-     "c": 6,
-     "p": 10
+     "name": "10 ct Chick-fil-A Chick-n-Minis Football-Shaped Tray",
+     "serving": "318g",
+     "cal": 910,
+     "f": 34,
+     "c": 103,
+     "p": 49
     },
     {
-     "name": "Large Chick-n-Strips Tray",
-     "serving": "47g",
-     "cal": 110,
-     "f": 5,
-     "c": 6,
-     "p": 10
-    },
-    {
-     "name": "Medium Chick-n-Strips Tray",
-     "serving": "47g",
-     "cal": 110,
-     "f": 5,
-     "c": 6,
-     "p": 10
-    },
-    {
-     "name": "Small Chick-n-Strips Tray",
-     "serving": "47g",
-     "cal": 110,
-     "f": 5,
-     "c": 6,
-     "p": 10
+     "name": "30 ct Chick-fil-A Nuggets Football-Shaped Tray",
+     "serving": "425g",
+     "cal": 950,
+     "f": 43,
+     "c": 41,
+     "p": 100
     },
     {
      "name": "Chick-fil-A Nugget Trays",
-     "serving": "14g",
-     "cal": 30,
-     "f": 1.5,
-     "c": 1,
-     "p": 3
-    },
-    {
-     "name": "Large Chick-fil-A Nuggets Tray",
-     "serving": "14g",
-     "cal": 30,
-     "f": 1.5,
-     "c": 1,
-     "p": 3
-    },
-    {
-     "name": "Medium Chick-fil-ANuggets Tray",
      "serving": "14g",
      "cal": 30,
      "f": 1.5,
@@ -2492,335 +2460,23 @@
      "p": 3
     },
     {
-     "name": "30 ct Chick-fil-A Nuggets Football-Shaped Tray",
-     "serving": "425g",
-     "cal": 950,
-     "f": 43,
-     "c": 41,
-     "p": 100
-    },
-    {
-     "name": "10 ct Chick-fil-A Chick-n-Minis Football-Shaped Tray",
-     "serving": "318g",
-     "cal": 910,
-     "f": 34,
-     "c": 103,
-     "p": 49
-    },
-    {
-     "name": "Cookie & Brownie Tray",
-     "serving": "60g",
-     "cal": 280,
-     "f": 14,
-     "c": 36,
+     "name": "Medium Chick-fil-ANuggets Tray",
+     "serving": "14g",
+     "cal": 30,
+     "f": 1.5,
+     "c": 1,
      "p": 3
     },
     {
-     "name": "Large Chocolate Chunk Cookie and Chocolate Fudge Brownie Tray",
-     "serving": "60g",
-     "cal": 280,
-     "f": 14,
-     "c": 36,
+     "name": "Large Chick-fil-A Nuggets Tray",
+     "serving": "14g",
+     "cal": 30,
+     "f": 1.5,
+     "c": 1,
      "p": 3
     },
     {
-     "name": "Small Chocolate Chunk Cookie and Chocolate Fudge Brownie Tray",
-     "serving": "60g",
-     "cal": 280,
-     "f": 14,
-     "c": 36,
-     "p": 3
-    },
-    {
-     "name": "Chocolate Fudge Brownie Tray",
-     "serving": "43g",
-     "cal": 190,
-     "f": 10,
-     "c": 23,
-     "p": 2
-    },
-    {
-     "name": "Large Chocolate Fudge Brownie Tray",
-     "serving": "43g",
-     "cal": 190,
-     "f": 10,
-     "c": 23,
-     "p": 2
-    },
-    {
-     "name": "Small Chocolate Fudge Brownie Tray",
-     "serving": "43g",
-     "cal": 190,
-     "f": 10,
-     "c": 23,
-     "p": 2
-    },
-    {
-     "name": "Chocolate Chunk Cookie Tray",
-     "serving": "78g",
-     "cal": 370,
-     "f": 17,
-     "c": 49,
-     "p": 5
-    },
-    {
-     "name": "Large Chocolate Chunk Cookie Tray",
-     "serving": "78g",
-     "cal": 370,
-     "f": 17,
-     "c": 49,
-     "p": 5
-    },
-    {
-     "name": "Small Chocolate Chunk Cookie Tray",
-     "serving": "78g",
-     "cal": 370,
-     "f": 17,
-     "c": 49,
-     "p": 5
-    },
-    {
-     "name": "Kale Crunch Side Tray",
-     "serving": "610g",
-     "cal": 1160,
-     "f": 87,
-     "c": 77,
-     "p": 30
-    },
-    {
-     "name": "Large Kale Crunch Side Tray",
-     "serving": "1332g",
-     "cal": 2440,
-     "f": 182,
-     "c": 166,
-     "p": 63
-    },
-    {
-     "name": "Small Kale Crunch Side Tray",
-     "serving": "610g",
-     "cal": 1160,
-     "f": 87,
-     "c": 77,
-     "p": 30
-    },
-    {
-     "name": "Garden Salad Tray",
-     "serving": "595g",
-     "cal": 310,
-     "f": 18,
-     "c": 20,
-     "p": 19
-    },
-    {
-     "name": "Large Garden Salad Tray",
-     "serving": "1191g",
-     "cal": 630,
-     "f": 36,
-     "c": 41,
-     "p": 38
-    },
-    {
-     "name": "Small Garden Salad Tray",
-     "serving": "595g",
-     "cal": 310,
-     "f": 18,
-     "c": 20,
-     "p": 19
-    },
-    {
-     "name": "Mac & Cheese Tray",
-     "serving": "2482g",
-     "cal": 4930,
-     "f": 312,
-     "c": 308,
-     "p": 221
-    },
-    {
-     "name": "Large Mac & Cheese Tray",
-     "serving": "4964g",
-     "cal": 9850,
-     "f": 625,
-     "c": 616,
-     "p": 442
-    },
-    {
-     "name": "Small Mac & Cheese Tray",
-     "serving": "2482g",
-     "cal": 4930,
-     "f": 312,
-     "c": 308,
-     "p": 221
-    },
-    {
-     "name": "Spicy Chilled Grilled Chicken Sub Sandwich Tray",
-     "serving": "115g",
-     "cal": 220,
-     "f": 6,
-     "c": 25,
-     "p": 16
-    },
-    {
-     "name": "Large Spicy Chilled Grilled Chicken Sub Sandwich Tray",
-     "serving": "115g",
-     "cal": 220,
-     "f": 6,
-     "c": 25,
-     "p": 16
-    },
-    {
-     "name": "Medium Spicy Chilled Grilled Chicken Sub Sandwich Tray",
-     "serving": "115g",
-     "cal": 220,
-     "f": 6,
-     "c": 25,
-     "p": 16
-    },
-    {
-     "name": "Small Spicy Chilled Grilled Chicken Sub Sandwich Tray",
-     "serving": "115g",
-     "cal": 220,
-     "f": 6,
-     "c": 25,
-     "p": 16
-    },
-    {
-     "name": "Chilled Grilled Chicken Sub Sandwich Tray",
-     "serving": "115g",
-     "cal": 220,
-     "f": 6,
-     "c": 25,
-     "p": 18
-    },
-    {
-     "name": "Large Chilled Grilled Chicken Sub Sandwich Tray",
-     "serving": "115g",
-     "cal": 220,
-     "f": 6,
-     "c": 25,
-     "p": 18
-    },
-    {
-     "name": "Medium Chilled Grilled Chicken Sub Sandwich Tray",
-     "serving": "115g",
-     "cal": 220,
-     "f": 6,
-     "c": 25,
-     "p": 18
-    },
-    {
-     "name": "Small Chilled Grilled Chicken Sub Sandwich Tray",
-     "serving": "115g",
-     "cal": 220,
-     "f": 6,
-     "c": 25,
-     "p": 18
-    },
-    {
-     "name": "Grilled Chicken Bundle",
-     "serving": "224g",
-     "cal": 460,
-     "f": 19,
-     "c": 35,
-     "p": 37
-    },
-    {
-     "name": "Southwest Veggie Wrap Trays",
-     "serving": "128g",
-     "cal": 460,
-     "f": 39,
-     "c": 19,
-     "p": 14
-    },
-    {
-     "name": "Large Southwest Veggie Wrap Tray",
-     "serving": "128g",
-     "cal": 460,
-     "f": 39,
-     "c": 19,
-     "p": 14
-    },
-    {
-     "name": "Medium Southwest Veggie Wrap Tray",
-     "serving": "128g",
-     "cal": 460,
-     "f": 39,
-     "c": 19,
-     "p": 14
-    },
-    {
-     "name": "Small Southwest Veggie Wrap Tray",
-     "serving": "128g",
-     "cal": 460,
-     "f": 39,
-     "c": 19,
-     "p": 14
-    },
-    {
-     "name": "Spicy Cool Wrap Trays",
-     "serving": "116g",
-     "cal": 480,
-     "f": 39,
-     "c": 18,
-     "p": 21
-    },
-    {
-     "name": "Large Spicy Cool Wrap Tray",
-     "serving": "116g",
-     "cal": 480,
-     "f": 39,
-     "c": 18,
-     "p": 21
-    },
-    {
-     "name": "Medium Spicy Cool Wrap Tray",
-     "serving": "116g",
-     "cal": 480,
-     "f": 39,
-     "c": 18,
-     "p": 21
-    },
-    {
-     "name": "Small Spicy Cool Wrap Tray",
-     "serving": "116g",
-     "cal": 480,
-     "f": 39,
-     "c": 18,
-     "p": 21
-    },
-    {
-     "name": "Chick-fil-A Cool Wrap Trays",
-     "serving": "116g",
-     "cal": 480,
-     "f": 39,
-     "c": 18,
-     "p": 22
-    },
-    {
-     "name": "Large Chick-fil-A Cool Wrap Tray",
-     "serving": "116g",
-     "cal": 480,
-     "f": 39,
-     "c": 18,
-     "p": 22
-    },
-    {
-     "name": "Medium Chick-fil-A Cool Wrap Tray",
-     "serving": "116g",
-     "cal": 480,
-     "f": 39,
-     "c": 18,
-     "p": 22
-    },
-    {
-     "name": "Small Chick-fil-A Cool Wrap Tray",
-     "serving": "116g",
-     "cal": 480,
-     "f": 39,
-     "c": 18,
-     "p": 22
-    },
-    {
-     "name": "Chilled Chick-n-Strips Trays",
+     "name": "Chick-n-Strips Trays",
      "serving": "47g",
      "cal": 110,
      "f": 5,
@@ -2828,7 +2484,7 @@
      "p": 10
     },
     {
-     "name": "Large Chilled Chick-n-Strips (Cooked & Chilled for Later) Tray",
+     "name": "Small Chick-n-Strips Tray",
      "serving": "47g",
      "cal": 110,
      "f": 5,
@@ -2836,7 +2492,7 @@
      "p": 10
     },
     {
-     "name": "Medium Chilled Chick-n-Strips (Cooked & Chilled for Later) Tray",
+     "name": "Medium Chick-n-Strips Tray",
      "serving": "47g",
      "cal": 110,
      "f": 5,
@@ -2844,7 +2500,7 @@
      "p": 10
     },
     {
-     "name": "Small Chilled Chick-n-Strips (Cooked & Chilled for Later) Tray",
+     "name": "Large Chick-n-Strips Tray",
      "serving": "47g",
      "cal": 110,
      "f": 5,
@@ -2860,7 +2516,7 @@
      "p": 3
     },
     {
-     "name": "Large Chilled Chick-fil-A Nuggets Tray",
+     "name": "Small Chilled Chick-fil-A Nuggets Tray",
      "serving": "14g",
      "cal": 30,
      "f": 1.5,
@@ -2876,7 +2532,7 @@
      "p": 3
     },
     {
-     "name": "Small Chilled Chick-fil-A Nuggets Tray",
+     "name": "Large Chilled Chick-fil-A Nuggets Tray",
      "serving": "14g",
      "cal": 30,
      "f": 1.5,
@@ -2884,7 +2540,239 @@
      "p": 3
     },
     {
+     "name": "Chilled Chick-n-Strips Trays",
+     "serving": "47g",
+     "cal": 110,
+     "f": 5,
+     "c": 6,
+     "p": 10
+    },
+    {
+     "name": "Small Chilled Chick-n-Strips (Cooked & Chilled for Later) Tray",
+     "serving": "47g",
+     "cal": 110,
+     "f": 5,
+     "c": 6,
+     "p": 10
+    },
+    {
+     "name": "Medium Chilled Chick-n-Strips (Cooked & Chilled for Later) Tray",
+     "serving": "47g",
+     "cal": 110,
+     "f": 5,
+     "c": 6,
+     "p": 10
+    },
+    {
+     "name": "Large Chilled Chick-n-Strips (Cooked & Chilled for Later) Tray",
+     "serving": "47g",
+     "cal": 110,
+     "f": 5,
+     "c": 6,
+     "p": 10
+    },
+    {
+     "name": "Chick-fil-A Cool Wrap Trays",
+     "serving": "116g",
+     "cal": 480,
+     "f": 39,
+     "c": 18,
+     "p": 22
+    },
+    {
+     "name": "Small Chick-fil-A Cool Wrap Tray",
+     "serving": "116g",
+     "cal": 480,
+     "f": 39,
+     "c": 18,
+     "p": 22
+    },
+    {
+     "name": "Medium Chick-fil-A Cool Wrap Tray",
+     "serving": "116g",
+     "cal": 480,
+     "f": 39,
+     "c": 18,
+     "p": 22
+    },
+    {
+     "name": "Large Chick-fil-A Cool Wrap Tray",
+     "serving": "116g",
+     "cal": 480,
+     "f": 39,
+     "c": 18,
+     "p": 22
+    },
+    {
+     "name": "Spicy Cool Wrap Trays",
+     "serving": "116g",
+     "cal": 480,
+     "f": 39,
+     "c": 18,
+     "p": 21
+    },
+    {
+     "name": "Small Spicy Cool Wrap Tray",
+     "serving": "116g",
+     "cal": 480,
+     "f": 39,
+     "c": 18,
+     "p": 21
+    },
+    {
+     "name": "Medium Spicy Cool Wrap Tray",
+     "serving": "116g",
+     "cal": 480,
+     "f": 39,
+     "c": 18,
+     "p": 21
+    },
+    {
+     "name": "Large Spicy Cool Wrap Tray",
+     "serving": "116g",
+     "cal": 480,
+     "f": 39,
+     "c": 18,
+     "p": 21
+    },
+    {
+     "name": "Southwest Veggie Wrap Trays",
+     "serving": "128g",
+     "cal": 460,
+     "f": 39,
+     "c": 19,
+     "p": 14
+    },
+    {
+     "name": "Small Southwest Veggie Wrap Tray",
+     "serving": "128g",
+     "cal": 460,
+     "f": 39,
+     "c": 19,
+     "p": 14
+    },
+    {
+     "name": "Medium Southwest Veggie Wrap Tray",
+     "serving": "128g",
+     "cal": 460,
+     "f": 39,
+     "c": 19,
+     "p": 14
+    },
+    {
+     "name": "Large Southwest Veggie Wrap Tray",
+     "serving": "128g",
+     "cal": 460,
+     "f": 39,
+     "c": 19,
+     "p": 14
+    },
+    {
+     "name": "Grilled Chicken Bundle",
+     "serving": "224g",
+     "cal": 460,
+     "f": 19,
+     "c": 35,
+     "p": 37
+    },
+    {
+     "name": "Chilled Grilled Chicken Sub Sandwich Tray",
+     "serving": "115g",
+     "cal": 220,
+     "f": 6,
+     "c": 25,
+     "p": 18
+    },
+    {
+     "name": "Small Chilled Grilled Chicken Sub Sandwich Tray",
+     "serving": "115g",
+     "cal": 220,
+     "f": 6,
+     "c": 25,
+     "p": 18
+    },
+    {
+     "name": "Medium Chilled Grilled Chicken Sub Sandwich Tray",
+     "serving": "115g",
+     "cal": 220,
+     "f": 6,
+     "c": 25,
+     "p": 18
+    },
+    {
+     "name": "Large Chilled Grilled Chicken Sub Sandwich Tray",
+     "serving": "115g",
+     "cal": 220,
+     "f": 6,
+     "c": 25,
+     "p": 18
+    },
+    {
+     "name": "Spicy Chilled Grilled Chicken Sub Sandwich Tray",
+     "serving": "115g",
+     "cal": 220,
+     "f": 6,
+     "c": 25,
+     "p": 16
+    },
+    {
+     "name": "Small Spicy Chilled Grilled Chicken Sub Sandwich Tray",
+     "serving": "115g",
+     "cal": 220,
+     "f": 6,
+     "c": 25,
+     "p": 16
+    },
+    {
+     "name": "Medium Spicy Chilled Grilled Chicken Sub Sandwich Tray",
+     "serving": "115g",
+     "cal": 220,
+     "f": 6,
+     "c": 25,
+     "p": 16
+    },
+    {
+     "name": "Large Spicy Chilled Grilled Chicken Sub Sandwich Tray",
+     "serving": "115g",
+     "cal": 220,
+     "f": 6,
+     "c": 25,
+     "p": 16
+    },
+    {
+     "name": "Mac & Cheese Tray",
+     "serving": "2482g",
+     "cal": 4930,
+     "f": 312,
+     "c": 308,
+     "p": 221
+    },
+    {
+     "name": "Small Mac & Cheese Tray",
+     "serving": "2482g",
+     "cal": 4930,
+     "f": 312,
+     "c": 308,
+     "p": 221
+    },
+    {
+     "name": "Large Mac & Cheese Tray",
+     "serving": "4964g",
+     "cal": 9850,
+     "f": 625,
+     "c": 616,
+     "p": 442
+    },
+    {
      "name": "Fruit Tray",
+     "serving": "1446g",
+     "cal": 780,
+     "f": 0,
+     "c": 182,
+     "p": 8
+    },
+    {
+     "name": "Small Fruit Tray",
      "serving": "1446g",
      "cal": 780,
      "f": 0,
@@ -2900,20 +2788,124 @@
      "p": 16
     },
     {
-     "name": "Small Fruit Tray",
-     "serving": "1446g",
-     "cal": 780,
-     "f": 0,
-     "c": 182,
-     "p": 8
+     "name": "Chocolate Chunk Cookie Tray",
+     "serving": "78g",
+     "cal": 370,
+     "f": 17,
+     "c": 49,
+     "p": 5
     },
     {
-     "name": "Spicy Chilled Grilled Chicken Sub Sandwich",
-     "serving": "230g",
-     "cal": 500,
+     "name": "Small Chocolate Chunk Cookie Tray",
+     "serving": "78g",
+     "cal": 370,
      "f": 17,
-     "c": 53,
-     "p": 34
+     "c": 49,
+     "p": 5
+    },
+    {
+     "name": "Large Chocolate Chunk Cookie Tray",
+     "serving": "78g",
+     "cal": 370,
+     "f": 17,
+     "c": 49,
+     "p": 5
+    },
+    {
+     "name": "Chocolate Fudge Brownie Tray",
+     "serving": "43g",
+     "cal": 190,
+     "f": 10,
+     "c": 23,
+     "p": 2
+    },
+    {
+     "name": "Small Chocolate Fudge Brownie Tray",
+     "serving": "43g",
+     "cal": 190,
+     "f": 10,
+     "c": 23,
+     "p": 2
+    },
+    {
+     "name": "Large Chocolate Fudge Brownie Tray",
+     "serving": "43g",
+     "cal": 190,
+     "f": 10,
+     "c": 23,
+     "p": 2
+    },
+    {
+     "name": "Cookie & Brownie Tray",
+     "serving": "60g",
+     "cal": 280,
+     "f": 14,
+     "c": 36,
+     "p": 3
+    },
+    {
+     "name": "Small Chocolate Chunk Cookie and Chocolate Fudge Brownie Tray",
+     "serving": "60g",
+     "cal": 280,
+     "f": 14,
+     "c": 36,
+     "p": 3
+    },
+    {
+     "name": "Large Chocolate Chunk Cookie and Chocolate Fudge Brownie Tray",
+     "serving": "60g",
+     "cal": 280,
+     "f": 14,
+     "c": 36,
+     "p": 3
+    },
+    {
+     "name": "Garden Salad Tray",
+     "serving": "595g",
+     "cal": 310,
+     "f": 18,
+     "c": 20,
+     "p": 19
+    },
+    {
+     "name": "Small Garden Salad Tray",
+     "serving": "595g",
+     "cal": 310,
+     "f": 18,
+     "c": 20,
+     "p": 19
+    },
+    {
+     "name": "Large Garden Salad Tray",
+     "serving": "1191g",
+     "cal": 630,
+     "f": 36,
+     "c": 41,
+     "p": 38
+    },
+    {
+     "name": "Kale Crunch Side Tray",
+     "serving": "610g",
+     "cal": 1160,
+     "f": 87,
+     "c": 77,
+     "p": 30
+    },
+    {
+     "name": "Small Kale Crunch Side Tray",
+     "serving": "610g",
+     "cal": 1160,
+     "f": 87,
+     "c": 77,
+     "p": 30
+    },
+    {
+     "name": "Large Kale Crunch Side Tray",
+     "serving": "1332g",
+     "cal": 2440,
+     "f": 182,
+     "c": 166,
+     "p": 63
     },
     {
      "name": "Chilled Grilled Chicken Sub Sandwich",
@@ -2924,19 +2916,19 @@
      "p": 36
     },
     {
-     "name": "Bottled Diet Lemonade",
-     "serving": "492g",
-     "cal": 60,
-     "f": 0,
-     "c": 17,
-     "p": 0
+     "name": "Spicy Chilled Grilled Chicken Sub Sandwich",
+     "serving": "230g",
+     "cal": 500,
+     "f": 17,
+     "c": 53,
+     "p": 34
     },
     {
-     "name": "Bottled Lemonade",
-     "serving": "520g",
-     "cal": 280,
+     "name": "Bottled Sweet Tea",
+     "serving": "506g",
+     "cal": 190,
      "f": 0,
-     "c": 73,
+     "c": 50,
      "p": 0
     },
     {
@@ -2948,11 +2940,19 @@
      "p": 0
     },
     {
-     "name": "Bottled Sweet Tea",
-     "serving": "506g",
-     "cal": 190,
+     "name": "Bottled Lemonade",
+     "serving": "520g",
+     "cal": 280,
      "f": 0,
-     "c": 50,
+     "c": 73,
+     "p": 0
+    },
+    {
+     "name": "Bottled Diet Lemonade",
+     "serving": "492g",
+     "cal": 60,
+     "f": 0,
+     "c": 17,
      "p": 0
     },
     {
@@ -2973,31 +2973,31 @@
     "dd"
    ],
    "source": "https://www.dunkindonuts.com/en/menu/nutrition",
-   "updated": "2026-11-01",
+   "updated": "2026-11-08",
    "items": [
     {
-     "name": "Creepy Crawler Coffee Chiller - Large",
+     "name": "Cookie Butter Cold Brew - Large",
      "serving": "Large",
-     "cal": 1140,
-     "f": 48,
-     "c": 164,
-     "p": 11
+     "cal": 390,
+     "f": 16,
+     "c": 56,
+     "p": 3
     },
     {
-     "name": "Creepy Crawler Coffee Chiller - Medium",
+     "name": "Cookie Butter Cold Brew - Medium",
      "serving": "Medium",
-     "cal": 860,
-     "f": 37,
-     "c": 124,
-     "p": 8
+     "cal": 280,
+     "f": 12,
+     "c": 41,
+     "p": 2
     },
     {
-     "name": "Creepy Crawler Coffee Chiller - Small",
+     "name": "Cookie Butter Cold Brew - Small",
      "serving": "Small",
-     "cal": 600,
-     "f": 26,
-     "c": 85,
-     "p": 6
+     "cal": 220,
+     "f": 9,
+     "c": 33,
+     "p": 2
     },
     {
      "name": "Vanilla Creme Cold Brew - Large",
@@ -3032,44 +3032,20 @@
      "p": 14
     },
     {
-     "name": "Chocolate Frosted with Halloween",
+     "name": "Avenging Donut",
      "serving": "1 Donut",
-     "cal": 270,
-     "f": 12,
-     "c": 36,
-     "p": 5
+     "cal": 350,
+     "f": 15,
+     "c": 48,
+     "p": 4
     },
     {
-     "name": "Pumpkin Donut",
+     "name": "Doomsday Donut",
      "serving": "1 Donut",
-     "cal": 380,
-     "f": 22,
-     "c": 41,
-     "p": 3
-    },
-    {
-     "name": "Spider Donut",
-     "serving": "1 Donut",
-     "cal": 320,
+     "cal": 330,
      "f": 14,
-     "c": 44,
+     "c": 47,
      "p": 5
-    },
-    {
-     "name": "Strawberry Frosted with Halloween Sprinkles Donut",
-     "serving": "1 Donut",
-     "cal": 270,
-     "f": 12,
-     "c": 37,
-     "p": 4
-    },
-    {
-     "name": "Vanilla Frosted with Halloween",
-     "serving": "1 Donut",
-     "cal": 270,
-     "f": 12,
-     "c": 37,
-     "p": 4
     },
     {
      "name": "Birdland Donut",
@@ -3200,38 +3176,6 @@
      "p": 4
     },
     {
-     "name": "Berry Battie Daydream Refresher",
-     "serving": "Large",
-     "cal": 710,
-     "f": 29,
-     "c": 110,
-     "p": 3
-    },
-    {
-     "name": "Dark Spell Daydream Refresher - Large",
-     "serving": "Large",
-     "cal": 700,
-     "f": 28,
-     "c": 109,
-     "p": 3
-    },
-    {
-     "name": "Dark Spell Daydream Refresher - Medium",
-     "serving": "Medium",
-     "cal": 500,
-     "f": 19,
-     "c": 79,
-     "p": 2
-    },
-    {
-     "name": "Dark Spell Daydream Refresher - Small",
-     "serving": "Small",
-     "cal": 410,
-     "f": 19,
-     "c": 60,
-     "p": 2
-    },
-    {
      "name": "Mango Pineapple Daydream",
      "serving": "Large",
      "cal": 410,
@@ -3288,252 +3232,52 @@
      "p": 2
     },
     {
-     "name": "Sour Apple Energy - Large",
+     "name": "Wakandan Daydream Refresher - Large",
      "serving": "Large",
-     "cal": 530,
-     "f": 25,
-     "c": 80,
-     "p": 1
+     "cal": 700,
+     "f": 28,
+     "c": 110,
+     "p": 3
     },
     {
-     "name": "Sour Apple Energy - Medium",
+     "name": "Wakandan Daydream Refresher - Medium",
      "serving": "Medium",
+     "cal": 500,
+     "f": 19,
+     "c": 81,
+     "p": 2
+    },
+    {
+     "name": "Wakandan Daydream Refresher - Small",
+     "serving": "Small",
+     "cal": 410,
+     "f": 19,
+     "c": 61,
+     "p": 2
+    },
+    {
+     "name": "Doom's Orders Energy - Large",
+     "serving": "Large",
      "cal": 380,
-     "f": 17,
-     "c": 58,
-     "p": 1
-    },
-    {
-     "name": "Sour Apple Energy - Small",
-     "serving": "Small",
-     "cal": 330,
-     "f": 17,
-     "c": 46,
-     "p": 1
-    },
-    {
-     "name": "Almond Protein Matcha Hot Latte",
-     "serving": "Large",
-     "cal": 340,
-     "f": 8,
-     "c": 45,
-     "p": 21
-    },
-    {
-     "name": "Almond Protein Matcha Iced Latte",
-     "serving": "Large",
-     "cal": 340,
-     "f": 8,
-     "c": 45,
-     "p": 21
-    },
-    {
-     "name": "Mango Protein Daydream",
-     "serving": "Large",
-     "cal": 440,
-     "f": 10,
-     "c": 73,
-     "p": 15
-    },
-    {
-     "name": "Mango Protein Refresher - Large",
-     "serving": "Large",
-     "cal": 390,
-     "f": 8,
-     "c": 60,
-     "p": 19
-    },
-    {
-     "name": "Mango Protein Refresher - Medium",
-     "serving": "Medium",
-     "cal": 300,
-     "f": 6,
-     "c": 45,
-     "p": 15
-    },
-    {
-     "name": "Mango Protein Refresher - Small",
-     "serving": "Small",
-     "cal": 200,
-     "f": 4,
-     "c": 30,
-     "p": 10
-    },
-    {
-     "name": "Nutty Pumpkin Protein Iced Latte",
-     "serving": "Large",
-     "cal": 460,
-     "f": 8,
-     "c": 71,
-     "p": 23
-    },
-    {
-     "name": "Protein Hot Latte - Large",
-     "serving": "Large",
-     "cal": 230,
-     "f": 8,
-     "c": 19,
-     "p": 20
-    },
-    {
-     "name": "Protein Hot Latte - Medium",
-     "serving": "Medium",
-     "cal": 170,
-     "f": 6,
-     "c": 14,
-     "p": 15
-    },
-    {
-     "name": "Protein Hot Latte - Small",
-     "serving": "Small",
-     "cal": 110,
-     "f": 4,
-     "c": 10,
-     "p": 10
-    },
-    {
-     "name": "Protein Hot Latte with Sugar Free",
-     "serving": "Large",
-     "cal": 230,
-     "f": 8,
-     "c": 25,
-     "p": 20
-    },
-    {
-     "name": "Protein Iced Latte - Large",
-     "serving": "Large",
-     "cal": 230,
-     "f": 8,
-     "c": 19,
-     "p": 20
-    },
-    {
-     "name": "Protein Iced Latte - Medium",
-     "serving": "Medium",
-     "cal": 170,
-     "f": 6,
-     "c": 14,
-     "p": 15
-    },
-    {
-     "name": "Protein Iced Latte - Small",
-     "serving": "Small",
-     "cal": 110,
-     "f": 4,
-     "c": 10,
-     "p": 10
-    },
-    {
-     "name": "Protein Iced Latte with Sugar Free",
-     "serving": "Large",
-     "cal": 230,
-     "f": 8,
-     "c": 25,
-     "p": 20
-    },
-    {
-     "name": "Protein Matcha Hot Latte - Large",
-     "serving": "Large",
-     "cal": 330,
-     "f": 8,
-     "c": 45,
-     "p": 21
-    },
-    {
-     "name": "Protein Matcha Hot Latte - Medium",
-     "serving": "Medium",
-     "cal": 250,
-     "f": 6,
-     "c": 33,
-     "p": 15
-    },
-    {
-     "name": "Protein Matcha Hot Latte - Small",
-     "serving": "Small",
-     "cal": 170,
-     "f": 4,
-     "c": 22,
-     "p": 10
-    },
-    {
-     "name": "Protein Matcha Iced Latte - Large",
-     "serving": "Large",
-     "cal": 330,
-     "f": 8,
-     "c": 45,
-     "p": 21
-    },
-    {
-     "name": "Protein Matcha Iced Latte - Medium",
-     "serving": "Medium",
-     "cal": 250,
-     "f": 6,
-     "c": 33,
-     "p": 15
-    },
-    {
-     "name": "Protein Matcha Iced Latte - Small",
-     "serving": "Small",
-     "cal": 170,
-     "f": 4,
-     "c": 22,
-     "p": 10
-    },
-    {
-     "name": "Strawberry Protein Daydream",
-     "serving": "Large",
-     "cal": 440,
-     "f": 10,
-     "c": 69,
-     "p": 15
-    },
-    {
-     "name": "Strawberry Protein Refresher - Large",
-     "serving": "Large",
-     "cal": 390,
-     "f": 8,
-     "c": 57,
-     "p": 19
-    },
-    {
-     "name": "Strawberry Protein Refresher - Medium",
-     "serving": "Medium",
-     "cal": 290,
-     "f": 6,
+     "f": 25,
      "c": 42,
-     "p": 15
+     "p": 1
     },
     {
-     "name": "Strawberry Protein Refresher - Small",
-     "serving": "Small",
-     "cal": 190,
-     "f": 4,
-     "c": 28,
-     "p": 10
-    },
-    {
-     "name": "Tiramisu Protein Iced Latte - Large",
-     "serving": "Large",
-     "cal": 450,
-     "f": 8,
-     "c": 70,
-     "p": 23
-    },
-    {
-     "name": "Tiramisu Protein Iced Latte - Medium",
+     "name": "Doom's Orders Energy - Medium",
      "serving": "Medium",
-     "cal": 330,
-     "f": 6,
-     "c": 52,
-     "p": 17
+     "cal": 260,
+     "f": 17,
+     "c": 30,
+     "p": 1
     },
     {
-     "name": "Tiramisu Protein Iced Latte - Small",
+     "name": "Doom's Orders Energy - Small",
      "serving": "Small",
-     "cal": 220,
-     "f": 4,
-     "c": 35,
-     "p": 12
+     "cal": 250,
+     "f": 17,
+     "c": 27,
+     "p": 1
     },
     {
      "name": "Berry Clementine Refresher - Large",
@@ -3613,54 +3357,6 @@
      "cal": 80,
      "f": 0,
      "c": 20,
-     "p": 0
-    },
-    {
-     "name": "Midnight Potion Refresher - Large",
-     "serving": "Large",
-     "cal": 240,
-     "f": 0,
-     "c": 57,
-     "p": 1
-    },
-    {
-     "name": "Midnight Potion Refresher - Medium",
-     "serving": "Medium",
-     "cal": 180,
-     "f": 0,
-     "c": 43,
-     "p": 1
-    },
-    {
-     "name": "Midnight Potion Refresher - Small",
-     "serving": "Small",
-     "cal": 120,
-     "f": 0,
-     "c": 29,
-     "p": 0
-    },
-    {
-     "name": "Werewolf Punch Refresher - Large",
-     "serving": "Large",
-     "cal": 350,
-     "f": 0,
-     "c": 87,
-     "p": 0
-    },
-    {
-     "name": "Werewolf Punch Refresher - Medium",
-     "serving": "Medium",
-     "cal": 260,
-     "f": 0,
-     "c": 65,
-     "p": 0
-    },
-    {
-     "name": "Werewolf Punch Refresher - Small",
-     "serving": "Small",
-     "cal": 180,
-     "f": 0,
-     "c": 44,
      "p": 0
     },
     {
@@ -3904,20 +3600,44 @@
      "p": 0
     },
     {
-     "name": "Chipotle Loaded Hash Browns",
-     "serving": "1 Bowl",
-     "cal": 380,
-     "f": 30,
-     "c": 22,
-     "p": 7
-    },
-    {
      "name": "Loaded Hash Browns",
      "serving": "1 Bowl",
      "cal": 320,
      "f": 22,
      "c": 24,
      "p": 9
+    },
+    {
+     "name": "Cookie Butter Hot Chocolate - Extra Large",
+     "serving": "Extra Large",
+     "cal": 760,
+     "f": 20,
+     "c": 142,
+     "p": 5
+    },
+    {
+     "name": "Cookie Butter Hot Chocolate - Large",
+     "serving": "Large",
+     "cal": 690,
+     "f": 19,
+     "c": 126,
+     "p": 5
+    },
+    {
+     "name": "Cookie Butter Hot Chocolate - Medium",
+     "serving": "Medium",
+     "cal": 520,
+     "f": 15,
+     "c": 93,
+     "p": 4
+    },
+    {
+     "name": "Cookie Butter Hot Chocolate - Small",
+     "serving": "Small",
+     "cal": 370,
+     "f": 12,
+     "c": 66,
+     "p": 3
     },
     {
      "name": "Nutty Pumpkin Hot Coffee - Large",
@@ -3976,6 +3696,38 @@
      "p": 16
     },
     {
+     "name": "Toasted White Chocolate Signature",
+     "serving": "Large",
+     "cal": 520,
+     "f": 17,
+     "c": 76,
+     "p": 15
+    },
+    {
+     "name": "Iced Captain'ccino - Large",
+     "serving": "Large",
+     "cal": 500,
+     "f": 9,
+     "c": 93,
+     "p": 13
+    },
+    {
+     "name": "Iced Captain'ccino - Medium",
+     "serving": "Medium",
+     "cal": 380,
+     "f": 7,
+     "c": 70,
+     "p": 10
+    },
+    {
+     "name": "Iced Captain'ccino - Small",
+     "serving": "Small",
+     "cal": 250,
+     "f": 4.5,
+     "c": 47,
+     "p": 6
+    },
+    {
      "name": "Blueberry Cobbler Iced Coffee - Large",
      "serving": "Large",
      "cal": 340,
@@ -4024,30 +3776,6 @@
      "p": 2
     },
     {
-     "name": "Nutty Nightmare Iced Coffee - Large",
-     "serving": "Large",
-     "cal": 350,
-     "f": 12,
-     "c": 53,
-     "p": 6
-    },
-    {
-     "name": "Nutty Nightmare Iced Coffee - Medium",
-     "serving": "Medium",
-     "cal": 260,
-     "f": 9,
-     "c": 40,
-     "p": 4
-    },
-    {
-     "name": "Nutty Nightmare Iced Coffee - Small",
-     "serving": "Small",
-     "cal": 170,
-     "f": 6,
-     "c": 26,
-     "p": 3
-    },
-    {
      "name": "Nutty Pumpkin Iced Coffee - Large",
      "serving": "Large",
      "cal": 350,
@@ -4070,6 +3798,30 @@
      "f": 6,
      "c": 26,
      "p": 3
+    },
+    {
+     "name": "Spiced Cookie Iced Coffee - Large",
+     "serving": "Large",
+     "cal": 180,
+     "f": 1,
+     "c": 40,
+     "p": 1
+    },
+    {
+     "name": "Spiced Cookie Iced Coffee - Medium",
+     "serving": "Medium",
+     "cal": 130,
+     "f": 0.5,
+     "c": 30,
+     "p": 1
+    },
+    {
+     "name": "Spiced Cookie Iced Coffee - Small",
+     "serving": "Small",
+     "cal": 90,
+     "f": 0,
+     "c": 20,
+     "p": 0
     },
     {
      "name": "Toffee Nut Iced Coffee - Large",
@@ -4168,28 +3920,108 @@
      "p": 1
     },
     {
-     "name": "Harvest Spiced Chai Latte - Large",
+     "name": "Clobbered Cloud Latte - Large",
      "serving": "Large",
-     "cal": 770,
-     "f": 39,
-     "c": 89,
+     "cal": 590,
+     "f": 17,
+     "c": 91,
+     "p": 15
+    },
+    {
+     "name": "Clobbered Cloud Latte - Medium",
+     "serving": "Medium",
+     "cal": 430,
+     "f": 13,
+     "c": 66,
+     "p": 11
+    },
+    {
+     "name": "Clobbered Cloud Latte - Small",
+     "serving": "Small",
+     "cal": 320,
+     "f": 9,
+     "c": 49,
+     "p": 8
+    },
+    {
+     "name": "Cookie Butter Cloud Dunkalatte - Large",
+     "serving": "Large",
+     "cal": 680,
+     "f": 18,
+     "c": 115,
+     "p": 16
+    },
+    {
+     "name": "Cookie Butter Cloud Dunkalatte - Medium",
+     "serving": "Medium",
+     "cal": 490,
+     "f": 13,
+     "c": 83,
+     "p": 12
+    },
+    {
+     "name": "Cookie Butter Cloud Dunkalatte - Small",
+     "serving": "Small",
+     "cal": 350,
+     "f": 9,
+     "c": 60,
+     "p": 8
+    },
+    {
+     "name": "Cookie Butter Cloud Latte - Large",
+     "serving": "Large",
+     "cal": 520,
+     "f": 17,
+     "c": 77,
      "p": 13
     },
     {
-     "name": "Harvest Spiced Chai Latte - Medium",
+     "name": "Cookie Butter Cloud Latte - Medium",
      "serving": "Medium",
-     "cal": 550,
-     "f": 27,
-     "c": 65,
-     "p": 10
+     "cal": 370,
+     "f": 12,
+     "c": 56,
+     "p": 9
     },
     {
-     "name": "Harvest Spiced Chai Latte - Small",
+     "name": "Cookie Butter Cloud Latte - Small",
      "serving": "Small",
-     "cal": 450,
-     "f": 24,
-     "c": 51,
+     "cal": 280,
+     "f": 9,
+     "c": 42,
      "p": 7
+    },
+    {
+     "name": "Doom Cloud Latte - Large",
+     "serving": "Large",
+     "cal": 570,
+     "f": 18,
+     "c": 89,
+     "p": 15
+    },
+    {
+     "name": "Doom Cloud Latte - Medium",
+     "serving": "Medium",
+     "cal": 410,
+     "f": 13,
+     "c": 64,
+     "p": 11
+    },
+    {
+     "name": "Doom Cloud Latte - Small",
+     "serving": "Small",
+     "cal": 300,
+     "f": 9,
+     "c": 46,
+     "p": 8
+    },
+    {
+     "name": "Iced Cookie Butter Oat Chai Latte",
+     "serving": "Large",
+     "cal": 480,
+     "f": 5,
+     "c": 107,
+     "p": 4
     },
     {
      "name": "Iced Dunkalatte - Large",
@@ -4296,30 +4128,6 @@
      "p": 16
     },
     {
-     "name": "Terror-Misu Cloud Latte - Large",
-     "serving": "Large",
-     "cal": 800,
-     "f": 37,
-     "c": 100,
-     "p": 16
-    },
-    {
-     "name": "Terror-Misu Cloud Latte - Medium",
-     "serving": "Medium",
-     "cal": 580,
-     "f": 26,
-     "c": 73,
-     "p": 12
-    },
-    {
-     "name": "Terror-Misu Cloud Latte - Small",
-     "serving": "Small",
-     "cal": 470,
-     "f": 23,
-     "c": 56,
-     "p": 8
-    },
-    {
      "name": "Toasted Almond Iced Dunkalatte - Large",
      "serving": "Large",
      "cal": 420,
@@ -4344,36 +4152,36 @@
      "p": 8
     },
     {
-     "name": "Shakin' Espresso with Sugar Free",
+     "name": "Toasted White Chocolate Cloud",
      "serving": "Large",
-     "cal": 90,
-     "f": 2.5,
-     "c": 21,
-     "p": 1
+     "cal": 570,
+     "f": 17,
+     "c": 87,
+     "p": 16
     },
     {
-     "name": "Tiramisu Shakin' Espresso - Large",
+     "name": "Iced Tea Lemonade - Large",
      "serving": "Large",
-     "cal": 310,
-     "f": 2.5,
-     "c": 68,
-     "p": 5
-    },
-    {
-     "name": "Tiramisu Shakin' Espresso - Medium",
-     "serving": "Medium",
-     "cal": 240,
-     "f": 2,
-     "c": 51,
-     "p": 4
-    },
-    {
-     "name": "Tiramisu Shakin' Espresso - Small",
-     "serving": "Small",
      "cal": 160,
-     "f": 1.5,
-     "c": 34,
-     "p": 3
+     "f": 0,
+     "c": 38,
+     "p": 0
+    },
+    {
+     "name": "Iced Tea Lemonade - Medium",
+     "serving": "Medium",
+     "cal": 120,
+     "f": 0,
+     "c": 30,
+     "p": 0
+    },
+    {
+     "name": "Iced Tea Lemonade - Small",
+     "serving": "Small",
+     "cal": 80,
+     "f": 0,
+     "c": 19,
+     "p": 0
     },
     {
      "name": "Maple Brown Sugar Snackin'",
@@ -9592,7 +9400,7 @@
     "wendy"
    ],
    "source": "https://order.wendys.com/us/en/national/menu",
-   "updated": "2026-11-01",
+   "updated": "2026-11-08",
    "items": [
     {
      "name": "Dave's Single",
@@ -9766,21 +9574,21 @@
      "carbsEstimated": true
     },
     {
+     "name": "Small Natural-Cut Fries",
+     "serving": "",
+     "cal": 260,
+     "f": 12,
+     "c": 34,
+     "p": 4,
+     "carbsEstimated": true
+    },
+    {
      "name": "Medium Natural-Cut Fries",
      "serving": "",
      "cal": 350,
      "f": 16,
      "c": 47,
      "p": 5,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Large Natural-Cut Fries",
-     "serving": "",
-     "cal": 470,
-     "f": 21,
-     "c": 63,
-     "p": 7,
      "carbsEstimated": true
     },
     {
@@ -9838,12 +9646,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Small Natural-Cut Fries",
+     "name": "Medium Classic Chocolate Frosty",
      "serving": "",
-     "cal": 260,
+     "cal": 390,
      "f": 12,
-     "c": 34,
-     "p": 4,
+     "c": 59,
+     "p": 12,
      "carbsEstimated": true
     },
     {
@@ -9856,12 +9664,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Classic Chocolate Frosty",
+     "name": "Large Natural-Cut Fries",
      "serving": "",
-     "cal": 510,
-     "f": 15,
-     "c": 79,
-     "p": 15,
+     "cal": 470,
+     "f": 21,
+     "c": 63,
+     "p": 7,
      "carbsEstimated": true
     },
     {
@@ -9910,6 +9718,15 @@
      "carbsEstimated": true
     },
     {
+     "name": "Sugar Cookie",
+     "serving": "",
+     "cal": 330,
+     "f": 16,
+     "c": 44,
+     "p": 3,
+     "carbsEstimated": true
+    },
+    {
      "name": "10 PC. Spicy Chicken Nuggets",
      "serving": "",
      "cal": 470,
@@ -9919,12 +9736,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Bacon Cheese Baked Potato",
+     "name": "Large Classic Chocolate Frosty",
      "serving": "",
-     "cal": 420,
-     "f": 12,
-     "c": 61,
-     "p": 17,
+     "cal": 510,
+     "f": 15,
+     "c": 79,
+     "p": 15,
      "carbsEstimated": true
     },
     {
@@ -9946,12 +9763,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Sour Cream and Chive Baked Potato",
+     "name": "Bacon Cheese Baked Potato",
      "serving": "",
-     "cal": 300,
-     "f": 2.5,
+     "cal": 420,
+     "f": 12,
      "c": 61,
-     "p": 8,
+     "p": 17,
      "carbsEstimated": true
     },
     {
@@ -10000,12 +9817,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Small Diet Coke",
+     "name": "Sour Cream and Chive Baked Potato",
      "serving": "",
-     "cal": 0,
-     "f": 0,
-     "c": 0,
-     "p": 0,
+     "cal": 300,
+     "f": 2.5,
+     "c": 61,
+     "p": 8,
      "carbsEstimated": true
     },
     {
@@ -10018,12 +9835,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Medium Classic Chocolate Frosty",
+     "name": "Large Diet Coke",
      "serving": "",
-     "cal": 390,
-     "f": 12,
-     "c": 59,
-     "p": 12,
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0,
      "carbsEstimated": true
     },
     {
@@ -10072,11 +9889,11 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Sprite",
+     "name": "Small Diet Coke",
      "serving": "",
-     "cal": 300,
+     "cal": 0,
      "f": 0,
-     "c": 75,
+     "c": 0,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10108,12 +9925,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Sugar Cookie",
+     "name": "Medium Hi-C Flashin' Fruit Punch",
      "serving": "",
-     "cal": 330,
-     "f": 16,
-     "c": 44,
-     "p": 3,
+     "cal": 290,
+     "f": 0,
+     "c": 73,
+     "p": 0,
      "carbsEstimated": true
     },
     {
@@ -10144,11 +9961,11 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large All-Natural Lemonade",
+     "name": "Medium Fanta Orange",
      "serving": "",
-     "cal": 330,
+     "cal": 260,
      "f": 0,
-     "c": 83,
+     "c": 65,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10171,11 +9988,11 @@
      "carbsEstimated": true
     },
     {
-     "name": "Medium Hi-C Flashin' Fruit Punch",
+     "name": "Large Minute Maid Light Lemonade",
      "serving": "",
-     "cal": 290,
+     "cal": 15,
      "f": 0,
-     "c": 73,
+     "c": 4,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10216,15 +10033,6 @@
      "carbsEstimated": true
     },
     {
-     "name": "Pure Life Bottled Water",
-     "serving": "",
-     "cal": 0,
-     "f": 0,
-     "c": 0,
-     "p": 0,
-     "carbsEstimated": true
-    },
-    {
      "name": "Kids' Hamburger",
      "serving": "",
      "cal": 230,
@@ -10243,12 +10051,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Crispy Chicken BLT",
+     "name": "Pure Life Bottled Water",
      "serving": "",
-     "cal": 420,
-     "f": 23,
-     "c": 33,
-     "p": 20,
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0,
      "carbsEstimated": true
     },
     {
@@ -10271,6 +10079,15 @@
     },
     {
      "name": "Small Coca-Cola Zero Sugar",
+     "serving": "",
+     "cal": 0,
+     "f": 0,
+     "c": 0,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Medium Coca-Cola Zero Sugar",
      "serving": "",
      "cal": 0,
      "f": 0,
@@ -10351,12 +10168,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Minute Maid Light Lemonade",
+     "name": "Sausage, Egg & Cheese Biscuit",
      "serving": "",
-     "cal": 15,
-     "f": 0,
-     "c": 4,
-     "p": 0,
+     "cal": 590,
+     "f": 41,
+     "c": 34,
+     "p": 21,
      "carbsEstimated": true
     },
     {
@@ -10369,12 +10186,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Medium Seasoned Potatoes",
+     "name": "Large All-Natural Lemonade",
      "serving": "",
-     "cal": 400,
-     "f": 18,
-     "c": 55,
-     "p": 5,
+     "cal": 330,
+     "f": 0,
+     "c": 83,
+     "p": 0,
      "carbsEstimated": true
     },
     {
@@ -10405,12 +10222,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Medium Coca-Cola Zero Sugar",
+     "name": "Crispy Chicken BLT",
      "serving": "",
-     "cal": 0,
-     "f": 0,
-     "c": 0,
-     "p": 0,
+     "cal": 420,
+     "f": 23,
+     "c": 33,
+     "p": 20,
      "carbsEstimated": true
     },
     {
@@ -10468,11 +10285,20 @@
      "carbsEstimated": true
     },
     {
-     "name": "Kid Coca-Cola",
+     "name": "Cheese Fries",
      "serving": "",
-     "cal": 100,
+     "cal": 470,
+     "f": 27,
+     "c": 45,
+     "p": 12,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Large Sprite",
+     "serving": "",
+     "cal": 300,
      "f": 0,
-     "c": 25,
+     "c": 75,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10531,12 +10357,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Cheese Fries",
+     "name": "Kid Coca-Cola",
      "serving": "",
-     "cal": 470,
-     "f": 27,
-     "c": 45,
-     "p": 12,
+     "cal": 100,
+     "f": 0,
+     "c": 25,
+     "p": 0,
      "carbsEstimated": true
     },
     {
@@ -10576,6 +10402,15 @@
      "carbsEstimated": true
     },
     {
+     "name": "Medium Seasoned Potatoes",
+     "serving": "",
+     "cal": 400,
+     "f": 18,
+     "c": 55,
+     "p": 5,
+     "carbsEstimated": true
+    },
+    {
      "name": "Big Bacon Classic Double",
      "serving": "",
      "cal": 860,
@@ -10603,24 +10438,6 @@
      "carbsEstimated": true
     },
     {
-     "name": "Value Diet Coke&#174;",
-     "serving": "",
-     "cal": 0,
-     "f": 0,
-     "c": 0,
-     "p": 0,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Large Diet Coke",
-     "serving": "",
-     "cal": 0,
-     "f": 0,
-     "c": 0,
-     "p": 0,
-     "carbsEstimated": true
-    },
-    {
      "name": "Value Sprite&#174;",
      "serving": "",
      "cal": 130,
@@ -10630,16 +10447,16 @@
      "carbsEstimated": true
     },
     {
-     "name": "Medium Fanta Orange",
+     "name": "Value Coca-Cola Zero Sugar",
      "serving": "",
-     "cal": 260,
+     "cal": 0,
      "f": 0,
-     "c": 65,
+     "c": 0,
      "p": 0,
      "carbsEstimated": true
     },
     {
-     "name": "Value Coca-Cola Zero Sugar",
+     "name": "Value Diet Coke&#174;",
      "serving": "",
      "cal": 0,
      "f": 0,
@@ -10657,11 +10474,11 @@
      "carbsEstimated": true
     },
     {
-     "name": "Kid Hi-C Flashin' Fruit Punch",
+     "name": "Value Barq's&#174; Root Beer",
      "serving": "",
-     "cal": 120,
+     "cal": 140,
      "f": 0,
-     "c": 30,
+     "c": 35,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10720,11 +10537,11 @@
      "carbsEstimated": true
     },
     {
-     "name": "Boo! Books",
+     "name": "Kid Hi-C Flashin' Fruit Punch",
      "serving": "",
-     "cal": 0,
+     "cal": 120,
      "f": 0,
-     "c": 0,
+     "c": 30,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10744,6 +10561,15 @@
      "f": 25,
      "c": 40,
      "p": 31,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Grilled Chicken Ranch Wrap",
+     "serving": "",
+     "cal": 420,
+     "f": 16,
+     "c": 41,
+     "p": 28,
      "carbsEstimated": true
     },
     {
@@ -10780,6 +10606,15 @@
      "f": 0,
      "c": 1,
      "p": 0,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Large Regular Hot Coffee",
+     "serving": "",
+     "cal": 5,
+     "f": 0,
+     "c": 0,
+     "p": 1,
      "carbsEstimated": true
     },
     {
@@ -10828,21 +10663,21 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Diet Dr. Pepper",
+     "name": "Kids' All-Natural Lemonade",
      "serving": "",
-     "cal": 0,
+     "cal": 130,
      "f": 0,
-     "c": 0,
+     "c": 33,
      "p": 0,
      "carbsEstimated": true
     },
     {
-     "name": "Large Regular Hot Coffee",
+     "name": "Breakfast Burrito, Bacon",
      "serving": "",
-     "cal": 5,
-     "f": 0,
-     "c": 0,
-     "p": 1,
+     "cal": 700,
+     "f": 39,
+     "c": 55,
+     "p": 32,
      "carbsEstimated": true
     },
     {
@@ -10864,20 +10699,20 @@
      "carbsEstimated": true
     },
     {
-     "name": "Sausage, Egg & Cheese Biscuit",
+     "name": "Honey Buddy Chicken Biscuit",
      "serving": "",
-     "cal": 590,
-     "f": 41,
-     "c": 34,
-     "p": 21,
+     "cal": 490,
+     "f": 27,
+     "c": 48,
+     "p": 14,
      "carbsEstimated": true
     },
     {
-     "name": "Kids' All-Natural Lemonade",
+     "name": "Large Diet Dr. Pepper",
      "serving": "",
-     "cal": 130,
+     "cal": 0,
      "f": 0,
-     "c": 33,
+     "c": 0,
      "p": 0,
      "carbsEstimated": true
     },
@@ -10918,12 +10753,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Honey Buddy Chicken Biscuit",
+     "name": "Small Caramel Crunch Vanilla Frosty Fusion",
      "serving": "",
-     "cal": 490,
-     "f": 27,
-     "c": 48,
-     "p": 14,
+     "cal": 410,
+     "f": 10,
+     "c": 71,
+     "p": 9,
      "carbsEstimated": true
     },
     {
@@ -10981,12 +10816,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Grilled Chicken Ranch Wrap",
+     "name": "Medium OREO Brownie Vanilla Frosty Fusion",
      "serving": "",
-     "cal": 420,
-     "f": 16,
-     "c": 41,
-     "p": 28,
+     "cal": 660,
+     "f": 28,
+     "c": 89,
+     "p": 13,
      "carbsEstimated": true
     },
     {
@@ -11071,12 +10906,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Small Caramel Crunch Vanilla Frosty Fusion",
+     "name": "Large Strawberry Vanilla Frosty Swirl",
      "serving": "",
-     "cal": 410,
-     "f": 10,
-     "c": 71,
-     "p": 9,
+     "cal": 550,
+     "f": 13,
+     "c": 94,
+     "p": 14,
      "carbsEstimated": true
     },
     {
@@ -11143,11 +10978,20 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Strawberry Vanilla Frosty Swirl",
+     "name": "Medium Strawberry Chocolate Frosty Swirl",
+     "serving": "",
+     "cal": 450,
+     "f": 11,
+     "c": 77,
+     "p": 11,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Large Strawberry Chocolate Frosty Swirl",
      "serving": "",
      "cal": 550,
-     "f": 13,
-     "c": 94,
+     "f": 14,
+     "c": 92,
      "p": 14,
      "carbsEstimated": true
     },
@@ -11206,12 +11050,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Medium Strawberry Chocolate Frosty Swirl",
+     "name": "Small Vanilla Cold Brew with Cream",
      "serving": "",
-     "cal": 450,
-     "f": 11,
-     "c": 77,
-     "p": 11,
+     "cal": 120,
+     "f": 4,
+     "c": 20,
+     "p": 1,
      "carbsEstimated": true
     },
     {
@@ -11251,11 +11095,11 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Caramel Cold Brew with Cream",
+     "name": "Medium Cold Brew with Cream and Sugar",
      "serving": "",
-     "cal": 270,
-     "f": 12,
-     "c": 40,
+     "cal": 190,
+     "f": 8,
+     "c": 29,
      "p": 1,
      "carbsEstimated": true
     },
@@ -11278,12 +11122,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Value Barq's&#174; Root Beer",
+     "name": "Large Chocolate Cold Brew with Cream",
      "serving": "",
-     "cal": 140,
-     "f": 0,
-     "c": 35,
-     "p": 0,
+     "cal": 280,
+     "f": 12,
+     "c": 42,
+     "p": 1,
      "carbsEstimated": true
     },
     {
@@ -11296,11 +11140,11 @@
      "carbsEstimated": true
     },
     {
-     "name": "Medium Cold Brew with Cream and Sugar",
+     "name": "Large Caramel Cold Brew with Cream",
      "serving": "",
-     "cal": 190,
-     "f": 8,
-     "c": 29,
+     "cal": 270,
+     "f": 12,
+     "c": 40,
      "p": 1,
      "carbsEstimated": true
     },
@@ -11314,48 +11158,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "Large Chocolate Cold Brew with Cream",
-     "serving": "",
-     "cal": 280,
-     "f": 12,
-     "c": 42,
-     "p": 1,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Medium OREO Brownie Vanilla Frosty Fusion",
-     "serving": "",
-     "cal": 660,
-     "f": 28,
-     "c": 89,
-     "p": 13,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Breakfast Burrito, Bacon",
-     "serving": "",
-     "cal": 700,
-     "f": 39,
-     "c": 55,
-     "p": 32,
-     "carbsEstimated": true
-    },
-    {
      "name": "3 PC. Tenders",
      "serving": "",
      "cal": 420,
      "f": 22,
      "c": 23,
      "p": 33,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Small Vanilla Cold Brew with Cream",
-     "serving": "",
-     "cal": 120,
-     "f": 4,
-     "c": 20,
-     "p": 1,
      "carbsEstimated": true
     },
     {
@@ -11386,6 +11194,15 @@
      "carbsEstimated": true
     },
     {
+     "name": "2 PC. Tenders",
+     "serving": "",
+     "cal": 280,
+     "f": 15,
+     "c": 14,
+     "p": 22,
+     "carbsEstimated": true
+    },
+    {
      "name": "Small Cookie Dough Frosty Fusion, Vanilla",
      "serving": "",
      "cal": 540,
@@ -11395,12 +11212,12 @@
      "carbsEstimated": true
     },
     {
-     "name": "2 PC. Tenders",
+     "name": "Medium Cookie Dough Frosty Fusion, Vanilla",
      "serving": "",
-     "cal": 280,
-     "f": 15,
-     "c": 14,
-     "p": 22,
+     "cal": 740,
+     "f": 31,
+     "c": 101,
+     "p": 14,
      "carbsEstimated": true
     },
     {
@@ -11454,6 +11271,15 @@
      "cal": 330,
      "f": 0,
      "c": 83,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
+     "name": "Large Watermelon Lemonade",
+     "serving": "",
+     "cal": 420,
+     "f": 0,
+     "c": 105,
      "p": 0,
      "carbsEstimated": true
     },
@@ -11512,6 +11338,15 @@
      "carbsEstimated": true
     },
     {
+     "name": "Small Watermelon Sparkling Energy",
+     "serving": "",
+     "cal": 190,
+     "f": 0,
+     "c": 48,
+     "p": 0,
+     "carbsEstimated": true
+    },
+    {
      "name": "Medium Watermelon Sparkling Energy",
      "serving": "",
      "cal": 280,
@@ -11527,15 +11362,6 @@
      "f": 0,
      "c": 28,
      "p": 0,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Medium Cookie Dough Frosty Fusion, Vanilla",
-     "serving": "",
-     "cal": 740,
-     "f": 31,
-     "c": 101,
-     "p": 14,
      "carbsEstimated": true
     },
     {
@@ -11555,33 +11381,6 @@
      "c": 15,
      "p": 14,
      "carbsEstimated": true
-    },
-    {
-     "name": "Large Strawberry Chocolate Frosty Swirl",
-     "serving": "",
-     "cal": 550,
-     "f": 14,
-     "c": 92,
-     "p": 14,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Large Watermelon Lemonade",
-     "serving": "",
-     "cal": 420,
-     "f": 0,
-     "c": 105,
-     "p": 0,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Small Watermelon Sparkling Energy",
-     "serving": "",
-     "cal": 190,
-     "f": 0,
-     "c": 48,
-     "p": 0,
-     "carbsEstimated": true
     }
    ]
   },
@@ -11593,7 +11392,7 @@
     "mickey ds"
    ],
    "source": "https://www.mcdonalds.com/us/en-us/about-our-food/nutrition-calculator.html",
-   "updated": "2026-11-01",
+   "updated": "2026-11-08",
    "items": [
     {
      "name": "Baked Hot Apple Pie",
@@ -12820,30 +12619,6 @@
      "p": 0
     },
     {
-     "name": "Fanta Orange (Medium) No Ice",
-     "serving": "",
-     "cal": 270,
-     "f": 0,
-     "c": 71,
-     "p": 0
-    },
-    {
-     "name": "Fanta Orange (S) No Ice",
-     "serving": "",
-     "cal": 210,
-     "f": 0,
-     "c": 54,
-     "p": 0
-    },
-    {
-     "name": "Fanta Orange (Large) No Ice",
-     "serving": "",
-     "cal": 380,
-     "f": 0,
-     "c": 101,
-     "p": 0
-    },
-    {
      "name": "Honest Kids Appley Ever After (Box 6 fl oz Drink Box)",
      "serving": "",
      "cal": 35,
@@ -13402,6 +13177,142 @@
      "f": 7,
      "c": 71,
      "p": 0
+    },
+    {
+     "name": "Red Bull Cranberry Splash Energizer Medium",
+     "serving": "",
+     "cal": 300,
+     "f": 7,
+     "c": 56,
+     "p": 0
+    },
+    {
+     "name": "Reduced Sugar Red Bull Cranberry Splash Energizer Medium",
+     "serving": "",
+     "cal": 200,
+     "f": 7,
+     "c": 34,
+     "p": 0
+    },
+    {
+     "name": "Frosted Cranberry Splash With Sprite Large",
+     "serving": "",
+     "cal": 430,
+     "f": 9,
+     "c": 88,
+     "p": 0
+    },
+    {
+     "name": "Frosted Cranberry Splash With Sprite Small",
+     "serving": "",
+     "cal": 260,
+     "f": 6,
+     "c": 51,
+     "p": 0
+    },
+    {
+     "name": "Frosted Cranberry Splash With Sprite Medium",
+     "serving": "",
+     "cal": 340,
+     "f": 7,
+     "c": 67,
+     "p": 0
+    },
+    {
+     "name": "Cookie Butter Latte Small",
+     "serving": "",
+     "cal": 360,
+     "f": 15,
+     "c": 48,
+     "p": 8
+    },
+    {
+     "name": "Cookie Butter Latte Medium",
+     "serving": "",
+     "cal": 430,
+     "f": 17,
+     "c": 58,
+     "p": 10
+    },
+    {
+     "name": "Cookie Butter Latte Large",
+     "serving": "",
+     "cal": 500,
+     "f": 19,
+     "c": 69,
+     "p": 13
+    },
+    {
+     "name": "Cookie Butter Iced Coffee Medium",
+     "serving": "",
+     "cal": 300,
+     "f": 14,
+     "c": 40,
+     "p": 3
+    },
+    {
+     "name": "Cookie Butter Iced Coffee Small",
+     "serving": "",
+     "cal": 250,
+     "f": 13,
+     "c": 32,
+     "p": 2
+    },
+    {
+     "name": "Cookie Butter Iced Coffee Large",
+     "serving": "",
+     "cal": 340,
+     "f": 15,
+     "c": 48,
+     "p": 3
+    },
+    {
+     "name": "Cookie Butter Frappe",
+     "serving": "",
+     "cal": 540,
+     "f": 21,
+     "c": 80,
+     "p": 7
+    },
+    {
+     "name": "Cookie Butter Frappe Medium",
+     "serving": "",
+     "cal": 630,
+     "f": 24,
+     "c": 97,
+     "p": 8
+    },
+    {
+     "name": "Cookie Butter Frappe Large",
+     "serving": "",
+     "cal": 850,
+     "f": 30,
+     "c": 134,
+     "p": 10
+    },
+    {
+     "name": "Cookie Butter Iced Latte Medium",
+     "serving": "",
+     "cal": 400,
+     "f": 17,
+     "c": 51,
+     "p": 10
+    },
+    {
+     "name": "Cookie Butter Iced Latte Small",
+     "serving": "",
+     "cal": 330,
+     "f": 15,
+     "c": 41,
+     "p": 8
+    },
+    {
+     "name": "Cookie Butter Iced Latte Large",
+     "serving": "",
+     "cal": 500,
+     "f": 19,
+     "c": 69,
+     "p": 13
     }
    ]
   },
@@ -13411,7 +13322,7 @@
     "subway"
    ],
    "source": "https://www.subway.com/en-us/menunutrition/nutrition",
-   "updated": "2026-11-01",
+   "updated": "2026-11-08",
    "items": [
     {
      "name": "6\" Steak Philly",
@@ -16043,7 +15954,7 @@
     "fiveguys"
    ],
    "source": "https://www.fiveguys.com/nutritional-allergy-information/",
-   "updated": "2026-11-01",
+   "updated": "2026-11-08",
    "items": [
     {
      "name": "Mini Fries",
@@ -22610,7 +22521,7 @@
     "wayback burgers"
    ],
    "source": "https://waybackburgers.com/nutritional-info/",
-   "updated": "2026-11-01",
+   "updated": "2026-11-08",
    "items": [
     {
      "name": "Classic",
@@ -23054,24 +22965,6 @@
      "carbsEstimated": true
     },
     {
-     "name": "Dubai Swirl",
-     "serving": "",
-     "cal": 850,
-     "f": 34,
-     "c": 121,
-     "p": 15,
-     "carbsEstimated": true
-    },
-    {
-     "name": "Banana Cream Pie Shake",
-     "serving": "",
-     "cal": 820,
-     "f": 33,
-     "c": 118,
-     "p": 13,
-     "carbsEstimated": true
-    },
-    {
      "name": "Chocolate Brownie Shake",
      "serving": "",
      "cal": 930,
@@ -23139,11 +23032,11 @@
  },
  "status": {
   "chickfila": "ok: 369 items",
-  "dunkin": "ok: 826 items",
-  "mcdonalds": "ok: 226 items",
+  "dunkin": "ok: 802 items",
+  "mcdonalds": "ok: 240 items",
   "subway": "ok: 200 items",
-  "wayback": "ok: 58 items",
+  "wayback": "ok: 56 items",
   "fiveguys": "ok: 78 items",
-  "wendys": "ok: 221 items"
+  "wendys": "ok: 220 items"
  }
 }

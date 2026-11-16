@@ -32,6 +32,7 @@
     <!-- TODAY -->
     <section class="view" id="view-today">
       <div class="today-quote" id="today-quote"></div>
+      <div class="fast-card" id="fast-card" hidden></div>
       <div class="rings" id="rings"></div>
       <button class="explain-link" type="button" data-explain="">ⓘ How to read your numbers</button>
       <div id="status"></div>
@@ -124,6 +125,18 @@
         <p class="small" id="push-status"></p>
         <button class="btn primary block" type="button" id="push-toggle">Turn on</button>
         <button class="btn block" type="button" id="push-test" hidden>Send a test</button>
+      </div>
+
+      <div class="card" id="fast-settings" hidden>
+        <div class="card-head"><h3>⏳ Fasting</h3></div>
+        <p class="muted small">Intermittent fasting, for adults. Your fast starts on its own when your eating window closes (or after the last food you log), and you can start, end or adjust it on Today. Your calorie and protein targets stay the same: eat them inside your window.</p>
+        <label class="check"><input type="checkbox" id="fast-on"> <span>Track fasting</span></label>
+        <div id="fast-plan-box" hidden>
+          <p class="small"><b>Plan</b> <span class="muted">· hours fasting : hours eating</span></p>
+          <div class="chips fast-plans" id="fast-plans"></div>
+          <label class="field"><span>Eating window starts</span><input type="time" id="fast-window"></label>
+          <p class="small" id="fast-window-text"></p>
+        </div>
       </div>
 
       <div class="card" id="account-card" hidden>

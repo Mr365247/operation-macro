@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v66'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v67'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -58,6 +58,8 @@ function load() {
     reports: s.reports || {},
     places: Array.isArray(s.places) ? s.places : null, // places they eat, in their order (null = not asked yet)             // week start (Sunday) -> saved Claude coaching for that week
     profile: s.profile || null,           // age, sex, height, activity, goal from the setup
+    fasting: { on: false, goal: 16, windowStart: '12:00', ...(s.fasting || {}) }, // plan (adults only)
+    fasts: s.fasts || [],                 // { start, end, goal, auto }: times in ms, end null while fasting
     needsSetup: fresh || !!s.needsSetup,  // brand-new phone: ask for their info before anything else
   };
   return st;
@@ -171,6 +173,7 @@ function addEntry(data) {
   const e = { id: uid(), name: data.name, cal: data.cal, p: data.p, c: data.c, f: data.f, meal: data.meal || defaultMeal(), t: Date.now() };
   if (data.parts) e.parts = data.parts;
   todayDay().entries.push(e);
+  fastCheck(e);
   save();
   render();
   checkHoorah();
@@ -274,6 +277,160 @@ function renderQuick() {
   }).join('');
   $('#sheet-quick-chips').scrollLeft = 0;
 }
+
+/* ================= Fasting (18 and up) ================= */
+// A daily plan (16:8 etc.): the fast starts on its own when the eating window closes, or after the
+// last food logged later than that. Start / End on Today, and the start time can be adjusted.
+// Calorie and protein targets don't change: they're eaten inside the window.
+const FAST_PLANS = [12, 14, 16, 18, 20];
+const HOUR = 3600000;
+const fastingAllowed = () => !!(state.profile && +state.profile.age >= 18);
+const fastingOn = () => fastingAllowed() && !!state.fasting.on;
+const activeFast = () => { const f = state.fasts[state.fasts.length - 1]; return f && !f.end ? f : null; };
+const dur = ms => { const m = Math.max(0, Math.floor(ms / 60000)); return `${Math.floor(m / 60)}h ${String(m % 60).padStart(2, '0')}m`; };
+const clock = ts => new Date(ts).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+// The eating window that opens on day k: { open, close } in ms.
+function fastWindow(k) {
+  const [h, m] = (state.fasting.windowStart || '12:00').split(':').map(Number);
+  const d = parseKey(k); d.setHours(h || 0, m || 0, 0, 0);
+  return { open: d.getTime(), close: d.getTime() + (24 - state.fasting.goal) * HOUR };
+}
+function autoStartFast() {
+  if (!fastingOn() || activeFast()) return;
+  const now = Date.now();
+  let close = fastWindow(today).close;
+  if (close > now) close = fastWindow(shiftKey(today, -1)).close;
+  if (close > now) return;
+  const last = state.fasts[state.fasts.length - 1];
+  if (last && last.end && last.end > close) return; // they ended a fast (or ate) after the window closed
+  let start = close;
+  for (const k of [shiftKey(today, -1), today]) for (const e of (state.days[k] || { entries: [] }).entries) if (e.t > start && e.t <= now) start = e.t;
+  state.fasts.push({ start, end: null, goal: state.fasting.goal, auto: true });
+  save();
+}
+// Logging food during a fast. A fast that started on its own less than 3 hours ago just moves to
+// after this food (a late snack); otherwise ask.
+function fastCheck(e) {
+  const f = activeFast();
+  if (!f || !fastingOn() || !(+e.cal > 0)) return;
+  const el = e.t - f.start;
+  if (el < 0) return;
+  if (f.auto && el < 3 * HOUR) { f.start = e.t; return; }
+  if (confirm(`You're ${dur(el)} into your fast (goal ${f.goal}h).\n\nOK: end your fast now.\nCancel: keep fasting (black coffee, gum, a few calories).`)) f.end = e.t;
+}
+const fastHit = f => f.end && f.end - f.start >= f.goal * HOUR;
+// Fasts that ended on day k.
+const fastsOn = k => state.fasts.filter(f => f.end && dayKey(new Date(f.end)) === k);
+function fastStreak() {
+  let k = fastsOn(today).some(fastHit) ? today : shiftKey(today, -1), n = 0;
+  while (fastsOn(k).some(fastHit)) { n++; k = shiftKey(k, -1); }
+  return n;
+}
+function weekFasts(ws) {
+  const days = new Set(weekDays(ws));
+  const fs = state.fasts.filter(f => f.end && days.has(dayKey(new Date(f.end))) && f.end - f.start >= HOUR);
+  return { n: fs.length, hit: fs.filter(fastHit).length, avg: fs.length ? fs.reduce((t, f) => t + (f.end - f.start), 0) / fs.length / HOUR : 0 };
+}
+let fastEditing = false;
+function renderFast() {
+  const el = $('#fast-card');
+  if (!fastingOn()) { el.hidden = true; return; }
+  autoStartFast();
+  el.hidden = false;
+  const f = activeFast(), now = Date.now(), streak = fastStreak();
+  const streakTxt = streak > 1 ? `<span class="fast-streak">⏳ ${streak}-day fasting streak</span>` : '';
+  if (f) {
+    const elapsed = now - f.start, goalMs = f.goal * HOUR, done = elapsed >= goalMs;
+    const C = 2 * Math.PI * 34, off = C * (1 - Math.min(1, elapsed / goalMs));
+    el.className = `fast-card${done ? ' done' : ''}`;
+    el.innerHTML = `
+      <svg class="fast-ring" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="34" class="track"/>
+        <circle cx="40" cy="40" r="34" class="fill" style="stroke-dasharray:${C};stroke-dashoffset:${off}"/></svg>
+      <div class="fast-info">
+        <div class="fast-title">${done ? '🎉 Fast complete' : '⏳ Fasting'}</div>
+        <div class="fast-big">${dur(elapsed)}</div>
+        <div class="fast-sub">${done ? `Goal ${f.goal}h hit · +${dur(elapsed - goalMs)}` : `Goal ${f.goal}h · done at ${clock(f.start + goalMs)}`}</div>
+        ${fastEditing
+          ? `<div class="fast-edit"><span>Started at</span><input type="time" id="fast-start-in" value="${new Date(f.start).toTimeString().slice(0, 5)}"><button class="btn" type="button" data-fast="save-start">Save</button></div>`
+          : `<div class="fast-sub">Started ${dayKey(new Date(f.start)) === today ? '' : 'yesterday '}${clock(f.start)} · <button class="link-btn" type="button" data-fast="edit">change</button></div>`}
+        ${streakTxt}
+      </div>
+      <button class="btn fast-btn" type="button" data-fast="end">End fast</button>`;
+    return;
+  }
+  const w = fastWindow(today), last = state.fasts[state.fasts.length - 1];
+  const lastTxt = last && last.end && now - last.end < 24 * HOUR
+    ? `Last fast: ${dur(last.end - last.start)} ${fastHit(last) ? '✓' : `(goal ${last.goal}h)`}` : '';
+  const status = now < w.open ? `Window opens at ${clock(w.open)}`
+    : now < w.close ? `Window closes at ${clock(w.close)} · ${dur(w.close - now)} left`
+    : `Window closed at ${clock(w.close)}`;
+  el.className = 'fast-card eating';
+  el.innerHTML = `
+    <div class="fast-info">
+      <div class="fast-title">🍽️ Eating window</div>
+      <div class="fast-sub">${status}</div>
+      ${lastTxt ? `<div class="fast-sub">${lastTxt}</div>` : ''}${streakTxt}
+    </div>
+    <button class="btn fast-btn" type="button" data-fast="start">Start fast</button>`;
+}
+$('#fast-card').addEventListener('click', ev => {
+  const b = ev.target.closest('[data-fast]');
+  if (!b) return;
+  const act = b.dataset.fast, f = activeFast();
+  if (act === 'start') {
+    state.fasts.push({ start: Date.now(), end: null, goal: state.fasting.goal });
+    toast(`Fast started · goal ${state.fasting.goal}h`);
+  } else if (act === 'end' && f) {
+    const el = Date.now() - f.start;
+    if (el < f.goal * HOUR && !confirm(`End your fast at ${dur(el)}? Your goal is ${f.goal}h.`)) return;
+    f.end = Date.now();
+    toast(el >= f.goal * HOUR ? `Fast done: ${dur(el)} 💪` : `Fast ended at ${dur(el)}`);
+  } else if (act === 'edit') {
+    fastEditing = true;
+  } else if (act === 'save-start' && f) {
+    const [h, m] = ($('#fast-start-in').value || '').split(':').map(Number);
+    if (h >= 0 && m >= 0) {
+      const d = new Date(); d.setHours(h, m, 0, 0);
+      if (d.getTime() > Date.now()) d.setDate(d.getDate() - 1); // a time later than now was yesterday
+      f.start = d.getTime();
+      f.auto = false;
+    }
+    fastEditing = false;
+  }
+  save();
+  renderFast();
+});
+setInterval(() => { if (view === 'today' && !fastEditing && fastingOn()) renderFast(); }, 60000);
+
+function renderFastSettings() {
+  $('#fast-settings').hidden = !fastingAllowed();
+  if (!fastingAllowed()) return;
+  const fs = state.fasting;
+  $('#fast-on').checked = !!fs.on;
+  $('#fast-plan-box').hidden = !fs.on;
+  $('#fast-plans').innerHTML = FAST_PLANS.map(h => `<button class="chip${h === fs.goal ? ' on' : ''}" type="button" data-plan="${h}">${h}:${24 - h}</button>`).join('');
+  $('#fast-window').value = fs.windowStart;
+  const w = fastWindow(today);
+  $('#fast-window-text').textContent = `Fast ${fs.goal} hours, eat from ${clock(w.open)} to ${clock(w.close)}.`;
+}
+$('#fast-on').addEventListener('change', () => {
+  state.fasting.on = $('#fast-on').checked;
+  save(); renderFastSettings();
+  toast(state.fasting.on ? 'Fasting is on. It shows on Today.' : 'Fasting is off');
+});
+$('#fast-plans').addEventListener('click', ev => {
+  const b = ev.target.closest('[data-plan]');
+  if (!b) return;
+  state.fasting.goal = +b.dataset.plan;
+  const f = activeFast();
+  if (f) f.goal = state.fasting.goal;
+  save(); renderFastSettings();
+});
+$('#fast-window').addEventListener('change', () => {
+  if (!$('#fast-window').value) return;
+  state.fasting.windowStart = $('#fast-window').value;
+  save(); renderFastSettings();
+});
 
 /* ================= Rendering ================= */
 
@@ -379,6 +536,7 @@ function renderToday() {
   // This week's quote (the one from your last weekly report) where the backup reminder used to be.
   const q = weekQuote(shiftKey(weekStart(today), -7));
   $('#today-quote').innerHTML = `<blockquote>“${esc(q.text)}”</blockquote><cite>— ${esc(q.by)}</cite>`;
+  renderFast();
   const t = totals(today), g = state.settings;
   $('#rings').innerHTML = MACROS.map(m => ringHTML(m, t[m.k], g[m.t])).join('');
 
@@ -530,7 +688,8 @@ function dayHTML(k) {
   const low = k !== today && tooLow(k);
   const badge = (hit ? '<span class="badge hit">🎖️ HIT</span>'
     : k === today ? '<span class="badge">IN PROGRESS</span>'
-    : '<span class="badge miss">✗ MISSED</span>') + (low ? ' <span class="badge low">⚠️ TOO LOW</span>' : '');
+    : '<span class="badge miss">✗ MISSED</span>') + (low ? ' <span class="badge low">⚠️ TOO LOW</span>' : '') +
+    fastsOn(k).filter(f => f.end - f.start >= HOUR).map(f => ` <span class="badge fast">⏳ ${Math.floor((f.end - f.start) / HOUR)}h${fastHit(f) ? ' ✓' : ''}</span>`).join('');
   const bars = MACROS.map(m => {
     const eaten = t[m.k], target = g[m.t], over = eaten > target;
     const w = target > 0 ? Math.min(100, (eaten / target) * 100) : 0;
@@ -590,6 +749,8 @@ function weekHTML(ws, open) {
   const sub = st.logged.length
     ? `${st.hits}/${st.logged.length} hit · avg ${fmt(st.avg.cal)} cal · P ${fmt(st.avg.p)} g`
     : 'Nothing logged';
+  const wf = weekFasts(ws);
+  const fastLine = wf.n ? ` · ⏳ ${wf.hit}/${wf.n} fasts` : '';
   const w = st.wEnd && st.wEnd.k >= ws
     ? ` · ⚖️ ${fmt1(st.wEnd.w)}${st.change != null ? ` (${st.change > 0 ? '+' : ''}${fmt1(st.change)})` : ''}` : '';
   const rows = st.days.map(k => state.days[k] && state.days[k].entries.length ? dayHTML(k)
@@ -600,7 +761,7 @@ function weekHTML(ws, open) {
     <details class="week"${open ? ' open' : ''}>
       <summary class="week-head">
         <div class="week-title"><b>${weekName(ws)}</b><span>${weekRange(ws)}</span></div>
-        <div class="week-sub">${sub}${w}</div>
+        <div class="week-sub">${sub}${fastLine}${w}</div>
       </summary>
       ${report}${rows}
     </details>`;
@@ -816,6 +977,7 @@ $('#it-log').addEventListener('click', () => {
 function renderSettings() {
   const s = state.settings;
   $('#app-version').textContent = APP_VERSION;
+  renderFastSettings();
   renderPush();
   $('#s-cal').value = s.cal; $('#s-protein').value = s.protein;
   $('#s-carbs').value = s.carbs; $('#s-fat').value = s.fat;
@@ -2508,6 +2670,12 @@ function localTips(r) {
       break;
     }
   }
+  const wf = weekFasts(r.ws);
+  if (wf.n) {
+    tips.push({ icon: '⏳', title: `Fasting: ${wf.hit} of ${wf.n} fasts hit your goal · avg ${fmt1(wf.avg)}h`,
+      detail: (r.low.length ? `You were way under calories on ${r.low.length} day${r.low.length === 1 ? '' : 's'}. Fasting only works if you still eat your full target inside your window. ` : '') +
+        'Break your fast with protein first, then fit the rest of your calories into the window.' });
+  }
   if (!tips.length) tips.push({ icon: '🎖️', title: 'Solid week', detail: 'Protein and calories were on target. Keep the same playbook.' });
   return tips;
 }
@@ -2899,6 +3067,8 @@ async function coachFromClaude() {
   const goalLine = mode === 'gain' ? `Goal: bulk (gain muscle). The calorie target is about a 10% surplus; a good day is 5% under to 10% over it. ` +
       `Lean-bulk pace: ${fmt1(pace.lo)}–${fmt1(pace.hi)} lbs a week.`
     : mode === 'lose' ? 'Goal: lose fat.' : 'Goal: hold weight steady.';
+  const wf = weekFasts(ws);
+  const fastLine = fastingOn() && wf.n ? `\nIntermittent fasting (adult): ${state.fasting.goal}:${24 - state.fasting.goal} plan; this week ${wf.n} fasts, ${wf.hit} reached the goal, average ${fmt1(wf.avg)} hours.` : '';
   try {
     const client = await aiClient();
     const res = await client.beta.messages.create({
@@ -2919,11 +3089,13 @@ async function coachFromClaude() {
         'rice, oats, pasta, bagels), with carbs around practice. Judge the weekly weight change against the pace given: faster means ' +
         'trim a little, slower means eat more. Swaps should add protein and food, not cut calories. Never push a dirty bulk ' +
         '(junk food or soda to hit numbers), mass-gainer powders or other supplements beyond plain protein. ' +
+        'If they do intermittent fasting: coach them to break the fast with protein and to fit their full calorie and protein ' +
+        'targets into the eating window; never suggest longer fasts, skipping meals in the window or eating less to fast. ' +
         'For quote_id, choose only from the numbered quotes given (never write or alter a quote), and write the pep talk in your ' +
         'own words, connecting that quote to their week.',
       messages: [{ role: 'user', content:
         `Daily targets: ${fmt(g.cal)} cal, ${fmt(g.protein)} g protein, ${fmt(g.carbs)} g carbs, ${fmt(g.fat)} g fat.\n` +
-        `${goalLine}\nWeight: ${weight}.${age ? ` Age: ${age}.` : ''}\n${progress}\nWeek ${weekRange(ws)}:\n${days}\n\nFoods eaten this week:\n${foods}` +
+        `${goalLine}${fastLine}\nWeight: ${weight}.${age ? ` Age: ${age}.` : ''}\n${progress}\nWeek ${weekRange(ws)}:\n${days}\n\nFoods eaten this week:\n${foods}` +
         `\n\nQuotes to choose from:\n${quotes}` }],
     });
     if (res.stop_reason === 'refusal') throw new Error('refused');

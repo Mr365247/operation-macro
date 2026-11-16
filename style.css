@@ -638,3 +638,25 @@ input:focus { border-color: var(--pro); }
 .ring-tag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--s); }
 .ex-colors { font-size: 14px; line-height: 1.45; color: var(--muted); margin: -4px 2px 12px; }
 .ex-colors b { color: var(--text); }
+
+/* ---------- Fasting ---------- */
+.fast-card { display: flex; align-items: center; gap: 14px; margin: 0 0 12px; padding: 12px 14px; border-radius: var(--radius);
+  background: var(--card); border: 2px solid #8b7cf6; }
+.fast-card.done { border-color: var(--good); }
+.fast-card.eating { border-color: var(--line); }
+.fast-ring { width: 72px; height: 72px; flex: none; transform: rotate(-90deg); }
+.fast-ring circle { fill: none; stroke-width: 8; }
+.fast-ring .track { stroke: var(--card2); }
+.fast-ring .fill { stroke: #8b7cf6; stroke-linecap: round; transition: stroke-dashoffset 0.6s; }
+.fast-card.done .fast-ring .fill { stroke: var(--good); }
+.fast-info { flex: 1; min-width: 0; }
+.fast-title { font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+.fast-big { font-size: 28px; font-weight: 800; font-variant-numeric: tabular-nums; line-height: 1.15; }
+.fast-sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.fast-streak { display: inline-block; margin-top: 4px; font-size: 12px; font-weight: 700; color: #b9aefc; }
+.fast-btn { flex: none; padding: 10px 14px; font-size: 14px; }
+.fast-edit { display: flex; align-items: center; gap: 8px; margin-top: 6px; font-size: 13px; color: var(--muted); }
+.fast-edit input { width: 110px; padding: 6px 8px; font-size: 15px; }
+.fast-edit .btn { padding: 6px 12px; font-size: 14px; }
+.fast-plans { margin: 6px -16px 10px; }
+.badge.fast { background: #2a2550; color: #c9c0ff; }

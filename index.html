@@ -130,7 +130,11 @@
       <div class="card" id="fast-settings" hidden>
         <div class="card-head"><h3>⏳ Fasting</h3></div>
         <p class="muted small">Intermittent fasting, for adults. Your fast starts on its own when your eating window closes (or after the last food you log), and you can start, end or adjust it on Today. Your calorie and protein targets stay the same: eat them inside your window.</p>
-        <label class="check"><input type="checkbox" id="fast-on"> <span>Track fasting</span></label>
+        <div id="fast-need-age" hidden>
+          <p class="small">Fasting is for 18 and up, and the app doesn't have your age yet. Add it in your targets, then this turns on.</p>
+          <button class="btn block" type="button" id="fast-add-age">Add my age</button>
+        </div>
+        <label class="check" id="fast-on-row"><input type="checkbox" id="fast-on"> <span>Track fasting</span></label>
         <div id="fast-plan-box" hidden>
           <p class="small"><b>Plan</b> <span class="muted">· hours fasting : hours eating</span></p>
           <div class="chips fast-plans" id="fast-plans"></div>

@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v67'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v68'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -403,8 +403,12 @@ $('#fast-card').addEventListener('click', ev => {
 setInterval(() => { if (view === 'today' && !fastEditing && fastingOn()) renderFast(); }, 60000);
 
 function renderFastSettings() {
-  $('#fast-settings').hidden = !fastingAllowed();
-  if (!fastingAllowed()) return;
+  // Age unknown (targets set before the setup screen existed): ask for it. Under 18: not shown.
+  const ageKnown = !!(state.profile && +state.profile.age > 0);
+  $('#fast-settings').hidden = ageKnown && !fastingAllowed();
+  $('#fast-need-age').hidden = ageKnown;
+  $('#fast-on-row').hidden = !ageKnown;
+  if (!fastingAllowed()) { $('#fast-plan-box').hidden = true; return; }
   const fs = state.fasting;
   $('#fast-on').checked = !!fs.on;
   $('#fast-plan-box').hidden = !fs.on;
@@ -413,6 +417,7 @@ function renderFastSettings() {
   const w = fastWindow(today);
   $('#fast-window-text').textContent = `Fast ${fs.goal} hours, eat from ${clock(w.open)} to ${clock(w.close)}.`;
 }
+$('#fast-add-age').addEventListener('click', () => openSetup(false));
 $('#fast-on').addEventListener('change', () => {
   state.fasting.on = $('#fast-on').checked;
   save(); renderFastSettings();

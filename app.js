@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v69'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v70'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -122,7 +122,7 @@ function weekHits() {
   for (let k = weekStart(today); k <= today; k = shiftKey(k, 1)) if (isHit(k)) n++;
   return n;
 }
-function loggedDay(k) { return !!(state.days[k] && state.days[k].entries.length); }
+function loggedDay(k) { return !!(state.days[k] && state.days[k].entries.length) || fastDay(k); }
 // Days in a row with anything logged, through today if today's logged, else through yesterday.
 function logRun() {
   let k = loggedDay(today) ? today : shiftKey(today, -1), n = 0;
@@ -303,8 +303,14 @@ function autoStartFast() {
   if (close > now) return;
   const last = state.fasts[state.fasts.length - 1];
   if (last && last.end && last.end > close) return; // they ended a fast (or ate) after the window closed
+  // Food between the close and the next window opening is a late snack: the fast starts after it.
+  // Food after the window opened means that fast is already over (they ate in the window).
+  const nextOpen = close + state.fasting.goal * HOUR;
   let start = close;
-  for (const k of [shiftKey(today, -1), today]) for (const e of (state.days[k] || { entries: [] }).entries) if (e.t > start && e.t <= now) start = e.t;
+  for (const k of [shiftKey(today, -1), today]) for (const e of (state.days[k] || { entries: [] }).entries) {
+    if (e.t >= nextOpen && e.t <= now) return;
+    if (e.t > start && e.t <= now) start = e.t;
+  }
   state.fasts.push({ start, end: null, goal: state.fasting.goal, auto: true });
   save();
 }
@@ -319,6 +325,32 @@ function fastCheck(e) {
   if (confirm(`You're ${dur(el)} into your fast (goal ${f.goal}h).\n\nOK: end your fast now.\nCancel: keep fasting (black coffee, gum, a few calories).`)) f.end = e.t;
 }
 const fastHit = f => f.end && f.end - f.start >= f.goal * HOUR;
+// A one-off extended fast, started from Today (the daily plans fit inside 24 hours; this doesn't).
+const EXTENDED = 36;
+const EXTENDED_SAFETY = `${EXTENDED}-hour fast\n\n• Drink plenty of water, with a pinch of salt or electrolytes.\n` +
+  '• Stop and eat if you feel dizzy, faint or unwell.\n' +
+  '• Skip it if you take diabetes medication or blood-pressure medication, are pregnant, or have had an eating disorder, unless your doctor says it\'s OK.\n\n';
+// What the body is doing as a fast goes on (typical timing; it varies person to person).
+const FAST_STAGES = [
+  [0, '🍽️ Digesting', 'Blood sugar and insulin are up from your last meal.'],
+  [4, '📉 Blood sugar settling', 'Insulin falls and your body starts using stored carbs (glycogen).'],
+  [12, '🔥 Fat burning', 'Glycogen is running low, so you burn more fat and start making ketones.'],
+  [18, '⚡ Ketosis', 'Ketones are climbing and fuel more of your brain and muscles.'],
+  [24, '♻️ Autophagy', 'Cells step up recycling of old, worn-out parts. Most of this research is in animals.'],
+  [36, '🧬 Deep fast', 'Ketones are high and growth hormone rises to help protect muscle. Break it gently.'],
+];
+// History row for a day with no food: a full fasting day, the day a long fast ended, or nothing.
+function emptyDayLabel(k) {
+  if (fastDay(k)) return '⏳ Fasting day';
+  const long = fastsOn(k).find(f => f.end - f.start >= 24 * HOUR);
+  return long ? `⏳ ${Math.floor((long.end - long.start) / HOUR)}h fast ended` : 'Nothing logged';
+}
+// A day the whole of which (so far, for today) was spent fasting: counts as a logged day.
+function fastDay(k) {
+  const startOfDay = parseKey(k).getTime(), endOfDay = parseKey(shiftKey(k, 1)).getTime();
+  // Today counts only while the fast is still going; once it ends, they have food to log.
+  return k <= today && state.fasts.some(f => f.start <= startOfDay && (k === today ? !f.end : f.end >= endOfDay || !f.end));
+}
 // Fasts that ended on day k.
 const fastsOn = k => state.fasts.filter(f => f.end && dayKey(new Date(f.end)) === k);
 function fastStreak() {
@@ -342,8 +374,13 @@ function renderFast() {
   if (f) {
     const elapsed = now - f.start, goalMs = f.goal * HOUR, done = elapsed >= goalMs;
     const C = 2 * Math.PI * 34, off = C * (1 - Math.min(1, elapsed / goalMs));
+    const hrs = elapsed / HOUR, si = FAST_STAGES.reduce((i, st, n) => hrs >= st[0] ? n : i, 0);
+    const [, stage, what] = FAST_STAGES[si];
+    const next = FAST_STAGES[si + 1];
+    const startDay = dayKey(new Date(f.start)), ago = Math.round((parseKey(today) - parseKey(startDay)) / 86400000);
+    const startLbl = ago === 0 ? '' : ago === 1 ? 'yesterday ' : parseKey(startDay).toLocaleDateString(undefined, { weekday: 'short' }) + ' ';
     el.className = `fast-card${done ? ' done' : ''}`;
-    el.innerHTML = `
+    el.innerHTML = `<div class="fast-row">
       <svg class="fast-ring" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="34" class="track"/>
         <circle cx="40" cy="40" r="34" class="fill" style="stroke-dasharray:${C};stroke-dashoffset:${off}"/></svg>
       <div class="fast-info">
@@ -352,10 +389,12 @@ function renderFast() {
         <div class="fast-sub">${done ? `Goal ${f.goal}h hit · +${dur(elapsed - goalMs)}` : `Goal ${f.goal}h · done at ${clock(f.start + goalMs)}`}</div>
         ${fastEditing
           ? `<div class="fast-edit"><span>Started at</span><input type="time" id="fast-start-in" value="${new Date(f.start).toTimeString().slice(0, 5)}"><button class="btn" type="button" data-fast="save-start">Save</button></div>`
-          : `<div class="fast-sub">Started ${dayKey(new Date(f.start)) === today ? '' : 'yesterday '}${clock(f.start)} · <button class="link-btn" type="button" data-fast="edit">change</button></div>`}
+          : `<div class="fast-sub">Started ${startLbl}${clock(f.start)} · <button class="link-btn" type="button" data-fast="edit">change</button>` +
+            (f.goal < EXTENDED && !done ? ` · <button class="link-btn" type="button" data-fast="extend">make it ${EXTENDED}h</button>` : '') + `</div>`}
         ${streakTxt}
       </div>
-      <button class="btn fast-btn" type="button" data-fast="end">End fast</button>`;
+      <button class="btn fast-btn" type="button" data-fast="end">End fast</button></div>
+      <div class="fast-stage"><b>${stage}</b> ${what}${next ? `<small>Next: ${next[1]} at ${next[0]}h</small>` : ''}</div>`;
     return;
   }
   const w = fastWindow(today), last = state.fasts[state.fasts.length - 1];
@@ -365,13 +404,14 @@ function renderFast() {
     : now < w.close ? `Window closes at ${clock(w.close)} · ${dur(w.close - now)} left`
     : `Window closed at ${clock(w.close)}`;
   el.className = 'fast-card eating';
-  el.innerHTML = `
+  el.innerHTML = `<div class="fast-row">
     <div class="fast-info">
       <div class="fast-title">🍽️ Eating window</div>
       <div class="fast-sub">${status}</div>
       ${lastTxt ? `<div class="fast-sub">${lastTxt}</div>` : ''}${streakTxt}
     </div>
-    <button class="btn fast-btn" type="button" data-fast="start">Start fast</button>`;
+    <div class="fast-btns"><button class="btn fast-btn" type="button" data-fast="start">Start ${state.fasting.goal}h fast</button>
+      <button class="btn fast-btn ext" type="button" data-fast="start-ext">${EXTENDED}h fast</button></div></div>`;
 }
 $('#fast-card').addEventListener('click', ev => {
   const b = ev.target.closest('[data-fast]');
@@ -380,11 +420,20 @@ $('#fast-card').addEventListener('click', ev => {
   if (act === 'start') {
     state.fasts.push({ start: Date.now(), end: null, goal: state.fasting.goal });
     toast(`Fast started · goal ${state.fasting.goal}h`);
+  } else if (act === 'start-ext') {
+    if (!confirm(EXTENDED_SAFETY + 'Start now?')) return;
+    state.fasts.push({ start: Date.now(), end: null, goal: EXTENDED });
+    toast(`${EXTENDED}-hour fast started 💪`);
+  } else if (act === 'extend' && f) {
+    if (!confirm(EXTENDED_SAFETY + `Turn this fast (${dur(Date.now() - f.start)} so far) into a ${EXTENDED}-hour fast?`)) return;
+    f.goal = EXTENDED; f.auto = false;
+    toast(`Goal is now ${EXTENDED} hours`);
   } else if (act === 'end' && f) {
     const el = Date.now() - f.start;
     if (el < f.goal * HOUR && !confirm(`End your fast at ${dur(el)}? Your goal is ${f.goal}h.`)) return;
     f.end = Date.now();
-    toast(el >= f.goal * HOUR ? `Fast done: ${dur(el)} 💪` : `Fast ended at ${dur(el)}`);
+    toast((el >= f.goal * HOUR ? `Fast done: ${dur(el)} 💪` : `Fast ended at ${dur(el)}`) +
+      (el >= 24 * HOUR ? '. Break it gently: protein and vegetables first, a normal-size meal.' : ''));
   } else if (act === 'edit') {
     fastEditing = true;
   } else if (act === 'save-start' && f) {
@@ -398,7 +447,7 @@ $('#fast-card').addEventListener('click', ev => {
     fastEditing = false;
   }
   save();
-  renderFast();
+  render(); // the 📝 streak counts fasting days, so the header can change too
 });
 setInterval(() => { if (view === 'today' && !fastEditing && fastingOn()) renderFast(); }, 60000);
 
@@ -428,7 +477,7 @@ $('#fast-plans').addEventListener('click', ev => {
   if (!b) return;
   state.fasting.goal = +b.dataset.plan;
   const f = activeFast();
-  if (f) f.goal = state.fasting.goal;
+  if (f && f.goal < 24) f.goal = state.fasting.goal;
   save(); renderFastSettings();
 });
 $('#fast-window').addEventListener('change', () => {
@@ -760,7 +809,7 @@ function weekHTML(ws, open) {
   const w = st.wEnd && st.wEnd.k >= ws
     ? ` · ⚖️ ${fmt1(st.wEnd.w)}${st.change != null ? ` (${st.change > 0 ? '+' : ''}${fmt1(st.change)})` : ''}` : '';
   const rows = st.days.map(k => state.days[k] && state.days[k].entries.length ? dayHTML(k)
-    : `<div class="day-empty${k > today ? ' future' : ''}"><span>${dayLabel(k)}</span><span>${k > today ? '' : 'Nothing logged'}</span></div>`).join('');
+    : `<div class="day-empty${k > today ? ' future' : ''}"><span>${dayLabel(k)}</span><span>${k > today ? '' : emptyDayLabel(k)}</span></div>`).join('');
   const report = st.logged.length
     ? `<button class="btn block week-report" type="button" data-report="${ws}">📊 ${st.done ? 'Weekly report' : 'Week so far'}</button>` : '';
   return `
@@ -2649,7 +2698,8 @@ function betterAt(place, e, gain) {
 function localTips(r) {
   const tips = [], g = r.g;
   const list = items => items.map(f => esc(f.name)).join(', ');
-  if (r.done && r.logged.length < 7)
+  const fastOnly = r.days.filter(k => !r.logged.includes(k) && fastDay(k)).length;
+  if (r.done && r.logged.length + fastOnly < 7)
     tips.push({ icon: '📝', title: `Logged ${r.logged.length} of 7 days`, detail: 'Unlogged days are where progress hides. Aim for all seven, even rough guesses.' });
   const pShort = g.protein - r.avg.p;
   if (pShort > g.protein * 0.05) {
@@ -2789,10 +2839,13 @@ function journey(ws) {
   for (const k of keys.filter(isHit)) { run = prev && shiftKey(prev, 1) === k ? run + 1 : 1; best = Math.max(best, run); prev = k; }
   // Logging streak: days in a row with anything logged, hit or not, counted back from the
   // week's last day. Easier to build than the hit streak, so new users see it grow right away.
-  const logged = new Set(keys);
+  // Whole days spent fasting count as logged.
+  const fastKeys = state.fasts.length ? Array.from({ length: 60 }, (_, i) => shiftKey(end, -i)).filter(k => fastDay(k) && !keys.includes(k)) : [];
+  const allKeys = [...keys, ...fastKeys].sort();
+  const logged = new Set(allKeys);
   let logRun = 0, bestLog = 0;
   run = 0; prev = null;
-  for (const k of keys) { run = prev && shiftKey(prev, 1) === k ? run + 1 : 1; bestLog = Math.max(bestLog, run); prev = k; }
+  for (const k of allKeys) { run = prev && shiftKey(prev, 1) === k ? run + 1 : 1; bestLog = Math.max(bestLog, run); prev = k; }
   for (let k = end; logged.has(k); k = shiftKey(k, -1)) logRun++;
   return {
     since: keys[0] || null,

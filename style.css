@@ -373,6 +373,7 @@ input:focus { border-color: var(--pro); }
 .seg { display: grid; gap: 8px; margin-bottom: 12px; }
 .seg2 { grid-template-columns: 1fr 1fr; margin-bottom: 0; }
 .seg3 { grid-template-columns: repeat(3, 1fr); }
+.seg2 { grid-template-columns: repeat(2, 1fr); }
 .seg button {
   min-height: 52px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--card);
   font-weight: 700; font-size: 15px; padding: 6px 8px;

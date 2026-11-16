@@ -10,7 +10,7 @@ const ACCOUNT_SLOT = 'opmacro_account';
 const account = authOn ? (() => { try { return JSON.parse(localStorage.getItem(ACCOUNT_SLOT)); } catch (e) { return null; } })() : null;
 const LEGACY_KEY = 'opmacro_v1', LEGACY_AI_KEY = 'opmacro_ai_key';
 // Signed out (with sign-in on): nothing is read or written until someone signs in.
-const APP_VERSION = 'v68'; // keep in step with sw.js VERSION
+const APP_VERSION = 'v69'; // keep in step with sw.js VERSION
 const STORE_KEY = !authOn ? LEGACY_KEY : account ? `${LEGACY_KEY}:${account.id}` : null;
 const DEFAULT_SETTINGS = { cal: 2200, protein: 225, carbs: 65, fat: 70, weight: 250, goalWeight: 225, sundayLock: true };
 // Ring order on the home screen. k = key on an entry, t = key in settings.
@@ -754,6 +754,7 @@ function weekHTML(ws, open) {
   const sub = st.logged.length
     ? `${st.hits}/${st.logged.length} hit · avg ${fmt(st.avg.cal)} cal · P ${fmt(st.avg.p)} g`
     : 'Nothing logged';
+  const styleLine = STYLES[dietStyle()].coach ? `\nDiet style: ${STYLES[dietStyle()].coach}` : '';
   const wf = weekFasts(ws);
   const fastLine = wf.n ? ` · ⏳ ${wf.hit}/${wf.n} fasts` : '';
   const w = st.wEnd && st.wEnd.k >= ws
@@ -1607,17 +1608,37 @@ function calcTargets(pr) {
   const perLb = !teen && pr.goal !== 'maintain' ? 1.0 : 0.8;
   const basis = !teen && pr.goal === 'lose' ? Math.min(pr.weight, pr.goalWeight || pr.weight) : pr.weight;
   const protein = Math.min(r5(perLb * basis), r5(cal * 0.35 / 4));
-  const fat = r5(cal * (teen ? 0.30 : 0.25) / 9);
-  const carbs = Math.max(0, r5((cal - protein * 4 - fat * 9) / 4));
-  return { cal, protein, carbs, fat, tdee: Math.round(tdee / 10) * 10, adj, teen };
+  // Calories and protein are the same in every style; the style splits the rest between carbs and fat.
+  const style = styleFor(pr);
+  const left = cal - protein * 4;
+  let fat, carbs;
+  if (style === 'carnivore') { carbs = 20; fat = r5((left - carbs * 4) / 9); }
+  else if (style === 'lowcarb') { carbs = teen ? r5(cal * 0.25 / 4) : 100; fat = r5((left - carbs * 4) / 9); }
+  else {
+    fat = r5(cal * (style === 'med' ? 0.35 : teen ? 0.30 : 0.25) / 9);
+    carbs = r5((left - fat * 9) / 4);
+  }
+  return { cal, protein, carbs: Math.max(0, carbs), fat: Math.max(0, fat), tdee: Math.round(tdee / 10) * 10, adj, teen, style };
 }
+// Diet styles. Carnivore is for adults only; under 18 it falls back to Balanced.
+const STYLES = {
+  balanced: { label: 'Balanced', note: 'Carbs fill whatever protein and fat leave (about 40–50% of calories).', coach: '' },
+  med: { label: 'Mediterranean', note: 'Fat about 35%: olive oil, fish, nuts, beans, vegetables, fruit and whole grains.',
+    coach: 'Mediterranean: olive oil, fish and seafood, vegetables, fruit, beans and lentils, nuts and whole grains; little red or processed meat and few sweets.' },
+  lowcarb: { label: 'Low-carb Med', note: 'About 100 g of carbs: meat, fish, eggs, olive oil and plenty of vegetables; bread, rice, pasta and potatoes kept small.',
+    coach: 'Low-carb Mediterranean: meat, fish, eggs, olive oil, nuts, cheese and plenty of non-starchy vegetables; bread, rice, pasta, potatoes and sweets kept small (around the carb target).' },
+  carnivore: { label: 'Carnivore', adult: true, note: 'About 20 g of carbs: meat, fish, eggs and some dairy. Worth a doctor\'s check on cholesterol after a couple of months.',
+    coach: 'Carnivore: animal foods only (meat, fish, seafood, eggs, some dairy such as cheese and butter); no plant foods; carbs near zero.' },
+};
+const styleFor = pr => { const st = (pr && pr.style) || 'balanced'; return STYLES[st] && !(STYLES[st].adult && +pr.age < 18) ? st : 'balanced'; };
+const dietStyle = () => styleFor(state.profile);
 
 let setupPick = {}, goalTouched = false, setupFirstRun = false;
 function paintSeg(id, value) {
   setupPick[id] = value;
   document.querySelectorAll(`#${id} button`).forEach(b => b.classList.toggle('on', b.dataset.v === value));
 }
-['su-sex', 'su-activity', 'su-goal'].forEach(id => $('#' + id).addEventListener('click', ev => {
+['su-sex', 'su-activity', 'su-goal', 'su-style'].forEach(id => $('#' + id).addEventListener('click', ev => {
   const b = ev.target.closest('button[data-v]');
   if (!b) return;
   if (id === 'su-goal') goalTouched = true;
@@ -1630,6 +1651,7 @@ function readProfile() {
   const pr = {
     age: n('su-age'), sex: setupPick['su-sex'], heightIn: (n('su-ft') || 0) * 12 + (n('su-in') || 0),
     weight: n('su-weight'), goalWeight: n('su-goalw'), activity: setupPick['su-activity'], goal: setupPick['su-goal'],
+    style: setupPick['su-style'] || 'balanced',
   };
   const ok = pr.age >= 13 && pr.age <= 100 && pr.sex && pr.heightIn >= 48 && pr.weight >= 60 && pr.goalWeight >= 60 && pr.activity && pr.goal;
   return ok ? pr : null;
@@ -1638,6 +1660,11 @@ function updateSetup() {
   // Pick the goal from the two weights until they choose one themselves.
   const w = parseFloat($('#su-weight').value), g = parseFloat($('#su-goalw').value);
   if (!goalTouched && w > 0 && g > 0) paintSeg('su-goal', g < w - 1 ? 'lose' : g > w + 1 ? 'gain' : 'maintain');
+  // Carnivore is for 18 and up.
+  const age = parseFloat($('#su-age').value), teen = age > 0 && age < 18;
+  $('#su-style [data-v="carnivore"]').hidden = teen;
+  if (teen && setupPick['su-style'] === 'carnivore') paintSeg('su-style', 'balanced');
+  $('#su-style-note').textContent = STYLES[setupPick['su-style'] || 'balanced'].note;
   const pr = readProfile();
   $('#su-results').hidden = !pr;
   $('#su-missing').hidden = !!pr;
@@ -1670,7 +1697,7 @@ function openSetup(firstRun) {
   $('#su-weight').value = firstRun ? '' : s.weight;
   $('#su-goalw').value = firstRun ? '' : s.goalWeight;
   setupPick = {};
-  paintSeg('su-sex', pr.sex); paintSeg('su-activity', pr.activity); paintSeg('su-goal', pr.goal);
+  paintSeg('su-sex', pr.sex); paintSeg('su-activity', pr.activity); paintSeg('su-goal', pr.goal); paintSeg('su-style', pr.style || 'balanced');
   goalTouched = !!pr.goal;
   updateSetup();
   $('#setup').hidden = false;
@@ -1693,7 +1720,7 @@ $('#setup-form').addEventListener('submit', ev => {
   const latest = sortedWeights().pop();
   if (!latest || latest.w !== pr.weight) state.weights[today] = Math.round(pr.weight * 10) / 10;
   syncCurrentWeight();
-  state.profile = { age: pr.age, sex: pr.sex, heightIn: pr.heightIn, activity: pr.activity, goal: pr.goal };
+  state.profile = { age: pr.age, sex: pr.sex, heightIn: pr.heightIn, activity: pr.activity, goal: pr.goal, style: t.style };
   state.needsSetup = false;
   if (state.days[today]) todayDay();
   save();
@@ -2517,7 +2544,8 @@ async function gapIdeasFromClaude() {
         'simple, realistic options (a single food or a quick meal) with specific portions that get as close as possible to ' +
         'the remaining protein without going over the remaining calories, and keep carbs and fat within what is left. ' +
         'Favor lean, high-protein foods and things the person already eats when they fit. Use standard nutrition values. ' +
-        'If the remaining numbers are hard to hit exactly, say so in the summary and give the closest options.',
+        'If the remaining numbers are hard to hit exactly, say so in the summary and give the closest options.' +
+        (STYLES[dietStyle()].coach ? ' Every option must fit this diet style: ' + STYLES[dietStyle()].coach : ''),
       messages: [{ role: 'user', content:
         `Left for today: ${fmt(Math.max(0, rem.cal))} calories, ${fmt(Math.max(0, rem.p))} g protein, ` +
         `${fmt(Math.max(0, rem.c))} g carbs, ${fmt(Math.max(0, rem.f))} g fat.` +
@@ -2652,7 +2680,9 @@ function localTips(r) {
   for (const [m, label, t] of [['c', 'Carbs', g.carbs], ['f', 'Fat', g.fat]]) {
     if (r.avg[m] <= t * 1.1 || (gain && m === 'c' && r.avg.cal <= r.g.cal * BULK_OVER)) continue; // carbs fuel a bulk
     const top = [...r.foods].sort((a, b) => b[m] - a[m]).slice(0, 3).map(f => `${esc(f.name)} (${fmt(f[m])} g)`);
-    tips.push({ icon: m === 'c' ? '🍞' : '🧈', title: `${label} averaged ${fmt(r.avg[m])} g vs ${fmt(t)} g`, detail: `Biggest sources: ${top.join(', ')}.` });
+    const lowStyle = m === 'c' && ['lowcarb', 'carnivore'].includes(dietStyle());
+    tips.push({ icon: m === 'c' ? '🍞' : '🧈', title: `${label} averaged ${fmt(r.avg[m])} g vs ${fmt(t)} g`,
+      detail: `Biggest sources: ${top.join(', ')}.` + (lowStyle ? ` For your ${STYLES[dietStyle()].label} plan, swap those for meat, fish, eggs${dietStyle() === 'lowcarb' ? ' or vegetables' : ''}.` : '') });
   }
   for (const pl of r.places) {
     const seen = new Set();
@@ -3094,13 +3124,14 @@ async function coachFromClaude() {
         'rice, oats, pasta, bagels), with carbs around practice. Judge the weekly weight change against the pace given: faster means ' +
         'trim a little, slower means eat more. Swaps should add protein and food, not cut calories. Never push a dirty bulk ' +
         '(junk food or soda to hit numbers), mass-gainer powders or other supplements beyond plain protein. ' +
+        'If a diet style is given, every suggestion and swap must fit that style. ' +
         'If they do intermittent fasting: coach them to break the fast with protein and to fit their full calorie and protein ' +
         'targets into the eating window; never suggest longer fasts, skipping meals in the window or eating less to fast. ' +
         'For quote_id, choose only from the numbered quotes given (never write or alter a quote), and write the pep talk in your ' +
         'own words, connecting that quote to their week.',
       messages: [{ role: 'user', content:
         `Daily targets: ${fmt(g.cal)} cal, ${fmt(g.protein)} g protein, ${fmt(g.carbs)} g carbs, ${fmt(g.fat)} g fat.\n` +
-        `${goalLine}${fastLine}\nWeight: ${weight}.${age ? ` Age: ${age}.` : ''}\n${progress}\nWeek ${weekRange(ws)}:\n${days}\n\nFoods eaten this week:\n${foods}` +
+        `${goalLine}${styleLine}${fastLine}\nWeight: ${weight}.${age ? ` Age: ${age}.` : ''}\n${progress}\nWeek ${weekRange(ws)}:\n${days}\n\nFoods eaten this week:\n${foods}` +
         `\n\nQuotes to choose from:\n${quotes}` }],
     });
     if (res.stop_reason === 'refusal') throw new Error('refused');
